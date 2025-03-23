@@ -151,63 +151,110 @@
   }
   
   /* ----------------------------------------
-     2. Multiple Choice Questions (MCQ)
-     ---------------------------------------- */
-  .mcq-container {
-    background-color: var(--mcq-container-bg, #f0f8ff);
-  }
-  
-  [data-theme="dark"] .mcq-container {
-    background-color: var(--mcq-container-bg, #1a2632);
-  }
-  
-  /* MCQ question */
-  .mcq-question {
-    margin-bottom: 20px;
-    font-weight: 600;
-  }
-  
-  /* Container for all options */
-  .options {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 10px;
-  }
-  
-  /* Individual option buttons */
-  .option {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 12px;
-    border: 1px solid var(--border-color, #ddd);
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.2s, transform 0.1s;
-  }
-  
-  /* Hover effect for options */
-  .option:hover {
-    background-color: var(--mcq-hover-bg, #d0e6f7);
-    transform: translateY(-1px);
-  }
-  
-  /* Selected state for options */
-  .option.selected {
-    border: 2px solid var(--mcq-selected-border, #3498db);
-    background-color: var(--mcq-selected-bg, #d0e6f7);
-    font-weight: bold;
-  }
-  
-  [data-theme="dark"] .option:hover {
-    background-color: var(--mcq-hover-bg, #253545);
-  }
-  
-  [data-theme="dark"] .option.selected {
-    border-color: var(--mcq-selected-border, #4fa3e0);
-    background-color: var(--mcq-selected-bg, #253545);
-  }
+   2. Multiple Choice Questions (MCQ)
+   ---------------------------------------- */
+.mcq-container {
+  background-color: var(--mcq-container-bg, #f0f8ff);
+}
+
+[data-theme="dark"] .mcq-container {
+  background-color: var(--mcq-container-bg, #1a2632);
+}
+
+/* MCQ question */
+.mcq-question {
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* Container for all options */
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+/* Individual option buttons */
+.option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid var(--border-color, #ddd);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+/* Hover effect for options */
+.option:hover {
+  background-color: var(--mcq-hover-bg, #d0e6f7);
+  transform: translateY(-1px);
+}
+
+/* Selected state for options */
+.option.selected {
+  border: 2px solid var(--mcq-selected-border, #3498db);
+  background-color: var(--mcq-selected-bg, #d0e6f7);
+  font-weight: bold;
+}
+
+[data-theme="dark"] .option:hover {
+  background-color: var(--mcq-hover-bg, #253545);
+}
+
+[data-theme="dark"] .option.selected {
+  border-color: var(--mcq-selected-border, #4fa3e0);
+  background-color: var(--mcq-selected-bg, #253545);
+}
+
+/* Updated Feedback Styles */
+.feedback {
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 4px;
+  display: none;
+  line-height: 1.5;
+}
+
+.feedback.correct {
+  background-color: var(--success-bg, #d4edda);
+  color: var(--text-color, #333333);
+  border-left: 4px solid var(--success-color, #155724);
+  display: block;
+}
+
+.feedback.incorrect {
+  background-color: var(--error-bg, #f8d7da);
+  color: var(--text-color, #333333);
+  border-left: 4px solid var(--error-color, #721c24);
+  display: block;
+}
+
+.feedback-result {
+  font-weight: bold;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.feedback-result.correct {
+  color: var(--success-color, #155724);
+}
+
+.feedback-result.incorrect {
+  color: var(--error-color, #721c24);
+}
+
+[data-theme="dark"] .feedback.correct {
+  background-color: rgba(21, 87, 36, 0.2);
+  color: var(--text-color, #e0e0e0);
+}
+
+[data-theme="dark"] .feedback.incorrect {
+  background-color: rgba(114, 28, 36, 0.2);
+  color: var(--text-color, #e0e0e0);
+}
   
   /* ----------------------------------------
      3. Gap Fill Activity
