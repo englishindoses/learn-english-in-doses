@@ -1,12 +1,6 @@
 /* 
  * ESL Grammar Website - Base Styles
- * Contains all site-wide styling including:
- * - Color schemes
- * - Typography
- * - Layout
- * - Navigation
- * - Common components
- * - Responsive design
+ * Updated version with requested changes
  */
 
 /* ----------------------------------------
@@ -31,6 +25,10 @@
     --shadow-color: rgba(0, 0, 0, 0.1);
     --progress-bg: #f0f0f0;
     --progress-fill: #3498db;
+    --note-bg: #e8f4fd;
+    --note-border: #bde0fe;
+    --error-text: #dc3545;
+    --success-text: #28a745;
   }
   
   [data-theme="dark"] {
@@ -52,6 +50,10 @@
     --shadow-color: rgba(0, 0, 0, 0.3);
     --progress-bg: #2a2a2a;
     --progress-fill: #4fa3e0;
+    --note-bg: #1a2a3a;
+    --note-border: #234567;
+    --error-text: #f87c86;
+    --success-text: #75e096;
   }
   
   /* ----------------------------------------
@@ -179,7 +181,7 @@
   }
   
   /* Change tips section h2 underline to secondary accent color */
-  .tips-section h2 {
+  .tips-section h2, .tips-heading, .tips h2 {
     border-bottom: 2px solid var(--secondary-accent);
   }
   
@@ -257,18 +259,17 @@
     cursor: pointer;
   }
   
-  /* Bottom navigation */
+  /* Bottom navigation - Full width of the page */
   .bottom-navigation {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 40px;
-    padding-top: 20px;
+    padding: 15px;
     border-top: 1px solid var(--border-color);
     width: 100%;
-    max-width: 760px;
-    margin-left: auto;
-    margin-right: auto;
+    background-color: var(--header-bg);
+    border-radius: 5px;
   }
   
   .center-buttons {
@@ -355,6 +356,42 @@
     max-width: 760px;
     margin-left: auto;
     margin-right: auto;
+  }
+  
+  /* Updated footer layout to display sections horizontally */
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .footer-section {
+    flex: 1;
+    min-width: 150px;
+    text-align: left;
+  }
+  
+  .footer-section h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 8px;
+  }
+  
+  .footer-bottom {
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-color);
   }
   
   /* ----------------------------------------
@@ -614,6 +651,16 @@
     .container {
       padding: 0 15px;
     }
+    
+    /* Adjust footer for mobile */
+    .footer-content {
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .footer-section {
+      width: 100%;
+    }
   }
   
   @media (max-width: 480px) {
@@ -632,4 +679,117 @@
     th, td {
       padding: 8px;
     }
+  }
+  
+  /* ----------------------------------------
+     14. NEWLY ADDED STYLES
+     ---------------------------------------- */
+  
+  /* Grammar point section styling */
+  .grammar-point {
+    background-color: var(--card-bg);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border-left: 5px solid var(--accent-color);
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Common errors section styling */
+  .common-errors {
+    background-color: var(--card-bg);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border-left: 5px solid var(--accent-color);
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Tips section styling */
+  .tips {
+    background-color: transparent;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 20px 0;
+    border-left: none;
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Native Speaker Note with speech bubble icon */
+  .note {
+    background-color: rgba(240, 240, 240, 0.6);
+    padding: 15px 15px 15px 40px;
+    border-radius: 4px;
+    margin: 10px 0;
+    font-size: 0.9em;
+    position: relative;
+  }
+  
+  .note:before {
+    content: "💬";
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    font-size: 1.2em;
+  }
+  
+  [data-theme="dark"] .note {
+    background-color: rgba(60, 60, 60, 0.6);
+  }
+  
+  /* Common Errors Section */
+  .common-errors-heading::before {
+    content: "⚠️";
+    margin-right: 8px;
+  }
+  
+  .error-pattern {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed var(--border-color);
+  }
+  
+  .error-title {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .incorrect {
+    color: var(--error-text);
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+    text-decoration-color: var(--error-text);
+    font-family: 'Source Code Pro', monospace;
+    background-color: var(--example-bg);
+    padding: 5px;
+    border-radius: 3px;
+    margin: 5px 0;
+    display: inline-block;
+  }
+  
+  .correct {
+    color: var(--success-text);
+    font-family: 'Source Code Pro', monospace;
+    background-color: var(--example-bg);
+    padding: 5px;
+    border-radius: 3px;
+    margin: 5px 0;
+    display: inline-block;
+    font-weight: bold;
+  }
+  
+  .explanation {
+    font-style: italic;
+    margin-top: 5px;
+    margin-bottom: 15px;
   }
