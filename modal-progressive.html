@@ -496,7 +496,30 @@
   
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Initialize MCQ Module
+      // Initialize progress tracking first
+      if (typeof ProgressTrackingModule !== 'undefined') {
+        console.log('Initializing ProgressTrackingModule');
+        
+        // Clearer category definitions
+        ProgressTrackingModule.init({
+          categories: {
+            lessons: {
+              modals: ['modal-basics', 'modal-perfect', 'modal-progressive', 'modal-passive']
+            },
+            activities: {
+              modalPractice: ['modal-progressive-mcq', 'modal-progressive-gap-fill', 'modal-progressive-matching']
+            }
+          },
+          // Add a callback to verify initialization
+          onProgressChange: function(details) {
+            console.log('Progress changed:', details);
+          }
+        });
+      } else {
+        console.warn('ProgressTrackingModule not found');
+      }
+    
+      // Initialize MCQ Module with explicit handling for completion
       MCQModule.init({
         containerId: 'mcq',
         answers: {
@@ -512,15 +535,62 @@
           'q10': 1  // She could be going to the cinema tonight.
         },
         onComplete: function(score, total) {
-          console.log('MCQ completed with score: ' + score + '/' + total);
+          console.log('MCQ completed with score:', score, 'out of', total);
           
-          // Update progress tracking
+          // Update progress tracking with more verbose logging
           if (typeof ProgressTrackingModule !== 'undefined') {
-            ProgressTrackingModule.markItemCompleted('lessons', 'modal-progressive', {
-              score: score,
-              maxScore: total,
-              completedAt: new Date().toISOString()
-            });
+            try {
+              // Mark this lesson as completed
+              ProgressTrackingModule.markItemCompleted('lessons', 'modal-progressive', {
+                score: score,
+                maxScore: total,
+                completedAt: new Date().toISOString()
+              });
+              
+              console.log('Lesson marked as completed in progress tracker');
+              
+              // Also mark the MCQ activity as completed for more tracking
+              ProgressTrackingModule.markItemCompleted('activities', 'modal-progressive-mcq', {
+                score: score,
+                maxScore: total,
+                completedAt: new Date().toISOString()
+              });
+              
+              console.log('MCQ activity marked as completed in progress tracker');
+              
+              // Explicitly save progress to ensure it's persisted
+              ProgressTrackingModule.saveProgress();
+              console.log('Progress saved to localStorage');
+              
+              // Notify through the activity completion event system
+              if (typeof ActivityNavModule !== 'undefined' && ActivityNavModule.notifyActivityCompleted) {
+                ActivityNavModule.notifyActivityCompleted('modal-progressive', {
+                  score: score,
+                  maxScore: total
+                });
+                console.log('Activity completion event dispatched');
+              }
+              
+              // Create a custom event as a backup notification method
+              const completionEvent = new CustomEvent('activityCompleted', {
+                detail: {
+                  activityId: 'modal-progressive',
+                  score: score,
+                  maxScore: total,
+                  timestamp: new Date().toISOString()
+                }
+              });
+              document.dispatchEvent(completionEvent);
+              console.log('Custom completion event dispatched');
+              
+              // Show a visible confirmation to the user
+              alert('Your progress has been saved! Check the My Progress page to see your results.');
+              
+            } catch (error) {
+              console.error('Error updating progress:', error);
+            }
+          } else {
+            console.warn('ProgressTrackingModule not available for completion tracking');
           }
         }
       });
@@ -541,18 +611,27 @@
         });
       });
       
-      // Initialize progress tracking if available
-      if (typeof ProgressTrackingModule !== 'undefined') {
-        ProgressTrackingModule.init({
-          categories: {
-            lessons: {
-              modals: ['modal-basics', 'modal-perfect', 'modal-progressive', 'modal-passive']
-            },
-            activities: {
-              modalPractice: ['modal-progressive-mcq', 'modal-progressive-gap-fill', 'modal-progressive-matching']
-            }
+      // Add a helper button for manual progress update (for troubleshooting)
+      const controlButtons = document.querySelector('.control-buttons');
+      if (controlButtons) {
+        const debugButton = document.createElement('button');
+        debugButton.className = 'submit-btn';
+        debugButton.textContent = 'Save Progress Manually';
+        debugButton.style.marginLeft = '10px';
+        debugButton.addEventListener('click', function() {
+          if (typeof ProgressTrackingModule !== 'undefined') {
+            ProgressTrackingModule.markItemCompleted('lessons', 'modal-progressive', {
+              score: 7, // Default score for manual update
+              maxScore: 10,
+              completedAt: new Date().toISOString()
+            });
+            ProgressTrackingModule.saveProgress();
+            alert('Progress manually saved!');
+          } else {
+            alert('Progress tracking module not available');
           }
         });
+        controlButtons.appendChild(debugButton);
       }
     });
   </script>
