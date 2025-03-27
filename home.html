@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="English in Doses - Learn English grammar in small, manageable sessions. Short, frequent practice for busy adult ESL learners.">
+  <title>English in Doses | Learn English in Short, Effective Sessions</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Core Variables - These match your existing site */
+    :root {
+      /* Light theme (default) */
+      --bg-color: #ffffff;
+      --text-color: #333333;
+      --header-bg: #1B263B;
+      --header-text: #ffffff;
+      --card-bg: #f8f9fa;
+      --border-color: #ddd;
+      --accent-color: #3498db;
+      --secondary-accent: #f07d3e;
+      --link-color: #3498db;
+      --success-bg: #d4edda;
+      --success-color: #155724;
+      --error-bg: #f8d7da;
+      --error-color: #721c24;
+      --example-bg: #f8f9fa;
+      --shadow-color: rgba(0, 0, 0, 0.1);
+      --progress-bg: #f0f0f0;
+      --progress-fill: #3498db;
+      --note-bg: #e8f4fd;
+      --note-border: #bde0fe;
+      --error-text: #dc3545;
+      --success-text: #28a745;
+      
+      /* Homepage specific colors */
+      --beginner-color: #4CAF50;
+      --intermediate-color: #FF9800;
+      --advanced-color: #F44336;
+      --conversation-color: #9C27B0;
+    }
+
+    [data-theme="dark"] {
+      /* Dark theme */
+      --bg-color: #121212;
+      --text-color: #e0e0e0;
+      --header-bg: #000000;
+      --header-text: #ffffff;
+      --card-bg: #1e1e1e;
+      --border-color: #444444;
+      --accent-color: #4fa3e0;
+      --secondary-accent: #f38d56;
+      --link-color: #4fa3e0;
+      --success-bg: #143823;
+      --success-color: #7cda9c;
+      --error-bg: #2c1215;
+      --error-color: #e7a9ad;
+      --example-bg: #2a2a2a;
+      --shadow-color: rgba(0, 0, 0, 0.3);
+      --progress-bg: #2a2a2a;
+      --progress-fill: #4fa3e0;
+      --note-bg: #1a2a3a;
+      --note-border: #234567;
+      --error-text: #f87c86;
+      --success-text: #75e096;
+      
+      /* Homepage specific colors - slightly adjusted for dark mode */
+      --beginner-color: #5ab75e;
+      --intermediate-color: #ffac33;
+      --advanced-color: #f66559;
+      --conversation-color: #b14fc4;
+    }
+
+    /* Base Styles */
+    body {
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--bg-color);
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Montserrat', sans-serif;
+      margin-top: 0;
+      color: var(--text-color);
+    }
+
+    a {
+      color: var(--link-color);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Navigation Bar */
+    .main-navigation {
+      background-color: var(--header-bg);
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      position: relative;
+    }
+
+    .site-logo {
+      color: var(--header-text);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      text-decoration: none;
+      margin-right: 20px;
+    
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-right: 80px;
+    }
+
+    .nav-link {
+      color: var(--header-text);
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+
+    .nav-link:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      text-decoration: none;
+    }
+
+    .nav-link.active {
+      background-color: var(--accent-color);
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--header-text);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Theme Toggle */
+    .theme-toggle-container {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      z-index: 100;
+    }
+
+    .theme-toggle {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      transition: background-color 0.3s;
+    }
+
+    .theme-toggle:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .light-icon, .dark-icon {
+      position: absolute;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .light-icon {
+      opacity: 0;
+      transform: rotate(90deg);
+    }
+
+    .dark-icon {
+      opacity: 1;
+      transform: rotate(0);
+    }
+
+    [data-theme="dark"] .light-icon {
+      opacity: 1;
+      transform: rotate(0);
+    }
+
+    [data-theme="dark"] .dark-icon {
+      opacity: 0;
+      transform: rotate(-90deg);
+    }
+
+    /* Skip Link for Accessibility */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--accent-color);
+      color: white;
+      padding: 8px;
+      z-index: 100;
+      transition: top 0.3s;
+    }
+
+    .skip-link:focus {
+      top: 0;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 30px;
+      padding-top: 15px;
+      border-top: 1px solid var(--border-color);
+      text-align: center;
+      max-width: 1280px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 150px;
+      text-align: left;
+    }
+
+    .footer-section h3 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-bottom {
+      margin-top: 20px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    /* Homepage Specific Styles */
+    .home-container {
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .home-section {
+      width: 100%;
+      padding: 60px 5%;
+      box-sizing: border-box;
+    }
+
+    .home-section-content {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    /* Hero Section - Updated to match home.html */
+    .hero-section {
+      background: linear-gradient(135deg, var(--header-bg) 0%, var(--accent-color) 100%);
+      color: white;
+      padding: 80px 5%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      /* background image placeholder goes here*/
+      background-size: cover;
+      background-position: center;
+      opacity: 0.1;
+      z-index: 1;
+    }
+
+    .hero-content {
+      max-width: 600px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .hero-title {
+      font-size: 3rem;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: white;
+      font-weight: 700;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      margin-bottom: 30px;
+      opacity: 0.9;
+      color: white;
+    }
+
+    .hero-image {
+      position: relative;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .hero-illustration {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .logo-container {
+      margin-bottom: 30px;
+      
+    }
+
+    .logo {
+      max-width: 150px;
+      height: auto;
+      border-radius: 50%;
+      
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    /* Stats Section */
+    .stats-section {
+      background-color: var(--bg-color);
+      padding: 60px 5%;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .stat-card {
+      background-color: var(--card-bg);
+      border-radius: 10px;
+      box-shadow: 0 5px 15px var(--shadow-color);
+      padding: 30px;
+      text-align: center;
+      transition: transform 0.3s ease;
+      border-left: 5px solid var(--accent-color);
+    }
+
+    .stat-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--accent-color);
+      margin-bottom: 10px;
+    }
+
+    .stat-label {
+      font-size: 1.1rem;
+      color: var(--text-color);
+    }
+
+    /* Features Section - UPDATED FOR GRID */
+    .features-section {
+      background-color: var(--card-bg);
+      padding: 80px 5%;
+      margin-bottom: 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background-color: var(--accent-color);
+      border-radius: 2px;
+    }
+
+    .feature-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      row-gap: 90px;
+      margin-top: 40px;
+      margin-bottom: 30px;
+      width: 100%;
+    }
+
+    .feature-card {
+      background-color: var(--bg-color);
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+      padding: 30px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      border-top: 4px solid var(--accent-color);
+      margin-bottom: 0;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-icon {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
+    .feature-card p {
+      margin-bottom: 0;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    /* Learning Paths Section */
+    .paths-section {
+      background-color: var(--bg-color);
+      padding: 80px 5%;
+    }
+
+    .paths-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 30px;
+    }
+
+    .path-card {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px var(--shadow-color);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      transition: transform 0.3s ease;
+    }
+
+    .path-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .path-header {
+      padding: 20px;
+      color: white;
+      font-size: 1.4rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .path-header.beginner {
+      background-color: var(--beginner-color);
+    }
+
+    .path-header.intermediate {
+      background-color: var(--intermediate-color);
+    }
+
+    .path-header.advanced {
+      background-color: var(--advanced-color);
+    }
+
+    .path-header.conversation {
+      background-color: var(--conversation-color);
+    }
+
+    .path-content {
+      padding: 25px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .path-desc {
+      margin-bottom: 10px;
+      flex: 0;
+    }
+
+    .path-list {
+      margin-bottom: 20px;
+      padding-left: 20px;
+      flex: 1;
+    }
+
+    .path-list li {
+      margin-bottom: 10px;
+    }
+
+    /* Grammar Topics Section - UPDATED FOR GRID */
+    .topics-section {
+      background-color: var(--card-bg);
+      padding: 80px 5%;
+    }
+
+    .topics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      row-gap: 90px;
+      margin-bottom: 30px;
+      width: 100%;
+    }
+
+    .topic-card {
+      background-color: var(--bg-color);
+      border-radius: 12px;
+      box-shadow: 0 5px 15px var(--shadow-color);
+      padding: 30px;
+      transition: transform 0.3s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      border-left: 5px solid var(--secondary-accent);
+      margin-bottom: 0;
+    }
+
+    .topic-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .topic-title {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      color: var(--text-color);
+    }
+
+    .topic-desc {
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .topic-link {
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      margin-top: auto;
+      transition: transform 0.2s;
+    }
+
+    .topic-link:hover {
+      transform: translateX(5px);
+      text-decoration: none;
+    }
+
+    .topic-link::after {
+      content: "→";
+      display: inline-block;
+      margin-left: 5px;
+      transition: transform 0.2s;
+    }
+
+    .topic-link:hover::after {
+      transform: translateX(3px);
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-accent) 100%);
+      color: white;
+      padding: 80px 5%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-title {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .cta-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Progress Section (for returning users) */
+    .progress-section {
+      display: none; /* Initially hidden, shown for returning users */
+      background-color: var(--bg-color);
+      padding: 60px 5%;
+    }
+
+    .progress-container {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 5px 15px var(--shadow-color);
+      border-left: 5px solid var(--accent-color);
+    }
+
+    .progress-title {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+
+    .progress-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 25px;
+    }
+
+    .progress-stat {
+      background-color: var(--bg-color);
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 3px 8px var(--shadow-color);
+    }
+
+    .progress-number {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: var(--accent-color);
+      margin-bottom: 5px;
+    }
+
+    .progress-label {
+      color: var(--text-color);
+    }
+
+    .progress-recent {
+      margin-bottom: 25px;
+    }
+
+    .progress-recent-title {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+    }
+
+    .progress-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .progress-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .progress-icon {
+      font-size: 1.5rem;
+      color: var(--accent-color);
+    }
+
+    .progress-item-info {
+      flex-grow: 1;
+    }
+
+    .progress-item-title {
+      font-weight: bold;
+      color: var(--text-color);
+      margin-bottom: 5px;
+    }
+
+    .progress-item-date {
+      font-size: 0.9rem;
+      color: var(--text-color);
+      opacity: 0.7;
+    }
+
+    .progress-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 25px;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background-color: var(--secondary-accent);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      font-size: 1rem;
+    }
+
+    .btn-primary:hover {
+      background-color: #e06d2e;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      text-decoration: none;
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: white;
+      padding: 11px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      transition: all 0.3s ease;
+      border: 2px solid white;
+      font-size: 1rem;
+    }
+
+    .btn-secondary:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-3px);
+      text-decoration: none;
+    }
+
+    .btn-secondary.dark {
+      color: var(--accent-color);
+      border-color: var(--accent-color);
+    }
+
+    .btn-secondary.dark:hover {
+      background-color: rgba(52, 152, 219, 0.1);
+    }
+
+    .view-all-container {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .view-all-button {
+      display: inline-block;
+      background-color: var(--accent-color);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .view-all-button:hover {
+      background-color: #2980b9;
+      transform: translateY(-3px);
+      text-decoration: none;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 1200px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .feature-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .topics-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 992px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .section-title {
+        font-size: 2.2rem;
+      }
+
+      .hero-title {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .home-section {
+        padding: 40px 20px;
+      }
+
+      .stats-grid,
+      .progress-stats {
+        grid-template-columns: 1fr;
+      }
+      
+      .feature-cards {
+        grid-template-columns: 1fr;
+      }
+      
+      .topics-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+      }
+
+      .progress-container {
+        padding: 20px;
+      }
+
+      .progress-buttons {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  
+  <!-- Theme toggle button -->
+  <div class="theme-toggle-container">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="light-icon">☀️</span>
+      <span class="dark-icon">🌙</span>
+    </button>
+  </div>
+  
+  <!-- Main navigation -->
+  <nav class="main-navigation">
+    <a href="home.html" class="site-logo">English in Doses</a>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <div class="nav-links">
+      <a href="home.html" class="nav-link active">Home</a>
+      <a href="about.html" class="nav-link">About Us</a>
+      <a href="contact.html" class="nav-link">Contact Us</a>
+      <a href="grammar.html" class="nav-link">Grammar</a>
+      <a href="extra-practice.html" class="nav-link">Extra Practice</a>
+      <a href="my-progress.html" class="nav-link">My Progress</a>
+    </div>
+  </nav>
+
+  <div class="home-container">
+    <main id="main-content">
+      <!-- Hero Section -->
+      <section class="hero-section home-section">
+        <div class="home-section-content hero-grid">
+          <div class="hero-content">
+            <div class="logo-container">
+              <!-- Place for your logo - replace the placeholder with your actual logo -->
+              <img src="images/my-logo.svg" alt="English in Doses Logo" class="logo">
+            </div>
+            <h1 class="hero-title">Master English at your pace.</h1>
+            <p class="hero-subtitle">Short, frequent practice sessions designed for busy adults. Improve your grammar skills in manageable doses, when it suits you.</p>
+            <div class="hero-buttons">
+              <a href="#where-to-start" class="btn-primary">Start Learning</a>
+              <!-- <a href="#how-it-works" class="btn-secondary">How It Works</a> (Removed for now)-->
+            </div>
+          </div>
+          <div class="hero-image">
+            <img src="https://placehold.co/600x400" alt="English learning in small doses" class="hero-illustration">
+          </div>
+        </div>
+      </section>
+      
+      <!-- Stats Section -->
+      <section class="stats-section home-section">
+        <div class="home-section-content stats-grid">
+          <div class="stat-card">
+            <span class="stat-number">30</span>
+            <span class="stat-label">Minutes Max Per Lesson</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">50+</span>
+            <span class="stat-label">Grammar Explanations</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">200+</span>
+            <span class="stat-label">Practice Activities</span>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Why Learn With Us Section - Using grid layout -->
+      <section class="features-section home-section">
+        <div class="home-section-content">
+          <h2 class="section-title">Why Learn With Us</h2>
+          
+          <div class="feature-cards">
+            <div class="feature-card">
+              <span class="feature-icon">📝</span>
+              <h3>Clear Explanations</h3>
+              <p>Grammar concepts explained in simple language with lots of everyday examples you can actually use.</p>
+            </div>
+            
+            <div class="feature-card">
+              <span class="feature-icon">🎯</span>
+              <h3>Interactive Practice</h3>
+              <p>Multiple exercise types to test your understanding and help you remember what you've learned.</p>
+            </div>
+            
+            <div class="feature-card">
+              <span class="feature-icon">⏱️</span>
+              <h3>Learn in short, frequent doses</h3>
+              <p>Short, regular practice is more effective than long, infrequent sessions. Perfect for busy adults.</p>
+            </div>
+            
+            <div class="feature-card">
+              <span class="feature-icon">🔄</span>
+              <h3>Learn At Your Pace</h3>
+              <p>Access lessons anytime, anywhere. Practice as much as you need before moving on.</p>
+            </div>
+            
+            <div class="feature-card">
+              <span class="feature-icon">💬</span>
+              <h3>Real-World Usage</h3>
+              <p>Learn how native speakers actually use grammar in different contexts and situations.</p>
+            </div>
+            
+            <div class="feature-card">
+              <span class="feature-icon">⚠️</span>
+              <h3>Avoid Common Errors</h3>
+              <p>Special focus on mistakes that English learners typically make and how to fix them.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Learning Paths Section -->
+      <section id="where-to-start" class="paths-section home-section">
+        <div class="home-section-content">
+          <h2 class="section-title">Choose Where to Start</h2>
+          
+          <div class="paths-grid">
+            <div class="path-card">
+              <div class="path-header beginner">
+                <span>🔰</span> Beginner
+              </div>
+              <div class="path-content">
+                <p class="path-desc">Start with the fundamentals of English grammar and build a solid foundation. Perfect for those new to English or needing a refresher.</p>
+                <ul class="path-list">
+                  <li>Essential verb tenses</li>
+                  <li>Basic sentence structure</li>
+                  <li>Common prepositions and articles</li>
+                  <li>Simple questions and answers</li>
+                </ul>
+                <a href="beginner-path.html" class="btn-secondary dark">Start Here</a>
+              </div>
+            </div>
+            
+            <div class="path-card">
+              <div class="path-header intermediate">
+                <span>📈</span> Intermediate
+              </div>
+              <div class="path-content">
+                <p class="path-desc">Deepen your grammar knowledge and expand your ability to express complex ideas accurately in English.</p>
+                <ul class="path-list">
+                  <li>Perfect tenses</li>
+                  <li>Comparative structures</li>
+                  <li>Modal verbs</li>
+                  <li>Conditionals (if clauses)</li>
+                </ul>
+                <a href="intermediate-path.html" class="btn-secondary dark">Start Here</a>
+              </div>
+            </div>
+            
+            <div class="path-card">
+              <div class="path-header advanced">
+                <span>🚀</span> Advanced
+              </div>
+              <div class="path-content">
+                <p class="path-desc">Master sophisticated grammar structures to bring precision and nuance to your English communication.</p>
+                <ul class="path-list">
+                  <li>Complex passive structures</li>
+                  <li>Adverbial clauses</li>
+                  <li>Advanced conditionals</li>
+                  <li>Subtle distinctions in tense usage</li>
+                </ul>
+                <a href="index.html" class="btn-secondary dark">Start Here</a>
+              </div>
+            </div>
+            
+            <div class="path-card">
+              <div class="path-header conversation">
+                <span>💬</span> Conversation
+              </div>
+              <div class="path-content">
+                <p class="path-desc">Focus on grammar specifically for spoken English, with 15-30 minute practice sessions available with a teacher.</p>
+                <ul class="path-list">
+                  <li>Natural-sounding sentence patterns</li>
+                  <li>Grammar for casual conversation</li>
+                  <li>Speaking fluently in different contexts</li>
+                  <li>Personalized feedback from a teacher</li>
+                </ul>
+                <a href="conversation-path.html" class="btn-secondary dark">Learn More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Featured Grammar Topics Section - Using grid layout -->
+      <section class="topics-section home-section">
+        <div class="home-section-content">
+          <h2 class="section-title">Featured Grammar Topics</h2>
+          
+          <div class="topics-grid">
+            <div class="topic-card">
+              <h3 class="topic-title">Present Perfect Progressive</h3>
+              <p class="topic-desc">Learn the differences between Present Perfect Progressive and Present Perfect Simple and when to use each form correctly.</p>
+              <a href="present-perfect-progressive.html" class="topic-link">Learn More</a>
+            </div>
+            
+            <div class="topic-card">
+              <h3 class="topic-title">Zero, First, Second, Third Conditionals</h3>
+              <p class="topic-desc">Master all types of conditional structures to discuss real and hypothetical situations with greater precision.</p>
+              <a href="conditional-types.html" class="topic-link">Learn More</a>
+            </div>
+            
+            <div class="topic-card">
+              <h3 class="topic-title">Modal Perfect Forms</h3>
+              <p class="topic-desc">Explore advanced modal structures like 'must have been', 'could have done' to express past possibility, necessity and deduction.</p>
+              <a href="modal-perfect.html" class="topic-link">Learn More</a>
+            </div>
+            
+            <div class="topic-card">
+              <h3 class="topic-title">Passive Voice Fundamentals</h3>
+              <p class="topic-desc">Learn when and how to use passive voice effectively across different tenses, especially important for academic and business English.</p>
+              <a href="passive-voice.html" class="topic-link">Learn More</a>
+            </div>
+            
+            <div class="topic-card">
+              <h3 class="topic-title">Relative Clauses</h3>
+              <p class="topic-desc">Master defining and non-defining relative clauses to add detailed information and create more sophisticated sentences.</p>
+              <a href="relative-clauses.html" class="topic-link">Learn More</a>
+            </div>
+            
+            <div class="topic-card">
+              <h3 class="topic-title">Gerund vs. Infinitive</h3>
+              <p class="topic-desc">Understand when to use gerunds and when to use infinitives after verbs, and how the choice can change the meaning of the sentence.</p>
+              <a href="gerund-infinitive.html" class="topic-link">Learn More</a>
+            </div>
+          </div>
+          
+          <div class="view-all-container">
+            <a href="grammar.html" class="view-all-button">View All Grammar Topics</a>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Progress Section (for returning users, initially hidden) -->
+      <section id="user-progress" class="progress-section home-section">
+        <div class="home-section-content">
+          <h2 class="section-title">Welcome Back!</h2>
+          
+          <div class="progress-container">
+            <h3 class="progress-title">Your Learning Progress</h3>
+            
+            <div class="progress-stats">
+              <div class="progress-stat">
+                <div class="progress-number" id="completed-topics">0</div>
+                <div class="progress-label">Topics Completed</div>
+              </div>
+              <div class="progress-stat">
+                <div class="progress-number" id="completed-activities">0</div>
+                <div class="progress-label">Activities Completed</div>
+              </div>
+              <div class="progress-stat">
+                <div class="progress-number" id="daily-streak">0</div>
+                <div class="progress-label">Day Streak</div>
+              </div>
+            </div>
+            
+            <div class="progress-recent">
+              <h4 class="progress-recent-title">Your Recent Activity</h4>
+              <ul class="progress-list" id="recent-activity-list">
+                <!-- Activities will be populated by JavaScript -->
+              </ul>
+            </div>
+            
+            <div class="progress-buttons">
+              <a href="#" id="continue-learning" class="btn-primary">Continue Learning</a>
+              <a href="progress.html" class="btn-secondary dark">View Detailed Progress</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Call to Action Section -->
+      <section class="cta-section home-section">
+        <div class="home-section-content cta-content">
+          <h2 class="cta-title">Ready to Improve Your English Grammar?</h2>
+          <p class="cta-subtitle">Start learning in small, manageable doses today. Just 15-30 minutes a day can make a big difference in your English skills.</p>
+          <a href="grammar.html" class="btn-primary">Start Learning Today</a>
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="grammar.html">Grammar</a></li>
+          <li><a href="extra-practice.html">Extra Practice</a></li>
+          <li><a href="progress.html">My Progress</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Grammar Topics</h3>
+        <ul>
+          <li><a href="present-perfect-progressive.html">Advanced Tenses</a></li>
+          <li><a href="conditional-types.html">Conditionals</a></li>
+          <li><a href="modal-perfect.html">Modal Verbs</a></li>
+          <li><a href="passive-voice.html">Passive Voice</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© 2025 English in Doses | All rights reserved</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Theme toggle functionality
+      const themeToggle = document.getElementById('theme-toggle');
+      
+      // Set initial theme based on stored preference or system preference
+      setInitialTheme();
+      
+      // Handle theme toggle click
+      themeToggle.addEventListener('click', function() {
+        toggleTheme();
+      });
+      
+      function setInitialTheme() {
+        // Check for stored theme preference
+        const storedTheme = localStorage.getItem('theme');
+        
+        if (storedTheme) {
+          // Apply stored theme preference
+          document.documentElement.setAttribute('data-theme', storedTheme);
+        } else {
+          // Check for system dark mode preference
+          const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          
+          if (prefersDarkMode) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+          } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+          }
+        }
+      }
+      
+      function toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        // Update the theme attribute
+        document.documentElement.setAttribute('data-theme', newTheme);
+        
+        // Save theme preference to local storage
+        localStorage.setItem('theme', newTheme);
+      }
+
+      // Mobile navigation functionality
+      const navToggle = document.querySelector('.nav-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      
+      if (navToggle && navLinks) {
+        navToggle.addEventListener('click', function() {
+          navLinks.classList.toggle('show');
+        });
+      }
+
+      // Check for returning user
+      if (typeof localStorage !== 'undefined') {
+        // Function to get from localStorage
+        function getFromLocalStorage(key, defaultValue = null) {
+          try {
+            const value = localStorage.getItem(key);
+            
+            if (value === null) return defaultValue;
+            
+            // Try to parse JSON
+            try {
+              return JSON.parse(value);
+            } catch (e) {
+              return value;
+            }
+          } catch (error) {
+            console.error('Error retrieving from localStorage:', error);
+            return defaultValue;
+          }
+        }
+        
+        try {
+          // Check for progress data
+          const progressData = getFromLocalStorage('esl-progress-data');
+          
+          if (progressData && progressData.activities) {
+            // Count completed activities
+            const completedActivities = Object.values(progressData.activities).filter(item => item.completed).length;
+            
+            if (completedActivities > 0) {
+              // Show progress section for returning users
+              document.getElementById('user-progress').style.display = 'block';
+              
+              // Update statistics
+              document.getElementById('completed-activities').textContent = completedActivities;
+              document.getElementById('completed-topics').textContent = Object.values(progressData.lessons || {}).filter(item => item.completed).length;
+              document.getElementById('daily-streak').textContent = progressData.stats?.dailyStreak || 0;
+              
+              // Sample activities for display
+              const sampleActivities = [
+                { title: 'Present Perfect Practice', type: 'activity', date: new Date(Date.now() - 86400000), url: 'present-perfect.html' },
+                { title: 'Conditionals Quiz', type: 'quiz', date: new Date(Date.now() - 172800000), url: 'conditionals.html' },
+                { title: 'Modal Verbs Lesson', type: 'lesson', date: new Date(Date.now() - 259200000), url: 'modal-verbs.html' }
+              ];
+              
+              // Populate recent activity list
+              const recentActivityList = document.getElementById('recent-activity-list');
+              
+              if (recentActivityList) {
+                sampleActivities.forEach(activity => {
+                  const item = document.createElement('li');
+                  item.className = 'progress-item';
+                  
+                  // Format the date
+                  const daysAgo = Math.floor((new Date() - activity.date) / (1000 * 60 * 60 * 24));
+                  let dateText;
+                  if (daysAgo === 0) dateText = 'Today';
+                  else if (daysAgo === 1) dateText = 'Yesterday';
+                  else dateText = `${daysAgo} days ago`;
+                  
+                  // Icon based on activity type
+                  let icon = '📝';
+                  if (activity.type === 'quiz') icon = '✅';
+                  if (activity.type === 'lesson') icon = '📚';
+                  
+                  item.innerHTML = `
+                    <span class="progress-icon">${icon}</span>
+                    <div class="progress-item-info">
+                      <div class="progress-item-title">${activity.title}</div>
+                      <div class="progress-item-date">${dateText}</div>
+                    </div>
+                  `;
+                  
+                  recentActivityList.appendChild(item);
+                });
+              }
+              
+              // Set continue learning link
+              document.getElementById('continue-learning').href = sampleActivities[0].url;
+            }
+          }
+        } catch (error) {
+          console.log('Error loading progress data:', error);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

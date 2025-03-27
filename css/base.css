@@ -226,6 +226,18 @@
     margin-right: 20px;
   }
   
+  .site-logo img {
+    display: block;
+    max-height: 50px; /* Adjust this value as needed */
+    width: auto;
+    border-radius: 50%;
+    transition: transform 0.2s ease; /* Optional: adds a subtle hover effect */
+  }
+  
+  .site-logo:hover img {
+    transform: scale(1.05); /* Optional: makes the logo slightly larger on hover */
+  }
+  
   .nav-links {
     display: flex;
     gap: 15px;
