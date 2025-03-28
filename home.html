@@ -115,14 +115,27 @@
     }
 
     .site-logo {
-      color: var(--header-text);
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      font-size: 1.2rem;
-      text-decoration: none;
-      margin-right: 20px;
+    color: var(--header-text);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-decoration: none;
+    margin-right: 20px;
+  }
+  
+  .site-logo img {
+    display: block;
+    max-height: 50px; /* Adjust this value as needed */
+    width: auto;
+    border-radius: 50%;
+    transition: transform 0.2s ease; /* Optional: adds a subtle hover effect */
     
-    }
+  }
+  
+  .site-logo:hover img {
+    transform: scale(1.1); /* Increased from 1.05 to 1.1 */
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.4); /* Adds a subtle glow effect */
+  }
 
     .nav-links {
       display: flex;
@@ -879,6 +892,10 @@
         display: flex;
       }
 
+      .site-logo img {
+      max-height: 40px;
+    }
+
       .home-section {
         padding: 40px 20px;
       }
@@ -937,7 +954,9 @@
   
   <!-- Main navigation -->
   <nav class="main-navigation">
-    <a href="home.html" class="site-logo">English in Doses</a>
+    <a href="home.html" class="site-logo">
+      <img src="images/my-logo.svg" alt="English in Doses" width="150" height="auto">
+    </a>
     <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
     <div class="nav-links">
       <a href="home.html" class="nav-link active">Home</a>
@@ -1085,7 +1104,7 @@
                   <li>Advanced conditionals</li>
                   <li>Subtle distinctions in tense usage</li>
                 </ul>
-                <a href="index.html" class="btn-secondary dark">Start Here</a>
+                <a href="advanced-grammar.html" class="btn-secondary dark">Start Here</a>
               </div>
             </div>
             
@@ -1200,7 +1219,7 @@
         <div class="home-section-content cta-content">
           <h2 class="cta-title">Ready to Improve Your English Grammar?</h2>
           <p class="cta-subtitle">Start learning in small, manageable doses today. Just 15-30 minutes a day can make a big difference in your English skills.</p>
-          <a href="grammar.html" class="btn-primary">Start Learning Today</a>
+          <a href="home.html#where-to-start" class="btn-primary">Start Learning Today</a>
         </div>
       </section>
     </main>
