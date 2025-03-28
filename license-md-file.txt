@@ -1,0 +1,26 @@
+# License Information
+
+## Content License
+All educational content in this repository is © 2025 English in Doses and is licensed under a [Creative Commons Attribution-NonCommercial 4.0 International License](https://creativecommons.org/licenses/by-nc/4.0/).
+
+[![License: CC BY-NC 4.0](https://i.creativecommons.org/l/by-nc/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc/4.0/)
+
+### You are free to:
+- **Share** — use this material in your classroom or for educational purposes
+- **Adapt** — print or save copies for educational use
+
+### Under the following terms:
+- **Attribution** — You must give appropriate credit to English in Doses, provide a link to the original website, and indicate if changes were made.
+- **NonCommercial** — You may not use the material for commercial purposes without permission.
+
+### You may not:
+- Claim this content as your own creation
+- Sell access to these materials
+- Redistribute these materials on another website without permission
+
+## Website Code
+The HTML, CSS, and JavaScript code in this repository is © 2025 English in Doses.
+All rights reserved.
+
+## Third-Party Resources
+- Google Fonts (Montserrat, Open Sans, Source Code Pro) - Used under the [SIL Open Font License](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL)
