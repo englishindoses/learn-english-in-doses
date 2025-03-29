@@ -304,6 +304,28 @@
     }
 
     /* Hero Section - Updated to match home.html */
+    @keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
     .hero-section {
       background: linear-gradient(135deg, var(--header-bg) 0%, var(--accent-color) 100%);
       color: white;
@@ -365,9 +387,12 @@
       max-width: 500px;
       height: auto;
       border-radius: 10px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      animation: 
+    fadeIn 1.2s ease-out forwards,
+    float 4s ease-in-out infinite 1.2s;
+      
     }
-
+  
     .logo-container {
       margin-bottom: 30px;
       
@@ -975,7 +1000,6 @@
         <div class="home-section-content hero-grid">
           <div class="hero-content">
             <div class="logo-container">
-              <!-- Place for your logo - replace the placeholder with your actual logo -->
               <img src="images/my-logo.svg" alt="English in Doses Logo" class="logo">
             </div>
             <h1 class="hero-title">Master English at your pace.</h1>
@@ -986,7 +1010,7 @@
             </div>
           </div>
           <div class="hero-image">
-            <img src="https://placehold.co/600x400" alt="English learning in small doses" class="hero-illustration">
+            <img src="images/woman-with-speech-transp.svg" alt="English learning in small doses" class="hero-illustration">
           </div>
         </div>
       </section>

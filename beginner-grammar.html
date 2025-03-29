@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Beginner Grammar - Learn English grammar for daily life, work and travel. Simple explanations with practical examples for adult ESL learners.">
+  <title>Beginner Grammar - English in Doses</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/activities.css">
+  
+  <style>
+    /* Additional styles specific to the beginner landing page */
+    .function-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+    
+    .function-card {
+      background-color: var(--card-bg);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 8px var(--shadow-color);
+      transition: transform 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      border-top: 4px solid var(--accent-color);
+    }
+    
+    .function-card:hover {
+      transform: translateY(-6px);
+    }
+    
+    .function-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    
+    .function-icon {
+      font-size: 2rem;
+      margin-right: 15px;
+      background-color: var(--bg-color);
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+    
+    .function-title {
+      margin: 0;
+      font-size: 1.25rem;
+      color: var(--text-color);
+    }
+    
+    .function-desc {
+      margin-bottom: 15px;
+      flex-grow: 1;
+    }
+    
+    .function-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+    }
+    
+    .function-level {
+      display: flex;
+      gap: 2px;
+    }
+    
+    .star {
+      color: var(--secondary-accent);
+    }
+    
+    .star.empty {
+      opacity: 0.3;
+    }
+    
+    .function-time {
+      font-size: 0.9rem;
+      color: var(--text-color);
+      opacity: 0.8;
+    }
+    
+    .function-example {
+      background-color: var(--bg-color);
+      border-radius: 6px;
+      padding: 10px;
+      margin: 10px 0;
+      font-family: 'Source Code Pro', monospace;
+    }
+    
+    .section-intro {
+      margin-bottom: 30px;
+      background-color: var(--bg-color);
+      border-radius: 10px;
+      padding: 20px;
+      border-left: 5px solid var(--secondary-accent);
+    }
+    
+    .about-beginner {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    
+    .about-image {
+      flex: 0 0 30%;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .about-content {
+      flex: 1;
+    }
+    
+    .category-title {
+      margin-top: 50px;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--accent-color);
+      color: var(--text-color);
+    }
+    
+    .learn-button {
+      display: inline-block;
+      background-color: var(--accent-color);
+      color: white;
+      padding: 8px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    
+    .learn-button:hover {
+      background-color: #2980b9;
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+    
+    /* Make sure it's responsive */
+    @media (max-width: 768px) {
+      .function-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .about-beginner {
+        flex-direction: column;
+      }
+      
+      .about-image {
+        flex: 0 0 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  
+  <!-- Theme toggle button -->
+  <div class="theme-toggle-container">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="light-icon">☀️</span>
+      <span class="dark-icon">🌙</span>
+    </button>
+  </div>
+  
+  <!-- Main navigation -->
+  <nav class="main-navigation">
+    <a href="home.html" class="site-logo">
+      <img src="images/my-logo.svg" alt="English in Doses" width="150" height="auto">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <div class="nav-links">
+      <a href="home.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About Us</a>
+      <a href="contact.html" class="nav-link">Contact Us</a>
+      <a href="home.html#where-to-start" class="nav-link active">Grammar</a>
+      <a href="extra-practice.html" class="nav-link">Extra Practice</a>
+      <a href="my-progress.html" class="nav-link">My Progress</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs" aria-label="breadcrumb">
+      <span class="breadcrumb-item"><a href="home.html">Home</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="home.html#where-to-start">Grammar Levels</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item">Beginner Grammar</span>
+    </div>
+
+    <main id="main-content">
+      <h1>Beginner Grammar for Daily Life</h1>
+      
+      <div class="about-beginner">
+        <div class="about-image">
+          <img src="https://placehold.co/400x300" alt="Adult ESL learners practicing English">
+        </div>
+        <div class="about-content">
+          <h2>English for Real-Life Situations</h2>
+          <p>This beginner section helps you learn the essential English grammar you need for everyday situations, work, and travel. Each lesson focuses on practical language you can use immediately.</p>
+          <p>All lessons are in small, manageable "doses" (15-30 minutes) perfect for busy adults. Choose the topics you need most, or follow our suggested learning path.</p>
+          <p><strong>Tip:</strong> Your browser can translate these pages into your language. Look for the translation icon in your address bar.</p>
+        </div>
+      </div>
+      
+      <div class="section-intro">
+        <h3>How to Use This Section</h3>
+        <ul>
+          <li>Each topic focuses on a real communication need, not abstract grammar rules</li>
+          <li>Practice with interactive exercises that you can complete at your own pace</li>
+          <li>Come back and review topics as often as you need</li>
+          <li>All examples use simple vocabulary so you can focus on learning the grammar</li>
+          <li>Look for the difficulty level (⭐) and time estimate for each topic</li>
+        </ul>
+      </div>
+
+      <h2 class="category-title">Getting Started with Communication</h2>
+      
+      <div class="function-grid">
+        <div class="function-card">
+          <div class="function-header">
+            <div class="function-icon">👋</div>
+            <h3 class="function-title">Introducing Yourself and Others</h3>
+          </div>
+          <p class="function-desc">Learn how to introduce yourself, ask for personal information, and talk about where you're from.</p>
+          <div class="function-example">
+            "Hello, I'm Maria. I'm from Spain."<br>
+            "This is my colleague, John."
+          </div>
+          <div class="function-footer">
+            <div class="function-level">
+              <span class="star">★</span>
+              <span class="star empty">★</span>
+              <span class="star empty">★</span>
+            </div>
+            <span class="function-time">15 min</span>
+          </div>
+          <a href="introducing-yourself.html" class="learn-button">Learn This</a>
+        </div>
+        
+        <div class="function-card">
+          <div class="function-header">
+            <div class="function-icon">🔄</div>
+            <h3 class="function-title">Talking About Your Daily Routine</h3>
+          </div>
+          <p class="function-desc">Learn to describe your everyday activities, schedules, and habits.</p>
+          <div class="function-example">
+            "I work from Monday to Friday."<br>
+            "She usually starts work at 9am."
+          </div>
+          <div class="function-footer">
+            <div class="function-level">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star empty">★</span>
+            </div>
+            <span class="function-time">20 min</span>
+          </div>
+          <a href="daily-routines.html" class="learn-button">Learn This</a>
+        </div>
+        
+        <div class="function-card">
+          <div class="function-header">
+            <div class="function-icon">🏠</div>
+            <h3 class="function-title">Describing Your Home or Workplace</h3>
+          </div>
+          <p class="function-desc">Learn to describe locations, rooms, and furniture. Explain where things are.</p>
+          <div class="function-example">
+            "There is a desk in my office."<br>
+            "The bathroom is next to the kitchen."
+          </div>
+          <div class="function-footer">
+            <div class="function-level">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star empty">★</span>
+            </div>
+            <span class="function-time">20 min</span>
+          </div>
+          <a href="describing-places.html" class="learn-button">Learn This</a>
+        </div>
+        
+        <div class="function-card">
+          <div class="function-header">
+            <div class="function-icon">🛒</div>
+            <h3 class="function-title">Shopping and Asking About Prices</h3>
+          </div>
+          <p class="function-desc">Learn language for shopping, asking about costs, and talking about basic quantities.</p>
+          <div class="function-example">
+            "How much is this shirt?"<br>
+            "I'd like two kilos of apples, please."
+          </div>
+          <div class="function-footer">
+            <div class="function-level">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star empty">★</span>
+            </div>
+            <span class="function-time">25 min</span>
+          </div>
+          <a href="shopping-vocabulary.html" class="learn-button">Learn This</a>
+        </div>
+      </div>
+      
+      <h2 class="category-title">Essential Communication for Daily Life</h2>
+      
+      <div class="function-grid">
+        <div class="function-card">
+          <div class="function-header">
+            <div class="function-icon">🍽️</div>
+            <h3 class="function-title">Ordering Food and Drinks</h3>
+          </div>
+          <p class="function-desc">Learn how to order in restaurants and cafés, express preferences, and make polite requests.</p>
+          <div class="function-example">
+            "I'd like a coffee, please."<br>
+            "Could I have the menu, please?"
+          </div>
+          <div class="function-footer">
+            <div class="function-level">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star empty">★</span>
+            </div>
+            <span class="function-time">20 min</span>
+          </div>
+          <a href="ordering-food.html" class="learn-button">Learn This</a>
+        </div>
+        
+        <div class="function-card">
+          <div class="function-header">
+            <div class="function-icon">✅</div>
+            <h3 class="function-title">Talking About Abilities</h3>
+          </div>
+          <p class="function-desc">Learn to talk about things you can and can't do, ask for permission, and discuss possibilities.</p>
+          <div class="function-example">
+            "I can speak a little English."<br>
+            "Can you help me with this form?"
+          </div>
+          <div class="function-footer">
+            <div class="function-level">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star empty">★</span>
+            </div>
+            <span class="function-time">15 min</span>
+          </div>
+          <a href="abilities-possibilities.html" class="learn-button">Learn This</a>
+        </div>
+        
+        <div class="function-card">
+          <div class="function-header">
+            <div class="function-icon">🗺️</div>
+            <h3 class="function-title">Giving and Following Directions</h3>
+          </div>
+          <p class="function-desc">Learn how to ask for and give directions, understand maps, and find your way around.</p>
+          <div class="function-example">
+            "Turn left at the traffic lights."<br>
+            "How do I get to the train station?"
+          </div>
+          <div class="function-footer">
+            <div class="function-level">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star empty">★</span>
+            </div>
+            <span class="function-time">25 min</span>
+          </div>
+          <a href="giving-directions.html" class="learn-button">Learn This</a>
+        </div>
+        
+        <div class="function-card">
+          <div class="function-header">
+            <div class="function-icon">👨‍👩‍👧</div>
+            <h3 class="function-title">Describing People and Things</h3>
+          </div>
+          <p class="function-desc">Learn to describe appearance, personality, and characteristics of people and objects.</p>
+          <div class="function-example">
+            "She has long brown hair."<br>
+            "My boss is very friendly but serious."
+          </div>
+          <div class="function-footer">
+            <div class="function-level">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+            </div>
+            <span class="function-time">25 min</span>
+          </div>
+          <a href="describing-people.html" class="learn-button">Learn This</a>
+        </div>
+      </div>
+      
+      <h2 class="category-title">Work and Social Communication</h2>
+      
+      <div class="function-grid">
+        <div class="function-card">
+          <div class="function-header">
+            <div class="function-icon">📅</div>
+            <h3 class="function-title">Making Plans and Arrangements</h3>
+          </div>
+          <p class="function-desc">Learn to talk about future plans, arrange meetings, and discuss schedules.</p>
+          <div class="function-example">
+            "I'm meeting John at 6pm tomorrow."<br>
+            "Are you going to attend the conference?"
+          </div>
+          <div class="function-footer">
+            <div class="function-level">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+            </div>
+            <span class="function-time">25 min</span>
+          </div>
+          <a href="making-plans.html" class="learn-button">Learn This</a>
+        </div>
+        
+        <div class="function-card">
+          <div class="function-header">
+            <div class="function-icon">⏳</div>
+            <h3 class="function-title">Talking About Past Experiences</h3>
+          </div>
+          <p class="function-desc">Learn to discuss things that happened in the past, including your experiences and activities.</p>
+          <div class="function-example">
+            "I worked in London for two years."<br>
+            "Did you enjoy the film last night?"
+          </div>
+          <div class="function-footer">
+            <div class="function-level">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+            </div>
+            <span class="function-time">30 min</span>
+          </div>
+          <a href="past-experiences.html" class="learn-button">Learn This</a>
+        </div>
+        
+        <div class="function-card">
+          <div class="function-header">
+            <div class="function-icon">⚖️</div>
+            <h3 class="function-title">Making Comparisons</h3>
+          </div>
+          <p class="function-desc">Learn to compare people, places, and things - discussing similarities and differences.</p>
+          <div class="function-example">
+            "This restaurant is cheaper than that one."<br>
+            "Tokyo is the most expensive city I've visited."
+          </div>
+          <div class="function-footer">
+            <div class="function-level">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+            </div>
+            <span class="function-time">25 min</span>
+          </div>
+          <a href="making-comparisons.html" class="learn-button">Learn This</a>
+        </div>
+        
+        <div class="function-card">
+          <div class="function-header">
+            <div class="function-icon">📞</div>
+            <h3 class="function-title">Making Simple Phone Calls</h3>
+          </div>
+          <p class="function-desc">Learn telephone English for making calls, leaving and taking messages, and arranging callbacks.</p>
+          <div class="function-example">
+            "Hello, can I speak to Mr. Johnson, please?"<br>
+            "Could you take a message, please?"
+          </div>
+          <div class="function-footer">
+            <div class="function-level">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+            </div>
+            <span class="function-time">25 min</span>
+          </div>
+          <a href="phone-calls.html" class="learn-button">Learn This</a>
+        </div>
+      </div>
+      
+      <h2 class="category-title">Travel and Broader Communication</h2>
+      
+      <div class="function-grid">
+        <div class="function-card">
+          <div class="function-header">
+            <div class="function-icon">✈️</div>
+            <h3 class="function-title">Travel and Transportation</h3>
+          </div>
+          <p class="function-desc">Learn language for tickets, schedules, transportation, and solving travel problems.</p>
+          <div class="function-example">
+            "What time does the train leave?"<br>
+            "I'd like to book a single ticket to London."
+          </div>
+          <div class="function-footer">
+            <div class="function-level">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+            </div>
+            <span class="function-time">30 min</span>
+          </div>
+          <a href="travel-transportation.html" class="learn-button">Learn This</a>
+        </div>
+        
+        <div class="function-card">
+          <div class="function-header">
+            <div class="function-icon">🌟</div>
+            <h3 class="function-title">Talking About Experiences</h3>
+          </div>
+          <p class="function-desc">Learn to discuss your experiences and achievements, including travel and life events.</p>
+          <div class="function-example">
+            "I've visited Paris three times."<br>
+            "Have you ever tried sushi?"
+          </div>
+          <div class="function-footer">
+            <div class="function-level">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+            </div>
+            <span class="function-time">30 min</span>
+          </div>
+          <a href="talking-experiences.html" class="learn-button">Learn This</a>
+        </div>
+        
+        <div class="function-card">
+          <div class="function-header">
+            <div class="function-icon">❤️</div>
+            <h3 class="function-title">Expressing Likes and Preferences</h3>
+          </div>
+          <p class="function-desc">Learn to talk about what you enjoy, your preferences, and things you don't like.</p>
+          <div class="function-example">
+            "I love Italian food but I don't like spicy food."<br>
+            "I'd rather have coffee than tea."
+          </div>
+          <div class="function-footer">
+            <div class="function-level">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star empty">★</span>
+            </div>
+            <span class="function-time">20 min</span>
+          </div>
+          <a href="likes-preferences.html" class="learn-button">Learn This</a>
+        </div>
+        
+        <div class="function-card">
+          <div class="function-header">
+            <div class="function-icon">🔮</div>
+            <h3 class="function-title">Making Predictions and Promises</h3>
+          </div>
+          <p class="function-desc">Learn to talk about future possibilities, make promises, and offer help.</p>
+          <div class="function-example">
+            "I think it will rain tomorrow."<br>
+            "I'll help you with your English homework."
+          </div>
+          <div class="function-footer">
+            <div class="function-level">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+            </div>
+            <span class="function-time">25 min</span>
+          </div>
+          <a href="predictions-promises.html" class="learn-button">Learn This</a>
+        </div>
+      </div>
+      
+      <div class="section-intro" style="margin-top: 40px;">
+        <h3>Suggested Learning Path for Complete Beginners</h3>
+        <p>If you're just starting to learn English, we recommend following these topics in order:</p>
+        <ol>
+          <li>Introducing Yourself and Others</li>
+          <li>Describing Your Home or Workplace</li>
+          <li>Shopping and Asking About Prices</li>
+          <li>Talking About Abilities</li>
+          <li>Talking About Your Daily Routine</li>
+        </ol>
+        <p>After these topics, you can choose others based on your personal needs and interests.</p>
+      </div>
+    </main>
+  </div>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="home.html#where-to-start">Grammar</a></li>
+          <li><a href="extra-practice.html">Extra Practice</a></li>
+          <li><a href="my-progress.html">My Progress</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Grammar Topics</h3>
+        <ul>
+          <li><a href="present-perfect-progressive.html">Advanced Tenses</a></li>
+          <li><a href="conditional-types.html">Conditionals</a></li>
+          <li><a href="modal-perfect.html">Modal Verbs</a></li>
+          <li><a href="passive-voice.html">Passive Voice</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© 2025 English in Doses | All rights reserved</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/core.js"></script>
+</body>
+</html>
