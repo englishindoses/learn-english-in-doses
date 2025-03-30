@@ -15,16 +15,7 @@
   <link rel="stylesheet" href="css/activities.css">
   
   <style>
-    /* Purple color theme for conversation section - Friendly & Approachable */
-    :root {
-      --conversation-primary: #9b59b6;      /* Medium purple */
-      --conversation-primary-dark: #8e44ad; /* Darker purple for hover states */
-      --conversation-secondary: #f1c40f;    /* Bright yellow accent */
-      --conversation-card-bg: #f8f0ff;      /* Very light lavender background */
-      --conversation-icon-bg: #f3e5f8;      /* Slightly darker lavender for icons */
-    }
-  
-    /* Additional styles specific to the conversation landing page */
+        /* Additional styles specific to the conversation landing page */
     .function-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -173,12 +164,7 @@
       width: 24px;
       height: 24px;
     }
-    
-    /* Add purple accent to main heading */
-    h1 {
-      border-left: 5px solid var(--conversation-primary);
-    }
-    
+        
     /* Testimonials styling */
     .testimonials {
       display: grid;
@@ -316,12 +302,13 @@
       <a href="contact.html" class="nav-link">Contact Us</a>
       <a href="home.html#where-to-start" class="nav-link">Grammar</a>
       <a href="extra-practice.html" class="nav-link">Extra Practice</a>
-      <a href="conversation-practice.html" class="nav-link active">Conversation</a>
+      <a href="conversation-page.html" class="nav-link active" aria-current="page">Conversation</a>
       <a href="my-progress.html" class="nav-link">My Progress</a>
     </div>
+    <div class="nav-indicator conversation-nav-indicator"></div>
   </nav>
 
-  <div class="container">
+  <div class="container conversation-section">
     <!-- Breadcrumbs -->
     <div class="breadcrumbs" aria-label="breadcrumb">
       <span class="breadcrumb-item"><a href="home.html">Home</a></span>
@@ -330,7 +317,7 @@
       <span class="breadcrumb-separator">›</span>
       <span class="breadcrumb-item">Conversation Practice</span>
     </div>
-
+    
     <main id="main-content">
       <h1>English Conversation Practice</h1>
       

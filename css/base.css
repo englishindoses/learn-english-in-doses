@@ -1073,8 +1073,8 @@
    ---------------------------------------- */
    :root {
     /* Conversation section theme variables - Friendly & Approachable */
-    --conversation-primary: #9b59b6;      /* Medium purple */
-    --conversation-primary-dark: #8e44ad; /* Darker purple for hover states */
+    --conversation-primary:  #7b6db0;      /* Medium purple */
+    --conversation-primary-dark: #564c82; /* Darker purple for hover states */
     --conversation-secondary: #f1c40f;    /* Bright yellow accent */
     --conversation-card-bg: #f8f0ff;      /* Very light lavender background */
     --conversation-icon-bg: #f3e5f8;      /* Slightly darker lavender for icons */
@@ -1090,6 +1090,9 @@
   }
   
   /* Conversation section specific styling */
+
+  /* Navigation indicator for beginner section */
+
   .conversation-section .function-card {
     background-color: var(--conversation-card-bg);
     border-top: 4px solid var(--conversation-primary);
@@ -1123,10 +1126,6 @@
     background-color: var(--conversation-primary-dark);
   }
   
-  .conversation-section h1 {
-    border-left: 5px solid var(--conversation-primary);
-  }
-  
   .conversation-section .highlight {
     color: var(--conversation-primary);
     font-weight: 600;
@@ -1140,6 +1139,13 @@
   /* Main heading background color change for conversation section */
   .conversation-section h1 {
     background-color: var(--conversation-primary-dark);
+    color: var(--header-text); /* Keep text color white for readability */
+    padding: 20px;
+    padding-left: 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(155, 89, 182, 0.3); /* Purple-tinted shadow */
+    font-size: 2rem;
     border-left: 5px solid var(--conversation-primary);
   }
   
@@ -1160,12 +1166,7 @@
   }
   
   /* Navigation indicator for conversation section */
-  .conversation-section .nav-indicator {
-    height: 3px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+  .conversation-nav-indicator {
     background-color: var(--conversation-primary);
   }
   
@@ -1269,8 +1270,9 @@
   /* Dark mode specific styles for conversation section */
   [data-theme="dark"] .conversation-section h1 {
     background-color: #34214a;
-    border-left: 5px solid var(--conversation-primary);
     color: #ffffff;
+    border-left: 5px solid var(--conversation-primary);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
   }
   
   [data-theme="dark"] .conversation-section .intro-section,
@@ -1352,4 +1354,8 @@
   
   [data-theme="dark"] .conversation-section .function-desc {
     color: #e0e0e0;
+  }
+
+  [data-theme="dark"] .nav-indicator {
+    background-color: var(--conversation-primary);
   }
