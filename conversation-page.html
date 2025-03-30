@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="English Conversation Practice - Improve your speaking skills with one-to-one sessions and self-study resources for adult ESL learners.">
+  <title>English Conversation Practice - English in Doses</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/activities.css">
+  
+  <style>
+    /* Purple color theme for conversation section - Friendly & Approachable */
+    :root {
+      --conversation-primary: #9b59b6;      /* Medium purple */
+      --conversation-primary-dark: #8e44ad; /* Darker purple for hover states */
+      --conversation-secondary: #f1c40f;    /* Bright yellow accent */
+      --conversation-card-bg: #f8f0ff;      /* Very light lavender background */
+      --conversation-icon-bg: #f3e5f8;      /* Slightly darker lavender for icons */
+    }
+  
+    /* Additional styles specific to the conversation landing page */
+    .function-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+    
+    .function-card {
+      background-color: var(--conversation-card-bg);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 8px var(--shadow-color);
+      transition: transform 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      border-top: 4px solid var(--conversation-primary);
+    }
+    
+    .function-card:hover {
+      transform: translateY(-6px);
+    }
+    
+    .function-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    
+    .function-icon {
+      font-size: 2rem;
+      margin-right: 15px;
+      background-color: var(--conversation-icon-bg);
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      color: var(--conversation-primary);
+    }
+    
+    .function-title {
+      margin: 0;
+      font-size: 1.25rem;
+      color: var(--text-color);
+    }
+    
+    .function-desc {
+      margin-bottom: 15px;
+      flex-grow: 1;
+    }
+    
+    .topic-card {
+      background-color: var(--conversation-card-bg);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 8px var(--shadow-color);
+      margin-bottom: 20px;
+      border-left: 4px solid var(--conversation-primary);
+    }
+    
+    .topic-card h3 {
+      color: var(--conversation-primary);
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+    
+    .topic-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .topic-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(155, 89, 182, 0.1);
+    }
+    
+    .topic-list li:last-child {
+      border-bottom: none;
+    }
+    
+    .section-intro {
+      margin-bottom: 30px;
+      background-color: var(--conversation-card-bg);
+      border-radius: 10px;
+      padding: 20px;
+      border-left: 5px solid var(--conversation-primary);
+    }
+    
+    .about-conversation {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    
+    .about-image {
+      flex: 0 0 30%;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .about-content {
+      flex: 1;
+    }
+    
+    .category-title {
+      margin-top: 50px;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--conversation-primary);
+      color: var(--text-color);
+    }
+    
+    .chat-button {
+      display: inline-block;
+      background-color: var(--conversation-primary);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      margin-top: 15px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .chat-button:hover {
+      background-color: var(--conversation-primary-dark);
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+    
+    .chat-button img {
+      width: 24px;
+      height: 24px;
+    }
+    
+    /* Add purple accent to main heading */
+    h1 {
+      border-left: 5px solid var(--conversation-primary);
+    }
+    
+    /* Testimonials styling */
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+      margin-bottom: 30px;
+    }
+    
+    .testimonial {
+      background-color: var(--conversation-card-bg);
+      border-radius: 10px;
+      padding: 20px;
+      position: relative;
+      box-shadow: 0 4px 8px var(--shadow-color);
+    }
+    
+    .testimonial::before {
+      content: '"';
+      font-size: 5rem;
+      position: absolute;
+      top: -15px;
+      left: 10px;
+      color: var(--conversation-primary);
+      opacity: 0.2;
+      font-family: Georgia, serif;
+    }
+    
+    .testimonial-text {
+      position: relative;
+      z-index: 1;
+      font-style: italic;
+      margin-bottom: 15px;
+    }
+    
+    .testimonial-author {
+      text-align: right;
+      font-weight: bold;
+      color: var(--conversation-primary);
+    }
+    
+    /* FAQ styling */
+    .faq-container {
+      margin-top: 30px;
+      margin-bottom: 40px;
+    }
+    
+    .faq-item {
+      margin-bottom: 15px;
+      border-bottom: 1px solid rgba(155, 89, 182, 0.2);
+      padding-bottom: 15px;
+    }
+    
+    .faq-question {
+      font-weight: 600;
+      color: var(--conversation-primary);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .faq-answer {
+      padding-top: 10px;
+      display: none;
+    }
+    
+    .faq-answer.show {
+      display: block;
+    }
+    
+    /* Template message styling */
+    .message-template {
+      background-color: white;
+      border-radius: 10px;
+      border-left: 4px solid var(--conversation-secondary);
+      padding: 15px;
+      margin: 20px 0;
+      font-family: 'Source Code Pro', monospace;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    /* Highlight text */
+    .highlight {
+      color: var(--conversation-primary);
+      font-weight: 600;
+    }
+    
+    .accent {
+      color: var(--conversation-secondary);
+      font-weight: 600;
+    }
+    
+    /* Make sure it's responsive */
+    @media (max-width: 768px) {
+      .function-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .about-conversation {
+        flex-direction: column;
+      }
+      
+      .about-image {
+        flex: 0 0 100%;
+      }
+      
+      .testimonials {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  
+  <!-- Theme toggle button -->
+  <div class="theme-toggle-container">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="light-icon">☀️</span>
+      <span class="dark-icon">🌙</span>
+    </button>
+  </div>
+  
+  <!-- Main navigation -->
+  <nav class="main-navigation">
+    <a href="home.html" class="site-logo">
+      <img src="images/my-logo.svg" alt="English in Doses" width="150" height="auto">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <div class="nav-links">
+      <a href="home.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About Us</a>
+      <a href="contact.html" class="nav-link">Contact Us</a>
+      <a href="home.html#where-to-start" class="nav-link">Grammar</a>
+      <a href="extra-practice.html" class="nav-link">Extra Practice</a>
+      <a href="conversation-practice.html" class="nav-link active">Conversation</a>
+      <a href="my-progress.html" class="nav-link">My Progress</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs" aria-label="breadcrumb">
+      <span class="breadcrumb-item"><a href="home.html">Home</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="home.html#where-to-start">Learning Paths</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item">Conversation Practice</span>
+    </div>
+
+    <main id="main-content">
+      <h1>English Conversation Practice</h1>
+      
+      <div class="about-conversation">
+        <div class="about-image">
+          <img src="https://placehold.co/400x300" alt="English conversation practice online">
+        </div>
+        <div class="about-content">
+          <h2>Improve Your Speaking Confidence</h2>
+          <p>Regular conversation practice is one of the most effective ways to improve your English fluency. This section offers both self-study conversation resources and opportunities to practice speaking with a qualified teacher in a supportive environment.</p>
+          <p>Whether you need to improve your English for work, travel, or everyday life, personalized conversation practice will help you gain confidence and speak more naturally.</p>
+          <a href="#book-session" class="chat-button">
+            <img src="images/whatsapp-icon.svg" alt="WhatsApp icon">
+            Book a Conversation Session
+          </a>
+        </div>
+      </div>
+      
+      <div class="section-intro">
+        <h3>Why Practice Conversation?</h3>
+        <ul>
+          <li>Build confidence speaking in real-life situations</li>
+          <li>Learn natural expressions that native speakers actually use</li>
+          <li>Improve your pronunciation and reduce your accent</li>
+          <li>Practice speaking fluently without translating in your head</li>
+          <li>Get personalized feedback on your specific language challenges</li>
+        </ul>
+      </div>
+
+      <h2 class="category-title">Self-Study Conversation Resources</h2>
+      
+      <p>Use these resources to practice on your own or with a language partner before your session with me.</p>
+      
+      <div class="function-grid">
+        <div class="function-card">
+          <div class="function-header">
+            <div class="function-icon">🗣️</div>
+            <h3 class="function-title">Conversation Topics by Level</h3>
+          </div>
+          <p class="function-desc">Practice speaking with these conversation topics organized by difficulty level.</p>
+          <a href="conversation-topics.html" class="chat-button" style="background-color: var(--conversation-secondary); color: black;">
+            View Topics
+          </a>
+        </div>
+        
+        <div class="function-card">
+          <div class="function-header">
+            <div class="function-icon">❓</div>
+            <h3 class="function-title">Conversation Starters</h3>
+          </div>
+          <p class="function-desc">Ready-to-use questions to start interesting conversations in English.</p>
+          <a href="conversation-starters.html" class="chat-button" style="background-color: var(--conversation-secondary); color: black;">
+            View Starters
+          </a>
+        </div>
+        
+        <div class="function-card">
+          <div class="function-header">
+            <div class="function-icon">📋</div>
+            <h3 class="function-title">Functional Language Guides</h3>
+          </div>
+          <p class="function-desc">Learn phrases for specific conversation functions like agreeing, disagreeing, or changing topics.</p>
+          <a href="functional-language.html" class="chat-button" style="background-color: var(--conversation-secondary); color: black;">
+            View Guides
+          </a>
+        </div>
+      </div>
+      
+      <div class="topic-card">
+        <h3>Popular Conversation Topics</h3>
+        <ul class="topic-list">
+          <li>💼 Work and Career Aspirations</li>
+          <li>🌍 Travel Experiences and Dream Destinations</li>
+          <li>🍽️ Food, Cooking, and Cultural Dishes</li>
+          <li>🎬 Movies, TV Shows, and Entertainment</li>
+          <li>📱 Technology and Social Media</li>
+          <li>🌱 Environment and Sustainability</li>
+          <li>🏠 Life in Different Countries and Cultures</li>
+          <li>🎓 Education and Learning Experiences</li>
+        </ul>
+      </div>
+      
+      <h2 id="book-session" class="category-title">One-to-One Conversation Sessions</h2>
+      
+      <div class="section-intro">
+        <h3>Personalized Speaking Practice</h3>
+        <p>Book a one-to-one conversation session with me to practice your English speaking skills in a relaxed, supportive environment. These sessions are tailored to your specific needs and interests.</p>
+        
+        <h4 class="highlight">Session Benefits:</h4>
+        <ul>
+          <li>Personalized attention focused entirely on your speaking needs</li>
+          <li>Real-time feedback on pronunciation, grammar, and vocabulary</li>
+          <li>Natural conversation flow with a qualified teacher</li>
+          <li>Tailored topics based on your interests and goals</li>
+          <li>Flexible scheduling to fit your busy life</li>
+        </ul>
+      </div>
+      
+      <div class="topic-card">
+        <h3>Bring a Friend and Save!</h3>
+        <p>Want to practice conversation in a more natural setting? Bring a friend and you'll both receive a <span class="accent">15% discount</span> on your session. Practicing with a peer can make conversation more authentic while still receiving expert guidance.</p>
+      </div>
+      
+      <div class="topic-card">
+        <h3>How It Works</h3>
+        <ol>
+          <li>Contact me directly via WhatsApp using the button below</li>
+          <li>Let me know your English level, availability, and conversation goals</li>
+          <li>I'll confirm available times and provide payment options based on your location</li>
+          <li>Once payment is received, I'll send you Zoom or Google Meet details</li>
+          <li>Join the conversation session at your scheduled time</li>
+          <li>Receive conversation feedback and suggestions for further practice</li>
+        </ol>
+        
+        <h4>Suggested Message Template:</h4>
+        <div class="message-template">
+          Hello, I'm interested in booking an English conversation session. My English level is [beginner/intermediate/advanced]. I'm available on [days/times]. I'm particularly interested in practicing [specific topic/goal].
+        </div>
+        
+        <a href="https://wa.me/+YOURNUMBERHERE" class="chat-button">
+          <img src="images/whatsapp-icon.svg" alt="WhatsApp icon">
+          Contact me on WhatsApp
+        </a>
+      </div>
+      
+      <div class="topic-card">
+        <h3>Regional Pricing</h3>
+        <p>Pricing varies by region to make quality conversation practice accessible worldwide. When you contact me, I'll provide payment options and pricing details suitable for your country of residence.</p>
+      </div>
+      
+      <h2 class="category-title">Student Testimonials</h2>
+      
+      <div class="testimonials">
+        <div class="testimonial">
+          <p class="testimonial-text">Real testemonials to be included.</p>
+          <p class="testimonial-author">— _____</p>
+        </div>
+        
+        <div class="testimonial">
+          <p class="testimonial-text">Real testemonials to be included.</p>
+          <p class="testimonial-author">— ________</p>
+        </div>
+        
+        <div class="testimonial">
+          <p class="testimonial-text">Real testemonials to be included.</p>
+          <p class="testimonial-author">— ______</p>
+        </div>
+      </div>
+      
+      <h2 class="category-title">Frequently Asked Questions</h2>
+      
+      <div class="faq-container">
+        <div class="faq-item">
+          <div class="faq-question">
+            What platform do we use for sessions?
+            <span class="material-icons">expand_more</span>
+          </div>
+          <div class="faq-answer">
+            Sessions take place via Zoom or Google Meet, depending on your preference. Both platforms are free to use and I'll send you a link before our scheduled session.
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            How long are the sessions?
+            <span class="material-icons">expand_more</span>
+          </div>
+          <div class="faq-answer">
+            Standard sessions are 45 minutes long, which provides enough time for meaningful conversation practice without causing fatigue.
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            Do I need to prepare anything?
+            <span class="material-icons">expand_more</span>
+          </div>
+          <div class="faq-answer">
+            No preparation is required, though I may suggest topics based on your interests and goals. Just come ready to speak and practice your English in a relaxed environment.
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            Will you correct all my mistakes?
+            <span class="material-icons">expand_more</span>
+          </div>
+          <div class="faq-answer">
+            I focus on errors that impact communication rather than correcting every small mistake, which would interrupt the natural flow of conversation. After our session, I'll provide a summary of recurring errors and suggestions for improvement.
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            What if I need to cancel or reschedule?
+            <span class="material-icons">expand_more</span>
+          </div>
+          <div class="faq-answer">
+            Please provide at least 24 hours' notice to reschedule without charge. Last-minute cancellations may be subject to a cancellation fee.
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            Can we focus on specific situations?
+            <span class="material-icons">expand_more</span>
+          </div>
+          <div class="faq-answer">
+            Absolutely! Whether you need to practice for job interviews, presentations, or social situations, we can tailor our sessions to your needs. Just mention your specific goals when booking.
+          </div>
+        </div>
+      </div>
+      
+      <div class="section-intro" style="text-align: center;">
+        <h3>Ready to improve your speaking skills?</h3>
+        <p>Book your conversation session today and start building your confidence in speaking English.</p>
+        <a href="https://wa.me/+YOURNUMBERHERE" class="chat-button" style="font-size: 1.1rem; padding: 15px 30px;">
+          <img src="images/whatsapp-icon.svg" alt="WhatsApp icon">
+          Book Your Session Now
+        </a>
+      </div>
+    </main>
+  </div>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="home.html#where-to-start">Grammar</a></li>
+          <li><a href="extra-practice.html">Extra Practice</a></li>
+          <li><a href="my-progress.html">My Progress</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Grammar Topics</h3>
+        <ul>
+          <li><a href="present-perfect-progressive.html">Advanced Tenses</a></li>
+          <li><a href="conditional-types.html">Conditionals</a></li>
+          <li><a href="modal-perfect.html">Modal Verbs</a></li>
+          <li><a href="passive-voice.html">Passive Voice</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© 2025 English in Doses | All rights reserved</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/core.js"></script>
+  <script>
+    // Simple FAQ toggle functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const faqQuestions = document.querySelectorAll('.faq-question');
+      
+      faqQuestions.forEach(question => {
+        question.addEventListener('click', function() {
+          const answer = this.nextElementSibling;
+          const icon = this.querySelector('.material-icons');
+          
+          // Toggle answer visibility
+          answer.classList.toggle('show');
+          
+          // Toggle icon
+          if (answer.classList.contains('show')) {
+            icon.textContent = 'expand_less';
+          } else {
+            icon.textContent = 'expand_more';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

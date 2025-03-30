@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Beginner Grammar - Learn English grammar for daily life, work and travel. Simple explanations with practical examples for adult ESL learners.">
   <title>Beginner Grammar - English in Doses</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
@@ -14,6 +15,15 @@
   <link rel="stylesheet" href="css/activities.css">
   
   <style>
+    /* Green color theme for beginner section - Growth & Support theme */
+    :root {
+      --beginner-primary: #2ecc71;      /* Vibrant green */
+      --beginner-primary-dark: #27ae60; /* Darker green for hover states */
+      --beginner-secondary: #f39c12;    /* Warm orange accent */
+      --beginner-card-bg: #f0fff5;      /* Very light green background */
+      --beginner-icon-bg: #e8f8e8;      /* Slightly darker green for icons */
+    }
+  
     /* Additional styles specific to the beginner landing page */
     .function-grid {
       display: grid;
@@ -23,7 +33,7 @@
     }
     
     .function-card {
-      background-color: var(--card-bg);
+      background-color: var(--beginner-card-bg);
       border-radius: 10px;
       padding: 20px;
       box-shadow: 0 4px 8px var(--shadow-color);
@@ -32,7 +42,7 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      border-top: 4px solid var(--accent-color);
+      border-top: 4px solid var(--beginner-primary);
     }
     
     .function-card:hover {
@@ -48,13 +58,14 @@
     .function-icon {
       font-size: 2rem;
       margin-right: 15px;
-      background-color: var(--bg-color);
+      background-color: var(--beginner-icon-bg);
       width: 50px;
       height: 50px;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 50%;
+      color: var(--beginner-primary);
     }
     
     .function-title {
@@ -81,7 +92,7 @@
     }
     
     .star {
-      color: var(--secondary-accent);
+      color: var(--beginner-secondary);
     }
     
     .star.empty {
@@ -104,10 +115,10 @@
     
     .section-intro {
       margin-bottom: 30px;
-      background-color: var(--bg-color);
+      background-color: var(--beginner-card-bg);
       border-radius: 10px;
       padding: 20px;
-      border-left: 5px solid var(--secondary-accent);
+      border-left: 5px solid var(--beginner-primary);
     }
     
     .about-beginner {
@@ -137,13 +148,13 @@
       margin-top: 50px;
       margin-bottom: 20px;
       padding-bottom: 10px;
-      border-bottom: 2px solid var(--accent-color);
+      border-bottom: 2px solid var(--beginner-primary);
       color: var(--text-color);
     }
     
     .learn-button {
       display: inline-block;
-      background-color: var(--accent-color);
+      background-color: var(--beginner-primary);
       color: white;
       padding: 8px 15px;
       border-radius: 5px;
@@ -153,9 +164,19 @@
     }
     
     .learn-button:hover {
-      background-color: #2980b9;
+      background-color: var(--beginner-primary-dark);
       transform: translateY(-2px);
       text-decoration: none;
+    }
+    
+    /* Add green accent to main heading */
+    h1 {
+      border-left: 5px solid var(--beginner-primary);
+    }
+    
+    /* Style the translation tip with beginner secondary color */
+    .translate-tip strong {
+      color: var(--beginner-secondary);
     }
     
     /* Make sure it's responsive */
@@ -200,9 +221,10 @@
       <a href="extra-practice.html" class="nav-link">Extra Practice</a>
       <a href="my-progress.html" class="nav-link">My Progress</a>
     </div>
+    <div class="nav-indicator"></div>
   </nav>
 
-  <div class="container">
+  <div class="container beginner-section">
     <!-- Breadcrumbs -->
     <div class="breadcrumbs" aria-label="breadcrumb">
       <span class="breadcrumb-item"><a href="home.html">Home</a></span>
@@ -223,7 +245,7 @@
           <h2>English for Real-Life Situations</h2>
           <p>This beginner section helps you learn the essential English grammar you need for everyday situations, work, and travel. Each lesson focuses on practical language you can use immediately.</p>
           <p>All lessons are in small, manageable "doses" (15-30 minutes) perfect for busy adults. Choose the topics you need most, or follow our suggested learning path.</p>
-          <p><strong>Tip:</strong> Your browser can translate these pages into your language. Look for the translation icon in your address bar.</p>
+          <p><strong>Tip:</strong> 🌐 Your browser can translate these pages into your language. Look for the translation icon (usually "G 🔄" or "🌐") in your address bar or menu.</p>
         </div>
       </div>
       
