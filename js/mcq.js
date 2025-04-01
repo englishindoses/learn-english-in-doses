@@ -17,6 +17,8 @@ const MCQModule = (function() {
   let score = 0;
   let totalQuestions = 0;
   let correctAnswers = {};
+  let correctExplanations = {}; // New
+  let incorrectExplanations = {}; // New
   let answered = {};
   let containerId = 'mcq';
   
@@ -33,6 +35,8 @@ const MCQModule = (function() {
     // Set up configuration
     containerId = config.containerId || 'mcq';
     correctAnswers = config.answers || {};
+    correctExplanations = config.explanations || {}; // New
+    incorrectExplanations = config.incorrectExplanations || {}; // New
     const allowRetry = config.allowRetry !== undefined ? config.allowRetry : true;
     const onComplete = config.onComplete || null;
     
@@ -108,15 +112,21 @@ const MCQModule = (function() {
         
         if (selectedOption) {
           const selectedIndex = parseInt(selectedOption.getAttribute('data-index'));
-          const explanation = selectedOption.getAttribute('data-explanation');
+          // Get data-explanation attribute from the option if it exists, otherwise use our stored explanations
+          const optionExplanation = selectedOption.getAttribute('data-explanation');
           
           if (selectedIndex === correctAnswers[questionId]) {
-            feedback.textContent = explanation || 'Correct!';
+            // For correct answer
+            const explanation = optionExplanation || correctExplanations[questionId] || 'Correct!';
+            feedback.innerHTML = '<span class="feedback-result correct-result">Correct!</span> ' + explanation;
             feedback.className = 'feedback correct';
             score++;
             answered[questionId] = true;
           } else {
-            feedback.textContent = explanation || 'Incorrect. Try again.';
+            // For incorrect answer
+            let explanationText = incorrectExplanations[questionId] || 
+                                `The correct answer is option ${String.fromCharCode(65 + correctAnswers[questionId])}.`;
+            feedback.innerHTML = '<span class="feedback-result incorrect-result">Incorrect.</span> ' + explanationText;
             feedback.className = 'feedback incorrect';
           }
         } else {

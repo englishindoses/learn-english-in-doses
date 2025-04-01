@@ -1,0 +1,159 @@
+<!-- MCQ PRACTICE SECTION -->
+<section class="content-section mcq-container">
+  <h2>Quick Practice</h2>
+  <p>Test your understanding of the Present Simple Tense with these multiple choice questions.</p>
+  
+  <div id="mcq" class="activity-container active">
+    <div class="question" id="q1">
+      <p class="mcq-question">1. When do we use the present simple tense?</p>
+      <div class="options">
+        <div class="option" data-index="0">
+          <span>A. To talk about actions happening right now</span>
+        </div>
+        <div class="option" data-index="1">
+          <span>B. To talk about habits and routines</span>
+        </div>
+        <div class="option" data-index="2">
+          <span>C. To talk about past events</span>
+        </div>
+        <div class="option" data-index="3">
+          <span>D. To talk about what we were doing yesterday</span>
+        </div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+    
+    <div class="question" id="q2">
+      <p class="mcq-question">2. Which sentence uses the present simple correctly?</p>
+      <div class="options">
+        <div class="option" data-index="0">
+          <span>A. She cooking dinner every evening.</span>
+        </div>
+        <div class="option" data-index="1">
+          <span>B. They are go to work by bus.</span>
+        </div>
+        <div class="option" data-index="2">
+          <span>C. He watches TV after dinner.</span>
+        </div>
+        <div class="option" data-index="3">
+          <span>D. I am write emails every morning.</span>
+        </div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+    
+    <div class="question" id="q3">
+      <p class="mcq-question">3. How do we form the third person singular (he/she/it) in the present simple?</p>
+      <div class="options">
+        <div class="option" data-index="0">
+          <span>A. Add -s or -es to the base form of the verb</span>
+        </div>
+        <div class="option" data-index="1">
+          <span>B. Use the base form of the verb without any changes</span>
+        </div>
+        <div class="option" data-index="2">
+          <span>C. Add -ing to the base form of the verb</span>
+        </div>
+        <div class="option" data-index="3">
+          <span>D. Add am/is/are before the base form of the verb</span>
+        </div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+    
+    <div class="question" id="q4">
+      <p class="mcq-question">4. Select the correct negative form: "She _____ like coffee."</p>
+      <div class="options">
+        <div class="option" data-index="0">
+          <span>A. not</span>
+        </div>
+        <div class="option" data-index="1">
+          <span>B. don't</span>
+        </div>
+        <div class="option" data-index="2">
+          <span>C. doesn't</span>
+        </div>
+        <div class="option" data-index="3">
+          <span>D. isn't</span>
+        </div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+    
+    <div class="question" id="q5">
+      <p class="mcq-question">5. Which sentence is a question in the present simple?</p>
+      <div class="options">
+        <div class="option" data-index="0">
+          <span>A. Where you are going?</span>
+        </div>
+        <div class="option" data-index="1">
+          <span>B. Do they live in London?</span>
+        </div>
+        <div class="option" data-index="2">
+          <span>C. She working now?</span>
+        </div>
+        <div class="option" data-index="3">
+          <span>D. He is play football?</span>
+        </div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+    
+    <div class="control-buttons">
+      <button id="mcq-submit" class="submit-btn">Check Answers</button>
+      <button id="mcq-restart" class="restart-btn" style="display:none;">Try Again</button>
+    </div>
+    
+    <div class="score-display" id="mcq-score" style="display:none;">
+      Your score: <span>0</span>/5
+    </div>
+  </div>
+</section>
+
+<!-- JavaScript initialization for MCQ -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize MCQ Module
+    MCQModule.init({
+      containerId: 'mcq',
+      answers: {
+        'q1': 1,  // B. To talk about habits and routines
+        'q2': 2,  // C. He watches TV after dinner.
+        'q3': 0,  // A. Add -s or -es to the base form of the verb
+        'q4': 2,  // C. doesn't
+        'q5': 1   // B. Do they live in London?
+      },
+      onComplete: function(score, total) {
+        console.log('MCQ completed with score: ' + score + '/' + total);
+        
+        // Track this activity completion in the progress system if available
+        if (typeof ProgressTrackingModule !== 'undefined') {
+          // Mark the MCQ as completed in the 'activities' category
+          ProgressTrackingModule.markItemCompleted('activities', 'present-simple-mcq', {
+            score: score,
+            maxScore: total,
+            completed: true,
+            completedAt: new Date().toISOString(),
+            title: 'Present Simple Quick Practice'
+          });
+        }
+      }
+    });
+    
+    // Set up option click handlers
+    document.querySelectorAll('#mcq .option').forEach(option => {
+      option.addEventListener('click', function() {
+        const questionId = this.closest('.question').id;
+        const options = document.querySelectorAll(`#${questionId} .option`);
+        
+        // Clear previous selections
+        options.forEach(opt => {
+          opt.classList.remove('selected');
+        });
+        
+        // Select this option
+        this.classList.add('selected');
+      });
+    });
+  });
+</script>

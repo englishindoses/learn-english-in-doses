@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Include standardized head content -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{GRAMMAR_TOPIC} - Advanced ESL grammar explanation with examples and practice">
+  <title>{GRAMMAR_TOPIC} - Advanced ESL Grammar</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/activities.css">
+
+  <!-- Page specific styles - including nav-indicator -->
+  <style>
+    /* Add these styles for level-specific styling - DO NOT PUT IN base.css */
+    .nav-indicator {
+      height: 3px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+    
+    /* For beginner section */
+    .beginner-section .nav-indicator {
+      background-color: var(--beginner-primary);
+    }
+  
+    /* For conversation section */
+    .conversation-section .nav-indicator {
+      background-color: var(--conversation-primary);
+    }
+  </style>
+</head>
+<body>
+  <!-- Include skip link and theme toggle -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  
+  <div class="theme-toggle-container">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="light-icon">☀️</span>
+      <span class="dark-icon">🌙</span>
+    </button>
+  </div>
+  
+  <!-- Include navigation -->
+  <nav class="main-navigation">
+    <a href="home.html" class="site-logo">
+      <img src="images/my-logo.svg" alt="English in Doses" width="150" height="auto">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <div class="nav-links">
+      <a href="home.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About Us</a>
+      <a href="contact.html" class="nav-link">Contact Us</a>
+      <a href="home.html#where-to-start" class="nav-link">Grammar</a>
+      <a href="extra-practice.html" class="nav-link">Extra Practice</a>
+      <a href="conversation-page.html" class="nav-link">Conversation</a>
+      <a href="my-progress.html" class="nav-link">My Progress</a>
+      <!-- Add the nav-indicator here for level-specific pages -->
+      <div class="nav-indicator"></div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Include breadcrumbs -->
+    <div class="breadcrumbs" aria-label="breadcrumb">
+      <span class="breadcrumb-item"><a href="home.html">Home</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="advanced-grammar.html">Grammar</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item">{GRAMMAR_TOPIC}</span>
+    </div>
+
+    <main id="main-content">
+      <h1>{GRAMMAR_TOPIC}</h1>
+
+      <!-- INTRODUCTION SECTION -->
+      <section class="intro-section">
+        <h2>Introduction</h2>
+        <p>{INTRODUCTION_TEXT}</p>
+        
+        <h3>After this lesson, you will be able to:</h3>
+        <ul>
+          <li>{LEARNING_OBJECTIVE_1}</li>
+          <li>{LEARNING_OBJECTIVE_2}</li>
+          <li>{LEARNING_OBJECTIVE_3}</li>
+        </ul>
+      </section>
+
+      <!-- GRAMMAR POINT SECTION 1 -->
+      <section class="content-section">
+        <h2>{GRAMMAR_CONCEPT_1}</h2>
+        
+        <p><strong>{MAIN_POINT_1}</strong>: {EXPLANATION_1}</p>
+        
+        <p><strong>Structure</strong>: {STRUCTURE_FORMULA_1}</p>
+        
+        <div class="example">
+          <ol>
+            <li>{EXAMPLE_1_1} (Simple explanation)</li>
+            <li>{EXAMPLE_1_2} (Simple explanation)</li>
+            <li>{EXAMPLE_1_3} (Simple explanation)</li>
+          </ol>
+        </div>
+        
+        <div class="note">
+          <p><strong>Native speaker note:</strong> {NATIVE_SPEAKER_USAGE_1}</p>
+        </div>
+      </section>
+
+      <!-- GRAMMAR POINT SECTION 2 -->
+      <section class="content-section">
+        <h2>{GRAMMAR_CONCEPT_2}</h2>
+        
+        <p><strong>{MAIN_POINT_2}</strong>: {EXPLANATION_2}</p>
+        
+        <p><strong>Structure</strong>: {STRUCTURE_FORMULA_2}</p>
+        
+        <div class="example">
+          <ol>
+            <li>{EXAMPLE_2_1} (Simple explanation)</li>
+            <li>{EXAMPLE_2_2} (Simple explanation)</li>
+            <li>{EXAMPLE_2_3} (Simple explanation)</li>
+          </ol>
+        </div>
+        
+        <div class="note">
+          <p><strong>Native speaker note:</strong> {NATIVE_SPEAKER_USAGE_2}</p>
+        </div>
+      </section>
+
+      <!-- VISUAL COMPARISON TABLE -->
+      <h2>Summary of {GRAMMAR_TOPIC}</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>{COLUMN_1_HEADER}</th>
+            <th>{COLUMN_2_HEADER}</th>
+            <th>{COLUMN_3_HEADER}</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{DATA_1_1}</td>
+            <td>{DATA_1_2}</td>
+            <td>{DATA_1_3}</td>
+            <td><span class="example">{TABLE_EXAMPLE_1}</span></td>
+          </tr>
+          <tr>
+            <td>{DATA_2_1}</td>
+            <td>{DATA_2_2}</td>
+            <td>{DATA_2_3}</td>
+            <td><span class="example">{TABLE_EXAMPLE_2}</span></td>
+          </tr>
+          <!-- Add more rows as needed -->
+        </tbody>
+      </table>
+
+      <!-- COMMON ERRORS SECTION -->
+      <section class="content-section">
+        <h2 class="common-errors-heading">Common Errors</h2>
+        
+        <div class="error-pattern">
+          <p class="error-title"><strong>1: {ERROR_TITLE_1}</strong></p>
+          <p class="incorrect">{INCORRECT_USAGE_1}</p>
+          <p class="correct">{CORRECTED_VERSION_1} ✓</p>
+          <p class="explanation"><em>{EXPLANATION_1}</em></p>
+        </div>
+        
+        <div class="error-pattern">
+          <p class="error-title"><strong>2: {ERROR_TITLE_2}</strong></p>
+          <p class="incorrect">{INCORRECT_USAGE_2}</p>
+          <p class="correct">{CORRECTED_VERSION_2} ✓</p>
+          <p class="explanation"><em>{EXPLANATION_2}</em></p>
+        </div>
+        
+        <div class="error-pattern">
+          <p class="error-title"><strong>3: {ERROR_TITLE_3}</strong></p>
+          <p class="incorrect">{INCORRECT_USAGE_3}</p>
+          <p class="correct">{CORRECTED_VERSION_3} ✓</p>
+          <p class="explanation"><em>{EXPLANATION_3}</em></p>
+        </div>
+      </section>
+
+      <!-- TIPS SECTION -->
+      <h2 class="tips-heading">Useful Tips</h2>
+      
+      <div class="grammar-tip">
+        <p>📝 <strong>TIP 1:</strong> {TIP_1}</p>
+      </div>
+      
+      <div class="grammar-tip">
+        <p>📝 <strong>TIP 2:</strong> {TIP_2}</p>
+      </div>
+      
+      <div class="grammar-tip">
+        <p>📝 <strong>TIP 3:</strong> {TIP_3}</p>
+      </div>
+
+      <!-- MCQ PRACTICE SECTION -->
+      <section class="content-section">
+        <h2>Quick Practice</h2>
+        <p>Test your understanding of {GRAMMAR_TOPIC} with these multiple choice questions.</p>
+        
+        <div id="mcq" class="activity-container active">
+          <div class="question" id="q1">
+            <p class="mcq-question">1. {MCQ_QUESTION_1}</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. {OPTION_1_A}</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. {OPTION_1_B}</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. {OPTION_1_C}</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. {OPTION_1_D}</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <div class="question" id="q2">
+            <p class="mcq-question">2. {MCQ_QUESTION_2}</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. {OPTION_2_A}</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. {OPTION_2_B}</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. {OPTION_2_C}</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. {OPTION_2_D}</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <div class="question" id="q3">
+            <p class="mcq-question">3. {MCQ_QUESTION_3}</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. {OPTION_3_A}</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. {OPTION_3_B}</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. {OPTION_3_C}</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. {OPTION_3_D}</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <div class="question" id="q4">
+            <p class="mcq-question">4. {MCQ_QUESTION_4}</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. {OPTION_4_A}</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. {OPTION_4_B}</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. {OPTION_4_C}</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. {OPTION_4_D}</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <div class="question" id="q5">
+            <p class="mcq-question">5. {MCQ_QUESTION_5}</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. {OPTION_5_A}</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. {OPTION_5_B}</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. {OPTION_5_C}</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. {OPTION_5_D}</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <div class="control-buttons">
+            <button id="mcq-submit" class="submit-btn">Check Answers</button>
+            <button id="mcq-restart" class="restart-btn" style="display:none;">Try Again</button>
+          </div>
+          
+          <div class="score-display" id="mcq-score" style="display:none;">
+            Your score: <span>0</span>/5
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <!-- BOTTOM NAVIGATION -->
+  <nav class="bottom-navigation">
+    <a href="{PREVIOUS_TOPIC_URL}" class="nav-button previous">← Previous: {PREVIOUS_TOPIC}</a>
+    <div class="center-buttons">
+      <button class="nav-button print-button" onclick="window.print()">Print This Page</button>
+      <a href="{PRACTICE_URL}" class="nav-button activities">Practice Activities</a>
+    </div>
+    <a href="{NEXT_TOPIC_URL}" class="nav-button next">Next: {NEXT_TOPIC} →</a>
+  </nav>
+
+  <!-- Include footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="home.html#where-to-start">Grammar</a></li>
+          <li><a href="extra-practice.html">Extra Practice</a></li>
+          <li><a href="my-progress.html">My Progress</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Grammar Topics</h3>
+        <ul>
+          <li><a href="advanced-grammar.html#advanced-tenses-and-aspect">Advanced Tenses</a></li>
+          <li><a href="advanced-grammar.html#conditionals">Advanced Conditionals</a></li>
+          <li><a href="advanced-grammar.html#modals">Advanced Modal Verbs</a></li>
+          <li><a href="advanced-grammar.html#passive">Advanced Passive Voice</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© 2025 English in Doses | All rights reserved | <a href="license.html">Licensing Information</a></p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/core.js"></script>
+  <script src="js/mcq.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize MCQ Module
+      MCQModule.init({
+        containerId: 'mcq',
+        answers: {
+          'q1': 2,  // Index of correct answer for question 1 (0-based)
+          'q2': 1,  // Index of correct answer for question 2
+          'q3': 0,  // Index of correct answer for question 3
+          'q4': 3,  // Index of correct answer for question 4
+          'q5': 2   // Index of correct answer for question 5
+        },
+        onComplete: function(score, total) {
+          console.log('MCQ completed with score: ' + score + '/' + total);
+          // Add any additional actions on completion
+        }
+      });
+      
+      // Set up option click handlers
+      document.querySelectorAll('#mcq .option').forEach(option => {
+        option.addEventListener('click', function() {
+          const questionId = this.closest('.question').id;
+          const options = document.querySelectorAll(`#${questionId} .option`);
+          
+          // Clear previous selections
+          options.forEach(opt => {
+            opt.classList.remove('selected');
+          });
+          
+          // Select this option
+          this.classList.add('selected');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
