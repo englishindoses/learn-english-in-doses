@@ -4,7 +4,7 @@
  * This module handles all functionality related to multiple choice questions:
  * - Selecting options
  * - Checking answers
- * - Providing feedback with explanations
+ * - Providing feedback
  * - Tracking scores
  * - Restarting the activity
  */
@@ -17,7 +17,6 @@ const MCQModule = (function() {
   let score = 0;
   let totalQuestions = 0;
   let correctAnswers = {};
-  let explanations = {};
   let answered = {};
   let containerId = 'mcq';
   
@@ -27,7 +26,6 @@ const MCQModule = (function() {
    * @param {Object} config - Configuration object
    * @param {string} config.containerId - ID of the container element (default: 'mcq')
    * @param {Object} config.answers - Object mapping question IDs to correct answer indices
-   * @param {Object} config.explanations - Object mapping question IDs to explanations for each option
    * @param {Function} config.onComplete - Callback function called when all questions are answered
    * @param {boolean} config.allowRetry - Allow retry after incorrect answer (default: true)
    */
@@ -35,7 +33,6 @@ const MCQModule = (function() {
     // Set up configuration
     containerId = config.containerId || 'mcq';
     correctAnswers = config.answers || {};
-    explanations = config.explanations || {};
     const allowRetry = config.allowRetry !== undefined ? config.allowRetry : true;
     const onComplete = config.onComplete || null;
     
@@ -59,9 +56,6 @@ const MCQModule = (function() {
     
     // Set up restart button
     setupRestartButton();
-    
-    // Load progress if available
-    loadProgress();
   }
   
   /**
@@ -97,30 +91,6 @@ const MCQModule = (function() {
   }
   
   /**
-   * Gets the explanation for a specific option
-   * 
-   * @param {string} questionId - ID of the question
-   * @param {number} optionIndex - Index of the option
-   * @param {boolean} isCorrect - Whether the option is correct
-   * @returns {string} - Explanation text for the option
-   */
-  function getExplanation(questionId, optionIndex, isCorrect) {
-    // Try to get specific explanation from config
-    if (explanations && 
-        explanations[questionId] && 
-        explanations[questionId][optionIndex]) {
-      return explanations[questionId][optionIndex];
-    }
-    
-    // If no specific explanation found, use the default one
-    if (isCorrect) {
-      return "Correct! Well done.";
-    } else {
-      return "That's not correct. Remember to consider the context and grammar rules.";
-    }
-  }
-  
-  /**
    * Sets up the submit button
    * 
    * @param {Function} onComplete - Callback function called when all questions are answered
@@ -138,22 +108,19 @@ const MCQModule = (function() {
         
         if (selectedOption) {
           const selectedIndex = parseInt(selectedOption.getAttribute('data-index'));
+          const explanation = selectedOption.getAttribute('data-explanation');
           
           if (selectedIndex === correctAnswers[questionId]) {
-            // Show correct answer explanation
-            const explanation = getExplanation(questionId, selectedIndex, true);
-            feedback.innerHTML = `<span class="feedback-result correct">Correct!</span> ${explanation}`;
+            feedback.textContent = explanation || 'Correct!';
             feedback.className = 'feedback correct';
             score++;
             answered[questionId] = true;
           } else {
-            // Show incorrect answer explanation
-            const explanation = getExplanation(questionId, selectedIndex, false);
-            feedback.innerHTML = `<span class="feedback-result incorrect">Incorrect.</span> ${explanation}`;
+            feedback.textContent = explanation || 'Incorrect. Try again.';
             feedback.className = 'feedback incorrect';
           }
         } else {
-          feedback.innerHTML = 'Please select an answer.';
+          feedback.textContent = 'Please select an answer.';
           feedback.className = 'feedback incorrect';
         }
       });
@@ -181,7 +148,15 @@ const MCQModule = (function() {
       }
       
       // Save progress to localStorage if available
-      saveProgress();
+      if (typeof saveToLocalStorage === 'function') {
+        const activityData = {
+          score: score,
+          totalQuestions: totalQuestions,
+          completed: allAnswered
+        };
+        
+        saveToLocalStorage(`${containerId}-progress`, activityData);
+      }
     });
   }
   
@@ -226,72 +201,7 @@ const MCQModule = (function() {
       
       // Reset score
       score = 0;
-      
-      // Clear saved progress
-      if (typeof removeFromLocalStorage === 'function') {
-        removeFromLocalStorage(`${containerId}-progress`);
-      }
     });
-  }
-  
-  /**
-   * Save progress to localStorage
-   */
-  function saveProgress() {
-    if (typeof saveToLocalStorage !== 'function') return;
-    
-    // Collect selected options
-    const container = document.getElementById(containerId);
-    if (!container) return;
-    
-    const selections = {};
-    
-    Object.keys(correctAnswers).forEach(questionId => {
-      const selectedOption = document.querySelector(`#${questionId} .option.selected`);
-      if (selectedOption) {
-        selections[questionId] = parseInt(selectedOption.getAttribute('data-index'));
-      }
-    });
-    
-    // Save progress data
-    const progressData = {
-      score: score,
-      totalQuestions: totalQuestions,
-      selections: selections,
-      answered: answered,
-      completed: Object.values(answered).every(status => status)
-    };
-    
-    saveToLocalStorage(`${containerId}-progress`, progressData);
-  }
-  
-  /**
-   * Load progress from localStorage
-   */
-  function loadProgress() {
-    if (typeof getFromLocalStorage !== 'function') return;
-    
-    const progressData = getFromLocalStorage(`${containerId}-progress`);
-    if (!progressData || !progressData.selections) return;
-    
-    // Restore selections and answered status
-    if (progressData.selections) {
-      Object.entries(progressData.selections).forEach(([questionId, selectedIndex]) => {
-        selectOption(questionId, selectedIndex);
-      });
-    }
-    
-    if (progressData.answered) {
-      answered = progressData.answered;
-    }
-    
-    // If the activity was completed, check answers to show feedback
-    if (progressData.completed) {
-      const submitButton = document.getElementById(`${containerId}-submit`);
-      if (submitButton) {
-        submitButton.click();
-      }
-    }
   }
   
   /**
@@ -341,22 +251,12 @@ const MCQModule = (function() {
     return Object.values(answered).every(status => status);
   }
   
-  /**
-   * Adds custom explanations for options
-   * 
-   * @param {Object} newExplanations - Object mapping question IDs to explanations
-   */
-  function addExplanations(newExplanations) {
-    explanations = {...explanations, ...newExplanations};
-  }
-  
   // Public API
   return {
     init: init,
     getScore: getScore,
     isCompleted: isCompleted,
-    selectOption: selectOption,
-    addExplanations: addExplanations
+    selectOption: selectOption
   };
 })();
 

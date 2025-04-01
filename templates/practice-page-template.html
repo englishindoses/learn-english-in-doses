@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Include standardized head content -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Practice activities for {GRAMMAR_TOPIC} - Advanced ESL grammar practice">
+  <title>{GRAMMAR_TOPIC} Practice - Advanced ESL Grammar</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/activities.css">
+</head>
+<body>
+  <!-- Include skip link and theme toggle -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  
+  <div class="theme-toggle-container">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="light-icon">☀️</span>
+      <span class="dark-icon">🌙</span>
+    </button>
+  </div>
+  
+  <!-- Include navigation -->
+  <nav class="main-navigation">
+    <a href="index.html" class="site-logo">ESL Grammar</a>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="grammar.html" class="nav-link">Grammar</a>
+      <a href="extra-practice.html" class="nav-link">Extra Practice</a>
+      <a href="progress.html" class="nav-link">My Progress</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Include breadcrumbs -->
+    <div class="breadcrumbs" aria-label="breadcrumb">
+      <span class="breadcrumb-item"><a href="index.html">Home</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="grammar.html">Grammar</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="{GRAMMAR_TOPIC_URL}">{GRAMMAR_TOPIC}</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item">Practice</span>
+    </div>
+
+    <main id="main-content">
+      <h1>{GRAMMAR_TOPIC} Practice</h1>
+
+      <!-- Introduction Section -->
+      <section class="intro-section">
+        <h2>Practice Activities</h2>
+        <p>Now it's time to practice what you've learned about {GRAMMAR_TOPIC}. Complete the activities below to test your understanding and build your skills.</p>
+        
+        <div id="progress-container" class="progress-container">
+          <div id="progress-bar" class="progress-bar" style="width: 0%"></div>
+        </div>
+        <div id="progress-info" class="progress-info">
+          Progress: 0% complete (0/4 activities completed)
+        </div>
+      </section>
+
+      <!-- Activity Navigation -->
+      <div id="activity-nav" class="activity-nav">
+        <button data-activity="mcq" class="activity-nav-btn active">Multiple Choice</button>
+        <button data-activity="gap-fill" class="activity-nav-btn">Gap Fill</button>
+        <button data-activity="matching" class="activity-nav-btn">Matching</button>
+        <button data-activity="transformation" class="activity-nav-btn">Transformation</button>
+      </div>
+
+      <!-- Multiple Choice Questions -->
+      <section id="mcq" class="activity-container active">
+        <h2>Multiple Choice Questions</h2>
+        <p>Choose the correct option for each sentence.</p>
+        
+        <div class="question" id="q1">
+          <p class="mcq-question">1. {MCQ_QUESTION_1}</p>
+          <div class="options">
+            <div class="option" data-index="0" onclick="MCQModule.selectOption('q1', 0)">
+              <span>A. {OPTION_1_A}</span>
+            </div>
+            <div class="option" data-index="1" onclick="MCQModule.selectOption('q1', 1)">
+              <span>B. {OPTION_1_B}</span>
+            </div>
+            <div class="option" data-index="2" onclick="MCQModule.selectOption('q1', 2)">
+              <span>C. {OPTION_1_C}</span>
+            </div>
+            <div class="option" data-index="3" onclick="MCQModule.selectOption('q1', 3)">
+              <span>D. {OPTION_1_D}</span>
+            </div>
+          </div>
+          <div class="feedback" id="feedback-q1-0">{FEEDBACK_1_A}</div>
+          <div class="feedback" id="feedback-q1-1">{FEEDBACK_1_B}</div>
+          <div class="feedback" id="feedback-q1-2">{FEEDBACK_1_C}</div>
+          <div class="feedback" id="feedback-q1-3">{FEEDBACK_1_D}</div>
+        </div>
+        
+        <!-- Add more questions as needed -->
+        
+        <div class="control-buttons">
+          <button id="mcq-submit" class="submit-btn">Check Answers</button>
+          <button id="mcq-restart" class="restart-btn" style="display:none;">Try Again</button>
+        </div>
+        
+        <div class="score-display" id="mcq-score" style="display:none;">
+          Your score: <span>0</span>/5
+        </div>
+      </section>
+
+      <!-- Gap Fill Activity -->
+      <section id="gap-fill" class="activity-container">
+        <h2>Gap Fill Exercise</h2>
+        <p>Complete the sentences with the correct form of the words in brackets.</p>
+        
+        <div class="question" id="gf1">
+          <p class="gap-fill-sentence">{GAP_FILL_SENTENCE_1}</p>
+          <input type="text" class="gap-input" data-answer="{CORRECT_ANSWER_1}" placeholder="Type your answer">
+          <div class="feedback"></div>
+        </div>
+        
+        <!-- Add more questions as needed -->
+        
+        <div class="control-buttons">
+          <button id="gap-fill-submit" class="submit-btn">Check Answers</button>
+          <button id="gap-fill-restart" class="restart-btn" style="display:none;">Try Again</button>
+        </div>
+        
+        <div class="score-display" id="gap-fill-score" style="display:none;">
+          Your score: <span>0</span>/5
+        </div>
+      </section>
+
+      <!-- Matching Activity -->
+      <section id="matching" class="activity-container">
+        <h2>Matching Exercise</h2>
+        <p>Match the beginning of each sentence with the correct ending.</p>
+        
+        <div id="line-container" class="matching-line-container"></div>
+        
+        <div class="matching-container">
+          <div class="matching-item">
+            <div class="matching-question" data-index="1">{MATCHING_START_1}</div>
+            <div class="matching-answer" data-index="1">{MATCHING_END_1}</div>
+          </div>
+          
+          <!-- Add more items as needed -->
+        </div>
+        
+        <div class="control-buttons">
+          <button id="matching-restart" class="restart-btn" style="display:none;">Try Again</button>
+        </div>
+        
+        <div class="score-display" id="matching-score" style="display:none;">
+          Your score: <span>0</span>/5
+        </div>
+      </section>
+
+      <!-- Transformation Activity -->
+      <section id="transformation" class="activity-container">
+        <h2>Sentence Transformation</h2>
+        <p>Rewrite each sentence using the word in brackets, keeping the same meaning.</p>
+        
+        <div class="question" id="tr1">
+          <p class="question-text">1. {TRANSFORMATION_ORIGINAL_1} ({TRANSFORMATION_KEY_1})</p>
+          <input type="text" class="transformation-input" data-answer="{TRANSFORMATION_ANSWER_1}" placeholder="Rewrite the sentence here...">
+          <div class="feedback"></div>
+        </div>
+        
+        <!-- Add more questions as needed -->
+        
+        <div class="control-buttons">
+          <button id="transformation-submit" class="submit-btn">Check Answers</button>
+          <button id="transformation-restart" class="restart-btn" style="display:none;">Try Again</button>
+        </div>
+        
+        <div class="score-display" id="transformation-score" style="display:none;">
+          Your score: <span>0</span>/5
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <!-- BOTTOM NAVIGATION -->
+  <nav class="bottom-navigation">
+    <a href="{GRAMMAR_TOPIC_URL}" class="nav-button previous">← Back to: {GRAMMAR_TOPIC} Explanation</a>
+    <div class="center-buttons">
+      <button class="nav-button print-button" onclick="window.print()">Print This Page</button>
+    </div>
+    <a href="progress.html" class="nav-button next">View My Progress →</a>
+  </nav>
+
+  <!-- Include footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="grammar.html">Grammar</a></li>
+          <li><a href="extra-practice.html">Extra Practice</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Grammar Topics</h3>
+        <ul>
+          <li><a href="tenses.html">Advanced Tenses</a></li>
+          <li><a href="conditionals.html">Conditionals</a></li>
+          <li><a href="modals.html">Modal Verbs</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© 2025 English in Doses | All rights reserved</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/core.js"></script>
+  <script src="js/mcq.js"></script>
+  <script src="js/gap-fill.js"></script>
+  <script src="js/matching.js"></script>
+  <script src="js/transformation.js"></script>
+  <script src="js/activity-nav.js"></script>
+  <script src="js/progress-tracking.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize activity modules
+      MCQModule.init({
+        containerId: 'mcq',
+        answers: {
+          'q1': 2,  // Index of correct answer for question 1 (0-based)
+          'q2': 0,  // Index of correct answer for question 2
+          'q3': 3,  // Index of correct answer for question 3
+          'q4': 1,  // Index of correct answer for question 4
+          'q5': 2   // Index of correct answer for question 5
+        },
+        onComplete: function(score, total) {
+          ProgressTrackingModule.updateItemProgress('activities', 'mcq', {
+            completed: true,
+            score: score,
+            maxScore: total
+          });
+          ActivityNavModule.notifyActivityCompleted('mcq', {
+            score: score,
+            maxScore: total
+          });
+        }
+      });
+      
+      GapFillModule.init({
+        containerId: 'gap-fill',
+        onComplete: function(score, total) {
+          ProgressTrackingModule.updateItemProgress('activities', 'gap-fill', {
+            completed: true,
+            score: score,
+            maxScore: total
+          });
+          ActivityNavModule.notifyActivityCompleted('gap-fill', {
+            score: score,
+            maxScore: total
+          });
+        }
+      });
+      
+      MatchingModule.init({
+        containerId: 'matching',
+        onComplete: function(score, total) {
+          ProgressTrackingModule.updateItemProgress('activities', 'matching', {
+            completed: true,
+            score: score,
+            maxScore: total
+          });
+          ActivityNavModule.notifyActivityCompleted('matching', {
+            score: score,
+            maxScore: total
+          });
+        }
+      });
+      
+      TransformationModule.init({
+        containerId: 'transformation',
+        onComplete: function(score, total) {
+          ProgressTrackingModule.updateItemProgress('activities', 'transformation', {
+            completed: true,
+            score: score,
+            maxScore: total
+          });
+          ActivityNavModule.notifyActivityCompleted('transformation', {
+            score: score,
+            maxScore: total
+          });
+        }
+      });
+      
+      // Initialize activity navigation
+      ActivityNavModule.init({
+        containerId: 'activity-nav',
+        activities: ['mcq', 'gap-fill', 'matching', 'transformation'],
+        progressContainerId: 'progress-bar',
+        progressInfoContainerId: 'progress-info',
+        onActivityChange: function(activityId) {
+          console.log('Activity changed to:', activityId);
+        }
+      });
+      
+      // Initialize progress tracking
+      ProgressTrackingModule.init({
+        categories: {
+          activities: {
+            grammarActivities: ['mcq', 'gap-fill', 'matching', 'transformation']
+          }
+        },
+        onProgressChange: function(details) {
+          ActivityNavModule.updateProgressDisplay();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

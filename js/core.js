@@ -128,33 +128,6 @@ function initMobileNavigation() {
       navToggle.setAttribute('aria-expanded', 'false');
     }
   });
-  
-  // Add active class to current page nav link
-  highlightCurrentPageNavLink();
-}
-
-/**
- * Highlights the current page in the navigation menu
- */
-function highlightCurrentPageNavLink() {
-  const currentPage = window.location.pathname.split('/').pop();
-  
-  // Default to home if on index page
-  const pageName = currentPage === '' || currentPage === 'index.html' ? 'home.html' : currentPage;
-  
-  const navLinks = document.querySelectorAll('.nav-links .nav-link');
-  
-  navLinks.forEach(link => {
-    // Extract href value
-    const href = link.getAttribute('href');
-    
-    // Check if this link matches the current page
-    if (href === pageName) {
-      link.classList.add('active');
-    } else {
-      link.classList.remove('active');
-    }
-  });
 }
 
 /**

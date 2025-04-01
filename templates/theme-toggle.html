@@ -1,0 +1,54 @@
+<!-- Theme toggle button component -->
+<div class="theme-toggle-container">
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+    <span class="light-icon">☀️</span>
+    <span class="dark-icon">🌙</span>
+  </button>
+</div>
+
+<!-- JavaScript for theme toggle functionality -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const themeToggle = document.getElementById('theme-toggle');
+    
+    // Set initial theme based on stored preference or system preference
+    setInitialTheme();
+    
+    // Handle theme toggle click
+    themeToggle.addEventListener('click', function() {
+      toggleTheme();
+    });
+    
+    function setInitialTheme() {
+      // Check for stored theme preference
+      const storedTheme = localStorage.getItem('theme');
+      
+      if (storedTheme) {
+        // Apply stored theme preference
+        document.documentElement.setAttribute('data-theme', storedTheme);
+      } else {
+        // Check for system dark mode preference
+        const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (prefersDarkMode) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          localStorage.setItem('theme', 'dark');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+          localStorage.setItem('theme', 'light');
+        }
+      }
+    }
+    
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      // Update the theme attribute
+      document.documentElement.setAttribute('data-theme', newTheme);
+      
+      // Save theme preference to local storage
+      localStorage.setItem('theme', newTheme);
+    }
+  });
+</script>
