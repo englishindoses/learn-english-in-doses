@@ -35,8 +35,8 @@ const MCQModule = (function() {
     // Set up configuration
     containerId = config.containerId || 'mcq';
     correctAnswers = config.answers || {};
-    correctExplanations = config.explanations || {}; // New
-    incorrectExplanations = config.incorrectExplanations || {}; // New
+    correctExplanations = config.explanations || {};
+    incorrectExplanations = config.incorrectTips || {}; // Add this line
     const allowRetry = config.allowRetry !== undefined ? config.allowRetry : true;
     const onComplete = config.onComplete || null;
     
@@ -116,17 +116,16 @@ const MCQModule = (function() {
           const optionExplanation = selectedOption.getAttribute('data-explanation');
           
           if (selectedIndex === correctAnswers[questionId]) {
-            // For correct answer
-            const explanation = optionExplanation || correctExplanations[questionId] || 'Correct!';
+            // Correct answer feedback
+            const explanation = correctExplanations[questionId] || 'This is the correct answer.';
             feedback.innerHTML = '<span class="feedback-result correct-result">Correct!</span> ' + explanation;
             feedback.className = 'feedback correct';
             score++;
             answered[questionId] = true;
           } else {
-            // For incorrect answer
-            let explanationText = incorrectExplanations[questionId] || 
-                                `The correct answer is option ${String.fromCharCode(65 + correctAnswers[questionId])}.`;
-            feedback.innerHTML = '<span class="feedback-result incorrect-result">Incorrect.</span> ' + explanationText;
+            // Incorrect answer feedback
+            const tip = incorrectExplanations[questionId] || 'Remember the rules for this grammar point.';
+            feedback.innerHTML = '<span class="feedback-result incorrect-result">Sorry, try again!</span> ' + tip;
             feedback.className = 'feedback incorrect';
           }
         } else {
