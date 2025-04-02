@@ -1078,8 +1078,8 @@
    18. Level-specific Styling (Advanced)
    ---------------------------------------- */
    
-   /* Advanced grammar nav indicator */
-.nav-indicator {
+   /* Advanced grammar section nav indicator */
+.advanced-nav-indicator {
   height: 3px;
   position: absolute;
   bottom: 0;
@@ -1088,7 +1088,13 @@
   background-color: var(--accent-color);
 }
 
-[data-theme="dark"] .nav-indicator {
+/* Dark theme styling for advanced nav indicator */
+[data-theme="dark"] .advanced-nav-indicator {
+  background-color: var(--accent-color);
+}
+
+/* Active navigation link in advanced section */
+.advanced-section .nav-link.active {
   background-color: var(--accent-color);
 }
 
