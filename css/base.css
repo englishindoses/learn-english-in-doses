@@ -1069,7 +1069,31 @@
 }
 
 /* ----------------------------------------
-   17. Level-specific Styling (Conversation)
+   17. Level-specific Styling (Intermediate) 
+   - Placeholder
+   ---------------------------------------- */
+
+
+/* ----------------------------------------
+   18. Level-specific Styling (Advanced)
+   ---------------------------------------- */
+   
+   /* Advanced grammar nav indicator */
+.nav-indicator {
+  height: 3px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--accent-color);
+}
+
+[data-theme="dark"] .nav-indicator {
+  background-color: var(--accent-color);
+}
+
+/* ----------------------------------------
+   19. Level-specific Styling (Conversation)
    ---------------------------------------- */
    :root {
     /* Conversation section theme variables - Friendly & Approachable */
