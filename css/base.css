@@ -875,7 +875,7 @@
 }
 
 /* Navigation indicator for beginner section */
-.nav-indicator {
+.beginner-nav-indicator {
   height: 3px;
   position: absolute;
   bottom: 0;
@@ -1018,7 +1018,7 @@
     background-color: var(--beginner-primary-dark);
   }
   
-  [data-theme="dark"] .nav-indicator {
+  [data-theme="dark"] .beginner-nav-indicator {
     background-color: var(--beginner-primary);
   }
   
@@ -1197,6 +1197,11 @@
   
   /* Navigation indicator for conversation section */
   .conversation-nav-indicator {
+    height: 3px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
     background-color: var(--conversation-primary);
   }
   
@@ -1386,6 +1391,6 @@
     color: #e0e0e0;
   }
 
-  [data-theme="dark"] .nav-indicator {
+  [data-theme="dark"] .conversation-nav-indicator {
     background-color: var(--conversation-primary);
   }

@@ -10,9 +10,9 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
   
-  <!-- Styles -->
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/activities.css">
+  <!-- Styles - Note the updated path with "../../" -->
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/activities.css">
 
   <!-- Page specific styles - including nav-indicator -->
   <style>
@@ -47,31 +47,33 @@
     </button>
   </div>
   
-  <!-- Include navigation -->
+  <!-- Include navigation - Note the updated paths with "../../" -->
   <nav class="main-navigation">
-    <a href="home.html" class="site-logo">
-      <img src="images/my-logo.svg" alt="English in Doses" width="150" height="auto">
+    <a href="../../home.html" class="site-logo">
+      <img src="../../images/my-logo.svg" alt="English in Doses" width="150" height="auto">
     </a>
     <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
     <div class="nav-links">
-      <a href="home.html" class="nav-link">Home</a>
-      <a href="about.html" class="nav-link">About Us</a>
-      <a href="contact.html" class="nav-link">Contact Us</a>
-      <a href="home.html#where-to-start" class="nav-link">Grammar</a>
-      <a href="extra-practice.html" class="nav-link">Extra Practice</a>
-      <a href="conversation-page.html" class="nav-link">Conversation</a>
-      <a href="my-progress.html" class="nav-link">My Progress</a>
-      <!-- Add the nav-indicator here for level-specific pages -->
-      <div class="nav-indicator"></div>
+      <a href="../../home.html" class="nav-link">Home</a>
+      <a href="../../about.html" class="nav-link">About Us</a>
+      <a href="../../contact.html" class="nav-link">Contact Us</a>
+      <a href="../../home.html#where-to-start" class="nav-link">Grammar</a>
+      <a href="../../extra-practice.html" class="nav-link">Extra Practice</a>
+      <a href="../../conversation-page.html" class="nav-link">Conversation</a>
+      <a href="../../my-progress.html" class="nav-link">My Progress</a>
+      <a href="../../my-progress.html" class="nav-link">My Progress</a>
     </div>
+
+    <div class="advanced-nav-indicator"></div>
+    
   </nav>
 
   <div class="container">
-    <!-- Include breadcrumbs -->
+    <!-- Include breadcrumbs - Note the updated paths with "../" -->
     <div class="breadcrumbs" aria-label="breadcrumb">
-      <span class="breadcrumb-item"><a href="home.html">Home</a></span>
+      <span class="breadcrumb-item"><a href="../../home.html">Home</a></span>
       <span class="breadcrumb-separator">›</span>
-      <span class="breadcrumb-item"><a href="grammar/advanced/advanced-grammar.html">Grammar</a></span>
+      <span class="breadcrumb-item"><a href="advanced-grammar.html">Advanced Grammar</a></span>
       <span class="breadcrumb-separator">›</span>
       <span class="breadcrumb-item">{GRAMMAR_TOPIC}</span>
     </div>
@@ -93,7 +95,7 @@
       </section>
 
       <!-- GRAMMAR POINT SECTION 1 -->
-      <section class="content-section">
+      <section class="grammar-point">
         <h2>{GRAMMAR_CONCEPT_1}</h2>
         
         <p><strong>{MAIN_POINT_1}</strong>: {EXPLANATION_1}</p>
@@ -114,7 +116,7 @@
       </section>
 
       <!-- GRAMMAR POINT SECTION 2 -->
-      <section class="content-section">
+      <section class="grammar-point">
         <h2>{GRAMMAR_CONCEPT_2}</h2>
         
         <p><strong>{MAIN_POINT_2}</strong>: {EXPLANATION_2}</p>
@@ -135,76 +137,80 @@
       </section>
 
       <!-- VISUAL COMPARISON TABLE -->
-      <h2>Summary of {GRAMMAR_TOPIC}</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>{COLUMN_1_HEADER}</th>
-            <th>{COLUMN_2_HEADER}</th>
-            <th>{COLUMN_3_HEADER}</th>
-            <th>Example</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{DATA_1_1}</td>
-            <td>{DATA_1_2}</td>
-            <td>{DATA_1_3}</td>
-            <td><span class="example">{TABLE_EXAMPLE_1}</span></td>
-          </tr>
-          <tr>
-            <td>{DATA_2_1}</td>
-            <td>{DATA_2_2}</td>
-            <td>{DATA_2_3}</td>
-            <td><span class="example">{TABLE_EXAMPLE_2}</span></td>
-          </tr>
-          <!-- Add more rows as needed -->
-        </tbody>
-      </table>
+      <section>
+        <h2>Summary of {GRAMMAR_TOPIC}</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>{COLUMN_1_HEADER}</th>
+              <th>{COLUMN_2_HEADER}</th>
+              <th>{COLUMN_3_HEADER}</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{DATA_1_1}</td>
+              <td>{DATA_1_2}</td>
+              <td>{DATA_1_3}</td>
+              <td><span class="example">{TABLE_EXAMPLE_1}</span></td>
+            </tr>
+            <tr>
+              <td>{DATA_2_1}</td>
+              <td>{DATA_2_2}</td>
+              <td>{DATA_2_3}</td>
+              <td><span class="example">{TABLE_EXAMPLE_2}</span></td>
+            </tr>
+            <!-- Add more rows as needed -->
+          </tbody>
+        </table>
+      </section>
 
       <!-- COMMON ERRORS SECTION -->
-      <section class="content-section">
+      <section class="common-errors">
         <h2 class="common-errors-heading">Common Errors</h2>
         
         <div class="error-pattern">
           <p class="error-title"><strong>1: {ERROR_TITLE_1}</strong></p>
-          <p class="incorrect">{INCORRECT_USAGE_1}</p><br>
+          <p class="incorrect">{INCORRECT_USAGE_1}</p>
           <p class="correct">{CORRECTED_VERSION_1} ✓</p>
           <p class="explanation"><em>{EXPLANATION_1}</em></p>
         </div>
         
         <div class="error-pattern">
           <p class="error-title"><strong>2: {ERROR_TITLE_2}</strong></p>
-          <p class="incorrect">{INCORRECT_USAGE_2}</p><br>
+          <p class="incorrect">{INCORRECT_USAGE_2}</p>
           <p class="correct">{CORRECTED_VERSION_2} ✓</p>
           <p class="explanation"><em>{EXPLANATION_2}</em></p>
         </div>
         
         <div class="error-pattern">
           <p class="error-title"><strong>3: {ERROR_TITLE_3}</strong></p>
-          <p class="incorrect">{INCORRECT_USAGE_3}</p><br>
+          <p class="incorrect">{INCORRECT_USAGE_3}</p>
           <p class="correct">{CORRECTED_VERSION_3} ✓</p>
           <p class="explanation"><em>{EXPLANATION_3}</em></p>
         </div>
       </section>
 
-      <!-- TIPS SECTION - Don't add extra outer container -->
-      <h2 class="tips-heading">Useful Tips</h2>
-      
-      <div class="grammar-tip">
-        <p>📝 <strong>TIP 1:</strong> {TIP_1}</p>
-      </div>
-      
-      <div class="grammar-tip">
-        <p>📝 <strong>TIP 2:</strong> {TIP_2}</p>
-      </div>
-      
-      <div class="grammar-tip">
-        <p>📝 <strong>TIP 3:</strong> {TIP_3}</p>
-      </div>
+      <!-- TIPS SECTION -->
+      <section class="tips">
+        <h2 class="tips-heading">Useful Tips</h2>
+        
+        <div class="grammar-tip">
+          <p>📝 <strong>TIP 1:</strong> {TIP_1}</p>
+        </div>
+        
+        <div class="grammar-tip">
+          <p>📝 <strong>TIP 2:</strong> {TIP_2}</p>
+        </div>
+        
+        <div class="grammar-tip">
+          <p>📝 <strong>TIP 3:</strong> {TIP_3}</p>
+        </div>
+      </section>
 
       <!-- MCQ PRACTICE SECTION -->
-      <section class="content-section">
+      <section class="content-section mcq-container">
         <h2>Quick Practice</h2>
         <p>Test your understanding of {GRAMMAR_TOPIC} with these multiple choice questions.</p>
         
@@ -327,47 +333,47 @@
     <a href="{NEXT_TOPIC_URL}" class="nav-button next">Next: {NEXT_TOPIC} →</a>
   </nav>
 
-  <!-- Include footer -->
+  <!-- Include footer - Note the updated paths with "../../" -->
   <footer>
     <div class="footer-content">
       <div class="footer-section">
         <h3>Quick Links</h3>
         <ul>
-          <li><a href="home.html">Home</a></li>
-          <li><a href="home.html#where-to-start">Grammar</a></li>
-          <li><a href="extra-practice.html">Extra Practice</a></li>
-          <li><a href="my-progress.html">My Progress</a></li>
+          <li><a href="../../home.html">Home</a></li>
+          <li><a href="../../home.html#where-to-start">Grammar</a></li>
+          <li><a href="../../extra-practice.html">Extra Practice</a></li>
+          <li><a href="../../my-progress.html">My Progress</a></li>
         </ul>
       </div>
       
       <div class="footer-section">
         <h3>Grammar Topics</h3>
         <ul>
-          <li><a href="grammar/advanced/advanced-grammar.html#advanced-tenses-and-aspect">Advanced Tenses</a></li>
-          <li><a href="grammar/advanced/advanced-grammar.html#conditionals">Advanced Conditionals</a></li>
-          <li><a href="grammar/advanced/advanced-grammar.html#modals">Advanced Modal Verbs</a></li>
-          <li><a href="grammar/advanced/advanced-grammar.html#passive">Advanced Passive Voice</a></li>
+          <li><a href="advanced-grammar.html#advanced-tenses-and-aspect">Advanced Tenses</a></li>
+          <li><a href="advanced-grammar.html#conditionals">Advanced Conditionals</a></li>
+          <li><a href="advanced-grammar.html#modals">Advanced Modal Verbs</a></li>
+          <li><a href="advanced-grammar.html#passive">Advanced Passive Voice</a></li>
         </ul>
       </div>
       
       <div class="footer-section">
         <h3>Connect</h3>
         <ul>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="../../about.html">About</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+          <li><a href="../../privacy.html">Privacy Policy</a></li>
         </ul>
       </div>
     </div>
     
     <div class="footer-bottom">
-      <p>© 2025 English in Doses | All rights reserved | <a href="license.html">Licensing Information</a></p>
+      <p>© 2025 English in Doses | All rights reserved | <a href="../../license.html">Licensing Information</a></p>
     </div>
   </footer>
 
-  <!-- JavaScript -->
-  <script src="js/core.js"></script>
-  <script src="js/mcq.js"></script>
+  <!-- JavaScript - Note the updated paths with "../../" -->
+  <script src="../../js/core.js"></script>
+  <script src="../../js/mcq.js"></script>
   
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -383,7 +389,25 @@
         },
         onComplete: function(score, total) {
           console.log('MCQ completed with score: ' + score + '/' + total);
-          // Add any additional actions on completion
+          
+          // Track this activity completion in the progress system
+          if (typeof ProgressTrackingModule !== 'undefined') {
+            // Mark the MCQ as completed in the 'activities' category
+            ProgressTrackingModule.markItemCompleted('activities', 'mcq-{ACTIVITY_ID}', {
+              score: score,
+              maxScore: total,
+              completed: true,
+              completedAt: new Date().toISOString(),
+              title: '{GRAMMAR_TOPIC} Quick Practice' // Human-readable title for activity listings
+            });
+            
+            // Also mark the lesson itself as viewed/completed
+            ProgressTrackingModule.updateItemProgress('lessons', '{LESSON_ID}', {
+              lastViewed: new Date().toISOString(),
+              progress: 100, // Percent complete
+              title: '{GRAMMAR_TOPIC}' // Human-readable lesson title
+            });
+          }
         }
       });
       
