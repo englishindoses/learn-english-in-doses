@@ -657,54 +657,52 @@
     /**
      * Updates the progress display based on current progress data
      */
-    function updateProgressDisplay() {
-      // Get progress data
-      const progress = ProgressTrackingModule.getOverallProgress();
-      
-      // Update summary stats
-      document.getElementById('overall-percentage').textContent = progress.percentage + '%';
-      document.getElementById('overall-fraction').textContent = 
-        progress.completed + '/' + progress.total + ' completed';
-      
-      document.getElementById('activities-count').textContent = 
-        progress.categories.activities.completed;
-      document.getElementById('total-activities').textContent = 
-        progress.categories.activities.total;
-      
-      document.getElementById('lessons-count').textContent = 
-        progress.categories.lessons.completed;
-      document.getElementById('total-lessons').textContent = 
-        progress.categories.lessons.total;
-      
-      // Update streak
-      const stats = ProgressTrackingModule.getStats ? 
-        ProgressTrackingModule.getStats() : { dailyStreak: 0 };
-      document.getElementById('streak-count').textContent = stats.dailyStreak;
-      
-      // Update progress bars
-      document.getElementById('overall-progress-bar').style.width = progress.percentage + '%';
-      document.getElementById('overall-percent').textContent = progress.percentage + '%';
-      
-      document.getElementById('activities-progress-bar').style.width = 
-        progress.categories.activities.percentage + '%';
-      document.getElementById('activities-percent').textContent = 
-        progress.categories.activities.percentage + '%';
-      
-      document.getElementById('lessons-progress-bar').style.width = 
-        progress.categories.lessons.percentage + '%';
-      document.getElementById('lessons-percent').textContent = 
-        progress.categories.lessons.percentage + '%';
-      
-      document.getElementById('assessments-progress-bar').style.width = 
-        progress.categories.assessments.percentage + '%';
-      document.getElementById('assessments-percent').textContent = 
-        progress.categories.assessments.percentage + '%';
-      
-      // Update other sections
-      updateRecentActivity();
-      updateAchievements();
-      updateRecommendations();
-    }
+     function updateAchievements() {
+  const achievementsContainer = document.getElementById('achievements-container');
+  
+  // Clear existing content
+  achievementsContainer.innerHTML = '';
+  
+  // Get unlocked achievements
+  const achievements = ProgressTrackingModule.getUnlockedAchievements ? 
+    ProgressTrackingModule.getUnlockedAchievements() : [];
+  
+  // Get all achievement definitions for displaying locked ones too
+  const allAchievements = ProgressTrackingModule.getAllAchievements ? 
+    ProgressTrackingModule.getAllAchievements() : [];
+  
+  // If we don't have achievement definitions, use a default set
+  let achievementsToDisplay = allAchievements.length > 0 ? allAchievements : [
+    {
+      id: 'first_activity',
+      title: 'First Steps',
+      description: 'Complete your first activity',
+      icon: '🏆',
+      unlocked: achievements.some(a => a.id === 'first_activity')
+    },
+    // ... other default achievements from your original code
+  ];
+  
+  // Update unlocked status for each achievement
+  achievementsToDisplay = achievementsToDisplay.map(achievement => {
+    const unlocked = achievements.some(a => a.id === achievement.id);
+    return { ...achievement, unlocked };
+  });
+  
+  // Add each achievement to the display
+  achievementsToDisplay.forEach(achievement => {
+    const card = document.createElement('div');
+    card.className = `achievement-card ${achievement.unlocked ? '' : 'locked-achievement'}`;
+    
+    card.innerHTML = `
+      <div class="achievement-icon">${achievement.icon}</div>
+      <div class="achievement-title">${achievement.title}</div>
+      <div class="achievement-description">${achievement.description}</div>
+    `;
+    
+    achievementsContainer.appendChild(card);
+  });
+}
     
     /**
      * Updates the recent activity list
@@ -761,15 +759,10 @@
       achievementsContainer.innerHTML = '';
       
       // Get unlocked achievements
-      const achievements = ProgressTrackingModule.getUnlockedAchievements ? 
-        ProgressTrackingModule.getUnlockedAchievements() : [];
+      const achievements = ProgressTrackingModule.getUnlockedAchievements ? ProgressTrackingModule.getUnlockedAchievements() : [];
       
-      // Get all achievement definitions for displaying locked ones too
-      const allAchievements = ProgressTrackingModule.getAllAchievements ? 
-        ProgressTrackingModule.getAllAchievements() : [];
-      
-      // If we don't have achievement definitions, use a default set
-      let achievementsToDisplay = allAchievements.length > 0 ? allAchievements : [
+      // Define some default achievements to show (in case no real ones exist yet)
+      const defaultAchievements = [
         {
           id: 'first_activity',
           title: 'First Steps',
@@ -814,14 +807,8 @@
         }
       ];
       
-      // Update unlocked status for each achievement
-      achievementsToDisplay = achievementsToDisplay.map(achievement => {
-        const unlocked = achievements.some(a => a.id === achievement.id);
-        return { ...achievement, unlocked };
-      });
-      
-      // Add each achievement to the display
-      achievementsToDisplay.forEach(achievement => {
+      // Add each achievement
+      defaultAchievements.forEach(achievement => {
         const card = document.createElement('div');
         card.className = `achievement-card ${achievement.unlocked ? '' : 'locked-achievement'}`;
         
@@ -872,172 +859,172 @@
      * This would normally use actual data from ProgressTrackingModule
      */
      function generateRecommendations() {
-      const recommendations = [];
-      
-      // Get incomplete activities and lessons
-      const incompleteActivities = getIncompleteItems('activities');
-      const incompleteLessons = getIncompleteItems('lessons');
-      
-      // Add recommendations based on incomplete items
-      if (incompleteLessons.length > 0) {
-        // Get partially completed lessons first
-        const partiallyCompleted = incompleteLessons.filter(lesson => {
-          const progress = ProgressTrackingModule.getProgressData().lessons[lesson.id];
-          return progress && progress.progress > 0 && progress.progress < 100;
-        });
-        
-        if (partiallyCompleted.length > 0) {
-          recommendations.push({
-            title: 'Continue with ' + partiallyCompleted[0].title,
-            description: 'You\'ve started this lesson but haven\'t completed it yet.',
-            url: partiallyCompleted[0].url
-          });
-        } else {
-          recommendations.push({
-            title: 'Start learning ' + incompleteLessons[0].title,
-            description: 'This would be a good lesson to begin with based on your progress.',
-            url: incompleteLessons[0].url
-          });
-        }
-      }
-      
-      if (incompleteActivities.length > 0) {
-        recommendations.push({
-          title: 'Practice with ' + incompleteActivities[0].title,
-          description: 'Complete this activity to reinforce your grammar skills.',
-          url: incompleteActivities[0].url
-        });
-      }
-      
-      // Add recommendation based on progress statistics
-      const progress = ProgressTrackingModule.getOverallProgress();
-      
-      // Determine which category needs more work
-      const lowestCategory = Object.entries(progress.categories)
-        .sort((a, b) => a[1].percentage - b[1].percentage)[0];
-      
-      if (lowestCategory && lowestCategory[1].percentage < 70) {
-        const categoryName = lowestCategory[0].charAt(0).toUpperCase() + 
-          lowestCategory[0].slice(1);
-        
-        recommendations.push({
-          title: `Improve your ${categoryName} score`,
-          description: `Your ${categoryName} completion is at ${lowestCategory[1].percentage}%. Focus here to balance your progress.`,
-          url: `${lowestCategory[0]}.html`
-        });
-      }
-      
-      return recommendations;
+  const recommendations = [];
+  
+  // Get incomplete activities and lessons
+  const incompleteActivities = getIncompleteItems('activities');
+  const incompleteLessons = getIncompleteItems('lessons');
+  
+  // Add recommendations based on incomplete items
+  if (incompleteLessons.length > 0) {
+    // Get partially completed lessons first
+    const partiallyCompleted = incompleteLessons.filter(lesson => {
+      const progress = ProgressTrackingModule.getProgressData().lessons[lesson.id];
+      return progress && progress.progress > 0 && progress.progress < 100;
+    });
+    
+    if (partiallyCompleted.length > 0) {
+      recommendations.push({
+        title: 'Continue with ' + partiallyCompleted[0].title,
+        description: 'You\'ve started this lesson but haven\'t completed it yet.',
+        url: partiallyCompleted[0].url
+      });
+    } else {
+      recommendations.push({
+        title: 'Start learning ' + incompleteLessons[0].title,
+        description: 'This would be a good lesson to begin with based on your progress.',
+        url: incompleteLessons[0].url
+      });
     }
+  }
+  
+  if (incompleteActivities.length > 0) {
+    recommendations.push({
+      title: 'Practice with ' + incompleteActivities[0].title,
+      description: 'Complete this activity to reinforce your grammar skills.',
+      url: incompleteActivities[0].url
+    });
+  }
+  
+  // Add recommendation based on progress statistics
+  const progress = ProgressTrackingModule.getOverallProgress();
+  
+  // Determine which category needs more work
+  const lowestCategory = Object.entries(progress.categories)
+    .sort((a, b) => a[1].percentage - b[1].percentage)[0];
+  
+  if (lowestCategory && lowestCategory[1].percentage < 70) {
+    const categoryName = lowestCategory[0].charAt(0).toUpperCase() + 
+      lowestCategory[0].slice(1);
+    
+    recommendations.push({
+      title: `Improve your ${categoryName} score`,
+      description: `Your ${categoryName} completion is at ${lowestCategory[1].percentage}%. Focus here to balance your progress.`,
+      url: `${lowestCategory[0]}.html`
+    });
+  }
+  
+  return recommendations;
+}
     
     /**
      * Helper function to get incomplete items from a category
      * This would normally come from ProgressTrackingModule
      */
      function getIncompleteItems(category) {
-      const incompleteItems = [];
+  const incompleteItems = [];
+  
+  // Get category definitions to determine all available items
+  const categoryDefinitions = ProgressTrackingModule.getCategoryDefinitions ? 
+    ProgressTrackingModule.getCategoryDefinitions()[category] : null;
+  
+  if (!categoryDefinitions) {
+    return [];
+  }
+  
+  // Get progress data
+  const progressData = ProgressTrackingModule.getProgressData ? 
+    ProgressTrackingModule.getProgressData()[category] : {};
+  
+  // Determine URL pattern based on category
+  const urlPattern = category === 'activities' ? 
+    '{id}.html' : 
+    (category === 'lessons' ? '{id}.html' : '{id}.html');
+  
+  // Iterate through all subcategories
+  Object.entries(categoryDefinitions).forEach(([subcategory, items]) => {
+    items.forEach(itemId => {
+      // Check if item is incomplete or not started
+      const isCompleted = progressData[itemId] && 
+        ((category === 'activities' && progressData[itemId].completed) || 
+         (category === 'lessons' && progressData[itemId].progress === 100));
       
-      // Get category definitions to determine all available items
-      const categoryDefinitions = ProgressTrackingModule.getCategoryDefinitions ? 
-        ProgressTrackingModule.getCategoryDefinitions()[category] : null;
-      
-      if (!categoryDefinitions) {
-        return [];
-      }
-      
-      // Get progress data
-      const progressData = ProgressTrackingModule.getProgressData ? 
-        ProgressTrackingModule.getProgressData()[category] : {};
-      
-      // Determine URL pattern based on category
-      const urlPattern = category === 'activities' ? 
-        '{id}.html' : 
-        (category === 'lessons' ? '{id}.html' : '{id}.html');
-      
-      // Iterate through all subcategories
-      Object.entries(categoryDefinitions).forEach(([subcategory, items]) => {
-        items.forEach(itemId => {
-          // Check if item is incomplete or not started
-          const isCompleted = progressData[itemId] && 
-            ((category === 'activities' && progressData[itemId].completed) || 
-             (category === 'lessons' && progressData[itemId].progress === 100));
-          
-          if (!isCompleted) {
-            // Get title from progress data if available, or create one from ID
-            let title = itemId.replace(/-/g, ' ')
-              .replace(/\b\w/g, l => l.toUpperCase());
-            
-            if (progressData[itemId] && progressData[itemId].title) {
-              title = progressData[itemId].title;
-            }
-            
-            // Create URL from pattern
-            const url = urlPattern.replace('{id}', itemId);
-            
-            incompleteItems.push({
-              id: itemId,
-              title: title,
-              url: url,
-              subcategory: subcategory
-            });
-          }
+      if (!isCompleted) {
+        // Get title from progress data if available, or create one from ID
+        let title = itemId.replace(/-/g, ' ')
+          .replace(/\b\w/g, l => l.toUpperCase());
+        
+        if (progressData[itemId] && progressData[itemId].title) {
+          title = progressData[itemId].title;
+        }
+        
+        // Create URL from pattern
+        const url = urlPattern.replace('{id}', itemId);
+        
+        incompleteItems.push({
+          id: itemId,
+          title: title,
+          url: url,
+          subcategory: subcategory
         });
-      });
-      
-      return incompleteItems;
-    }
+      }
+    });
+  });
+  
+  return incompleteItems;
+}
     
     /**
      * Helper function to get recent activity
      * This would normally come from ProgressTrackingModule
      */
      function getRecentActivity(limit = 5) {
-      // Get all activity data from ProgressTrackingModule
-      const activities = [];
-      
-      // Process activities category
-      if (ProgressTrackingModule.getProgressData && ProgressTrackingModule.getProgressData().activities) {
-        const activityData = ProgressTrackingModule.getProgressData().activities;
-        
-        // Convert object to array and add category information
-        Object.entries(activityData).forEach(([id, data]) => {
-          if (data.completed) {
-            activities.push({
-              id: id,
-              category: 'activities',
-              title: data.title || id,
-              score: data.score,
-              maxScore: data.maxScore,
-              completedAt: data.completedAt
-            });
-          }
+  // Get all activity data from ProgressTrackingModule
+  const activities = [];
+  
+  // Process activities category
+  if (ProgressTrackingModule.getProgressData && ProgressTrackingModule.getProgressData().activities) {
+    const activityData = ProgressTrackingModule.getProgressData().activities;
+    
+    // Convert object to array and add category information
+    Object.entries(activityData).forEach(([id, data]) => {
+      if (data.completed) {
+        activities.push({
+          id: id,
+          category: 'activities',
+          title: data.title || id,
+          score: data.score,
+          maxScore: data.maxScore,
+          completedAt: data.completedAt
         });
       }
-      
-      // Process lessons category similarly
-      if (ProgressTrackingModule.getProgressData && ProgressTrackingModule.getProgressData().lessons) {
-        const lessonData = ProgressTrackingModule.getProgressData().lessons;
-        
-        Object.entries(lessonData).forEach(([id, data]) => {
-          if (data.lastViewed) {
-            activities.push({
-              id: id,
-              category: 'lessons',
-              title: data.title || id,
-              completedAt: data.lastViewed
-            });
-          }
+    });
+  }
+  
+  // Process lessons category similarly
+  if (ProgressTrackingModule.getProgressData && ProgressTrackingModule.getProgressData().lessons) {
+    const lessonData = ProgressTrackingModule.getProgressData().lessons;
+    
+    Object.entries(lessonData).forEach(([id, data]) => {
+      if (data.lastViewed) {
+        activities.push({
+          id: id,
+          category: 'lessons',
+          title: data.title || id,
+          completedAt: data.lastViewed
         });
       }
-      
-      // Sort by completion date (most recent first)
-      activities.sort((a, b) => {
-        return new Date(b.completedAt) - new Date(a.completedAt);
-      });
-      
-      // Return only the requested number of items
-      return activities.slice(0, limit);
-    }
+    });
+  }
+  
+  // Sort by completion date (most recent first)
+  activities.sort((a, b) => {
+    return new Date(b.completedAt) - new Date(a.completedAt);
+  });
+  
+  // Return only the requested number of items
+  return activities.slice(0, limit);
+}
     
     /**
      * Helper function to format relative time
