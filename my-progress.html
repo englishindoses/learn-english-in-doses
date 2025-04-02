@@ -12,6 +12,7 @@
   <!-- Styles -->
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/activities.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <style>
     /* Additional styles specific to progress page */
@@ -509,10 +510,12 @@
         
         <!-- Reset Progress (Danger Zone) -->
         <section class="progress-card danger-zone">
-          <h2>Reset Progress</h2>
-          <p>If you want to start fresh, you can reset all your progress data. <strong>Warning: This action cannot be undone.</strong></p>
+          <h2>Delete Progress</h2>
+          <p>If you want to start fresh, you can delete and reset all your progress data.</p>
           
-          <button id="show-reset-confirm" class="reset-button">Reset My Progress</button>
+          <p><strong><span style="color: #bd2130;"><i class="fa fa-exclamation-circle" style="font-size: 20px;color:red"></i> Warning: This action cannot be undone.</span></strong></p>
+          
+          <button id="show-reset-confirm" class="reset-button">Delete My Progress</button>
           
           <div id="confirm-reset" class="confirm-reset">
             <p>Are you sure you want to reset all your progress? All your activity data, achievements, and statistics will be permanently deleted.</p>
