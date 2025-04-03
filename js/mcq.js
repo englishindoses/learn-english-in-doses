@@ -160,6 +160,7 @@ const MCQModule = (function() {
       if (typeof saveToLocalStorage === 'function') {
         const activityData = {
           score: score,
+          maxScore: totalQuestions,
           totalQuestions: totalQuestions,
           completed: allAnswered
         };
