@@ -1134,30 +1134,53 @@ const ProgressTrackingModule = (function() {
       return false;
     }
     
-    // Reset progress data
-    progressData = {
-      activities: {},
-      lessons: {},
-      assessments: {},
-      stats: {
-        totalTimeSpent: 0,
-        lastActive: new Date().toISOString(),
-        dailyStreak: 0,
-        lastActivityDate: null
-      },
-      achievements: {}
-    };
-    
-    // Save to localStorage
-    saveProgress();
-    
-    // Notify callbacks
-    notifyProgressChanged({
-      type: 'progress_reset',
-      timestamp: new Date().toISOString()
-    });
-    
-    return true;
+    try {
+      // Reset progress data
+      progressData = {
+        activities: {},
+        lessons: {},
+        assessments: {},
+        stats: {
+          totalTimeSpent: 0,
+          lastActive: new Date().toISOString(),
+          dailyStreak: 0,
+          lastActivityDate: null
+        },
+        achievements: {}
+      };
+      
+      // Save to localStorage
+      saveProgress();
+      
+      // Clear all other progress-related localStorage items
+      if (typeof localStorage !== 'undefined') {
+        // Get all keys
+        const keysToRemove = [];
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
+          // Remove activity progress items and other related items
+          if (key.includes('-progress') || key === 'lastActivity') {
+            keysToRemove.push(key);
+          }
+        }
+        
+        // Remove the collected keys
+        keysToRemove.forEach(key => {
+          localStorage.removeItem(key);
+        });
+      }
+      
+      // Notify callbacks
+      notifyProgressChanged({
+        type: 'progress_reset',
+        timestamp: new Date().toISOString()
+      });
+      
+      return true;
+    } catch (error) {
+      console.error('Error resetting progress data:', error);
+      return false;
+    }
   }
   
   /**
