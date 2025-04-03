@@ -226,6 +226,9 @@ const ProgressTrackingModule = (function() {
         
         // Update daily streak based on last activity date
         updateDailyStreak();
+        
+        // Import activity data from individual activity modules
+        importLegacyActivityData();
       } else {
         // Initialize with empty data
         progressData = {
@@ -257,6 +260,44 @@ const ProgressTrackingModule = (function() {
         },
         achievements: {}
       };
+    }
+  }
+  
+  /**
+   * Import activity progress data stored by individual modules
+   */
+  function importLegacyActivityData() {
+    if (typeof localStorage === 'undefined') return;
+    
+    try {
+      // Find all localStorage keys ending with "-progress"
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && key.endsWith('-progress')) {
+          try {
+            const activityData = JSON.parse(localStorage.getItem(key));
+            const activityId = key.replace('-progress', '');
+            
+            // Only import if it's marked as completed and not already in our data
+            if (activityData && activityData.completed && 
+                (!progressData.activities[activityId] || 
+                 !progressData.activities[activityId].completed)) {
+              
+              progressData.activities[activityId] = {
+                completed: true,
+                completedAt: activityData.completedAt || new Date().toISOString(),
+                score: activityData.score || null,
+                maxScore: activityData.maxScore || null,
+                title: activityData.title || activityId
+              };
+            }
+          } catch (e) {
+            console.warn(`Could not import activity data for ${key}:`, e);
+          }
+        }
+      }
+    } catch (error) {
+      console.error('Error importing legacy activity data:', error);
     }
   }
   
@@ -1159,7 +1200,7 @@ const ProgressTrackingModule = (function() {
         for (let i = 0; i < localStorage.length; i++) {
           const key = localStorage.key(i);
           // Remove activity progress items and other related items
-          if (key.includes('-progress') || key === 'lastActivity') {
+          if (key && (key.includes('-progress') || key === 'lastActivity')) {
             keysToRemove.push(key);
           }
         }
@@ -1178,7 +1219,7 @@ const ProgressTrackingModule = (function() {
       
       return true;
     } catch (error) {
-      console.error('Error resetting progress data:', error);
+      console.error('Error resetting progress:', error);
       return false;
     }
   }
@@ -1331,7 +1372,7 @@ const ProgressTrackingModule = (function() {
     exportProgressData: exportProgressData,
     importProgressData: importProgressData,
     setCategoryDefinitions: setCategoryDefinitions,
-    // New methods added for direct data access
+    // Methods for direct data access
     getProgressData: getProgressData,
     getCategoryDefinitions: getCategoryDefinitions,
     getAllAchievements: getAllAchievements,
