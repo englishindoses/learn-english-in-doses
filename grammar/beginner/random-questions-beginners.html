@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Practice your English speaking with random conversation questions for beginners">
+  <title>Random Conversation Questions - English in Doses</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/activities.css">
+  
+  <style>
+    /* Specific styles for the conversation questions page - updated to use conversation theme */
+    .question-container {
+      background-color: var(--conversation-card-bg);
+      border-radius: 10px;
+      padding: 30px;
+      margin: 30px 0;
+      text-align: center;
+      transition: opacity 0.3s ease;
+      border-left: 5px solid var(--conversation-primary);
+    }
+    
+    .question-text {
+      font-size: 1.6rem;
+      color: var(--conversation-primary);
+      font-weight: 600;
+      line-height: 1.4;
+    }
+    
+    [data-theme="dark"] .question-text {
+      color: var(--conversation-primary);
+    }
+    
+    .category-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    
+    .category-button {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 10px 18px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 600;
+      color: var(--text-color);
+      box-shadow: 0 1px 3px var(--shadow-color);
+    }
+    
+    .category-button:hover {
+      background-color: var(--example-bg);
+      transform: translateY(-2px);
+    }
+    
+    .category-button.active {
+      background-color: var(--conversation-primary);
+      color: white;
+      border-color: var(--conversation-primary);
+      box-shadow: 0 2px 4px var(--shadow-color);
+    }
+    
+    [data-theme="dark"] .category-button {
+      background-color: var(--card-bg);
+      border-color: var(--border-color);
+      color: var(--text-color);
+    }
+    
+    [data-theme="dark"] .category-button:hover {
+      background-color: var(--example-bg);
+    }
+    
+    [data-theme="dark"] .category-button.active {
+      background-color: var(--conversation-primary);
+      color: #fff;
+      border-color: var(--conversation-primary);
+    }
+    
+    /* Add this to ensure only the conversation nav indicator uses the conversation theme color,
+    while the rest of the navigation bar uses the standard site styling */
+    .conversation-nav-indicator {
+      background-color: var(--conversation-primary);
+    }
+    
+    [data-theme="dark"] .conversation-nav-indicator {
+      background-color: var(--conversation-primary);
+    }
+    
+    .new-question-button {
+      background-color: var(--conversation-primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 24px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      transition: background-color 0.3s, transform 0.2s;
+      box-shadow: 0 2px 4px var(--shadow-color);
+    }
+    
+    .new-question-button:hover {
+      background-color: var(--conversation-primary-dark);
+      transform: translateY(-2px);
+    }
+    
+    [data-theme="dark"] .new-question-button {
+      background-color: var(--conversation-primary);
+      color: #fff;
+    }
+    
+    [data-theme="dark"] .new-question-button:hover {
+      background-color: var(--conversation-primary-dark);
+    }
+    
+    .button-icon {
+      margin-right: 8px;
+    }
+    
+    .tips-container {
+      background-color: var(--conversation-card-bg);
+      border-left: 4px solid var(--conversation-secondary);
+      padding: 20px;
+      border-radius: 5px;
+      margin-top: 40px;
+      box-shadow: 0 2px 5px var(--shadow-color);
+    }
+    
+    .tips-heading {
+      color: var(--text-color);
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+    }
+    
+    .tips-list {
+      color: var(--text-color);
+      padding-left: 20px;
+      font-weight: 500;
+    }
+    
+    .tips-list li {
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+    
+    .tips-list strong {
+      color: var(--conversation-secondary);
+    }
+    
+    [data-theme="dark"] .tips-container {
+      background-color: var(--conversation-card-bg);
+      border-left-color: var(--conversation-secondary);
+    }
+    
+    [data-theme="dark"] .tips-list strong {
+      color: var(--conversation-secondary);
+    }
+    
+    .example-container {
+      background-color: var(--conversation-card-bg);
+      padding: 20px;
+      border-radius: 5px;
+      margin-top: 20px;
+      border-left: 4px solid var(--conversation-primary);
+      box-shadow: 0 2px 5px var(--shadow-color);
+    }
+    
+    .example-heading {
+      color: var(--text-color);
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+    }
+    
+    .example-text {
+      font-style: italic;
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+    
+    .example-question {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--conversation-primary);
+    }
+    
+    [data-theme="dark"] .example-container {
+      background-color: var(--conversation-card-bg);
+    }
+    
+    [data-theme="dark"] .example-question {
+      color: var(--conversation-primary);
+    }
+    
+    .fade-out {
+      opacity: 0;
+    }
+    
+    .fade-in {
+      opacity: 1;
+    }
+    
+    @media (max-width: 768px) {
+      .category-buttons {
+        justify-content: center;
+      }
+      
+      .question-text {
+        font-size: 1.4rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .question-text {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  
+  <!-- Theme toggle button -->
+  <div class="theme-toggle-container">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="light-icon">☀️</span>
+      <span class="dark-icon">🌙</span>
+    </button>
+  </div>
+  
+  <!-- Main navigation -->
+  <nav class="main-navigation">
+    <a href="../../home.html" class="site-logo">
+      <img src="../../images/my-logo.svg" alt="English in Doses" width="150" height="auto">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <div class="nav-links">
+      <a href="../../home.html" class="nav-link">Home</a>
+      <a href="../../about.html" class="nav-link">About Us</a>
+      <a href="../../contact.html" class="nav-link">Contact Us</a>
+      <a href="../../home.html#where-to-start" class="nav-link">Grammar</a>
+      <a href="../../extra-practice.html" class="nav-link">Extra Practice</a>
+      <a href="../../conversation-page.html" class="nav-link active">Conversation</a>
+      <a href="../../my-progress.html" class="nav-link">My Progress</a>
+    </div>
+    
+    <div class="conversation-nav-indicator"></div>
+  </nav>
+
+  <div class="container">
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs" aria-label="breadcrumb">
+      <span class="breadcrumb-item"><a href="../../home.html">Home</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="../../conversation-page.html">Conversation</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item">Random Conversation Questions</span>
+    </div>
+
+    <main id="main-content">
+      <h1>Random Conversation Questions</h1>
+      
+      <p class="intro-text">Practice your English speaking with these easy conversation questions. Choose a topic below or try questions from all categories. Perfect for beginners!</p>
+      
+      <!-- Category selection -->
+      <div class="category-section">
+        <h2>Choose a Topic</h2>
+        <div class="category-buttons">
+          <button class="category-button active" data-category="all">📚 All Topics</button>
+          <button class="category-button" data-category="daily">🏠 Daily Life</button>
+          <button class="category-button" data-category="work">💼 Work & Study</button>
+          <button class="category-button" data-category="travel">✈️ Travel & Places</button>
+          <button class="category-button" data-category="food">🍲 Food & Cooking</button>
+          <button class="category-button" data-category="hobbies">🎨 Hobbies & Free Time</button>
+          <button class="category-button" data-category="family">👪 Family & Friends</button>
+          <button class="category-button" data-category="future">🔮 Future Plans</button>
+        </div>
+      </div>
+      
+      <!-- Question display -->
+      <div class="question-container">
+        <p class="question-text" id="question-display">Loading question...</p>
+      </div>
+      
+      <!-- New question button -->
+      <div class="button-container">
+        <button class="new-question-button" id="new-question-btn">
+          <span class="button-icon">🔄</span> New Question
+        </button>
+      </div>
+      
+      <!-- Tips section -->
+      <div class="tips-container">
+        <h3 class="tips-heading">💬 Speaking Tips</h3>
+        <ul class="tips-list">
+          <li><strong>Answer fully:</strong> Try to answer with 2-3 sentences, not just "yes" or "no"</li>
+          <li><strong>Keep talking:</strong> Ask follow-up questions to keep the conversation going</li>
+          <li><strong>Be confident:</strong> Don't worry about small mistakes - focus on communicating</li>
+          <li><strong>Be creative:</strong> If you don't know a word, try to explain it another way</li>
+          <li><strong>Have fun:</strong> Practice with a friend or language partner for more enjoyment!</li>
+        </ul>
+      </div>
+      
+      <!-- Example answer section -->
+      <div class="example-container">
+        <h3 class="example-heading">✨ Example Answer</h3>
+        <div class="example-text">
+          <p class="example-question">Question: What is your favorite food?</p>
+          <p>"My favorite food is pasta. I really love spaghetti with tomato sauce and cheese. I usually eat it once a week, usually on weekends. It's easy to cook and always delicious!"</p>
+        </div>
+      </div>
+    </main>
+  </div>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="../../home.html">Home</a></li>
+          <li><a href="../../home.html#where-to-start">Grammar</a></li>
+          <li><a href="../../extra-practice.html">Extra Practice</a></li>
+          <li><a href="../../my-progress.html">My Progress</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Grammar Topics</h3>
+        <ul>
+          <li><a href="../../grammar/advanced/advanced-grammar.html#advanced-tenses-and-aspect">Advanced Tenses</a></li>
+          <li><a href="../../grammar/advanced/advanced-grammar.html#conditionals">Advanced Conditionals</a></li>
+          <li><a href="../../grammar/advanced/advanced-grammar.html#modals">Advanced Modal Verbs</a></li>
+          <li><a href="../../grammar/advanced/advanced-grammar.html#passive">Advanced Passive Voice</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="../../about.html">About</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© 2025 English in Doses | All rights reserved | <a href="../../license.html">Licensing Information</a></p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="../../js/core.js"></script>
+  
+  <script>
+    // Questions data organized by category
+    const questions = {
+      daily: [
+        "What time do you usually wake up?",
+        "What do you usually have for breakfast?",
+        "How do you get to work or school?",
+        "What time do you usually go to bed?",
+        "What is your morning routine?",
+        "Do you take a shower in the morning or evening?",
+        "What is your favorite day of the week?",
+        "What do you do on the weekends?",
+        "Do you live in a house or an apartment?",
+        "Do you prefer summer or winter?",
+        "What do you usually do after work?",
+        "What time do you eat dinner?",
+        "Do you watch TV in the evening?",
+        "Do you read books? What kind?",
+        "How often do you clean your home?"
+      ],
+      work: [
+        "What is your job?",
+        "Do you like your job? Why or why not?",
+        "What time do you start work?",
+        "Do you wear special clothes for your job?",
+        "Is your job difficult?",
+        "What languages do you use at work?",
+        "Do you work in a team or alone?",
+        "What did you study in school?",
+        "Would you like to change your job?",
+        "Do you work on weekends?",
+        "Do you work from home sometimes?",
+        "What do you like about your job?",
+        "Do you have a long commute to work?",
+        "Are you a student? What do you study?",
+        "Do you have meetings at work?"
+      ],
+      travel: [
+        "Have you visited another country?",
+        "Where would you like to travel next?",
+        "Do you prefer the beach or the mountains?",
+        "Do you prefer to travel by train, car, or plane?",
+        "What is your favorite city?",
+        "Do you take many photos when you travel?",
+        "Do you like to try local food when you travel?",
+        "Do you prefer hotels or apartments when traveling?",
+        "What is the best place you have visited?",
+        "Do you like to travel alone or with friends?",
+        "What do you always pack when you travel?",
+        "Would you like to live in another country?",
+        "Do you get homesick when you travel?",
+        "What is your dream vacation?",
+        "Do you prefer to plan your trip or be spontaneous?"
+      ],
+      food: [
+        "What is your favorite food?",
+        "Can you cook?",
+        "What dish can you cook well?",
+        "Do you prefer sweet or savory food?",
+        "What food from your country do you recommend?",
+        "Do you like trying new foods?",
+        "Do you eat out often?",
+        "What's your favorite restaurant?",
+        "Do you like spicy food?",
+        "What do you usually eat for lunch?",
+        "Do you prefer coffee or tea?",
+        "What's your favorite fruit?",
+        "Do you eat vegetables every day?",
+        "Can you use chopsticks?",
+        "Do you like desserts? What kind?"
+      ],
+      hobbies: [
+        "What do you do in your free time?",
+        "Do you play any sports?",
+        "Do you watch sports? Which ones?",
+        "Do you like music? What kind?",
+        "Can you play a musical instrument?",
+        "Do you like to dance?",
+        "Do you like watching movies?",
+        "What type of movies do you like?",
+        "Do you have any collections?",
+        "Do you like taking photos?",
+        "What do you do to relax?",
+        "Do you use social media a lot?",
+        "Do you have a pet?",
+        "Do you like to go shopping?",
+        "Do you enjoy nature activities?"
+      ],
+      family: [
+        "Do you have a big family?",
+        "Do you have any brothers or sisters?",
+        "Who are you closest to in your family?",
+        "Do you look like your mother or father?",
+        "What do you usually do with your family?",
+        "Do you have any family traditions?",
+        "Do you live with your family?",
+        "How often do you call your family?",
+        "Do you have any children?",
+        "What do you like about your friends?",
+        "How did you meet your best friend?",
+        "What do you do with your friends?",
+        "Do you prefer a few close friends or many friends?",
+        "Do you make friends easily?",
+        "Do you have friends from other countries?"
+      ],
+      future: [
+        "What are your plans for next weekend?",
+        "Where would you like to be in five years?",
+        "Would you like to learn a new skill? What?",
+        "Do you want to move to a different city?",
+        "What job would you like to have in the future?",
+        "Do you want to learn another language?",
+        "What is one goal you have for this year?",
+        "Do you save money for the future?",
+        "Would you like to start your own business?",
+        "Do you think you will change jobs in the future?",
+        "Where would you like to travel next year?",
+        "Do you want to own a house someday?",
+        "What would you like to improve about yourself?",
+        "Do you think about retirement?",
+        "What is one dream you hope to achieve?"
+      ]
+    };
+    
+    // Global variables
+    let currentCategory = "all";
+    let previousQuestions = [];
+    let questionDisplay = document.getElementById("question-display");
+    let isAnimating = false;
+    
+    // Function to get all questions
+    function getAllQuestions() {
+      return Object.values(questions).flat();
+    }
+    
+    // Function to get a random question
+    function getRandomQuestion() {
+      if (isAnimating) return;
+      isAnimating = true;
+      
+      // Fade out current question
+      questionDisplay.classList.add("fade-out");
+      
+      setTimeout(() => {
+        // Select questions from current category
+        let questionPool = currentCategory === "all" 
+          ? getAllQuestions() 
+          : questions[currentCategory];
+        
+        // Filter out recent questions unless we've used almost all of them
+        if (previousQuestions.length < questionPool.length - 5) {
+          questionPool = questionPool.filter(q => !previousQuestions.includes(q));
+        }
+        
+        if (questionPool.length === 0) {
+          // If we've somehow used all questions, reset history
+          previousQuestions = [];
+          questionPool = currentCategory === "all" 
+            ? getAllQuestions() 
+            : questions[currentCategory];
+        }
+        
+        // Get random question
+        const randomIndex = Math.floor(Math.random() * questionPool.length);
+        const newQuestion = questionPool[randomIndex];
+        
+        // Update question display
+        questionDisplay.textContent = newQuestion;
+        
+        // Fade in the new question
+        setTimeout(() => {
+          questionDisplay.classList.remove("fade-out");
+          isAnimating = false;
+          
+          // Add to history, keeping only the 10 most recent
+          previousQuestions.unshift(newQuestion);
+          if (previousQuestions.length > 10) {
+            previousQuestions.pop();
+          }
+        }, 50);
+      }, 300);
+    }
+    
+    // Set up event listeners
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get new question button
+      const newQuestionBtn = document.getElementById('new-question-btn');
+      newQuestionBtn.addEventListener('click', getRandomQuestion);
+      
+      // Get category buttons
+      const categoryButtons = document.querySelectorAll('.category-button');
+      categoryButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Update current category
+          currentCategory = this.getAttribute('data-category');
+          
+          // Update active button styling
+          categoryButtons.forEach(btn => {
+            btn.classList.remove('active');
+          });
+          this.classList.add('active');
+          
+          // Reset previous questions
+          previousQuestions = [];
+          
+          // Get a new question
+          getRandomQuestion();
+        });
+      });
+      
+      // Load initial question
+      getRandomQuestion();
+    });
+  </script>
+</body>
+</html>
