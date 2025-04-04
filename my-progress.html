@@ -891,56 +891,139 @@ function updateRecommendations() {
 function generateRecommendations() {
   const recommendations = [];
   
+  // Map topics to their landing page sections
+  const topicToSectionMap = {
+    'modal': { page: 'grammar/advanced/advanced-grammar.html', anchor: '#modals', title: 'Modal Verbs' },
+    'conditionals': { page: 'grammar/advanced/advanced-grammar.html', anchor: '#conditionals', title: 'Conditionals and Hypotheticals' },
+    'passive': { page: 'grammar/advanced/advanced-grammar.html', anchor: '#passive', title: 'Passive Voice' },
+    'tense': { page: 'grammar/advanced/advanced-grammar.html', anchor: '#advanced-tenses-and-aspect', title: 'Advanced Tenses' },
+    'verb-patterns': { page: 'grammar/advanced/advanced-grammar.html', anchor: '#verb-patterns-complemantation', title: 'Verb Patterns & Complementation' },
+    'adverbials': { page: 'grammar/advanced/advanced-grammar.html', anchor: '#adverbials-prep-phrases', title: 'Adverbials & Prepositional Phrases' },
+    'noun-phrases': { page: 'grammar/advanced/advanced-grammar.html', anchor: '#noun-phrases-articles', title: 'Noun Phrases & Articles' },
+    'complex-structures': { page: 'grammar/advanced/advanced-grammar.html', anchor: '#complex-structures', title: 'Complex Sentence Structures' },
+    'discourse': { page: 'grammar/advanced/advanced-grammar.html', anchor: '#discourse-cohesion', title: 'Discourse & Cohesion' },
+    'modifiers': { page: 'grammar/advanced/advanced-grammar.html', anchor: '#advanced-modifiers', title: 'Advanced Modifiers' },
+    'special-expressions': { page: 'grammar/advanced/advanced-grammar.html', anchor: '#special-expressions', title: 'Special Structures & Expressions' },
+    'register': { page: 'grammar/advanced/advanced-grammar.html', anchor: '#register-style', title: 'Register & Style' }
+  };
+  
   // Get incomplete activities and lessons
   const incompleteActivities = getIncompleteItems('activities');
   const incompleteLessons = getIncompleteItems('lessons');
   
-  // Add recommendations based on incomplete items
+  // Determine level based on progress
+  const progress = ProgressTrackingModule.getOverallProgress();
+  const overallPercentage = progress.percentage;
+  const level = overallPercentage < 33 ? 'beginner' : (overallPercentage < 66 ? 'intermediate' : 'advanced');
+  
+  // Add recommendations based on incomplete lessons
   if (incompleteLessons.length > 0) {
-    // Get partially completed lessons first
-    const partiallyCompleted = incompleteLessons.filter(lesson => {
-      const progress = ProgressTrackingModule.getProgressData().lessons[lesson.id];
-      return progress && progress.progress > 0 && progress.progress < 100;
-    });
+    let matchedTopic = null;
     
-    if (partiallyCompleted.length > 0) {
+    // Try to match the incomplete lesson with a topic
+    for (const [topic, sectionInfo] of Object.entries(topicToSectionMap)) {
+      if (incompleteLessons[0].id.includes(topic)) {
+        matchedTopic = topic;
+        recommendations.push({
+          title: `Continue learning about ${sectionInfo.title}`,
+          description: `Explore more lessons about ${sectionInfo.title.toLowerCase()} to improve your understanding.`,
+          url: `${sectionInfo.page}${sectionInfo.anchor}`
+        });
+        break;
+      }
+    }
+    
+    // If no match found, provide a generic recommendation based on level
+    if (!matchedTopic) {
+      if (level === 'advanced') {
+        recommendations.push({
+          title: "Continue your advanced grammar studies",
+          description: "Choose a lesson from our advanced grammar topics.",
+          url: "grammar/advanced/advanced-grammar.html"
+        });
+      } else if (level === 'intermediate') {
+        recommendations.push({
+          title: "Explore intermediate grammar topics",
+          description: "Choose a lesson to strengthen your intermediate grammar skills.",
+          url: "grammar/intermediate/intermediate-grammar.html"
+        });
+      } else {
+        recommendations.push({
+          title: "Build your grammar foundation",
+          description: "Choose a lesson to strengthen your basic grammar skills.",
+          url: "grammar/beginner/beginner-grammar.html"
+        });
+      }
+    }
+  }
+  
+  // Add recommendation for incomplete activities
+  if (incompleteActivities.length > 0) {
+    let activityMatchedTopic = null;
+    
+    // Try to match the incomplete activity with a topic
+    for (const [topic, sectionInfo] of Object.entries(topicToSectionMap)) {
+      if (incompleteActivities[0].id.includes(topic)) {
+        activityMatchedTopic = topic;
+        recommendations.push({
+          title: `Practice ${sectionInfo.title}`,
+          description: `Complete activities to reinforce your understanding of ${sectionInfo.title.toLowerCase()}.`,
+          url: `${sectionInfo.page}${sectionInfo.anchor}`
+        });
+        break;
+      }
+    }
+    
+    // If no match found and we don't already have 2 recommendations, add a generic one
+    if (!activityMatchedTopic && recommendations.length < 2) {
       recommendations.push({
-        title: 'Continue with ' + partiallyCompleted[0].title,
-        description: 'You\'ve started this lesson but haven\'t completed it yet.',
-        url: partiallyCompleted[0].url
-      });
-    } else {
-      recommendations.push({
-        title: 'Start learning ' + incompleteLessons[0].title,
-        description: 'This would be a good lesson to begin with based on your progress.',
-        url: incompleteLessons[0].url
+        title: "Practice your grammar skills",
+        description: "Complete activities to reinforce your grammar understanding.",
+        url: "extra-practice.html"
       });
     }
   }
   
-  if (incompleteActivities.length > 0) {
-    recommendations.push({
-      title: 'Practice with ' + incompleteActivities[0].title,
-      description: 'Complete this activity to reinforce your grammar skills.',
-      url: incompleteActivities[0].url
-    });
+  // Determine which category needs more work if we don't have enough recommendations
+  if (recommendations.length < 2) {
+    const lowestCategory = Object.entries(progress.categories)
+      .sort((a, b) => a[1].percentage - b[1].percentage)[0];
+    
+    if (lowestCategory && lowestCategory[1].percentage < 70) {
+      const categoryName = lowestCategory[0].charAt(0).toUpperCase() + 
+        lowestCategory[0].slice(1);
+      
+      let url = "home.html#where-to-start";
+      let title = `Improve your ${categoryName} score`;
+      let description = `Your ${categoryName} completion is at ${lowestCategory[1].percentage}%. Focus here to balance your progress.`;
+      
+      // Choose appropriate landing page based on category
+      if (lowestCategory[0] === 'lessons') {
+        if (level === 'advanced') {
+          url = "grammar/advanced/advanced-grammar.html";
+        } else if (level === 'intermediate') {
+          url = "grammar/intermediate/intermediate-grammar.html";
+        } else {
+          url = "grammar/beginner/beginner-grammar.html";
+        }
+      } else if (lowestCategory[0] === 'activities') {
+        url = "extra-practice.html";
+      }
+      
+      recommendations.push({
+        title,
+        description,
+        url
+      });
+    }
   }
   
-  // Add recommendation based on progress statistics
-  const progress = ProgressTrackingModule.getOverallProgress();
-  
-  // Determine which category needs more work
-  const lowestCategory = Object.entries(progress.categories)
-    .sort((a, b) => a[1].percentage - b[1].percentage)[0];
-  
-  if (lowestCategory && lowestCategory[1].percentage < 70) {
-    const categoryName = lowestCategory[0].charAt(0).toUpperCase() + 
-      lowestCategory[0].slice(1);
-    
+  // If we still don't have recommendations, add a generic one
+  if (recommendations.length === 0) {
     recommendations.push({
-      title: `Improve your ${categoryName} score`,
-      description: `Your ${categoryName} completion is at ${lowestCategory[1].percentage}%. Focus here to balance your progress.`,
-      url: `${lowestCategory[0]}.html`
+      title: "Explore grammar topics",
+      description: "Choose a topic to learn more about English grammar.",
+      url: "home.html#where-to-start"
     });
   }
   
@@ -965,11 +1048,6 @@ function getIncompleteItems(category) {
   const progressData = ProgressTrackingModule.getProgressData ? 
     ProgressTrackingModule.getProgressData()[category] : {};
   
-  // Determine URL pattern based on category
-  const urlPattern = category === 'activities' ? 
-    '{id}.html' : 
-    (category === 'lessons' ? '{id}.html' : '{id}.html');
-  
   // Iterate through all subcategories
   Object.entries(categoryDefinitions).forEach(([subcategory, items]) => {
     if (!Array.isArray(items)) return;
@@ -989,13 +1067,9 @@ function getIncompleteItems(category) {
           title = progressData[itemId].title;
         }
         
-        // Create URL from pattern
-        const url = urlPattern.replace('{id}', itemId);
-        
         incompleteItems.push({
           id: itemId,
           title: title,
-          url: url,
           subcategory: subcategory
         });
       }

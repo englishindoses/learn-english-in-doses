@@ -70,6 +70,9 @@ const ProgressTrackingModule = (function() {
     
     // Set up listeners for activity completion events
     setupActivityCompletionListener();
+
+    // Check for achievements after import
+    checkAchievements();
   }
   
   /**
@@ -95,8 +98,7 @@ const ProgressTrackingModule = (function() {
       if (e.detail && e.detail.activityId) {
         markItemCompleted('activities', e.detail.activityId, e.detail);
         
-        // Check for achievements
-        checkAchievements();
+        // NOTE: We don't call checkAchievements() here as it's already called in markItemCompleted
       }
     });
     
@@ -148,7 +150,14 @@ const ProgressTrackingModule = (function() {
         if (!progress.activities) return false;
         
         return Object.values(progress.activities).some(activity => {
-          return activity.score === activity.maxScore && activity.completed;
+          // Make sure both score and maxScore are defined and equal
+          return (
+            activity.score !== undefined && 
+            activity.maxScore !== undefined && 
+            activity.score === activity.maxScore && 
+            activity.score > 0 && 
+            activity.completed
+          );
         });
       },
       icon: '💯'
@@ -168,15 +177,18 @@ const ProgressTrackingModule = (function() {
       description: 'Complete all activities in a grammar category',
       criteria: function(progress) {
         // This requires categoryDefinitions to be properly set up
-        if (!categoryDefinitions || !categoryDefinitions.grammar) return false;
+        if (!categoryDefinitions || !categoryDefinitions.activities) return false;
         
-        const grammarCategories = categoryDefinitions.grammar;
-        
-        // Check if any grammar category is fully completed
-        return Object.keys(grammarCategories).some(categoryKey => {
-          const categoryItems = grammarCategories[categoryKey];
-          return categoryItems.every(itemId => {
-            return progress.activities && progress.activities[itemId] && progress.activities[itemId].completed;
+        // Check if any subcategory in activities is fully completed
+        return Object.entries(categoryDefinitions.activities).some(([subcategoryKey, items]) => {
+          // Skip empty subcategories
+          if (!Array.isArray(items) || items.length === 0) return false;
+          
+          // Check if all items in this subcategory are completed
+          return items.every(itemId => {
+            return progress.activities && 
+                   progress.activities[itemId] && 
+                   progress.activities[itemId].completed;
           });
         });
       },
@@ -296,6 +308,9 @@ const ProgressTrackingModule = (function() {
           }
         }
       }
+      
+      // Save the imported data to ensure it's consolidated
+      saveProgress();
     } catch (error) {
       console.error('Error importing legacy activity data:', error);
     }
@@ -1266,6 +1281,9 @@ const ProgressTrackingModule = (function() {
       
       // Save to localStorage
       saveProgress();
+      
+      // Check for new achievements
+      checkAchievements();
       
       // Notify callbacks
       notifyProgressChanged({

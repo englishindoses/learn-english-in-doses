@@ -10,17 +10,18 @@
  */
 
 /**
- * MCQ Module - Provides functionality for multiple choice questions
+ * MCQModule - Provides functionality for multiple choice questions
  */
 const MCQModule = (function() {
   // Private variables
   let score = 0;
   let totalQuestions = 0;
   let correctAnswers = {};
-  let correctExplanations = {}; // New
-  let incorrectExplanations = {}; // New
+  let correctExplanations = {}; 
+  let incorrectExplanations = {}; 
   let answered = {};
   let containerId = 'mcq';
+  let onCompleteCallback = null;
   
   /**
    * Initializes the MCQ module
@@ -36,9 +37,9 @@ const MCQModule = (function() {
     containerId = config.containerId || 'mcq';
     correctAnswers = config.answers || {};
     correctExplanations = config.explanations || {};
-    incorrectExplanations = config.incorrectTips || {}; // Add this line
+    incorrectExplanations = config.incorrectTips || {};
     const allowRetry = config.allowRetry !== undefined ? config.allowRetry : true;
-    const onComplete = config.onComplete || null;
+    onCompleteCallback = config.onComplete || null;
     
     // Reset score and answered status
     score = 0;
@@ -56,10 +57,13 @@ const MCQModule = (function() {
     setupOptionClickHandlers(allowRetry);
     
     // Set up submit button
-    setupSubmitButton(onComplete);
+    setupSubmitButton();
     
     // Set up restart button
     setupRestartButton();
+    
+    // Load progress
+    loadProgress();
   }
   
   /**
@@ -96,10 +100,8 @@ const MCQModule = (function() {
   
   /**
    * Sets up the submit button
-   * 
-   * @param {Function} onComplete - Callback function called when all questions are answered
    */
-  function setupSubmitButton(onComplete) {
+  function setupSubmitButton() {
     const submitButton = document.getElementById(`${containerId}-submit`);
     if (!submitButton) return;
     
@@ -128,7 +130,7 @@ const MCQModule = (function() {
             feedback.innerHTML = '<span class="feedback-result incorrect-result">Sorry, try again!</span> ' + tip;
             feedback.className = 'feedback incorrect';
           }
-        } else {
+        } else if (feedback) {
           feedback.textContent = 'Please select an answer.';
           feedback.className = 'feedback incorrect';
         }
@@ -151,22 +153,65 @@ const MCQModule = (function() {
       // Check if all questions are answered correctly
       const allAnswered = Object.values(answered).every(status => status);
       
-      // Call onComplete callback if all questions are answered
-      if (allAnswered && typeof onComplete === 'function') {
-        onComplete(score, totalQuestions);
-      }
+      // Save progress
+      saveProgress();
       
-      // Save progress to localStorage if available
-      if (typeof saveToLocalStorage === 'function') {
-        const activityData = {
-          score: score,
-          totalQuestions: totalQuestions,
-          completed: allAnswered
-        };
+      // Notify about activity completion
+      if (allAnswered) {
+        notifyCompletion();
         
-        saveToLocalStorage(`${containerId}-progress`, activityData);
+        // Call onComplete callback if provided
+        if (typeof onCompleteCallback === 'function') {
+          onCompleteCallback(score, totalQuestions);
+        }
       }
     });
+  }
+  
+  /**
+   * Notifies that the activity has been completed
+   */
+  function notifyCompletion() {
+    // Method 1: Use the activity-nav notification system (preferred)
+    if (typeof ActivityNavModule !== 'undefined' && 
+        typeof ActivityNavModule.notifyActivityCompleted === 'function') {
+      
+      ActivityNavModule.notifyActivityCompleted(containerId, {
+        score: score,
+        maxScore: totalQuestions,
+        completed: true,
+        completedAt: new Date().toISOString(),
+        title: document.title || `MCQ Activity: ${containerId}`
+      });
+    } 
+    // Method 2: Manually dispatch a custom event
+    else {
+      const event = new CustomEvent('activityCompleted', {
+        detail: {
+          activityId: containerId,
+          score: score,
+          maxScore: totalQuestions,
+          completed: true,
+          completedAt: new Date().toISOString(),
+          title: document.title || `MCQ Activity: ${containerId}`
+        }
+      });
+      
+      document.dispatchEvent(event);
+    }
+    
+    // Method 3: Directly update progress if ProgressTrackingModule is available
+    if (typeof ProgressTrackingModule !== 'undefined' && 
+        typeof ProgressTrackingModule.markItemCompleted === 'function') {
+      
+      ProgressTrackingModule.markItemCompleted('activities', containerId, {
+        score: score,
+        maxScore: totalQuestions,
+        completed: true,
+        completedAt: new Date().toISOString(),
+        title: document.title || `MCQ Activity: ${containerId}`
+      });
+    }
   }
   
   /**
@@ -210,7 +255,91 @@ const MCQModule = (function() {
       
       // Reset score
       score = 0;
+      
+      // Clear progress
+      clearProgress();
     });
+  }
+  
+  /**
+   * Saves progress to localStorage
+   */
+  function saveProgress() {
+    try {
+      // Create progress data object
+      const progressData = {
+        score: score,
+        totalQuestions: totalQuestions,
+        answered: answered,
+        completed: Object.values(answered).every(status => status),
+        timestamp: new Date().toISOString(),
+        title: document.title || `MCQ Activity: ${containerId}`
+      };
+      
+      // Method 1: Use localStorage if available
+      if (typeof localStorage !== 'undefined') {
+        localStorage.setItem(`${containerId}-progress`, JSON.stringify(progressData));
+      }
+      
+      return true;
+    } catch (error) {
+      console.error('Error saving progress:', error);
+      return false;
+    }
+  }
+  
+  /**
+   * Loads progress from localStorage
+   */
+  function loadProgress() {
+    try {
+      // Try to get saved progress
+      if (typeof localStorage !== 'undefined') {
+        const savedProgress = localStorage.getItem(`${containerId}-progress`);
+        
+        if (savedProgress) {
+          const progressData = JSON.parse(savedProgress);
+          
+          // Restore answered state
+          if (progressData.answered) {
+            answered = progressData.answered;
+            
+            // Restore selections
+            Object.entries(answered).forEach(([questionId, isAnswered]) => {
+              if (isAnswered && correctAnswers[questionId] !== undefined) {
+                selectOption(questionId, correctAnswers[questionId]);
+              }
+            });
+            
+            // Update score
+            score = progressData.score || 0;
+            
+            // If activity was completed, trigger submit
+            if (progressData.completed) {
+              const submitButton = document.getElementById(`${containerId}-submit`);
+              if (submitButton) {
+                submitButton.click();
+              }
+            }
+          }
+        }
+      }
+    } catch (error) {
+      console.error('Error loading progress:', error);
+    }
+  }
+  
+  /**
+   * Clears saved progress
+   */
+  function clearProgress() {
+    try {
+      if (typeof localStorage !== 'undefined') {
+        localStorage.removeItem(`${containerId}-progress`);
+      }
+    } catch (error) {
+      console.error('Error clearing progress:', error);
+    }
   }
   
   /**

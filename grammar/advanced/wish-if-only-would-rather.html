@@ -506,7 +506,7 @@
   
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Initialize MCQ Module
+      // Initialize MCQ Module with standardized activity tracking
       MCQModule.init({
         containerId: 'mcq',
         answers: {
@@ -522,30 +522,39 @@
           'q10': 2  // had known
         },
         onComplete: function(score, total) {
-  console.log('MCQ completed with score: ' + score + '/' + total);
-  
-  // Track this activity completion in the progress system
-  if (typeof ProgressTrackingModule !== 'undefined') {
-    // Mark the MCQ as completed in the 'activities' category
-    ProgressTrackingModule.markItemCompleted('activities', 'mcq-wish-if-only', {
-      score: score,
-      maxScore: total,
-      completed: true,
-      completedAt: new Date().toISOString(),
-      title: 'Wish & If Only Quick Practice' // Human-readable title for activity listings
-    });
-    
-    // Also mark the lesson itself as viewed/completed
-    ProgressTrackingModule.updateItemProgress('lessons', 'wish-if-only', {
-      lastViewed: new Date().toISOString(),
-      progress: 100, // Percent complete
-      title: 'Wish, If Only, and Would Rather' // Human-readable lesson title
-    });
-  }
-}
+          console.log('MCQ completed with score: ' + score + '/' + total);
+          
+          // The MCQ module now handles activity completion notifications automatically
+          // We only need to update the lesson progress
+          if (typeof ProgressTrackingModule !== 'undefined') {
+            // Mark the lesson itself as viewed/completed
+            ProgressTrackingModule.updateItemProgress('lessons', 'wish-if-only', {
+              lastViewed: new Date().toISOString(),
+              progress: 100, // Percent complete
+              title: 'Wish, If Only, and Would Rather' // Human-readable lesson title
+            });
+          }
+        },
+        // Add explanations for better feedback
+        explanations: {
+          'q1': 'We use past simple (was/were) after "wish" for present situations.',
+          'q2': 'For past regrets, we use past perfect (had listened) after "if only".',
+          'q3': 'With "would rather" for your own preferences, use the base form of the verb.',
+          'q4': 'For past regrets, we use past perfect (had accepted) after "wish".',
+          'q5': 'When talking about others` actions, use past simple (didn`t) after "would rather".',
+          'q6': 'We use past simple (knew) after "if only" for present wishes.',
+          'q7': 'Use past simple (were) after "wish" for hypothetical present/future situations.',
+          'q8': 'For past preferences, use "would rather have" + past participle.',
+          'q9': 'Use "would stop" after "wish" for desired future events.',
+          'q10': 'For past regrets, we use past perfect (had known) after "if only".'
+        }
       });
       
-
+      // Check if the user recently completed the activity (page reload case)
+      // This helps trigger achievement checks if the page is reloaded
+      if (typeof ProgressTrackingModule !== 'undefined') {
+        ProgressTrackingModule.checkAchievements();
+      }
     });
   </script>
 </body>
