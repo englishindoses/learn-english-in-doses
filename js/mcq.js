@@ -29,10 +29,14 @@ const MCQModule = (function() {
    * @param {Object} config - Configuration object
    * @param {string} config.containerId - ID of the container element (default: 'mcq')
    * @param {Object} config.answers - Object mapping question IDs to correct answer indices
+   * @param {Object} config.explanations - Object mapping question IDs to explanations
+   * @param {Object} config.incorrectTips - Object mapping question IDs to tips for incorrect answers
    * @param {Function} config.onComplete - Callback function called when all questions are answered
    * @param {boolean} config.allowRetry - Allow retry after incorrect answer (default: true)
    */
   function init(config = {}) {
+    console.log('Initializing MCQ Module with config:', config);
+    
     // Set up configuration
     containerId = config.containerId || 'mcq';
     correctAnswers = config.answers || {};
@@ -46,6 +50,7 @@ const MCQModule = (function() {
     
     // Calculate total questions
     totalQuestions = Object.keys(correctAnswers).length;
+    console.log(`MCQ Module initialized with ${totalQuestions} questions`);
     
     // Initialize answered object
     answered = {};
@@ -74,13 +79,27 @@ const MCQModule = (function() {
   function setupOptionClickHandlers(allowRetry) {
     // Get all options
     const container = document.getElementById(containerId);
-    if (!container) return;
+    if (!container) {
+      console.warn(`MCQ container with ID "${containerId}" not found`);
+      return;
+    }
     
     const options = container.querySelectorAll('.option');
+    console.log(`Found ${options.length} options in MCQ container`);
     
     options.forEach(option => {
       option.addEventListener('click', function() {
-        const questionId = this.closest('.question').id;
+        const questionElement = this.closest('.question');
+        if (!questionElement) {
+          console.warn('Question element not found for clicked option');
+          return;
+        }
+        
+        const questionId = questionElement.id;
+        if (!questionId) {
+          console.warn('Question ID not found for clicked option');
+          return;
+        }
         
         // If already answered and no retry, do nothing
         if (answered[questionId] && !allowRetry) return;
@@ -94,6 +113,8 @@ const MCQModule = (function() {
         
         // Select this option
         this.classList.add('selected');
+        
+        console.log(`Option selected for question ${questionId}: ${this.textContent.trim()}`);
       });
     });
   }
@@ -103,10 +124,15 @@ const MCQModule = (function() {
    */
   function setupSubmitButton() {
     const submitButton = document.getElementById(`${containerId}-submit`);
-    if (!submitButton) return;
+    if (!submitButton) {
+      console.warn(`Submit button with ID "${containerId}-submit" not found`);
+      return;
+    }
     
     submitButton.addEventListener('click', function() {
+      console.log('MCQ submit button clicked');
       score = 0;
+      let allCorrect = true;
       
       Object.keys(correctAnswers).forEach(questionId => {
         const selectedOption = document.querySelector(`#${questionId} .option.selected`);
@@ -114,12 +140,14 @@ const MCQModule = (function() {
         
         if (selectedOption) {
           const selectedIndex = parseInt(selectedOption.getAttribute('data-index'));
+          console.log(`Question ${questionId}: selected index ${selectedIndex}, correct answer is ${correctAnswers[questionId]}`);
+          
           // Get data-explanation attribute from the option if it exists, otherwise use our stored explanations
           const optionExplanation = selectedOption.getAttribute('data-explanation');
           
           if (selectedIndex === correctAnswers[questionId]) {
             // Correct answer feedback
-            const explanation = correctExplanations[questionId] || 'This is the correct answer.';
+            const explanation = correctExplanations[questionId] || optionExplanation || 'This is the correct answer.';
             feedback.innerHTML = '<span class="feedback-result correct-result">Correct!</span> ' + explanation;
             feedback.className = 'feedback correct';
             score++;
@@ -129,10 +157,12 @@ const MCQModule = (function() {
             const tip = incorrectExplanations[questionId] || 'Remember the rules for this grammar point.';
             feedback.innerHTML = '<span class="feedback-result incorrect-result">Sorry, try again!</span> ' + tip;
             feedback.className = 'feedback incorrect';
+            allCorrect = false;
           }
         } else if (feedback) {
           feedback.textContent = 'Please select an answer.';
           feedback.className = 'feedback incorrect';
+          allCorrect = false;
         }
       });
       
@@ -153,16 +183,22 @@ const MCQModule = (function() {
       // Check if all questions are answered correctly
       const allAnswered = Object.values(answered).every(status => status);
       
+      console.log(`MCQ submission results: Score: ${score}/${totalQuestions}, All correct: ${allCorrect}, All answered: ${allAnswered}`);
+      
       // Save progress
       saveProgress();
       
-      // Notify about activity completion
+      // If all questions are answered correctly, notify about completion
       if (allAnswered) {
         notifyCompletion();
         
         // Call onComplete callback if provided
         if (typeof onCompleteCallback === 'function') {
-          onCompleteCallback(score, totalQuestions);
+          try {
+            onCompleteCallback(score, totalQuestions);
+          } catch (error) {
+            console.error('Error in onComplete callback:', error);
+          }
         }
       }
     });
@@ -170,22 +206,57 @@ const MCQModule = (function() {
   
   /**
    * Notifies that the activity has been completed
+   * Improved to ensure reliable tracking with multiple fallbacks
    */
   function notifyCompletion() {
-    // Method 1: Use the activity-nav notification system (preferred)
+    console.log(`MCQ Activity completed: ${containerId}`);
+    
+    // Create and store completion data directly
+    const completionData = {
+      activityId: containerId,
+      score: score,
+      maxScore: totalQuestions,
+      completed: true,
+      completedAt: new Date().toISOString(),
+      title: document.title || `MCQ Activity: ${containerId}`
+    };
+    
+    // Save directly to localStorage as a fallback
+    if (typeof saveToLocalStorage === 'function') {
+      saveToLocalStorage(`${containerId}-progress`, completionData);
+    } else {
+      try {
+        localStorage.setItem(`${containerId}-progress`, JSON.stringify(completionData));
+      } catch (e) {
+        console.error('Error saving to localStorage directly:', e);
+      }
+    }
+    
+    // Try all notification methods
+    // Method 1: Use ProgressTrackingModule directly
+    if (typeof ProgressTrackingModule !== 'undefined' && 
+        typeof ProgressTrackingModule.markItemCompleted === 'function') {
+      try {
+        ProgressTrackingModule.markItemCompleted('activities', containerId, completionData);
+        console.log('Notified ProgressTrackingModule directly');
+      } catch (e) {
+        console.error('Error notifying ProgressTrackingModule:', e);
+      }
+    }
+    
+    // Method 2: Use ActivityNavModule
     if (typeof ActivityNavModule !== 'undefined' && 
         typeof ActivityNavModule.notifyActivityCompleted === 'function') {
-      
-      ActivityNavModule.notifyActivityCompleted(containerId, {
-        score: score,
-        maxScore: totalQuestions,
-        completed: true,
-        completedAt: new Date().toISOString(),
-        title: document.title || `MCQ Activity: ${containerId}`
-      });
-    } 
-    // Method 2: Manually dispatch a custom event
-    else {
+      try {
+        ActivityNavModule.notifyActivityCompleted(containerId, completionData);
+        console.log('Notified ActivityNavModule');
+      } catch (e) {
+        console.error('Error notifying ActivityNavModule:', e);
+      }
+    }
+    
+    // Method 3: Dispatch event
+    try {
       const event = new CustomEvent('activityCompleted', {
         detail: {
           activityId: containerId,
@@ -196,21 +267,19 @@ const MCQModule = (function() {
           title: document.title || `MCQ Activity: ${containerId}`
         }
       });
-      
       document.dispatchEvent(event);
+      console.log('Dispatched activityCompleted event');
+    } catch (e) {
+      console.error('Error dispatching event:', e);
     }
     
-    // Method 3: Directly update progress if ProgressTrackingModule is available
-    if (typeof ProgressTrackingModule !== 'undefined' && 
-        typeof ProgressTrackingModule.markItemCompleted === 'function') {
-      
-      ProgressTrackingModule.markItemCompleted('activities', containerId, {
-        score: score,
-        maxScore: totalQuestions,
-        completed: true,
-        completedAt: new Date().toISOString(),
-        title: document.title || `MCQ Activity: ${containerId}`
-      });
+    // Method 4: Try to display visual feedback to the user
+    try {
+      if (typeof showFeedbackMessage === 'function') {
+        showFeedbackMessage(`Activity completed! Score: ${score}/${totalQuestions}`, 'success', 3000);
+      }
+    } catch (e) {
+      console.error('Error showing feedback message:', e);
     }
   }
   
@@ -221,9 +290,14 @@ const MCQModule = (function() {
     const restartButton = document.getElementById(`${containerId}-restart`);
     const submitButton = document.getElementById(`${containerId}-submit`);
     
-    if (!restartButton) return;
+    if (!restartButton) {
+      console.warn(`Restart button with ID "${containerId}-restart" not found`);
+      return;
+    }
     
     restartButton.addEventListener('click', function() {
+      console.log('MCQ restart button clicked');
+      
       // Clear selections
       const container = document.getElementById(containerId);
       container.querySelectorAll('.option').forEach(option => {
@@ -266,6 +340,8 @@ const MCQModule = (function() {
    */
   function saveProgress() {
     try {
+      console.log(`Saving MCQ progress for ${containerId}`);
+      
       // Create progress data object
       const progressData = {
         score: score,
@@ -276,9 +352,17 @@ const MCQModule = (function() {
         title: document.title || `MCQ Activity: ${containerId}`
       };
       
-      // Method 1: Use localStorage if available
-      if (typeof localStorage !== 'undefined') {
+      // Method 1: Use saveToLocalStorage function if available
+      if (typeof saveToLocalStorage === 'function') {
+        saveToLocalStorage(`${containerId}-progress`, progressData);
+        console.log('Progress saved using saveToLocalStorage function');
+      }
+      // Method 2: Use localStorage directly
+      else if (typeof localStorage !== 'undefined') {
         localStorage.setItem(`${containerId}-progress`, JSON.stringify(progressData));
+        console.log('Progress saved directly to localStorage');
+      } else {
+        console.warn('Unable to save progress: localStorage not available');
       }
       
       return true;
@@ -293,36 +377,53 @@ const MCQModule = (function() {
    */
   function loadProgress() {
     try {
-      // Try to get saved progress
-      if (typeof localStorage !== 'undefined') {
-        const savedProgress = localStorage.getItem(`${containerId}-progress`);
+      console.log(`Loading MCQ progress for ${containerId}`);
+      
+      let savedProgress = null;
+      
+      // Method 1: Use getFromLocalStorage function if available
+      if (typeof getFromLocalStorage === 'function') {
+        savedProgress = getFromLocalStorage(`${containerId}-progress`);
+        console.log('Progress loaded using getFromLocalStorage function');
+      }
+      // Method 2: Use localStorage directly
+      else if (typeof localStorage !== 'undefined') {
+        const savedData = localStorage.getItem(`${containerId}-progress`);
         
-        if (savedProgress) {
-          const progressData = JSON.parse(savedProgress);
+        if (savedData) {
+          savedProgress = JSON.parse(savedData);
+          console.log('Progress loaded directly from localStorage');
+        }
+      }
+      
+      if (savedProgress) {
+        console.log('Saved progress found:', savedProgress);
+        
+        // Restore answered state
+        if (savedProgress.answered) {
+          answered = savedProgress.answered;
           
-          // Restore answered state
-          if (progressData.answered) {
-            answered = progressData.answered;
-            
-            // Restore selections
-            Object.entries(answered).forEach(([questionId, isAnswered]) => {
-              if (isAnswered && correctAnswers[questionId] !== undefined) {
-                selectOption(questionId, correctAnswers[questionId]);
-              }
-            });
-            
-            // Update score
-            score = progressData.score || 0;
-            
-            // If activity was completed, trigger submit
-            if (progressData.completed) {
-              const submitButton = document.getElementById(`${containerId}-submit`);
-              if (submitButton) {
-                submitButton.click();
-              }
+          // Restore selections
+          Object.entries(answered).forEach(([questionId, isAnswered]) => {
+            if (isAnswered && correctAnswers[questionId] !== undefined) {
+              selectOption(questionId, correctAnswers[questionId]);
+            }
+          });
+          
+          // Update score
+          score = savedProgress.score || 0;
+          
+          // If activity was completed, trigger submit
+          if (savedProgress.completed) {
+            const submitButton = document.getElementById(`${containerId}-submit`);
+            if (submitButton) {
+              console.log('Activity was previously completed, triggering submit button');
+              submitButton.click();
             }
           }
         }
+      } else {
+        console.log('No saved progress found');
       }
     } catch (error) {
       console.error('Error loading progress:', error);
@@ -334,8 +435,19 @@ const MCQModule = (function() {
    */
   function clearProgress() {
     try {
-      if (typeof localStorage !== 'undefined') {
+      console.log(`Clearing MCQ progress for ${containerId}`);
+      
+      // Method 1: Use removeFromLocalStorage function if available
+      if (typeof removeFromLocalStorage === 'function') {
+        removeFromLocalStorage(`${containerId}-progress`);
+        console.log('Progress cleared using removeFromLocalStorage function');
+      }
+      // Method 2: Use localStorage directly
+      else if (typeof localStorage !== 'undefined') {
         localStorage.removeItem(`${containerId}-progress`);
+        console.log('Progress cleared directly from localStorage');
+      } else {
+        console.warn('Unable to clear progress: localStorage not available');
       }
     } catch (error) {
       console.error('Error clearing progress:', error);
@@ -351,9 +463,16 @@ const MCQModule = (function() {
    */
   function selectOption(questionId, optionIndex) {
     const question = document.getElementById(questionId);
-    if (!question) return;
+    if (!question) {
+      console.warn(`Question with ID "${questionId}" not found`);
+      return;
+    }
     
     const options = question.querySelectorAll('.option');
+    if (options.length === 0) {
+      console.warn(`No options found for question "${questionId}"`);
+      return;
+    }
     
     // Clear previous selections
     options.forEach(opt => {
@@ -364,6 +483,9 @@ const MCQModule = (function() {
     const optionToSelect = options[optionIndex];
     if (optionToSelect) {
       optionToSelect.classList.add('selected');
+      console.log(`Selected option ${optionIndex} for question ${questionId}`);
+    } else {
+      console.warn(`Option with index ${optionIndex} not found for question "${questionId}"`);
     }
   }
   
@@ -394,7 +516,11 @@ const MCQModule = (function() {
     init: init,
     getScore: getScore,
     isCompleted: isCompleted,
-    selectOption: selectOption
+    selectOption: selectOption,
+    // For debugging
+    _saveProgress: saveProgress,
+    _loadProgress: loadProgress,
+    _notifyCompletion: notifyCompletion
   };
 })();
 

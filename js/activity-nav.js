@@ -40,6 +40,8 @@ const ActivityNavModule = (function() {
    * @param {boolean} config.useUrlParams - Whether to update URL parameters with activity (default: false)
    */
   function init(config = {}) {
+    console.log('Initializing ActivityNavModule with config:', config);
+    
     // Set up configuration
     containerId = config.containerId || 'activity-nav';
     activityContainersSelector = config.activityContainersSelector || '.activity-container';
@@ -57,6 +59,8 @@ const ActivityNavModule = (function() {
       // Auto-detect activities from DOM
       activities = detectActivities();
     }
+    
+    console.log('Detected activities:', activities);
     
     // Set up navigation button click handlers
     setupNavButtonHandlers();
@@ -86,6 +90,93 @@ const ActivityNavModule = (function() {
     // Update progress display if enabled
     if (progressTrackingEnabled) {
       updateProgressDisplay();
+    }
+    
+    // Set up listener for activity completion events
+    setupActivityCompletionListener();
+  }
+  
+  /**
+   * Sets up listener for activity completion events
+   */
+  function setupActivityCompletionListener() {
+    // Remove any existing listeners to prevent duplicates
+    document.removeEventListener('activityCompleted', handleActivityCompletedEvent);
+    
+    // Add listener for activity completion events
+    document.addEventListener('activityCompleted', handleActivityCompletedEvent);
+    
+    console.log('Activity completion listener setup complete');
+  }
+  
+  /**
+   * Handles activity completed events
+   * 
+   * @param {CustomEvent} event - The activity completed event
+   */
+  function handleActivityCompletedEvent(event) {
+    console.log('Activity completed event received:', event.detail);
+    
+    if (event.detail && event.detail.activityId) {
+      // Update UI to show completion
+      handleActivityCompletion(event.detail.activityId);
+      
+      // If ProgressTrackingModule is available, forward the event to it
+      if (typeof ProgressTrackingModule !== 'undefined' && 
+          typeof ProgressTrackingModule.markItemCompleted === 'function') {
+        try {
+          // Convert our detail object to what ProgressTrackingModule expects
+          const details = {
+            completed: true,
+            completedAt: event.detail.timestamp || new Date().toISOString(),
+            score: event.detail.score,
+            maxScore: event.detail.maxScore,
+            title: event.detail.title || event.detail.activityId
+          };
+          
+          ProgressTrackingModule.markItemCompleted('activities', event.detail.activityId, details);
+          console.log('Forwarded activity completion to ProgressTrackingModule');
+        } catch (error) {
+          console.error('Error forwarding to ProgressTrackingModule:', error);
+        }
+      }
+      
+      // Make sure this activity's completion status is saved directly
+      saveActivityProgressToLocalStorage(event.detail.activityId, event.detail);
+    }
+  }
+  
+  /**
+   * Saves activity progress directly to localStorage for redundancy
+   * 
+   * @param {string} activityId - The ID of the completed activity
+   * @param {Object} details - The details of the completion
+   */
+  function saveActivityProgressToLocalStorage(activityId, details) {
+    const progressKey = `${activityId}-progress`;
+    
+    try {
+      // Ensure we have a consistent data format
+      const progressData = {
+        completed: true,
+        completedAt: details.timestamp || details.completedAt || new Date().toISOString(),
+        score: details.score,
+        maxScore: details.maxScore,
+        title: details.title || activityId
+      };
+      
+      // Try different methods to save the data
+      if (typeof saveToLocalStorage === 'function') {
+        // Use the utility function if available
+        saveToLocalStorage(progressKey, progressData);
+      } else if (typeof localStorage !== 'undefined') {
+        // Fall back to direct localStorage usage
+        localStorage.setItem(progressKey, JSON.stringify(progressData));
+      }
+      
+      console.log(`Saved activity progress directly to localStorage: ${progressKey}`);
+    } catch (error) {
+      console.error('Error saving activity progress to localStorage:', error);
     }
   }
   
@@ -127,7 +218,10 @@ const ActivityNavModule = (function() {
    */
   function setupNavButtonHandlers() {
     const navContainer = document.getElementById(containerId);
-    if (!navContainer) return;
+    if (!navContainer) {
+      console.warn(`Navigation container with ID "${containerId}" not found`);
+      return;
+    }
     
     const buttons = navContainer.querySelectorAll(activityButtonSelector);
     
@@ -152,6 +246,8 @@ const ActivityNavModule = (function() {
       return;
     }
     
+    console.log(`Navigating to activity: ${activityId}`);
+    
     // Hide all activities
     document.querySelectorAll(activityContainersSelector).forEach(container => {
       container.classList.remove('active');
@@ -161,6 +257,8 @@ const ActivityNavModule = (function() {
     const activityContainer = document.getElementById(activityId);
     if (activityContainer) {
       activityContainer.classList.add('active');
+    } else {
+      console.warn(`Activity container with ID "${activityId}" not found`);
     }
     
     // Update navigation buttons
@@ -188,7 +286,11 @@ const ActivityNavModule = (function() {
     
     // Call onActivityChange callback if provided
     if (typeof onActivityChangeCallback === 'function') {
-      onActivityChangeCallback(activityId);
+      try {
+        onActivityChangeCallback(activityId);
+      } catch (error) {
+        console.error('Error in onActivityChange callback:', error);
+      }
     }
   }
   
@@ -210,8 +312,24 @@ const ActivityNavModule = (function() {
    * Loads the last active activity from localStorage
    */
   function loadLastActivity() {
-    if (typeof getFromLocalStorage !== 'function') return;
+    // Check if we can access localStorage
+    if (typeof getFromLocalStorage !== 'function') {
+      if (typeof localStorage !== 'undefined') {
+        // Fall back to direct localStorage access
+        try {
+          const lastActivity = localStorage.getItem('lastActivity');
+          if (lastActivity && activities.includes(lastActivity)) {
+            navigateToActivity(lastActivity);
+            return;
+          }
+        } catch (error) {
+          console.error('Error reading from localStorage directly:', error);
+        }
+      }
+      return;
+    }
     
+    // Use the utility function
     const lastActivity = getFromLocalStorage('lastActivity');
     
     if (lastActivity && activities.includes(lastActivity)) {
@@ -292,13 +410,40 @@ const ActivityNavModule = (function() {
    * @returns {boolean} - Whether the activity is completed
    */
   function isActivityCompleted(activityId) {
-    if (typeof getFromLocalStorage !== 'function') return false;
+    // First try to use ProgressTrackingModule if available
+    if (typeof ProgressTrackingModule !== 'undefined' && 
+        typeof ProgressTrackingModule.isItemCompleted === 'function') {
+      try {
+        return ProgressTrackingModule.isItemCompleted('activities', activityId);
+      } catch (error) {
+        console.error('Error checking completion with ProgressTrackingModule:', error);
+        // Fall through to other methods
+      }
+    }
     
     // Try to get activity progress from localStorage
-    const progressKey = `${activityId}-progress`;
-    const progressData = getFromLocalStorage(progressKey);
-    
-    return progressData && progressData.completed === true;
+    try {
+      // First try with the utility function
+      let progressData = null;
+      
+      if (typeof getFromLocalStorage === 'function') {
+        const progressKey = `${activityId}-progress`;
+        progressData = getFromLocalStorage(progressKey);
+      } 
+      // Fall back to direct localStorage access
+      else if (typeof localStorage !== 'undefined') {
+        const progressKey = `${activityId}-progress`;
+        const storedData = localStorage.getItem(progressKey);
+        if (storedData) {
+          progressData = JSON.parse(storedData);
+        }
+      }
+      
+      return progressData && progressData.completed === true;
+    } catch (error) {
+      console.error('Error checking activity completion status:', error);
+      return false;
+    }
   }
   
   /**
@@ -511,6 +656,8 @@ const ActivityNavModule = (function() {
    * @param {string} activityId - ID of the completed activity
    */
   function handleActivityCompletion(activityId) {
+    console.log(`Handling activity completion for: ${activityId}`);
+    
     // Update activity button to show completion
     const navContainer = document.getElementById(containerId);
     if (navContainer) {
@@ -604,57 +751,79 @@ const ActivityNavModule = (function() {
    * Resets progress for all activities
    */
   function resetAllActivities() {
-    if (typeof removeFromLocalStorage !== 'function') return;
+    if (typeof removeFromLocalStorage !== 'function' && typeof localStorage === 'undefined') {
+      console.error('Cannot reset activities: localStorage not available');
+      return;
+    }
     
     if (!confirm('Are you sure you want to reset progress for all activities?')) {
       return;
     }
     
-    // Remove progress data for each activity
-    activities.forEach(activityId => {
-      removeFromLocalStorage(`${activityId}-progress`);
-    });
+    console.log('Resetting all activities');
     
-    // Update UI
-    const navContainer = document.getElementById(containerId);
-    if (navContainer) {
-      navContainer.querySelectorAll(`${activityButtonSelector} .completion-icon`).forEach(icon => {
-        icon.remove();
+    try {
+      // Remove progress data for each activity
+      activities.forEach(activityId => {
+        if (typeof removeFromLocalStorage === 'function') {
+          removeFromLocalStorage(`${activityId}-progress`);
+        } else if (typeof localStorage !== 'undefined') {
+          localStorage.removeItem(`${activityId}-progress`);
+        }
       });
       
-      navContainer.querySelectorAll(`${activityButtonSelector}`).forEach(button => {
-        button.classList.remove('completed');
-      });
-    }
-    
-    // Remove completion message
-    const completionMessage = document.getElementById('completion-message');
-    if (completionMessage) {
-      completionMessage.remove();
-    }
-    
-    // Update progress display
-    if (progressTrackingEnabled) {
-      updateProgressDisplay({
-        completed: 0,
-        total: activities.length,
-        percentage: 0
-      });
-    }
-    
-    // Reload page to reset all activity states
-    window.location.reload();
-  }
-  
-  /**
-   * Sets an event listener for activity completion from other modules
-   */
-  function listenForActivityCompletion() {
-    document.addEventListener('activityCompleted', function(e) {
-      if (e.detail && e.detail.activityId) {
-        handleActivityCompletion(e.detail.activityId);
+      // Update UI
+      const navContainer = document.getElementById(containerId);
+      if (navContainer) {
+        navContainer.querySelectorAll(`${activityButtonSelector} .completion-icon`).forEach(icon => {
+          icon.remove();
+        });
+        
+        navContainer.querySelectorAll(`${activityButtonSelector}`).forEach(button => {
+          button.classList.remove('completed');
+        });
       }
-    });
+      
+      // Remove completion message
+      const completionMessage = document.getElementById('completion-message');
+      if (completionMessage) {
+        completionMessage.remove();
+      }
+      
+      // Update progress display
+      if (progressTrackingEnabled) {
+        updateProgressDisplay({
+          completed: 0,
+          total: activities.length,
+          percentage: 0
+        });
+      }
+      
+      // Notify ProgressTrackingModule if available
+      if (typeof ProgressTrackingModule !== 'undefined' && 
+          typeof ProgressTrackingModule.resetAllProgress === 'function') {
+        try {
+          ProgressTrackingModule.resetAllProgress(false); // Don't show confirmation again
+        } catch (error) {
+          console.error('Error resetting progress in ProgressTrackingModule:', error);
+        }
+      }
+      
+      // Show feedback message if available
+      if (typeof showFeedbackMessage === 'function') {
+        showFeedbackMessage('All activity progress has been reset.', 'info', 3000);
+      }
+      
+      // Reload page to reset all activity states
+      window.location.reload();
+    } catch (error) {
+      console.error('Error resetting activities:', error);
+      
+      // Show error message if available
+      if (typeof showFeedbackMessage === 'function') {
+        showFeedbackMessage('Error resetting activities: ' + error.message, 'error', 3000);
+      }
+    }
   }
   
   /**
@@ -664,24 +833,60 @@ const ActivityNavModule = (function() {
    * @param {Object} details - Additional completion details
    */
   function notifyActivityCompleted(activityId, details = {}) {
-    // Create and dispatch custom event
-    const event = new CustomEvent('activityCompleted', {
-      detail: {
-        activityId: activityId,
-        timestamp: new Date().toISOString(),
-        ...details
-      }
-    });
+    console.log(`Activity completed notification for: ${activityId}`, details);
     
-    document.dispatchEvent(event);
+    // Ensure we have a basic set of details
+    const completionDetails = {
+      activityId: activityId,
+      timestamp: new Date().toISOString(),
+      completed: true,
+      ...details
+    };
+    
+    // Method 1: Create and dispatch custom event
+    try {
+      const event = new CustomEvent('activityCompleted', {
+        detail: completionDetails
+      });
+      
+      document.dispatchEvent(event);
+      console.log('Dispatched activityCompleted event');
+    } catch (error) {
+      console.error('Error dispatching activity completed event:', error);
+    }
+    
+    // Method 2: Update UI directly
+    handleActivityCompletion(activityId);
+    
+    // Method 3: Forward to ProgressTrackingModule directly
+    if (typeof ProgressTrackingModule !== 'undefined' && 
+        typeof ProgressTrackingModule.markItemCompleted === 'function') {
+      try {
+        ProgressTrackingModule.markItemCompleted('activities', activityId, {
+          completed: true,
+          completedAt: completionDetails.timestamp,
+          score: completionDetails.score,
+          maxScore: completionDetails.maxScore,
+          title: completionDetails.title || activityId
+        });
+        console.log('Directly notified ProgressTrackingModule');
+      } catch (error) {
+        console.error('Error notifying ProgressTrackingModule directly:', error);
+      }
+    }
+    
+    // Method 4: Save to localStorage directly
+    saveActivityProgressToLocalStorage(activityId, completionDetails);
   }
   
   // Initialize event listeners when module loads
   function initialize() {
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', listenForActivityCompletion);
+      document.addEventListener('DOMContentLoaded', function() {
+        setupActivityCompletionListener();
+      });
     } else {
-      listenForActivityCompletion();
+      setupActivityCompletionListener();
     }
   }
   
@@ -703,7 +908,9 @@ const ActivityNavModule = (function() {
     setupKeyboardNavigation: setupKeyboardNavigation,
     createTableOfContents: createTableOfContents,
     resetAllActivities: resetAllActivities,
-    notifyActivityCompleted: notifyActivityCompleted
+    notifyActivityCompleted: notifyActivityCompleted,
+    // For debugging
+    _handleActivityCompletion: handleActivityCompletion
   };
 })();
 

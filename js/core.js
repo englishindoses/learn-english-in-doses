@@ -15,6 +15,9 @@ document.addEventListener('DOMContentLoaded', function() {
   initMobileNavigation();
   initPrintButton();
   initSkipLink();
+  
+  // Log initialization for debugging
+  console.log('Core module initialized');
 });
 
 /**
@@ -137,7 +140,7 @@ function initMobileNavigation() {
  */
 
 /**
- * Saves a value to localStorage with error handling
+ * Saves a value to localStorage with improved error handling
  * 
  * @param {string} key - The key to store the value under
  * @param {any} value - The value to store
@@ -145,12 +148,35 @@ function initMobileNavigation() {
  */
 function saveToLocalStorage(key, value) {
   try {
-    // Handle objects and arrays by JSON stringifying them
-    const valueToStore = typeof value === 'object' 
-      ? JSON.stringify(value) 
-      : value;
+    // First check if localStorage is available
+    if (!isLocalStorageAvailable()) {
+      console.warn('localStorage is not available in this browser');
+      return false;
+    }
     
+    // Handle objects and arrays safely
+    let valueToStore;
+    if (typeof value === 'object' && value !== null) {
+      try {
+        valueToStore = JSON.stringify(value);
+      } catch (err) {
+        console.error('Failed to stringify object for localStorage:', err);
+        return false;
+      }
+    } else {
+      valueToStore = value;
+    }
+    
+    // Attempt to store
     localStorage.setItem(key, valueToStore);
+    
+    // Verify storage was successful
+    const verification = localStorage.getItem(key);
+    if (!verification) {
+      console.warn(`Storage verification failed for key: ${key}`);
+      return false;
+    }
+    
     return true;
   } catch (error) {
     console.error('Error saving to localStorage:', error);
@@ -159,7 +185,7 @@ function saveToLocalStorage(key, value) {
 }
 
 /**
- * Retrieves a value from localStorage with error handling
+ * Retrieves a value from localStorage with improved error handling
  * 
  * @param {string} key - The key to retrieve
  * @param {any} defaultValue - Default value to return if key doesn't exist
@@ -167,14 +193,24 @@ function saveToLocalStorage(key, value) {
  */
 function getFromLocalStorage(key, defaultValue = null) {
   try {
+    // Check if localStorage is available
+    if (!isLocalStorageAvailable()) {
+      console.warn('localStorage is not available in this browser');
+      return defaultValue;
+    }
+    
     const value = localStorage.getItem(key);
     
-    if (value === null) return defaultValue;
+    // If key doesn't exist, return the default value
+    if (value === null) {
+      return defaultValue;
+    }
     
-    // Try to parse JSON, return original value if not JSON
+    // Try to parse as JSON, return original value if not valid JSON
     try {
       return JSON.parse(value);
     } catch (e) {
+      // Not JSON, return as is
       return value;
     }
   } catch (error) {
@@ -184,13 +220,19 @@ function getFromLocalStorage(key, defaultValue = null) {
 }
 
 /**
- * Removes a value from localStorage with error handling
+ * Removes a value from localStorage with improved error handling
  * 
  * @param {string} key - The key to remove
  * @returns {boolean} - True if successful, false otherwise
  */
 function removeFromLocalStorage(key) {
   try {
+    // Check if localStorage is available
+    if (!isLocalStorageAvailable()) {
+      console.warn('localStorage is not available in this browser');
+      return false;
+    }
+    
     localStorage.removeItem(key);
     return true;
   } catch (error) {
@@ -206,12 +248,40 @@ function removeFromLocalStorage(key) {
  */
 function isLocalStorageAvailable() {
   try {
-    const testKey = '__storage_test__';
+    // Use a unique test key to avoid conflicts
+    const testKey = `__storage_test_${Math.random().toString(36).substring(2)}`;
     localStorage.setItem(testKey, testKey);
+    const result = localStorage.getItem(testKey) === testKey;
     localStorage.removeItem(testKey);
-    return true;
+    return result;
   } catch (e) {
     return false;
+  }
+}
+
+/**
+ * Gets all keys in localStorage that match a pattern
+ * 
+ * @param {string} pattern - Pattern to match (e.g., 'progress-' for all progress keys)
+ * @returns {Array} - Array of matching keys
+ */
+function getLocalStorageKeys(pattern = '') {
+  try {
+    if (!isLocalStorageAvailable()) {
+      return [];
+    }
+    
+    const keys = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && (!pattern || key.includes(pattern))) {
+        keys.push(key);
+      }
+    }
+    return keys;
+  } catch (error) {
+    console.error('Error getting localStorage keys:', error);
+    return [];
   }
 }
 
@@ -272,6 +342,10 @@ function showFeedbackMessage(message, type = 'info', duration = 3000, containerI
     container = document.createElement('div');
     container.id = containerId;
     container.className = 'feedback-message-container';
+    container.style.position = 'fixed';
+    container.style.top = '20px';
+    container.style.right = '20px';
+    container.style.zIndex = '1000';
     document.body.appendChild(container);
   }
   
@@ -280,11 +354,33 @@ function showFeedbackMessage(message, type = 'info', duration = 3000, containerI
   messageElement.className = `feedback-message feedback-${type}`;
   messageElement.textContent = message;
   
+  // Style based on type if not already styled in CSS
+  if (!messageElement.offsetWidth) {
+    messageElement.style.padding = '10px 15px';
+    messageElement.style.marginBottom = '10px';
+    messageElement.style.borderRadius = '4px';
+    messageElement.style.backgroundColor = 
+      type === 'success' ? '#d4edda' : 
+      type === 'error' ? '#f8d7da' : '#d1ecf1';
+    messageElement.style.color = 
+      type === 'success' ? '#155724' : 
+      type === 'error' ? '#721c24' : '#0c5460';
+    messageElement.style.border = '1px solid transparent';
+    messageElement.style.borderColor = 
+      type === 'success' ? '#c3e6cb' : 
+      type === 'error' ? '#f5c6cb' : '#bee5eb';
+  }
+  
   // Add close button
   const closeButton = document.createElement('button');
   closeButton.className = 'feedback-close';
   closeButton.innerHTML = '&times;';
   closeButton.setAttribute('aria-label', 'Close message');
+  closeButton.style.marginLeft = '10px';
+  closeButton.style.background = 'none';
+  closeButton.style.border = 'none';
+  closeButton.style.cursor = 'pointer';
+  closeButton.style.float = 'right';
   messageElement.appendChild(closeButton);
   
   // Add to container
@@ -505,6 +601,72 @@ function initCollapsibleSections(toggleSelector, contentSelector, activeClass = 
   });
 }
 
+/**
+ * Debug function to log storage status
+ */
+function logStorageStatus() {
+  console.group('LocalStorage Status');
+  
+  try {
+    console.log('LocalStorage available:', isLocalStorageAvailable());
+    
+    if (isLocalStorageAvailable()) {
+      console.log('Storage usage:', calculateStorageUsage());
+      
+      // Log keys and values
+      console.log('Keys in storage:');
+      const keys = getLocalStorageKeys();
+      keys.forEach(key => {
+        const value = localStorage.getItem(key);
+        const truncatedValue = value && value.length > 50 ? value.substring(0, 50) + '...' : value;
+        console.log(`- ${key}: ${truncatedValue}`);
+      });
+    }
+  } catch (error) {
+    console.error('Error logging storage status:', error);
+  }
+  
+  console.groupEnd();
+}
+
+/**
+ * Calculate storage usage
+ * 
+ * @returns {Object} - Object with usage information
+ */
+function calculateStorageUsage() {
+  try {
+    if (!isLocalStorageAvailable()) {
+      return { available: false };
+    }
+    
+    let totalBytes = 0;
+    const itemCount = localStorage.length;
+    
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      const value = localStorage.getItem(key);
+      
+      // Calculate size in bytes: 2 bytes per character for UTF-16
+      const bytes = (key.length + value.length) * 2;
+      totalBytes += bytes;
+    }
+    
+    // Convert to KB for easier reading
+    const totalKB = (totalBytes / 1024).toFixed(2);
+    
+    return {
+      available: true,
+      bytes: totalBytes,
+      kilobytes: totalKB,
+      itemCount: itemCount
+    };
+  } catch (error) {
+    console.error('Error calculating storage usage:', error);
+    return { available: false, error: error.message };
+  }
+}
+
 // Export functions if module system is being used
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
@@ -514,11 +676,14 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
     getFromLocalStorage,
     removeFromLocalStorage,
     isLocalStorageAvailable,
+    getLocalStorageKeys,
     showFeedbackMessage,
     createAccessibleTabs,
     smoothScrollTo,
     debounce,
     addEventListenerToAll,
-    initCollapsibleSections
+    initCollapsibleSections,
+    logStorageStatus,
+    calculateStorageUsage
   };
 }
