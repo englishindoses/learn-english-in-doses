@@ -19,7 +19,10 @@ const MCQModule = (function() {
   let correctAnswers = {};
   let correctExplanations = {}; 
   let incorrectExplanations = {}; 
+  let explanations = {};
+  let incorrectTips = {};
   let answered = {};
+  let userSelections = {}; 
   let containerId = 'mcq';
   let onCompleteCallback = null;
   
@@ -33,6 +36,7 @@ const MCQModule = (function() {
    * @param {Object} config.incorrectTips - Object mapping question IDs to tips for incorrect answers
    * @param {Function} config.onComplete - Callback function called when all questions are answered
    * @param {boolean} config.allowRetry - Allow retry after incorrect answer (default: true)
+   * @param {boolean} config.clearSelections - Whether to clear all selections on load (default: false)
    */
   function init(config = {}) {
     console.log('Initializing MCQ Module with config:', config);
@@ -40,8 +44,10 @@ const MCQModule = (function() {
     // Set up configuration
     containerId = config.containerId || 'mcq';
     correctAnswers = config.answers || {};
-    correctExplanations = config.explanations || {};
-    incorrectExplanations = config.incorrectTips || {};
+    explanations = config.explanations || {};
+    correctExplanations = config.correctExplanations || {};
+    incorrectExplanations = config.incorrectExplanations || {};
+    incorrectTips = config.incorrectTips || {};
     const allowRetry = config.allowRetry !== undefined ? config.allowRetry : true;
     onCompleteCallback = config.onComplete || null;
     
@@ -58,6 +64,11 @@ const MCQModule = (function() {
       answered[questionId] = false;
     });
     
+    // Clear all selections if requested
+    if (config.clearSelections) {
+      clearAllSelections();
+    }
+    
     // Set up option click handlers
     setupOptionClickHandlers(allowRetry);
     
@@ -69,6 +80,20 @@ const MCQModule = (function() {
     
     // Load progress
     loadProgress();
+  }
+  
+  /**
+   * Clears all selected options
+   */
+  function clearAllSelections() {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    
+    container.querySelectorAll('.option').forEach(option => {
+      option.classList.remove('selected');
+    });
+    
+    console.log('Cleared all selections');
   }
   
   /**
@@ -113,6 +138,9 @@ const MCQModule = (function() {
         
         // Select this option
         this.classList.add('selected');
+
+        // Store the user's selection
+        userSelections[questionId] = parseInt(this.getAttribute('data-index'));
         
         console.log(`Option selected for question ${questionId}: ${this.textContent.trim()}`);
       });
@@ -147,14 +175,32 @@ const MCQModule = (function() {
           
           if (selectedIndex === correctAnswers[questionId]) {
             // Correct answer feedback
-            const explanation = correctExplanations[questionId] || optionExplanation || 'This is the correct answer.';
+            // Look for explanation in various places, providing a reasonable default
+            let explanation = 'Correct choice!';
+            if (correctExplanations[questionId]) {
+              explanation = correctExplanations[questionId];
+            } else if (explanations[questionId]) {
+              explanation = explanations[questionId];
+            } else if (optionExplanation) {
+              explanation = optionExplanation;
+            }
+            
             feedback.innerHTML = '<span class="feedback-result correct-result">Correct!</span> ' + explanation;
             feedback.className = 'feedback correct';
             score++;
             answered[questionId] = true;
           } else {
             // Incorrect answer feedback
-            const tip = incorrectExplanations[questionId] || 'Remember the rules for this grammar point.';
+            // Look for explanation in various places, providing a reasonable default
+            let tip = 'Try to understand when we use this tense.';
+            if (incorrectTips[questionId]) {
+              tip = incorrectTips[questionId];
+            } else if (incorrectExplanations[questionId]) {
+              tip = incorrectExplanations[questionId];
+            } else if (explanations[questionId]) {
+              tip = explanations[questionId];
+            }
+            
             feedback.innerHTML = '<span class="feedback-result incorrect-result">Sorry, try again!</span> ' + tip;
             feedback.className = 'feedback incorrect';
             allCorrect = false;
@@ -347,6 +393,7 @@ const MCQModule = (function() {
         score: score,
         totalQuestions: totalQuestions,
         answered: answered,
+        userSelections: userSelections,  
         completed: Object.values(answered).every(status => status),
         timestamp: new Date().toISOString(),
         title: document.title || `MCQ Activity: ${containerId}`
@@ -403,12 +450,24 @@ const MCQModule = (function() {
         if (savedProgress.answered) {
           answered = savedProgress.answered;
           
-          // Restore selections
-          Object.entries(answered).forEach(([questionId, isAnswered]) => {
-            if (isAnswered && correctAnswers[questionId] !== undefined) {
-              selectOption(questionId, correctAnswers[questionId]);
-            }
-          });
+        // Restore user selections
+        if (savedProgress.userSelections) {
+         userSelections = savedProgress.userSelections;
+  
+         // Restore the user's actual selections
+        Object.entries(userSelections).forEach(([questionId, selectedIndex]) => {
+        if (selectedIndex !== undefined) {
+        selectOption(questionId, selectedIndex);
+       }
+  });
+} else {
+  // Fallback for older saved data without userSelections
+  Object.entries(answered).forEach(([questionId, isAnswered]) => {
+    if (isAnswered && correctAnswers[questionId] !== undefined) {
+      selectOption(questionId, correctAnswers[questionId]);
+    }
+  });
+}
           
           // Update score
           score = savedProgress.score || 0;
@@ -436,6 +495,9 @@ const MCQModule = (function() {
   function clearProgress() {
     try {
       console.log(`Clearing MCQ progress for ${containerId}`);
+    
+      // Reset userSelections object
+      userSelections = {};
       
       // Method 1: Use removeFromLocalStorage function if available
       if (typeof removeFromLocalStorage === 'function') {
@@ -517,6 +579,7 @@ const MCQModule = (function() {
     getScore: getScore,
     isCompleted: isCompleted,
     selectOption: selectOption,
+    clearSelections: clearAllSelections,
     // For debugging
     _saveProgress: saveProgress,
     _loadProgress: loadProgress,
