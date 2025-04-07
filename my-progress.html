@@ -18,19 +18,11 @@
   <!-- Styles -->
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/activities.css">
+  <link rel="stylesheet" href="css/progress-tracking-styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <style>
     /* Additional styles specific to progress page */
-    .progress-card {
-      background-color: var(--card-bg);
-      border-radius: 8px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 4px var(--shadow-color);
-      border-left: 5px solid var(--accent-color);
-    }
-    
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -87,95 +79,6 @@
     .view-all-link {
       margin-left: auto;
       font-size: 0.9rem;
-    }
-
-    /* Progress bars */
-    .category-progress {
-      margin-bottom: 15px;
-    }
-    
-    .category-header {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 5px;
-    }
-    
-    .category-name {
-      font-weight: 600;
-    }
-    
-    .category-percentage {
-      font-weight: 600;
-    }
-    
-    .progress-outer {
-      height: 12px;
-      background-color: var(--progress-bg);
-      border-radius: 10px;
-      overflow: hidden;
-      margin-bottom: 5px;
-    }
-    
-    .progress-inner {
-      height: 100%;
-      background-color: var(--progress-fill);
-      border-radius: 10px;
-      transition: width 1s ease;
-    }
-    
-    /* Achievements */
-    .achievements-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
-    }
-    
-    .achievement-card {
-      background-color: var(--card-bg);
-      border-radius: 8px;
-      padding: 15px;
-      text-align: center;
-      box-shadow: 0 2px 4px var(--shadow-color);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transition: transform 0.3s;
-    }
-    
-    .achievement-card:hover {
-      transform: translateY(-5px);
-    }
-    
-    .achievement-icon {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-    
-    .achievement-title {
-      font-weight: 600;
-      margin-bottom: 5px;
-    }
-    
-    .achievement-description {
-      font-size: 0.85rem;
-      color: var(--text-color);
-      opacity: 0.8;
-    }
-    
-    .locked-achievement {
-      opacity: 0.5;
-      filter: grayscale(1);
-    }
-    
-    .locked-achievement::after {
-      content: "🔒";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 2rem;
-      opacity: 0.8;
     }
     
     /* Recent Activity */
@@ -270,6 +173,7 @@
       background-color: #2980b9;
       transform: translateY(-2px);
       text-decoration: none;
+      color: white;
     }
     
     /* Reset button */
@@ -316,53 +220,10 @@
       opacity: 0.7;
     }
 
-    /* Debug panel */
-    .debug-panel {
-      margin-top: 30px;
-      padding: 15px;
-      background-color: #f8f9fa;
-      border-radius: 8px;
-      border-left: 5px solid #6c757d;
-    }
-
-    [data-theme="dark"] .debug-panel {
-      background-color: #2a2a2a;
-    }
-
-    .debug-content {
-      max-height: 300px;
-      overflow-y: auto;
-      font-family: 'Source Code Pro', monospace;
-      font-size: 0.85rem;
-      white-space: pre-wrap;
-      word-break: break-word;
-      padding: 10px;
-      background-color: #f0f0f0;
-      border-radius: 4px;
-    }
-
-    [data-theme="dark"] .debug-content {
-      background-color: #1a1a1a;
-    }
-    
     /* Responsive adjustments */
     @media (max-width: 768px) {
       .stats-grid {
         grid-template-columns: repeat(2, 1fr);
-      }
-      
-      .achievements-container {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .stats-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .achievements-container {
-        grid-template-columns: 1fr;
       }
       
       .stat-number {
@@ -376,6 +237,12 @@
       .activity-score {
         margin-right: 0;
         margin-bottom: 5px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -425,10 +292,10 @@
         <div class="no-progress-icon">📊</div>
         <h2>No progress yet</h2>
         <p>You haven't completed any activities yet. Start learning to track your progress!</p>
-        <a href="home.html#where-to-start" class="primary-button">Start Learning</a>
+        <a href="home.html#where-to-start" class="btn btn-primary">Start Learning</a>
       </div>
       
-      <!-- Progress content (initially hidden) -->
+      <!-- Progress content -->
       <div id="progress-content">
         <!-- Summary Stats -->
         <section class="stats-grid">
@@ -458,56 +325,12 @@
         </section>
         
         <!-- Progress Overview -->
-        <section class="progress-card">
+        <section class="progress-card progress-summary">
           <div class="progress-section-title">
             <h2>Progress by Category</h2>
           </div>
           
-          <div id="category-progress-container">
-            <!-- Overall Progress Bar -->
-            <div class="category-progress">
-              <div class="category-header">
-                <span class="category-name">Overall</span>
-                <span id="overall-percent" class="category-percentage">0%</span>
-              </div>
-              <div class="progress-outer">
-                <div id="overall-progress-bar" class="progress-inner" style="width: 0%"></div>
-              </div>
-            </div>
-            
-            <!-- Activities Progress Bar -->
-            <div class="category-progress">
-              <div class="category-header">
-                <span class="category-name">Activities</span>
-                <span id="activities-percent" class="category-percentage">0%</span>
-              </div>
-              <div class="progress-outer">
-                <div id="activities-progress-bar" class="progress-inner" style="width: 0%"></div>
-              </div>
-            </div>
-            
-            <!-- Lessons Progress Bar -->
-            <div class="category-progress">
-              <div class="category-header">
-                <span class="category-name">Lessons</span>
-                <span id="lessons-percent" class="category-percentage">0%</span>
-              </div>
-              <div class="progress-outer">
-                <div id="lessons-progress-bar" class="progress-inner" style="width: 0%"></div>
-              </div>
-            </div>
-            
-            <!-- Assessments Progress Bar -->
-            <div class="category-progress">
-              <div class="category-header">
-                <span class="category-name">Assessments</span>
-                <span id="assessments-percent" class="category-percentage">0%</span>
-              </div>
-              <div class="progress-outer">
-                <div id="assessments-progress-bar" class="progress-inner" style="width: 0%"></div>
-              </div>
-            </div>
-          </div>
+          <div id="category-progress" class="progress-summary-section"></div>
         </section>
         
         <!-- Recent Activity -->
@@ -516,9 +339,16 @@
             <h2>Recent Activity</h2>
           </div>
           
-          <ul id="recent-activity-list" class="activity-list">
-            <!-- Activity items will be populated by JavaScript -->
-          </ul>
+          <div id="recent-activity"></div>
+        </section>
+        
+        <!-- Activities Grid -->
+        <section class="progress-card">
+          <div class="progress-section-title">
+            <h2>Grammar Activities</h2>
+          </div>
+          
+          <div id="activity-grid"></div>
         </section>
         
         <!-- Achievements -->
@@ -527,9 +357,7 @@
             <h2>Achievements</h2>
           </div>
           
-          <div id="achievements-container" class="achievements-container">
-            <!-- Achievements will be populated by JavaScript -->
-          </div>
+          <div id="achievements"></div>
         </section>
         
         <!-- Recommendations -->
@@ -538,43 +366,32 @@
             <h2>Recommended Next Steps</h2>
           </div>
           
-          <div id="recommendations-container">
-            <!-- Recommendations will be populated by JavaScript -->
-          </div>
-        </section>
-        
-        <!-- Reset Progress (Danger Zone) -->
-        <section class="progress-card danger-zone">
-          <h2>Delete Progress</h2>
-          <p>If you want to start fresh, you can delete and reset all your progress data.</p>
-          
-          <p><strong><span style="color: #bd2130;"><i class="fa fa-exclamation-circle" style="font-size: 20px;color:red"></i> Warning: This action cannot be undone.</span></strong></p>
-          
-          <button id="show-reset-confirm" class="reset-button">Delete My Progress</button>
-          
-          <div id="confirm-reset" class="confirm-reset">
-            <p>Are you sure you want to reset all your progress? All your activity data, achievements, and statistics will be permanently deleted.</p>
-            <div class="control-buttons">
-              <button id="cancel-reset" class="submit-btn">Cancel</button>
-              <button id="confirm-reset-button" class="reset-button">Yes, Reset Everything</button>
+          <div id="recommendations">
+            <div class="recommendation-card">
+              <div class="recommendation-title">Continue learning Present Perfect Progressive</div>
+              <div class="recommendation-description">You've started this topic but haven't completed all activities yet.</div>
+              <a href="grammar/advanced/present-perfect-progressive.html" class="recommendation-button">Continue</a>
+            </div>
+            
+            <div class="recommendation-card">
+              <div class="recommendation-title">Try Past Perfect Progressive</div>
+              <div class="recommendation-description">This is a related topic that builds on what you've been learning.</div>
+              <a href="grammar/advanced/past-perfect-progressive.html" class="recommendation-button">Start Learning</a>
             </div>
           </div>
         </section>
-
-        <!-- Debug panel (normally hidden, enable when needed) -->
-        <section id="debug-panel" class="progress-card debug-panel">
-          <div class="progress-section-title">
-            <h2>Debug Information</h2>
-            <button id="refresh-debug" class="submit-btn" style="margin-left: 15px;">Refresh Data</button>
-          </div>
-          <p>This section shows your stored progress data to help identify issues:</p>
-          <div id="debug-content" class="debug-content">Loading debug information...</div>
+        
+        <!-- Delete Progress (Danger Zone) -->
+        <section class="progress-card danger-zone">
+          <h2>Reset Progress</h2>
+          <p>If you want to start fresh, you can delete and reset all your progress data. This action cannot be undone.</p>
+          <button id="reset-progress" class="reset-button">Reset All Progress</button>
         </section>
       </div>
     </main>
   </div>
   
-  <!-- Include footer -->
+  <!-- Footer -->
   <footer>
     <div class="footer-content">
       <div class="footer-section">
@@ -612,948 +429,346 @@
 
   <!-- JavaScript -->
   <script src="js/core.js"></script>
-  <script src="js/progress-tracking.js"></script>
+  <script src="js/progress-tracking-module.js"></script>
+  <script src="js/progress-manager-ui.js"></script>
+  <script src="js/init-progress.js"></script>
+  <script src="css/progress-tracking-styles.css"></script>
   
   <script>
-   document.addEventListener('DOMContentLoaded', function() {
-  // Check if progress tracking module is available
-  if (typeof ProgressTrackingModule === 'undefined') {
-    console.error('Progress tracking module not loaded');
-    showFeedbackMessage('Progress tracking module not available', 'error');
-    return;
-  }
-  
-  // Initialize progress tracking with proper categories
-  initializeProgressTracking();
-  
-  // Try to load progress and update display
-  try {
-    // Force loading progress data
-    ProgressTrackingModule.loadProgress();
-    
-    // Check if there's any progress data
-    updateDisplay();
-    
-    // Set up refresh debug button
-    document.getElementById('refresh-debug').addEventListener('click', function() {
-      updateDebugInfo();
-    });
-  } catch (error) {
-    console.error('Error initializing progress:', error);
-    document.getElementById('debug-content').textContent = 'Error: ' + error.message;
-    showFeedbackMessage('Error loading progress data', 'error');
-  }
-  
-  // Set up reset button handler
-  document.getElementById('show-reset-confirm').addEventListener('click', function() {
-    document.getElementById('confirm-reset').style.display = 'block';
-    this.style.display = 'none';
-  });
-  
-  document.getElementById('cancel-reset').addEventListener('click', function() {
-    document.getElementById('confirm-reset').style.display = 'none';
-    document.getElementById('show-reset-confirm').style.display = 'block';
-  });
-  
-  document.getElementById('confirm-reset-button').addEventListener('click', function() {
-    try {
-      // Reset progress
-      const resetSuccess = ProgressTrackingModule.resetAllProgress(false); // Don't show browser confirm dialogue
-      
-      if (resetSuccess) {
-        // Show success message
-        showFeedbackMessage('All progress has been reset.', 'info', 3000);
-        
-        // Reload the page after a short delay
-        setTimeout(function() {
-          window.location.reload();
-        }, 1500);
-      } else {
-        // Show error message if reset failed
-        showFeedbackMessage('Failed to reset progress. Please try again.', 'error', 3000);
-        
-        // Hide confirmation dialog
-        document.getElementById('confirm-reset').style.display = 'none';
-        document.getElementById('show-reset-confirm').style.display = 'block';
-      }
-    } catch (error) {
-      console.error('Error resetting progress:', error);
-      document.getElementById('debug-content').textContent = 'Reset Error: ' + error.message;
-      showFeedbackMessage('An error occurred while resetting progress.', 'error');
-      
-      // Hide confirmation dialog
-      document.getElementById('confirm-reset').style.display = 'none';
-      document.getElementById('show-reset-confirm').style.display = 'block';
-    }
-  });
-
-  // Show the debug panel initially to help diagnose issues
-  updateDebugInfo();
-});
-
-/**
- * Initialize progress tracking with the proper categories
- */
-function initializeProgressTracking() {
-  ProgressTrackingModule.init({
-    categories: {
-      activities: {
-        grammarActivities: [
-          'mcq', 'gap-fill', 'matching', 'transformation',
-          'drag-drop', 'error-correction', 'situations'
-        ],
-        practiceActivities: [
-          'tenses-practice', 'conditionals-practice', 'modals-practice',
-          'passive-practice', 'articles-practice', 'prepositions-practice'
-        ]
-      },
-      lessons: {
-        grammarLessons: [
-          'tenses', 'conditionals', 'modals', 'passive', 
-          'articles', 'prepositions', 'clauses'
-        ],
-        specialTopics: [
-          'academic-writing', 'business-english', 'pronunciation'
-        ]
-      },
-      assessments: {
-        grammarTests: [
-          'tenses-test', 'conditionals-test', 'modals-test',
-          'passive-test', 'articles-test', 'prepositions-test'
-        ],
-        comprehensiveTests: [
-          'mid-course-test', 'final-test'
-        ]
-      }
-    },
-    onProgressChange: updateProgressDisplay
-  });
-}
-
-/**
- * Updates the display based on available progress data
- */
-function updateDisplay() {
-  try {
-    // Get progress data - use a try-catch to handle potential errors
-    const progress = ProgressTrackingModule.getOverallProgress();
-    console.log("Progress data loaded:", progress);
-    
-    // Update the debug info to see what's happening
-    updateDebugInfo();
-
-    // The previous code checked if progress.completed === 0, but this could be causing problems
-    // if the progress object structure isn't exactly as expected. Let's make this more robust.
-    let hasAnyCompletedItems = false;
-    
-    // Check activities
-    if (progress.categories && progress.categories.activities && 
-        progress.categories.activities.completed > 0) {
-      hasAnyCompletedItems = true;
-    }
-    
-    // Check lessons
-    if (progress.categories && progress.categories.lessons && 
-        progress.categories.lessons.completed > 0) {
-      hasAnyCompletedItems = true;
-    }
-    
-    // Check assessments
-    if (progress.categories && progress.categories.assessments && 
-        progress.categories.assessments.completed > 0) {
-      hasAnyCompletedItems = true;
-    }
-    
-    // Check for daily streak
-    const stats = ProgressTrackingModule.getStats ? ProgressTrackingModule.getStats() : {dailyStreak: 0};
-    if (stats && stats.dailyStreak > 0) {
-      hasAnyCompletedItems = true;
-    }
-    
-    console.log("Has any completed items:", hasAnyCompletedItems);
-    
-    // Show appropriate content based on whether we have data
-    if (!hasAnyCompletedItems) {
-      // If no progress, show the no progress message
-      document.getElementById('no-progress-message').style.display = 'block';
-      document.getElementById('progress-content').style.display = 'block'; // Show both to see debug info
-    } else {
-      // If we have progress, show the progress content
-      document.getElementById('no-progress-message').style.display = 'none';
-      document.getElementById('progress-content').style.display = 'block';
-      
-      // Update display with current data
-      updateProgressDisplay();
-    }
-  } catch (error) {
-    console.error("Error checking progress data:", error);
-    document.getElementById('debug-content').textContent = 'Error checking progress: ' + error.message;
-    // Show both in case of errors, so we can see the debug info
-    document.getElementById('no-progress-message').style.display = 'block';
-    document.getElementById('progress-content').style.display = 'block';
-  }
-}
-
-/**
- * Updates the progress display based on current progress data
- */
-function updateProgressDisplay() {
-  try {
-    // Get progress data
-    const progress = ProgressTrackingModule.getOverallProgress();
-    console.log("Updating progress display with data:", progress);
-    
-    // Update stats - safely handle potentially missing properties
-    if (progress) {
-      // Overall percentage
-      const overallElement = document.getElementById('overall-percentage');
-      if (overallElement) {
-        overallElement.textContent = (progress.percentage || 0) + '%';
-      }
-      
-      // Overall fraction
-      const fractionElement = document.getElementById('overall-fraction');
-      if (fractionElement) {
-        const completed = progress.completed || 0;
-        const total = progress.total || 0;
-        fractionElement.textContent = completed + '/' + total + ' completed';
-      }
-    }
-    
-    // Activities count and total
-    if (progress && progress.categories && progress.categories.activities) {
-      const activitiesCount = document.getElementById('activities-count');
-      if (activitiesCount) {
-        activitiesCount.textContent = progress.categories.activities.completed || 0;
-      }
-      
-      const totalActivities = document.getElementById('total-activities');
-      if (totalActivities) {
-        totalActivities.textContent = progress.categories.activities.total || 0;
-      }
-    }
-    
-    // Lessons count and total
-    if (progress && progress.categories && progress.categories.lessons) {
-      const lessonsCount = document.getElementById('lessons-count');
-      if (lessonsCount) {
-        lessonsCount.textContent = progress.categories.lessons.completed || 0;
-      }
-      
-      const totalLessons = document.getElementById('total-lessons');
-      if (totalLessons) {
-        totalLessons.textContent = progress.categories.lessons.total || 0;
-      }
-    }
-    
-    // Update streak count
-    const stats = ProgressTrackingModule.getStats ? ProgressTrackingModule.getStats() : {dailyStreak: 0};
-    console.log("Stats data:", stats);
-    
-    const streakElement = document.getElementById('streak-count');
-    if (streakElement) {
-      streakElement.textContent = stats.dailyStreak || 0;
-    }
-    
-    // Update progress bars
-    if (progress) {
-      const overallPercent = document.getElementById('overall-percent');
-      if (overallPercent) {
-        overallPercent.textContent = (progress.percentage || 0) + '%';
-      }
-      
-      const overallProgressBar = document.getElementById('overall-progress-bar');
-      if (overallProgressBar) {
-        overallProgressBar.style.width = (progress.percentage || 0) + '%';
-      }
-    }
-    
-    // Update category progress bars
-    if (progress && progress.categories) {
-      // Activities
-      if (progress.categories.activities) {
-        const activitiesPercent = document.getElementById('activities-percent');
-        if (activitiesPercent) {
-          activitiesPercent.textContent = (progress.categories.activities.percentage || 0) + '%';
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize Progress Tracking System
+      ProgressTracker.init({
+        categories: {
+          activities: {
+            grammarActivities: [
+              'mcq-present-perfect-progressive', 'mcq-past-perfect-progressive',
+              'mcq-future-perfect', 'mcq-modal-perfect',
+              'gap-fill-present-perfect-progressive', 'gap-fill-past-perfect-progressive',
+              'transformation-present-perfect-progressive', 'transformation-past-perfect-progressive',
+              'matching-perfect-tenses', 'drag-drop-perfect-tenses',
+              'mcq-present-perfect-vs-simple', 'mcq-past-perfect-vs-simple',
+              'wish-if-only'
+            ],
+            practiceActivities: [
+              'tenses-practice', 'conditionals-practice', 'modals-practice',
+              'passive-practice', 'articles-practice', 'prepositions-practice'
+            ]
+          },
+          lessons: {
+            grammarLessons: [
+              'present-perfect-progressive', 'past-perfect-progressive',
+              'future-perfect', 'modal-perfect-forms',
+              'present-perfect-vs-simple', 'past-perfect-vs-simple',
+              'conditionals', 'inverted-conditionals',
+              'wish-if-only', 'modal-passive'
+            ],
+            specialTopics: [
+              'academic-writing', 'business-english', 'pronunciation'
+            ]
+          },
+          assessments: {
+            grammarTests: [
+              'tenses-test', 'conditionals-test', 'modals-test',
+              'passive-test', 'articles-test', 'prepositions-test'
+            ],
+            comprehensiveTests: [
+              'mid-course-test', 'final-test'
+            ]
+          }
+        },
+        onProgressChange: function(details) {
+          console.log('Progress changed:', details);
+          updateStatCards();
         }
-        
-        const activitiesProgressBar = document.getElementById('activities-progress-bar');
-        if (activitiesProgressBar) {
-          activitiesProgressBar.style.width = (progress.categories.activities.percentage || 0) + '%';
-        }
-      }
-      
-      // Lessons
-      if (progress.categories.lessons) {
-        const lessonsPercent = document.getElementById('lessons-percent');
-        if (lessonsPercent) {
-          lessonsPercent.textContent = (progress.categories.lessons.percentage || 0) + '%';
-        }
-        
-        const lessonsProgressBar = document.getElementById('lessons-progress-bar');
-        if (lessonsProgressBar) {
-          lessonsProgressBar.style.width = (progress.categories.lessons.percentage || 0) + '%';
-        }
-      }
-      
-      // Assessments
-      if (progress.categories.assessments) {
-        const assessmentsPercent = document.getElementById('assessments-percent');
-        if (assessmentsPercent) {
-          assessmentsPercent.textContent = (progress.categories.assessments.percentage || 0) + '%';
-        }
-        
-        const assessmentsProgressBar = document.getElementById('assessments-progress-bar');
-        if (assessmentsProgressBar) {
-          assessmentsProgressBar.style.width = (progress.categories.assessments.percentage || 0) + '%';
-        }
-      }
-    }
-    
-    // Update other sections
-    updateRecentActivity();
-    updateAchievements();
-    updateRecommendations();
-  } catch (error) {
-    console.error("Error updating progress display:", error);
-    document.getElementById('debug-content').textContent += '\n\nError updating display: ' + error.message + '\n' + error.stack;
-  }
-}
-
-/**
- * Updates the debug information panel
- */
-function updateDebugInfo() {
-  const debugContent = document.getElementById('debug-content');
-  if (!debugContent) return;
-  
-  try {
-    let debugText = "DEBUG INFORMATION:\n\n";
-    
-    // Check if ProgressTrackingModule is available
-    debugText += "Progress Tracking Module available: " + (typeof ProgressTrackingModule !== 'undefined') + "\n\n";
-    
-    // Get raw progress data
-    if (typeof ProgressTrackingModule !== 'undefined') {
-      if (typeof ProgressTrackingModule.getProgressData === 'function') {
-        const rawData = ProgressTrackingModule.getProgressData();
-        debugText += "Raw Progress Data:\n" + JSON.stringify(rawData, null, 2) + "\n\n";
-      } else {
-        debugText += "getProgressData function not available\n\n";
-      }
-      
-      // Check overall progress
-      if (typeof ProgressTrackingModule.getOverallProgress === 'function') {
-        const progress = ProgressTrackingModule.getOverallProgress();
-        debugText += "Overall Progress:\n" + JSON.stringify(progress, null, 2) + "\n\n";
-      } else {
-        debugText += "getOverallProgress function not available\n\n";
-      }
-      
-      // Stats information
-      if (typeof ProgressTrackingModule.getStats === 'function') {
-        const stats = ProgressTrackingModule.getStats();
-        debugText += "Stats Information:\n" + JSON.stringify(stats, null, 2) + "\n\n";
-      } else {
-        debugText += "getStats function not available\n\n";
-      }
-    }
-    
-    // Check localStorage
-    debugText += "LocalStorage Check:\n";
-    if (typeof localStorage !== 'undefined') {
-      // Look for progress data keys
-      const progressDataKey = 'esl-progress-data';
-      debugText += `${progressDataKey}: ${localStorage.getItem(progressDataKey) ? "EXISTS" : "NOT FOUND"}\n`;
-      
-      // Look for individual activity progress items
-      const activityKeys = ['mcq-progress', 'gap-fill-progress', 'matching-progress', 'error-correction-progress'];
-      activityKeys.forEach(key => {
-        debugText += `${key}: ${localStorage.getItem(key) ? "EXISTS" : "NOT FOUND"}\n`;
       });
       
-      // Add a list of all localStorage keys that might be related to our app
-      debugText += "\nAll potential progress keys in localStorage:\n";
+      // Initialize UI Components
+      ProgressManagerUI.init({
+        progressDataProvider: ProgressTracker.getOverallProgress,
+        categoryDefinitions: ProgressTracker.getCategoryDefinitions(),
+        animateProgressBars: true
+      });
       
-      let foundKeys = false;
-      for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        if (key && (key.includes('progress') || key.includes('esl'))) {
-          debugText += `- ${key}\n`;
-          foundKeys = true;
+      // Create UI components
+      ProgressManagerUI.createProgressSummary('category-progress');
+      ProgressManagerUI.createAchievementDisplay('achievements', { showAll: true });
+      ProgressManagerUI.createActivityGrid('activity-grid', { category: 'activities' });
+      
+      // Create recent activity display
+      createRecentActivityDisplay();
+      
+      // Set up progress reset button
+      document.getElementById('reset-progress').addEventListener('click', function() {
+        if (confirm('Are you sure you want to reset all progress? This action cannot be undone.')) {
+          ProgressTracker.resetAllProgress(false);
+          location.reload();
         }
-      }
+      });
       
-      if (!foundKeys) {
-        debugText += "No progress-related keys found in localStorage\n";
-      }
-    } else {
-      debugText += "localStorage not available in this browser\n";
-    }
-    
-    debugContent.textContent = debugText;
-  } catch (error) {
-    debugContent.textContent = "Error getting debug info: " + error.message;
-  }
-}
-
-/**
- * Updates the recent activity list
- */
-function updateRecentActivity() {
-  const activityContainer = document.getElementById('recent-activity-list');
-  if (!activityContainer) return;
-  
-  try {
-    // Clear existing content
-    activityContainer.innerHTML = '';
-    
-    // Get recent activity (using a helper function since this is normally on the module)
-    const recentActivity = getRecentActivity(5);
-    
-    if (recentActivity.length === 0) {
-      activityContainer.innerHTML = '<p>No recent activity to display.</p>';
-      return;
-    }
-    
-    // Add each activity to the list
-    recentActivity.forEach(activity => {
-      const item = document.createElement('li');
-      item.className = 'activity-item';
+      // Check for initial progress and update UI
+      checkInitialProgress();
       
-      // Determine icon based on activity type
-      let icon = '📝';
-      if (activity.category === 'lessons') {
-        icon = '📚';
-      } else if (activity.category === 'assessments') {
-        icon = '📊';
-      }
-      
-      item.innerHTML = `
-        <span class="activity-icon">${icon}</span>
-        <div class="activity-details">
-          <span class="activity-title">${activity.title}</span>
-          <div class="activity-meta">
-            ${activity.score ? `<span class="activity-score">Score: ${activity.score}/${activity.maxScore}</span>` : ''}
-            <span class="activity-date">${formatRelativeTime(activity.completedAt)}</span>
-          </div>
-        </div>
-      `;
-      
-      activityContainer.appendChild(item);
-    });
-  } catch (error) {
-    console.error("Error updating recent activity:", error);
-    activityContainer.innerHTML = '<p>Error loading recent activity.</p>';
-  }
-}
-
-/**
- * Updates the achievements display
- */
-function updateAchievements() {
-  const achievementsContainer = document.getElementById('achievements-container');
-  if (!achievementsContainer) return;
-  
-  try {
-    // Clear existing content
-    achievementsContainer.innerHTML = '';
-    
-    // Get unlocked achievements
-    const achievements = ProgressTrackingModule.getUnlockedAchievements ? 
-      ProgressTrackingModule.getUnlockedAchievements() : [];
-    
-    // Get all achievement definitions for displaying locked ones too
-    const allAchievements = ProgressTrackingModule.getAllAchievements ? 
-      ProgressTrackingModule.getAllAchievements() : [];
-    
-    // If we don't have achievement definitions, use a default set
-    let achievementsToDisplay = allAchievements.length > 0 ? allAchievements : [
-      {
-        id: 'first_activity',
-        title: 'First Steps',
-        description: 'Complete your first activity',
-        icon: '🏆',
-        unlocked: achievements.some(a => a.id === 'first_activity')
-      },
-      {
-        id: 'five_activities',
-        title: 'Getting Started',
-        description: 'Complete 5 activities',
-        icon: '🔥',
-        unlocked: achievements.some(a => a.id === 'five_activities')
-      },
-      {
-        id: 'ten_activities',
-        title: 'Making Progress',
-        description: 'Complete 10 activities',
-        icon: '⭐',
-        unlocked: achievements.some(a => a.id === 'ten_activities')
-      },
-      {
-        id: 'perfect_score',
-        title: 'Perfect!',
-        description: 'Get a perfect score on any activity',
-        icon: '💯',
-        unlocked: achievements.some(a => a.id === 'perfect_score')
-      },
-      {
-        id: 'daily_streak_3',
-        title: 'Consistency',
-        description: 'Study for 3 days in a row',
-        icon: '📅',
-        unlocked: achievements.some(a => a.id === 'daily_streak_3')
-      },
-      {
-        id: 'category_complete',
-        title: 'Master of Grammar',
-        description: 'Complete all activities in a grammar category',
-        icon: '🎓',
-        unlocked: achievements.some(a => a.id === 'category_complete')
-      }
-    ];
-    
-    // Update unlocked status for each achievement
-    achievementsToDisplay = achievementsToDisplay.map(achievement => {
-      const unlocked = achievements.some(a => a.id === achievement.id);
-      return { ...achievement, unlocked };
+      // Update stat cards
+      updateStatCards();
     });
     
-    // Add each achievement to the display
-    achievementsToDisplay.forEach(achievement => {
-      const card = document.createElement('div');
-      card.className = `achievement-card ${achievement.unlocked ? '' : 'locked-achievement'}`;
-      
-      card.innerHTML = `
-        <div class="achievement-icon">${achievement.icon}</div>
-        <div class="achievement-title">${achievement.title}</div>
-        <div class="achievement-description">${achievement.description}</div>
-      `;
-      
-      achievementsContainer.appendChild(card);
-    });
-  } catch (error) {
-    console.error("Error updating achievements:", error);
-    achievementsContainer.innerHTML = '<p>Error loading achievements.</p>';
-  }
-}
-  
-/**
- * Updates the recommendations section
- */
-function updateRecommendations() {
-  const recommendationsContainer = document.getElementById('recommendations-container');
-  if (!recommendationsContainer) return;
-  
-  try {
-    // Clear existing content
-    recommendationsContainer.innerHTML = '';
-    
-    // Generate recommendations based on progress
-    const recommendations = generateRecommendations();
-    
-    if (recommendations.length === 0) {
-      recommendationsContainer.innerHTML = '<p>Congratulations! You have completed all available content.</p>';
-      return;
-    }
-    
-    // Show up to 3 recommendations
-    recommendations.slice(0, 3).forEach(recommendation => {
-      const card = document.createElement('div');
-      card.className = 'recommendation-card';
-      
-      card.innerHTML = `
-        <div class="recommendation-title">${recommendation.title}</div>
-        <div class="recommendation-description">${recommendation.description}</div>
-        <a href="${recommendation.url}" class="recommendation-button">Continue</a>
-      `;
-      
-      recommendationsContainer.appendChild(card);
-    });
-  } catch (error) {
-    console.error("Error updating recommendations:", error);
-    recommendationsContainer.innerHTML = '<p>Error loading recommendations.</p>';
-  }
-}
-
-/**
- * Helper function to generate recommendations based on progress
- * This would normally use actual data from ProgressTrackingModule
- */
-function generateRecommendations() {
-  const recommendations = [];
-  
-  try {
-    // Map topics to their landing page sections
-    const topicToSectionMap = {
-      'modal': { page: 'grammar/advanced/advanced-grammar.html', anchor: '#modals', title: 'Modal Verbs' },
-      'conditionals': { page: 'grammar/advanced/advanced-grammar.html', anchor: '#conditionals', title: 'Conditionals and Hypotheticals' },
-      'passive': { page: 'grammar/advanced/advanced-grammar.html', anchor: '#passive', title: 'Passive Voice' },
-      'tense': { page: 'grammar/advanced/advanced-grammar.html', anchor: '#advanced-tenses-and-aspect', title: 'Advanced Tenses' },
-      'verb-patterns': { page: 'grammar/advanced/advanced-grammar.html', anchor: '#verb-patterns-complemantation', title: 'Verb Patterns & Complementation' },
-      'adverbials': { page: 'grammar/advanced/advanced-grammar.html', anchor: '#adverbials-prep-phrases', title: 'Adverbials & Prepositional Phrases' },
-      'noun-phrases': { page: 'grammar/advanced/advanced-grammar.html', anchor: '#noun-phrases-articles', title: 'Noun Phrases & Articles' },
-      'complex-structures': { page: 'grammar/advanced/advanced-grammar.html', anchor: '#complex-structures', title: 'Complex Sentence Structures' },
-      'discourse': { page: 'grammar/advanced/advanced-grammar.html', anchor: '#discourse-cohesion', title: 'Discourse & Cohesion' },
-      'modifiers': { page: 'grammar/advanced/advanced-grammar.html', anchor: '#advanced-modifiers', title: 'Advanced Modifiers' },
-      'special-expressions': { page: 'grammar/advanced/advanced-grammar.html', anchor: '#special-expressions', title: 'Special Structures & Expressions' },
-      'register': { page: 'grammar/advanced/advanced-grammar.html', anchor: '#register-style', title: 'Register & Style' }
-    };
-    
-    // Get incomplete activities and lessons
-    const incompleteActivities = getIncompleteItems('activities');
-    const incompleteLessons = getIncompleteItems('lessons');
-    
-    // Determine level based on progress
-    let overallPercentage = 0;
-    try {
-      const progress = ProgressTrackingModule.getOverallProgress();
-      overallPercentage = progress ? (progress.percentage || 0) : 0;
-    } catch (e) {
-      console.error("Error getting overall progress:", e);
-    }
-    
-    const level = overallPercentage < 33 ? 'beginner' : (overallPercentage < 66 ? 'intermediate' : 'advanced');
-    
-    // Add recommendations based on incomplete lessons
-    if (incompleteLessons.length > 0) {
-      let matchedTopic = null;
-      
-      // Try to match the incomplete lesson with a topic
-      for (const [topic, sectionInfo] of Object.entries(topicToSectionMap)) {
-        if (incompleteLessons[0].id.includes(topic)) {
-          matchedTopic = topic;
-          recommendations.push({
-            title: `Continue learning about ${sectionInfo.title}`,
-            description: `Explore more lessons about ${sectionInfo.title.toLowerCase()} to improve your understanding.`,
-            url: `${sectionInfo.page}${sectionInfo.anchor}`
-          });
-          break;
-        }
-      }
-      
-      // If no match found, provide a generic recommendation based on level
-      if (!matchedTopic) {
-        if (level === 'advanced') {
-          recommendations.push({
-            title: "Continue your advanced grammar studies",
-            description: "Choose a lesson from our advanced grammar topics.",
-            url: "grammar/advanced/advanced-grammar.html"
-          });
-        } else if (level === 'intermediate') {
-          recommendations.push({
-            title: "Explore intermediate grammar topics",
-            description: "Choose a lesson to strengthen your intermediate grammar skills.",
-            url: "grammar/intermediate/intermediate-grammar.html"
-          });
-        } else {
-          recommendations.push({
-            title: "Build your grammar foundation",
-            description: "Choose a lesson to strengthen your basic grammar skills.",
-            url: "grammar/beginner/beginner-grammar.html"
-          });
-        }
+    /**
+     * Checks if there's any progress and shows/hides appropriate UI
+     */
+    function checkInitialProgress() {
+      try {
+        // Get progress data
+        const progress = ProgressTracker.getOverallProgress();
+        
+        // Check if we have any completed items
+        const hasProgress = 
+          (progress.completed > 0) || 
+          (ProgressTracker.getStats().dailyStreak > 0);
+        
+        // Show appropriate content
+        document.getElementById('no-progress-message').style.display = hasProgress ? 'none' : 'block';
+        document.getElementById('progress-content').style.display = hasProgress ? 'block' : 'none';
+      } catch (error) {
+        console.error('Error checking initial progress:', error);
+        // Show both just in case
+        document.getElementById('no-progress-message').style.display = 'block';
+        document.getElementById('progress-content').style.display = 'none';
       }
     }
     
-    // Add recommendation for incomplete activities
-    if (incompleteActivities.length > 0) {
-      let activityMatchedTopic = null;
-      
-      // Try to match the incomplete activity with a topic
-      for (const [topic, sectionInfo] of Object.entries(topicToSectionMap)) {
-        if (incompleteActivities[0].id.includes(topic)) {
-          activityMatchedTopic = topic;
-          recommendations.push({
-            title: `Practice ${sectionInfo.title}`,
-            description: `Complete activities to reinforce your understanding of ${sectionInfo.title.toLowerCase()}.`,
-            url: `${sectionInfo.page}${sectionInfo.anchor}`
-          });
-          break;
-        }
+    /**
+     * Updates the stat card values
+     */
+    function updateStatCards() {
+      try {
+        // Get progress data
+        const progress = ProgressTracker.getOverallProgress();
+        const stats = ProgressTracker.getStats();
+        
+        // Update overall percentage
+        document.getElementById('overall-percentage').textContent = progress.percentage + '%';
+        document.getElementById('overall-fraction').textContent = 
+          progress.completed + '/' + progress.total + ' completed';
+        
+        // Update activities count
+        document.getElementById('activities-count').textContent = 
+          progress.categories.activities ? progress.categories.activities.completed : 0;
+        document.getElementById('total-activities').textContent = 
+          progress.categories.activities ? progress.categories.activities.total : 0;
+        
+        // Update lessons count
+        document.getElementById('lessons-count').textContent = 
+          progress.categories.lessons ? progress.categories.lessons.completed : 0;
+        document.getElementById('total-lessons').textContent = 
+          progress.categories.lessons ? progress.categories.lessons.total : 0;
+        
+        // Update streak count
+        document.getElementById('streak-count').textContent = stats.dailyStreak || 0;
+      } catch (error) {
+        console.error('Error updating stat cards:', error);
       }
-      
-      // If no match found and we don't already have 2 recommendations, add a generic one
-      if (!activityMatchedTopic && recommendations.length < 2) {
-        recommendations.push({
-          title: "Practice your grammar skills",
-          description: "Complete activities to reinforce your grammar understanding.",
-          url: "extra-practice.html"
+    }
+    
+    /**
+     * Creates a recent activity display
+     */
+    function createRecentActivityDisplay() {
+      try {
+        const container = document.getElementById('recent-activity');
+        if (!container) return;
+        
+        // Get recent activities
+        const activities = getRecentActivities(5);
+        
+        if (activities.length === 0) {
+          container.innerHTML = '<p>No recent activity to display. Start learning to see your activity here!</p>';
+          return;
+        }
+        
+        // Create activity list
+        const activityList = document.createElement('ul');
+        activityList.className = 'activity-list';
+        
+        activities.forEach(activity => {
+          const item = document.createElement('li');
+          item.className = 'activity-item';
+          
+          // Determine icon based on activity type
+          let icon = '📝';
+          if (activity.category === 'lessons') {
+            icon = '📚';
+          } else if (activity.category === 'assessments') {
+            icon = '📊';
+          }
+          
+          const iconEl = document.createElement('span');
+          iconEl.className = 'activity-icon';
+          iconEl.textContent = icon;
+          item.appendChild(iconEl);
+          
+          const details = document.createElement('div');
+          details.className = 'activity-details';
+          
+          const title = document.createElement('span');
+          title.className = 'activity-title';
+          title.textContent = activity.title;
+          details.appendChild(title);
+          
+          const meta = document.createElement('div');
+          meta.className = 'activity-meta';
+          
+          if (activity.score !== undefined && activity.maxScore !== undefined) {
+            const score = document.createElement('span');
+            score.className = 'activity-score';
+            score.textContent = `Score: ${activity.score}/${activity.maxScore}`;
+            meta.appendChild(score);
+          }
+          
+          const date = document.createElement('span');
+          date.className = 'activity-date';
+          date.textContent = formatRelativeTime(activity.completedAt || activity.timestamp);
+          meta.appendChild(date);
+          
+          details.appendChild(meta);
+          item.appendChild(details);
+          
+          activityList.appendChild(item);
         });
+        
+        container.appendChild(activityList);
+      } catch (error) {
+        console.error('Error creating recent activity display:', error);
+        container.innerHTML = '<p>Error loading recent activity.</p>';
       }
     }
     
-    // If we still don't have recommendations, add a generic one
-    if (recommendations.length === 0) {
-      // Default fallback recommendation
-      recommendations.push({
-        title: "Start your grammar journey",
-        description: "Begin with the fundamentals of English grammar.",
-        url: "home.html#where-to-start"
-      });
-      
-      // Add advanced grammar recommendation
-      recommendations.push({
-        title: "Explore advanced grammar topics",
-        description: "Deepen your understanding of complex English grammar concepts.",
-        url: "grammar/advanced/advanced-grammar.html"
-      });
-      
-      // Add practice recommendation
-      recommendations.push({
-        title: "Test your skills with practice activities",
-        description: "Reinforce your learning with interactive exercises.",
-        url: "extra-practice.html"
-      });
-    }
-  } catch (error) {
-    console.error("Error generating recommendations:", error);
-    // Return a default recommendation if there's an error
-    recommendations.push({
-      title: "Explore grammar topics",
-      description: "Choose a topic to learn more about English grammar.",
-      url: "home.html#where-to-start"
-    });
-  }
-  
-  return recommendations;
-}
-
-/**
- * Helper function to get incomplete items from a category
- */
-function getIncompleteItems(category) {
-  const incompleteItems = [];
-  
-  try {
-    // Get category definitions to determine all available items
-    const categoryDefinitions = ProgressTrackingModule.getCategoryDefinitions ? 
-      ProgressTrackingModule.getCategoryDefinitions()[category] : null;
-    
-    if (!categoryDefinitions) {
-      return [];
-    }
-    
-    // Get progress data
-    const progressData = ProgressTrackingModule.getProgressData ? 
-      ProgressTrackingModule.getProgressData()[category] : {};
-    
-    // Iterate through all subcategories
-    Object.entries(categoryDefinitions).forEach(([subcategory, items]) => {
-      if (!Array.isArray(items)) return;
-      
-      items.forEach(itemId => {
-        // Check if item is incomplete or not started
-        const isCompleted = progressData[itemId] && 
-          ((category === 'activities' && progressData[itemId].completed) || 
-           (category === 'lessons' && progressData[itemId].progress === 100));
+    /**
+     * Gets recent activities from progress data
+     * 
+     * @param {number} limit - Maximum number of activities to return
+     * @returns {Array} - Array of recent activities
+     */
+    function getRecentActivities(limit = 5) {
+      try {
+        const progressData = ProgressTracker.getProgressData();
+        if (!progressData) return [];
         
-        if (!isCompleted) {
-          // Get title from progress data if available, or create one from ID
-          let title = itemId.replace(/-/g, ' ')
-            .replace(/\b\w/g, l => l.toUpperCase());
-          
-          if (progressData[itemId] && progressData[itemId].title) {
-            title = progressData[itemId].title;
-          }
-          
-          incompleteItems.push({
-            id: itemId,
-            title: title,
-            subcategory: subcategory
-          });
-        }
-      });
-    });
-  } catch (error) {
-    console.error("Error getting incomplete items:", error);
-  }
-  
-  return incompleteItems;
-}
-
-/**
- * Helper function to get recent activity
- */
-function getRecentActivity(limit = 5) {
-  // Get all activity data from ProgressTrackingModule
-  const activities = [];
-  
-  try {
-    const progressData = ProgressTrackingModule.getProgressData ? ProgressTrackingModule.getProgressData() : {};
-    
-    // Process activities category
-    if (progressData.activities) {
-      const activityData = progressData.activities;
-      
-      // Convert object to array and add category information
-      Object.entries(activityData).forEach(([id, data]) => {
-        if (data && data.completed) {
-          activities.push({
-            id: id,
-            category: 'activities',
-            title: data.title || beautifyId(id),
-            score: data.score,
-            maxScore: data.maxScore,
-            completedAt: data.completedAt || new Date().toISOString()
-          });
-        }
-      });
-    }
-    
-    // Process lessons category similarly
-    if (progressData.lessons) {
-      const lessonData = progressData.lessons;
-      
-      Object.entries(lessonData).forEach(([id, data]) => {
-        if (data && data.lastViewed) {
-          activities.push({
-            id: id,
-            category: 'lessons',
-            title: data.title || beautifyId(id),
-            completedAt: data.lastViewed
-          });
-        }
-      });
-    }
-    
-    // Sort by completion date (most recent first)
-    activities.sort((a, b) => {
-      return new Date(b.completedAt) - new Date(a.completedAt);
-    });
-  } catch (error) {
-    console.error("Error getting recent activity:", error);
-  }
-  
-  // Return only the requested number of items
-  return activities.slice(0, limit);
-}
-
-/**
- * Helper function to make an ID more readable
- */
-function beautifyId(id) {
-  if (!id) return "Unknown Activity";
-  
-  return id
-    .replace(/-/g, ' ')
-    .replace(/\b\w/g, l => l.toUpperCase());
-}
-
-/**
- * Helper function to format relative time
- */
-function formatRelativeTime(dateString) {
-  try {
-    if (!dateString) return "Unknown time";
-    
-    const date = new Date(dateString);
-    if (isNaN(date.getTime())) return "Invalid date";
-    
-    const now = new Date();
-    
-    const diffInSeconds = Math.floor((now - date) / 1000);
-    
-    if (diffInSeconds < 60) {
-      return 'Just now';
-    }
-    
-    const diffInMinutes = Math.floor(diffInSeconds / 60);
-    if (diffInMinutes < 60) {
-      return `${diffInMinutes} minute${diffInMinutes !== 1 ? 's' : ''} ago`;
-    }
-    
-    const diffInHours = Math.floor(diffInMinutes / 60);
-    if (diffInHours < 24) {
-      return `${diffInHours} hour${diffInHours !== 1 ? 's' : ''} ago`;
-    }
-    
-    const diffInDays = Math.floor(diffInHours / 24);
-    if (diffInDays < 7) {
-      if (diffInDays === 0) return 'Today';
-      if (diffInDays === 1) return 'Yesterday';
-      return `${diffInDays} days ago`;
-    }
-    
-    const diffInWeeks = Math.floor(diffInDays / 7);
-    if (diffInWeeks < 4) {
-      return `${diffInWeeks} week${diffInWeeks !== 1 ? 's' : ''} ago`;
-    }
-    
-    const diffInMonths = Math.floor(diffInDays / 30);
-    if (diffInMonths < 12) {
-      return `${diffInMonths} month${diffInMonths !== 1 ? 's' : ''} ago`;
-    }
-    
-    const diffInYears = Math.floor(diffInDays / 365);
-    return `${diffInYears} year${diffInYears !== 1 ? 's' : ''} ago`;
-  } catch (error) {
-    console.error("Error formatting date:", error);
-    return "Date error";
-  }
-}
-
-/**
- * Helper function to show feedback messages
- */
-function showFeedbackMessage(message, type = 'info', duration = 3000) {
-  try {
-    // Check if feedback container exists
-    let container = document.getElementById('feedback-container');
-    
-    // Create container if it doesn't exist
-    if (!container) {
-      container = document.createElement('div');
-      container.id = 'feedback-container';
-      container.style.position = 'fixed';
-      container.style.top = '20px';
-      container.style.right = '20px';
-      container.style.zIndex = '9999';
-      document.body.appendChild(container);
-    }
-    
-    // Create message element
-    const messageElement = document.createElement('div');
-    messageElement.className = `feedback-message feedback-${type}`;
-    messageElement.textContent = message;
-    messageElement.style.backgroundColor = type === 'info' ? '#3498db' : type === 'success' ? '#2ecc71' : '#e74c3c';
-    messageElement.style.color = 'white';
-    messageElement.style.padding = '12px 20px';
-    messageElement.style.margin = '10px 0';
-    messageElement.style.borderRadius = '4px';
-    messageElement.style.boxShadow = '0 2px 5px rgba(0,0,0,0.2)';
-    messageElement.style.transition = 'transform 0.3s, opacity 0.3s';
-    messageElement.style.transform = 'translateX(100%)';
-    messageElement.style.opacity = '0';
-    
-    // Add to container
-    container.appendChild(messageElement);
-    
-    // Force reflow to enable transition
-    messageElement.offsetHeight;
-    
-    // Show message
-    messageElement.style.transform = 'translateX(0)';
-    messageElement.style.opacity = '1';
-    
-    // Remove after duration
-    if (duration > 0) {
-      setTimeout(function() {
-        messageElement.style.transform = 'translateX(100%)';
-        messageElement.style.opacity = '0';
+        const activities = [];
         
-        // Remove from DOM after transition
-        setTimeout(function() {
-          if (messageElement.parentNode) {
-            messageElement.parentNode.removeChild(messageElement);
-          }
-        }, 300);
-      }, duration);
+        // Get activities
+        if (progressData.activities) {
+          Object.entries(progressData.activities).forEach(([id, data]) => {
+            if (data.completed) {
+              activities.push({
+                id: id,
+                category: 'activities',
+                title: data.title || formatId(id),
+                score: data.score,
+                maxScore: data.maxScore,
+                completedAt: data.completedAt,
+                timestamp: data.completedAt || new Date().toISOString()
+              });
+            }
+          });
+        }
+        
+        // Get lessons
+        if (progressData.lessons) {
+          Object.entries(progressData.lessons).forEach(([id, data]) => {
+            if (data.lastViewed) {
+              activities.push({
+                id: id,
+                category: 'lessons',
+                title: data.title || formatId(id),
+                timestamp: data.lastViewed || new Date().toISOString()
+              });
+            }
+          });
+        }
+        
+        // Get assessments
+        if (progressData.assessments) {
+          Object.entries(progressData.assessments).forEach(([id, data]) => {
+            if (data.completed) {
+              activities.push({
+                id: id,
+                category: 'assessments',
+                title: data.title || formatId(id),
+                score: data.score,
+                maxScore: data.maxScore,
+                completedAt: data.completedAt,
+                timestamp: data.completedAt || new Date().toISOString()
+              });
+            }
+          });
+        }
+        
+        // Sort by timestamp (newest first)
+        activities.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+        
+        // Return limited number
+        return activities.slice(0, limit);
+      } catch (error) {
+        console.error('Error getting recent activities:', error);
+        return [];
+      }
     }
-  } catch (error) {
-    console.error("Error showing feedback message:", error);
-  }
-}
+    
+    /**
+     * Formats an ID into a readable title
+     * 
+     * @param {string} id - The ID to format
+     * @returns {string} - Formatted title
+     */
+    function formatId(id) {
+      return id
+        .replace(/^mcq-/, '')
+        .replace(/^gap-fill-/, '')
+        .replace(/^transformation-/, '')
+        .replace(/-/g, ' ')
+        .replace(/([A-Z])/g, ' $1')
+        .replace(/\b\w/g, l => l.toUpperCase());
+    }
+    
+    /**
+     * Formats a timestamp into a relative time string
+     * 
+     * @param {string} timestamp - ISO timestamp
+     * @returns {string} - Relative time string
+     */
+    function formatRelativeTime(timestamp) {
+      if (!timestamp) return 'Unknown time';
+      
+      const date = new Date(timestamp);
+      if (isNaN(date.getTime())) return 'Invalid date';
+      
+      const now = new Date();
+      const diffInSeconds = Math.floor((now - date) / 1000);
+      
+      if (diffInSeconds < 60) {
+        return 'Just now';
+      }
+      
+      const diffInMinutes = Math.floor(diffInSeconds / 60);
+      if (diffInMinutes < 60) {
+        return `${diffInMinutes} minute${diffInMinutes !== 1 ? 's' : ''} ago`;
+      }
+      
+      const diffInHours = Math.floor(diffInMinutes / 60);
+      if (diffInHours < 24) {
+        return `${diffInHours} hour${diffInHours !== 1 ? 's' : ''} ago`;
+      }
+      
+      const diffInDays = Math.floor(diffInHours / 24);
+      if (diffInDays < 7) {
+        return diffInDays === 0 ? 'Today' : 
+               diffInDays === 1 ? 'Yesterday' : 
+               `${diffInDays} days ago`;
+      }
+      
+      const options = { month: 'short', day: 'numeric' };
+      return date.toLocaleDateString(undefined, options);
+    }
   </script>
 </body>
 </html>

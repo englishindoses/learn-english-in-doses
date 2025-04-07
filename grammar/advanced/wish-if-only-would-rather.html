@@ -19,6 +19,45 @@
   <!-- Styles -->
   <link rel="stylesheet" href="../../css/base.css">
   <link rel="stylesheet" href="../../css/activities.css">
+  
+  <!-- Additional styles to fix display issues -->
+  <style>
+    /* Fix progress bar styling */
+    .progress-container {
+      margin-bottom: 30px;
+      padding-bottom: 10px;
+      clear: both;
+    }
+    
+    .progress-container h4 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+    
+    /* Fix MCQ question display */
+    #mcq .question {
+      display: block !important;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--border-color, #ddd);
+    }
+    
+    .activity-container.active {
+      display: block !important;
+    }
+    
+    /* Ensure proper spacing between options */
+    .options {
+      margin-bottom: 15px;
+    }
+    
+    /* Make sure feedback is visible */
+    .feedback {
+      margin-top: 10px;
+      min-height: 20px;
+    }
+  </style>
 </head>
 <body>
   <!-- Include skip link and theme toggle -->
@@ -64,9 +103,9 @@
     <main id="main-content">
       <h1>Wish, If Only, and Would Rather: Expressing Regrets and Desires</h1>
 
-      <!-- Progress tracking display -->
+      <!-- Progress tracking display - FIXED -->
       <div class="progress-container">
-        <h3>Your Progress</h3>
+        <h4>Your Progress</h4>
         <div id="activity-progress" data-progress-display data-progress-type="bar" 
              data-category="activities" data-item-id="wish-if-only"></div>
       </div>
@@ -255,7 +294,7 @@
         </div>
       </section>
 
-      <!-- MCQ PRACTICE SECTION -->
+      <!-- MCQ PRACTICE SECTION - FIXED -->
       <section class="content-section mcq-container">
         <h2>Test Your Knowledge</h2>
         <p>Test your understanding of wish, if only, and would rather by selecting the correct option for each question.</p>
@@ -520,6 +559,11 @@
   
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // Make sure all questions are visible
+      document.querySelectorAll('#mcq .question').forEach(function(question) {
+        question.style.display = 'block';
+      });
+      
       // Initialize MCQ Module with standardized activity tracking
       MCQModule.init({
         containerId: 'mcq',
@@ -558,6 +602,8 @@
             });
           }
         },
+        // We don't need to control question visibility with showQuestion methods
+        showAllQuestionsAtOnce: true,
         // Add explanations for better feedback
         explanations: {
           'q1': 'We use past simple (was/were) after "wish" for present situations.',
