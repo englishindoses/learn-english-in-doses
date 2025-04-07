@@ -45,7 +45,6 @@
       <a href="../../extra-practice.html" class="nav-link">Extra Practice</a>     
       <a href="../../conversation-page.html" class="nav-link">Conversation</a>
       <a href="../../my-progress.html" class="nav-link">My Progress</a>
-      <a href="../../my-progress.html" class="nav-link">My Progress</a>
     </div>
 
     <div class="advanced-nav-indicator"></div>
@@ -64,6 +63,13 @@
 
     <main id="main-content">
       <h1>Wish, If Only, and Would Rather: Expressing Regrets and Desires</h1>
+
+      <!-- Progress tracking display -->
+      <div class="progress-container">
+        <h3>Your Progress</h3>
+        <div id="activity-progress" data-progress-display data-progress-type="bar" 
+             data-category="activities" data-item-id="wish-if-only"></div>
+      </div>
 
       <!-- INTRODUCTION SECTION -->
       <section class="intro-section">
@@ -456,7 +462,6 @@
         </div>
       </section>
       
-
     </main>
   </div>
   
@@ -506,8 +511,11 @@
     </div>
   </footer>
 
-  <!-- JavaScript -->
+  <!-- JavaScript - Updated with new progress tracking scripts -->
   <script src="../../js/core.js"></script>
+  <script src="../../js/progress-tracking-module.js"></script>
+  <script src="../../js/progress-manager-ui.js"></script>
+  <script src="../../js/init-progress.js"></script>
   <script src="../../js/mcq.js"></script>
   
   <script>
@@ -530,11 +538,20 @@
         onComplete: function(score, total) {
           console.log('MCQ completed with score: ' + score + '/' + total);
           
-          // The MCQ module now handles activity completion notifications automatically
-          // We only need to update the lesson progress
-          if (typeof ProgressTrackingModule !== 'undefined') {
-            // Mark the lesson itself as viewed/completed
-            ProgressTrackingModule.updateItemProgress('lessons', 'wish-if-only', {
+          // Mark the activity as completed
+          if (typeof ProgressTracker !== 'undefined' || typeof ProgressTrackingModule !== 'undefined') {
+            const progressModule = typeof ProgressTracker !== 'undefined' ? 
+              ProgressTracker : ProgressTrackingModule;
+            
+            // Mark the activity as completed
+            progressModule.markItemCompleted('activities', 'wish-if-only', {
+              score: score,
+              maxScore: total,
+              title: 'Wish, If Only, and Would Rather Quiz'
+            });
+            
+            // Also mark the lesson as viewed/completed
+            progressModule.updateItemProgress('lessons', 'wish-if-only', {
               lastViewed: new Date().toISOString(),
               progress: 100, // Percent complete
               title: 'Wish, If Only, and Would Rather' // Human-readable lesson title
@@ -555,12 +572,6 @@
           'q10': 'For past regrets, we use past perfect (had known) after "if only".'
         }
       });
-      
-      // Check if the user recently completed the activity (page reload case)
-      // This helps trigger achievement checks if the page is reloaded
-      if (typeof ProgressTrackingModule !== 'undefined') {
-        ProgressTrackingModule.checkAchievements();
-      }
     });
   </script>
 </body>

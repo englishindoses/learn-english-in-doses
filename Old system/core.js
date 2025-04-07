@@ -6,7 +6,6 @@
  * - Mobile navigation controls
  * - Local storage utilities for saving/retrieving user preferences and progress
  * - Common UI helpers and utility functions
- * - Module detection and communication utilities
  */
 
 // Ensure the DOM is fully loaded before running any code
@@ -16,9 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
   initMobileNavigation();
   initPrintButton();
   initSkipLink();
-  
-  // Initialize modules
-  initModules();
   
   // Log initialization for debugging
   console.log('Core module initialized');
@@ -671,163 +667,6 @@ function calculateStorageUsage() {
   }
 }
 
-/**
- * ----------------------------------------
- * 5. Module Utility Functions
- * ----------------------------------------
- */
-
-/**
- * Checks if a module is available
- * 
- * @param {string} moduleName - Name of the module to check
- * @returns {boolean} - Whether the module is available
- */
-function isModuleAvailable(moduleName) {
-  return typeof window[moduleName] !== 'undefined';
-}
-
-/**
- * Safely calls a module function if available
- * 
- * @param {string} moduleName - Name of the module
- * @param {string} functionName - Name of the function to call
- * @param {Array} args - Arguments to pass to the function
- * @returns {any} - Result of the function call or null if not available
- */
-function callModuleFunction(moduleName, functionName, args = []) {
-  if (!isModuleAvailable(moduleName)) return null;
-  
-  try {
-    if (typeof window[moduleName][functionName] === 'function') {
-      return window[moduleName][functionName](...args);
-    }
-  } catch (error) {
-    console.error(`Error calling ${moduleName}.${functionName}:`, error);
-  }
-  
-  return null;
-}
-
-/**
- * Dispatches a standardized custom event
- * 
- * @param {string} eventName - Name of the event
- * @param {Object} detail - Event details
- */
-function dispatchCustomEvent(eventName, detail = {}) {
-  try {
-    const event = new CustomEvent(eventName, { detail });
-    document.dispatchEvent(event);
-    console.log(`Dispatched ${eventName} event:`, detail);
-  } catch (error) {
-    console.error(`Error dispatching ${eventName} event:`, error);
-  }
-}
-
-/**
- * Registers an event listener for custom events
- * 
- * @param {string} eventName - Name of the event
- * @param {Function} callback - Callback function
- */
-function listenForCustomEvent(eventName, callback) {
-  document.addEventListener(eventName, function(event) {
-    try {
-      callback(event.detail);
-    } catch (error) {
-      console.error(`Error in ${eventName} event handler:`, error);
-    }
-  });
-}
-
-/**
- * ----------------------------------------
- * 6. Module Initialization Function
- * ----------------------------------------
- */
-
-/**
- * Initializes all core modules on page load
- */
-function initModules() {
-  // Initialize progress tracking module if available
-  if (isModuleAvailable('ProgressTrackingModule')) {
-    // The specific initialization is typically done in page-specific code
-    console.log('ProgressTrackingModule available and ready for initialization');
-  }
-  
-  // Initialize activity navigation module if available
-  if (isModuleAvailable('ActivityNavModule')) {
-    console.log('ActivityNavModule available and ready for initialization');
-  }
-  
-  // Check and log modules availability for debugging
-  if (window.location.search.includes('debug=true')) {
-    logModulesStatus();
-  }
-}
-
-/**
- * Logs the status of all modules for debugging
- */
-function logModulesStatus() {
-  console.group('Modules Status');
-  console.log('ProgressTrackingModule:', isModuleAvailable('ProgressTrackingModule') ? 'Available' : 'Not Available');
-  console.log('ActivityNavModule:', isModuleAvailable('ActivityNavModule') ? 'Available' : 'Not Available');
-  console.log('MCQModule:', isModuleAvailable('MCQModule') ? 'Available' : 'Not Available');
-  console.groupEnd();
-}
-
-/**
- * Migrates progress data from old format to new format
- * Should be called once when the new system is deployed
- */
-function migrateProgressData() {
-  if (getFromLocalStorage('migration-completed')) return;
-  
-  console.log('Starting progress data migration...');
-  
-  try {
-    // Find all old activity progress items
-    let migratedCount = 0;
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      if (key && key.endsWith('-progress')) {
-        try {
-          const oldData = JSON.parse(localStorage.getItem(key));
-          const activityId = key.replace('-progress', '');
-          
-          // Convert to new format if the ProgressTrackingModule is available
-          if (oldData && oldData.completed && isModuleAvailable('ProgressTrackingModule')) {
-            callModuleFunction('ProgressTrackingModule', 'markItemCompleted', [
-              'activities', 
-              activityId, 
-              {
-                score: oldData.score || null,
-                maxScore: oldData.maxScore || null,
-                title: oldData.title || activityId
-              }
-            ]);
-            migratedCount++;
-          }
-        } catch (e) {
-          console.warn(`Could not migrate data for ${key}:`, e);
-        }
-      }
-    }
-    
-    console.log(`Migration completed. Migrated ${migratedCount} activities.`);
-    
-    // Mark migration as complete
-    saveToLocalStorage('migration-completed', true);
-    return true;
-  } catch (error) {
-    console.error('Error during progress data migration:', error);
-    return false;
-  }
-}
-
 // Export functions if module system is being used
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
@@ -845,14 +684,6 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
     addEventListenerToAll,
     initCollapsibleSections,
     logStorageStatus,
-    calculateStorageUsage,
-    // New module utility functions
-    isModuleAvailable,
-    callModuleFunction,
-    dispatchCustomEvent,
-    listenForCustomEvent,
-    initModules,
-    logModulesStatus,
-    migrateProgressData
+    calculateStorageUsage
   };
 }
