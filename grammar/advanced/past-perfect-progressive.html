@@ -169,36 +169,41 @@
         <table>
           <thead>
             <tr>
-              <th>Feature</th>
-              <th>Past Perfect</th>
-              <th>Past Perfect Progressive</th>
+              <th style="background-color: var(--header-bg);">Feature</th>
+              <th style="background-color: var(--accent-color);">Past Perfect</th>
+              <th style="background-color: var(--secondary-accent);">Past Perfect Progressive</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Form</td>
-              <td>had + past participle</td>
-              <td>had been + verb-ing</td>
+              <td><strong>Form</strong></td>
+              <td style="background-color: rgba(52, 152, 219, 0.1);">had + past participle</td>
+              <td style="background-color: rgba(240, 125, 62, 0.1);">had been + verb-ing</td>
             </tr>
             <tr>
-              <td>Focus</td>
-              <td>Completion of action</td>
-              <td>Duration or process</td>
+              <td><strong>Focus</strong></td>
+              <td style="background-color: rgba(52, 152, 219, 0.1);">Completion of action</td>
+              <td style="background-color: rgba(240, 125, 62, 0.1);">Duration or process</td>
             </tr>
             <tr>
-              <td>Common time markers</td>
-              <td>before, by the time, already, just</td>
-              <td>for, since, all day/week, how long</td>
+              <td><strong>Common time markers</strong></td>
+              <td style="background-color: rgba(52, 152, 219, 0.1);">before, by the time, already, just</td>
+              <td style="background-color: rgba(240, 125, 62, 0.1);">for, since, all day/week, how long</td>
             </tr>
             <tr>
-              <td>Best for expressing</td>
-              <td>Results, completed experiences</td>
-              <td>Ongoing activities, causes of conditions</td>
+              <td><strong>Best for expressing</strong></td>
+              <td style="background-color: rgba(52, 152, 219, 0.1);">Results, completed experiences</td>
+              <td style="background-color: rgba(240, 125, 62, 0.1);">Ongoing activities, causes of conditions</td>
             </tr>
             <tr>
-              <td>Example</td>
-              <td>I <strong>had finished</strong> the report.</td>
-              <td>I <strong>had been working</strong> on the report.</td>
+              <td><strong>When to use</strong></td>
+              <td style="background-color: rgba(52, 152, 219, 0.1);">For completed actions or experiences before a past moment</td>
+              <td style="background-color: rgba(240, 125, 62, 0.1);">To explain why something was a certain way in the past</td>
+            </tr>
+            <tr>
+              <td><strong>Example</strong></td>
+              <td style="background-color: rgba(52, 152, 219, 0.1);">I <strong>had finished</strong> the report.</td>
+              <td style="background-color: rgba(240, 125, 62, 0.1);">I <strong>had been working</strong> on the report.</td>
             </tr>
           </tbody>
         </table>
@@ -265,22 +270,22 @@
 
       <!-- TIPS SECTION -->
       <section class="tips">
-        <h2 class="tips-heading">Useful Tips</h2>
+        <h2 class="tips-heading">How to Remember and Practice</h2>
         
         <div class="grammar-tip">
-          <p>📝 <strong>TIP 1:</strong> For completed actions or experiences before a past moment, use Past Perfect: "I had finished my coffee when she called."</p>
+          <p>📝 <strong>Memory Tip:</strong> Think of Past Perfect as a "completion" tense (had + completed action) and Past Perfect Progressive as a "duration" tense (had been + ongoing action).</p>
         </div>
         
         <div class="grammar-tip">
-          <p>📝 <strong>TIP 2:</strong> To explain why something was a certain way in the past, use Past Perfect Progressive: "She was tired because she had been working all night."</p>
+          <p>📝 <strong>Practice Exercise 1:</strong>Practice with your daily life: Write about a day last week, using Past Perfect for completed tasks and Past Perfect Progressive for ongoing activities. "I woke up late because I had forgotten to set my alarm clock. By the time I got to the meeting, my client had been waiting for 20 minutes. He wasn't happy!"</p>
         </div>
         
         <div class="grammar-tip">
-          <p>📝 <strong>TIP 3:</strong> When you want to emphasize how long something continued up to a past moment, use Past Perfect Progressive with a duration phrase: "They had been living in London for ten years before they moved to Paris."</p>
+          <p>📝 <strong>Practice Exercise 2:</strong> Write your own story about a mysterious situation using Past Perfect Progressive to build suspense about ongoing actions and Past Perfect to reveal completed actions. For example: "When I entered the room, someone had been cooking (smell, mess), but they had already left (completed action)."</p>
         </div>
         
         <div class="grammar-tip">
-          <p>📝 <strong>TIP 4:</strong> For some verbs (especially state verbs like know, believe, have, want), Past Perfect is more natural than Past Perfect Progressive: "I had had that car for five years before it broke down." (Not "I had been having...")</p>
+          <p>📝 <strong>Practice Exercise 3:</strong> Make a list of state verbs (know, believe, want, etc.) and action verbs (work, run, study, etc.). Practice creating sentences with state verbs in Past Perfect and action verbs in both Past Perfect and Past Perfect Progressive to understand the difference in meaning.</p>
         </div>
       </section>
 
@@ -596,6 +601,22 @@
             });
           }
         }
+      });
+      
+      // Add click handlers for the options to ensure they're clickable
+      document.querySelectorAll('#mcq .option').forEach(option => {
+        option.addEventListener('click', function() {
+          const questionId = this.closest('.question').id;
+          const options = document.querySelectorAll(`#${questionId} .option`);
+          
+          // Clear previous selections
+          options.forEach(opt => {
+            opt.classList.remove('selected');
+          });
+          
+          // Select this option
+          this.classList.add('selected');
+        });
       });
     });
   </script>
