@@ -342,15 +342,7 @@
           <div id="recent-activity"></div>
         </section>
         
-        <!-- Activities Grid -->
-        <section class="progress-card">
-          <div class="progress-section-title">
-            <h2>Grammar Activities</h2>
-          </div>
-          
-          <div id="activity-grid"></div>
-        </section>
-        
+
         <!-- Achievements -->
         <section class="progress-card">
           <div class="progress-section-title">
@@ -432,7 +424,6 @@
   <script src="js/progress-tracking-module.js"></script>
   <script src="js/progress-manager-ui.js"></script>
   <script src="js/init-progress.js"></script>
-  <script src="css/progress-tracking-styles.css"></script>
   
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -492,7 +483,6 @@
       // Create UI components
       ProgressManagerUI.createProgressSummary('category-progress');
       ProgressManagerUI.createAchievementDisplay('achievements', { showAll: true });
-      ProgressManagerUI.createActivityGrid('activity-grid', { category: 'activities' });
       
       // Create recent activity display
       createRecentActivityDisplay();
