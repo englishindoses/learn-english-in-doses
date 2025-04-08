@@ -22,23 +22,40 @@
 
   <!-- Page specific styles - including nav-indicator -->
   <style>
-    /* Add these styles for level-specific styling - DO NOT PUT IN base.css */
-    .nav-indicator {
-      height: 3px;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
+    /* Fix progress bar styling */
+    .progress-container {
+      margin-bottom: 30px;
+      padding-bottom: 10px;
+      clear: both;
     }
     
-    /* For beginner section */
-    .beginner-section .nav-indicator {
-      background-color: var(--beginner-primary);
+    .progress-container h4 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 1rem;
     }
-  
-    /* For conversation section */
-    .conversation-section .nav-indicator {
-      background-color: var(--conversation-primary);
+    
+    /* Fix MCQ question display */
+    #mcq .question {
+      display: block !important;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--border-color, #ddd);
+    }
+    
+    .activity-container.active {
+      display: block !important;
+    }
+    
+    /* Ensure proper spacing between options */
+    .options {
+      margin-bottom: 15px;
+    }
+    
+    /* Make sure feedback is visible */
+    .feedback {
+      margin-top: 10px;
+      min-height: 20px;
     }
   </style>
 </head>
@@ -67,7 +84,6 @@
       <a href="../../extra-practice.html" class="nav-link">Extra Practice</a>
       <a href="../../conversation-page.html" class="nav-link">Conversation</a>
       <a href="../../my-progress.html" class="nav-link">My Progress</a>
-      <a href="../../my-progress.html" class="nav-link">My Progress</a>
     </div>
 
     <div class="advanced-nav-indicator"></div>
@@ -86,6 +102,13 @@
 
     <main id="main-content">
       <h1>{GRAMMAR_TOPIC}</h1>
+
+      <!-- Progress tracking display - ADDED -->
+      <div class="progress-container">
+        <h4>Your Progress</h4>
+        <div id="activity-progress" data-progress-display data-progress-type="bar" 
+             data-category="activities" data-item-id="{LESSON_ID}"></div>
+      </div>
 
       <!-- INTRODUCTION SECTION -->
       <section class="intro-section">
@@ -147,7 +170,7 @@
       </section>
 
       <!-- VISUAL COMPARISON TABLE -->
-      <section>
+      <section id="summary"><!-- ADDED ID for linking -->
         <h2>Summary of {GRAMMAR_TOPIC}</h2>
         <table>
           <thead>
@@ -182,21 +205,21 @@
         
         <div class="error-pattern">
           <p class="error-title"><strong>1: {ERROR_TITLE_1}</strong></p>
-          <p class="incorrect">{INCORRECT_USAGE_1}</p><br>
+          <p class="incorrect">{INCORRECT_USAGE_1}</p>
           <p class="correct">{CORRECTED_VERSION_1} ✓</p>
           <p class="explanation"><em>{EXPLANATION_1}</em></p>
         </div>
         
         <div class="error-pattern">
           <p class="error-title"><strong>2: {ERROR_TITLE_2}</strong></p>
-          <p class="incorrect">{INCORRECT_USAGE_2}</p><br>
+          <p class="incorrect">{INCORRECT_USAGE_2}</p>
           <p class="correct">{CORRECTED_VERSION_2} ✓</p>
           <p class="explanation"><em>{EXPLANATION_2}</em></p>
         </div>
         
         <div class="error-pattern">
           <p class="error-title"><strong>3: {ERROR_TITLE_3}</strong></p>
-          <p class="incorrect">{INCORRECT_USAGE_3}</p><br>
+          <p class="incorrect">{INCORRECT_USAGE_3}</p>
           <p class="correct">{CORRECTED_VERSION_3} ✓</p>
           <p class="explanation"><em>{EXPLANATION_3}</em></p>
         </div>
@@ -323,7 +346,9 @@
           
           <div class="control-buttons">
             <button id="mcq-submit" class="submit-btn">Check Answers</button>
+            <a href="#summary" class="nav-button">Review Grammar</a>
             <button id="mcq-restart" class="restart-btn" style="display:none;">Try Again</button>
+            <button id="check-grammar" class="nav-button activities" style="display:none;">Check the Grammar</button><!-- ADDED -->
           </div>
           
           <div class="score-display" id="mcq-score" style="display:none;">
@@ -331,6 +356,9 @@
           </div>
         </div>
       </section>
+      
+      <!-- Feedback Message Container - ADDED -->
+      <div id="completion-feedback"></div>
     </main>
   </div>
   
@@ -372,7 +400,7 @@
         <ul>
           <li><a href="../../about.html">About</a></li>
           <li><a href="../../contact.html">Contact</a></li>
-          <li><a href="../../privacy.html">Privacy Policy</a></li>
+          <!-- <li><a href="../../privacy.html">Privacy Policy</a></li> -->
         </ul>
       </div>
     </div>
@@ -382,12 +410,20 @@
     </div>
   </footer>
 
-  <!-- JavaScript - Note the updated paths with "../../" -->
+  <!-- JavaScript - Updated with new progress tracking scripts -->
   <script src="../../js/core.js"></script>
+  <script src="../../js/progress-tracking-module.js"></script>
+  <script src="../../js/progress-manager-ui.js"></script>
+  <script src="../../js/init-progress.js"></script>
   <script src="../../js/mcq.js"></script>
   
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // Make sure all questions are visible
+      document.querySelectorAll('#mcq .question').forEach(function(question) {
+        question.style.display = 'block';
+      });
+      
       // Initialize MCQ Module
       MCQModule.init({
         containerId: 'mcq',
@@ -398,21 +434,26 @@
           'q4': 3,  // Index of correct answer for question 4
           'q5': 2   // Index of correct answer for question 5
         },
-        // Add specific feedback for incorrect answers
-        incorrectTips: {
-          'q1': '{INCORRECT_FEEDBACK_1}',
-          'q2': '{INCORRECT_FEEDBACK_2}',
-          'q3': '{INCORRECT_FEEDBACK_3}',
-          'q4': '{INCORRECT_FEEDBACK_4}',
-          'q5': '{INCORRECT_FEEDBACK_5}'
+        showAllQuestionsAtOnce: true, // ADDED
+        // Add detailed explanations for feedback
+        explanations: {
+          'q1': '{EXPLANATION_Q1}',
+          'q2': '{EXPLANATION_Q2}',
+          'q3': '{EXPLANATION_Q3}',
+          'q4': '{EXPLANATION_Q4}',
+          'q5': '{EXPLANATION_Q5}'
         },
+        showAllQuestionsAtOnce: true, // Show all questions at once
         onComplete: function(score, total) {
           console.log('MCQ completed with score: ' + score + '/' + total);
           
           // Track this activity completion in the progress system
-          if (typeof ProgressTrackingModule !== 'undefined') {
+          if (typeof ProgressTracker !== 'undefined' || typeof ProgressTrackingModule !== 'undefined') {
+            const progressModule = typeof ProgressTracker !== 'undefined' ? 
+              ProgressTracker : ProgressTrackingModule;
+            
             // Mark the MCQ as completed in the 'activities' category
-            ProgressTrackingModule.markItemCompleted('activities', 'mcq-{ACTIVITY_ID}', {
+            progressModule.markItemCompleted('activities', 'mcq-{ACTIVITY_ID}', {
               score: score,
               maxScore: total,
               completed: true,
@@ -421,15 +462,91 @@
             });
             
             // Also mark the lesson itself as viewed/completed
-            ProgressTrackingModule.updateItemProgress('lessons', '{LESSON_ID}', {
+            progressModule.updateItemProgress('lessons', '{LESSON_ID}', {
               lastViewed: new Date().toISOString(),
               progress: 100, // Percent complete
               title: '{GRAMMAR_TOPIC}' // Human-readable lesson title
             });
           }
-        }
+          
+          // Show feedback message - ADDED
+          showCompletionFeedback(score, total);
+        },
+        grammarSummaryId: 'grammar-summary' // ADDED - for "Check the Grammar" button
       });
+      
+      // Setup the "Check the Grammar" button - ADDED
+      const checkGrammarButton = document.getElementById('check-grammar');
+      if (checkGrammarButton) {
+        checkGrammarButton.addEventListener('click', function(e) {
+          e.preventDefault();
+          const summarySection = document.getElementById('grammar-summary');
+          if (summarySection) {
+            summarySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      }
     });
+    
+    /**
+     * Shows feedback to the user after completing the activity - ADDED
+     * 
+     * @param {number} score - The score achieved
+     * @param {number} total - The total possible score
+     */
+    function showCompletionFeedback(score, total) {
+      // Calculate percentage
+      const percentage = Math.round((score / total) * 100);
+      
+      // Create feedback element if it doesn't exist
+      let feedbackElement = document.getElementById('completion-feedback');
+      
+      if (!feedbackElement) {
+        feedbackElement = document.createElement('div');
+        feedbackElement.id = 'completion-feedback';
+        feedbackElement.className = 'feedback-message';
+        feedbackElement.style.marginTop = '20px';
+        feedbackElement.style.padding = '15px';
+        feedbackElement.style.borderRadius = '5px';
+        feedbackElement.style.textAlign = 'center';
+        
+        // Add it after the MCQ container
+        const mcqContainer = document.getElementById('mcq');
+        if (mcqContainer && mcqContainer.parentNode) {
+          mcqContainer.parentNode.insertBefore(feedbackElement, mcqContainer.nextSibling);
+        }
+      }
+      
+      // Set content and style based on score
+      if (percentage >= 80) {
+        feedbackElement.style.backgroundColor = 'var(--success-bg, #d4edda)';
+        feedbackElement.style.color = 'var(--success-color, #155724)';
+        feedbackElement.innerHTML = `
+          <h3>Great job! 🎉</h3>
+          <p>You scored ${score}/${total} (${percentage}%). Your progress has been saved.</p>
+          <p>Why not try another activity to continue learning?</p>
+        `;
+      } else if (percentage >= 60) {
+        feedbackElement.style.backgroundColor = 'var(--note-bg, #fff3cd)';
+        feedbackElement.style.color = 'var(--note-color, #856404)';
+        feedbackElement.innerHTML = `
+          <h3>Good effort! 👍</h3>
+          <p>You scored ${score}/${total} (${percentage}%). Your progress has been saved.</p>
+          <p>Consider reviewing the grammar points above before moving on.</p>
+        `;
+      } else {
+        feedbackElement.style.backgroundColor = 'var(--error-bg, #f8d7da)';
+        feedbackElement.style.color = 'var(--error-color, #721c24)';
+        feedbackElement.innerHTML = `
+          <h3>Keep practicing 💪</h3>
+          <p>You scored ${score}/${total} (${percentage}%). Your progress has been saved.</p>
+          <p>Review the grammar section before trying again.</p>
+        `;
+      }
+      
+      // Scroll to feedback
+      feedbackElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
   </script>
 </body>
 </html>

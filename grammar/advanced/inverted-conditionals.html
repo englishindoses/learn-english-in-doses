@@ -19,6 +19,7 @@
   <!-- Styles -->
   <link rel="stylesheet" href="../../css/base.css">
   <link rel="stylesheet" href="../../css/activities.css">
+  <link rel="stylesheet" href="../../css/progress-tracking-styles.css">
 </head>
 <body>
   <!-- Include skip link and theme toggle -->
@@ -185,7 +186,7 @@
       </section>
 
       <!-- VISUAL COMPARISON TABLE -->
-      <section>
+      <section id="summary">
         <h2>Comparing Standard and Inverted Conditionals</h2>
         <table>
           <thead>
@@ -306,7 +307,7 @@
       <!-- MCQ PRACTICE SECTION -->
       <section class="content-section mcq-container">
         <h2>Test Your Knowledge</h2>
-        <p>Choose the correct inverted conditional form for each sentence.</p>
+        <p>Choose the correct answers to test your understanding of inverted conditionals.</p>
         
         <div id="mcq" class="activity-container active">
           <div class="question" id="q1">
@@ -406,6 +407,7 @@
           
           <div class="control-buttons">
             <button id="mcq-submit" class="submit-btn">Check Answers</button>
+            <a href="#summary" class="nav-button">Review Grammar</a>
             <button id="mcq-restart" class="restart-btn" style="display:none;">Try Again</button>
           </div>
           
@@ -466,11 +468,11 @@
   <!-- JavaScript -->
   <script src="../../js/core.js"></script>
   <script src="../../js/mcq.js"></script>
-  <script src="../../js/transformation.js"></script>
+  <script src="../../js/progress-tracking-module.js"></script>
   
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Initialize MCQ Module
+      // Initialize MCQ Module with answers and feedback
       MCQModule.init({
         containerId: 'mcq',
         answers: {
@@ -480,12 +482,28 @@
           'q4': 2,  // Had they not helped
           'q5': 1   // Were it not for
         },
+        correctExplanations: {
+          'q1': 'Correct! For second conditionals, we invert by placing "were" at the beginning, followed by the subject.',
+          'q2': 'Correct! For third conditionals, we invert by placing "had" at the beginning, followed by the subject and past participle.',
+          'q3': 'Correct! When "should" is used in conditionals, we can invert by placing "should" at the beginning, followed by the subject.',
+          'q4': 'Correct! In negative inverted conditionals, "not" comes after the subject, not before it.',
+          'q5': 'Correct! The fixed expression "Were it not for..." is the inverted form of "If it were not for..."'
+        },
+        incorrectExplanations: {
+          'q1': 'Remember that we place "were" at the beginning, followed by the subject "I" and then the rest of the phrase.',
+          'q2': 'In inverted conditionals, we put the auxiliary verb "had" first, followed by the subject "she".',
+          'q3': 'With "should" conditionals, we place "should" at the beginning, followed by the subject "you".',
+          'q4': 'In negative inverted conditionals, "not" goes after the subject, not before it.',
+          'q5': 'The correct word order is: auxiliary verb (were) + subject (it) + negative (not) + rest of the phrase.'
+        },
+        showAllQuestionsAtOnce: true, // Show all questions at once
         onComplete: function(score, total) {
-          console.log('MCQ completed with score: ' + score + '/' + total);
+          console.log(`MCQ completed with score: ${score}/${total}`);
           
           // Track this activity completion in the progress system
-          if (typeof ProgressTrackingModule !== 'undefined') {
-            ProgressTrackingModule.markItemCompleted('activities', 'mcq-inverted-conditionals', {
+          if (typeof ProgressTracker !== 'undefined') {
+            // Mark the MCQ as completed in the 'activities' category
+            ProgressTracker.markItemCompleted('activities', 'mcq-inverted-conditionals', {
               score: score,
               maxScore: total,
               completed: true,
@@ -493,30 +511,11 @@
               title: 'Inverted Conditionals Quick Practice'
             });
             
-            // Also mark the lesson as viewed/completed
-            ProgressTrackingModule.updateItemProgress('lessons', 'inverted-conditionals', {
+            // Also mark the lesson itself as viewed/completed
+            ProgressTracker.updateItemProgress('lessons', 'inverted-conditionals', {
               lastViewed: new Date().toISOString(),
-              progress: 100,
-              title: 'Inverted Conditionals'
-            });
-          }
-        }
-      });
-      
-      // Initialize Transformation Module
-      TransformationModule.init({
-        containerId: 'transformation',
-        onComplete: function(score, total) {
-          console.log('Transformation completed with score: ' + score + '/' + total);
-          
-          // Track this activity completion in the progress system
-          if (typeof ProgressTrackingModule !== 'undefined') {
-            ProgressTrackingModule.markItemCompleted('activities', 'transformation-inverted-conditionals', {
-              score: score,
-              maxScore: total,
-              completed: true,
-              completedAt: new Date().toISOString(),
-              title: 'Inverted Conditionals Transformation Practice'
+              progress: 100, // Percent complete
+              title: 'Inverted Conditionals' // Human-readable lesson title
             });
           }
         }
