@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
             questionCount: total
           });
           
-          // Mark the lesson as viewed/completed
+          // Mark the lesson itself as viewed/completed
           ProgressTracker.updateItemProgress('lessons', lessonId, {
             lastViewed: new Date().toISOString(),
             progress: 100, // Percent complete
@@ -171,12 +171,14 @@ document.addEventListener('DOMContentLoaded', function() {
         <p>Consider reviewing the grammar points above before moving on.</p>
       `;
     } else {
-      feedbackElement.style.backgroundColor = 'var(--error-bg, #f8d7da)';
-      feedbackElement.style.color = 'var(--error-color, #721c24)';
+      // The "Keep practicing" message has been removed
+      // Replaced with a more neutral completion message
+      feedbackElement.style.backgroundColor = 'var(--note-bg, #fff3cd)';
+      feedbackElement.style.color = 'var(--note-color, #856404)';
       feedbackElement.innerHTML = `
-        <h3>Keep practicing 💪</h3>
+        <h3>Activity completed!</h3>
         <p>You scored ${score}/${total} (${percentage}%). Your progress has been saved.</p>
-        <p>Review the grammar section before trying again.</p>
+        <p>You can try again or move on to another activity.</p>
       `;
     }
     
