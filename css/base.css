@@ -289,7 +289,7 @@
     margin-top: 40px;
     padding: 15px;
     border-top: 1px solid var(--border-color);
-    width: 100%;
+    /* removed width= 100% because it was making the bottom navigation bar too wide - tested and now it's the right size */
     background-color: var(--header-bg);
     border-radius: 5px;
   }

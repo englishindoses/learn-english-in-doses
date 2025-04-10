@@ -23,6 +23,40 @@
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="../../images/favicon.png">
+  
+  <style>
+    /* Additional styles for clickable option divs */
+    .option {
+      cursor: pointer;
+      transition: background-color 0.2s;
+      padding: 8px 12px;
+      border: 1px solid var(--border-color, #ddd);
+      border-radius: 4px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .option:hover {
+      background-color: var(--mcq-hover-bg, #d0e6f7);
+      transform: translateY(-1px);
+    }
+    
+    .option.selected {
+      background-color: var(--mcq-selected-bg, #d0e6f7);
+      border: 2px solid var(--mcq-selected-border, #3498db);
+      font-weight: bold;
+    }
+    
+    [data-theme="dark"] .option:hover {
+      background-color: var(--mcq-hover-bg, #253545);
+    }
+    
+    [data-theme="dark"] .option.selected {
+      background-color: var(--mcq-selected-bg, #253545);
+      border-color: var(--mcq-selected-border, #4fa3e0);
+    }
+  </style>
 </head>
 <body>
   <!-- Include skip link and theme toggle -->
@@ -168,49 +202,51 @@
       </section>
 
       <!-- VISUAL COMPARISON TABLE -->
-      <h2>Summary of Modal Progressive Forms</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Modal Progressive Form</th>
-            <th>Function</th>
-            <th>Level of Certainty</th>
-            <th>Example</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Must be doing</td>
-            <td>Making deductions about present</td>
-            <td>Strong certainty</td>
-            <td><span class="example">She must be working late.</span></td>
-          </tr>
-          <tr>
-            <td>Might/may/could be doing</td>
-            <td>Expressing possibility</td>
-            <td>Uncertainty</td>
-            <td><span class="example">He might be sleeping.</span></td>
-          </tr>
-          <tr>
-            <td>Should/ought to be doing</td>
-            <td>Expressing expectation or criticism</td>
-            <td>Expected action</td>
-            <td><span class="example">You should be studying.</span></td>
-          </tr>
-          <tr>
-            <td>Will be doing</td>
-            <td>Future action in progress</td>
-            <td>Certainty about future</td>
-            <td><span class="example">I will be waiting for you.</span></td>
-          </tr>
-          <tr>
-            <td>Can't be doing</td>
-            <td>Negative deduction about present</td>
-            <td>Certainty that something isn't happening</td>
-            <td><span class="example">She can't be sleeping yet.</span></td>
-          </tr>
-        </tbody>
-      </table>
+      <section id="summary">
+        <h2>Summary of Modal Progressive Forms</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Modal Progressive Form</th>
+              <th>Function</th>
+              <th>Level of Certainty</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Must be doing</td>
+              <td>Making deductions about present</td>
+              <td>Strong certainty</td>
+              <td><span class="example">She must be working late.</span></td>
+            </tr>
+            <tr>
+              <td>Might/may/could be doing</td>
+              <td>Expressing possibility</td>
+              <td>Uncertainty</td>
+              <td><span class="example">He might be sleeping.</span></td>
+            </tr>
+            <tr>
+              <td>Should/ought to be doing</td>
+              <td>Expressing expectation or criticism</td>
+              <td>Expected action</td>
+              <td><span class="example">You should be studying.</span></td>
+            </tr>
+            <tr>
+              <td>Will be doing</td>
+              <td>Future action in progress</td>
+              <td>Certainty about future</td>
+              <td><span class="example">I will be waiting for you.</span></td>
+            </tr>
+            <tr>
+              <td>Can't be doing</td>
+              <td>Negative deduction about present</td>
+              <td>Certainty that something isn't happening</td>
+              <td><span class="example">She can't be sleeping yet.</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
 
       <!-- COMMON ERRORS SECTION -->
       <section class="common-errors">
@@ -218,21 +254,21 @@
         
         <div class="error-pattern">
           <p class="error-title"><strong>1: Using the wrong form of 'be'</strong></p>
-          <p class="incorrect">He must working late today.</p>
+          <p class="incorrect">He must working late today.</p><br>
           <p class="correct">He must be working late today. ✓</p>
           <p class="explanation"><em>Always include 'be' between the modal verb and the -ing form.</em></p>
         </div>
         
         <div class="error-pattern">
           <p class="error-title"><strong>2: Using the past form with modal verbs</strong></p>
-          <p class="incorrect">They should were working on the project.</p>
+          <p class="incorrect">They should were working on the project.</p><br>
           <p class="correct">They should be working on the project. ✓</p>
           <p class="explanation"><em>Modal verbs are always followed by the base form of 'be', not 'was' or 'were'.</em></p>
         </div>
         
         <div class="error-pattern">
           <p class="error-title"><strong>3: Using the infinitive instead of the -ing form</strong></p>
-          <p class="incorrect">She might be work in the office.</p>
+          <p class="incorrect">She might be work in the office.</p><br>
           <p class="correct">She might be working in the office. ✓</p>
           <p class="explanation"><em>After 'be' in this structure, always use the -ing form of the main verb.</em></p>
         </div>
@@ -258,353 +294,221 @@
       <!-- MCQ PRACTICE SECTION -->
       <section class="content-section mcq-container">
         <h2>Quick Practice</h2>
-        <p class="mcq-instructions">Test your understanding of Modal Progressive Forms. Questions progress from basic to more challenging levels.</p>
+        <p>Test your understanding of modal progressive forms with these multiple choice questions.</p>
         
-        <!-- Progress indicator -->
-        <div class="mcq-progress">
-          <div class="progress-container">
-            <div id="mcq-progress-bar" class="progress-bar" style="width: 0%"></div>
-          </div>
-          <div class="progress-info">Question: <span id="current-question">1</span>/<span id="total-questions">10</span></div>
-        </div>
-        
-        <div id="mcq-container" class="activity-container active">
-          <div class="questions-container">
-            <!-- Question 1 - Basic level -->
-            <div id="q1" class="question" data-difficulty="basic">
-              <p class="question-number">Question 1</p>
-              <div class="question-context">
-                <p class="mcq-question">Look at all those books on her desk. She _____ studying for her exam.</p>
+        <div id="mcq" class="activity-container active">
+          <div class="question" id="q1">
+            <p class="mcq-question">1. Look at all those books on her desk. She _____ studying for her exam.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. must to be</span>
               </div>
-              <div class="options">
-                <div class="option" data-index="0">
-                  <input type="radio" id="q1-option0" name="q1" value="0">
-                  <label for="q1-option0">must to be</label>
-                </div>
-                <div class="option" data-index="1">
-                  <input type="radio" id="q1-option1" name="q1" value="1">
-                  <label for="q1-option1">must being</label>
-                </div>
-                <div class="option" data-index="2">
-                  <input type="radio" id="q1-option2" name="q1" value="2">
-                  <label for="q1-option2">must be</label>
-                </div>
-                <div class="option" data-index="3">
-                  <input type="radio" id="q1-option3" name="q1" value="3">
-                  <label for="q1-option3">must is</label>
-                </div>
+              <div class="option" data-index="1">
+                <span>B. must being</span>
               </div>
-              <div class="feedback" aria-live="polite"></div>
+              <div class="option" data-index="2">
+                <span>C. must be</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. must is</span>
+              </div>
             </div>
-            
-            <!-- Question 2 - Basic level -->
-            <div id="q2" class="question" data-difficulty="basic">
-              <p class="question-number">Question 2</p>
-              <div class="question-context">
-                <p class="mcq-question">It's already 10 p.m. The children _____ sleeping now.</p>
-              </div>
-              <div class="options">
-                <div class="option" data-index="0">
-                  <input type="radio" id="q2-option0" name="q2" value="0">
-                  <label for="q2-option0">should be</label>
-                </div>
-                <div class="option" data-index="1">
-                  <input type="radio" id="q2-option1" name="q2" value="1">
-                  <label for="q2-option1">should to be</label>
-                </div>
-                <div class="option" data-index="2">
-                  <input type="radio" id="q2-option2" name="q2" value="2">
-                  <label for="q2-option2">should been</label>
-                </div>
-                <div class="option" data-index="3">
-                  <input type="radio" id="q2-option3" name="q2" value="3">
-                  <label for="q2-option3">should are</label>
-                </div>
-              </div>
-              <div class="feedback" aria-live="polite"></div>
-            </div>
-            
-            <!-- Question 3 - Basic level -->
-            <div id="q3" class="question" data-difficulty="basic">
-              <p class="question-number">Question 3</p>
-              <div class="question-context">
-                <p class="mcq-question">I can hear music from their house. They _____ having a party.</p>
-              </div>
-              <div class="options">
-                <div class="option" data-index="0">
-                  <input type="radio" id="q3-option0" name="q3" value="0">
-                  <label for="q3-option0">might be</label>
-                </div>
-                <div class="option" data-index="1">
-                  <input type="radio" id="q3-option1" name="q3" value="1">
-                  <label for="q3-option1">might are</label>
-                </div>
-                <div class="option" data-index="2">
-                  <input type="radio" id="q3-option2" name="q3" value="2">
-                  <label for="q3-option2">might being</label>
-                </div>
-                <div class="option" data-index="3">
-                  <input type="radio" id="q3-option3" name="q3" value="3">
-                  <label for="q3-option3">might to be</label>
-                </div>
-              </div>
-              <div class="feedback" aria-live="polite"></div>
-            </div>
-            
-            <!-- Question 4 - Intermediate level -->
-            <div id="q4" class="question" data-difficulty="intermediate">
-              <p class="question-number">Question 4</p>
-              <div class="question-context">
-                <p class="mcq-question">This time tomorrow, I _____ flying to Paris.</p>
-              </div>
-              <div class="options">
-                <div class="option" data-index="0">
-                  <input type="radio" id="q4-option0" name="q4" value="0">
-                  <label for="q4-option0">will to be</label>
-                </div>
-                <div class="option" data-index="1">
-                  <input type="radio" id="q4-option1" name="q4" value="1">
-                  <label for="q4-option1">will be</label>
-                </div>
-                <div class="option" data-index="2">
-                  <input type="radio" id="q4-option2" name="q4" value="2">
-                  <label for="q4-option2">will being</label>
-                </div>
-                <div class="option" data-index="3">
-                  <input type="radio" id="q4-option3" name="q4" value="3">
-                  <label for="q4-option3">will am</label>
-                </div>
-              </div>
-              <div class="feedback" aria-live="polite"></div>
-            </div>
-            
-            <!-- Question 5 - Intermediate level -->
-            <div id="q5" class="question" data-difficulty="intermediate">
-              <p class="question-number">Question 5</p>
-              <div class="question-context">
-                <p class="mcq-question">John isn't answering his phone. He _____ in a meeting.</p>
-              </div>
-              <div class="options">
-                <div class="option" data-index="0">
-                  <input type="radio" id="q5-option0" name="q5" value="0">
-                  <label for="q5-option0">may being</label>
-                </div>
-                <div class="option" data-index="1">
-                  <input type="radio" id="q5-option1" name="q5" value="1">
-                  <label for="q5-option1">may to be</label>
-                </div>
-                <div class="option" data-index="2">
-                  <input type="radio" id="q5-option2" name="q5" value="2">
-                  <label for="q5-option2">may be</label>
-                </div>
-                <div class="option" data-index="3">
-                  <input type="radio" id="q5-option3" name="q5" value="3">
-                  <label for="q5-option3">may is</label>
-                </div>
-              </div>
-              <div class="feedback" aria-live="polite"></div>
-            </div>
-            
-            <!-- Question 6 - Intermediate level -->
-            <div id="q6" class="question" data-difficulty="intermediate">
-              <p class="question-number">Question 6</p>
-              <div class="question-context">
-                <p class="mcq-question">When would we use "must be working"?</p>
-              </div>
-              <div class="options">
-                <div class="option" data-index="0">
-                  <input type="radio" id="q6-option0" name="q6" value="0">
-                  <label for="q6-option0">To talk about an obligation in the future</label>
-                </div>
-                <div class="option" data-index="1">
-                  <input type="radio" id="q6-option1" name="q6" value="1">
-                  <label for="q6-option1">To make a deduction about what is happening now</label>
-                </div>
-                <div class="option" data-index="2">
-                  <input type="radio" id="q6-option2" name="q6" value="2">
-                  <label for="q6-option2">To talk about a past ability</label>
-                </div>
-                <div class="option" data-index="3">
-                  <input type="radio" id="q6-option3" name="q6" value="3">
-                  <label for="q6-option3">To discuss hypothetical situations</label>
-                </div>
-              </div>
-              <div class="feedback" aria-live="polite"></div>
-            </div>
-            
-            <!-- Question 7 - Advanced level -->
-            <div id="q7" class="question" data-difficulty="advanced">
-              <p class="question-number">Question 7</p>
-              <div class="question-context">
-                <p class="mcq-question">What's the function of "should be doing" in "You should be studying for your exam"?</p>
-              </div>
-              <div class="options">
-                <div class="option" data-index="0">
-                  <input type="radio" id="q7-option0" name="q7" value="0">
-                  <label for="q7-option0">Making a prediction</label>
-                </div>
-                <div class="option" data-index="1">
-                  <input type="radio" id="q7-option1" name="q7" value="1">
-                  <label for="q7-option1">Expressing possibility</label>
-                </div>
-                <div class="option" data-index="2">
-                  <input type="radio" id="q7-option2" name="q7" value="2">
-                  <label for="q7-option2">Talking about ability</label>
-                </div>
-                <div class="option" data-index="3">
-                  <input type="radio" id="q7-option3" name="q7" value="3">
-                  <label for="q7-option3">Expressing expectation or mild criticism</label>
-                </div>
-              </div>
-              <div class="feedback" aria-live="polite"></div>
-            </div>
-            
-            <!-- Question 8 - Advanced level -->
-            <div id="q8" class="question" data-difficulty="advanced">
-              <p class="question-number">Question 8</p>
-              <div class="question-context">
-                <p class="mcq-question">You ______ using your phone in the meeting. You ______ paying attention.</p>
-              </div>
-              <div class="options">
-                <div class="option" data-index="0">
-                  <input type="radio" id="q8-option0" name="q8" value="0">
-                  <label for="q8-option0">shouldn't be / should be</label>
-                </div>
-                <div class="option" data-index="1">
-                  <input type="radio" id="q8-option1" name="q8" value="1">
-                  <label for="q8-option1">mustn't be / must be</label>
-                </div>
-                <div class="option" data-index="2">
-                  <input type="radio" id="q8-option2" name="q8" value="2">
-                  <label for="q8-option2">can't be / could be</label>
-                </div>
-                <div class="option" data-index="3">
-                  <input type="radio" id="q8-option3" name="q8" value="3">
-                  <label for="q8-option3">wouldn't be / will be</label>
-                </div>
-              </div>
-              <div class="feedback" aria-live="polite"></div>
-            </div>
-            
-            <!-- Question 9 - Advanced level -->
-            <div id="q9" class="question" data-difficulty="advanced">
-              <p class="question-number">Question 9</p>
-              <div class="question-context">
-                <p class="mcq-question">She's been working all day. She _____ very tired.</p>
-              </div>
-              <div class="options">
-                <div class="option" data-index="0">
-                  <input type="radio" id="q9-option0" name="q9" value="0">
-                  <label for="q9-option0">should to be feeling</label>
-                </div>
-                <div class="option" data-index="1">
-                  <input type="radio" id="q9-option1" name="q9" value="1">
-                  <label for="q9-option1">must feeling</label>
-                </div>
-                <div class="option" data-index="2">
-                  <input type="radio" id="q9-option2" name="q9" value="2">
-                  <label for="q9-option2">must be feeling</label>
-                </div>
-                <div class="option" data-index="3">
-                  <input type="radio" id="q9-option3" name="q9" value="3">
-                  <label for="q9-option3">must to feel</label>
-                </div>
-              </div>
-              <div class="feedback" aria-live="polite"></div>
-            </div>
-            
-            <!-- Question 10 - Expert level -->
-            <div id="q10" class="question" data-difficulty="expert">
-              <p class="question-number">Question 10</p>
-              <div class="question-context">
-                <p class="mcq-question">Which sentence uses a modal progressive form correctly?</p>
-              </div>
-              <div class="options">
-                <div class="option" data-index="0">
-                  <input type="radio" id="q10-option0" name="q10" value="0">
-                  <label for="q10-option0">He will waiting for us at the station.</label>
-                </div>
-                <div class="option" data-index="1">
-                  <input type="radio" id="q10-option1" name="q10" value="1">
-                  <label for="q10-option1">She could be going to the cinema tonight.</label>
-                </div>
-                <div class="option" data-index="2">
-                  <input type="radio" id="q10-option2" name="q10" value="2">
-                  <label for="q10-option2">They must to be joking about this.</label>
-                </div>
-                <div class="option" data-index="3">
-                  <input type="radio" id="q10-option3" name="q10" value="3">
-                  <label for="q10-option3">You should working harder on your project.</label>
-                </div>
-              </div>
-              <div class="feedback" aria-live="polite"></div>
-            </div>
+            <div class="feedback"></div>
           </div>
           
-          <!-- Control buttons -->
+          <div class="question" id="q2">
+            <p class="mcq-question">2. It's already 10 p.m. The children _____ sleeping now.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. should be</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. should to be</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. should been</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. should are</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <div class="question" id="q3">
+            <p class="mcq-question">3. I can hear music from their house. They _____ having a party.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. might be</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. might are</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. might being</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. might to be</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <div class="question" id="q4">
+            <p class="mcq-question">4. This time tomorrow, I _____ flying to Paris.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. will to be</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. will be</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. will being</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. will am</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <div class="question" id="q5">
+            <p class="mcq-question">5. John isn't answering his phone. He _____ in a meeting.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. may being</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. may to be</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. may be</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. may is</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <div class="question" id="q6">
+            <p class="mcq-question">6. When would we use "must be working"?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. To talk about an obligation in the future</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. To make a deduction about what is happening now</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. To talk about a past ability</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. To discuss hypothetical situations</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <div class="question" id="q7">
+            <p class="mcq-question">7. What's the function of "should be doing" in "You should be studying for your exam"?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. Making a prediction</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. Expressing possibility</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. Talking about ability</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. Expressing expectation or mild criticism</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <div class="question" id="q8">
+            <p class="mcq-question">8. You ______ using your phone in the meeting. You ______ paying attention.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. shouldn't be / should be</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. mustn't be / must be</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. can't be / could be</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. wouldn't be / will be</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <div class="question" id="q9">
+            <p class="mcq-question">9. She's been working all day. She _____ very tired.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. should to be feeling</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. must feeling</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. must be feeling</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. must to feel</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <div class="question" id="q10">
+            <p class="mcq-question">10. Which sentence uses a modal progressive form correctly?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. He will waiting for us at the station.</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. She could be going to the cinema tonight.</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. They must to be joking about this.</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. You should working harder on your project.</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
           <div class="control-buttons">
             <button id="mcq-submit" class="submit-btn">Check Answers</button>
+            <a href="#summary" class="nav-button">Review Grammar</a>
             <button id="mcq-restart" class="restart-btn" style="display:none;">Try Again</button>
-            <a href="#grammar-summary" id="check-grammar" class="nav-button" style="display:none;">Review Grammar</a>
           </div>
           
-          <!-- Results summary -->
-          <div id="mcq-results" class="results-container" style="display:none;">
-            <h3>Your Results</h3>
-            <div class="score-display">
-              <p>Your score: <span id="score-value">0</span>/<span id="total-questions-score">10</span></p>
-              <div class="progress-container">
-                <div id="results-progress-bar" class="progress-bar" style="width: 0%"></div>
-              </div>
-            </div>
-            <div class="difficulty-breakdown">
-              <div class="difficulty-section">
-                <h4>Basic (Questions 1-3)</h4>
-                <p><span id="basic-score">0</span>/3 correct</p>
-              </div>
-              <div class="difficulty-section">
-                <h4>Intermediate (Questions 4-6)</h4>
-                <p><span id="intermediate-score">0</span>/3 correct</p>
-              </div>
-              <div class="difficulty-section">
-                <h4>Advanced (Questions 7-9)</h4>
-                <p><span id="advanced-score">0</span>/3 correct</p>
-              </div>
-              <div class="difficulty-section">
-                <h4>Expert (Question 10)</h4>
-                <p><span id="expert-score">0</span>/1 correct</p>
-              </div>
-            </div>
-            <div class="feedback-summary">
-              <p>Review your answers above to see explanations for each question.</p>
-            </div>
+          <div class="score-display" id="mcq-score" style="display:none;">
+            Your score: <span>0</span>/10
           </div>
         </div>
-      </section>
-      
-      <!-- Grammar summary section (target for "Check the Grammar" button) -->
-      <section id="grammar-summary" class="grammar-summary">
-        <h2>Key Points to Remember</h2>
-        <ul>
-          <li><strong>Basic Structure</strong>: modal verb + be + verb-ing</li>
-          <li><strong>For Deduction</strong>: must be doing (strong certainty), might/may/could be doing (possibility), can't be doing (negative certainty)</li>
-          <li><strong>For Expectations</strong>: should be doing (expectation or mild criticism)</li>
-          <li><strong>For Future</strong>: will be doing (future action in progress at a specific time)</li>
-          <li>Always use the base form of 'be' after modal verbs, not 'was/were'</li>
-          <li>Always use the -ing form of the main verb after 'be'</li>
-        </ul>
       </section>
     </main>
   </div>
   
-  <!-- BOTTOM NAVIGATION -->
-  <nav class="bottom-navigation">
+   <!-- BOTTOM NAVIGATION -->
+   <nav class="bottom-navigation">
     <a href="modal-perfect.html" class="nav-button previous">← Previous: Modal Perfect Forms</a>
     <div class="center-buttons">
       <button class="nav-button print-button" onclick="window.print()">Print This Page</button>
       <a href="modal-progressive-practice.html" class="nav-button activities">Practice Activities</a>
     </div>
-    <a href="modal-passive.html" class="nav-button next">Next: Modal Passive Forms →</a>
+    <a href="modal-passive.html" class="nav-button next">Next: Subtle Differences Between Similar Modals →</a>
   </nav>
 
   <!-- Include footer -->
@@ -650,154 +554,73 @@
   <script src="../../js/mcq.js"></script>
   <script src="../../js/progress-tracking.js"></script>
   
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Initialize MCQ Module with new MCQ system
-      const totalQuestions = document.querySelectorAll('#mcq-container .question').length;
-      document.getElementById('total-questions').textContent = totalQuestions;
-      document.getElementById('total-questions-score').textContent = totalQuestions;
-      
-      // Show all questions initially
-      showAllQuestions();
-      
-      // Hide navigation buttons since all questions are shown
-      document.querySelector('.question-navigation').style.display = 'none';
-      
-      // Check Answers
-      document.getElementById('mcq-submit').addEventListener('click', function() {
-        // Calculate scores
-        const answers = {
-          'q1': 2,  // must be
-          'q2': 0,  // should be
-          'q3': 0,  // might be
-          'q4': 1,  // will be
-          'q5': 2,  // may be
-          'q6': 1,  // To make a deduction about what is happening now
-          'q7': 3,  // Expressing expectation or mild criticism
-          'q8': 0,  // shouldn't be / should be
-          'q9': 2,  // must be feeling
-          'q10': 1  // She could be going to the cinema tonight.
-        };
+  <!-- Standardized JavaScript for Modal Progressive MCQ -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize MCQ Module
+    MCQModule.init({
+      containerId: 'mcq',
+      answers: {
+        'q1': 2,  // must be
+        'q2': 0,  // should be
+        'q3': 0,  // might be
+        'q4': 1,  // will be
+        'q5': 2,  // may be
+        'q6': 1,  // To make a deduction about what is happening now
+        'q7': 3,  // Expressing expectation or mild criticism
+        'q8': 0,  // shouldn't be / should be
+        'q9': 2,  // must be feeling
+        'q10': 1  // She could be going to the cinema tonight.
+      },
+      correctExplanations: {
+        'q1': 'We use "must be" (modal + base form of be) followed by the -ing form to make deductions about ongoing actions.',
+        'q2': 'We use "should be" (modal + base form of be) followed by the -ing form to express expectations.',
+        'q3': 'We use "might be" (modal + base form of be) followed by the -ing form to express possibility.',
+        'q4': 'We use "will be" (modal + base form of be) followed by the -ing form to talk about future actions in progress.',
+        'q5': 'We use "may be" (modal + base form of be) followed by the -ing form to express possibility.',
+        'q6': 'We use "must be working" to make a logical deduction about what is happening at the present moment.',
+        'q7': 'The structure "should be doing" is often used to express expectations or mild criticism about ongoing actions.',
+        'q8': 'Using "shouldn\'t be" for negative expectations and "should be" for positive expectations is correct.',
+        'q9': 'We use "must be feeling" to make a logical deduction about someone\'s state based on evidence.',
+        'q10': 'The correct modal progressive form has the structure: modal + be + verb-ing. Option B is correct.'
+      },
+      incorrectExplanations: {
+        'q1': 'We use "must be" (modal + base form of be) followed by the -ing form to make deductions about ongoing actions.',
+        'q2': 'We use "should be" (modal + base form of be) followed by the -ing form to express expectations.',
+        'q3': 'We use "might be" (modal + base form of be) followed by the -ing form to express possibility.',
+        'q4': 'We use "will be" (modal + base form of be) followed by the -ing form to talk about future actions in progress.',
+        'q5': 'We use "may be" (modal + base form of be) followed by the -ing form to express possibility.',
+        'q6': 'We use "must be working" to make a logical deduction about what is happening at the present moment.',
+        'q7': 'The structure "should be doing" is often used to express expectations or mild criticism about ongoing actions.',
+        'q8': 'Using "shouldn\'t be" for negative expectations and "should be" for positive expectations is correct.',
+        'q9': 'We use "must be feeling" to make a logical deduction about someone\'s state based on evidence.',
+        'q10': 'The correct modal progressive form has the structure: modal + be + verb-ing. Option B is correct.'
+      },
+      showAllQuestionsAtOnce: true, // Show all questions at once
+      onComplete: function(score, total) {
+        console.log(`MCQ completed with score: ${score}/${total}`);
         
-        const explanations = {
-          'q1': 'We use "must be" (modal + base form of be) followed by the -ing form to make deductions about ongoing actions.',
-          'q2': 'We use "should be" (modal + base form of be) followed by the -ing form to express expectations.',
-          'q3': 'We use "might be" (modal + base form of be) followed by the -ing form to express possibility.',
-          'q4': 'We use "will be" (modal + base form of be) followed by the -ing form to talk about future actions in progress.',
-          'q5': 'We use "may be" (modal + base form of be) followed by the -ing form to express possibility.',
-          'q6': 'We use "must be working" to make a logical deduction about what is happening at the present moment.',
-          'q7': 'The structure "should be doing" is often used to express expectations or mild criticism about ongoing actions.',
-          'q8': 'Using "shouldn\'t be" for negative expectations and "should be" for positive expectations is correct.',
-          'q9': 'We use "must be feeling" to make a logical deduction about someone\'s state based on evidence.',
-          'q10': 'The correct modal progressive form has the structure: modal + be + verb-ing. Option B is correct.'
-        };
-        
-        let totalScore = 0;
-        let basicScore = 0;
-        let intermediateScore = 0;
-        let advancedScore = 0;
-        let expertScore = 0;
-        
-        // Check each question
-        Object.keys(answers).forEach(questionId => {
-          const question = document.getElementById(questionId);
-          const selectedOption = question.querySelector('input[type="radio"]:checked');
-          const feedback = question.querySelector('.feedback');
-          
-          if (selectedOption) {
-            const selectedIndex = parseInt(selectedOption.value);
-            const correctIndex = answers[questionId];
-            
-            if (selectedIndex === correctIndex) {
-              feedback.innerHTML = `<p class="correct-feedback">✓ Correct! ${explanations[questionId]}</p>`;
-              totalScore++;
-              
-              // Update difficulty scores
-              const difficulty = question.getAttribute('data-difficulty');
-              if (difficulty === 'basic') basicScore++;
-              if (difficulty === 'intermediate') intermediateScore++;
-              if (difficulty === 'advanced') advancedScore++;
-              if (difficulty === 'expert') expertScore++;
-            } else {
-              const correctOptionLabel = question.querySelector(`label[for="${questionId}-option${correctIndex}"]`).textContent;
-              feedback.innerHTML = `<p class="incorrect-feedback">✗ Incorrect. The correct answer is: ${correctOptionLabel}</p><p>${explanations[questionId]}</p>`;
-            }
-          } else {
-            feedback.innerHTML = '<p class="incorrect-feedback">No answer selected.</p>';
-          }
-        });
-        
-        // Update score display
-        document.getElementById('score-value').textContent = totalScore;
-        document.getElementById('basic-score').textContent = basicScore;
-        document.getElementById('intermediate-score').textContent = intermediateScore;
-        document.getElementById('advanced-score').textContent = advancedScore;
-        document.getElementById('expert-score').textContent = expertScore;
-        
-        // Update progress bar
-        const percentage = (totalScore / totalQuestions) * 100;
-        document.getElementById('results-progress-bar').style.width = percentage + '%';
-        
-        // Show results
-        document.getElementById('mcq-results').style.display = 'block';
-        document.getElementById('mcq-submit').style.display = 'none';
-        document.getElementById('mcq-restart').style.display = 'inline-block';
-        document.getElementById('check-grammar').style.display = 'inline-block';
-        
-        // Track progress
-        if (typeof ProgressTrackingModule !== 'undefined') {
-          ProgressTrackingModule.markItemCompleted('activities', 'modal-progressive-mcq', {
-            score: totalScore,
-            maxScore: totalQuestions,
+        // Track this activity completion in the progress system
+        if (typeof ProgressTracker !== 'undefined') {
+          // Mark the MCQ as completed in the 'activities' category
+          ProgressTracker.markItemCompleted('activities', 'modal-progressive-mcq', {
+            score: score,
+            maxScore: total,
             completed: true,
             completedAt: new Date().toISOString(),
             title: 'Modal Progressive Quick Practice'
           });
           
-          // Also mark the lesson as viewed/completed
-          ProgressTrackingModule.updateItemProgress('lessons', 'modal-progressive', {
+          // Also mark the lesson itself as viewed/completed
+          ProgressTracker.updateItemProgress('lessons', 'modal-progressive', {
             lastViewed: new Date().toISOString(),
             progress: 100, // Percent complete
             title: 'Modal Progressive Forms'
           });
         }
-      });
-      
-      // Restart Quiz
-      document.getElementById('mcq-restart').addEventListener('click', function() {
-        // Reset all selections and feedback
-        document.querySelectorAll('#mcq-container input[type="radio"]').forEach(radio => {
-          radio.checked = false;
-        });
-        
-        document.querySelectorAll('#mcq-container .feedback').forEach(feedback => {
-          feedback.innerHTML = '';
-        });
-        
-        // Show all questions
-        showAllQuestions();
-        
-        // Reset UI
-        document.getElementById('mcq-results').style.display = 'none';
-        document.getElementById('mcq-submit').style.display = 'inline-block';
-        document.getElementById('mcq-restart').style.display = 'none';
-        document.getElementById('check-grammar').style.display = 'none';
-      });
-      
-      // Function to show all questions
-      function showAllQuestions() {
-        // Show all questions
-        document.querySelectorAll('#mcq-container .question').forEach(question => {
-          question.style.display = 'block';
-        });
-        
-        // Update current question display for progress tracker UI
-        document.getElementById('current-question').textContent = totalQuestions;
-        
-        // Update progress bar to show full
-        document.getElementById('mcq-progress-bar').style.width = '100%';
       }
     });
+  });
   </script>
 </body>
 </html>

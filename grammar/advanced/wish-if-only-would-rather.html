@@ -57,6 +57,38 @@
       margin-top: 10px;
       min-height: 20px;
     }
+
+    /* Additional styles for clickable option divs */
+    .option {
+      cursor: pointer;
+      transition: background-color 0.2s;
+      padding: 8px 12px;
+      border: 1px solid var(--border-color, #ddd);
+      border-radius: 4px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .option:hover {
+      background-color: var(--mcq-hover-bg, #d0e6f7);
+      transform: translateY(-1px);
+    }
+    
+    .option.selected {
+      background-color: var(--mcq-selected-bg, #d0e6f7);
+      border: 2px solid var(--mcq-selected-border, #3498db);
+      font-weight: bold;
+    }
+    
+    [data-theme="dark"] .option:hover {
+      background-color: var(--mcq-hover-bg, #253545);
+    }
+    
+    [data-theme="dark"] .option.selected {
+      background-color: var(--mcq-selected-bg, #253545);
+      border-color: var(--mcq-selected-border, #4fa3e0);
+    }
   </style>
 </head>
 <body>
@@ -102,13 +134,6 @@
 
     <main id="main-content">
       <h1>Wish, If Only, and Would Rather: Expressing Regrets and Desires</h1>
-
-      <!-- Progress tracking display - FIXED -->
-      <div class="progress-container">
-        <h4>Your Progress</h4>
-        <div id="activity-progress" data-progress-display data-progress-type="bar" 
-             data-category="activities" data-item-id="wish-if-only"></div>
-      </div>
 
       <!-- INTRODUCTION SECTION -->
       <section class="intro-section">
@@ -193,7 +218,7 @@
       </section>
 
       <!-- VISUAL COMPARISON TABLE -->
-      <section>
+      <section id="summary">
         <h2>Visual Comparison of Wish, If Only, and Would Rather</h2>
         <table>
           <thead>
@@ -257,21 +282,21 @@
         
         <div class="error-pattern">
           <p class="error-title"><strong>1: Using present simple after "wish" for present situations</strong></p>
-          <p class="incorrect">I wish I have more time to study.</p>
+          <p class="incorrect">I wish I have more time to study.</p><br>
           <p class="correct">I wish I had more time to study. ✓</p>
           <p class="explanation"><em>The past simple is used after "wish" to talk about present wishes, not the present simple.</em></p>
         </div>
         
         <div class="error-pattern">
           <p class="error-title"><strong>2: Using past simple instead of past perfect for past regrets</strong></p>
-          <p class="incorrect">She wishes she went to university.</p>
+          <p class="incorrect">She wishes she went to university.</p><br>
           <p class="correct">She wishes she had gone to university. ✓</p>
           <p class="explanation"><em>When expressing regret about the past, we need the past perfect tense after "wish".</em></p>
         </div>
         
         <div class="error-pattern">
           <p class="error-title"><strong>3: Mixing up verb forms with "would rather" for others' actions</strong></p>
-          <p class="incorrect">I would rather you don't come late tomorrow.</p>
+          <p class="incorrect">I would rather you don't come late tomorrow.</p><br>
           <p class="correct">I would rather you didn't come late tomorrow. ✓</p>
           <p class="explanation"><em>When expressing preferences about other people's actions, we use past simple for present/future situations.</em></p>
         </div>
@@ -295,211 +320,212 @@
       </section>
 
       <!-- MCQ PRACTICE SECTION - FIXED -->
-      <section class="content-section mcq-container">
-        <h2>Test Your Knowledge</h2>
-        <p>Test your understanding of wish, if only, and would rather by selecting the correct option for each question.</p>
-        
-        <div id="mcq" class="activity-container active">
-          <div class="question" id="q1">
-            <p class="mcq-question">1. I wish I _____ able to speak Japanese.</p>
-            <div class="options">
-              <div class="option" data-index="0">
-                <span>A. am</span>
-              </div>
-              <div class="option" data-index="1">
-                <span>B. was/were</span>
-              </div>
-              <div class="option" data-index="2">
-                <span>C. would be</span>
-              </div>
-              <div class="option" data-index="3">
-                <span>D. have been</span>
-              </div>
-            </div>
-            <div class="feedback"></div>
-          </div>
-          
-          <div class="question" id="q2">
-            <p class="mcq-question">2. If only she _____ to my advice last week.</p>
-            <div class="options">
-              <div class="option" data-index="0">
-                <span>A. listened</span>
-              </div>
-              <div class="option" data-index="1">
-                <span>B. listens</span>
-              </div>
-              <div class="option" data-index="2">
-                <span>C. had listened</span>
-              </div>
-              <div class="option" data-index="3">
-                <span>D. would listen</span>
-              </div>
-            </div>
-            <div class="feedback"></div>
-          </div>
-          
-          <div class="question" id="q3">
-            <p class="mcq-question">3. I would rather _____ at home than go to the party.</p>
-            <div class="options">
-              <div class="option" data-index="0">
-                <span>A. staying</span>
-              </div>
-              <div class="option" data-index="1">
-                <span>B. stayed</span>
-              </div>
-              <div class="option" data-index="2">
-                <span>C. to stay</span>
-              </div>
-              <div class="option" data-index="3">
-                <span>D. stay</span>
-              </div>
-            </div>
-            <div class="feedback"></div>
-          </div>
-          
-          <div class="question" id="q4">
-            <p class="mcq-question">4. She wishes she _____ the job offer when she had the chance.</p>
-            <div class="options">
-              <div class="option" data-index="0">
-                <span>A. accepted</span>
-              </div>
-              <div class="option" data-index="1">
-                <span>B. accepts</span>
-              </div>
-              <div class="option" data-index="2">
-                <span>C. had accepted</span>
-              </div>
-              <div class="option" data-index="3">
-                <span>D. would accept</span>
-              </div>
-            </div>
-            <div class="feedback"></div>
-          </div>
-          
-          <div class="question" id="q5">
-            <p class="mcq-question">5. I'd rather you _____ tell anyone about this problem yet.</p>
-            <div class="options">
-              <div class="option" data-index="0">
-                <span>A. don't</span>
-              </div>
-              <div class="option" data-index="1">
-                <span>B. didn't</span>
-              </div>
-              <div class="option" data-index="2">
-                <span>C. won't</span>
-              </div>
-              <div class="option" data-index="3">
-                <span>D. haven't</span>
-              </div>
-            </div>
-            <div class="feedback"></div>
-          </div>
-          
-          <div class="question" id="q6">
-            <p class="mcq-question">6. If only I _____ how to solve this problem now.</p>
-            <div class="options">
-              <div class="option" data-index="0">
-                <span>A. know</span>
-              </div>
-              <div class="option" data-index="1">
-                <span>B. knew</span>
-              </div>
-              <div class="option" data-index="2">
-                <span>C. had known</span>
-              </div>
-              <div class="option" data-index="3">
-                <span>D. would know</span>
-              </div>
-            </div>
-            <div class="feedback"></div>
-          </div>
-          
-          <div class="question" id="q7">
-            <p class="mcq-question">7. They wish they _____ traveling next week, but they have to work.</p>
-            <div class="options">
-              <div class="option" data-index="0">
-                <span>A. are</span>
-              </div>
-              <div class="option" data-index="1">
-                <span>B. were</span>
-              </div>
-              <div class="option" data-index="2">
-                <span>C. had been</span>
-              </div>
-              <div class="option" data-index="3">
-                <span>D. would be</span>
-              </div>
-            </div>
-            <div class="feedback"></div>
-          </div>
-          
-          <div class="question" id="q8">
-            <p class="mcq-question">8. He would rather _____ by train yesterday, but all tickets were sold out.</p>
-            <div class="options">
-              <div class="option" data-index="0">
-                <span>A. travel</span>
-              </div>
-              <div class="option" data-index="1">
-                <span>B. traveled</span>
-              </div>
-              <div class="option" data-index="2">
-                <span>C. have traveled</span>
-              </div>
-              <div class="option" data-index="3">
-                <span>D. to travel</span>
-              </div>
-            </div>
-            <div class="feedback"></div>
-          </div>
-          
-          <div class="question" id="q9">
-            <p class="mcq-question">9. I wish it _____ raining soon, I want to go for a walk.</p>
-            <div class="options">
-              <div class="option" data-index="0">
-                <span>A. stops</span>
-              </div>
-              <div class="option" data-index="1">
-                <span>B. stopped</span>
-              </div>
-              <div class="option" data-index="2">
-                <span>C. would stop</span>
-              </div>
-              <div class="option" data-index="3">
-                <span>D. had stopped</span>
-              </div>
-            </div>
-            <div class="feedback"></div>
-          </div>
-          
-          <div class="question" id="q10">
-            <p class="mcq-question">10. If only we _____ about the change in schedule before we made all these arrangements!</p>
-            <div class="options">
-              <div class="option" data-index="0">
-                <span>A. knew</span>
-              </div>
-              <div class="option" data-index="1">
-                <span>B. know</span>
-              </div>
-              <div class="option" data-index="2">
-                <span>C. had known</span>
-              </div>
-              <div class="option" data-index="3">
-                <span>D. would know</span>
-              </div>
-            </div>
-            <div class="feedback"></div>
-          </div>
-          
-          <div class="control-buttons">
-            <button id="mcq-submit" class="submit-btn">Check Answers</button>
-            <button id="mcq-restart" class="restart-btn" style="display:none;">Try Again</button>
-          </div>
-          
-          <div class="score-display" id="mcq-score" style="display:none;">
-            Your score: <span>0</span>/10
-          </div>
+<section class="content-section mcq-container">
+  <h2>Test Your Knowledge</h2>
+  <p>Test your understanding of wish, if only, and would rather by selecting the correct option for each question.</p>
+  
+  <div id="mcq" class="activity-container active">
+    <div class="question" id="q1">
+      <p class="mcq-question">1. I wish I _____ able to speak Japanese.</p>
+      <div class="options">
+        <div class="option" data-index="0">
+          <span>A. am</span>
         </div>
-      </section>
+        <div class="option" data-index="1">
+          <span>B. was/were</span>
+        </div>
+        <div class="option" data-index="2">
+          <span>C. would be</span>
+        </div>
+        <div class="option" data-index="3">
+          <span>D. have been</span>
+        </div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+    
+    <div class="question" id="q2">
+      <p class="mcq-question">2. If only she _____ to my advice last week.</p>
+      <div class="options">
+        <div class="option" data-index="0">
+          <span>A. listened</span>
+        </div>
+        <div class="option" data-index="1">
+          <span>B. listens</span>
+        </div>
+        <div class="option" data-index="2">
+          <span>C. had listened</span>
+        </div>
+        <div class="option" data-index="3">
+          <span>D. would listen</span>
+        </div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+    
+    <div class="question" id="q3">
+      <p class="mcq-question">3. I would rather _____ at home than go to the party.</p>
+      <div class="options">
+        <div class="option" data-index="0">
+          <span>A. staying</span>
+        </div>
+        <div class="option" data-index="1">
+          <span>B. stayed</span>
+        </div>
+        <div class="option" data-index="2">
+          <span>C. to stay</span>
+        </div>
+        <div class="option" data-index="3">
+          <span>D. stay</span>
+        </div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+    
+    <div class="question" id="q4">
+      <p class="mcq-question">4. She wishes she _____ the job offer when she had the chance.</p>
+      <div class="options">
+        <div class="option" data-index="0">
+          <span>A. accepted</span>
+        </div>
+        <div class="option" data-index="1">
+          <span>B. accepts</span>
+        </div>
+        <div class="option" data-index="2">
+          <span>C. had accepted</span>
+        </div>
+        <div class="option" data-index="3">
+          <span>D. would accept</span>
+        </div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+    
+    <div class="question" id="q5">
+      <p class="mcq-question">5. I'd rather you _____ tell anyone about this problem yet.</p>
+      <div class="options">
+        <div class="option" data-index="0">
+          <span>A. don't</span>
+        </div>
+        <div class="option" data-index="1">
+          <span>B. didn't</span>
+        </div>
+        <div class="option" data-index="2">
+          <span>C. won't</span>
+        </div>
+        <div class="option" data-index="3">
+          <span>D. haven't</span>
+        </div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+    
+    <div class="question" id="q6">
+      <p class="mcq-question">6. If only I _____ how to solve this problem now.</p>
+      <div class="options">
+        <div class="option" data-index="0">
+          <span>A. know</span>
+        </div>
+        <div class="option" data-index="1">
+          <span>B. knew</span>
+        </div>
+        <div class="option" data-index="2">
+          <span>C. had known</span>
+        </div>
+        <div class="option" data-index="3">
+          <span>D. would know</span>
+        </div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+    
+    <div class="question" id="q7">
+      <p class="mcq-question">7. They wish they _____ traveling next week, but they have to work.</p>
+      <div class="options">
+        <div class="option" data-index="0">
+          <span>A. are</span>
+        </div>
+        <div class="option" data-index="1">
+          <span>B. were</span>
+        </div>
+        <div class="option" data-index="2">
+          <span>C. had been</span>
+        </div>
+        <div class="option" data-index="3">
+          <span>D. would be</span>
+        </div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+    
+    <div class="question" id="q8">
+      <p class="mcq-question">8. He would rather _____ by train yesterday, but all tickets were sold out.</p>
+      <div class="options">
+        <div class="option" data-index="0">
+          <span>A. travel</span>
+        </div>
+        <div class="option" data-index="1">
+          <span>B. traveled</span>
+        </div>
+        <div class="option" data-index="2">
+          <span>C. have traveled</span>
+        </div>
+        <div class="option" data-index="3">
+          <span>D. to travel</span>
+        </div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+    
+    <div class="question" id="q9">
+      <p class="mcq-question">9. I wish it _____ raining soon, I want to go for a walk.</p>
+      <div class="options">
+        <div class="option" data-index="0">
+          <span>A. stops</span>
+        </div>
+        <div class="option" data-index="1">
+          <span>B. stopped</span>
+        </div>
+        <div class="option" data-index="2">
+          <span>C. would stop</span>
+        </div>
+        <div class="option" data-index="3">
+          <span>D. had stopped</span>
+        </div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+    
+    <div class="question" id="q10">
+      <p class="mcq-question">10. If only we _____ about the change in schedule before we made all these arrangements!</p>
+      <div class="options">
+        <div class="option" data-index="0">
+          <span>A. knew</span>
+        </div>
+        <div class="option" data-index="1">
+          <span>B. know</span>
+        </div>
+        <div class="option" data-index="2">
+          <span>C. had known</span>
+        </div>
+        <div class="option" data-index="3">
+          <span>D. would know</span>
+        </div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+    
+    <div class="control-buttons">
+      <button id="mcq-submit" class="submit-btn">Check Answers</button>
+      <a href="#summary" class="nav-button">Review Grammar</a>
+      <button id="mcq-restart" class="restart-btn" style="display:none;">Try Again</button>
+    </div>
+    
+    <div class="score-display" id="mcq-score" style="display:none;">
+      Your score: <span>0</span>/10
+    </div>
+  </div>
+</section>
       
     </main>
   </div>
@@ -552,73 +578,78 @@
 
   <!-- JavaScript - Updated with new progress tracking scripts -->
   <script src="../../js/core.js"></script>
+  <script src="../../js/mcq.js"></script>
   <script src="../../js/progress-tracking-module.js"></script>
   <script src="../../js/progress-manager-ui.js"></script>
   <script src="../../js/init-progress.js"></script>
-  <script src="../../js/mcq.js"></script>
   
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Make sure all questions are visible
-      document.querySelectorAll('#mcq .question').forEach(function(question) {
-        question.style.display = 'block';
-      });
-      
-      // Initialize MCQ Module with standardized activity tracking
-      MCQModule.init({
-        containerId: 'mcq',
-        answers: {
-          'q1': 1,  // was/were
-          'q2': 2,  // had listened
-          'q3': 3,  // stay
-          'q4': 2,  // had accepted
-          'q5': 1,  // didn't
-          'q6': 1,  // knew
-          'q7': 1,  // were
-          'q8': 2,  // have traveled
-          'q9': 2,  // would stop
-          'q10': 2  // had known
-        },
-        onComplete: function(score, total) {
-          console.log('MCQ completed with score: ' + score + '/' + total);
+  <!-- Standardized JavaScript for Wish, If Only, Would Rather MCQ -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize MCQ Module
+    MCQModule.init({
+      containerId: 'mcq',
+      answers: {
+        'q1': 1,  // was/were
+        'q2': 2,  // had listened
+        'q3': 3,  // stay
+        'q4': 2,  // had accepted
+        'q5': 1,  // didn't
+        'q6': 1,  // knew
+        'q7': 1,  // were
+        'q8': 2,  // have traveled
+        'q9': 2,  // would stop
+        'q10': 2  // had known
+      },
+      correctExplanations: {
+        'q1': 'We use past simple (was/were) after "wish" for present situations.',
+        'q2': 'For past regrets, we use past perfect (had listened) after "if only".',
+        'q3': 'With "would rather" for your own preferences, use the base form of the verb.',
+        'q4': 'For past regrets, we use past perfect (had accepted) after "wish".',
+        'q5': 'When talking about others\' actions, use past simple (didn\'t) after "would rather".',
+        'q6': 'We use past simple (knew) after "if only" for present wishes.',
+        'q7': 'Use past simple (were) after "wish" for hypothetical present/future situations.',
+        'q8': 'For past preferences, use "would rather have" + past participle.',
+        'q9': 'Use "would stop" after "wish" for desired future events.',
+        'q10': 'For past regrets, we use past perfect (had known) after "if only".'
+      },
+      incorrectExplanations: {
+        'q1': 'We use past simple (was/were) after "wish" for present situations.',
+        'q2': 'For past regrets, we use past perfect (had listened) after "if only".',
+        'q3': 'With "would rather" for your own preferences, use the base form of the verb.',
+        'q4': 'For past regrets, we use past perfect (had accepted) after "wish".',
+        'q5': 'When talking about others\' actions, use past simple (didn\'t) after "would rather".',
+        'q6': 'We use past simple (knew) after "if only" for present wishes.',
+        'q7': 'Use past simple (were) after "wish" for hypothetical present/future situations.',
+        'q8': 'For past preferences, use "would rather have" + past participle.',
+        'q9': 'Use "would stop" after "wish" for desired future events.',
+        'q10': 'For past regrets, we use past perfect (had known) after "if only".'
+      },
+      showAllQuestionsAtOnce: true, // Show all questions at once
+      onComplete: function(score, total) {
+        console.log(`MCQ completed with score: ${score}/${total}`);
+        
+        // Track this activity completion in the progress system
+        if (typeof ProgressTracker !== 'undefined') {
+          // Mark the MCQ as completed in the 'activities' category
+          ProgressTracker.markItemCompleted('activities', 'wish-if-only', {
+            score: score,
+            maxScore: total,
+            completed: true,
+            completedAt: new Date().toISOString(),
+            title: 'Wish, If Only, and Would Rather Quiz'
+          });
           
-          // Mark the activity as completed
-          if (typeof ProgressTracker !== 'undefined' || typeof ProgressTrackingModule !== 'undefined') {
-            const progressModule = typeof ProgressTracker !== 'undefined' ? 
-              ProgressTracker : ProgressTrackingModule;
-            
-            // Mark the activity as completed
-            progressModule.markItemCompleted('activities', 'wish-if-only', {
-              score: score,
-              maxScore: total,
-              title: 'Wish, If Only, and Would Rather Quiz'
-            });
-            
-            // Also mark the lesson as viewed/completed
-            progressModule.updateItemProgress('lessons', 'wish-if-only', {
-              lastViewed: new Date().toISOString(),
-              progress: 100, // Percent complete
-              title: 'Wish, If Only, and Would Rather' // Human-readable lesson title
-            });
-          }
-        },
-        // We don't need to control question visibility with showQuestion methods
-        showAllQuestionsAtOnce: true,
-        // Add explanations for better feedback
-        explanations: {
-          'q1': 'We use past simple (was/were) after "wish" for present situations.',
-          'q2': 'For past regrets, we use past perfect (had listened) after "if only".',
-          'q3': 'With "would rather" for your own preferences, use the base form of the verb.',
-          'q4': 'For past regrets, we use past perfect (had accepted) after "wish".',
-          'q5': 'When talking about others` actions, use past simple (didn`t) after "would rather".',
-          'q6': 'We use past simple (knew) after "if only" for present wishes.',
-          'q7': 'Use past simple (were) after "wish" for hypothetical present/future situations.',
-          'q8': 'For past preferences, use "would rather have" + past participle.',
-          'q9': 'Use "would stop" after "wish" for desired future events.',
-          'q10': 'For past regrets, we use past perfect (had known) after "if only".'
+          // Also mark the lesson itself as viewed/completed
+          ProgressTracker.updateItemProgress('lessons', 'wish-if-only', {
+            lastViewed: new Date().toISOString(),
+            progress: 100, // Percent complete
+            title: 'Wish, If Only, and Would Rather' // Human-readable lesson title
+          });
         }
-      });
+      }
     });
+  });
   </script>
 </body>
 </html>

@@ -1,0 +1,89 @@
+<!-- MCQ PRACTICE SECTION -->
+<section class="content-section mcq-container">
+  <h2>Test Your Knowledge</h2>
+  <p>Choose the correct answers to test your understanding of [TOPIC].</p>
+  
+  <div id="mcq" class="activity-container active">
+    <!-- QUESTION TEMPLATE - Repeat for each question -->
+    <div class="question" id="q1">
+      <p class="mcq-question">1. [QUESTION_TEXT]</p>
+      <div class="options">
+        <div class="option" data-index="0">
+          <span>A. [OPTION_A]</span>
+        </div>
+        <div class="option" data-index="1">
+          <span>B. [OPTION_B]</span>
+        </div>
+        <div class="option" data-index="2">
+          <span>C. [OPTION_C]</span>
+        </div>
+        <div class="option" data-index="3">
+          <span>D. [OPTION_D]</span>
+        </div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+    <!-- END QUESTION TEMPLATE -->
+    
+    <div class="control-buttons">
+      <button id="mcq-submit" class="submit-btn">Check Answers</button>
+      <a href="#grammar-summary" class="nav-button">Review Grammar</a>
+      <button id="mcq-restart" class="restart-btn" style="display:none;">Try Again</button>
+    </div>
+    
+    <div class="score-display" id="mcq-score" style="display:none;">
+      Your score: <span>0</span>/[TOTAL_QUESTIONS]
+    </div>
+  </div>
+</section>
+
+<!-- Standardized JavaScript Initialization -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize MCQ Module
+  MCQModule.init({
+    containerId: 'mcq',
+    answers: {
+      // Map of question IDs to correct answer indices
+      'q1': [CORRECT_ANSWER_INDEX],
+      'q2': [CORRECT_ANSWER_INDEX],
+      // ...more questions
+    },
+    correctExplanations: {
+      // Map of question IDs to explanations for correct answers
+      'q1': '[CORRECT_EXPLANATION]',
+      'q2': '[CORRECT_EXPLANATION]',
+      // ...more explanations
+    },
+    incorrectExplanations: {
+      // Map of question IDs to explanations for incorrect answers
+      'q1': '[INCORRECT_EXPLANATION]',
+      'q2': '[INCORRECT_EXPLANATION]',
+      // ...more explanations
+    },
+    showAllQuestionsAtOnce: true, // Show all questions at once
+    onComplete: function(score, total) {
+      console.log(`MCQ completed with score: ${score}/${total}`);
+      
+      // Track this activity completion in the progress system
+      if (typeof ProgressTracker !== 'undefined') {
+        // Mark the MCQ as completed in the 'activities' category
+        ProgressTracker.markItemCompleted('activities', '[ACTIVITY_ID]', {
+          score: score,
+          maxScore: total,
+          completed: true,
+          completedAt: new Date().toISOString(),
+          title: '[ACTIVITY_TITLE]'
+        });
+        
+        // Also mark the lesson itself as viewed/completed
+        ProgressTracker.updateItemProgress('lessons', '[LESSON_ID]', {
+          lastViewed: new Date().toISOString(),
+          progress: 100, // Percent complete
+          title: '[LESSON_TITLE]' // Human-readable lesson title
+        });
+      }
+    }
+  });
+});
+</script>

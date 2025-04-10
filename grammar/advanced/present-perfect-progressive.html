@@ -20,6 +20,63 @@
   <link rel="stylesheet" href="../../css/base.css">
   <link rel="stylesheet" href="../../css/activities.css">
   <link rel="stylesheet" href="../../css/progress-tracking-styles.css">
+
+  <style>
+    /* Make sure all MCQ questions remain visible */
+    #mcq-container .question {
+      display: block !important;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--border-color, #ddd);
+    }
+    
+    .activity-container.active {
+      display: block !important;
+    }
+    
+    /* Ensure proper spacing between options */
+    .options {
+      margin-bottom: 15px;
+    }
+    
+    /* Make sure feedback is visible */
+    .feedback {
+      margin-top: 10px;
+      min-height: 20px;
+    }
+
+    /* Additional styles for clickable option divs */
+    .option {
+      cursor: pointer;
+      transition: background-color 0.2s;
+      padding: 8px 12px;
+      border: 1px solid var(--border-color, #ddd);
+      border-radius: 4px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .option:hover {
+      background-color: var(--mcq-hover-bg, #d0e6f7);
+      transform: translateY(-1px);
+    }
+    
+    .option.selected {
+      background-color: var(--mcq-selected-bg, #d0e6f7);
+      border: 2px solid var(--mcq-selected-border, #3498db);
+      font-weight: bold;
+    }
+    
+    [data-theme="dark"] .option:hover {
+      background-color: var(--mcq-hover-bg, #253545);
+    }
+    
+    [data-theme="dark"] .option.selected {
+      background-color: var(--mcq-selected-bg, #253545);
+      border-color: var(--mcq-selected-border, #4fa3e0);
+    }
+  </style>
 </head>
 <body>
   <!-- Include skip link and theme toggle -->
@@ -148,7 +205,7 @@
       </section>
 
       <!-- VISUAL COMPARISON TABLE -->
-      <section>
+      <section id="summary">
         <h2>Comparing Present Perfect Simple and Progressive</h2>
         <table>
           <thead>
@@ -200,21 +257,21 @@
         
         <div class="error-pattern">
           <p class="error-title"><strong>1: Using Present Perfect Simple when focusing on an activity in progress</strong></p>
-          <p class="incorrect">I have painted the wall for three hours. The paint is still wet.</p>
+          <p class="incorrect">I have painted the wall for three hours. The paint is still wet.</p><br>
           <p class="correct">I have been painting the wall for three hours. The paint is still wet. ✓</p>
           <p class="explanation"><em>When you want to emphasise that an activity is ongoing or temporary, use the Present Perfect Progressive.</em></p>
         </div>
         
         <div class="error-pattern">
           <p class="error-title"><strong>2: Using Present Perfect Progressive when focusing on completed actions or results</strong></p>
-          <p class="incorrect">I have been finished my homework, so I can go out now.</p>
+          <p class="incorrect">I have been finished my homework, so I can go out now.</p><br>
           <p class="correct">I have finished my homework, so I can go out now. ✓</p>
           <p class="explanation"><em>For completed actions with a present result, use the Present Perfect Simple.</em></p>
         </div>
         
         <div class="error-pattern">
           <p class="error-title"><strong>3: Using Present Perfect Progressive with stative verbs</strong></p>
-          <p class="incorrect">I have been knowing him for ten years.</p>
+          <p class="incorrect">I have been knowing him for ten years.</p><br>
           <p class="correct">I have known him for ten years. ✓</p>
           <p class="explanation"><em>Stative verbs (like know, believe, want, love) are not normally used in continuous forms.</em></p>
         </div>
@@ -240,219 +297,126 @@
       <!-- MCQ PRACTICE SECTION -->
       <section class="content-section mcq-container">
         <h2>Quick Practice</h2>
-        <p class="mcq-instructions">Test your understanding of Present Perfect Simple vs. Present Perfect Progressive. Questions progress from basic to more challenging levels.</p>
+        <p>Test your understanding of Present Perfect Simple vs. Present Perfect Progressive by selecting the correct option for each question.</p>
         
-        <!-- Progress indicator -->
-        <div class="mcq-progress">
-          <div class="progress-container">
-            <div id="mcq-progress-bar" class="progress-bar" style="width: 0%"></div>
+        <div id="mcq" class="activity-container active">
+          <div class="question" id="q1">
+            <p class="mcq-question">1. I'm very tired because I _____ all day.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. have studied</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. have been studying</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. study</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. studied</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
           </div>
-          <div class="progress-info">Question: <span id="current-question">1</span>/<span id="total-questions">5</span></div>
-        </div>
-        
-        <div id="mcq-container" class="activity-container active">
-          <div class="questions-container">
-            <!-- Question 1 - Basic level -->
-            <div id="q1" class="question" data-difficulty="basic">
-              <p class="question-number">Question 1</p>
-              <div class="question-context">
-                <p class="mcq-question">I'm very tired because I _____ all day.</p>
+      
+          <div class="question" id="q2">
+            <p class="mcq-question">2. She _____ three cups of coffee today.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. has drunk</span>
               </div>
-              <div class="options">
-                <div class="option" data-index="0">
-                  <input type="radio" id="q1-option0" name="q1" value="0">
-                  <label for="q1-option0">have studied</label>
-                </div>
-                <div class="option" data-index="1">
-                  <input type="radio" id="q1-option1" name="q1" value="1">
-                  <label for="q1-option1">have been studying</label>
-                </div>
-                <div class="option" data-index="2">
-                  <input type="radio" id="q1-option2" name="q1" value="2">
-                  <label for="q1-option2">study</label>
-                </div>
-                <div class="option" data-index="3">
-                  <input type="radio" id="q1-option3" name="q1" value="3">
-                  <label for="q1-option3">studied</label>
-                </div>
+              <div class="option" data-index="1">
+                <span>B. has been drinking</span>
               </div>
-              <div class="feedback" aria-live="polite"></div>
+              <div class="option" data-index="2">
+                <span>C. drinks</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. is drinking</span>
+              </div>
             </div>
-
-            <!-- Question 2 - Basic level -->
-            <div id="q2" class="question" data-difficulty="basic">
-              <p class="question-number">Question 2</p>
-              <div class="question-context">
-                <p class="mcq-question">She _____ three cups of coffee today.</p>
+            <div class="feedback"></div>
+          </div>
+      
+          <div class="question" id="q3">
+            <p class="mcq-question">3. Why are your clothes so wet? _____ in the rain?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. Have you been walking</span>
               </div>
-              <div class="options">
-                <div class="option" data-index="0">
-                  <input type="radio" id="q2-option0" name="q2" value="0">
-                  <label for="q2-option0">has drunk</label>
-                </div>
-                <div class="option" data-index="1">
-                  <input type="radio" id="q2-option1" name="q2" value="1">
-                  <label for="q2-option1">has been drinking</label>
-                </div>
-                <div class="option" data-index="2">
-                  <input type="radio" id="q2-option2" name="q2" value="2">
-                  <label for="q2-option2">drinks</label>
-                </div>
-                <div class="option" data-index="3">
-                  <input type="radio" id="q2-option3" name="q2" value="3">
-                  <label for="q2-option3">is drinking</label>
-                </div>
+              <div class="option" data-index="1">
+                <span>B. Have you walked</span>
               </div>
-              <div class="feedback" aria-live="polite"></div>
+              <div class="option" data-index="2">
+                <span>C. Did you walk</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. Do you walk</span>
+              </div>
             </div>
-
-            <!-- Question 3 - Intermediate level -->
-            <div id="q3" class="question" data-difficulty="intermediate">
-              <p class="question-number">Question 3</p>
-              <div class="question-context">
-                <p class="mcq-question">Why are your clothes so wet? _____ in the rain?</p>
+            <div class="feedback"></div>
+          </div>
+      
+          <div class="question" id="q4">
+            <p class="mcq-question">4. I _____ my keys. I can't find them anywhere.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. am losing</span>
               </div>
-              <div class="options">
-                <div class="option" data-index="0">
-                  <input type="radio" id="q3-option0" name="q3" value="0">
-                  <label for="q3-option0">Have you been walking</label>
-                </div>
-                <div class="option" data-index="1">
-                  <input type="radio" id="q3-option1" name="q3" value="1">
-                  <label for="q3-option1">Have you walked</label>
-                </div>
-                <div class="option" data-index="2">
-                  <input type="radio" id="q3-option2" name="q3" value="2">
-                  <label for="q3-option2">Did you walk</label>
-                </div>
-                <div class="option" data-index="3">
-                  <input type="radio" id="q3-option3" name="q3" value="3">
-                  <label for="q3-option3">Do you walk</label>
-                </div>
+              <div class="option" data-index="1">
+                <span>B. have lost</span>
               </div>
-              <div class="feedback" aria-live="polite"></div>
+              <div class="option" data-index="2">
+                <span>C. have been losing</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. lose</span>
+              </div>
             </div>
-
-            <!-- Question 4 - Intermediate level -->
-            <div id="q4" class="question" data-difficulty="intermediate">
-              <p class="question-number">Question 4</p>
-              <div class="question-context">
-                <p class="mcq-question">I _____ my keys. I can't find them anywhere.</p>
+            <div class="feedback"></div>
+          </div>
+      
+          <div class="question" id="q5">
+            <p class="mcq-question">5. We _____ in this flat since 2010.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. live</span>
               </div>
-              <div class="options">
-                <div class="option" data-index="0">
-                  <input type="radio" id="q4-option0" name="q4" value="0">
-                  <label for="q4-option0">am losing</label>
-                </div>
-                <div class="option" data-index="1">
-                  <input type="radio" id="q4-option1" name="q4" value="1">
-                  <label for="q4-option1">have lost</label>
-                </div>
-                <div class="option" data-index="2">
-                  <input type="radio" id="q4-option2" name="q4" value="2">
-                  <label for="q4-option2">have been losing</label>
-                </div>
-                <div class="option" data-index="3">
-                  <input type="radio" id="q4-option3" name="q4" value="3">
-                  <label for="q4-option3">lose</label>
-                </div>
+              <div class="option" data-index="1">
+                <span>B. are living</span>
               </div>
-              <div class="feedback" aria-live="polite"></div>
+              <div class="option" data-index="2">
+                <span>C. have lived</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. have been lived</span>
+              </div>
             </div>
-
-            <!-- Question 5 - Advanced level -->
-            <div id="q5" class="question" data-difficulty="advanced">
-              <p class="question-number">Question 5</p>
-              <div class="question-context">
-                <p class="mcq-question">We _____ in this flat since 2010.</p>
-              </div>
-              <div class="options">
-                <div class="option" data-index="0">
-                  <input type="radio" id="q5-option0" name="q5" value="0">
-                  <label for="q5-option0">live</label>
-                </div>
-                <div class="option" data-index="1">
-                  <input type="radio" id="q5-option1" name="q5" value="1">
-                  <label for="q5-option1">are living</label>
-                </div>
-                <div class="option" data-index="2">
-                  <input type="radio" id="q5-option2" name="q5" value="2">
-                  <label for="q5-option2">have lived</label>
-                </div>
-                <div class="option" data-index="3">
-                  <input type="radio" id="q5-option3" name="q5" value="3">
-                  <label for="q5-option3">have been lived</label>
-                </div>
-              </div>
-              <div class="feedback" aria-live="polite"></div>
-            </div>
+            <div class="feedback"></div>
           </div>
           
-          <!-- Navigation buttons -->
-          <div class="question-navigation">
-            <button id="prev-question" class="nav-button" disabled>Previous</button>
-            <button id="next-question" class="nav-button">Next</button>
-          </div>
-          
-          <!-- Control buttons -->
           <div class="control-buttons">
             <button id="mcq-submit" class="submit-btn">Check Answers</button>
+            <a href="#summary" class="nav-button">Review Grammar</a>
             <button id="mcq-restart" class="restart-btn" style="display:none;">Try Again</button>
-            <a href="#grammar-summary" id="check-grammar" class="nav-button" style="display:none;">Review Grammar</a>
           </div>
           
-          <!-- Results summary -->
-          <div id="mcq-results" class="results-container" style="display:none;">
-            <h3>Your Results</h3>
-            <div class="score-display">
-              <p>Your score: <span id="score-value">0</span>/<span id="total-questions-score">5</span></p>
-              <div class="progress-container">
-                <div id="results-progress-bar" class="progress-bar" style="width: 0%"></div>
-              </div>
-            </div>
-            <div class="difficulty-breakdown">
-              <div class="difficulty-section">
-                <h4>Basic (Questions 1-2)</h4>
-                <p><span id="basic-score">0</span>/2 correct</p>
-              </div>
-              <div class="difficulty-section">
-                <h4>Intermediate (Questions 3-4)</h4>
-                <p><span id="intermediate-score">0</span>/2 correct</p>
-              </div>
-              <div class="difficulty-section">
-                <h4>Advanced (Question 5)</h4>
-                <p><span id="advanced-score">0</span>/1 correct</p>
-              </div>
-            </div>
-            <div class="feedback-summary">
-              <p>Review your answers above to see explanations for each question.</p>
-            </div>
+          <div class="score-display" id="mcq-score" style="display:none;">
+            Your score: <span>0</span>/5
           </div>
         </div>
-      </section>
-      
-      <!-- Grammar summary section (target for "Check the Grammar" button) -->
-      <section id="grammar-summary" class="grammar-summary">
-        <h2>Key Points to Remember</h2>
-        <ul>
-          <li><strong>Present Perfect Simple</strong> (have/has + past participle): Use for completed actions, results, and achievements</li>
-          <li><strong>Present Perfect Progressive</strong> (have/has + been + verb-ing): Use for ongoing actions, duration, and temporary actions</li>
-          <li>Use Present Perfect Simple with stative verbs (know, believe, love, etc.)</li>
-          <li>Time expressions like "already," "just," "ever," "never" typically go with Present Perfect Simple</li>
-          <li>Time expressions like "for," "since," "lately," "all day/week" typically go with Present Perfect Progressive</li>
-        </ul>
       </section>
     </main>
   </div>
   
   <!-- BOTTOM NAVIGATION -->
   <nav class="bottom-navigation">
-    <a href="advanced-grammar.html#advanced-tenses-and-aspect" class="nav-button previous">← Previous: Advanced Tenses Overview</a>
+    <a href="advanced-grammar.html#advanced-tenses-and-aspect" class="nav-button previous">← Previous: All Advanced Tenses</a>
     <div class="center-buttons">
       <button class="nav-button print-button" onclick="window.print()">Print This Page</button>
       <a href="present-perfect-progressive-practice.html" class="nav-button activities">Practice Activities</a>
     </div>
-    <a href="past-perfect-progressive.html" class="nav-button next">Next: Past Perfect Progressive →</a>
+    <a href="past-perfect-progressive.html" class="nav-button next">Next: Past Perfect Progressive vs. Past Perfect →</a>
   </nav>
 
   <!-- Include footer -->
@@ -497,175 +461,58 @@
   <script src="../../js/mcq.js"></script>
   <script src="../../js/progress-tracking.js"></script>
   
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Initialize MCQ Module with new MCQ system
-      const totalQuestions = document.querySelectorAll('#mcq-container .question').length;
-      document.getElementById('total-questions').textContent = totalQuestions;
-      document.getElementById('total-questions-score').textContent = totalQuestions;
-      
-      // Show only the first question initially
-      showQuestion(1);
-      
-      // Set up navigation
-      document.getElementById('next-question').addEventListener('click', function() {
-        const currentQuestionNum = parseInt(document.getElementById('current-question').textContent);
-        if (currentQuestionNum < totalQuestions) {
-          showQuestion(currentQuestionNum + 1);
-        }
-      });
-      
-      document.getElementById('prev-question').addEventListener('click', function() {
-        const currentQuestionNum = parseInt(document.getElementById('current-question').textContent);
-        if (currentQuestionNum > 1) {
-          showQuestion(currentQuestionNum - 1);
-        }
-      });
-      
-      // Check Answers
-      document.getElementById('mcq-submit').addEventListener('click', function() {
-        // Hide navigation buttons
-        document.getElementById('next-question').style.display = 'none';
-        document.getElementById('prev-question').style.display = 'none';
+  <!-- Standardized JavaScript for Present Perfect Progressive MCQ -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize MCQ Module
+    MCQModule.init({
+      containerId: 'mcq',
+      answers: {
+        'q1': 1,  // have been studying
+        'q2': 0,  // has drunk
+        'q3': 0,  // Have you been walking
+        'q4': 1,  // have lost
+        'q5': 2   // have lived
+      },
+      correctExplanations: {
+        'q1': 'Present Perfect Progressive is used to emphasize the continuous activity (studying all day) that has caused the current state (being tired).',
+        'q2': 'Present Perfect Simple is used to count completed actions (three cups of coffee).',
+        'q3': 'Present Perfect Progressive is used for a recent continuous activity with visible present results (wet clothes).',
+        'q4': 'Present Perfect Simple is used for a completed action with present consequences (keys are now lost).',
+        'q5': 'Present Perfect Simple is commonly used with stative verbs like "live" for states that continue to the present.'
+      },
+      incorrectExplanations: {
+        'q1': 'Present Perfect Progressive is used to emphasize the continuous activity (studying all day) that has caused the current state (being tired).',
+        'q2': 'Present Perfect Simple is used to count completed actions (three cups of coffee).',
+        'q3': 'Present Perfect Progressive is used for a recent continuous activity with visible present results (wet clothes).',
+        'q4': 'Present Perfect Simple is used for a completed action with present consequences (keys are now lost).',
+        'q5': 'Present Perfect Simple is commonly used with stative verbs like "live" for states that continue to the present.'
+      },
+      showAllQuestionsAtOnce: true, // Show all questions at once
+      onComplete: function(score, total) {
+        console.log(`MCQ completed with score: ${score}/${total}`);
         
-        // Show all questions for review
-        document.querySelectorAll('#mcq-container .question').forEach(question => {
-          question.style.display = 'block';
-        });
-        
-        // Calculate scores
-        const answers = {
-          'q1': 1,  // have been studying
-          'q2': 0,  // has drunk
-          'q3': 0,  // Have you been walking
-          'q4': 1,  // have lost
-          'q5': 2   // have lived
-        };
-        
-        const explanations = {
-          'q1': 'Present Perfect Progressive is used to emphasize the continuous activity (studying all day) that has caused the current state (being tired).',
-          'q2': 'Present Perfect Simple is used to count completed actions (three cups of coffee).',
-          'q3': 'Present Perfect Progressive is used for a recent continuous activity with visible present results (wet clothes).',
-          'q4': 'Present Perfect Simple is used for a completed action with present consequences (keys are now lost).',
-          'q5': 'Present Perfect Simple is commonly used with stative verbs like "live" for states that continue to the present.'
-        };
-        
-        let totalScore = 0;
-        let basicScore = 0;
-        let intermediateScore = 0;
-        let advancedScore = 0;
-        
-        // Check each question
-        Object.keys(answers).forEach(questionId => {
-          const question = document.getElementById(questionId);
-          const selectedOption = question.querySelector('input[type="radio"]:checked');
-          const feedback = question.querySelector('.feedback');
-          
-          if (selectedOption) {
-            const selectedIndex = parseInt(selectedOption.value);
-            const correctIndex = answers[questionId];
-            
-            if (selectedIndex === correctIndex) {
-              feedback.innerHTML = `<p class="correct-feedback">✓ Correct! ${explanations[questionId]}</p>`;
-              totalScore++;
-              
-              // Update difficulty scores
-              const difficulty = question.getAttribute('data-difficulty');
-              if (difficulty === 'basic') basicScore++;
-              if (difficulty === 'intermediate') intermediateScore++;
-              if (difficulty === 'advanced') advancedScore++;
-            } else {
-              const correctOptionLabel = question.querySelector(`label[for="${questionId}-option${correctIndex}"]`).textContent;
-              feedback.innerHTML = `<p class="incorrect-feedback">✗ Incorrect. The correct answer is: ${correctOptionLabel}</p><p>${explanations[questionId]}</p>`;
-            }
-          } else {
-            feedback.innerHTML = '<p class="incorrect-feedback">No answer selected.</p>';
-          }
-        });
-        
-        // Update score display
-        document.getElementById('score-value').textContent = totalScore;
-        document.getElementById('basic-score').textContent = basicScore;
-        document.getElementById('intermediate-score').textContent = intermediateScore;
-        document.getElementById('advanced-score').textContent = advancedScore;
-        
-        // Update progress bar
-        const percentage = (totalScore / totalQuestions) * 100;
-        document.getElementById('results-progress-bar').style.width = percentage + '%';
-        
-        // Show results
-        document.getElementById('mcq-results').style.display = 'block';
-        document.getElementById('mcq-submit').style.display = 'none';
-        document.getElementById('mcq-restart').style.display = 'inline-block';
-        document.getElementById('check-grammar').style.display = 'inline-block';
-        
-        // Track progress
-        if (typeof ProgressTrackingModule !== 'undefined') {
-          ProgressTrackingModule.markItemCompleted('activities', 'mcq-present-perfect-progressive', {
-            score: totalScore,
-            maxScore: totalQuestions,
+        // Track this activity completion in the progress system
+        if (typeof ProgressTracker !== 'undefined') {
+          // Mark the MCQ as completed in the 'activities' category
+          ProgressTracker.markItemCompleted('activities', 'mcq-present-perfect-progressive', {
+            score: score,
+            maxScore: total,
             completed: true,
             completedAt: new Date().toISOString(),
             title: 'Present Perfect Progressive vs Simple Quick Practice'
           });
           
-          // Also mark the lesson as viewed/completed
-          ProgressTrackingModule.updateItemProgress('lessons', 'present-perfect-progressive', {
+          // Also mark the lesson itself as viewed/completed
+          ProgressTracker.updateItemProgress('lessons', 'present-perfect-progressive', {
             lastViewed: new Date().toISOString(),
-            progress: 100,
+            progress: 100, // Percent complete
             title: 'Present Perfect Progressive vs Present Perfect Simple'
           });
         }
-      });
-      
-      // Restart Quiz
-      document.getElementById('mcq-restart').addEventListener('click', function() {
-        // Reset all selections and feedback
-        document.querySelectorAll('#mcq-container input[type="radio"]').forEach(radio => {
-          radio.checked = false;
-        });
-        
-        document.querySelectorAll('#mcq-container .feedback').forEach(feedback => {
-          feedback.innerHTML = '';
-        });
-        
-        // Show only first question again
-        showQuestion(1);
-        
-        // Reset UI
-        document.getElementById('next-question').style.display = 'inline-block';
-        document.getElementById('prev-question').style.display = 'inline-block';
-        document.getElementById('mcq-results').style.display = 'none';
-        document.getElementById('mcq-submit').style.display = 'inline-block';
-        document.getElementById('mcq-restart').style.display = 'none';
-        document.getElementById('check-grammar').style.display = 'none';
-      });
-      
-      // Helper function to show a specific question
-      function showQuestion(questionNumber) {
-        // Hide all questions
-        document.querySelectorAll('#mcq-container .question').forEach(question => {
-          question.style.display = 'none';
-        });
-        
-        // Show the selected question
-        const questions = document.querySelectorAll('#mcq-container .question');
-        if (questionNumber > 0 && questionNumber <= questions.length) {
-          questions[questionNumber - 1].style.display = 'block';
-        }
-        
-        // Update current question display
-        document.getElementById('current-question').textContent = questionNumber;
-        
-        // Update progress bar
-        const percentage = ((questionNumber - 1) / (questions.length - 1)) * 100;
-        document.getElementById('mcq-progress-bar').style.width = percentage + '%';
-        
-        // Enable/disable navigation buttons
-        document.getElementById('prev-question').disabled = (questionNumber === 1);
-        document.getElementById('next-question').disabled = (questionNumber === questions.length);
       }
     });
+  });
   </script>
 </body>
 </html>

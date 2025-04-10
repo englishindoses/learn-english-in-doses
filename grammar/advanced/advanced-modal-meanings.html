@@ -25,20 +25,7 @@
   <link rel="icon" type="image/png" href="../../images/favicon.png">
 
   <style>
-    /* Fix progress bar styling */
-    .progress-container {
-      margin-bottom: 30px;
-      padding-bottom: 10px;
-      clear: both;
-    }
-    
-    .progress-container h4 {
-      margin-top: 0;
-      margin-bottom: 8px;
-      font-size: 1rem;
-    }
-    
-    /* Make sure all MCQ questions remain visible */
+    /* Fix MCQ question display */
     #mcq .question {
       display: block !important;
       margin-bottom: 25px;
@@ -88,6 +75,38 @@
       font-size: 0.9em;
       margin-top: 5px;
     }
+    
+    /* Additional styles for clickable option divs */
+    .option {
+      cursor: pointer;
+      transition: background-color 0.2s;
+      padding: 8px 12px;
+      border: 1px solid var(--border-color, #ddd);
+      border-radius: 4px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .option:hover {
+      background-color: var(--mcq-hover-bg, #d0e6f7);
+      transform: translateY(-1px);
+    }
+    
+    .option.selected {
+      background-color: var(--mcq-selected-bg, #d0e6f7);
+      border: 2px solid var(--mcq-selected-border, #3498db);
+      font-weight: bold;
+    }
+    
+    [data-theme="dark"] .option:hover {
+      background-color: var(--mcq-hover-bg, #253545);
+    }
+    
+    [data-theme="dark"] .option.selected {
+      background-color: var(--mcq-selected-bg, #253545);
+      border-color: var(--mcq-selected-border, #4fa3e0);
+    }
   </style>
 </head>
 <body>
@@ -134,13 +153,6 @@
 
     <main id="main-content">
       <h1>Advanced Modal Meanings</h1>
-
-      <!-- Progress tracking display -->
-      <div class="progress-container">
-        <h4>Your Progress</h4>
-        <div id="activity-progress" data-progress-display data-progress-type="bar" 
-             data-category="activities" data-item-id="modal-advanced-meanings"></div>
-      </div>
 
       <!-- INTRODUCTION SECTION -->
       <section class="intro-section">
@@ -220,7 +232,7 @@
       </section>
 
       <!-- GRAMMAR POINT SECTION 3 -->
-      <section class="grammar-point" id="grammar-summary">
+      <section class="grammar-point">
         <h2>Other Advanced Modal Meanings</h2>
         
         <p><strong>Expressing missed opportunities and alternatives</strong>: Modal verbs can express regret about what did or didn't happen.</p>
@@ -256,7 +268,7 @@
       </section>
 
       <!-- VISUAL COMPARISON TABLE -->
-      <section>
+      <section id="summary">
         <h2>Summary of Advanced Modal Meanings</h2>
         <table class="meaning-table">
           <thead>
@@ -385,20 +397,16 @@
             <p class="mcq-question">1. "You _____ told me about the meeting. I missed it completely!"</p>
             <div class="options">
               <div class="option" data-index="0">
-                <input type="radio" id="q1-option0" name="q1" value="0">
-                <label for="q1-option0">should</label>
+                <span>A. should</span>
               </div>
               <div class="option" data-index="1">
-                <input type="radio" id="q1-option1" name="q1" value="1">
-                <label for="q1-option1">should have</label>
+                <span>B. should have</span>
               </div>
               <div class="option" data-index="2">
-                <input type="radio" id="q1-option2" name="q1" value="2">
-                <label for="q1-option2">must</label>
+                <span>C. must</span>
               </div>
               <div class="option" data-index="3">
-                <input type="radio" id="q1-option3" name="q1" value="3">
-                <label for="q1-option3">will</label>
+                <span>D. will</span>
               </div>
             </div>
             <div class="feedback"></div>
@@ -408,20 +416,16 @@
             <p class="mcq-question">2. "I can see her car in the driveway. She _____ at home."</p>
             <div class="options">
               <div class="option" data-index="0">
-                <input type="radio" id="q2-option0" name="q2" value="0">
-                <label for="q2-option0">must be</label>
+                <span>A. must be</span>
               </div>
               <div class="option" data-index="1">
-                <input type="radio" id="q2-option1" name="q2" value="1">
-                <label for="q2-option1">must have been</label>
+                <span>B. must have been</span>
               </div>
               <div class="option" data-index="2">
-                <input type="radio" id="q2-option2" name="q2" value="2">
-                <label for="q2-option2">should have been</label>
+                <span>C. should have been</span>
               </div>
               <div class="option" data-index="3">
-                <input type="radio" id="q2-option3" name="q2" value="3">
-                <label for="q2-option3">could been</label>
+                <span>D. could been</span>
               </div>
             </div>
             <div class="feedback"></div>
@@ -431,20 +435,16 @@
             <p class="mcq-question">3. "You _____ so much food. Most of it went to waste!"</p>
             <div class="options">
               <div class="option" data-index="0">
-                <input type="radio" id="q3-option0" name="q3" value="0">
-                <label for="q3-option0">needn't have bought</label>
+                <span>A. needn't have bought</span>
               </div>
               <div class="option" data-index="1">
-                <input type="radio" id="q3-option1" name="q3" value="1">
-                <label for="q3-option1">didn't need to buy</label>
+                <span>B. didn't need to buy</span>
               </div>
               <div class="option" data-index="2">
-                <input type="radio" id="q3-option2" name="q3" value="2">
-                <label for="q3-option2">mustn't have bought</label>
+                <span>C. mustn't have bought</span>
               </div>
               <div class="option" data-index="3">
-                <input type="radio" id="q3-option3" name="q3" value="3">
-                <label for="q3-option3">shouldn't buy</label>
+                <span>D. shouldn't buy</span>
               </div>
             </div>
             <div class="feedback"></div>
@@ -454,20 +454,16 @@
             <p class="mcq-question">4. "That _____ John. He's on holiday in Spain."</p>
             <div class="options">
               <div class="option" data-index="0">
-                <input type="radio" id="q4-option0" name="q4" value="0">
-                <label for="q4-option0">must be</label>
+                <span>A. must be</span>
               </div>
               <div class="option" data-index="1">
-                <input type="radio" id="q4-option1" name="q4" value="1">
-                <label for="q4-option1">might be</label>
+                <span>B. might be</span>
               </div>
               <div class="option" data-index="2">
-                <input type="radio" id="q4-option2" name="q4" value="2">
-                <label for="q4-option2">should be</label>
+                <span>C. should be</span>
               </div>
               <div class="option" data-index="3">
-                <input type="radio" id="q4-option3" name="q4" value="3">
-                <label for="q4-option3">can't be</label>
+                <span>D. can't be</span>
               </div>
             </div>
             <div class="feedback"></div>
@@ -477,20 +473,16 @@
             <p class="mcq-question">5. "We _____ the earlier train, but we decided to wait for you."</p>
             <div class="options">
               <div class="option" data-index="0">
-                <input type="radio" id="q5-option0" name="q5" value="0">
-                <label for="q5-option0">should take</label>
+                <span>A. should take</span>
               </div>
               <div class="option" data-index="1">
-                <input type="radio" id="q5-option1" name="q5" value="1">
-                <label for="q5-option1">could have taken</label>
+                <span>B. could have taken</span>
               </div>
               <div class="option" data-index="2">
-                <input type="radio" id="q5-option2" name="q5" value="2">
-                <label for="q5-option2">must have taken</label>
+                <span>C. must have taken</span>
               </div>
               <div class="option" data-index="3">
-                <input type="radio" id="q5-option3" name="q5" value="3">
-                <label for="q5-option3">will take</label>
+                <span>D. will take</span>
               </div>
             </div>
             <div class="feedback"></div>
@@ -500,20 +492,16 @@
             <p class="mcq-question">6. "She's been working all night. She _____ exhausted."</p>
             <div class="options">
               <div class="option" data-index="0">
-                <input type="radio" id="q6-option0" name="q6" value="0">
-                <label for="q6-option0">must be</label>
+                <span>A. must be</span>
               </div>
               <div class="option" data-index="1">
-                <input type="radio" id="q6-option1" name="q6" value="1">
-                <label for="q6-option1">must have been</label>
+                <span>B. must have been</span>
               </div>
               <div class="option" data-index="2">
-                <input type="radio" id="q6-option2" name="q6" value="2">
-                <label for="q6-option2">should be</label>
+                <span>C. should be</span>
               </div>
               <div class="option" data-index="3">
-                <input type="radio" id="q6-option3" name="q6" value="3">
-                <label for="q6-option3">can't be</label>
+                <span>D. can't be</span>
               </div>
             </div>
             <div class="feedback"></div>
@@ -523,20 +511,16 @@
             <p class="mcq-question">7. "Sarah _____ seen the email yet, because she hasn't replied."</p>
             <div class="options">
               <div class="option" data-index="0">
-                <input type="radio" id="q7-option0" name="q7" value="0">
-                <label for="q7-option0">mustn't have</label>
+                <span>A. mustn't have</span>
               </div>
               <div class="option" data-index="1">
-                <input type="radio" id="q7-option1" name="q7" value="1">
-                <label for="q7-option1">shouldn't have</label>
+                <span>B. shouldn't have</span>
               </div>
               <div class="option" data-index="2">
-                <input type="radio" id="q7-option2" name="q7" value="2">
-                <label for="q7-option2">can't have</label>
+                <span>C. can't have</span>
               </div>
               <div class="option" data-index="3">
-                <input type="radio" id="q7-option3" name="q7" value="3">
-                <label for="q7-option3">wouldn't have</label>
+                <span>D. wouldn't have</span>
               </div>
             </div>
             <div class="feedback"></div>
@@ -546,20 +530,16 @@
             <p class="mcq-question">8. "I'm not sure, but this _____ the right answer."</p>
             <div class="options">
               <div class="option" data-index="0">
-                <input type="radio" id="q8-option0" name="q8" value="0">
-                <label for="q8-option0">must be</label>
+                <span>A. must be</span>
               </div>
               <div class="option" data-index="1">
-                <input type="radio" id="q8-option1" name="q8" value="1">
-                <label for="q8-option1">might be</label>
+                <span>B. might be</span>
               </div>
               <div class="option" data-index="2">
-                <input type="radio" id="q8-option2" name="q8" value="2">
-                <label for="q8-option2">can be</label>
+                <span>C. can be</span>
               </div>
               <div class="option" data-index="3">
-                <input type="radio" id="q8-option3" name="q8" value="3">
-                <label for="q8-option3">will be</label>
+                <span>D. will be</span>
               </div>
             </div>
             <div class="feedback"></div>
@@ -569,20 +549,16 @@
             <p class="mcq-question">9. "You _____ my brother. He's much taller than I am."</p>
             <div class="options">
               <div class="option" data-index="0">
-                <input type="radio" id="q9-option0" name="q9" value="0">
-                <label for="q9-option0">can't have met</label>
+                <span>A. can't have met</span>
               </div>
               <div class="option" data-index="1">
-                <input type="radio" id="q9-option1" name="q9" value="1">
-                <label for="q9-option1">must have met</label>
+                <span>B. must have met</span>
               </div>
               <div class="option" data-index="2">
-                <input type="radio" id="q9-option2" name="q9" value="2">
-                <label for="q9-option2">might have met</label>
+                <span>C. might have met</span>
               </div>
               <div class="option" data-index="3">
-                <input type="radio" id="q9-option3" name="q9" value="3">
-                <label for="q9-option3">will have met</label>
+                <span>D. will have met</span>
               </div>
             </div>
             <div class="feedback"></div>
@@ -592,20 +568,16 @@
             <p class="mcq-question">10. "I _____ to university. I regret it now."</p>
             <div class="options">
               <div class="option" data-index="0">
-                <input type="radio" id="q10-option0" name="q10" value="0">
-                <label for="q10-option0">should go</label>
+                <span>A. should go</span>
               </div>
               <div class="option" data-index="1">
-                <input type="radio" id="q10-option1" name="q10" value="1">
-                <label for="q10-option1">should have gone</label>
+                <span>B. should have gone</span>
               </div>
               <div class="option" data-index="2">
-                <input type="radio" id="q10-option2" name="q10" value="2">
-                <label for="q10-option2">must have gone</label>
+                <span>C. must have gone</span>
               </div>
               <div class="option" data-index="3">
-                <input type="radio" id="q10-option3" name="q10" value="3">
-                <label for="q10-option3">could go</label>
+                <span>D. could go</span>
               </div>
             </div>
             <div class="feedback"></div>
@@ -613,29 +585,26 @@
           
           <div class="control-buttons">
             <button id="mcq-submit" class="submit-btn">Check Answers</button>
-            <a href="#grammar-summary" id="check-grammar" class="nav-button">Review Grammar</a>
+            <a href="#summary" class="nav-button">Review Grammar</a>
             <button id="mcq-restart" class="restart-btn" style="display:none;">Try Again</button>
           </div>
           
-          <div class="score-display" id="mcq-results" style="display:none;">
-            Your score: <span id="score-value">0</span>/10
+          <div class="score-display" id="mcq-score" style="display:none;">
+            Your score: <span>0</span>/10
           </div>
         </div>
-      </section>
-      
-      <!-- Feedback Message Container -->
-      <div id="completion-feedback"></div>
+      </section>  
     </main>
   </div>
   
   <!-- BOTTOM NAVIGATION -->
   <nav class="bottom-navigation">
-    <a href="modal-progressive.html" class="nav-button previous">← Previous: Modal Progressive Forms</a>
+    <a href="modal-progressive.html" class="nav-button previous">← Previous: Subtle Differences Between Similar Modals</a>
     <div class="center-buttons">
       <button class="nav-button print-button" onclick="window.print()">Print This Page</button>
       <a href="modal-advanced-practice.html" class="nav-button activities">Practice Activities</a>
     </div>
-    <a href="modal-passive.html" class="nav-button next">Next: Modal Passive Forms →</a>
+    <a href="modal-passive.html" class="nav-button next">Next: Mixed Modal Constructions →</a>
   </nav>
 
   <!-- Include footer -->
@@ -680,137 +649,74 @@
   <script src="../../js/mcq.js"></script>
   <script src="../../js/progress-tracking-module.js"></script>
   <script src="../../js/progress-manager-ui.js"></script>
-  <script src="../../js/init-progress.js"></script>
   
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Initialize MCQ Module
-      MCQModule.init({
-        containerId: 'mcq',
-        answers: {
-          'q1': 1,  // should have
-          'q2': 0,  // must be
-          'q3': 0,  // needn't have bought
-          'q4': 3,  // can't be
-          'q5': 1,  // could have taken
-          'q6': 0,  // must be
-          'q7': 2,  // can't have
-          'q8': 1,  // might be
-          'q9': 0,  // can't have met
-          'q10': 1  // should have gone
-        },
-        explanations: {
-          'q1': 'We use "should have + past participle" to express criticism or reproach about a past action.',
-          'q2': 'When we are almost certain about a present situation, we use "must be".',
-          'q3': '"Needn\'t have bought" is used for unnecessary actions that were done (bought too much food).',
-          'q4': '"Can\'t be" expresses impossibility or negative certainty about the present.',
-          'q5': '"Could have taken" expresses a missed opportunity or alternative in the past.',
-          'q6': '"Must be" expresses a logical conclusion or strong probability about the present.',
-          'q7': '"Can\'t have" expresses impossibility or negative certainty about the past.',
-          'q8': '"Might be" expresses possibility (about 50% certainty) about the present.',
-          'q9': '"Can\'t have met" expresses impossibility about the past.',
-          'q10': '"Should have gone" expresses regret about a past action that didn\'t happen.'
-        },
-        showAllQuestionsAtOnce: true, // Show all questions at once
-        onComplete: function(score, total) {
-          console.log(`MCQ completed with score: ${score}/${total}`);
+  <!-- Standardized JavaScript for Advanced Modal Meanings MCQ -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize MCQ Module
+    MCQModule.init({
+      containerId: 'mcq',
+      answers: {
+        'q1': 1,  // should have
+        'q2': 0,  // must be
+        'q3': 0,  // needn't have bought
+        'q4': 3,  // can't be
+        'q5': 1,  // could have taken
+        'q6': 0,  // must be
+        'q7': 2,  // can't have
+        'q8': 1,  // might be
+        'q9': 0,  // can't have met
+        'q10': 1  // should have gone
+      },
+      correctExplanations: {
+        'q1': 'We use "should have + past participle" to express criticism or reproach about a past action.',
+        'q2': 'When we are almost certain about a present situation, we use "must be".',
+        'q3': '"Needn\'t have bought" is used for unnecessary actions that were done (bought too much food).',
+        'q4': '"Can\'t be" expresses impossibility or negative certainty about the present.',
+        'q5': '"Could have taken" expresses a missed opportunity or alternative in the past.',
+        'q6': '"Must be" expresses a logical conclusion or strong probability about the present.',
+        'q7': '"Can\'t have" expresses impossibility or negative certainty about the past.',
+        'q8': '"Might be" expresses possibility (about 50% certainty) about the present.',
+        'q9': '"Can\'t have met" expresses impossibility about the past.',
+        'q10': '"Should have gone" expresses regret about a past action that didn\'t happen.'
+      },
+      incorrectExplanations: {
+        'q1': 'We use "should have + past participle" to express criticism or reproach about a past action.',
+        'q2': 'When we are almost certain about a present situation, we use "must be".',
+        'q3': '"Needn\'t have bought" is used for unnecessary actions that were done (bought too much food).',
+        'q4': '"Can\'t be" expresses impossibility or negative certainty about the present.',
+        'q5': '"Could have taken" expresses a missed opportunity or alternative in the past.',
+        'q6': '"Must be" expresses a logical conclusion or strong probability about the present.',
+        'q7': '"Can\'t have" expresses impossibility or negative certainty about the past.',
+        'q8': '"Might be" expresses possibility (about 50% certainty) about the present.',
+        'q9': '"Can\'t have met" expresses impossibility about the past.',
+        'q10': '"Should have gone" expresses regret about a past action that didn\'t happen.'
+      },
+      showAllQuestionsAtOnce: true, // Show all questions at once
+      onComplete: function(score, total) {
+        console.log(`MCQ completed with score: ${score}/${total}`);
+        
+        // Track this activity completion in the progress system
+        if (typeof ProgressTracker !== 'undefined') {
+          // Mark the MCQ as completed in the 'activities' category
+          ProgressTracker.markItemCompleted('activities', 'mcq-modal-advanced-meanings', {
+            score: score,
+            maxScore: total,
+            completed: true,
+            completedAt: new Date().toISOString(),
+            title: 'Advanced Modal Meanings Quick Practice'
+          });
           
-          // Track this activity completion in the progress system
-          if (typeof ProgressTracker !== 'undefined') {
-            // Mark the MCQ as completed in the 'activities' category
-            ProgressTracker.markItemCompleted('activities', 'mcq-modal-advanced-meanings', {
-              score: score,
-              maxScore: total,
-              completed: true,
-              completedAt: new Date().toISOString(),
-              title: 'Advanced Modal Meanings Quick Practice'
-            });
-            
-            // Also mark the lesson itself as viewed/completed
-            ProgressTracker.updateItemProgress('lessons', 'modal-advanced-meanings', {
-              lastViewed: new Date().toISOString(),
-              progress: 100, // Percent complete
-              title: 'Advanced Modal Meanings' // Human-readable lesson title
-            });
-          }
-          
-          // Show completion feedback
-          showCompletionFeedback(score, total);
+          // Also mark the lesson itself as viewed/completed
+          ProgressTracker.updateItemProgress('lessons', 'modal-advanced-meanings', {
+            lastViewed: new Date().toISOString(),
+            progress: 100, // Percent complete
+            title: 'Advanced Modal Meanings' 
+          });
         }
-      });
-      
-      // Setup the "Check the Grammar" button
-      const checkGrammarButton = document.getElementById('check-grammar');
-      if (checkGrammarButton) {
-        checkGrammarButton.addEventListener('click', function(e) {
-          e.preventDefault();
-          const summarySection = document.getElementById('grammar-summary');
-          if (summarySection) {
-            summarySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        });
       }
     });
-    
-    /**
-     * Shows feedback to the user after completing the activity
-     * 
-     * @param {number} score - The score achieved
-     * @param {number} total - The total possible score
-     */
-    function showCompletionFeedback(score, total) {
-      // Calculate percentage
-      const percentage = Math.round((score / total) * 100);
-      
-      // Create feedback element if it doesn't exist
-      let feedbackElement = document.getElementById('completion-feedback');
-      
-      if (!feedbackElement) {
-        feedbackElement = document.createElement('div');
-        feedbackElement.id = 'completion-feedback';
-        feedbackElement.className = 'feedback-message';
-        feedbackElement.style.marginTop = '20px';
-        feedbackElement.style.padding = '15px';
-        feedbackElement.style.borderRadius = '5px';
-        feedbackElement.style.textAlign = 'center';
-        
-        // Add it after the MCQ container
-        const mcqContainer = document.getElementById('mcq');
-        if (mcqContainer && mcqContainer.parentNode) {
-          mcqContainer.parentNode.insertBefore(feedbackElement, mcqContainer.nextSibling);
-        }
-      }
-      
-      // Set content and style based on score
-      if (percentage >= 80) {
-        feedbackElement.style.backgroundColor = 'var(--success-bg, #d4edda)';
-        feedbackElement.style.color = 'var(--success-color, #155724)';
-        feedbackElement.innerHTML = `
-          <h3>Great job! 🎉</h3>
-          <p>You scored ${score}/${total} (${percentage}%). Your progress has been saved.</p>
-          <p>You've mastered the advanced meanings of modal verbs! Try the practice activities to strengthen your skills.</p>
-        `;
-      } else if (percentage >= 60) {
-        feedbackElement.style.backgroundColor = 'var(--note-bg, #fff3cd)';
-        feedbackElement.style.color = 'var(--note-color, #856404)';
-        feedbackElement.innerHTML = `
-          <h3>Good effort! 👍</h3>
-          <p>You scored ${score}/${total} (${percentage}%). Your progress has been saved.</p>
-          <p>Review the modal meanings you found difficult before moving on to more complex activities.</p>
-        `;
-      } else {
-        feedbackElement.style.backgroundColor = 'var(--error-bg, #f8d7da)';
-        feedbackElement.style.color = 'var(--error-color, #721c24)';
-        feedbackElement.innerHTML = `
-          <h3>Keep practicing 💪</h3>
-          <p>You scored ${score}/${total} (${percentage}%). Your progress has been saved.</p>
-          <p>Modal verbs can be tricky! Review the grammar section again and pay special attention to the examples.</p>
-        `;
-      }
-      
-      // Scroll to feedback
-      feedbackElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
+  });
   </script>
 </body>
 </html>

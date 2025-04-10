@@ -20,6 +20,63 @@
   <link rel="stylesheet" href="../../css/base.css">
   <link rel="stylesheet" href="../../css/activities.css">
   <link rel="stylesheet" href="../../css/progress-tracking-styles.css">
+
+  <style>
+    /* Make sure all MCQ questions remain visible */
+    #mcq-container .question {
+      display: block !important;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--border-color, #ddd);
+    }
+    
+    .activity-container.active {
+      display: block !important;
+    }
+    
+    /* Ensure proper spacing between options */
+    .options {
+      margin-bottom: 15px;
+    }
+    
+    /* Make sure feedback is visible */
+    .feedback {
+      margin-top: 10px;
+      min-height: 20px;
+    }
+
+    /* Additional styles for clickable option divs */
+    .option {
+      cursor: pointer;
+      transition: background-color 0.2s;
+      padding: 8px 12px;
+      border: 1px solid var(--border-color, #ddd);
+      border-radius: 4px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .option:hover {
+      background-color: var(--mcq-hover-bg, #d0e6f7);
+      transform: translateY(-1px);
+    }
+    
+    .option.selected {
+      background-color: var(--mcq-selected-bg, #d0e6f7);
+      border: 2px solid var(--mcq-selected-border, #3498db);
+      font-weight: bold;
+    }
+    
+    [data-theme="dark"] .option:hover {
+      background-color: var(--mcq-hover-bg, #253545);
+    }
+    
+    [data-theme="dark"] .option.selected {
+      background-color: var(--mcq-selected-bg, #253545);
+      border-color: var(--mcq-selected-border, #4fa3e0);
+    }
+  </style>
 </head>
 <body>
   <!-- Include skip link and theme toggle -->
@@ -43,7 +100,7 @@
       <a href="../../about.html" class="nav-link">About Us</a>
       <a href="../../contact.html" class="nav-link">Contact Us</a>
       <a href="../../home.html#where-to-start" class="nav-link">Grammar</a>
-      <a href="../../extra-practice.html" class="nav-link">Extra Practice</a>     
+      <a href="../../extra-practice.html" class="nav-link">Extra Practice</a>
       <a href="../../conversation-page.html" class="nav-link">Conversation</a>
       <a href="../../my-progress.html" class="nav-link">My Progress</a>
     </div>
@@ -165,75 +222,49 @@
       </section>
 
       <!-- VISUAL COMPARISON TABLE -->
-      <section>
-        <h2>Comparison of Past Perfect vs. Past Perfect Progressive</h2>
+      <section id="summary">
+        <h2>Comparing Past Perfect vs. Past Perfect Progressive</h2>
         <table>
           <thead>
             <tr>
-              <th style="background-color: var(--header-bg);">Feature</th>
-              <th style="background-color: var(--accent-color);">Past Perfect</th>
-              <th style="background-color: var(--secondary-accent);">Past Perfect Progressive</th>
+              <th>Feature</th>
+              <th>Past Perfect</th>
+              <th>Past Perfect Progressive</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td><strong>Form</strong></td>
-              <td style="background-color: rgba(52, 152, 219, 0.1);">had + past participle</td>
-              <td style="background-color: rgba(240, 125, 62, 0.1);">had been + verb-ing</td>
+              <td>had + past participle</td>
+              <td>had been + verb-ing</td>
             </tr>
             <tr>
               <td><strong>Focus</strong></td>
-              <td style="background-color: rgba(52, 152, 219, 0.1);">Completion of action</td>
-              <td style="background-color: rgba(240, 125, 62, 0.1);">Duration or process</td>
+              <td>Completion of action</td>
+              <td>Duration or process</td>
             </tr>
             <tr>
               <td><strong>Common time markers</strong></td>
-              <td style="background-color: rgba(52, 152, 219, 0.1);">before, by the time, already, just</td>
-              <td style="background-color: rgba(240, 125, 62, 0.1);">for, since, all day/week, how long</td>
+              <td>before, by the time, already, just</td>
+              <td>for, since, all day/week, how long</td>
             </tr>
             <tr>
               <td><strong>Best for expressing</strong></td>
-              <td style="background-color: rgba(52, 152, 219, 0.1);">Results, completed experiences</td>
-              <td style="background-color: rgba(240, 125, 62, 0.1);">Ongoing activities, causes of conditions</td>
+              <td>Results, completed experiences</td>
+              <td>Ongoing activities, causes of conditions</td>
             </tr>
             <tr>
               <td><strong>When to use</strong></td>
-              <td style="background-color: rgba(52, 152, 219, 0.1);">For completed actions or experiences before a past moment</td>
-              <td style="background-color: rgba(240, 125, 62, 0.1);">To explain why something was a certain way in the past</td>
+              <td>For completed actions or experiences before a past moment</td>
+              <td>To explain why something was a certain way in the past</td>
             </tr>
             <tr>
               <td><strong>Example</strong></td>
-              <td style="background-color: rgba(52, 152, 219, 0.1);">I <strong>had finished</strong> the report.</td>
-              <td style="background-color: rgba(240, 125, 62, 0.1);">I <strong>had been working</strong> on the report.</td>
+              <td>I <strong>had finished</strong> the report.</td>
+              <td>I <strong>had been working</strong> on the report.</td>
             </tr>
           </tbody>
         </table>
-      </section>
-
-      <!-- REAL-LIFE CONTEXTS SECTION -->
-      <section class="grammar-point">
-        <h2>Real-Life Contexts and Examples</h2>
-        
-        <p><strong>1. Work Situations:</strong></p>
-        
-        <div class="example">
-          <p>Past Perfect: <em>By the time the client arrived, we <strong>had prepared</strong> all the documents.</em> (The preparation was complete)</p>
-          <p>Past Perfect Progressive: <em>We <strong>had been developing</strong> the new software for six months when the company decided to change direction.</em> (Emphasizes the ongoing process)</p>
-        </div>
-        
-        <p><strong>2. Travel Experiences:</strong></p>
-        
-        <div class="example">
-          <p>Past Perfect: <em>We <strong>had visited</strong> Paris twice before our recent trip.</em> (Completed experiences)</p>
-          <p>Past Perfect Progressive: <em>We <strong>had been traveling</strong> around Europe for three months when our money ran out.</em> (Ongoing activity with duration)</p>
-        </div>
-        
-        <p><strong>3. Daily Life Situations:</strong></p>
-        
-        <div class="example">
-          <p>Past Perfect: <em>When we got home, the children <strong>had already done</strong> their homework.</em> (Completed action)</p>
-          <p>Past Perfect Progressive: <em>The children were tired because they <strong>had been playing</strong> football all afternoon.</em> (Explains their condition)</p>
-        </div>
       </section>
 
       <!-- COMMON ERRORS SECTION -->
@@ -242,28 +273,28 @@
         
         <div class="error-pattern">
           <p class="error-title"><strong>1: Using Past Perfect when Simple Past is sufficient</strong></p>
-          <p class="incorrect">After she had left the office, she had gone to the supermarket.</p>
+          <p class="incorrect">After she had left the office, she had gone to the supermarket.</p><br>
           <p class="correct">After she had left the office, she went to the supermarket. ✓</p>
           <p class="explanation"><em>When actions are in a clear sequence, use Past Perfect only for the earlier action. Use Simple Past for the later action.</em></p>
         </div>
         
         <div class="error-pattern">
           <p class="error-title"><strong>2: Confusing the form of Past Perfect Progressive</strong></p>
-          <p class="incorrect">She had being working on the project for months.</p>
+          <p class="incorrect">She had being working on the project for months.</p><br>
           <p class="correct">She had been working on the project for months. ✓</p>
           <p class="explanation"><em>Remember to use "had been" (not "had being") before the -ing form of the verb.</em></p>
         </div>
         
         <div class="error-pattern">
           <p class="error-title"><strong>3: Using Past Perfect Progressive with state verbs</strong></p>
-          <p class="incorrect">He had been knowing the answer before the teacher explained it.</p>
+          <p class="incorrect">He had been knowing the answer before the teacher explained it.</p><br>
           <p class="correct">He had known the answer before the teacher explained it. ✓</p>
           <p class="explanation"><em>State verbs like know, believe, have (possession), etc. usually use Past Perfect, not Past Perfect Progressive.</em></p>
         </div>
         
         <div class="error-pattern">
           <p class="error-title"><strong>4: Not including duration with Past Perfect Progressive</strong></p>
-          <p class="incorrect">She had been waiting when the bus arrived.</p>
+          <p class="incorrect">She had been waiting when the bus arrived.</p><br>
           <p class="correct">She had been waiting for 20 minutes when the bus arrived. ✓</p>
           <p class="explanation"><em>Past Perfect Progressive often includes a duration phrase (for/since + time period) to be most effective.</em></p>
         </div>
@@ -291,350 +322,212 @@
       </section>
 
       <!-- MCQ PRACTICE SECTION -->
-      <section class="content-section mcq-container">
-        <h2>Test Your Knowledge</h2>
-        <p class="mcq-instructions">Choose the correct option for each question. Questions progress from basic to more challenging levels.</p>
-        
-        <!-- Progress indicator -->
-        <div class="mcq-progress">
-          <div class="progress-container">
-            <div id="mcq-progress-bar" class="progress-bar" style="width: 0%"></div>
-          </div>
-          <div class="progress-info">Question: <span id="current-question">1</span>/<span id="total-questions">10</span></div>
+<section class="content-section mcq-container">
+  <h2>Test Your Knowledge</h2>
+  <p>Choose the correct option for each question to test your understanding of Past Perfect and Past Perfect Progressive.</p>
+  
+  <div id="mcq" class="activity-container active">
+    <div class="question" id="q1">
+      <p class="mcq-question">1. Sarah was very tired because she _____ at the computer for eight hours.</p>
+      <div class="options">
+        <div class="option" data-index="0">
+          <span>A. worked</span>
         </div>
-        
-        <div id="mcq-container" class="activity-container active">
-          <div class="questions-container">
-            <!-- Question 1 - Basic level -->
-            <div id="q1" class="question" data-difficulty="basic">
-              <p class="question-number">Question 1</p>
-              <div class="question-context">
-                <p class="mcq-question">Sarah was very tired because she _____ at the computer for eight hours.</p>
-              </div>
-              <div class="options">
-                <div class="option" data-index="0">
-                  <input type="radio" id="q1-option0" name="q1" value="0">
-                  <label for="q1-option0">worked</label>
-                </div>
-                <div class="option" data-index="1">
-                  <input type="radio" id="q1-option1" name="q1" value="1">
-                  <label for="q1-option1">had worked</label>
-                </div>
-                <div class="option" data-index="2">
-                  <input type="radio" id="q1-option2" name="q1" value="2">
-                  <label for="q1-option2">had been working</label>
-                </div>
-                <div class="option" data-index="3">
-                  <input type="radio" id="q1-option3" name="q1" value="3">
-                  <label for="q1-option3">has been working</label>
-                </div>
-              </div>
-              <div class="feedback" aria-live="polite"></div>
-            </div>
-            
-            <!-- Question 2 - Basic level -->
-            <div id="q2" class="question" data-difficulty="basic">
-              <p class="question-number">Question 2</p>
-              <div class="question-context">
-                <p class="mcq-question">By the time we arrived at the restaurant, our friends _____ their meal.</p>
-              </div>
-              <div class="options">
-                <div class="option" data-index="0">
-                  <input type="radio" id="q2-option0" name="q2" value="0">
-                  <label for="q2-option0">had finished</label>
-                </div>
-                <div class="option" data-index="1">
-                  <input type="radio" id="q2-option1" name="q2" value="1">
-                  <label for="q2-option1">had been finishing</label>
-                </div>
-                <div class="option" data-index="2">
-                  <input type="radio" id="q2-option2" name="q2" value="2">
-                  <label for="q2-option2">finished</label>
-                </div>
-                <div class="option" data-index="3">
-                  <input type="radio" id="q2-option3" name="q2" value="3">
-                  <label for="q2-option3">were finishing</label>
-                </div>
-              </div>
-              <div class="feedback" aria-live="polite"></div>
-            </div>
-            
-            <!-- Question 3 - Basic level -->
-            <div id="q3" class="question" data-difficulty="basic">
-              <p class="question-number">Question 3</p>
-              <div class="question-context">
-                <p class="mcq-question">The ground was wet because it _____ all night.</p>
-              </div>
-              <div class="options">
-                <div class="option" data-index="0">
-                  <input type="radio" id="q3-option0" name="q3" value="0">
-                  <label for="q3-option0">had been raining</label>
-                </div>
-                <div class="option" data-index="1">
-                  <input type="radio" id="q3-option1" name="q3" value="1">
-                  <label for="q3-option1">had rained</label>
-                </div>
-                <div class="option" data-index="2">
-                  <input type="radio" id="q3-option2" name="q3" value="2">
-                  <label for="q3-option2">was raining</label>
-                </div>
-                <div class="option" data-index="3">
-                  <input type="radio" id="q3-option3" name="q3" value="3">
-                  <label for="q3-option3">rained</label>
-                </div>
-              </div>
-              <div class="feedback" aria-live="polite"></div>
-            </div>
-            
-            <!-- Question 4 - Intermediate level -->
-            <div id="q4" class="question" data-difficulty="intermediate">
-              <p class="question-number">Question 4</p>
-              <div class="question-context">
-                <p class="mcq-question">He _____ in five different countries before he settled in Canada.</p>
-              </div>
-              <div class="options">
-                <div class="option" data-index="0">
-                  <input type="radio" id="q4-option0" name="q4" value="0">
-                  <label for="q4-option0">had been living</label>
-                </div>
-                <div class="option" data-index="1">
-                  <input type="radio" id="q4-option1" name="q4" value="1">
-                  <label for="q4-option1">had lived</label>
-                </div>
-                <div class="option" data-index="2">
-                  <input type="radio" id="q4-option2" name="q4" value="2">
-                  <label for="q4-option2">has lived</label>
-                </div>
-                <div class="option" data-index="3">
-                  <input type="radio" id="q4-option3" name="q4" value="3">
-                  <label for="q4-option3">lived</label>
-                </div>
-              </div>
-              <div class="feedback" aria-live="polite"></div>
-            </div>
-            
-            <!-- Question 5 - Intermediate level -->
-            <div id="q5" class="question" data-difficulty="intermediate">
-              <p class="question-number">Question 5</p>
-              <div class="question-context">
-                <p class="mcq-question">When the power went out, I _____ on my computer for three hours without saving my work.</p>
-              </div>
-              <div class="options">
-                <div class="option" data-index="0">
-                  <input type="radio" id="q5-option0" name="q5" value="0">
-                  <label for="q5-option0">worked</label>
-                </div>
-                <div class="option" data-index="1">
-                  <input type="radio" id="q5-option1" name="q5" value="1">
-                  <label for="q5-option1">had worked</label>
-                </div>
-                <div class="option" data-index="2">
-                  <input type="radio" id="q5-option2" name="q5" value="2">
-                  <label for="q5-option2">had been working</label>
-                </div>
-                <div class="option" data-index="3">
-                  <input type="radio" id="q5-option3" name="q5" value="3">
-                  <label for="q5-option3">was working</label>
-                </div>
-              </div>
-              <div class="feedback" aria-live="polite"></div>
-            </div>
-            
-            <!-- Question 6 - Intermediate level -->
-            <div id="q6" class="question" data-difficulty="intermediate">
-              <p class="question-number">Question 6</p>
-              <div class="question-context">
-                <p class="mcq-question">Peter _____ the company for two years when he got promoted to manager.</p>
-              </div>
-              <div class="options">
-                <div class="option" data-index="0">
-                  <input type="radio" id="q6-option0" name="q6" value="0">
-                  <label for="q6-option0">had joined</label>
-                </div>
-                <div class="option" data-index="1">
-                  <input type="radio" id="q6-option1" name="q6" value="1">
-                  <label for="q6-option1">had been joining</label>
-                </div>
-                <div class="option" data-index="2">
-                  <input type="radio" id="q6-option2" name="q6" value="2">
-                  <label for="q6-option2">joined</label>
-                </div>
-                <div class="option" data-index="3">
-                  <input type="radio" id="q6-option3" name="q6" value="3">
-                  <label for="q6-option3">had been working for</label>
-                </div>
-              </div>
-              <div class="feedback" aria-live="polite"></div>
-            </div>
-            
-            <!-- Question 7 - Advanced level -->
-            <div id="q7" class="question" data-difficulty="advanced">
-              <p class="question-number">Question 7</p>
-              <div class="question-context">
-                <p class="mcq-question">By the time I arrived at the airport, the plane _____.</p>
-              </div>
-              <div class="options">
-                <div class="option" data-index="0">
-                  <input type="radio" id="q7-option0" name="q7" value="0">
-                  <label for="q7-option0">had been leaving</label>
-                </div>
-                <div class="option" data-index="1">
-                  <input type="radio" id="q7-option1" name="q7" value="1">
-                  <label for="q7-option1">had left</label>
-                </div>
-                <div class="option" data-index="2">
-                  <input type="radio" id="q7-option2" name="q7" value="2">
-                  <label for="q7-option2">left</label>
-                </div>
-                <div class="option" data-index="3">
-                  <input type="radio" id="q7-option3" name="q7" value="3">
-                  <label for="q7-option3">was leaving</label>
-                </div>
-              </div>
-              <div class="feedback" aria-live="polite"></div>
-            </div>
-            
-            <!-- Question 8 - Advanced level -->
-            <div id="q8" class="question" data-difficulty="advanced">
-              <p class="question-number">Question 8</p>
-              <div class="question-context">
-                <p class="mcq-question">The hikers were exhausted because they _____ for seven hours without a break.</p>
-              </div>
-              <div class="options">
-                <div class="option" data-index="0">
-                  <input type="radio" id="q8-option0" name="q8" value="0">
-                  <label for="q8-option0">walked</label>
-                </div>
-                <div class="option" data-index="1">
-                  <input type="radio" id="q8-option1" name="q8" value="1">
-                  <label for="q8-option1">had walked</label>
-                </div>
-                <div class="option" data-index="2">
-                  <input type="radio" id="q8-option2" name="q8" value="2">
-                  <label for="q8-option2">had been walking</label>
-                </div>
-                <div class="option" data-index="3">
-                  <input type="radio" id="q8-option3" name="q8" value="3">
-                  <label for="q8-option3">were walking</label>
-                </div>
-              </div>
-              <div class="feedback" aria-live="polite"></div>
-            </div>
-            
-            <!-- Question 9 - Advanced level -->
-            <div id="q9" class="question" data-difficulty="advanced">
-              <p class="question-number">Question 9</p>
-              <div class="question-context">
-                <p class="mcq-question">We _____ to book a table, so we couldn't get into the restaurant.</p>
-              </div>
-              <div class="options">
-                <div class="option" data-index="0">
-                  <input type="radio" id="q9-option0" name="q9" value="0">
-                  <label for="q9-option0">had forgotten</label>
-                </div>
-                <div class="option" data-index="1">
-                  <input type="radio" id="q9-option1" name="q9" value="1">
-                  <label for="q9-option1">had been forgetting</label>
-                </div>
-                <div class="option" data-index="2">
-                  <input type="radio" id="q9-option2" name="q9" value="2">
-                  <label for="q9-option2">forgot</label>
-                </div>
-                <div class="option" data-index="3">
-                  <input type="radio" id="q9-option3" name="q9" value="3">
-                  <label for="q9-option3">have forgotten</label>
-                </div>
-              </div>
-              <div class="feedback" aria-live="polite"></div>
-            </div>
-            
-            <!-- Question 10 - Expert level -->
-            <div id="q10" class="question" data-difficulty="expert">
-              <p class="question-number">Question 10</p>
-              <div class="question-context">
-                <p class="mcq-question">When I saw Dave yesterday, he told me he _____ for a new job for several months.</p>
-              </div>
-              <div class="options">
-                <div class="option" data-index="0">
-                  <input type="radio" id="q10-option0" name="q10" value="0">
-                  <label for="q10-option0">had been looking</label>
-                </div>
-                <div class="option" data-index="1">
-                  <input type="radio" id="q10-option1" name="q10" value="1">
-                  <label for="q10-option1">had looked</label>
-                </div>
-                <div class="option" data-index="2">
-                  <input type="radio" id="q10-option2" name="q10" value="2">
-                  <label for="q10-option2">has been looking</label>
-                </div>
-                <div class="option" data-index="3">
-                  <input type="radio" id="q10-option3" name="q10" value="3">
-                  <label for="q10-option3">looked</label>
-                </div>
-              </div>
-              <div class="feedback" aria-live="polite"></div>
-            </div>
-          </div>
-          
-          <!-- Navigation buttons -->
-          <div class="question-navigation">
-            <button id="prev-question" class="nav-button" disabled>Previous</button>
-            <button id="next-question" class="nav-button">Next</button>
-          </div>
-          
-          <!-- Control buttons -->
-          <div class="control-buttons">
-            <button id="mcq-submit" class="submit-btn">Check Answers</button>
-            <button id="mcq-restart" class="restart-btn" style="display:none;">Try Again</button>
-            <a href="#grammar-summary" id="check-grammar" class="nav-button" style="display:none;">Review Grammar</a>
-          </div>
-          
-          <!-- Results summary -->
-          <div id="mcq-results" class="results-container" style="display:none;">
-            <h3>Your Results</h3>
-            <div class="score-display">
-              <p>Your score: <span id="score-value">0</span>/<span id="total-questions-score">10</span></p>
-              <div class="progress-container">
-                <div id="results-progress-bar" class="progress-bar" style="width: 0%"></div>
-              </div>
-            </div>
-            <div class="difficulty-breakdown">
-              <div class="difficulty-section">
-                <h4>Basic (Questions 1-3)</h4>
-                <p><span id="basic-score">0</span>/3 correct</p>
-              </div>
-              <div class="difficulty-section">
-                <h4>Intermediate (Questions 4-6)</h4>
-                <p><span id="intermediate-score">0</span>/3 correct</p>
-              </div>
-              <div class="difficulty-section">
-                <h4>Advanced (Questions 7-9)</h4>
-                <p><span id="advanced-score">0</span>/3 correct</p>
-              </div>
-              <div class="difficulty-section">
-                <h4>Expert (Question 10)</h4>
-                <p><span id="expert-score">0</span>/1 correct</p>
-              </div>
-            </div>
-            <div class="feedback-summary">
-              <p>Review your answers above to see explanations for each question.</p>
-            </div>
-          </div>
+        <div class="option" data-index="1">
+          <span>B. had worked</span>
         </div>
-      </section>
-      
-      <!-- Grammar summary section (target for "Check the Grammar" button) -->
-      <section id="grammar-summary" class="grammar-summary">
-        <h2>Key Points to Remember</h2>
-        <ul>
-          <li><strong>Past Perfect</strong> (had + past participle): Used to indicate completed actions before another past time or event.</li>
-          <li><strong>Past Perfect Progressive</strong> (had been + verb-ing): Used to emphasize duration and ongoing actions before another past time.</li>
-          <li>Use Past Perfect when focusing on the completion or result.</li>
-          <li>Use Past Perfect Progressive when explaining causes, especially with visible results (e.g., "He was tired because he had been working all night.").</li>
-          <li>Past Perfect Progressive often uses time expressions like "for," "since," "all day/week."</li>
-          <li>Use Past Perfect with state verbs (know, believe, etc.), not Past Perfect Progressive.</li>
-        </ul>
-      </section>
+        <div class="option" data-index="2">
+          <span>C. had been working</span>
+        </div>
+        <div class="option" data-index="3">
+          <span>D. has been working</span>
+        </div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+    
+    <div class="question" id="q2">
+      <p class="mcq-question">2. By the time we arrived at the restaurant, our friends _____ their meal.</p>
+      <div class="options">
+        <div class="option" data-index="0">
+          <span>A. had finished</span>
+        </div>
+        <div class="option" data-index="1">
+          <span>B. had been finishing</span>
+        </div>
+        <div class="option" data-index="2">
+          <span>C. finished</span>
+        </div>
+        <div class="option" data-index="3">
+          <span>D. were finishing</span>
+        </div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+    
+    <div class="question" id="q3">
+      <p class="mcq-question">3. The ground was wet because it _____ all night.</p>
+      <div class="options">
+        <div class="option" data-index="0">
+          <span>A. had been raining</span>
+        </div>
+        <div class="option" data-index="1">
+          <span>B. had rained</span>
+        </div>
+        <div class="option" data-index="2">
+          <span>C. was raining</span>
+        </div>
+        <div class="option" data-index="3">
+          <span>D. rained</span>
+        </div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+    
+    <div class="question" id="q4">
+      <p class="mcq-question">4. He _____ in five different countries before he settled in Canada.</p>
+      <div class="options">
+        <div class="option" data-index="0">
+          <span>A. had been living</span>
+        </div>
+        <div class="option" data-index="1">
+          <span>B. had lived</span>
+        </div>
+        <div class="option" data-index="2">
+          <span>C. has lived</span>
+        </div>
+        <div class="option" data-index="3">
+          <span>D. lived</span>
+        </div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+    
+    <div class="question" id="q5">
+      <p class="mcq-question">5. When the power went out, I _____ on my computer for three hours without saving my work.</p>
+      <div class="options">
+        <div class="option" data-index="0">
+          <span>A. worked</span>
+        </div>
+        <div class="option" data-index="1">
+          <span>B. had worked</span>
+        </div>
+        <div class="option" data-index="2">
+          <span>C. had been working</span>
+        </div>
+        <div class="option" data-index="3">
+          <span>D. was working</span>
+        </div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+    
+    <div class="question" id="q6">
+      <p class="mcq-question">6. Peter _____ the company for two years when he got promoted to manager.</p>
+      <div class="options">
+        <div class="option" data-index="0">
+          <span>A. had joined</span>
+        </div>
+        <div class="option" data-index="1">
+          <span>B. had been joining</span>
+        </div>
+        <div class="option" data-index="2">
+          <span>C. joined</span>
+        </div>
+        <div class="option" data-index="3">
+          <span>D. had been working for</span>
+        </div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+    
+    <div class="question" id="q7">
+      <p class="mcq-question">7. By the time I arrived at the airport, the plane _____.</p>
+      <div class="options">
+        <div class="option" data-index="0">
+          <span>A. had been leaving</span>
+        </div>
+        <div class="option" data-index="1">
+          <span>B. had left</span>
+        </div>
+        <div class="option" data-index="2">
+          <span>C. left</span>
+        </div>
+        <div class="option" data-index="3">
+          <span>D. was leaving</span>
+        </div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+    
+    <div class="question" id="q8">
+      <p class="mcq-question">8. The hikers were exhausted because they _____ for seven hours without a break.</p>
+      <div class="options">
+        <div class="option" data-index="0">
+          <span>A. walked</span>
+        </div>
+        <div class="option" data-index="1">
+          <span>B. had walked</span>
+        </div>
+        <div class="option" data-index="2">
+          <span>C. had been walking</span>
+        </div>
+        <div class="option" data-index="3">
+          <span>D. were walking</span>
+        </div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+    
+    <div class="question" id="q9">
+      <p class="mcq-question">9. We _____ to book a table, so we couldn't get into the restaurant.</p>
+      <div class="options">
+        <div class="option" data-index="0">
+          <span>A. had forgotten</span>
+        </div>
+        <div class="option" data-index="1">
+          <span>B. had been forgetting</span>
+        </div>
+        <div class="option" data-index="2">
+          <span>C. forgot</span>
+        </div>
+        <div class="option" data-index="3">
+          <span>D. have forgotten</span>
+        </div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+    
+    <div class="question" id="q10">
+      <p class="mcq-question">10. When I saw Dave yesterday, he told me he _____ for a new job for several months.</p>
+      <div class="options">
+        <div class="option" data-index="0">
+          <span>A. had been looking</span>
+        </div>
+        <div class="option" data-index="1">
+          <span>B. had looked</span>
+        </div>
+        <div class="option" data-index="2">
+          <span>C. has been looking</span>
+        </div>
+        <div class="option" data-index="3">
+          <span>D. looked</span>
+        </div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+    
+    <div class="control-buttons">
+      <button id="mcq-submit" class="submit-btn">Check Answers</button>
+      <a href="#summary" class="nav-button">Review Grammar</a>
+      <button id="mcq-restart" class="restart-btn" style="display:none;">Try Again</button>
+    </div>
+    
+    <div class="score-display" id="mcq-score" style="display:none;">
+      Your score: <span>0</span>/10
+    </div>
+  </div>
+</section>
     </main>
   </div>
   
@@ -690,188 +583,73 @@
   <script src="../../js/mcq.js"></script>
   <script src="../../js/progress-tracking.js"></script>
   
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Initialize MCQ Module with new MCQ system
-      const totalQuestions = document.querySelectorAll('#mcq-container .question').length;
-      document.getElementById('total-questions').textContent = totalQuestions;
-      document.getElementById('total-questions-score').textContent = totalQuestions;
-      
-      // Show only the first question initially
-      showQuestion(1);
-      
-      // Set up navigation
-      document.getElementById('next-question').addEventListener('click', function() {
-        const currentQuestionNum = parseInt(document.getElementById('current-question').textContent);
-        if (currentQuestionNum < totalQuestions) {
-          showQuestion(currentQuestionNum + 1);
-        }
-      });
-      
-      document.getElementById('prev-question').addEventListener('click', function() {
-        const currentQuestionNum = parseInt(document.getElementById('current-question').textContent);
-        if (currentQuestionNum > 1) {
-          showQuestion(currentQuestionNum - 1);
-        }
-      });
-      
-      // Check Answers
-      document.getElementById('mcq-submit').addEventListener('click', function() {
-        // Hide navigation buttons
-        document.getElementById('next-question').style.display = 'none';
-        document.getElementById('prev-question').style.display = 'none';
+  <!-- Standardized JavaScript for Past Perfect Progressive MCQ -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize MCQ Module
+    MCQModule.init({
+      containerId: 'mcq',
+      answers: {
+        'q1': 2,  // had been working
+        'q2': 0,  // had finished
+        'q3': 0,  // had been raining
+        'q4': 1,  // had lived
+        'q5': 2,  // had been working
+        'q6': 3,  // had been working for
+        'q7': 1,  // had left
+        'q8': 2,  // had been walking
+        'q9': 0,  // had forgotten
+        'q10': 0  // had been looking
+      },
+      correctExplanations: {
+        'q1': "The Past Perfect Progressive is correct here because we need to explain why Sarah was tired (a visible result) and emphasize the duration of her work (eight hours).",
+        'q2': "The Past Perfect is correct here because the action (finishing the meal) was completed before another past event (our arrival).",
+        'q3': "The Past Perfect Progressive is correct here because we're explaining a visible condition (wet ground) and emphasizing the ongoing nature of the rain.",
+        'q4': "The Past Perfect is correct here because we're talking about completed experiences in different countries before settling in Canada.",
+        'q5': "The Past Perfect Progressive is correct here because we're emphasizing the ongoing activity (working) and its duration (three hours) before the power went out.",
+        'q6': "The Past Perfect Progressive with 'working for' is correct here because we're emphasizing the duration of time (two years) at the company.",
+        'q7': "The Past Perfect is correct here because the plane's departure was a completed action before another past event (my arrival).",
+        'q8': "The Past Perfect Progressive is correct here because we're explaining why the hikers were exhausted (a result) and emphasizing the duration (seven hours).",
+        'q9': "The Past Perfect is correct here because the forgetting was a completed action that happened before another past event (not getting into the restaurant).",
+        'q10': "The Past Perfect Progressive is correct here because we're emphasizing the ongoing nature and duration (several months) of the job search before the conversation."
+      },
+      incorrectExplanations: {
+        'q1': "The Past Perfect Progressive is correct here because we need to explain why Sarah was tired (a visible result) and emphasize the duration of her work (eight hours).",
+        'q2': "The Past Perfect is correct here because the action (finishing the meal) was completed before another past event (our arrival).",
+        'q3': "The Past Perfect Progressive is correct here because we're explaining a visible condition (wet ground) and emphasizing the ongoing nature of the rain.",
+        'q4': "The Past Perfect is correct here because we're talking about completed experiences in different countries before settling in Canada.",
+        'q5': "The Past Perfect Progressive is correct here because we're emphasizing the ongoing activity (working) and its duration (three hours) before the power went out.",
+        'q6': "The Past Perfect Progressive with 'working for' is correct here because we're emphasizing the duration of time (two years) at the company.",
+        'q7': "The Past Perfect is correct here because the plane's departure was a completed action before another past event (my arrival).",
+        'q8': "The Past Perfect Progressive is correct here because we're explaining why the hikers were exhausted (a result) and emphasizing the duration (seven hours).",
+        'q9': "The Past Perfect is correct here because the forgetting was a completed action that happened before another past event (not getting into the restaurant).",
+        'q10': "The Past Perfect Progressive is correct here because we're emphasizing the ongoing nature and duration (several months) of the job search before the conversation."
+      },
+      showAllQuestionsAtOnce: true, // Show all questions at once
+      onComplete: function(score, total) {
+        console.log(`MCQ completed with score: ${score}/${total}`);
         
-        // Show all questions for review
-        document.querySelectorAll('#mcq-container .question').forEach(question => {
-          question.style.display = 'block';
-        });
-        
-        // Calculate scores
-        const answers = {
-          'q1': 2,  // had been working
-          'q2': 0,  // had finished
-          'q3': 0,  // had been raining
-          'q4': 1,  // had lived
-          'q5': 2,  // had been working
-          'q6': 3,  // had been working for
-          'q7': 1,  // had left
-          'q8': 2,  // had been walking
-          'q9': 0,  // had forgotten
-          'q10': 0  // had been looking
-        };
-        
-        const explanations = {
-          "q1": "The Past Perfect Progressive is correct here because we need to explain why Sarah was tired (a visible result) and emphasize the duration of her work (eight hours).",
-          "q2": "The Past Perfect is correct here because the action (finishing the meal) was completed before another past event (our arrival).",
-          "q3": "The Past Perfect Progressive is correct here because we're explaining a visible condition (wet ground) and emphasizing the ongoing nature of the rain.",
-          "q4": "The Past Perfect is correct here because we're talking about completed experiences in different countries before settling in Canada.",
-          "q5": "The Past Perfect Progressive is correct here because we're emphasizing the ongoing activity (working) and its duration (three hours) before the power went out.",
-          "q6": "The Past Perfect Progressive with 'working for' is correct here because we're emphasizing the duration of time (two years) at the company.",
-          "q7": "The Past Perfect is correct here because the plane's departure was a completed action before another past event (my arrival).",
-          "q8": "The Past Perfect Progressive is correct here because we're explaining why the hikers were exhausted (a result) and emphasizing the duration (seven hours).",
-          "q9": "The Past Perfect is correct here because the forgetting was a completed action that happened before another past event (not getting into the restaurant).",
-          "q10": "The Past Perfect Progressive is correct here because we're emphasizing the ongoing nature and duration (several months) of the job search before the conversation."
-        };
-        
-        let totalScore = 0;
-        let basicScore = 0;
-        let intermediateScore = 0;
-        let advancedScore = 0;
-        let expertScore = 0;
-        
-        // Check each question
-        Object.keys(answers).forEach(questionId => {
-          const question = document.getElementById(questionId);
-          const selectedOption = question.querySelector('input[type="radio"]:checked');
-          const feedback = question.querySelector('.feedback');
-          
-          if (selectedOption) {
-            const selectedIndex = parseInt(selectedOption.value);
-            const correctIndex = answers[questionId];
-            
-            if (selectedIndex === correctIndex) {
-              feedback.innerHTML = `<p class="correct-feedback">✓ Correct! ${explanations[questionId]}</p>`;
-              totalScore++;
-              
-              // Update difficulty scores
-              const difficulty = question.getAttribute('data-difficulty');
-              if (difficulty === 'basic') basicScore++;
-              if (difficulty === 'intermediate') intermediateScore++;
-              if (difficulty === 'advanced') advancedScore++;
-              if (difficulty === 'expert') expertScore++;
-            } else {
-              const correctOptionLabel = question.querySelector(`label[for="${questionId}-option${correctIndex}"]`).textContent;
-              feedback.innerHTML = `<p class="incorrect-feedback">✗ Incorrect. The correct answer is: ${correctOptionLabel}</p><p>${explanations[questionId]}</p>`;
-            }
-          } else {
-            feedback.innerHTML = '<p class="incorrect-feedback">No answer selected.</p>';
-          }
-        });
-        
-        // Update score display
-        document.getElementById('score-value').textContent = totalScore;
-        document.getElementById('basic-score').textContent = basicScore;
-        document.getElementById('intermediate-score').textContent = intermediateScore;
-        document.getElementById('advanced-score').textContent = advancedScore;
-        document.getElementById('expert-score').textContent = expertScore;
-        
-        // Update progress bar
-        const percentage = (totalScore / totalQuestions) * 100;
-        document.getElementById('results-progress-bar').style.width = percentage + '%';
-        
-        // Show results
-        document.getElementById('mcq-results').style.display = 'block';
-        document.getElementById('mcq-submit').style.display = 'none';
-        document.getElementById('mcq-restart').style.display = 'inline-block';
-        document.getElementById('check-grammar').style.display = 'inline-block';
-        
-        // Track progress
-        if (typeof ProgressTrackingModule !== 'undefined') {
-          ProgressTrackingModule.markItemCompleted('activities', 'mcq-past-perfect-progressive-vs-past-perfect', {
-            score: totalScore,
-            maxScore: totalQuestions,
+        // Track this activity completion in the progress system
+        if (typeof ProgressTracker !== 'undefined') {
+          // Mark the MCQ as completed in the 'activities' category
+          ProgressTracker.markItemCompleted('activities', 'mcq-past-perfect-progressive-vs-past-perfect', {
+            score: score,
+            maxScore: total,
             completed: true,
             completedAt: new Date().toISOString(),
             title: 'Past Perfect Progressive vs. Past Perfect Quick Practice'
           });
           
-          // Also mark the lesson as viewed/completed
-          ProgressTrackingModule.updateItemProgress('lessons', 'past-perfect-progressive', {
+          // Also mark the lesson itself as viewed/completed
+          ProgressTracker.updateItemProgress('lessons', 'past-perfect-progressive', {
             lastViewed: new Date().toISOString(),
             progress: 100, // Percent complete
             title: 'Past Perfect Progressive vs. Past Perfect'
           });
         }
-      });
-      
-      // Restart Quiz
-      document.getElementById('mcq-restart').addEventListener('click', function() {
-        // Reset all selections and feedback
-        document.querySelectorAll('#mcq-container input[type="radio"]').forEach(radio => {
-          radio.checked = false;
-        });
-        
-        document.querySelectorAll('#mcq-container .feedback').forEach(feedback => {
-          feedback.innerHTML = '';
-        });
-        
-        // Show only first question again
-        showQuestion(1);
-        
-        // Reset UI
-        document.getElementById('next-question').style.display = 'inline-block';
-        document.getElementById('prev-question').style.display = 'inline-block';
-        document.getElementById('mcq-results').style.display = 'none';
-        document.getElementById('mcq-submit').style.display = 'inline-block';
-        document.getElementById('mcq-restart').style.display = 'none';
-        document.getElementById('check-grammar').style.display = 'none';
-      });
-      
-      // Helper function to show a specific question
-      function showQuestion(questionNumber) {
-        // Hide all questions
-        document.querySelectorAll('#mcq-container .question').forEach(question => {
-          question.style.display = 'none';
-        });
-        
-        // Show the selected question
-        const questions = document.querySelectorAll('#mcq-container .question');
-        if (questionNumber > 0 && questionNumber <= questions.length) {
-          questions[questionNumber - 1].style.display = 'block';
-        }
-        
-        // Update current question display
-        document.getElementById('current-question').textContent = questionNumber;
-        
-        // Update progress bar
-        const percentage = ((questionNumber - 1) / (questions.length - 1)) * 100;
-        document.getElementById('mcq-progress-bar').style.width = percentage + '%';
-        
-        // Enable/disable navigation buttons
-        document.getElementById('prev-question').disabled = (questionNumber === 1);
-        document.getElementById('next-question').disabled = (questionNumber === questions.length);
       }
     });
+  });
   </script>
 </body>
 </html>
