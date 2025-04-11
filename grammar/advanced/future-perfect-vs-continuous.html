@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Include standardized head content -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Future Perfect vs. Future Perfect Continuous - Advanced ESL grammar explanation with examples and practice">
+  <title>Future Perfect vs. Future Perfect Continuous - Advanced ESL Grammar</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../../images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../images//favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../images//favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  
+  <!-- Styles - Note the updated path with "../../" -->
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/activities.css">
+
+  <!-- Page specific styles - including nav-indicator -->
+  <style>
+    /* Fix progress bar styling */
+    .progress-container {
+      margin-bottom: 30px;
+      padding-bottom: 10px;
+      clear: both;
+    }
+    
+    .progress-container h4 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+    
+    /* Fix MCQ question display */
+    #mcq .question {
+      display: block !important;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--border-color, #ddd);
+    }
+    
+    .activity-container.active {
+      display: block !important;
+    }
+    
+    /* Ensure proper spacing between options */
+    .options {
+      margin-bottom: 15px;
+    }
+    
+    /* Make sure feedback is visible */
+    .feedback {
+      margin-top: 10px;
+      min-height: 20px;
+    }
+    
+    /* Highlight important grammar points */
+    .highlight-fp {
+      color: #3498db;
+      font-weight: bold;
+    }
+    
+    .highlight-fpc {
+      color: #e74c3c;
+      font-weight: bold;
+    }
+    
+    /* Additional styling for examples */
+    .example-note {
+      font-style: italic;
+      margin-top: 5px;
+      color: #777;
+      font-size: 0.9em;
+    }
+    
+    /* Style for clickable option divs */
+    .option {
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    
+    .option:hover {
+      background-color: var(--mcq-hover-bg, #d0e6f7);
+    }
+    
+    .option.selected {
+      background-color: var(--mcq-selected-bg, #d0e6f7);
+      border: 2px solid var(--mcq-selected-border, #3498db);
+    }
+    
+    [data-theme="dark"] .option:hover {
+      background-color: var(--mcq-hover-bg, #253545);
+    }
+    
+    [data-theme="dark"] .option.selected {
+      background-color: var(--mcq-selected-bg, #253545);
+      border-color: var(--mcq-selected-border, #4fa3e0);
+    }
+  </style>
+</head>
+<body>
+  <!-- Include skip link and theme toggle -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  
+  <div class="theme-toggle-container">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="light-icon">☀️</span>
+      <span class="dark-icon">🌙</span>
+    </button>
+  </div>
+  
+  <!-- Include navigation - Note the updated paths with "../../" -->
+  <nav class="main-navigation">
+    <a href="../../home.html" class="site-logo">
+      <img src="../../images/my-logo.svg" alt="English in Doses" width="150" height="auto">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <div class="nav-links">
+      <a href="../../home.html" class="nav-link">Home</a>
+      <a href="../../about.html" class="nav-link">About Us</a>
+      <a href="../../contact.html" class="nav-link">Contact Us</a>
+      <a href="../../home.html#where-to-start" class="nav-link">Grammar</a>
+      <a href="../../extra-practice.html" class="nav-link">Extra Practice</a>
+      <a href="../../conversation-page.html" class="nav-link">Conversation</a>
+      <a href="../../my-progress.html" class="nav-link">My Progress</a>
+    </div>
+
+    <div class="advanced-nav-indicator"></div>
+    
+  </nav>
+
+  <div class="container">
+    <!-- Include breadcrumbs - Note the updated paths with "../" -->
+    <div class="breadcrumbs" aria-label="breadcrumb">
+      <span class="breadcrumb-item"><a href="../../home.html">Home</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="advanced-grammar.html">Advanced Grammar</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="advanced-grammar.html#advanced-tenses-and-aspect">Advanced Tenses</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item">Future Perfect vs. Future Perfect Continuous</span>
+    </div>
+
+    <main id="main-content">
+      <h1>Future Perfect vs. Future Perfect Continuous</h1>
+
+      <!-- Progress tracking display -->
+      <div class="progress-container">
+        <h4>Your Progress</h4>
+        <div id="activity-progress" data-progress-display data-progress-type="bar" 
+             data-category="activities" data-item-id="future-perfect-continuous"></div>
+      </div>
+
+      <!-- INTRODUCTION SECTION -->
+      <section class="intro-section">
+        <h2>Introduction</h2>
+        <p>Both the Future Perfect and Future Perfect Continuous tenses are used to talk about actions that will be completed by a specific time in the future. While they may seem similar, they have important differences in meaning and usage. Understanding these differences will help you express future actions more precisely in both writing and speaking.</p>
+        
+        <h3>After this lesson, you will be able to:</h3>
+        <ul>
+          <li>Form and use both the Future Perfect and Future Perfect Continuous correctly</li>
+          <li>Understand when to choose one tense over the other</li>
+          <li>Use these tenses to discuss future actions with more nuance and precision</li>
+        </ul>
+      </section>
+
+      <!-- GRAMMAR POINT SECTION 1 -->
+      <section class="grammar-point">
+        <h2>Future Perfect: Form and Basic Use</h2>
+        
+        <p><strong>Form</strong>: Subject + <span class="highlight-fp">will have + past participle</span></p>
+        
+        <p><strong>When to use it</strong>: The Future Perfect emphasizes the <em>completion</em> of an action by a specific time in the future. We use it when:</p>
+        
+        <ul>
+          <li>We want to stress that something will be finished by a certain future time</li>
+          <li>We're focusing on the result or accomplishment rather than the process</li>
+          <li>We're talking about a quantity or number of things that will be achieved</li>
+        </ul>
+        
+        <div class="example">
+          <ol>
+            <li>By this time next year, I <span class="highlight-fp">will have finished</span> my degree. (The completion is emphasized)</li>
+            <li>She <span class="highlight-fp">will have arrived</span> in London by 6 pm tomorrow. (The arrival is the focus)</li>
+            <li>By the time you receive this letter, we <span class="highlight-fp">will have moved</span> to our new house. (The move will be complete)</li>
+            <li>The company <span class="highlight-fp">will have earned</span> £2 million by the end of the fiscal year. (Emphasizes the total amount)</li>
+          </ol>
+        </div>
+        
+        <div class="note">
+          <p><strong>Native speaker note:</strong> Time expressions like "by the end of...", "by next...", "before..." and "by the time..." are commonly used with Future Perfect. For example: <em>"By the time we get there, the shops will have closed for the day."</em></p>
+        </div>
+      </section>
+
+      <!-- GRAMMAR POINT SECTION 2 -->
+      <section class="grammar-point">
+        <h2>Future Perfect Continuous: Form and Basic Use</h2>
+        
+        <p><strong>Form</strong>: Subject + <span class="highlight-fpc">will have been + verb-ing</span></p>
+        
+        <p><strong>When to use it</strong>: The Future Perfect Continuous emphasizes the <em>duration</em> or <em>ongoing nature</em> of an action up until a specific time in the future. We use it when:</p>
+        
+        <ul>
+          <li>We want to stress how long an activity will have continued up to a future point</li>
+          <li>We're focusing on the process or ongoing nature of the activity</li>
+          <li>We want to emphasize the continuous effort or persistence</li>
+        </ul>
+        
+        <div class="example">
+          <ol>
+            <li>By December, I <span class="highlight-fpc">will have been working</span> here for ten years. (The duration is emphasized)</li>
+            <li>This time next week, they <span class="highlight-fpc">will have been travelling</span> for 15 days. (The ongoing journey is emphasized)</li>
+            <li>She <span class="highlight-fpc">will have been studying</span> Spanish for two years when she visits Madrid. (The continuous effort is emphasized)</li>
+            <li>Next month, we <span class="highlight-fpc">will have been saving</span> for our house deposit for three years. (Emphasizes ongoing process)</li>
+          </ol>
+        </div>
+        
+        <div class="note">
+          <p><strong>Native speaker note:</strong> This tense is almost always used with a time expression showing duration (for + time period). For example: <em>"By the time I retire, I will have been teaching for over 30 years."</em></p>
+        </div>
+      </section>
+
+      <!-- GRAMMAR POINT SECTION 3 -->
+      <section class="grammar-point">
+        <h2>Key Differences and Choosing Between the Two Tenses</h2>
+        
+        <p><strong>Focus on completion vs. duration</strong>:</p>
+        
+        <div class="example">
+          <p><span class="highlight-fp">Future Perfect</span>: <em>By next June, I <span class="highlight-fp">will have written</span> five novels.</em> (Focus is on completed achievement: five finished novels)</p>
+          <p><span class="highlight-fpc">Future Perfect Continuous</span>: <em>By next June, I <span class="highlight-fpc">will have been writing</span> novels for ten years.</em> (Focus is on the ongoing activity throughout that time period)</p>
+        </div>
+        
+        <p><strong>Emphasis on result vs. process</strong>:</p>
+        
+        <div class="example">
+          <p><span class="highlight-fp">Future Perfect</span>: <em>By the time you arrive, I <span class="highlight-fp">will have prepared</span> dinner.</em> (The result: dinner will be ready)</p>
+          <p><span class="highlight-fpc">Future Perfect Continuous</span>: <em>When you arrive, I <span class="highlight-fpc">will have been preparing</span> dinner for an hour.</em> (The ongoing process of preparation)</p>
+        </div>
+        
+        <p><strong>With stative verbs</strong>:</p>
+        <p>Remember that stative verbs (like know, believe, have, own) are not normally used in continuous forms:</p>
+        
+        <div class="example">
+          <p>Correct: <em>By next year, they <span class="highlight-fp">will have owned</span> that house for 25 years.</em></p>
+          <p>Incorrect: <em>By next year, they will have been owning that house for 25 years.</em></p>
+        </div>
+        
+        <div class="note">
+          <p><strong>Native speaker note:</strong> When discussing future results with present consequences, native speakers often choose Future Perfect: <em>"I can't meet you at 8 pm because I'll have just finished my night class then."</em> This indicates not just completion but also the impact of that completion.</p>
+        </div>
+      </section>
+
+      <!-- VISUAL COMPARISON TABLE -->
+      <section id="summary">
+        <h2>Summary of Future Perfect vs. Future Perfect Continuous</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Future Perfect</th>
+              <th>Future Perfect Continuous</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Form</strong></td>
+              <td>will have + past participle</td>
+              <td>will have been + verb-ing</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><strong>Focus</strong></td>
+              <td>Completion</td>
+              <td>Duration</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><strong>Emphasizes</strong></td>
+              <td>Result/achievement</td>
+              <td>Process/continuity</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><strong>Common time markers</strong></td>
+              <td>by, before, by the time</td>
+              <td>for, since, all day/week</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><strong>Example with measurement</strong></td>
+              <td>will have walked 10 miles</td>
+              <td>will have been walking for 3 hours</td>
+              <td><span class="example">By evening, I will have walked 10 miles.</span><br>
+              <span class="example">By evening, I will have been walking for 3 hours.</span></td>
+            </tr>
+            <tr>
+              <td><strong>Example with work</strong></td>
+              <td>will have completed the task</td>
+              <td>will have been working on the task</td>
+              <td><span class="example">By 5pm, I will have completed the report.</span><br>
+              <span class="example">By 5pm, I will have been working on the report for 8 hours.</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- COMMON ERRORS SECTION -->
+      <section class="common-errors">
+        <h2 class="common-errors-heading">Common Errors</h2>
+        
+        <div class="error-pattern">
+          <p class="error-title"><strong>1: Using Future Perfect Continuous with stative verbs</strong></p>
+          <p class="incorrect">By next month, I will have been knowing him for five years.</p>
+          <p class="correct">By next month, I will have known him for five years. ✓</p>
+          <p class="explanation"><em>Remember that stative verbs (know, believe, love, own, etc.) are not normally used in continuous forms.</em></p>
+        </div>
+        
+        <div class="error-pattern">
+          <p class="error-title"><strong>2: Forgetting the necessary auxiliary verbs</strong></p>
+          <p class="incorrect">By next week, she will worked here for ten years.</p>
+          <p class="correct">By next week, she will have worked here for ten years. ✓</p>
+          <p class="explanation"><em>The Future Perfect requires "will have" + past participle. Don't forget the "have".</em></p>
+        </div>
+        
+        <div class="error-pattern">
+          <p class="error-title"><strong>3: Confusing the tenses when focusing on numbers vs. duration</strong></p>
+          <p class="incorrect">By December, I will have been writing five books.</p>
+          <p class="correct">By December, I will have written five books. ✓</p>
+          <p class="explanation"><em>When focusing on a specific number or quantity achieved, use Future Perfect (will have written), not Future Perfect Continuous.</em></p>
+        </div>
+      </section>
+
+      <!-- TIPS SECTION -->
+      <section class="tips">
+        <h2 class="tips-heading">Useful Tips</h2>
+        
+        <div class="grammar-tip">
+          <p>📝 <strong>TIP 1:</strong> Remember "result vs. process" - If you want to emphasize that something will be finished or completed by a future time, use Future Perfect. If you want to emphasize how long something will have been happening, use Future Perfect Continuous.</p>
+        </div>
+        
+        <div class="grammar-tip">
+          <p>📝 <strong>TIP 2:</strong> Look for time markers - "By..." and "Before..." usually signal Future Perfect, while phrases like "for X years/months" often appear with Future Perfect Continuous to show duration.</p>
+        </div>
+        
+        <div class="grammar-tip">
+          <p>📝 <strong>TIP 3:</strong> When in doubt about which to use with stative verbs (know, believe, love, own), always choose Future Perfect, as these verbs generally do not take continuous forms.</p>
+        </div>
+      </section>
+
+      <!-- MCQ PRACTICE SECTION -->
+      <section class="content-section mcq-container">
+        <h2>Quick Practice</h2>
+        <p>Test your understanding of Future Perfect and Future Perfect Continuous by choosing the correct option for each question.</p>
+        
+        <div id="mcq" class="activity-container active">
+          <div class="question" id="q1">
+            <p class="mcq-question">1. By the time I arrive in London, my friend _____ there for five years.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. will live</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. will have lived</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. will have been living</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. will been living</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <div class="question" id="q2">
+            <p class="mcq-question">2. By this time next month, we _____ all our assignments for the course.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. will complete</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. will have completed</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. will have been completing</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. will been completing</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <div class="question" id="q3">
+            <p class="mcq-question">3. When I finish my degree next June, I _____ for three years.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. will have been studying</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. will study</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. will have studied</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. will be studying</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <div class="question" id="q4">
+            <p class="mcq-question">4. This time next week, they _____ on the beach in Spain.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. will have relaxed</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. will relax</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. will be relaxing</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. will have been relaxing</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <div class="question" id="q5">
+            <p class="mcq-question">5. By the end of next year, I _____ five different countries.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. will visit</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. will be visiting</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. will have visited</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. will have been visiting</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <div class="question" id="q6">
+            <p class="mcq-question">6. By 2030, researchers _____ for a cure to this disease for over 20 years.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. will search</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. will have searched</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. will be searching</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. will have been searching</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <div class="question" id="q7">
+            <p class="mcq-question">7. By the time the party starts, Maria _____ the food.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. will prepare</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. will have prepared</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. will be preparing</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. will have been preparing</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <div class="question" id="q8">
+            <p class="mcq-question">8. By the time I get my pay rise next month, I _____ in this position for exactly two years.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. will work</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. will have worked</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. will have been working</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. will be working</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <div class="question" id="q9">
+            <p class="mcq-question">9. Before I retire, I _____ over 40 books.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. will publish</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. will have published</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. will have been publishing</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. will be publishing</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <div class="question" id="q10">
+            <p class="mcq-question">10. By this time tomorrow, we _____ for 24 hours straight.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. will travel</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. will have travelled</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. will be travelling</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. will have been travelling</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <div class="control-buttons">
+            <button id="mcq-submit" class="submit-btn">Check Answers</button>
+            <a href="#summary" class="nav-button">Review Grammar</a>
+            <button id="mcq-restart" class="restart-btn" style="display:none;">Try Again</button>
+            <button id="check-grammar" class="nav-button activities" style="display:none;">Check the Grammar</button>
+          </div>
+          
+          <div class="score-display" id="mcq-score" style="display:none;">
+            Your score: <span>0</span>/10
+          </div>
+        </div>
+      </section>
+      
+      <!-- Feedback Message Container -->
+      <div id="completion-feedback"></div>
+    </main>
+  </div>
+  
+  <!-- BOTTOM NAVIGATION -->
+  <nav class="bottom-navigation">
+    <a href="past-perfect-progressive.html" class="nav-button previous">← Previous: Past Perfect Progressive</a>
+    <div class="center-buttons">
+      <button class="nav-button print-button" onclick="window.print()">Print This Page</button>
+      <a href="future-perfect-practice.html" class="nav-button activities">Practice Activities</a>
+    </div>
+    <a href="conditional-types.html" class="nav-button next">Next: Conditional Types →</a>
+  </nav>
+
+  <!-- Include footer - Note the updated paths with "../../" -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="../../home.html">Home</a></li>
+          <li><a href="../../home.html#where-to-start">Grammar</a></li>
+          <li><a href="../../extra-practice.html">Extra Practice</a></li>
+          <li><a href="../../my-progress.html">My Progress</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Grammar Topics</h3>
+        <ul>
+          <li><a href="advanced-grammar.html#advanced-tenses-and-aspect">Advanced Tenses</a></li>
+          <li><a href="advanced-grammar.html#conditionals">Advanced Conditionals</a></li>
+          <li><a href="advanced-grammar.html#modals">Advanced Modal Verbs</a></li>
+          <li><a href="advanced-grammar.html#passive">Advanced Passive Voice</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="../../about.html">About</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+          <!-- <li><a href="../../privacy.html">Privacy Policy</a></li> -->
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© 2025 English in Doses | All rights reserved | <a href="../../license.html">Licensing Information</a></p>
+    </div>
+  </footer>
+
+  <!-- JavaScript - Updated with new progress tracking scripts -->
+  <script src="../../js/core.js"></script>
+  <script src="../../js/progress-tracking-module.js"></script>
+  <script src="../../js/progress-manager-ui.js"></script>
+  <script src="../../js/init-progress.js"></script>
+  <script src="../../js/mcq.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Make sure all questions are visible
+      document.querySelectorAll('#mcq .question').forEach(function(question) {
+        question.style.display = 'block';
+      });
+      
+      // Initialize MCQ Module
+      MCQModule.init({
+        containerId: 'mcq',
+        answers: {
+          'q1': 2,  // will have been living (duration)
+          'q2': 1,  // will have completed (completion)
+          'q3': 0,  // will have been studying (duration)
+          'q4': 2,  // will be relaxing (happening at that specific moment)
+          'q5': 2,  // will have visited (specific quantity)
+          'q6': 3,  // will have been searching (duration)
+          'q7': 1,  // will have prepared (completion)
+          'q8': 2,  // will have been working (duration)
+          'q9': 1,  // will have published (specific quantity)
+          'q10': 3  // will have been travelling (duration)
+        },
+        showAllQuestionsAtOnce: true,
+        // Add detailed explanations for feedback
+        explanations: {
+          'q1': 'We use Future Perfect Continuous here because the focus is on the duration (five years) of the continuous action (living).',
+          'q2': 'We use Future Perfect here because the focus is on the completion of all assignments by a future time.',
+          'q3': 'We use Future Perfect Continuous here because the focus is on the duration of studying (three years).',
+          'q4': 'This is a simple Future Continuous, not Future Perfect or Future Perfect Continuous, because it describes what will be happening at a specific moment in the future.',
+          'q5': 'We use Future Perfect here because the focus is on a specific number of completed actions (visiting five countries).',
+          'q6': 'We use Future Perfect Continuous here because the focus is on the duration of the search (over 20 years).',
+          'q7': 'We use Future Perfect here because the focus is on the completion of an action (preparing food) before another future event (the party).',
+          'q8': 'We use Future Perfect Continuous here because the focus is on the duration (exactly two years) of working in the position.',
+          'q9': 'We use Future Perfect here because the focus is on a specific quantity (over 40 books) that will be completed in the future.',
+          'q10': 'We use Future Perfect Continuous here because the focus is on the duration (24 hours straight) of the continuous action (travelling).'
+        },
+        showAllQuestionsAtOnce: true, // Show all questions at once
+        onComplete: function(score, total) {
+          console.log('MCQ completed with score: ' + score + '/' + total);
+          
+          // Track this activity completion in the progress system
+          if (typeof ProgressTracker !== 'undefined' || typeof ProgressTrackingModule !== 'undefined') {
+            const progressModule = typeof ProgressTracker !== 'undefined' ? 
+              ProgressTracker : ProgressTrackingModule;
+            
+            // Mark the MCQ as completed in the 'activities' category
+            progressModule.markItemCompleted('activities', 'mcq-future-perfect-vs-continuous', {
+              score: score,
+              maxScore: total,
+              completed: true,
+              completedAt: new Date().toISOString(),
+              title: 'Future Perfect vs. Future Perfect Continuous Quick Practice'
+            });
+            
+            // Also mark the lesson itself as viewed/completed
+            progressModule.updateItemProgress('lessons', 'future-perfect-continuous', {
+              lastViewed: new Date().toISOString(),
+              progress: 100, // Percent complete
+              title: 'Future Perfect vs. Future Perfect Continuous'
+            });
+          }
+          
+          // Show feedback message
+          showCompletionFeedback(score, total);
+        },
+        grammarSummaryId: 'summary' // For "Check the Grammar" button
+      });
+      
+      // Setup the "Check the Grammar" button
+      const checkGrammarButton = document.getElementById('check-grammar');
+      if (checkGrammarButton) {
+        checkGrammarButton.addEventListener('click', function(e) {
+          e.preventDefault();
+          const summarySection = document.getElementById('summary');
+          if (summarySection) {
+            summarySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      }
+    });
+    
+    /**
+     * Shows feedback to the user after completing the activity
+     * 
+     * @param {number} score - The score achieved
+     * @param {number} total - The total possible score
+     */
+    function showCompletionFeedback(score, total) {
+      // Calculate percentage
+      const percentage = Math.round((score / total) * 100);
+      
+      // Create feedback element if it doesn't exist
+      let feedbackElement = document.getElementById('completion-feedback');
+      
+      if (!feedbackElement) {
+        feedbackElement = document.createElement('div');
+        feedbackElement.id = 'completion-feedback';
+        feedbackElement.className = 'feedback-message';
+        feedbackElement.style.marginTop = '20px';
+        feedbackElement.style.padding = '15px';
+        feedbackElement.style.borderRadius = '5px';
+        feedbackElement.style.textAlign = 'center';
+        
+        // Add it after the MCQ container
+        const mcqContainer = document.getElementById('mcq');
+        if (mcqContainer && mcqContainer.parentNode) {
+          mcqContainer.parentNode.insertBefore(feedbackElement, mcqContainer.nextSibling);
+        }
+      }
+      
+      // Set content and style based on score
+      if (percentage >= 80) {
+        feedbackElement.style.backgroundColor = 'var(--success-bg, #d4edda)';
+        feedbackElement.style.color = 'var(--success-color, #155724)';
+        feedbackElement.innerHTML = `
+          <h3>Great job! 🎉</h3>
+          <p>You scored ${score}/${total} (${percentage}%). Your progress has been saved.</p>
+          <p>You have a good understanding of the Future Perfect and Future Perfect Continuous tenses!</p>
+        `;
+      } else if (percentage >= 60) {
+        feedbackElement.style.backgroundColor = 'var(--note-bg, #fff3cd)';
+        feedbackElement.style.color = 'var(--note-color, #856404)';
+        feedbackElement.innerHTML = `
+          <h3>Good effort! 👍</h3>
+          <p>You scored ${score}/${total} (${percentage}%). Your progress has been saved.</p>
+          <p>Consider reviewing the grammar points above, especially the differences between the two tenses.</p>
+        `;
+      } else {
+        feedbackElement.style.backgroundColor = 'var(--note-bg, #fff3cd)';
+        feedbackElement.style.color = 'var(--note-color, #856404)';
+        feedbackElement.innerHTML = `
+          <h3>Activity completed!</h3>
+          <p>You scored ${score}/${total} (${percentage}%). Your progress has been saved.</p>
+          <p>These tenses can be tricky! Review the grammar section again and pay special attention to when we use each tense.</p>
+        `;
+      }
+      
+      // Scroll to feedback
+      feedbackElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  </script>
+</body>
+</html>

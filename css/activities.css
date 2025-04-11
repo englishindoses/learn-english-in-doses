@@ -105,7 +105,8 @@
   display: block;
 }
 
-/* Score display for all activities */
+/* Score display for all activities - enhanced */
+
 .score-display {
   font-size: 1.2em;
   font-weight: bold;
@@ -114,7 +115,79 @@
   padding: 15px;
   background-color: var(--card-bg, #f8f9fa);
   border-radius: 5px;
-  display: none;
+  transition: all 0.5s ease;
+}
+
+.score-display.show {
+  display: block;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* Celebration Styles for high scores */
+.celebration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 0;
+  gap: 10px;
+}
+
+.celebration-emoji {
+  font-size: 2rem;
+  animation: sparkle 1.5s infinite alternate;
+}
+
+.score-display-large {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #218838;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 5px 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 120, 0, 0.3);
+  position: relative;
+  animation: pulse 1.5s infinite alternate;
+}
+
+.celebration-text {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #218838;
+  margin-bottom: 15px;
+}
+
+/* Animations for celebration effects */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sparkle {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.2) rotate(15deg);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(0, 120, 0, 0.3);
+  }
+  100% {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 120, 0, 0.5);
+  }
 }
 
 /* Control buttons for all activities */

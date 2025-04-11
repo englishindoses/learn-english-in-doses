@@ -278,6 +278,25 @@ const MCQModule = (function() {
         // Show results
         showResults();
         
+        // Enhanced score display
+        const scoreDisplay = document.getElementById('mcq-score');
+        if (scoreDisplay) {
+            // Update the score value
+            const scoreValueElem = scoreDisplay.querySelector('.score-value');
+            if (scoreValueElem) {
+                scoreValueElem.textContent = score;
+            } else {
+                const scoreSpan = scoreDisplay.querySelector('span');
+                if (scoreSpan) {
+                    scoreSpan.textContent = score;
+                }
+            }
+            
+            // Show the score display with animation
+            scoreDisplay.style.display = 'block';
+            scoreDisplay.classList.add('show');
+        }
+        
         // Save progress
         saveProgress();
         
@@ -304,7 +323,10 @@ const MCQModule = (function() {
             restartButton.style.display = 'block';
         }
         
-        submitButton.style.display = 'none';
+        const submitButton = document.getElementById('mcq-submit');
+        if (submitButton) {
+            submitButton.style.display = 'none';
+        }
         
         // Show "Check the Grammar" button
         const checkGrammarButton = document.getElementById('check-grammar');
@@ -508,6 +530,13 @@ const MCQModule = (function() {
                 resultsContainer.style.display = 'none';
             }
             
+            // Hide the score display
+            const scoreDisplay = document.getElementById('mcq-score');
+            if (scoreDisplay) {
+                scoreDisplay.style.display = 'none';
+                scoreDisplay.classList.remove('show');
+            }
+            
             // Show all questions
             showAllQuestions(true);
             
@@ -521,6 +550,12 @@ const MCQModule = (function() {
             const checkGrammarButton = document.getElementById('check-grammar');
             if (checkGrammarButton) {
                 checkGrammarButton.style.display = 'none';
+            }
+            
+            // Hide completion feedback if it exists
+            const feedbackElement = document.getElementById('completion-feedback');
+            if (feedbackElement) {
+                feedbackElement.style.display = 'none';
             }
             
             // Clear progress
