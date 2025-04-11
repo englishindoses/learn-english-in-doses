@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Include standardized head content -->
+  <!-- Standard head content -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="{GRAMMAR_TOPIC} - Advanced ESL grammar explanation with examples and practice">
-  <title>{GRAMMAR_TOPIC} - Advanced ESL Grammar</title>
+  <meta name="description" content="[GRAMMAR TOPIC] - Advanced ESL grammar explanation with examples and practice">
+  <title>[GRAMMAR TOPIC] - Advanced ESL Grammar</title>
   
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
@@ -20,9 +20,73 @@
   <link rel="stylesheet" href="../../css/base.css">
   <link rel="stylesheet" href="../../css/activities.css">
   <link rel="stylesheet" href="../../css/progress-tracking-styles.css">
+
+  <!-- Additional styles for MCQ and highlighting -->
+  <style>
+    /* Make sure all MCQ questions remain visible */
+    #mcq-container .question {
+      display: block !important;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--border-color, #ddd);
+    }
+    
+    .activity-container.active {
+      display: block !important;
+    }
+    
+    /* Ensure proper spacing between options */
+    .options {
+      margin-bottom: 15px;
+    }
+    
+    /* Make sure feedback is visible */
+    .feedback {
+      margin-top: 10px;
+      min-height: 20px;
+    }
+
+    /* Additional styles for clickable option divs */
+    .option {
+      cursor: pointer;
+      transition: background-color 0.2s;
+      padding: 8px 12px;
+      border: 1px solid var(--border-color, #ddd);
+      border-radius: 4px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .option:hover {
+      background-color: var(--mcq-hover-bg, #d0e6f7);
+      transform: translateY(-1px);
+    }
+    
+    .option.selected {
+      background-color: var(--mcq-selected-bg, #d0e6f7);
+      border: 2px solid var(--mcq-selected-border, #3498db);
+      font-weight: bold;
+    }
+    
+    [data-theme="dark"] .option:hover {
+      background-color: var(--mcq-hover-bg, #253545);
+    }
+    
+    [data-theme="dark"] .option.selected {
+      background-color: var(--mcq-selected-bg, #253545);
+      border-color: var(--mcq-selected-border, #4fa3e0);
+    }
+    
+    /* Highlighting for grammar structures */
+    .grammar-highlight {
+      font-weight: bold;
+      color: var(--accent-color, #3498db);
+    }
+  </style>
 </head>
 <body>
-  <!-- Include skip link and theme toggle -->
+  <!-- Skip link and theme toggle -->
   <a href="#main-content" class="skip-link">Skip to content</a>
   
   <div class="theme-toggle-container">
@@ -32,7 +96,7 @@
     </button>
   </div>
   
-  <!-- Include navigation -->
+  <!-- Navigation -->
   <nav class="main-navigation">
     <a href="../../home.html" class="site-logo">
       <img src="../../images/my-logo.svg" alt="English in Doses" width="150" height="auto">
@@ -43,357 +107,200 @@
       <a href="../../about.html" class="nav-link">About Us</a>
       <a href="../../contact.html" class="nav-link">Contact Us</a>
       <a href="../../home.html#where-to-start" class="nav-link">Grammar</a>
-      <a href="../../extra-practice.html" class="nav-link">Extra Practice</a>     
+      <a href="../../extra-practice.html" class="nav-link">Extra Practice</a>
       <a href="../../conversation-page.html" class="nav-link">Conversation</a>
       <a href="../../my-progress.html" class="nav-link">My Progress</a>
     </div>
 
     <div class="advanced-nav-indicator"></div>
-    
   </nav>
 
   <div class="container">
-    <!-- Include breadcrumbs -->
+    <!-- Breadcrumbs -->
     <div class="breadcrumbs" aria-label="breadcrumb">
       <span class="breadcrumb-item"><a href="../../home.html">Home</a></span>
       <span class="breadcrumb-separator">›</span>
-      <span class="breadcrumb-item"><a href="../advanced/advanced-grammar.html">Advanced Grammar</a></span>
+      <span class="breadcrumb-item"><a href="advanced-grammar.html">Advanced Grammar</a></span>
       <span class="breadcrumb-separator">›</span>
-      <span class="breadcrumb-item">{GRAMMAR_TOPIC}</span>
+      <span class="breadcrumb-item"><a href="advanced-grammar.html#[SECTION-ANCHOR]">[SECTION NAME]</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item">[GRAMMAR TOPIC]</span>
     </div>
 
     <main id="main-content">
-      <h1>{GRAMMAR_TOPIC}</h1>
+      <h1>[GRAMMAR TOPIC]</h1>
 
       <!-- INTRODUCTION SECTION -->
       <section class="intro-section">
         <h2>Introduction</h2>
-        <p>{INTRODUCTION_PARAGRAPH_1}</p>
-        
-        <p>{INTRODUCTION_PARAGRAPH_2}</p>
+        <p>[Brief introduction to the grammar topic - what it is and why it's important]</p>
         
         <h3>After this lesson, you will be able to:</h3>
         <ul>
-          <li>{LEARNING_OBJECTIVE_1}</li>
-          <li>{LEARNING_OBJECTIVE_2}</li>
-          <li>{LEARNING_OBJECTIVE_3}</li>
-          <li>{LEARNING_OBJECTIVE_4}</li>
+          <li>[Learning goal 1].</li>
+          <li>[Learning goal 2].</li>
+          <li>[Learning goal 3].</li>
         </ul>
       </section>
 
       <!-- GRAMMAR POINT SECTION 1 -->
       <section class="grammar-point">
-        <h2>{GRAMMAR_POINT_1_TITLE}</h2>
+        <h2>[Grammar point 1 title]</h2>
         
-        <p>{GRAMMAR_POINT_1_EXPLANATION}</p>
+        <p><strong>Form</strong>: [Structure/formula of the grammar]</p>
         
-        <p><strong>Step 1:</strong> {STEP_1}</p>
-        <p><strong>Step 2:</strong> {STEP_2}</p>
-        <p><strong>Step 3:</strong> {STEP_3}</p>
-        
-        <p>Look at these simple examples:</p>
+        <p><strong>When to use it</strong>: [Explanation of meaning and usage]</p>
         
         <div class="example">
-          <p><strong>Example 1:</strong></p>
-          <p>Normal: {NORMAL_EXAMPLE_1}</p>
-          <p><span style="margin:0 3px;">⇄</span>Inverted: {INVERTED_EXAMPLE_1}</p>
-          <br>
-          <p><strong>Example 2:</strong></p>
-          <p>Normal: {NORMAL_EXAMPLE_2}</p>
-          <p><span style="margin:0 3px;">⇄</span>Inverted: {INVERTED_EXAMPLE_2}</p>
+          <ol>
+            <li>[Example 1 from work context (brief clarification)]</li>
+            <li>[Example 2 from daily life context (brief clarification)]</li>
+            <li>[Example 3 from travel context (brief clarification)]</li>
+          </ol>
         </div>
         
         <div class="note">
-          <p><strong>Native speaker note:</strong> {NATIVE_SPEAKER_NOTE_1}</p>
+          <p><strong>Native speaker note:</strong> [How native speakers actually use this in real life, any shortcuts, etc.]</p>
         </div>
       </section>
 
       <!-- GRAMMAR POINT SECTION 2 -->
       <section class="grammar-point">
-        <h2>{GRAMMAR_POINT_2_TITLE}</h2>
+        <h2>[Grammar point 2 title]</h2>
         
-        <p><strong>{SUBPOINT_2A_TITLE}</strong></p>
-        <p>{SUBPOINT_2A_EXPLANATION}</p>
+        <p><strong>Form</strong>: [Structure/formula of the grammar]</p>
         
-        <div class="example">
-          <p>Standard: {STANDARD_EXAMPLE_2A_1}</p>
-          <p><span style="margin:0 3px;">⇄</span>Inverted: <strong>{INVERTED_EXAMPLE_2A_1}</strong></p>
-          <br>
-          <p>Standard: {STANDARD_EXAMPLE_2A_2}</p>
-          <p><span style="margin:0 3px;">⇄</span>Inverted: <strong>{INVERTED_EXAMPLE_2A_2}</strong></p>
-        </div>
-        
-        <p><strong>{SUBPOINT_2B_TITLE}</strong></p>
-        <p>{SUBPOINT_2B_EXPLANATION}</p>
+        <p><strong>When to use it</strong>: [Explanation of meaning and usage]</p>
         
         <div class="example">
-          <p>Standard: {STANDARD_EXAMPLE_2B_1}</p>
-          <p><span style="margin:0 3px;">⇄</span>Inverted: <strong>{INVERTED_EXAMPLE_2B_1}</strong></p>
-          <br>
-          <p>Standard: {STANDARD_EXAMPLE_2B_2}</p>
-          <p><span style="margin:0 3px;">⇄</span>Inverted: <strong>{INVERTED_EXAMPLE_2B_2}</strong></p>
+          <ol>
+            <li>[Example 1 from work context (brief clarification)]</li>
+            <li>[Example 2 from daily life context (brief clarification)]</li>
+            <li>[Example 3 from travel context (brief clarification)]</li>
+          </ol>
         </div>
         
         <div class="note">
-          <p><strong>Native speaker note:</strong> {NATIVE_SPEAKER_NOTE_2}</p>
+          <p><strong>Native speaker note:</strong> [How native speakers actually use this in real life, any shortcuts, etc.]</p>
         </div>
       </section>
 
-      <!-- GRAMMAR POINT SECTION 3 -->
+      <!-- GRAMMAR POINT SECTION 3 (if needed) -->
       <section class="grammar-point">
-        <h2>{GRAMMAR_POINT_3_TITLE}</h2>
+        <h2>[Grammar point 3 title - Key differences/Choosing between forms]</h2>
         
-        <p>{GRAMMAR_POINT_3_EXPLANATION}</p>
+        <p><strong>Key differences</strong>: [Explanation of when to choose one form over another]</p>
         
         <div class="example">
-          <p><strong>With {VARIANT_1}:</strong></p>
-          <p>Standard: {STANDARD_EXAMPLE_3A}</p>
-          <p><span style="margin:0 3px;">⇄</span>Inverted: <strong>{INVERTED_EXAMPLE_3A}</strong></p>
-          <br>
-          <p><strong>With {VARIANT_2}:</strong></p>
-          <p>Standard: {STANDARD_EXAMPLE_3B}</p>
-          <p><span style="margin:0 3px;">⇄</span>Inverted: <strong>{INVERTED_EXAMPLE_3B}</strong></p>
-          <br>
-          <p><strong>With {VARIANT_3}:</strong></p>
-          <p>Standard: {STANDARD_EXAMPLE_3C}</p>
-          <p><span style="margin:0 3px;">⇄</span>Inverted: <strong>{INVERTED_EXAMPLE_3C}</strong></p>
+          <p><strong>Compare these pairs:</strong></p>
+          <ol>
+            <li>[Example 1 from work context (brief clarification)]</li>
+            <li>[Example 2 from daily life context (brief clarification)]</li>
+            <li>[Example 3 from travel context (brief clarification)]</li>
+          </ol>
         </div>
         
         <div class="note">
-          <p><strong>Native speaker note:</strong> {NATIVE_SPEAKER_NOTE_3}</p>
+          <p><strong>Native speaker note:</strong> [Any relevant information about native speaker usage]</p>
         </div>
       </section>
-
-      <!-- GRAMMAR POINT SECTION 4 -->
-      <section class="grammar-point">
-        <h2>{GRAMMAR_POINT_4_TITLE}</h2>
-        
-        <p>{GRAMMAR_POINT_4_EXPLANATION}</p>
-        
-        <div class="example">
-          <p><strong>With {VARIANT_4}:</strong></p>
-          <p>Standard: {STANDARD_EXAMPLE_4A}</p>
-          <p><span style="margin:0 3px;">⇄</span>Inverted: <strong>{INVERTED_EXAMPLE_4A}</strong></p>
-          <br>
-          <p><strong>With {VARIANT_5}:</strong></p>
-          <p>Standard: {STANDARD_EXAMPLE_4B}</p>
-          <p><span style="margin:0 3px;">⇄</span>Inverted: <strong>{INVERTED_EXAMPLE_4B}</strong></p>
-          <br>
-          <p>Also common: {COMMON_EXPRESSION}</p>
-        </div>
-        
-        <p>{ADDITIONAL_EXPLANATION}</p>
-      </section>
+      <!-- Add more grammar points as needed. Always give an explanation, form and 3 examples. Include a native speaker's note when needed. -->
 
       <!-- VISUAL COMPARISON TABLE -->
       <section id="summary">
-        <h2>{TABLE_TITLE}</h2>
+        <h2>Summary: [Grammar Topic]</h2>
         <table>
           <thead>
             <tr>
-              <th>{TABLE_HEADER_1}</th>
-              <th>{TABLE_HEADER_2}</th>
-              <th>{TABLE_HEADER_3}</th>
+              <th>[Column 1 Header]</th>
+              <th>[Column 2 Header]</th>
+              <th>[Column 3 Header]</th>
+              <th>Example</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>{TABLE_ROW_1_CELL_1}</td>
-              <td><span class="example">{TABLE_ROW_1_CELL_2}</span></td>
-              <td><span class="example">{TABLE_ROW_1_CELL_3}</span></td>
+              <td>[Row 1, Column 1]</td>
+              <td>[Row 1, Column 2]</td>
+              <td>[Row 1, Column 3]</td>
+              <td><span class="example">[Example]</span></td>
             </tr>
-            <tr>
-              <td>{TABLE_ROW_2_CELL_1}</td>
-              <td><span class="example">{TABLE_ROW_2_CELL_2}</span></td>
-              <td><span class="example">{TABLE_ROW_2_CELL_3}</span></td>
-            </tr>
-            <tr>
-              <td>{TABLE_ROW_3_CELL_1}</td>
-              <td><span class="example">{TABLE_ROW_3_CELL_2}</span></td>
-              <td><span class="example">{TABLE_ROW_3_CELL_3}</span></td>
-            </tr>
-            <tr>
-              <td>{TABLE_ROW_4_CELL_1}</td>
-              <td><span class="example">{TABLE_ROW_4_CELL_2}</span></td>
-              <td><span class="example">{TABLE_ROW_4_CELL_3}</span></td>
-            </tr>
-            <tr>
-              <td>{TABLE_ROW_5_CELL_1}</td>
-              <td><span class="example">{TABLE_ROW_5_CELL_2}</span></td>
-              <td><span class="example">{TABLE_ROW_5_CELL_3}</span></td>
-            </tr>
+            <!-- Additional rows as needed -->
           </tbody>
         </table>
       </section>
 
-      <!-- USAGE SECTION -->
-      <section class="grammar-point">
-        <h2>{USAGE_SECTION_TITLE}</h2>
-        
-        <p>{USAGE_EXPLANATION}</p>
-        
-        <ul>
-          <li><strong>{USAGE_CONTEXT_1}</strong> - {USAGE_CONTEXT_1_EXAMPLES}</li>
-          <li><strong>{USAGE_CONTEXT_2}</strong> - {USAGE_CONTEXT_2_EXAMPLES}</li>
-          <li><strong>{USAGE_CONTEXT_3}</strong> - {USAGE_CONTEXT_3_EXAMPLES}</li>
-          <li><strong>{USAGE_CONTEXT_4}</strong> - {USAGE_CONTEXT_4_EXAMPLES}</li>
-        </ul>
-        
-        <p>{USAGE_ADDITIONAL_INFO}</p>
-        
-        <div class="example">
-          <p>{USAGE_SCENARIO_1}:</p>
-          <p><em>Standard:</em> {USAGE_STANDARD_EXAMPLE_1}</p>
-          <p><em><span style="margin:0 3px;">⇄</span>Inverted:</em> {USAGE_INVERTED_EXAMPLE_1}</p>
-          <br>
-          <p>{USAGE_SCENARIO_2}:</p>
-          <p><em>Standard:</em> {USAGE_STANDARD_EXAMPLE_2}</p>
-          <p><em><span style="margin:0 3px;">⇄</span>Inverted:</em> {USAGE_INVERTED_EXAMPLE_2}</p>
-        </div>
-      </section>
-
-      <!-- COMMON ERRORS SECTION - 3 most common errors only -->
+      <!-- COMMON ERRORS SECTION -->
       <section class="common-errors">
         <h2 class="common-errors-heading">Common Errors</h2>
         
         <div class="error-pattern">
-          <p class="error-title"><strong>1. {ERROR_1_TITLE}</strong></p>
-          <p class="incorrect">{ERROR_1_INCORRECT}</p><br>
-          <p class="correct">{ERROR_1_CORRECT} ✓</p>
-          <p class="explanation"><em>{ERROR_1_EXPLANATION}</em></p>
+          <p class="error-title"><strong>1: [Error 1 title]</strong></p>
+          <p class="incorrect">[Incorrect example]</p><br>
+          <p class="correct">[Correct example] ✓</p>
+          <p class="explanation"><em>[Explanation of why it's wrong and how to fix it]</em></p>
         </div>
         
         <div class="error-pattern">
-          <p class="error-title"><strong>2. {ERROR_2_TITLE}</strong></p>
-          <p class="incorrect">{ERROR_2_INCORRECT}</p><br>
-          <p class="correct">{ERROR_2_CORRECT} ✓</p>
-          <p class="explanation"><em>{ERROR_2_EXPLANATION}</em></p>
+          <p class="error-title"><strong>2: [Error 2 title]</strong></p>
+          <p class="incorrect">[Incorrect example]</p><br>
+          <p class="correct">[Correct example] ✓</p>
+          <p class="explanation"><em>[Explanation of why it's wrong and how to fix it]</em></p>
         </div>
         
         <div class="error-pattern">
-          <p class="error-title"><strong>3. {ERROR_3_TITLE}</strong></p>
-          <p class="incorrect">{ERROR_3_INCORRECT}</p><br>
-          <p class="correct">{ERROR_3_CORRECT} ✓</p>
-          <p class="explanation"><em>{ERROR_3_EXPLANATION}</em></p>
+          <p class="error-title"><strong>3: [Error 3 title]</strong></p>
+          <p class="incorrect">[Incorrect example]</p><br>
+          <p class="correct">[Correct example] ✓</p>
+          <p class="explanation"><em>[Explanation of why it's wrong and how to fix it]</em></p>
         </div>
       </section>
 
-      <!-- TIPS SECTION - 3 tips max, unless absolutely necessary - tips should be about how to remember, memorize or practice the grammar. Or any "hacks" for this grammar rule.-->
-      <h2 class="tips-heading">Useful Tips</h2>
+      <!-- TIPS SECTION -->
+      <section class="tips">
+        <h2 class="tips-heading">Useful Tips</h2>
+        
+        <div class="grammar-tip">
+          <p>📝 <strong>TIP 1:</strong> [Learning/memorization tip 1]</p>
+        </div>
+        
+        <div class="grammar-tip">
+          <p>📝 <strong>TIP 2:</strong> [Learning/memorization tip 2]</p>
+        </div>
+        
+        <div class="grammar-tip">
+          <p>📝 <strong>TIP 3:</strong> [Learning/memorization tip 3]</p>
+        </div>
+      </section>
 
-      <div class="grammar-tip">
-        <p>📝 <strong>TIP 1:</strong> {TIP_1}</p>
-      </div>
-      
-      <div class="grammar-tip">
-        <p>📝 <strong>TIP 2:</strong> {TIP_2}</p>
-      </div>
-      
-      <div class="grammar-tip">
-        <p>📝 <strong>TIP 3:</strong> {TIP_3}</p>
-      </div>
-      
-
-      <!-- MCQ PRACTICE SECTION - 10 questions testing the student's ability to use the grammar, not recognise it. -->
+      <!-- MCQ PRACTICE SECTION -->
       <section class="content-section mcq-container">
         <h2>Test Your Knowledge</h2>
-        <p>Choose the correct answers to test your understanding of {GRAMMAR_TOPIC}.</p>
+        <p>Choose the correct option for each question to test your understanding of [Grammar Topic].</p>
         
         <div id="mcq" class="activity-container active">
+          <!-- Question 1 (easy) -->
           <div class="question" id="q1">
-            <p class="mcq-question">1. {QUESTION_1}</p>
+            <p class="mcq-question">1. [Question 1]</p>
             <div class="options">
               <div class="option" data-index="0">
-                <span>A. {OPTION_1A}</span>
+                <span>A. [Option A]</span>
               </div>
               <div class="option" data-index="1">
-                <span>B. {OPTION_1B}</span>
+                <span>B. [Option B]</span>
               </div>
               <div class="option" data-index="2">
-                <span>C. {OPTION_1C}</span>
+                <span>C. [Option C]</span>
               </div>
               <div class="option" data-index="3">
-                <span>D. {OPTION_1D}</span>
+                <span>D. [Option D]</span>
               </div>
             </div>
             <div class="feedback"></div>
           </div>
           
-          <div class="question" id="q2">
-            <p class="mcq-question">2. {QUESTION_2}</p>
-            <div class="options">
-              <div class="option" data-index="0">
-                <span>A. {OPTION_2A}</span>
-              </div>
-              <div class="option" data-index="1">
-                <span>B. {OPTION_2B}</span>
-              </div>
-              <div class="option" data-index="2">
-                <span>C. {OPTION_2C}</span>
-              </div>
-              <div class="option" data-index="3">
-                <span>D. {OPTION_2D}</span>
-              </div>
-            </div>
-            <div class="feedback"></div>
-          </div>
-          
-          <div class="question" id="q3">
-            <p class="mcq-question">3. {QUESTION_3}</p>
-            <div class="options">
-              <div class="option" data-index="0">
-                <span>A. {OPTION_3A}</span>
-              </div>
-              <div class="option" data-index="1">
-                <span>B. {OPTION_3B}</span>
-              </div>
-              <div class="option" data-index="2">
-                <span>C. {OPTION_3C}</span>
-              </div>
-              <div class="option" data-index="3">
-                <span>D. {OPTION_3D}</span>
-              </div>
-            </div>
-            <div class="feedback"></div>
-          </div>
-          
-          <div class="question" id="q4">
-            <p class="mcq-question">4. {QUESTION_4}</p>
-            <div class="options">
-              <div class="option" data-index="0">
-                <span>A. {OPTION_4A}</span>
-              </div>
-              <div class="option" data-index="1">
-                <span>B. {OPTION_4B}</span>
-              </div>
-              <div class="option" data-index="2">
-                <span>C. {OPTION_4C}</span>
-              </div>
-              <div class="option" data-index="3">
-                <span>D. {OPTION_4D}</span>
-              </div>
-            </div>
-            <div class="feedback"></div>
-          </div>
-          
-          <div class="question" id="q5">
-            <p class="mcq-question">5. {QUESTION_5}</p>
-            <div class="options">
-              <div class="option" data-index="0">
-                <span>A. {OPTION_5A}</span>
-              </div>
-              <div class="option" data-index="1">
-                <span>B. {OPTION_5B}</span>
-              </div>
-              <div class="option" data-index="2">
-                <span>C. {OPTION_5C}</span>
-              </div>
-              <div class="option" data-index="3">
-                <span>D. {OPTION_5D}</span>
-              </div>
-            </div>
-            <div class="feedback"></div>
-          </div>
+          <!-- Questions 2-10 follow the same pattern -->
+          <!-- Include all 10 questions, gradually increasing in difficulty -->
           
           <div class="control-buttons">
             <button id="mcq-submit" class="submit-btn">Check Answers</button>
@@ -402,27 +309,24 @@
           </div>
           
           <div class="score-display" id="mcq-score" style="display:none;">
-            Your score: <span class="score-value">0</span>/<span class="total-value">5</span>
+            Your score: <span>0</span>/10
           </div>
         </div>
       </section>
-      
-      <!-- Feedback Message Container -->
-      <div id="completion-feedback"></div>
     </main>
   </div>
   
   <!-- BOTTOM NAVIGATION -->
   <nav class="bottom-navigation">
-    <a href="{PREVIOUS_PAGE_URL}" class="nav-button previous">← Previous: {PREVIOUS_PAGE_TITLE}</a>
+    <a href="[PREVIOUS-PAGE].html" class="nav-button previous">← Previous: [Previous Topic]</a>
     <div class="center-buttons">
       <button class="nav-button print-button" onclick="window.print()">Print This Page</button>
-      <a href="{ACTIVITIES_PAGE_URL}" class="nav-button activities">Extra Activities</a>
+      <a href="[CURRENT-PAGE]-practice.html" class="nav-button activities">Practice Activities</a>
     </div>
-    <a href="{NEXT_PAGE_URL}" class="nav-button next">Next: {NEXT_PAGE_TITLE} →</a>
+    <a href="[NEXT-PAGE].html" class="nav-button next">Next: [Next Topic] →</a>
   </nav>
 
-  <!-- Footer with copyright notice -->
+  <!-- Footer -->
   <footer>
     <div class="footer-content">
       <div class="footer-section">
@@ -431,6 +335,7 @@
           <li><a href="../../home.html">Home</a></li>
           <li><a href="../../home.html#where-to-start">Grammar</a></li>
           <li><a href="../../extra-practice.html">Extra Practice</a></li>
+          <li><a href="../../my-progress.html">My Progress</a></li>
         </ul>
       </div>
       
@@ -461,139 +366,75 @@
   <!-- JavaScript -->
   <script src="../../js/core.js"></script>
   <script src="../../js/mcq.js"></script>
-  <script src="../../js/progress-tracking-module.js"></script>
-  <script src="../../js/progress-manager-ui.js"></script>
+  <script src="../../js/progress-tracking.js"></script>
   
+  <!-- MCQ JavaScript -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Initialize MCQ Module with answers and feedback
-      MCQModule.init({
-        containerId: 'mcq',
-        answers: {
-          'q1': {ANSWER_1_INDEX},  // {ANSWER_1_EXPLANATION}
-          'q2': {ANSWER_2_INDEX},  // {ANSWER_2_EXPLANATION}
-          'q3': {ANSWER_3_INDEX},  // {ANSWER_3_EXPLANATION}
-          'q4': {ANSWER_4_INDEX},  // {ANSWER_4_EXPLANATION}
-          'q5': {ANSWER_5_INDEX}   // {ANSWER_5_EXPLANATION}
-        },
-        correctExplanations: {
-          'q1': '{CORRECT_EXPLANATION_1}',
-          'q2': '{CORRECT_EXPLANATION_2}',
-          'q3': '{CORRECT_EXPLANATION_3}',
-          'q4': '{CORRECT_EXPLANATION_4}',
-          'q5': '{CORRECT_EXPLANATION_5}'
-        },
-        incorrectExplanations: {
-          'q1': '{INCORRECT_EXPLANATION_1}',
-          'q2': '{INCORRECT_EXPLANATION_2}',
-          'q3': '{INCORRECT_EXPLANATION_3}',
-          'q4': '{INCORRECT_EXPLANATION_4}',
-          'q5': '{INCORRECT_EXPLANATION_5}'
-        },
-        showAllQuestionsAtOnce: true, // Show all questions at once
-        onComplete: function(score, total) {
-          console.log(`MCQ completed with score: ${score}/${total}`);
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize MCQ Module
+    MCQModule.init({
+      containerId: 'mcq',
+      answers: {
+        'q1': [CORRECT-ANSWER-INDEX],  // e.g., 2 for option C
+        'q2': [CORRECT-ANSWER-INDEX],
+        'q3': [CORRECT-ANSWER-INDEX],
+        'q4': [CORRECT-ANSWER-INDEX],
+        'q5': [CORRECT-ANSWER-INDEX],
+        'q6': [CORRECT-ANSWER-INDEX],
+        'q7': [CORRECT-ANSWER-INDEX],
+        'q8': [CORRECT-ANSWER-INDEX],
+        'q9': [CORRECT-ANSWER-INDEX],
+        'q10': [CORRECT-ANSWER-INDEX]
+      },
+      correctExplanations: {
+        'q1': '[Explanation for correct answer]',
+        'q2': '[Explanation for correct answer]',
+        'q3': '[Explanation for correct answer]',
+        'q4': '[Explanation for correct answer]',
+        'q5': '[Explanation for correct answer]',
+        'q6': '[Explanation for correct answer]',
+        'q7': '[Explanation for correct answer]',
+        'q8': '[Explanation for correct answer]',
+        'q9': '[Explanation for correct answer]',
+        'q10': '[Explanation for correct answer]'
+      },
+      incorrectExplanations: {
+        'q1': '[Explanation for incorrect answers]',
+        'q2': '[Explanation for incorrect answers]',
+        'q3': '[Explanation for incorrect answers]',
+        'q4': '[Explanation for incorrect answers]',
+        'q5': '[Explanation for incorrect answers]',
+        'q6': '[Explanation for incorrect answers]',
+        'q7': '[Explanation for incorrect answers]',
+        'q8': '[Explanation for incorrect answers]',
+        'q9': '[Explanation for incorrect answers]',
+        'q10': '[Explanation for incorrect answers]'
+      },
+      showAllQuestionsAtOnce: true, // Show all questions at once
+      onComplete: function(score, total) {
+        console.log(`MCQ completed with score: ${score}/${total}`);
+        
+        // Track this activity completion in the progress system
+        if (typeof ProgressTracker !== 'undefined') {
+          // Mark the MCQ as completed in the 'activities' category
+          ProgressTracker.markItemCompleted('activities', 'mcq-[ACTIVITY-ID]', {
+            score: score,
+            maxScore: total,
+            completed: true,
+            completedAt: new Date().toISOString(),
+            title: '[GRAMMAR TOPIC] Quick Practice'
+          });
           
-          // Track this activity completion in the progress system
-          if (typeof ProgressTracker !== 'undefined') {
-            // Mark the MCQ as completed in the 'activities' category
-            ProgressTracker.markItemCompleted('activities', '{MCQ_ACTIVITY_ID}', {
-              score: score,
-              maxScore: total,
-              completed: true,
-              completedAt: new Date().toISOString(),
-              title: '{GRAMMAR_TOPIC} Quick Practice'
-            });
-            
-            // Also mark the lesson itself as viewed/completed
-            ProgressTracker.updateItemProgress('lessons', '{LESSON_ID}', {
-              lastViewed: new Date().toISOString(),
-              progress: 100, // Percent complete
-              title: '{GRAMMAR_TOPIC}' // Human-readable lesson title
-            });
-          }
-          
-          // Show feedback message with decorated text for high scores
-          showCompletionFeedback(score, total);
+          // Also mark the lesson itself as viewed/completed
+          ProgressTracker.updateItemProgress('lessons', '[LESSON-ID]', {
+            lastViewed: new Date().toISOString(),
+            progress: 100, // Percent complete
+            title: '[GRAMMAR TOPIC]'
+          });
         }
-      });
+      }
     });
-    
-    /**
-     * Shows feedback to the user after completing the activity
-     * 
-     * @param {number} score - The score achieved
-     * @param {number} total - The total possible score
-     */
-    function showCompletionFeedback(score, total) {
-      // Calculate percentage
-      const percentage = Math.round((score / total) * 100);
-      
-      // Create feedback element if it doesn't exist
-      let feedbackElement = document.getElementById('completion-feedback');
-      
-      if (!feedbackElement) {
-        feedbackElement = document.createElement('div');
-        feedbackElement.id = 'completion-feedback';
-        feedbackElement.className = 'feedback-message';
-        feedbackElement.style.marginTop = '20px';
-        feedbackElement.style.padding = '15px';
-        feedbackElement.style.borderRadius = '5px';
-        feedbackElement.style.textAlign = 'center';
-        
-        // Add it after the MCQ container
-        const mcqContainer = document.getElementById('mcq');
-        if (mcqContainer && mcqContainer.parentNode) {
-          mcqContainer.parentNode.insertBefore(feedbackElement, mcqContainer.nextSibling);
-        }
-      }
-      
-      // Set content and style based on score
-      if (percentage >= 80) {
-        feedbackElement.style.backgroundColor = 'var(--success-bg, #d4edda)';
-        feedbackElement.style.color = 'var(--success-color, #155724)';
-        
-        // Special celebration for scores higher than 8
-        if (score > 8) {
-          feedbackElement.innerHTML = `
-            <h3>Outstanding! 🎉🏆</h3>
-            <div class="celebration">
-              <span class="celebration-emoji">✨</span>
-              <span class="score-display-large">${score}/${total}</span>
-              <span class="celebration-emoji">✨</span>
-            </div>
-            <p class="celebration-text">Amazing achievement! (${percentage}%)</p>
-            <p>Your progress has been saved. You've mastered this topic!</p>
-            <p>Why not challenge yourself with another advanced grammar topic?</p>
-          `;
-        } else {
-          feedbackElement.innerHTML = `
-            <h3>Great job! 🎉</h3>
-            <p>You scored ${score}/${total} (${percentage}%). Your progress has been saved.</p>
-            <p>Why not try another activity to continue learning?</p>
-          `;
-        }
-      } else if (percentage >= 60) {
-        feedbackElement.style.backgroundColor = 'var(--note-bg, #fff3cd)';
-        feedbackElement.style.color = 'var(--note-color, #856404)';
-        feedbackElement.innerHTML = `
-          <h3>Good effort! 👍</h3>
-          <p>You scored ${score}/${total} (${percentage}%). Your progress has been saved.</p>
-          <p>Consider reviewing the grammar points above before moving on.</p>
-        `;
-      } else {
-        feedbackElement.style.backgroundColor = 'var(--note-bg, #fff3cd)';
-        feedbackElement.style.color = 'var(--note-color, #856404)';
-        feedbackElement.innerHTML = `
-          <h3>Activity completed!</h3>
-          <p>You scored ${score}/${total} (${percentage}%). Your progress has been saved.</p>
-          <p>You can try again or move on to another activity.</p>
-        `;
-      }
-      
-      // Scroll to feedback
-      feedbackElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
+  });
   </script>
 </body>
 </html>
