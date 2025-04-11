@@ -370,71 +370,71 @@
   
   <!-- MCQ JavaScript -->
   <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Initialize MCQ Module
-    MCQModule.init({
-      containerId: 'mcq',
-      answers: {
-        'q1': [CORRECT-ANSWER-INDEX],  // e.g., 2 for option C
-        'q2': [CORRECT-ANSWER-INDEX],
-        'q3': [CORRECT-ANSWER-INDEX],
-        'q4': [CORRECT-ANSWER-INDEX],
-        'q5': [CORRECT-ANSWER-INDEX],
-        'q6': [CORRECT-ANSWER-INDEX],
-        'q7': [CORRECT-ANSWER-INDEX],
-        'q8': [CORRECT-ANSWER-INDEX],
-        'q9': [CORRECT-ANSWER-INDEX],
-        'q10': [CORRECT-ANSWER-INDEX]
-      },
-      correctExplanations: {
-        'q1': '[Explanation for correct answer]',
-        'q2': '[Explanation for correct answer]',
-        'q3': '[Explanation for correct answer]',
-        'q4': '[Explanation for correct answer]',
-        'q5': '[Explanation for correct answer]',
-        'q6': '[Explanation for correct answer]',
-        'q7': '[Explanation for correct answer]',
-        'q8': '[Explanation for correct answer]',
-        'q9': '[Explanation for correct answer]',
-        'q10': '[Explanation for correct answer]'
-      },
-      incorrectExplanations: {
-        'q1': '[Explanation for incorrect answers]',
-        'q2': '[Explanation for incorrect answers]',
-        'q3': '[Explanation for incorrect answers]',
-        'q4': '[Explanation for incorrect answers]',
-        'q5': '[Explanation for incorrect answers]',
-        'q6': '[Explanation for incorrect answers]',
-        'q7': '[Explanation for incorrect answers]',
-        'q8': '[Explanation for incorrect answers]',
-        'q9': '[Explanation for incorrect answers]',
-        'q10': '[Explanation for incorrect answers]'
-      },
-      showAllQuestionsAtOnce: true, // Show all questions at once
-      onComplete: function(score, total) {
-        console.log(`MCQ completed with score: ${score}/${total}`);
-        
-        // Track this activity completion in the progress system
-        if (typeof ProgressTracker !== 'undefined') {
-          // Mark the MCQ as completed in the 'activities' category
-          ProgressTracker.markItemCompleted('activities', 'mcq-[ACTIVITY-ID]', {
-            score: score,
-            maxScore: total,
-            completed: true,
-            completedAt: new Date().toISOString(),
-            title: '[GRAMMAR TOPIC] Quick Practice'
-          });
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize MCQ Module
+      MCQModule.init({
+        containerId: 'mcq',
+        answers: {
+          'q1': [CORRECT-ANSWER-INDEX],  // e.g., 2 for option C
+          'q2': [CORRECT-ANSWER-INDEX],
+          'q3': [CORRECT-ANSWER-INDEX],
+          'q4': [CORRECT-ANSWER-INDEX],
+          'q5': [CORRECT-ANSWER-INDEX],
+          'q6': [CORRECT-ANSWER-INDEX],
+          'q7': [CORRECT-ANSWER-INDEX],
+          'q8': [CORRECT-ANSWER-INDEX],
+          'q9': [CORRECT-ANSWER-INDEX],
+          'q10': [CORRECT-ANSWER-INDEX]
+        },
+        correctExplanations: {
+          'q1': "[Explanation for correct answer]",
+          'q2': "[Explanation for correct answer]",
+          'q3': "[Explanation for correct answer]",
+          'q4': "[Explanation for correct answer]",
+          'q5': "[Explanation for correct answer]",
+          'q6': "[Explanation for correct answer]",
+          'q7': "[Explanation for correct answer]",
+          'q8': "[Explanation for correct answer]",
+          'q9': "[Explanation for correct answer]",
+          'q10': "[Explanation for correct answer]"
+        },
+        incorrectExplanations: {
+          'q1': "[Explanation for incorrect answers]",
+          'q2': "[Explanation for incorrect answers]",
+          'q3': "[Explanation for incorrect answers]",
+          'q4': "[Explanation for incorrect answers]",
+          'q5': "[Explanation for incorrect answers]",
+          'q6': "[Explanation for incorrect answers]",
+          'q7': "[Explanation for incorrect answers]",
+          'q8': "[Explanation for incorrect answers]",
+          'q9': "[Explanation for incorrect answers]",
+          'q10': "[Explanation for incorrect answers]"
+        },
+        showAllQuestionsAtOnce: true, // Show all questions at once
+        onComplete: function(score, total) {
+          console.log(`MCQ completed with score: ${score}/${total}`);
           
-          // Also mark the lesson itself as viewed/completed
-          ProgressTracker.updateItemProgress('lessons', '[LESSON-ID]', {
-            lastViewed: new Date().toISOString(),
-            progress: 100, // Percent complete
-            title: '[GRAMMAR TOPIC]'
-          });
+          // Track this activity completion in the progress system
+          if (typeof ProgressTracker !== "undefined") {
+            // Mark the MCQ as completed in the 'activities' category
+            ProgressTracker.markItemCompleted('activities', 'mcq-[ACTIVITY-ID]', {
+              score: score,
+              maxScore: total,
+              completed: true,
+              completedAt: new Date().toISOString(),
+              title: "[GRAMMAR TOPIC] Quick Practice"
+            });
+            
+            // Also mark the lesson itself as viewed/completed
+            ProgressTracker.updateItemProgress('lessons', '[LESSON-ID]', {
+              lastViewed: new Date().toISOString(),
+              progress: 100, // Percent complete
+              title: "[GRAMMAR TOPIC]"
+            });
+          }
         }
-      }
+      });
     });
-  });
-  </script>
+    </script>
 </body>
 </html>
