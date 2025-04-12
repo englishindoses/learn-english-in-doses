@@ -1,0 +1,17 @@
+<!-- Prompt for multiple grammar page creations - With Extended Thinking -->
+
+Please check my github files from my website. Use the modular infrastructure and grammar explanation template to create the grammar explanation pages for: 
+
+1. [Level] [Grammar Page Title]
+
+2. [Level] [Grammar Page Title]
+
+That's a total of [2 pages]. They come in order on the website. Please give me the full html files for each one as artifacts. Make sure they're not too wordy and the explanations are comprehensive, clear and consice. Use language that's easy for esl students to understand - the grammar rules should be the only new thing for students on the page.
+
+Each page should take 20-30 minutes for the student to study, including the MCQ.
+
+Please follow the grammar template, but there is some flexibility for adding more grammar points if needed, depending on the complexity of the grammar rule. Make sure to break down complicated rules into manageable chunks.
+
+However, please make sure to only give 3 lesson goals, maximum 3 common errors and only 1-3 useful tips for learning and remembering the grammar.
+
+Also make sure to keep the layout of the page and all buttons as they are in the template. Please follow the MCQ template as it is (do 10 questions).
