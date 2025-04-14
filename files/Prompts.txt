@@ -2,9 +2,9 @@
 
 Please check my github files from my website. Use the modular infrastructure and grammar explanation template to create the grammar explanation pages for: 
 
-1. [Level] [Grammar Page Title]
+1. Advanced Grammar - Narrative Tenses (Past Perfect, Past Simple, Past Continuous)
 
-2. [Level] [Grammar Page Title]
+2. Advanced Grammar - Zero, First, Second, Third, and Mixed Conditionals
 
 That's a total of [2 pages]. They come in order on the website. Please give me the full html files for each one as artifacts. Make sure they're not too wordy and the explanations are comprehensive, clear and consice. Use language that's easy for esl students to understand - the grammar rules should be the only new thing for students on the page.
 

@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Standard head content -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Zero, First, Second, Third, and Mixed Conditionals - Advanced ESL grammar explanation with examples and practice">
+  <title>Conditionals - Advanced ESL Grammar</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../../images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../images//favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../images//favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/activities.css">
+  <link rel="stylesheet" href="../../css/progress-tracking-styles.css">
+
+  <!-- Additional styles for MCQ and highlighting -->
+  <style>
+    /* Make sure all MCQ questions remain visible */
+    #mcq-container .question {
+      display: block !important;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--border-color, #ddd);
+    }
+    
+    .activity-container.active {
+      display: block !important;
+    }
+    
+    /* Ensure proper spacing between options */
+    .options {
+      margin-bottom: 15px;
+    }
+    
+    /* Make sure feedback is visible */
+    .feedback {
+      margin-top: 10px;
+      min-height: 20px;
+    }
+
+    /* Additional styles for clickable option divs */
+    .option {
+      cursor: pointer;
+      transition: background-color 0.2s;
+      padding: 8px 12px;
+      border: 1px solid var(--border-color, #ddd);
+      border-radius: 4px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .option:hover {
+      background-color: var(--mcq-hover-bg, #d0e6f7);
+      transform: translateY(-1px);
+    }
+    
+    .option.selected {
+      background-color: var(--mcq-selected-bg, #d0e6f7);
+      border: 2px solid var(--mcq-selected-border, #3498db);
+      font-weight: bold;
+    }
+    
+    [data-theme="dark"] .option:hover {
+      background-color: var(--mcq-hover-bg, #253545);
+    }
+    
+    [data-theme="dark"] .option.selected {
+      background-color: var(--mcq-selected-bg, #253545);
+      border-color: var(--mcq-selected-border, #4fa3e0);
+    }
+    
+    /* Highlighting for grammar structures */
+    .grammar-highlight {
+      font-weight: bold;
+      color: var(--accent-color, #3498db);
+    }
+
+    /* Probability scale for conditionals */
+    .probability-scale {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0;
+      padding: 10px;
+      background-color: var(--card-bg);
+      border-radius: 5px;
+    }
+
+    .probability-item {
+      text-align: center;
+      flex: 1;
+      padding: 10px;
+      border-right: 1px solid var(--border-color);
+    }
+
+    .probability-item:last-child {
+      border-right: none;
+    }
+
+    .probability-label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .probability-percent {
+      font-size: 1.2em;
+      color: var(--accent-color);
+    }
+  </style>
+</head>
+<body class="advanced-section">
+  <!-- Skip link and theme toggle -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  
+  <div class="theme-toggle-container">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="light-icon">☀️</span>
+      <span class="dark-icon">🌙</span>
+    </button>
+  </div>
+  
+  <!-- Navigation -->
+  <nav class="main-navigation">
+    <a href="../../home.html" class="site-logo">
+      <img src="../../images/my-logo.svg" alt="English in Doses" width="150" height="auto">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <div class="nav-links">
+      <a href="../../home.html" class="nav-link">Home</a>
+      <a href="../../about.html" class="nav-link">About Us</a>
+      <a href="../../contact.html" class="nav-link">Contact Us</a>
+      <a href="../../home.html#where-to-start" class="nav-link">Grammar</a>
+      <a href="../../extra-practice.html" class="nav-link">Extra Practice</a>
+      <a href="../../conversation-page.html" class="nav-link">Conversation</a>
+      <a href="../../my-progress.html" class="nav-link">My Progress</a>
+    </div>
+
+    <div class="advanced-nav-indicator"></div>
+  </nav>
+
+  <div class="container">
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs" aria-label="breadcrumb">
+      <span class="breadcrumb-item"><a href="../../home.html">Home</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="advanced-grammar.html">Advanced Grammar</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="advanced-grammar.html#conditionals">Advanced Conditionals</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item">Zero, First, Second, Third, and Mixed Conditionals</span>
+    </div>
+
+    <main id="main-content">
+      <h1>Conditionals</h1>
+
+      <!-- INTRODUCTION SECTION -->
+      <section class="intro-section">
+        <h2>Introduction</h2>
+        <p>Conditionals are sentence structures used to discuss possibilities, hypothetical situations, and their consequences. They help us talk about real and unreal situations in the present, future, and past. English has several types of conditionals, each used for different situations with varying degrees of probability.</p>
+        
+        <h3>After this lesson, you will be able to:</h3>
+        <ul>
+          <li>Identify and use the five conditional types correctly (zero, first, second, third, and mixed).</li>
+          <li>Express real, possible, and hypothetical situations with the appropriate conditional form.</li>
+          <li>Create more nuanced expressions using mixed conditionals to connect past and present.</li>
+        </ul>
+      </section>
+
+      <!-- GRAMMAR POINT SECTION 1 -->
+      <section class="grammar-point">
+        <h2>Zero and First Conditionals (Real conditions)</h2>
+        
+        <p><strong>Zero Conditional</strong></p>
+        <p><strong>Form</strong>: If + present simple, present simple</p>
+        
+        <p><strong>When to use it</strong>: Use the zero conditional for general truths, facts, and things that always happen as a result of something else. There is a 100% chance that the condition leads to the result.</p>
+        
+        <div class="example">
+          <ol>
+            <li>If you <span class="grammar-highlight">heat</span> water to 100°C, it <span class="grammar-highlight">boils</span>. (Scientific fact)</li>
+            <li>If I <span class="grammar-highlight">don't drink</span> coffee in the morning, I <span class="grammar-highlight">get</span> a headache. (Personal fact)</li>
+            <li>If you <span class="grammar-highlight">press</span> this button, the machine <span class="grammar-highlight">starts</span>. (Instruction/general truth)</li>
+          </ol>
+        </div>
+        
+        <p><strong>First Conditional</strong></p>
+        <p><strong>Form</strong>: If + present simple, will + infinitive</p>
+        
+        <p><strong>When to use it</strong>: Use the first conditional for real possibilities in the future - things that are likely to happen if a certain condition is met. There is a strong possibility that the condition will be fulfilled.</p>
+        
+        <div class="example">
+          <ol>
+            <li>If it <span class="grammar-highlight">rains</span> tomorrow, I <span class="grammar-highlight">will stay</span> at home. (Possible future situation)</li>
+            <li>If you <span class="grammar-highlight">finish</span> this report today, the boss <span class="grammar-highlight">will be</span> very pleased. (Likely outcome at work)</li>
+            <li>If we <span class="grammar-highlight">don't hurry</span>, we <span class="grammar-highlight">will miss</span> our flight. (Warning about future consequence)</li>
+          </ol>
+        </div>
+        
+        <div class="note">
+          <p><strong>Native speaker note:</strong> In conversation, native speakers often use "going to" or present continuous instead of "will" in the first conditional: "If it rains tomorrow, I'm going to stay home" or "If you finish this report, the boss is giving you a bonus."</p>
+        </div>
+      </section>
+
+      <!-- GRAMMAR POINT SECTION 2 -->
+      <section class="grammar-point">
+        <h2>Second and Third Conditionals (Unreal conditions)</h2>
+        
+        <p><strong>Second Conditional</strong></p>
+        <p><strong>Form</strong>: If + past simple, would + infinitive</p>
+        
+        <p><strong>When to use it</strong>: Use the second conditional for unreal or unlikely situations in the present or future. These are hypothetical situations or things that are improbable.</p>
+        
+        <div class="example">
+          <ol>
+            <li>If I <span class="grammar-highlight">won</span> the lottery, I <span class="grammar-highlight">would buy</span> a house. (Unlikely, but possible in future)</li>
+            <li>If I <span class="grammar-highlight">spoke</span> Chinese, I <span class="grammar-highlight">would apply</span> for that job. (I don't speak Chinese now)</li>
+            <li>What <span class="grammar-highlight">would you do</span> if you <span class="grammar-highlight">had</span> more free time? (Hypothetical present situation)</li>
+          </ol>
+        </div>
+        
+        <p><strong>Third Conditional</strong></p>
+        <p><strong>Form</strong>: If + past perfect, would have + past participle</p>
+        
+        <p><strong>When to use it</strong>: Use the third conditional for impossible situations in the past - things that didn't happen, but we imagine what the result would have been if they had happened.</p>
+        
+        <div class="example">
+          <ol>
+            <li>If I <span class="grammar-highlight">had studied</span> harder, I <span class="grammar-highlight">would have passed</span> the exam. (I didn't study hard enough, so I failed)</li>
+            <li>If she <span class="grammar-highlight">had arrived</span> earlier, she <span class="grammar-highlight">would have met</span> the CEO. (She didn't arrive early, so she didn't meet the CEO)</li>
+            <li>If they <span class="grammar-highlight">hadn't missed</span> their train, they <span class="grammar-highlight">would have been</span> on time. (They missed their train, so they weren't on time)</li>
+          </ol>
+        </div>
+        
+        <div class="note">
+          <p><strong>Native speaker note:</strong> Native speakers often use contractions in conditionals: "If I'd studied harder, I would've passed" (third conditional) or "If I had more time, I'd learn Spanish" (second conditional).</p>
+        </div>
+      </section>
+
+      <!-- GRAMMAR POINT SECTION 3 -->
+      <section class="grammar-point">
+        <h2>Mixed Conditionals</h2>
+        
+        <p><strong>Form</strong>: There are two common mixed conditional patterns:</p>
+        <p>1. If + past perfect, would + infinitive (Past condition → Present result)</p>
+        <p>2. If + past simple, would have + past participle (Present condition → Past result)</p>
+        
+        <p><strong>When to use them</strong>: Use mixed conditionals when the time in the if-clause is different from the time in the main clause. They're used to connect past and present situations.</p>
+        
+        <div class="example">
+          <p><strong>Type 1: Past condition → Present result</strong></p>
+          <ol>
+            <li>If I <span class="grammar-highlight">had studied</span> medicine, I <span class="grammar-highlight">would be</span> a doctor now. (I didn't study medicine in the past, so I'm not a doctor now)</li>
+            <li>If she <span class="grammar-highlight">hadn't moved</span> to London, she <span class="grammar-highlight">wouldn't work</span> for that company now. (She moved to London in the past, so she works for that company now)</li>
+            <li>If he <span class="grammar-highlight">had taken</span> that job in Paris, he <span class="grammar-highlight">would live</span> abroad now. (He didn't take the job, so he doesn't live abroad now)</li>
+          </ol>
+          
+          <p><strong>Type 2: Present condition → Past result</strong></p>
+          <ol>
+            <li>If I <span class="grammar-highlight">weren't</span> afraid of flying, I <span class="grammar-highlight">would have visited</span> Japan last year. (I am afraid of flying now, so I didn't visit Japan)</li>
+            <li>If she <span class="grammar-highlight">spoke</span> French, she <span class="grammar-highlight">would have applied</span> for that position. (She doesn't speak French now, so she didn't apply)</li>
+            <li>If I <span class="grammar-highlight">liked</span> coffee, I <span class="grammar-highlight">would have ordered</span> an espresso earlier. (I don't like coffee now, so I didn't order one)</li>
+          </ol>
+        </div>
+        
+        <div class="note">
+          <p><strong>Native speaker note:</strong> Mixed conditionals can be difficult even for native speakers. They're used more in written English or formal speech rather than casual conversation. In everyday conversation, people might use simpler forms to express these complex ideas.</p>
+        </div>
+      </section>
+
+      <!-- Probability Scale Section -->
+      <section class="content-section">
+        <h2>Probability Scale for Conditionals</h2>
+        <p>One way to understand the different conditionals is to place them on a probability scale:</p>
+        
+        <div class="probability-scale">
+          <div class="probability-item">
+            <div class="probability-label">Zero</div>
+            <div class="probability-percent">100%</div>
+            <div>Scientific fact</div>
+          </div>
+          <div class="probability-item">
+            <div class="probability-label">First</div>
+            <div class="probability-percent">50-90%</div>
+            <div>Likely</div>
+          </div>
+          <div class="probability-item">
+            <div class="probability-label">Second</div>
+            <div class="probability-percent">10-50%</div>
+            <div>Unlikely</div>
+          </div>
+          <div class="probability-item">
+            <div class="probability-label">Third</div>
+            <div class="probability-percent">0%</div>
+            <div>Impossible</div>
+          </div>
+          <div class="probability-item">
+            <div class="probability-label">Mixed</div>
+            <div class="probability-percent">Varies</div>
+            <div>Past→Present or Present→Past</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VISUAL COMPARISON TABLE -->
+      <section id="summary">
+        <h2>Summary: Conditionals</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Conditional Type</th>
+              <th>If-clause</th>
+              <th>Main clause</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Zero (Facts)</td>
+              <td>Present Simple</td>
+              <td>Present Simple</td>
+              <td><span class="example">If you heat water, it boils.</span></td>
+            </tr>
+            <tr>
+              <td>First (Possible)</td>
+              <td>Present Simple</td>
+              <td>Will + Infinitive</td>
+              <td><span class="example">If it rains, I will stay home.</span></td>
+            </tr>
+            <tr>
+              <td>Second (Unlikely)</td>
+              <td>Past Simple</td>
+              <td>Would + Infinitive</td>
+              <td><span class="example">If I won the lottery, I would travel.</span></td>
+            </tr>
+            <tr>
+              <td>Third (Impossible past)</td>
+              <td>Past Perfect</td>
+              <td>Would have + Past Participle</td>
+              <td><span class="example">If I had studied, I would have passed.</span></td>
+            </tr>
+            <tr>
+              <td>Mixed (Past → Present)</td>
+              <td>Past Perfect</td>
+              <td>Would + Infinitive</td>
+              <td><span class="example">If I had studied medicine, I would be a doctor now.</span></td>
+            </tr>
+            <tr>
+              <td>Mixed (Present → Past)</td>
+              <td>Past Simple</td>
+              <td>Would have + Past Participle</td>
+              <td><span class="example">If I spoke Spanish, I would have applied for that job.</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- COMMON ERRORS SECTION -->
+      <section class="common-errors">
+        <h2 class="common-errors-heading">Common Errors</h2>
+        
+        <div class="error-pattern">
+          <p class="error-title"><strong>1: Using will in the if-clause</strong></p>
+          <p class="incorrect">If it will rain tomorrow, I will stay at home.</p><br>
+          <p class="correct">If it rains tomorrow, I will stay at home. ✓</p>
+          <p class="explanation"><em>We don't use "will" in the if-clause of first conditionals. Use present simple instead.</em></p>
+        </div>
+        
+        <div class="error-pattern">
+          <p class="error-title"><strong>2: Mixing conditional types incorrectly</strong></p>
+          <p class="incorrect">If I would have money, I will buy a new car.</p><br>
+          <p class="correct">If I had money, I would buy a new car. ✓</p>
+          <p class="explanation"><em>This is a second conditional (unlikely present/future situation). Use past simple in the if-clause and would + infinitive in the main clause.</em></p>
+        </div>
+        
+        <div class="error-pattern">
+          <p class="error-title"><strong>3: Using was instead of were in second conditionals</strong></p>
+          <p class="incorrect">If I was rich, I would travel the world.</p><br>
+          <p class="correct">If I were rich, I would travel the world. ✓</p>
+          <p class="explanation"><em>In formal English, we use "were" for all persons (I, he, she, it) in second conditional if-clauses. However, in everyday English, "was" is increasingly accepted.</em></p>
+        </div>
+      </section>
+
+      <!-- TIPS SECTION -->
+      <section class="tips">
+        <h2 class="tips-heading">Useful Tips</h2>
+        
+        <div class="grammar-tip">
+          <p>📝 <strong>TIP 1:</strong> Think of conditionals on a probability scale: Zero (100% - facts), First (likely future), Second (unlikely present/future), Third (impossible past). This helps you choose the right form based on how probable the situation is.</p>
+        </div>
+        
+        <div class="grammar-tip">
+          <p>📝 <strong>TIP 2:</strong> Remember the fixed verb tense patterns for each conditional type and learn them as formulas. Create a flashcard for each type with the formula and a simple example you can easily remember.</p>
+        </div>
+        
+        <div class="grammar-tip">
+          <p>📝 <strong>TIP 3:</strong> Practice constructing mixed conditionals by first identifying whether the condition is in the past or present, and whether the result is in the past or present. This will help you choose the correct structure.</p>
+        </div>
+      </section>
+
+      <!-- MCQ PRACTICE SECTION -->
+      <section class="content-section mcq-container">
+        <h2>Test Your Knowledge</h2>
+        <p>Choose the correct option for each question to test your understanding of Conditionals.</p>
+        
+        <div id="mcq" class="activity-container active">
+          <!-- Question 1 (easy) -->
+          <div class="question" id="q1">
+            <p class="mcq-question">1. If you heat ice, it _____.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. melts</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. will melt</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. would melt</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. would have melted</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 2 -->
+          <div class="question" id="q2">
+            <p class="mcq-question">2. If it rains tomorrow, we _____ to the museum instead of the park.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. go</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. will go</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. would go</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. would have gone</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 3 -->
+          <div class="question" id="q3">
+            <p class="mcq-question">3. If I _____ rich, I would buy a private island.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. am</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. will be</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. were</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. had been</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 4 -->
+          <div class="question" id="q4">
+            <p class="mcq-question">4. If she had studied harder, she _____ the exam.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. passes</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. will pass</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. would pass</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. would have passed</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 5 -->
+          <div class="question" id="q5">
+            <p class="mcq-question">5. If I had taken that job in New York, I _____ there now.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. lived</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. will live</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. would live</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. would have lived</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 6 -->
+          <div class="question" id="q6">
+            <p class="mcq-question">6. If I spoke Japanese, I _____ for the translator position last month.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. applied</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. would apply</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. will apply</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. would have applied</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 7 -->
+          <div class="question" id="q7">
+            <p class="mcq-question">7. Water _____ if you leave it outside in freezing temperatures.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. freezes</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. will freeze</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. would freeze</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. frozen</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 8 -->
+          <div class="question" id="q8">
+            <p class="mcq-question">8. Which of these sentences is a correctly formed first conditional?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. If I will pass this exam, I will celebrate with friends.</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. If I pass this exam, I will celebrate with friends.</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. If I passed this exam, I would celebrate with friends.</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. If I pass this exam, I would celebrate with friends.</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 9 -->
+          <div class="question" id="q9">
+            <p class="mcq-question">9. Which sentence is a correctly formed mixed conditional?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. If I had studied medicine, I would have been a doctor now.</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. If I studied medicine, I would be a doctor now.</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. If I had studied medicine, I would be a doctor now.</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. If I study medicine, I would have been a doctor now.</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 10 -->
+          <div class="question" id="q10">
+            <p class="mcq-question">10. Complete this third conditional: "If they _____ me about the problem earlier, I _____ it before the deadline."</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. told / would fix</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. had told / would have fixed</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. would tell / would have fixed</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. had told / will fix</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <div class="control-buttons">
+            <button id="mcq-submit" class="submit-btn">Check Answers</button>
+            <a href="#summary" id="check-grammar" class="nav-button" style="display:none;">Review Grammar</a>
+            <button id="mcq-restart" class="restart-btn" style="display:none;">Try Again</button>
+          </div>
+          
+          <div class="score-display" id="mcq-score" style="display:none;">
+            Your score: <span class="score-value">0</span>/10
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <!-- BOTTOM NAVIGATION -->
+  <nav class="bottom-navigation">
+    <a href="narrative-tenses.html" class="nav-button previous">← Previous: Narrative Tenses</a>
+    <div class="center-buttons">
+      <button class="nav-button print-button" onclick="window.print()">Print This Page</button>
+      <a href="conditionals-practice.html" class="nav-button activities">Practice Activities</a>
+    </div>
+    <a href="advanced-modals.html" class="nav-button next">Next: Advanced Modal Verbs →</a>
+  </nav>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="../../home.html">Home</a></li>
+          <li><a href="../../home.html#where-to-start">Grammar</a></li>
+          <li><a href="../../extra-practice.html">Extra Practice</a></li>
+          <li><a href="../../my-progress.html">My Progress</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Grammar Topics</h3>
+        <ul>
+          <li><a href="advanced-grammar.html#advanced-tenses-and-aspect">Advanced Tenses</a></li>
+          <li><a href="advanced-grammar.html#conditionals">Advanced Conditionals</a></li>
+          <li><a href="advanced-grammar.html#modals">Advanced Modal Verbs</a></li>
+          <li><a href="advanced-grammar.html#passive">Advanced Passive Voice</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="../../about.html">About</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© 2025 English in Doses | All rights reserved | <a href="../../license.html">Licensing Information</a></p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="../../js/core.js"></script>
+  <script src="../../js/mcq.js"></script>
+  <script src="../../js/progress-tracking-module.js"></script>
+  
+  <!-- MCQ JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize MCQ Module
+      MCQModule.init({
+        containerId: 'mcq',
+        answers: {
+          'q1': 0,  // melts (zero conditional)
+          'q2': 1,  // will go (first conditional)
+          'q3': 2,  // were (second conditional)
+          'q4': 3,  // would have passed (third conditional)
+          'q5': 2,  // would live (mixed conditional: past->present)
+          'q6': 3,  // would have applied (mixed conditional: present->past)
+          'q7': 0,  // freezes (zero conditional)
+          'q8': 1,  // If I pass this exam, I will celebrate with friends.
+          'q9': 2,  // If I had studied medicine, I would be a doctor now.
+          'q10': 1  // had told / would have fixed
+        },
+        correctExplanations: {
+          'q1': "This is a zero conditional expressing a scientific fact. We use present simple ('melts') in both parts of the sentence.",
+          'q2': "This is a first conditional expressing a real possibility in the future. We use present simple in the if-clause and 'will + infinitive' in the main clause.",
+          'q3': "This is a second conditional expressing an unlikely situation. We use past simple (or 'were' for all subjects) in the if-clause.",
+          'q4': "This is a third conditional expressing an impossible past situation. After past perfect in the if-clause, we use 'would have + past participle' in the main clause.",
+          'q5': "This is a mixed conditional (past->present). We use past perfect in the if-clause and 'would + infinitive' in the main clause.",
+          'q6': "This is a mixed conditional (present->past). We use past simple in the if-clause and 'would have + past participle' in the main clause.",
+          'q7': "This is a zero conditional expressing a general truth. We use present simple in both clauses.",
+          'q8': "This is a correctly formed first conditional. We use present simple in the if-clause and 'will + infinitive' in the main clause.",
+          'q9': "This is a correctly formed mixed conditional expressing how a past action affects the present. We use past perfect in the if-clause and 'would + infinitive' in the main clause.",
+          'q10': "This is a correctly formed third conditional. We use past perfect in the if-clause and 'would have + past participle' in the main clause."
+        },
+        incorrectExplanations: {
+          'q1': "For scientific facts and general truths, we use the zero conditional, which requires present simple in both clauses.",
+          'q2': "For real possibilities in the future, we use the first conditional, which requires 'will + infinitive' in the main clause.",
+          'q3': "For unlikely situations, we use the second conditional, which requires past simple or 'were' in the if-clause.",
+          'q4': "For impossible past situations, we use the third conditional, which requires 'would have + past participle' in the main clause.",
+          'q5': "When a past condition affects a present result, we use past perfect in the if-clause and 'would + infinitive' in the main clause.",
+          'q6': "When a present condition affects a past result, we use past simple in the if-clause and 'would have + past participle' in the main clause.",
+          'q7': "For scientific facts and general truths, we use the zero conditional with present simple in both clauses.",
+          'q8': "In a first conditional, we never use 'will' in the if-clause, and we need to maintain tense consistency between the clauses.",
+          'q9': "A mixed conditional connecting past and present needs to use the correct tense structure to show this relationship.",
+          'q10': "A third conditional requires past perfect in the if-clause and 'would have + past participle' in the main clause."
+        },
+        showAllQuestionsAtOnce: true, // Show all questions at once
+        onComplete: function(score, total) {
+          console.log(`MCQ completed with score: ${score}/${total}`);
+          
+          // Track this activity completion in the progress system
+          if (typeof ProgressTracker !== "undefined") {
+            // Mark the MCQ as completed in the 'activities' category
+            ProgressTracker.markItemCompleted('activities', 'mcq-conditionals', {
+              score: score,
+              maxScore: total,
+              completed: true,
+              completedAt: new Date().toISOString(),
+              title: "Conditionals Quick Practice"
+            });
+            
+            // Also mark the lesson itself as viewed/completed
+            ProgressTracker.updateItemProgress('lessons', 'conditionals', {
+              lastViewed: new Date().toISOString(),
+              progress: 100, // Percent complete
+              title: "Conditionals"
+            });
+          }
+        }
+      });
+    });
+    </script>
+</body>
+</html>
