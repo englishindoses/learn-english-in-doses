@@ -2,7 +2,7 @@
 
 Please check my github files from my website. Use the modular infrastructure and grammar explanation template to create the grammar explanation pages for: 
 
-1. Advanced Grammar - Narrative Tenses (Past Perfect, Past Simple, Past Continuous)
+1. Advanced Grammar - Conditional Expressions (Unless, Provided that, As long as)
 
 2. Advanced Grammar - Zero, First, Second, Third, and Mixed Conditionals
 
@@ -15,3 +15,4 @@ Please follow the grammar template, but there is some flexibility for adding mor
 However, please make sure to only give 3 lesson goals, maximum 3 common errors and only 1-3 useful tips for learning and remembering the grammar.
 
 Also make sure to keep the layout of the page and all buttons as they are in the template. Please follow the MCQ template as it is (do 10 questions).
+For the Native Speaker's note, if the note is true about a specific variation of English, please mention it. For example "In American English, native speakers often...".
