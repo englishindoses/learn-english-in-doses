@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Standard head content -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Passive Voice: Fundamentals - Advanced ESL grammar explanation with examples and practice">
+  <title>Passive Voice: Fundamentals - Advanced ESL Grammar</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../../images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../images//favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../images//favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/activities.css">
+  <link rel="stylesheet" href="../../css/progress-tracking-styles.css">
+
+  <!-- Additional styles for MCQ and highlighting -->
+  <style>
+    /* Make sure all MCQ questions remain visible */
+    #mcq-container .question {
+      display: block !important;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--border-color, #ddd);
+    }
+    
+    .activity-container.active {
+      display: block !important;
+    }
+    
+    /* Ensure proper spacing between options */
+    .options {
+      margin-bottom: 15px;
+    }
+    
+    /* Make sure feedback is visible */
+    .feedback {
+      margin-top: 10px;
+      min-height: 20px;
+    }
+
+    /* Additional styles for clickable option divs */
+    .option {
+      cursor: pointer;
+      transition: background-color 0.2s;
+      padding: 8px 12px;
+      border: 1px solid var(--border-color, #ddd);
+      border-radius: 4px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .option:hover {
+      background-color: var(--mcq-hover-bg, #d0e6f7);
+      transform: translateY(-1px);
+    }
+    
+    .option.selected {
+      background-color: var(--mcq-selected-bg, #d0e6f7);
+      border: 2px solid var(--mcq-selected-border, #3498db);
+      font-weight: bold;
+    }
+    
+    [data-theme="dark"] .option:hover {
+      background-color: var(--mcq-hover-bg, #253545);
+    }
+    
+    [data-theme="dark"] .option.selected {
+      background-color: var(--mcq-selected-bg, #253545);
+      border-color: var(--mcq-selected-border, #4fa3e0);
+    }
+    
+    /* Highlighting for grammar structures */
+    .grammar-highlight {
+      font-weight: bold;
+      color: var(--accent-color, #3498db);
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip link and theme toggle -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  
+  <div class="theme-toggle-container">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="light-icon">☀️</span>
+      <span class="dark-icon">🌙</span>
+    </button>
+  </div>
+  
+  <!-- Navigation -->
+  <nav class="main-navigation">
+    <a href="../../home.html" class="site-logo">
+      <img src="../../images/my-logo.svg" alt="English in Doses" width="150" height="auto">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <div class="nav-links">
+      <a href="../../home.html" class="nav-link">Home</a>
+      <a href="../../about.html" class="nav-link">About Us</a>
+      <a href="../../contact.html" class="nav-link">Contact Us</a>
+      <a href="../../home.html#where-to-start" class="nav-link">Grammar</a>
+      <a href="../../extra-practice.html" class="nav-link">Extra Practice</a>
+      <a href="../../conversation-page.html" class="nav-link">Conversation</a>
+      <a href="../../my-progress.html" class="nav-link">My Progress</a>
+    </div>
+
+    <div class="advanced-nav-indicator"></div>
+  </nav>
+
+  <div class="container">
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs" aria-label="breadcrumb">
+      <span class="breadcrumb-item"><a href="../../home.html">Home</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="advanced-grammar.html">Advanced Grammar</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="advanced-grammar.html#passive-voice">Passive Voice</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item">Passive Voice: Fundamentals</span>
+    </div>
+
+    <main id="main-content">
+      <h1>Passive Voice: Fundamentals</h1>
+
+      <!-- INTRODUCTION SECTION -->
+      <section class="intro-section">
+        <h2>Introduction</h2>
+        <p>The passive voice is a grammatical structure used to emphasise the person or thing affected by an action rather than the person or thing performing the action. It's particularly useful in formal writing, scientific texts, news reports, and situations where the performer of the action is unknown, unimportant, or obvious.</p>
+        
+        <h3>After this lesson, you will be able to:</h3>
+        <ul>
+          <li>Form passive sentences in different tenses correctly.</li>
+          <li>Understand when to use passive voice appropriately.</li>
+          <li>Recognise the differences between active and passive sentences.</li>
+        </ul>
+      </section>
+
+      <!-- GRAMMAR POINT SECTION 1 -->
+      <section class="grammar-point">
+        <h2>Basic Passive Structure</h2>
+        
+        <p><strong>Form</strong>: subject + be (conjugated) + past participle (V3) + (by + agent)</p>
+        
+        <p><strong>When to use it</strong>: Use passive voice when:</p>
+        <ul>
+          <li>The focus is on the action receiver, not the doer</li>
+          <li>The person doing the action is unknown or unimportant</li>
+          <li>You want to be more formal or objective</li>
+        </ul>
+        
+        <div class="example">
+          <ol>
+            <li>The report <span class="grammar-highlight">was written</span> by Sarah yesterday. (past simple passive)</li>
+            <li>These cakes <span class="grammar-highlight">are made</span> with high-quality ingredients. (present simple passive)</li>
+            <li>The flight <span class="grammar-highlight">has been delayed</span> due to bad weather. (present perfect passive)</li>
+          </ol>
+        </div>
+        
+        <div class="note">
+          <p><strong>Native speaker note:</strong> In everyday conversation, native speakers often use active voice more frequently than passive. Passive voice is common in news reports, scientific writing, and formal documents.</p>
+        </div>
+      </section>
+
+      <!-- GRAMMAR POINT SECTION 2 -->
+      <section class="grammar-point">
+        <h2>Passive Voice in Different Tenses</h2>
+        
+        <p><strong>Form</strong>: The only part that changes in different tenses is the form of "be"</p>
+        
+        <p><strong>When to use it</strong>: The choice of tense depends on when the action happened, just as in active voice.</p>
+        
+        <div class="example">
+          <ol>
+            <li>The company <span class="grammar-highlight">is being reorganised</span> by new management. (present continuous passive)</li>
+            <li>All the tickets <span class="grammar-highlight">had been sold</span> before we arrived. (past perfect passive)</li>
+            <li>The new bridge <span class="grammar-highlight">will be opened</span> by the mayor next month. (future simple passive)</li>
+          </ol>
+        </div>
+        
+        <div class="note">
+          <p><strong>Native speaker note:</strong> Some tense forms in the passive are rarely used in conversation, such as past perfect continuous passive or future continuous passive.</p>
+        </div>
+      </section>
+
+      <!-- GRAMMAR POINT SECTION 3 -->
+      <section class="grammar-point">
+        <h2>Using "By" with Passive Voice</h2>
+        
+        <p><strong>Form</strong>: passive sentence + by + agent (doer of the action)</p>
+        
+        <p><strong>When to use it</strong>: Include "by + agent" when:</p>
+        <ul>
+          <li>The agent is important information</li>
+          <li>You want to clarify who performed the action</li>
+          <li>The agent is unexpected or surprising</li>
+        </ul>
+        
+        <div class="example">
+          <ol>
+            <li>The novel <span class="grammar-highlight">was written by</span> a famous author. (agent = a famous author)</li>
+            <li>My car <span class="grammar-highlight">is being repaired by</span> a new mechanic. (agent = a new mechanic)</li>
+            <li>The traditional dance <span class="grammar-highlight">was performed by</span> local children. (agent = local children)</li>
+          </ol>
+        </div>
+        
+        <div class="note">
+          <p><strong>Native speaker note:</strong> In many passive sentences, English speakers omit the "by phrase" when the agent is obvious or unimportant: "My bike was stolen" (we don't need to say "by someone").</p>
+        </div>
+      </section>
+
+      <!-- VISUAL COMPARISON TABLE -->
+      <section id="summary">
+        <h2>Summary: Passive vs Active Voice</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Active Voice</th>
+              <th>Passive Voice</th>
+              <th>Focus</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Present Simple</td>
+              <td>is/are + V3</td>
+              <td>Regular actions</td>
+              <td><span class="example">The room is cleaned daily.</span></td>
+            </tr>
+            <tr>
+              <td>Present Continuous</td>
+              <td>is/are being + V3</td>
+              <td>Actions happening now</td>
+              <td><span class="example">The room is being cleaned now.</span></td>
+            </tr>
+            <tr>
+              <td>Past Simple</td>
+              <td>was/were + V3</td>
+              <td>Completed actions</td>
+              <td><span class="example">The room was cleaned yesterday.</span></td>
+            </tr>
+            <tr>
+              <td>Past Continuous</td>
+              <td>was/were being + V3</td>
+              <td>Actions in progress in the past</td>
+              <td><span class="example">The room was being cleaned when I arrived.</span></td>
+            </tr>
+            <tr>
+              <td>Present Perfect</td>
+              <td>has/have been + V3</td>
+              <td>Completed actions with present relevance</td>
+              <td><span class="example">The room has been cleaned already.</span></td>
+            </tr>
+            <tr>
+              <td>Past Perfect</td>
+              <td>had been + V3</td>
+              <td>Actions completed before another past action</td>
+              <td><span class="example">The room had been cleaned before the guests arrived.</span></td>
+            </tr>
+            <tr>
+              <td>Future Simple</td>
+              <td>will be + V3</td>
+              <td>Future actions</td>
+              <td><span class="example">The room will be cleaned tomorrow.</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- COMMON ERRORS SECTION -->
+      <section class="common-errors">
+        <h2 class="common-errors-heading">Common Errors</h2>
+        
+        <div class="error-pattern">
+          <p class="error-title"><strong>1: Using passive voice with intransitive verbs</strong></p>
+          <p class="incorrect">The mountain was arrived by the hikers.</p><br>
+          <p class="correct">The mountain was reached by the hikers. ✓</p>
+          <p class="explanation"><em>Intransitive verbs (like arrive, happen, sleep) don't take direct objects, so they cannot be used in passive voice. Use a transitive verb (like reach) instead.</em></p>
+        </div>
+        
+        <div class="error-pattern">
+          <p class="error-title"><strong>2: Incorrect form of the past participle (V3)</strong></p>
+          <p class="incorrect">The window was breaked during the storm.</p><br>
+          <p class="correct">The window was broken during the storm. ✓</p>
+          <p class="explanation"><em>Make sure to use the correct past participle form (V3) of irregular verbs in passive constructions.</em></p>
+        </div>
+        
+        <div class="error-pattern">
+          <p class="error-title"><strong>3: Forgetting to change the verb tense</strong></p>
+          <p class="incorrect">The house is build last year.</p><br>
+          <p class="correct">The house was built last year. ✓</p>
+          <p class="explanation"><em>Remember to change the form of "be" to match the appropriate tense (past simple in this example).</em></p>
+        </div>
+      </section>
+
+      <!-- TIPS SECTION -->
+      <section class="tips">
+        <h2 class="tips-heading">Useful Tips</h2>
+        
+        <div class="grammar-tip">
+          <p>📝 <strong>TIP 1:</strong> Remember that passive voice requires a transitive verb (a verb that can take a direct object).</p>
+        </div>
+        
+        <div class="grammar-tip">
+          <p>📝 <strong>TIP 2:</strong> To convert from active to passive, move the object to the subject position, add the appropriate form of "be", use the past participle of the main verb, and optionally add "by + original subject".</p>
+        </div>
+        
+        <div class="grammar-tip">
+          <p>📝 <strong>TIP 3:</strong> Use passive voice when you want to emphasise what happened rather than who did it. This is particularly useful in academic writing, news reporting, and scientific papers.</p>
+        </div>
+      </section>
+
+      <!-- MCQ PRACTICE SECTION -->
+      <section class="content-section mcq-container">
+        <h2>Test Your Knowledge</h2>
+        <p>Choose the correct option for each question to test your understanding of Passive Voice fundamentals.</p>
+        
+        <div id="mcq" class="activity-container active">
+          <!-- Question 1 (easy) -->
+          <div class="question" id="q1">
+            <p class="mcq-question">1. Which sentence is in passive voice?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. The chef cooked a delicious meal.</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. A delicious meal was cooked by the chef.</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. They are cooking dinner right now.</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. The restaurant serves excellent food.</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 2 -->
+          <div class="question" id="q2">
+            <p class="mcq-question">2. Complete the passive sentence: "The email ________ yesterday."</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. was sent</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. is sent</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. sent</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. sending</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 3 -->
+          <div class="question" id="q3">
+            <p class="mcq-question">3. Which verb CANNOT be used in passive voice?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. happen</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. build</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. clean</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. write</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 4 -->
+          <div class="question" id="q4">
+            <p class="mcq-question">4. What is the passive form of "They are writing a new book"?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. A new book writes.</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. A new book is being written.</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. A new book was written.</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. A new book has been written.</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 5 -->
+          <div class="question" id="q5">
+            <p class="mcq-question">5. Which tense is used in the passive sentence: "The project has been completed"?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. Present simple</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. Past simple</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. Present perfect</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. Past perfect</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 6 -->
+          <div class="question" id="q6">
+            <p class="mcq-question">6. When should we include "by + agent" in a passive sentence?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. Always, it's required in every passive sentence</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. Only in past tense passives</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. When the agent (doer) is important information</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. Only in questions</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 7 -->
+          <div class="question" id="q7">
+            <p class="mcq-question">7. What is the passive form of future simple "They will announce the results tomorrow"?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. The results will announce tomorrow.</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. The results are being announced tomorrow.</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. The results will be announced tomorrow.</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. The results are announced tomorrow.</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 8 -->
+          <div class="question" id="q8">
+            <p class="mcq-question">8. Which sentence contains an error in the passive voice?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. The book was written in 1954.</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. The window is being cleaned by the janitor.</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. A new policy has been implemented.</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. The race was ran by professional athletes.</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 9 -->
+          <div class="question" id="q9">
+            <p class="mcq-question">9. When is passive voice particularly useful?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. When telling personal stories</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. When the doer of the action is unknown or unimportant</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. In casual conversation with friends</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. When describing your daily routine</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 10 -->
+          <div class="question" id="q10">
+            <p class="mcq-question">10. What is the correct passive form of "The government must address this issue"?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. This issue must addressed by the government.</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. This issue must be addressing by the government.</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. This issue must be addressed by the government.</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. This issue must being addressed by the government.</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <div class="control-buttons">
+            <button id="mcq-submit" class="submit-btn">Check Answers</button>
+            <a href="#summary" id="check-grammar" class="nav-button" style="display:none;">Review Grammar</a>
+            <button id="mcq-restart" class="restart-btn" style="display:none;">Try Again</button>
+          </div>
+          
+          <div class="score-display" id="mcq-score" style="display:none;">
+            Your score: <span class="score-value">0</span>/10
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <!-- BOTTOM NAVIGATION -->
+  <nav class="bottom-navigation">
+    <a href="advanced-grammar.html" class="nav-button previous">← Previous: Advanced Grammar</a>
+    <div class="center-buttons">
+      <button class="nav-button print-button" onclick="window.print()">Print This Page</button>
+      <a href="passive-fundamentals-practice.html" class="nav-button activities">Practice Activities</a>
+    </div>
+    <a href="passive-get-have.html" class="nav-button next">Next: Advanced Passive with Get and Have →</a>
+  </nav>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="../../home.html">Home</a></li>
+          <li><a href="../../home.html#where-to-start">Grammar</a></li>
+          <li><a href="../../extra-practice.html">Extra Practice</a></li>
+          <li><a href="../../my-progress.html">My Progress</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Grammar Topics</h3>
+        <ul>
+          <li><a href="advanced-grammar.html#advanced-tenses-and-aspect">Advanced Tenses</a></li>
+          <li><a href="advanced-grammar.html#conditionals">Advanced Conditionals</a></li>
+          <li><a href="advanced-grammar.html#modals">Advanced Modal Verbs</a></li>
+          <li><a href="advanced-grammar.html#passive">Advanced Passive Voice</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="../../about.html">About</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© 2025 English in Doses | All rights reserved | <a href="../../license.html">Licensing Information</a></p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="../../js/core.js"></script>
+  <script src="../../js/mcq.js"></script>
+  <script src="../../js/progress-tracking.js"></script>
+  
+  <!-- MCQ JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize MCQ Module
+      MCQModule.init({
+        containerId: 'mcq',
+        answers: {
+          'q1': 1,  // B - A delicious meal was cooked by the chef
+          'q2': 0,  // A - was sent
+          'q3': 0,  // A - happen (intransitive verb)
+          'q4': 1,  // B - A new book is being written
+          'q5': 2,  // C - Present perfect
+          'q6': 2,  // C - When the agent is important information
+          'q7': 2,  // C - The results will be announced tomorrow
+          'q8': 3,  // D - The race was ran (should be "was run")
+          'q9': 1,  // B - When the doer of the action is unknown or unimportant
+          'q10': 2  // C - This issue must be addressed by the government
+        },
+        correctExplanations: {
+          'q1': "Correct! In a passive sentence, the subject receives the action. Here, 'the meal' is receiving the action of being cooked.",
+          'q2': "Correct! For past simple passive, we use 'was/were + past participle (V3)'.",
+          'q3': "Correct! 'Happen' is an intransitive verb (it cannot take a direct object), so it cannot be used in passive voice.",
+          'q4': "Correct! The present continuous passive form is 'is/are being + past participle (V3)'.",
+          'q5': "Correct! 'Has/have been + past participle (V3)' forms the present perfect passive.",
+          'q6': "Correct! We include 'by + agent' when the doer of the action is important or relevant information.",
+          'q7': "Correct! The future simple passive is formed with 'will be + past participle (V3)'.",
+          'q8': "Correct! 'Ran' is incorrect - it should be 'run' (the past participle form).",
+          'q9': "Correct! Passive voice is particularly useful when the doer of the action is unknown, unimportant, or obvious.",
+          'q10': "Correct! With modal verbs, the passive form is 'modal + be + past participle (V3)'."
+        },
+        incorrectExplanations: {
+          'q1': "This is not passive voice. In passive voice, the subject receives the action rather than performing it.",
+          'q2': "Incorrect. Since the action happened yesterday, we need past simple passive: 'was/were + past participle'.",
+          'q3': "This verb can be used in passive voice because it's transitive (it can take a direct object).",
+          'q4': "That's not the correct passive form of 'They are writing a new book.' The present continuous passive is 'is/are being + past participle'.",
+          'q5': "That's not the correct tense. The structure 'has/have been + past participle' indicates present perfect passive.",
+          'q6': "Incorrect. We only include 'by + agent' when the doer is important information, not in every passive sentence.",
+          'q7': "Incorrect. The future simple passive is formed with 'will be + past participle'.",
+          'q8': "This sentence has correct passive structure.",
+          'q9': "Passive voice is not typically used for personal stories or casual conversation, where active voice is more common.",
+          'q10': "The correct form with modal verbs in passive is 'modal + be + past participle'."
+        },
+        showAllQuestionsAtOnce: true, // Show all questions at once
+        onComplete: function(score, total) {
+          console.log(`MCQ completed with score: ${score}/${total}`);
+          
+          // Track this activity completion in the progress system
+          if (typeof ProgressTracker !== "undefined") {
+            // Mark the MCQ as completed in the 'activities' category
+            ProgressTracker.markItemCompleted('activities', 'mcq-passive-fundamentals', {
+              score: score,
+              maxScore: total,
+              completed: true,
+              completedAt: new Date().toISOString(),
+              title: "Passive Voice: Fundamentals Quick Practice"
+            });
+            
+            // Also mark the lesson itself as viewed/completed
+            ProgressTracker.updateItemProgress('lessons', 'passive-fundamentals', {
+              lastViewed: new Date().toISOString(),
+              progress: 100, // Percent complete
+              title: "Passive Voice: Fundamentals"
+            });
+          }
+        }
+      });
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Standard head content -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Advanced Conditional Expressions (Unless, Provided that, As long as) - Advanced ESL grammar explanation with examples and practice">
+  <title>Advanced Conditional Expressions - Advanced ESL Grammar</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../../images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../images//favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../images//favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/activities.css">
+  <link rel="stylesheet" href="../../css/progress-tracking-styles.css">
+
+  <!-- Additional styles for MCQ and highlighting -->
+  <style>
+    /* Make sure all MCQ questions remain visible */
+    #mcq-container .question {
+      display: block !important;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--border-color, #ddd);
+    }
+    
+    .activity-container.active {
+      display: block !important;
+    }
+    
+    /* Ensure proper spacing between options */
+    .options {
+      margin-bottom: 15px;
+    }
+    
+    /* Make sure feedback is visible */
+    .feedback {
+      margin-top: 10px;
+      min-height: 20px;
+    }
+
+    /* Additional styles for clickable option divs */
+    .option {
+      cursor: pointer;
+      transition: background-color 0.2s;
+      padding: 8px 12px;
+      border: 1px solid var(--border-color, #ddd);
+      border-radius: 4px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .option:hover {
+      background-color: var(--mcq-hover-bg, #d0e6f7);
+      transform: translateY(-1px);
+    }
+    
+    .option.selected {
+      background-color: var(--mcq-selected-bg, #d0e6f7);
+      border: 2px solid var(--mcq-selected-border, #3498db);
+      font-weight: bold;
+    }
+    
+    [data-theme="dark"] .option:hover {
+      background-color: var(--mcq-hover-bg, #253545);
+    }
+    
+    [data-theme="dark"] .option.selected {
+      background-color: var(--mcq-selected-bg, #253545);
+      border-color: var(--mcq-selected-border, #4fa3e0);
+    }
+    
+    /* Highlighting for grammar structures */
+    .grammar-highlight {
+      font-weight: bold;
+      color: var(--accent-color, #3498db);
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip link and theme toggle -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  
+  <div class="theme-toggle-container">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="light-icon">☀️</span>
+      <span class="dark-icon">🌙</span>
+    </button>
+  </div>
+  
+  <!-- Navigation -->
+  <nav class="main-navigation">
+    <a href="../../home.html" class="site-logo">
+      <img src="../../images/my-logo.svg" alt="English in Doses" width="150" height="auto">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <div class="nav-links">
+      <a href="../../home.html" class="nav-link">Home</a>
+      <a href="../../about.html" class="nav-link">About Us</a>
+      <a href="../../contact.html" class="nav-link">Contact Us</a>
+      <a href="../../home.html#where-to-start" class="nav-link">Grammar</a>
+      <a href="../../extra-practice.html" class="nav-link">Extra Practice</a>
+      <a href="../../conversation-page.html" class="nav-link">Conversation</a>
+      <a href="../../my-progress.html" class="nav-link">My Progress</a>
+    </div>
+
+    <div class="advanced-nav-indicator"></div>
+  </nav>
+
+  <div class="container">
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs" aria-label="breadcrumb">
+      <span class="breadcrumb-item"><a href="../../home.html">Home</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="advanced-grammar.html">Advanced Grammar</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="advanced-grammar.html#conditionals">Conditionals</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item">Conditional Expressions</span>
+    </div>
+
+    <main id="main-content">
+      <h1>Advanced Conditional Expressions</h1>
+
+      <!-- INTRODUCTION SECTION -->
+      <section class="intro-section">
+        <h2>Introduction</h2>
+        <p>Conditional expressions like "unless," "provided that," and "as long as" help us communicate conditions in more precise and varied ways than basic if-clauses. These expressions allow you to express negative conditions, requirements, and ongoing circumstances that affect outcomes.</p>
+        
+        <h3>After this lesson, you will be able to:</h3>
+        <ul>
+          <li>Use "unless" correctly to express negative conditions.</li>
+          <li>Apply "provided that" and "providing that" to express requirements and stipulations.</li>
+          <li>Use "as long as" and "so long as" to describe continuing conditions.</li>
+          <li>Choose the most appropriate conditional expression for different situations.</li>
+        </ul>
+      </section>
+
+      <!-- GRAMMAR POINT SECTION 1 -->
+      <section class="grammar-point" id="unless">
+        <h2>Unless</h2>
+        
+        <p><strong>Form</strong>: Unless + present simple/continuous, main clause (will/modal + verb)</p>
+        
+        <p><strong>When to use it</strong>: "Unless" means "if...not" or "except if." We use it to express negative conditions—situations where something will happen <em>only if</em> a particular condition is <em>not</em> met. It presents the only circumstance that would prevent the main clause from happening.</p>
+        
+        <div class="example">
+          <ol>
+            <li><span class="grammar-highlight">Unless</span> we finish this report by 5 pm, the client will be very unhappy. (= If we don't finish the report by 5 pm, the client will be very unhappy.)</li>
+            <li><span class="grammar-highlight">Unless</span> it rains tomorrow, I'll go for a long walk in the park. (= If it doesn't rain tomorrow, I'll go for a long walk in the park.)</li>
+            <li><span class="grammar-highlight">Unless</span> you book tickets in advance, you won't get seats on that flight. (= If you don't book tickets in advance, you won't get seats.)</li>
+          </ol>
+        </div>
+        
+        <div class="note">
+          <p><strong>Native speaker note:</strong> Native speakers often use "unless" when they want to mention an exception that would change a planned course of action. For example, in a work setting: "I'll be at the meeting at 2pm unless the client calls with those urgent changes." In casual conversation, you might hear: "We're going to the beach tomorrow, unless it rains, in which case we'll go to the cinema instead." Notice how native speakers sometimes follow "unless" with "in which case" to clarify the alternative plan.</p>
+        </div>
+      </section>
+
+      <!-- GRAMMAR POINT SECTION 2 -->
+      <section class="grammar-point" id="provided-that">
+        <h2>Provided that / Providing that</h2>
+        
+        <p><strong>Form</strong>: Provided (that) / Providing (that) + present simple/continuous, main clause (will/modal + verb)</p>
+        
+        <p><strong>When to use it</strong>: "Provided that" or "providing that" (both forms are correct) express a specific requirement or condition that must be fulfilled for the main clause to happen. These expressions emphasize the importance of the condition being met. The word "that" is optional.</p>
+        
+        <div class="example">
+          <ol>
+            <li>You can use my car <span class="grammar-highlight">provided (that)</span> you return it with a full tank of petrol. (The condition of returning the car with a full tank must be fulfilled.)</li>
+            <li>We'll finish the project on time <span class="grammar-highlight">providing (that)</span> everyone works efficiently. (The project will be completed on time only if the condition of efficient work is met.)</li>
+            <li>The hotel will offer a discount <span class="grammar-highlight">provided (that)</span> you stay for at least three nights. (The discount depends on meeting the minimum stay requirement.)</li>
+          </ol>
+        </div>
+        
+        <div class="note">
+          <p><strong>Native speaker note:</strong> "Provided that" sounds somewhat formal and is more common in written English and business contexts. You'll often hear it in contract discussions: "We'll deliver by next Friday, provided that we receive the materials on time." In everyday conversation, many native speakers would simply use "if" instead: "I can help you move house if you have all your stuff packed." When you do hear "provided" in speech, it's usually without "that": "You can borrow my car, provided you fill it up before returning it."</p>
+        </div>
+      </section>
+
+      <!-- GRAMMAR POINT SECTION 3 -->
+      <section class="grammar-point" id="as-long-as">
+        <h2>As long as / So long as</h2>
+        
+        <p><strong>Form</strong>: As long as / So long as + present simple/continuous, main clause (will/modal + verb)</p>
+        
+        <p><strong>When to use it</strong>: "As long as" and "so long as" (both mean the same thing) express a continuing condition that must remain true for the main clause to be valid. They suggest that the outcome depends on a condition being maintained over time or consistently applied.</p>
+        
+        <div class="example">
+          <ol>
+            <li>You can borrow my laptop <span class="grammar-highlight">as long as</span> you don't download any software. (You can borrow it on the continuing condition that no software is downloaded.)</li>
+            <li>I'll help you move house <span class="grammar-highlight">so long as</span> we finish before dinner time. (My help is conditional on finishing by dinner time.)</li>
+            <li>The tour guide will answer questions <span class="grammar-highlight">as long as</span> they're relevant to the tour. (The willingness to answer questions has the ongoing condition of relevance.)</li>
+          </ol>
+        </div>
+        
+        <div class="note">
+          <p><strong>Native speaker note:</strong> "As long as" is very common in everyday speech, especially when making arrangements or setting boundaries. You might hear a parent say to a child: "You can go to the party as long as you're back by 11." Or between friends: "I'm happy to share my Netflix account as long as you don't change my password." The tone often carries a slight warning or limitation. "So long as" means the same thing but sounds slightly more formal: "The company will support your project so long as it stays within budget."</p>
+        </div>
+      </section>
+
+      <!-- GRAMMAR POINT SECTION 4 - Key differences/Choosing between forms -->
+      <section class="grammar-point" id="differences">
+        <h2>Key Differences: Choosing the Right Expression</h2>
+        
+        <p><strong>Key differences</strong>: Choosing between these expressions depends on what aspect of the condition you want to emphasize:</p>
+        <ul>
+          <li><strong>Unless</strong>: Emphasizes a negative condition or exception</li>
+          <li><strong>Provided that</strong>: Emphasizes a strict requirement that must be met</li>
+          <li><strong>As long as</strong>: Emphasizes a continuing condition or boundary</li>
+        </ul>
+        
+        <div class="example">
+          <p><strong>Compare these pairs:</strong></p>
+          <ol>
+            <li><span class="grammar-highlight">Unless</span> I hear otherwise, I'll send the report tomorrow. (Emphasizes that sending the report is the default plan, with only one thing that might prevent it.)<br>
+            <span class="grammar-highlight">Provided that</span> I get your feedback, I'll send the report tomorrow. (Emphasizes that getting feedback is a necessary requirement.)</li>
+            
+            <li><span class="grammar-highlight">Unless</span> it's too expensive, we'll stay at the Grand Hotel. (Emphasizes that high cost is the only potential barrier.)<br>
+            <span class="grammar-highlight">As long as</span> it's reasonably priced, we'll stay at the Grand Hotel. (Emphasizes the ongoing condition of reasonable pricing.)</li>
+            
+            <li><span class="grammar-highlight">Provided that</span> you follow the safety guidelines, you can use the equipment. (Emphasizes that following guidelines is a strict requirement.)<br>
+            <span class="grammar-highlight">As long as</span> you follow the safety guidelines, you can use the equipment. (Similar meaning, but emphasizes the continuing nature of following guidelines.)</li>
+          </ol>
+        </div>
+        
+        <div class="note">
+          <p><strong>Native speaker note:</strong> In many cases, native speakers use these expressions somewhat interchangeably, especially "as long as" and "provided that," with the choice often being a matter of personal preference or slight difference in emphasis rather than strict grammatical distinction.</p>
+        </div>
+      </section>
+
+      <!-- VISUAL COMPARISON TABLE -->
+      <section id="summary">
+        <h2>Summary: Conditional Expressions</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Expression</th>
+              <th>Meaning</th>
+              <th>Emphasis</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Unless</td>
+              <td>If not, except if</td>
+              <td>Negative condition or exception</td>
+              <td><span class="example">Unless it rains, we'll have the party outside.</span></td>
+            </tr>
+            <tr>
+              <td>Provided that / Providing that</td>
+              <td>On the condition that</td>
+              <td>Strict requirement</td>
+              <td><span class="example">You'll pass the exam provided that you study hard.</span></td>
+            </tr>
+            <tr>
+              <td>As long as / So long as</td>
+              <td>On the continuing condition that</td>
+              <td>Ongoing condition or boundary</td>
+              <td><span class="example">You can watch TV as long as you finish your homework first.</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- COMMON ERRORS SECTION -->
+      <section class="common-errors">
+        <h2 class="common-errors-heading">Common Errors</h2>
+        
+        <div class="error-pattern">
+          <p class="error-title"><strong>1: Using the wrong tense with "unless"</strong></p>
+          <p class="incorrect">Unless we will finish this by tomorrow, the project will fail.</p><br>
+          <p class="correct">Unless we finish this by tomorrow, the project will fail. ✓</p>
+          <p class="explanation"><em>With "unless" (and most conditional expressions), we use the present simple in the conditional clause (even when talking about the future), not "will." Remember to use present simple for the condition and will/would for the result.</em></p>
+        </div>
+        
+        <div class="error-pattern">
+          <p class="error-title"><strong>2: Using double negatives with "unless"</strong></p>
+          <p class="incorrect">Unless you don't hurry, we'll miss the train.</p><br>
+          <p class="correct">Unless you hurry, we'll miss the train. ✓</p>
+          <p class="explanation"><em>"Unless" already implies a negative condition (it means "if not"), so adding another negative creates a confusing double negative. Keep the verb in the clause after "unless" in its positive form.</em></p>
+        </div>
+        
+        <div class="error-pattern">
+          <p class="error-title"><strong>3: Confusing "provided" as a past tense verb</strong></p>
+          <p class="incorrect">The company provided that you work overtime, you'll get a bonus.</p><br>
+          <p class="correct">Provided that you work overtime, you'll get a bonus. ✓</p>
+          <p class="explanation"><em>In this context, "provided that" is a fixed phrase functioning as a conditional conjunction. It's not the past tense of the verb "provide." There should be no subject before "provided that" when used as a conditional expression.</em></p>
+        </div>
+      </section>
+
+      <!-- TIPS SECTION -->
+      <section class="tips">
+        <h2 class="tips-heading">Useful Tips</h2>
+        
+        <div class="grammar-tip">
+          <p>📝 <strong>TIP 1:</strong> When using "unless," try mentally replacing it with "if...not" to check if your sentence still makes sense. This can help you avoid double negatives and ensure you're using it correctly.</p>
+        </div>
+        
+        <div class="grammar-tip">
+          <p>📝 <strong>TIP 2:</strong> For formal writing such as business emails or academic essays, "provided that" often sounds more appropriate than "as long as," which has a more conversational tone.</p>
+        </div>
+        
+        <div class="grammar-tip">
+          <p>📝 <strong>TIP 3:</strong> These conditional expressions can appear at the beginning or in the middle of sentences. When they appear at the beginning, remember to use a comma after the conditional clause: "As long as you study hard, you'll pass the exam."</p>
+        </div>
+      </section>
+
+      <!-- MCQ PRACTICE SECTION -->
+      <section class="content-section mcq-container">
+        <h2>Test Your Knowledge</h2>
+        <p>Choose the correct option for each question to test your understanding of conditional expressions.</p>
+        
+        <div id="mcq" class="activity-container active">
+          <!-- Question 1 (easy) -->
+          <div class="question" id="q1">
+            <p class="mcq-question">1. I'll lend you my notes ________ you give them back to me before the exam.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. unless</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. as long as</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. although</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. even if</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 2 -->
+          <div class="question" id="q2">
+            <p class="mcq-question">2. ________ it's too expensive, we won't buy the house.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. If</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. Unless</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. Provided that</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. When</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 3 -->
+          <div class="question" id="q3">
+            <p class="mcq-question">3. The company will give you a refund ________ you have the original receipt.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. unless</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. despite</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. provided that</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. since</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 4 -->
+          <div class="question" id="q4">
+            <p class="mcq-question">4. Which sentence is INCORRECT?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. Unless you study harder, you won't pass the exam.</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. Unless you don't finish your work, you can leave early.</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. Provided that everyone agrees, we'll change the schedule.</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. As long as you're careful, you can use my camera.</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 5 -->
+          <div class="question" id="q5">
+            <p class="mcq-question">5. We can go to the beach tomorrow ________ the weather is good.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. as long as</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. unless</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. despite</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. however</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 6 -->
+          <div class="question" id="q6">
+            <p class="mcq-question">6. ________ you pay the deposit by Friday, we cannot guarantee your reservation.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. So long as</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. Provided that</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. Unless</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. While</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 7 -->
+          <div class="question" id="q7">
+            <p class="mcq-question">7. What is the meaning of this sentence? "Unless it's an emergency, please don't call me after 10 pm."</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. Please call me after 10 pm in all situations.</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. If it's an emergency, please don't call me after 10 pm.</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. If it's not an emergency, please don't call me after 10 pm.</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. Only call me after 10 pm if it's not an emergency.</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 8 -->
+          <div class="question" id="q8">
+            <p class="mcq-question">8. The construction work can begin ________ we receive planning permission.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. unless</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. only if</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. despite</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. providing that</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 9 -->
+          <div class="question" id="q9">
+            <p class="mcq-question">9. You can borrow my car ________ you don't damage it.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. as long as</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. unless</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. even though</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. however</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 10 -->
+          <div class="question" id="q10">
+            <p class="mcq-question">10. In which context would "provided that" most likely be used?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. In a casual conversation between friends</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. In a children's story</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. In a legal contract or formal agreement</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. In a friendly email to a family member</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <div class="control-buttons">
+            <button id="mcq-submit" class="submit-btn">Check Answers</button>
+            <a href="#summary" class="nav-button">Review Grammar</a>
+            <button id="mcq-restart" class="restart-btn" style="display:none;">Try Again</button>
+          </div>
+          
+          <div class="score-display" id="mcq-score" style="display:none;">
+            Your score: <span class="score-value">0</span>/10
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <!-- BOTTOM NAVIGATION -->
+  <nav class="bottom-navigation">
+    <a href="mixed-conditionals.html" class="nav-button previous">← Previous: Mixed Conditionals</a>
+    <div class="center-buttons">
+      <button class="nav-button print-button" onclick="window.print()">Print This Page</button>
+      <a href="conditional-expressions-practice.html" class="nav-button activities">Practice Activities</a>
+    </div>
+    <a href="advanced-modals.html" class="nav-button next">Next: Advanced Modal Verbs →</a>
+  </nav>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="../../home.html">Home</a></li>
+          <li><a href="../../home.html#where-to-start">Grammar</a></li>
+          <li><a href="../../extra-practice.html">Extra Practice</a></li>
+          <li><a href="../../my-progress.html">My Progress</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Grammar Topics</h3>
+        <ul>
+          <li><a href="advanced-grammar.html#advanced-tenses-and-aspect">Advanced Tenses</a></li>
+          <li><a href="advanced-grammar.html#conditionals">Advanced Conditionals</a></li>
+          <li><a href="advanced-grammar.html#modals">Advanced Modal Verbs</a></li>
+          <li><a href="advanced-grammar.html#passive">Advanced Passive Voice</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="../../about.html">About</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© 2025 English in Doses | All rights reserved | <a href="../../license.html">Licensing Information</a></p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="../../js/core.js"></script>
+  <script src="../../js/mcq.js"></script>
+  <script src="../../js/progress-tracking.js"></script>
+  
+  <!-- MCQ JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize MCQ Module
+      MCQModule.init({
+        containerId: 'mcq',
+        answers: {
+          'q1': 1,  // B. as long as
+          'q2': 1,  // B. Unless
+          'q3': 2,  // C. provided that
+          'q4': 1,  // B. Unless you don't finish your work...
+          'q5': 0,  // A. as long as
+          'q6': 2,  // C. Unless
+          'q7': 2,  // C. If it's not an emergency...
+          'q8': 3,  // D. providing that
+          'q9': 0,  // A. as long as
+          'q10': 2  // C. In a legal contract or formal agreement
+        },
+        correctExplanations: {
+          'q1': "\"As long as\" is correct because it expresses the continuing condition that they must give the notes back before the exam.",
+          'q2': "\"Unless\" is correct because it expresses the negative condition: 'if it is not too expensive, we will buy the house'.",
+          'q3': "\"Provided that\" is correct because it expresses a specific requirement for getting a refund - having the original receipt.",
+          'q4': "This sentence is incorrect because it creates a double negative. \"Unless you don't finish\" means \"If you do finish\", which is the opposite of the intended meaning.",
+          'q5': "\"As long as\" is correct because it expresses the continuing condition that the weather must be good for us to go to the beach.",
+          'q6': "\"Unless\" is correct because it expresses the exception: 'if you do not pay by Friday, we cannot guarantee...'",
+          'q7': "\"Unless\" means \"if not\" so the sentence means you should only call after 10 pm if it IS an emergency.",
+          'q8': "\"Providing that\" is correct because it expresses that the planning permission is a strict requirement for construction to begin.",
+          'q9': "\"As long as\" is correct because it expresses the continuing condition of not damaging the car.",
+          'q10': "\"Provided that\" is most commonly used in formal contexts such as legal documents, contracts, and official communications."
+        },
+        incorrectExplanations: {
+          'q1': "This doesn't express the condition correctly. \"Unless\" would mean you would lend the notes except if they give them back, which is the opposite of what you want to express.",
+          'q2': "The other options don't express the negative condition correctly in this context.",
+          'q3': "The expression needs to show that having the receipt is a requirement for getting a refund.",
+          'q4': "Check for any illogical or grammatically incorrect uses of conditional expressions.",
+          'q5': "We need an expression that shows the beach trip depends on good weather.",
+          'q6': "We need an expression that shows what happens if the payment isn't made by Friday.",
+          'q7': "Consider what \"unless\" means (if not/except if) and how it applies to this situation.",
+          'q8': "We need an expression that shows planning permission is required.",
+          'q9': "We need an expression that shows borrowing the car depends on the condition of not damaging it.",
+          'q10': "Consider the level of formality associated with \"provided that.\""
+        },
+        showAllQuestionsAtOnce: true, // Show all questions at once
+        onComplete: function(score, total) {
+          console.log(`MCQ completed with score: ${score}/${total}`);
+          
+          // Track this activity completion in the progress system
+          if (typeof ProgressTracker !== "undefined") {
+            // Mark the MCQ as completed in the 'activities' category
+            ProgressTracker.markItemCompleted('activities', 'mcq-conditional-expressions', {
+              score: score,
+              maxScore: total,
+              completed: true,
+              completedAt: new Date().toISOString(),
+              title: "Conditional Expressions Quick Practice"
+            });
+            
+            // Also mark the lesson itself as viewed/completed
+            ProgressTracker.updateItemProgress('lessons', 'conditional-expressions', {
+              lastViewed: new Date().toISOString(),
+              progress: 100, // Percent complete
+              title: "Advanced Conditional Expressions"
+            });
+          }
+        }
+      });
+    });
+    </script>
+</body>
+</html>

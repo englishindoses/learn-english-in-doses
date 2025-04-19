@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Standard head content -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Modal Perfect Forms (must have been, could have done) - Advanced ESL grammar explanation with examples and practice">
+  <title>Modal Perfect Forms - Advanced ESL Grammar</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../../images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../images//favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../images//favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/activities.css">
+  <link rel="stylesheet" href="../../css/progress-tracking-styles.css">
+
+  <!-- Additional styles for MCQ and highlighting -->
+  <style>
+    /* Make sure all MCQ questions remain visible */
+    #mcq-container .question {
+      display: block !important;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--border-color, #ddd);
+    }
+    
+    .activity-container.active {
+      display: block !important;
+    }
+    
+    /* Ensure proper spacing between options */
+    .options {
+      margin-bottom: 15px;
+    }
+    
+    /* Make sure feedback is visible */
+    .feedback {
+      margin-top: 10px;
+      min-height: 20px;
+    }
+
+    /* Additional styles for clickable option divs */
+    .option {
+      cursor: pointer;
+      transition: background-color 0.2s;
+      padding: 8px 12px;
+      border: 1px solid var(--border-color, #ddd);
+      border-radius: 4px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .option:hover {
+      background-color: var(--mcq-hover-bg, #d0e6f7);
+      transform: translateY(-1px);
+    }
+    
+    .option.selected {
+      background-color: var(--mcq-selected-bg, #d0e6f7);
+      border: 2px solid var(--mcq-selected-border, #3498db);
+      font-weight: bold;
+    }
+    
+    [data-theme="dark"] .option:hover {
+      background-color: var(--mcq-hover-bg, #253545);
+    }
+    
+    [data-theme="dark"] .option.selected {
+      background-color: var(--mcq-selected-bg, #253545);
+      border-color: var(--mcq-selected-border, #4fa3e0);
+    }
+    
+    /* Highlighting for grammar structures */
+    .grammar-highlight {
+      font-weight: bold;
+      color: var(--accent-color, #3498db);
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip link and theme toggle -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  
+  <div class="theme-toggle-container">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="light-icon">☀️</span>
+      <span class="dark-icon">🌙</span>
+    </button>
+  </div>
+  
+  <!-- Navigation -->
+  <nav class="main-navigation">
+    <a href="../../home.html" class="site-logo">
+      <img src="../../images/my-logo.svg" alt="English in Doses" width="150" height="auto">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <div class="nav-links">
+      <a href="../../home.html" class="nav-link">Home</a>
+      <a href="../../about.html" class="nav-link">About Us</a>
+      <a href="../../contact.html" class="nav-link">Contact Us</a>
+      <a href="../../home.html#where-to-start" class="nav-link">Grammar</a>
+      <a href="../../extra-practice.html" class="nav-link">Extra Practice</a>
+      <a href="../../conversation-page.html" class="nav-link">Conversation</a>
+      <a href="../../my-progress.html" class="nav-link">My Progress</a>
+    </div>
+
+    <div class="advanced-nav-indicator"></div>
+  </nav>
+
+  <div class="container">
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs" aria-label="breadcrumb">
+      <span class="breadcrumb-item"><a href="../../home.html">Home</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="advanced-grammar.html">Advanced Grammar</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="advanced-grammar.html#modals">Modal Verbs</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item">Modal Perfect Forms</span>
+    </div>
+
+    <main id="main-content">
+      <h1>Modal Perfect Forms</h1>
+
+      <!-- INTRODUCTION SECTION -->
+      <section class="intro-section">
+        <h2>Introduction</h2>
+        <p>Modal perfect forms combine modal verbs with "have" and a past participle to talk about possibilities, abilities, obligations, or conclusions about past situations. These forms help us express what could, should, or might have happened in the past but didn't, as well as our certainty about past events.</p>
+        
+        <h3>After this lesson, you will be able to:</h3>
+        <ul>
+          <li>Form and use "must have + past participle" to make deductions about the past.</li>
+          <li>Use "could have + past participle" to express past possibilities that didn't happen.</li>
+          <li>Apply "should have + past participle" to discuss past obligations or better choices.</li>
+          <li>Use "may/might have + past participle" to express uncertainty about past events.</li>
+          <li>Form "would have + past participle" to talk about hypothetical past situations.</li>
+        </ul>
+      </section>
+
+      <!-- GRAMMAR POINT SECTION 1 -->
+      <section class="grammar-point" id="must-have">
+        <h2>Must have + past participle</h2>
+        
+        <p><strong>Form</strong>: Must + have + past participle</p>
+        
+        <p><strong>When to use it</strong>: We use "must have + past participle" to make deductions or express strong certainty about past situations. It shows we're almost certain that something happened based on available evidence. It expresses a logical conclusion about the past.</p>
+        
+        <div class="example">
+          <ol>
+            <li>She <span class="grammar-highlight">must have forgotten</span> about our meeting. She's never this late. (Based on the evidence of her lateness, I'm almost certain she forgot.)</li>
+            <li>John <span class="grammar-highlight">must have worked</span> all night. The report is on my desk and it's over 30 pages long. (The evidence of the completed report makes me sure he worked all night.)</li>
+            <li>They <span class="grammar-highlight">must have arrived</span> home by now. Their flight landed three hours ago. (Based on the time that's passed, I'm logically concluding they're home.)</li>
+          </ol>
+        </div>
+        
+        <div class="note">
+          <p><strong>Native speaker note:</strong> Native speakers often use "must have" when they want to emphasize that they're quite certain about why something happened. For example, if someone finds their plants looking healthy after being away, they might say: "My neighbour must have watered my plants while I was on holiday." This is more emphatic than saying "I think my neighbour watered my plants." You'll also hear phrases like "must have been" in expressions of sympathy: "That must have been difficult for you."</p>
+        </div>
+      </section>
+
+      <!-- GRAMMAR POINT SECTION 2 -->
+      <section class="grammar-point" id="could-have">
+        <h2>Could have + past participle</h2>
+        
+        <p><strong>Form</strong>: Could + have + past participle</p>
+        
+        <p><strong>When to use it</strong>: We use "could have + past participle" to talk about past possibilities that didn't happen—things that were possible but didn't occur. It can express unrealized abilities, missed opportunities, or alternative actions that were possible in the past.</p>
+        
+        <div class="example">
+          <ol>
+            <li>We <span class="grammar-highlight">could have won</span> the match if our best player hadn't been injured. (Winning was a possibility that didn't happen.)</li>
+            <li>I <span class="grammar-highlight">could have finished</span> the project yesterday, but I decided to watch a movie instead. (I had the ability to finish but chose not to.)</li>
+            <li>You <span class="grammar-highlight">could have called</span> me to say you were going to be late. (It was possible for you to call, but you didn't.)</li>
+          </ol>
+        </div>
+        
+        <div class="note">
+          <p><strong>Native speaker note:</strong> "Could have" is commonly used in complaints or when expressing regret or disappointment. You might hear a parent tell their teenager: "You could have let me know you were staying at your friend's house!" In conversation, it's often contracted, sounding like "could've" or even "coulda" in very casual speech. The tone of voice usually indicates whether the speaker is emphasizing a missed opportunity or expressing criticism.</p>
+        </div>
+      </section>
+
+      <!-- GRAMMAR POINT SECTION 3 -->
+      <section class="grammar-point" id="should-have">
+        <h2>Should have + past participle</h2>
+        
+        <p><strong>Form</strong>: Should + have + past participle</p>
+        
+        <p><strong>When to use it</strong>: We use "should have + past participle" to express regret about past actions or to indicate what would have been a better choice or the right thing to do in the past. It suggests an unfulfilled expectation, obligation, or recommendation.</p>
+        
+        <div class="example">
+          <ol>
+            <li>I <span class="grammar-highlight">should have studied</span> harder for the exam. I failed because I was unprepared. (It would have been better if I'd studied harder.)</li>
+            <li>You <span class="grammar-highlight">should have told</span> me about the meeting. I missed important information. (It was expected that you would tell me, but you didn't.)</li>
+            <li>They <span class="grammar-highlight">should have arrived</span> by now. I'm getting worried something's wrong. (I expected them to arrive, but they haven't.)</li>
+          </ol>
+        </div>
+        
+        <div class="note">
+          <p><strong>Native speaker note:</strong> "Should have" is frequently used for self-criticism or to give criticism to others about past actions. In everyday conversation, you'll often hear it contracted as "should've" or even "shoulda" in very informal speech. People commonly use this structure when giving advice in hindsight: "You should have asked for a discount" or when expressing regret: "I shouldn't have eaten so much cake." The negative form "shouldn't have" is just as common and is used to talk about actions that happened but were unwise.</p>
+        </div>
+      </section>
+
+      <!-- GRAMMAR POINT SECTION 4 -->
+      <section class="grammar-point" id="may-might-have">
+        <h2>May/Might have + past participle</h2>
+        
+        <p><strong>Form</strong>: May/Might + have + past participle</p>
+        
+        <p><strong>When to use it</strong>: We use "may have" or "might have + past participle" to express uncertainty about past events. It indicates a possibility that something happened in the past, but we're not sure. "Might have" suggests a slightly lower possibility than "may have."</p>
+        
+        <div class="example">
+          <ol>
+            <li>She <span class="grammar-highlight">may have missed</span> the train. That's why she's not here yet. (It's possible that she missed the train, but I'm not certain.)</li>
+            <li>They <span class="grammar-highlight">might have gone</span> to the restaurant across the street. Let's check there. (Perhaps they went there, but I'm quite uncertain.)</li>
+            <li>He <span class="grammar-highlight">may have forgotten</span> to send the email. It's worth asking him again. (It's possible he forgot, but I can't be sure.)</li>
+          </ol>
+        </div>
+        
+        <div class="note">
+          <p><strong>Native speaker note:</strong> In everyday speech, "might have" is more common than "may have" when speculating about past events. When people are offering possible explanations for something, you'll often hear: "She might have taken the day off" or "It might have been delivered to the wrong address." These forms are used a lot in detective shows when characters are trying to solve mysteries: "The killer might have entered through the window."</p>
+        </div>
+      </section>
+
+      <!-- GRAMMAR POINT SECTION 5 -->
+      <section class="grammar-point" id="would-have">
+        <h2>Would have + past participle</h2>
+        
+        <p><strong>Form</strong>: Would + have + past participle</p>
+        
+        <p><strong>When to use it</strong>: We use "would have + past participle" to talk about hypothetical situations in the past—things that didn't happen but we can imagine the outcome if they had. It's often used in conditional sentences to describe the result of an unfulfilled condition.</p>
+        
+        <div class="example">
+          <ol>
+            <li>If I had known about the traffic, I <span class="grammar-highlight">would have left</span> earlier. (I didn't know about the traffic, so I didn't leave earlier.)</li>
+            <li>She <span class="grammar-highlight">would have helped</span> you if you had asked. (You didn't ask, so she didn't help you.)</li>
+            <li>We <span class="grammar-highlight">would have gone</span> to the concert if we'd had tickets. (We didn't have tickets, so we didn't go.)</li>
+          </ol>
+        </div>
+        
+        <div class="note">
+          <p><strong>Native speaker note:</strong> "Would have" is very common in everyday conversation, especially when people talk about regrets or when considering how things might have been different. You'll hear expressions like: "I would have bought those shoes, but they didn't have my size" or "We would have visited you, but we were too busy." In speech, it's usually contracted to "would've" or even "would'a" in very casual conversation. It's often used with "if only" to express wishes about the past: "If only we'd known, we would have done things differently."</p>
+        </div>
+      </section>
+
+      <!-- GRAMMAR POINT SECTION 6 - Key differences/Choosing between forms -->
+      <section class="grammar-point" id="differences">
+        <h2>Key Differences: Choosing the Right Modal Perfect Form</h2>
+        
+        <p><strong>Key differences</strong>: Choosing between modal perfect forms depends on what aspect of the past situation you want to emphasize:</p>
+        <ul>
+          <li><strong>Must have</strong>: Strong logical conclusion about the past (high certainty)</li>
+          <li><strong>Could have</strong>: Unrealized possibility or ability in the past</li>
+          <li><strong>Should have</strong>: Unfulfilled obligation or better alternative in the past</li>
+          <li><strong>May/Might have</strong>: Uncertainty about past events (may = medium possibility, might = lower possibility)</li>
+          <li><strong>Would have</strong>: Hypothetical results of conditions that weren't met in the past</li>
+        </ul>
+        
+        <div class="example">
+          <p><strong>Compare these examples:</strong></p>
+          <ol>
+            <li><span class="grammar-highlight">Must have been</span> tired: I'm sure she was tired because she fell asleep immediately.<br>
+            <span class="grammar-highlight">Could have been</span> tired: Perhaps she was tired, or perhaps she was bored (one possibility among others).<br>
+            <span class="grammar-highlight">Should have been</span> tired: It would have been appropriate for her to be tired after all that work.</li>
+            
+            <li><span class="grammar-highlight">Must have left</span> early: Based on the evidence, I'm certain they left early.<br>
+            <span class="grammar-highlight">Might have left</span> early: It's possible they left early, but I'm not sure.<br>
+            <span class="grammar-highlight">Would have left</span> early: If something had happened, they would have left early (but they didn't).</li>
+            
+            <li><span class="grammar-highlight">Could have passed</span> the exam: He had the ability to pass but didn't.<br>
+            <span class="grammar-highlight">Should have passed</span> the exam: It was expected that he would pass, or he ought to have passed.<br>
+            <span class="grammar-highlight">Might have passed</span> the exam: Perhaps he passed, but I'm not sure yet.</li>
+          </ol>
+        </div>
+        
+        <div class="note">
+          <p><strong>Native speaker note:</strong> In casual conversation, native speakers sometimes use these modal perfect forms in ways that overlap slightly. For example, "You must have been working hard" and "You must have been tired" sound like conclusions, but they're often used as sympathetic comments with the real meaning "I understand that you were working hard/were tired." Context and tone of voice often help clarify the intended meaning.</p>
+        </div>
+      </section>
+
+      <!-- VISUAL COMPARISON TABLE -->
+      <section id="summary">
+        <h2>Summary: Modal Perfect Forms</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Modal Perfect Form</th>
+              <th>Meaning</th>
+              <th>Level of Certainty</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Must have + past participle</td>
+              <td>Logical conclusion about past events</td>
+              <td>High certainty</td>
+              <td><span class="example">She must have missed the bus.</span></td>
+            </tr>
+            <tr>
+              <td>Could have + past participle</td>
+              <td>Unrealized past possibility</td>
+              <td>N/A (didn't happen)</td>
+              <td><span class="example">We could have won the game.</span></td>
+            </tr>
+            <tr>
+              <td>Should have + past participle</td>
+              <td>Unfulfilled obligation/better alternative</td>
+              <td>N/A (didn't happen)</td>
+              <td><span class="example">You should have called me.</span></td>
+            </tr>
+            <tr>
+              <td>May have + past participle</td>
+              <td>Possible past action or situation</td>
+              <td>Medium uncertainty</td>
+              <td><span class="example">She may have taken my book.</span></td>
+            </tr>
+            <tr>
+              <td>Might have + past participle</td>
+              <td>Possible past action or situation</td>
+              <td>Higher uncertainty</td>
+              <td><span class="example">They might have gone home already.</span></td>
+            </tr>
+            <tr>
+              <td>Would have + past participle</td>
+              <td>Hypothetical past result</td>
+              <td>N/A (didn't happen)</td>
+              <td><span class="example">I would have helped if I'd known.</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- COMMON ERRORS SECTION -->
+      <section class="common-errors">
+        <h2 class="common-errors-heading">Common Errors</h2>
+        
+        <div class="error-pattern">
+          <p class="error-title"><strong>1: Using "of" instead of "have"</strong></p>
+          <p class="incorrect">I should of called you yesterday.</p><br>
+          <p class="correct">I should have called you yesterday. ✓</p>
+          <p class="explanation"><em>The words "should've," "could've," "would've," etc. are contractions of "should have," "could have," "would have." They may sound like "should of" when spoken quickly, but the correct written form always uses "have," not "of."</em></p>
+        </div>
+        
+        <div class="error-pattern">
+          <p class="error-title"><strong>2: Incorrect form after the modal</strong></p>
+          <p class="incorrect">She must has left the keys at home.</p><br>
+          <p class="correct">She must have left the keys at home. ✓</p>
+          <p class="explanation"><em>After modals (must, could, should, etc.), we always use the base form of the verb "have," not "has" or "had." This is followed by the past participle of the main verb.</em></p>
+        </div>
+        
+        <div class="error-pattern">
+          <p class="error-title"><strong>3: Confusing the meaning of "must have" and "must be"</strong></p>
+          <p class="incorrect">They must be arrived already. The lights are on.</p><br>
+          <p class="correct">They must have arrived already. The lights are on. ✓</p>
+          <p class="explanation"><em>"Must be" is used for present deductions (They must be at home now), while "must have + past participle" is used for past deductions. When talking about past events that you're certain about, always use "must have + past participle."</em></p>
+        </div>
+      </section>
+
+      <!-- TIPS SECTION -->
+      <section class="tips">
+        <h2 class="tips-heading">Useful Tips</h2>
+        
+        <div class="grammar-tip">
+          <p>📝 <strong>TIP 1:</strong> Remember that after every modal (must, could, should, might, etc.), we always use the base form "have," never "has" or "had." Then we add the past participle of the main verb (e.g., gone, done, seen).</p>
+        </div>
+        
+        <div class="grammar-tip">
+          <p>📝 <strong>TIP 2:</strong> To remember the difference between "could have" and "should have," think about possibility versus advice. "Could have" means it was possible but didn't happen; "should have" suggests it would have been better if something had happened.</p>
+        </div>
+        
+        <div class="grammar-tip">
+          <p>📝 <strong>TIP 3:</strong> When using "would have," remember it's usually part of a third conditional sentence, often with an "if clause" (using "if + had + past participle"). For example: "If I had studied harder (condition), I would have passed the exam (result)."</p>
+        </div>
+      </section>
+
+      <!-- MCQ PRACTICE SECTION -->
+      <section class="content-section mcq-container">
+        <h2>Test Your Knowledge</h2>
+        <p>Choose the correct option for each question to test your understanding of modal perfect forms.</p>
+        
+        <div id="mcq" class="activity-container active">
+          <!-- Question 1 (easy) -->
+          <div class="question" id="q1">
+            <p class="mcq-question">1. I don't see James at the meeting. He ________ about it.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. may forgotten</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. must have forgotten</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. would forgotten</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. should forgotten</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 2 -->
+          <div class="question" id="q2">
+            <p class="mcq-question">2. We lost the match, but we ________ if our best player hadn't been injured.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. might won</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. must have won</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. could have won</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. would won</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 3 -->
+          <div class="question" id="q3">
+            <p class="mcq-question">3. You ________ me about the change in plans! I went to the wrong restaurant.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. could tell</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. should have told</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. must told</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. would told</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 4 -->
+          <div class="question" id="q4">
+            <p class="mcq-question">4. I don't know where Susan is. She ________ home already.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. might have gone</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. should gone</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. may gone</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. would have gone</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 5 -->
+          <div class="question" id="q5">
+            <p class="mcq-question">5. I failed the exam. I ________ harder.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. must have studied</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. should have studied</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. might studied</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. would studied</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 6 -->
+          <div class="question" id="q6">
+            <p class="mcq-question">6. Look at all these empty cups and plates. There ________ a party here last night.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. must have been</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. should been</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. would have been</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. could been</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 7 -->
+          <div class="question" id="q7">
+            <p class="mcq-question">7. Which sentence expresses criticism about a past action?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. He could have passed the exam.</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. He might have passed the exam.</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. He must have passed the exam.</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. He should have passed the exam.</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 8 -->
+          <div class="question" id="q8">
+            <p class="mcq-question">8. I ________ the concert if I'd known you had tickets.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. must have attended</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. might attended</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. would have attended</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. should attended</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 9 -->
+          <div class="question" id="q9">
+            <p class="mcq-question">9. I can't find my phone. I ________ it at the restaurant.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. could have left</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. should left</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. would have left</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. must left</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 10 -->
+          <div class="question" id="q10">
+            <p class="mcq-question">10. Which of these is grammatically INCORRECT?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. They should have arrived by now.</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. You might of seen her at the party.</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. He could have missed the train.</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. We would have helped if we could.</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <div class="control-buttons">
+            <button id="mcq-submit" class="submit-btn">Check Answers</button>
+            <a href="#summary" class="nav-button">Review Grammar</a>
+            <button id="mcq-restart" class="restart-btn" style="display:none;">Try Again</button>
+          </div>
+          
+          <div class="score-display" id="mcq-score" style="display:none;">
+            Your score: <span class="score-value">0</span>/10
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <!-- BOTTOM NAVIGATION -->
+  <nav class="bottom-navigation">
+    <a href="modals-advanced-use.html" class="nav-button previous">← Previous: Advanced Modal Uses</a>
+    <div class="center-buttons">
+      <button class="nav-button print-button" onclick="window.print()">Print This Page</button>
+      <a href="modal-perfect-forms-practice.html" class="nav-button activities">Practice Activities</a>
+    </div>
+    <a href="modal-differences.html" class="nav-button next">Next: Differences Between Similar Modals →</a>
+  </nav>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="../../home.html">Home</a></li>
+          <li><a href="../../home.html#where-to-start">Grammar</a></li>
+          <li><a href="../../extra-practice.html">Extra Practice</a></li>
+          <li><a href="../../my-progress.html">My Progress</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Grammar Topics</h3>
+        <ul>
+          <li><a href="advanced-grammar.html#advanced-tenses-and-aspect">Advanced Tenses</a></li>
+          <li><a href="advanced-grammar.html#conditionals">Advanced Conditionals</a></li>
+          <li><a href="advanced-grammar.html#modals">Advanced Modal Verbs</a></li>
+          <li><a href="advanced-grammar.html#passive">Advanced Passive Voice</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="../../about.html">About</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© 2025 English in Doses | All rights reserved | <a href="../../license.html">Licensing Information</a></p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="../../js/core.js"></script>
+  <script src="../../js/mcq.js"></script>
+  <script src="../../js/progress-tracking.js"></script>
+  
+  <!-- MCQ JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize MCQ Module
+      MCQModule.init({
+        containerId: 'mcq',
+        answers: {
+          'q1': 1,  // B. must have forgotten
+          'q2': 2,  // C. could have won
+          'q3': 1,  // B. should have told
+          'q4': 0,  // A. might have gone
+          'q5': 1,  // B. should have studied
+          'q6': 0,  // A. must have been
+          'q7': 3,  // D. He should have passed the exam.
+          'q8': 2,  // C. would have attended
+          'q9': 0,  // A. could have left
+          'q10': 1  // B. You might of seen her at the party.
+        },
+        correctExplanations: {
+          'q1': "\"Must have forgotten\" is correct because we're making a logical conclusion about the past based on the evidence (James not being at the meeting).",
+          'q2': "\"Could have won\" is correct because it expresses a past possibility that didn't happen due to the player's injury.",
+          'q3': "\"Should have told\" is correct because it expresses criticism about a past action that didn't happen but should have.",
+          'q4': "\"Might have gone\" is correct because we're expressing uncertainty about a past action (where Susan is now).",
+          'q5': "\"Should have studied\" is correct because it expresses that studying harder would have been a better choice in the past.",
+          'q6': "\"Must have been\" is correct because we're making a logical conclusion about a past event based on the evidence (empty cups and plates).",
+          'q7': "\"He should have passed the exam\" expresses criticism, suggesting that passing was expected but didn't happen.",
+          'q8': "\"Would have attended\" is correct because it's a hypothetical past situation—you would have gone if you had known about the tickets (but you didn't).",
+          'q9': "\"Could have left\" is correct because it expresses a possible explanation for the missing phone.",
+          'q10': "\"You might of seen her\" is incorrect. The correct form is \"You might have seen her.\" We never use \"of\" after modals; we always use \"have.\""
+        },
+        incorrectExplanations: {
+          'q1': "This form is incorrect. After modals, we need \"have\" + past participle, not just the past participle alone.",
+          'q2': "This is not the right modal for this situation. We need a form that expresses an unrealized past possibility.",
+          'q3': "This form is incorrect. We need \"have\" + past participle after the modal, not just the past form of the verb.",
+          'q4': "This is not grammatically correct. After modals like \"may\" or \"might,\" we need \"have\" + past participle.",
+          'q5': "This isn't the appropriate modal for expressing regret or a better alternative in the past.",
+          'q6': "This isn't grammatically correct. We always need \"have\" after modals when talking about the past.",
+          'q7': "This sentence doesn't express criticism; it expresses a different meaning.",
+          'q8': "This doesn't fit the hypothetical past situation described in the sentence.",
+          'q9': "This is not grammatically correct. After modals, we always need \"have\" + past participle when referring to the past.",
+          'q10': "Check for any grammatical errors in the modal perfect forms."
+        },
+        showAllQuestionsAtOnce: true, // Show all questions at once
+        onComplete: function(score, total) {
+          console.log(`MCQ completed with score: ${score}/${total}`);
+          
+          // Track this activity completion in the progress system
+          if (typeof ProgressTracker !== "undefined") {
+            // Mark the MCQ as completed in the 'activities' category
+            ProgressTracker.markItemCompleted('activities', 'mcq-modal-perfect-forms', {
+              score: score,
+              maxScore: total,
+              completed: true,
+              completedAt: new Date().toISOString(),
+              title: "Modal Perfect Forms Quick Practice"
+            });
+            
+            // Also mark the lesson itself as viewed/completed
+            ProgressTracker.updateItemProgress('lessons', 'modal-perfect-forms', {
+              lastViewed: new Date().toISOString(),
+              progress: 100, // Percent complete
+              title: "Modal Perfect Forms"
+            });
+          }
+        }
+      });
+    });
+    </script>
+</body>
+</html>

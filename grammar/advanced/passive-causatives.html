@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Standard head content -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Complex Passive Causatives - Advanced ESL grammar explanation with examples and practice">
+  <title>Complex Passive Causatives - Advanced ESL Grammar</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../../images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../images//favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../images//favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/activities.css">
+  <link rel="stylesheet" href="../../css/progress-tracking-styles.css">
+
+  <!-- Additional styles for MCQ and highlighting -->
+  <style>
+    /* Make sure all MCQ questions remain visible */
+    #mcq-container .question {
+      display: block !important;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--border-color, #ddd);
+    }
+    
+    .activity-container.active {
+      display: block !important;
+    }
+    
+    /* Ensure proper spacing between options */
+    .options {
+      margin-bottom: 15px;
+    }
+    
+    /* Make sure feedback is visible */
+    .feedback {
+      margin-top: 10px;
+      min-height: 20px;
+    }
+
+    /* Additional styles for clickable option divs */
+    .option {
+      cursor: pointer;
+      transition: background-color 0.2s;
+      padding: 8px 12px;
+      border: 1px solid var(--border-color, #ddd);
+      border-radius: 4px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .option:hover {
+      background-color: var(--mcq-hover-bg, #d0e6f7);
+      transform: translateY(-1px);
+    }
+    
+    .option.selected {
+      background-color: var(--mcq-selected-bg, #d0e6f7);
+      border: 2px solid var(--mcq-selected-border, #3498db);
+      font-weight: bold;
+    }
+    
+    [data-theme="dark"] .option:hover {
+      background-color: var(--mcq-hover-bg, #253545);
+    }
+    
+    [data-theme="dark"] .option.selected {
+      background-color: var(--mcq-selected-bg, #253545);
+      border-color: var(--mcq-selected-border, #4fa3e0);
+    }
+    
+    /* Highlighting for grammar structures */
+    .grammar-highlight {
+      font-weight: bold;
+      color: var(--accent-color, #3498db);
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip link and theme toggle -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  
+  <div class="theme-toggle-container">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="light-icon">☀️</span>
+      <span class="dark-icon">🌙</span>
+    </button>
+  </div>
+  
+  <!-- Navigation -->
+  <nav class="main-navigation">
+    <a href="../../home.html" class="site-logo">
+      <img src="../../images/my-logo.svg" alt="English in Doses" width="150" height="auto">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <div class="nav-links">
+      <a href="../../home.html" class="nav-link">Home</a>
+      <a href="../../about.html" class="nav-link">About Us</a>
+      <a href="../../contact.html" class="nav-link">Contact Us</a>
+      <a href="../../home.html#where-to-start" class="nav-link">Grammar</a>
+      <a href="../../extra-practice.html" class="nav-link">Extra Practice</a>
+      <a href="../../conversation-page.html" class="nav-link">Conversation</a>
+      <a href="../../my-progress.html" class="nav-link">My Progress</a>
+    </div>
+
+    <div class="advanced-nav-indicator"></div>
+  </nav>
+
+  <div class="container">
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs" aria-label="breadcrumb">
+      <span class="breadcrumb-item"><a href="../../home.html">Home</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="advanced-grammar.html">Advanced Grammar</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="advanced-grammar.html#passive-voice">Passive Voice</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item">Complex Passive Causatives</span>
+    </div>
+
+    <main id="main-content">
+      <h1>Complex Passive Causatives (have/get something done)</h1>
+
+      <!-- INTRODUCTION SECTION -->
+      <section class="intro-section">
+        <h2>Introduction</h2>
+        <p>Causative structures in English express when someone causes something to happen, typically by arranging for another person to do it. Passive causatives specifically focus on the result rather than who performed the action. These structures are essential for talking about services, experiences, and situations where you arrange for things to be done but don't do them yourself.</p>
+        
+        <h3>After this lesson, you will be able to:</h3>
+        <ul>
+          <li>Use "have something done" and "get something done" structures correctly</li>
+          <li>Understand the subtle differences between the various causative forms</li>
+          <li>Apply these structures to talk about services, experiences, and arrangements</li>
+        </ul>
+      </section>
+
+      <!-- GRAMMAR POINT SECTION 1 -->
+      <section class="grammar-point">
+        <h2>Have Something Done</h2>
+        
+        <p><strong>Form</strong>: subject + have + object + past participle (V3) + (by + agent)</p>
+        
+        <p><strong>When to use it</strong>: Use this structure when:</p>
+        <ul>
+          <li>Someone arranges for a service to be done</li>
+          <li>The subject doesn't perform the action themselves</li>
+          <li>Discussing professional or paid services</li>
+        </ul>
+        
+        <div class="example">
+          <ol>
+            <li>We <span class="grammar-highlight">had our house painted</span> last month. (We arranged for painters to do this)</li>
+            <li>I'm <span class="grammar-highlight">having my car serviced</span> tomorrow. (I've scheduled this service)</li>
+            <li>The company <span class="grammar-highlight">had its website redesigned</span> by a professional. (They hired someone)</li>
+          </ol>
+        </div>
+        
+        <div class="note">
+          <p><strong>Native speaker note:</strong> This structure is neutral in tone and commonly used for standard services or arrangements. The emphasis is on the arrangement and result rather than who performed the action.</p>
+        </div>
+      </section>
+
+      <!-- GRAMMAR POINT SECTION 2 -->
+      <section class="grammar-point">
+        <h2>Get Something Done</h2>
+        
+        <p><strong>Form</strong>: subject + get + object + past participle (V3) + (by + agent)</p>
+        
+        <p><strong>When to use it</strong>: Use this structure when:</p>
+        <ul>
+          <li>Someone arranges for something with some effort or difficulty</li>
+          <li>Emphasising the achievement of getting something accomplished</li>
+          <li>In more informal or conversational contexts</li>
+        </ul>
+        
+        <div class="example">
+          <ol>
+            <li>I finally <span class="grammar-highlight">got my visa approved</span> after months of paperwork. (Emphasises effort/achievement)</li>
+            <li>She <span class="grammar-highlight">got her article published</span> in a major magazine. (Suggests accomplishment)</li>
+            <li>We <span class="grammar-highlight">got our application processed</span> quickly because we knew someone in the office. (Implies advantage)</li>
+          </ol>
+        </div>
+        
+        <div class="note">
+          <p><strong>Native speaker note:</strong> "Get something done" often implies more effort, difficulty, or personal involvement than "have something done." It's also more informal and common in spoken English.</p>
+        </div>
+      </section>
+
+      <!-- GRAMMAR POINT SECTION 3 -->
+      <section class="grammar-point">
+        <h2>Negative Experiences with Causatives</h2>
+        
+        <p><strong>Form</strong>: subject + have/get + object + past participle (V3)</p>
+        
+        <p><strong>When to use it</strong>: Use this structure when:</p>
+        <ul>
+          <li>Something negative happens to the subject's possessions or themselves</li>
+          <li>The subject didn't want or arrange for it to happen</li>
+          <li>Describing unfortunate events or victimisation</li>
+        </ul>
+        
+        <div class="example">
+          <ol>
+            <li>She <span class="grammar-highlight">had her purse stolen</span> on the train. (She didn't arrange this; it happened to her)</li>
+            <li>They <span class="grammar-highlight">got their window broken</span> during the storm. (Unwanted experience)</li>
+            <li>He <span class="grammar-highlight">had his identity stolen</span> when he used that unsecured website. (Negative consequence)</li>
+          </ol>
+        </div>
+        
+        <div class="note">
+          <p><strong>Native speaker note:</strong> For negative experiences, the context makes it clear that the subject was a victim rather than someone who arranged for the action. The structure is the same as for arranged services, but the meaning is different.</p>
+        </div>
+      </section>
+
+      <!-- VISUAL COMPARISON TABLE -->
+      <section id="summary">
+        <h2>Summary: Passive Causative Structures</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Causative Type</th>
+              <th>Structure</th>
+              <th>Usage</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Have causative</td>
+              <td>have + object + past participle</td>
+              <td>Arranged services, neutral tone</td>
+              <td><span class="example">I had my hair cut yesterday.</span></td>
+            </tr>
+            <tr>
+              <td>Get causative</td>
+              <td>get + object + past participle</td>
+              <td>Achievement with effort, informal</td>
+              <td><span class="example">She got her car repaired yesterday.</span></td>
+            </tr>
+            <tr>
+              <td>Negative experience with have</td>
+              <td>have + object + past participle</td>
+              <td>Victim of negative event</td>
+              <td><span class="example">I had my wallet stolen.</span></td>
+            </tr>
+            <tr>
+              <td>Negative experience with get</td>
+              <td>get + object + past participle</td>
+              <td>Victim of negative event (informal)</td>
+              <td><span class="example">We got our car scratched.</span></td>
+            </tr>
+            <tr>
+              <td>Present continuous causative</td>
+              <td>am/is/are having + object + past participle</td>
+              <td>Service in progress or planned</td>
+              <td><span class="example">I'm having my teeth cleaned today.</span></td>
+            </tr>
+            <tr>
+              <td>Past causative</td>
+              <td>had + object + past participle</td>
+              <td>Completed arranged service</td>
+              <td><span class="example">They had their house painted last month.</span></td>
+            </tr>
+            <tr>
+              <td>Future causative</td>
+              <td>will have + object + past participle</td>
+              <td>Future arranged service</td>
+              <td><span class="example">I'll have my car serviced next week.</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- COMMON ERRORS SECTION -->
+      <section class="common-errors">
+        <h2 class="common-errors-heading">Common Errors</h2>
+        
+        <div class="error-pattern">
+          <p class="error-title"><strong>1: Confusing have/get something done with passive voice</strong></p>
+          <p class="incorrect">I had cut my hair yesterday.</p><br>
+          <p class="correct">I had my hair cut yesterday. ✓</p>
+          <p class="explanation"><em>Remember that in causative structures, the object (hair) comes between "have/get" and the past participle.</em></p>
+        </div>
+        
+        <div class="error-pattern">
+          <p class="error-title"><strong>2: Using the wrong form of the main verb</strong></p>
+          <p class="incorrect">She got her house painting last week.</p><br>
+          <p class="correct">She got her house painted last week. ✓</p>
+          <p class="explanation"><em>Use the past participle (V3) after the object, not the -ing form.</em></p>
+        </div>
+        
+        <div class="error-pattern">
+          <p class="error-title"><strong>3: Using causative for things you do yourself</strong></p>
+          <p class="incorrect">I had written my essay yesterday.</p><br>
+          <p class="correct">I wrote my essay yesterday. ✓</p>
+          <p class="explanation"><em>Only use causative structures when someone else performs the action. For actions you do yourself, use normal active voice.</em></p>
+        </div>
+      </section>
+
+      <!-- TIPS SECTION -->
+      <section class="tips">
+        <h2 class="tips-heading">Useful Tips</h2>
+        
+        <div class="grammar-tip">
+          <p>📝 <strong>TIP 1:</strong> To decide whether to use "have" or "get" in causative structures, consider the formality of the situation and whether you want to emphasise effort or achievement (use "get") or simply state a fact (use "have").</p>
+        </div>
+        
+        <div class="grammar-tip">
+          <p>📝 <strong>TIP 2:</strong> For negative experiences, the same structure is used, but the context makes it clear that you didn't arrange for it to happen. If in doubt, add information that clarifies it was unwanted: "I had my wallet stolen while I was on holiday."</p>
+        </div>
+        
+        <div class="grammar-tip">
+          <p>📝 <strong>TIP 3:</strong> The causative structure is particularly useful when talking about services: haircuts, repairs, cleaning, etc. It's a very common way to describe such situations in English, so it's worth practising examples related to everyday services you might use.</p>
+        </div>
+      </section>
+
+      <!-- MCQ PRACTICE SECTION -->
+      <section class="content-section mcq-container">
+        <h2>Test Your Knowledge</h2>
+        <p>Choose the correct option for each question to test your understanding of complex passive causatives.</p>
+        
+        <div id="mcq" class="activity-container active">
+          <!-- Question 1 (easy) -->
+          <div class="question" id="q1">
+            <p class="mcq-question">1. Which sentence correctly uses the causative "have something done" structure?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. I have cut my hair yesterday.</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. I had my hair cut yesterday.</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. I have my hair cutting yesterday.</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. I was had my hair cut yesterday.</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 2 -->
+          <div class="question" id="q2">
+            <p class="mcq-question">2. Complete the sentence: "We're ________ our kitchen renovated next month."</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. have</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. having</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. to have</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. had</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 3 -->
+          <div class="question" id="q3">
+            <p class="mcq-question">3. Which sentence describes a negative or unwanted experience?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. She had her house painted last month.</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. He got his shoes repaired at the mall.</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. They had their car stolen while on holiday.</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. I'm having my suit cleaned for the wedding.</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 4 -->
+          <div class="question" id="q4">
+            <p class="mcq-question">4. Which sentence implies that effort or achievement was involved?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. She had her hair styled for the wedding.</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. She finally got her research published in a respected journal.</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. They had their house cleaned by a service.</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. I had my car serviced yesterday.</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 5 -->
+          <div class="question" id="q5">
+            <p class="mcq-question">5. Which sentence is grammatically INCORRECT?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. I had my windows cleaned yesterday.</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. He got his application approved.</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. We had repaired our roof last week.</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. She's having her car serviced tomorrow.</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 6 -->
+          <div class="question" id="q6">
+            <p class="mcq-question">6. What's the difference between "She had her bike stolen" and "She had her bike repaired"?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. The first uses past simple; the second uses present perfect.</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. There is no difference; they both mean she arranged for something to happen.</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. The first implies an unwanted experience; the second describes an arranged service.</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. The first is active voice; the second is passive voice.</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 7 -->
+          <div class="question" id="q7">
+            <p class="mcq-question">7. Which sentence uses the causative correctly in the future tense?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. I will have cleaned my apartment tomorrow.</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. I will having my apartment cleaned tomorrow.</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. I will have my apartment cleaned tomorrow.</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. I will get clean my apartment tomorrow.</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 8 -->
+          <div class="question" id="q8">
+            <p class="mcq-question">8. What's the correct transformation of "The hairdresser cut my hair" into a causative structure?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. My hair was cut by the hairdresser.</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. I had my hair cut by the hairdresser.</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. I had cut my hair at the hairdresser.</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. The hairdresser had my hair cut.</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 9 -->
+          <div class="question" id="q9">
+            <p class="mcq-question">9. In which context is "get something done" more appropriate than "have something done"?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. In a formal business report</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. When describing a routine service like a haircut</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. When talking to friends about finally getting a difficult task accomplished</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. In academic writing</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 10 -->
+          <div class="question" id="q10">
+            <p class="mcq-question">10. Which of these is NOT a typical use of causative structures?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. Talking about services (repairs, cleaning, etc.)</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. Describing negative experiences that happened to you</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. Discussing achievements that required effort</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. Describing actions you did yourself without help</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <div class="control-buttons">
+            <button id="mcq-submit" class="submit-btn">Check Answers</button>
+            <a href="#summary" id="check-grammar" class="nav-button" style="display:none;">Review Grammar</a>
+            <button id="mcq-restart" class="restart-btn" style="display:none;">Try Again</button>
+          </div>
+          
+          <div class="score-display" id="mcq-score" style="display:none;">
+            Your score: <span class="score-value">0</span>/10
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <!-- BOTTOM NAVIGATION -->
+  <nav class="bottom-navigation">
+    <a href="passive-reporting-verbs.html" class="nav-button previous">← Previous: Passive Reporting Verbs</a>
+    <div class="center-buttons">
+      <button class="nav-button print-button" onclick="window.print()">Print This Page</button>
+      <a href="passive-causatives-practice.html" class="nav-button activities">Practice Activities</a>
+    </div>
+    <a href="double-passive-constructions.html" class="nav-button next">Next: Double Passive Constructions →</a>
+  </nav>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="../../home.html">Home</a></li>
+          <li><a href="../../home.html#where-to-start">Grammar</a></li>
+          <li><a href="../../extra-practice.html">Extra Practice</a></li>
+          <li><a href="../../my-progress.html">My Progress</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Grammar Topics</h3>
+        <ul>
+          <li><a href="advanced-grammar.html#advanced-tenses-and-aspect">Advanced Tenses</a></li>
+          <li><a href="advanced-grammar.html#conditionals">Advanced Conditionals</a></li>
+          <li><a href="advanced-grammar.html#modals">Advanced Modal Verbs</a></li>
+          <li><a href="advanced-grammar.html#passive">Advanced Passive Voice</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="../../about.html">About</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© 2025 English in Doses | All rights reserved | <a href="../../license.html">Licensing Information</a></p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="../../js/core.js"></script>
+  <script src="../../js/mcq.js"></script>
+  <script src="../../js/progress-tracking.js"></script>
+  
+  <!-- MCQ JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize MCQ Module
+      MCQModule.init({
+        containerId: 'mcq',
+        answers: {
+          'q1': 1,  // B - I had my hair cut yesterday.
+          'q2': 1,  // B - having
+          'q3': 2,  // C - They had their car stolen while on holiday.
+          'q4': 1,  // B - She finally got her research published in a respected journal.
+          'q5': 2,  // C - We had repaired our roof last week.
+          'q6': 2,  // C - The first implies an unwanted experience; the second describes an arranged service.
+          'q7': 2,  // C - I will have my apartment cleaned tomorrow.
+          'q8': 1,  // B - I had my hair cut by the hairdresser.
+          'q9': 2,  // C - When talking to friends about finally getting a difficult task accomplished
+          'q10': 3  // D - Describing actions you did yourself without help
+        },
+        correctExplanations: {
+          'q1': "Correct! The causative structure is 'subject + have + object + past participle'.",
+          'q2': "Correct! Present continuous causative uses 'am/is/are having + object + past participle'.",
+          'q3': "Correct! This sentence describes an unwanted experience (car theft) using the causative structure.",
+          'q4': "Correct! The use of 'got' with 'finally' emphasizes achievement and effort.",
+          'q5': "Correct! This is incorrect. For causative, it should be 'We had our roof repaired last week'.",
+          'q6': "Correct! The first sentence means someone stole her bike (negative experience), while the second means she arranged for repairs (service).",
+          'q7': "Correct! Future causative uses 'will have + object + past participle'.",
+          'q8': "Correct! This correctly transforms the active sentence into a causative structure.",
+          'q9': "Correct! 'Get' is more informal and often implies effort or achievement, making it suitable for conversation with friends.",
+          'q10': "Correct! Causative structures are used when someone else performs the action, not for things you do yourself."
+        },
+        incorrectExplanations: {
+          'q1': "This sentence doesn't use the correct causative structure. It should be 'subject + have + object + past participle'.",
+          'q2': "This is not the correct form for present continuous causative.",
+          'q3': "This sentence describes an arranged service, not a negative experience.",
+          'q4': "This sentence doesn't particularly emphasize achievement or effort.",
+          'q5': "This sentence is grammatically correct.",
+          'q6': "This explanation is incorrect. Both sentences use the same grammatical structure but differ in meaning based on context.",
+          'q7': "This is not the correct form for the future causative.",
+          'q8': "This transformation doesn't use the causative structure correctly.",
+          'q9': "In this context, 'have something done' would be more appropriate than 'get something done'.",
+          'q10': "This is a typical use of causative structures."
+        },
+        showAllQuestionsAtOnce: true, // Show all questions at once
+        onComplete: function(score, total) {
+          console.log(`MCQ completed with score: ${score}/${total}`);
+          
+          // Track this activity completion in the progress system
+          if (typeof ProgressTracker !== "undefined") {
+            // Mark the MCQ as completed in the 'activities' category
+            ProgressTracker.markItemCompleted('activities', 'mcq-passive-causatives', {
+              score: score,
+              maxScore: total,
+              completed: true,
+              completedAt: new Date().toISOString(),
+              title: "Complex Passive Causatives Quick Practice"
+            });
+            
+            // Also mark the lesson itself as viewed/completed
+            ProgressTracker.updateItemProgress('lessons', 'passive-causatives', {
+              lastViewed: new Date().toISOString(),
+              progress: 100, // Percent complete
+              title: "Complex Passive Causatives"
+            });
+          }
+        }
+      });
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Standard head content -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Passive Reporting Verbs - Advanced ESL grammar explanation with examples and practice">
+  <title>Passive Reporting Verbs - Advanced ESL Grammar</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../../images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../images//favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../images//favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/activities.css">
+  <link rel="stylesheet" href="../../css/progress-tracking-styles.css">
+
+  <!-- Additional styles for MCQ and highlighting -->
+  <style>
+    /* Make sure all MCQ questions remain visible */
+    #mcq-container .question {
+      display: block !important;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--border-color, #ddd);
+    }
+    
+    .activity-container.active {
+      display: block !important;
+    }
+    
+    /* Ensure proper spacing between options */
+    .options {
+      margin-bottom: 15px;
+    }
+    
+    /* Make sure feedback is visible */
+    .feedback {
+      margin-top: 10px;
+      min-height: 20px;
+    }
+
+    /* Additional styles for clickable option divs */
+    .option {
+      cursor: pointer;
+      transition: background-color 0.2s;
+      padding: 8px 12px;
+      border: 1px solid var(--border-color, #ddd);
+      border-radius: 4px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .option:hover {
+      background-color: var(--mcq-hover-bg, #d0e6f7);
+      transform: translateY(-1px);
+    }
+    
+    .option.selected {
+      background-color: var(--mcq-selected-bg, #d0e6f7);
+      border: 2px solid var(--mcq-selected-border, #3498db);
+      font-weight: bold;
+    }
+    
+    [data-theme="dark"] .option:hover {
+      background-color: var(--mcq-hover-bg, #253545);
+    }
+    
+    [data-theme="dark"] .option.selected {
+      background-color: var(--mcq-selected-bg, #253545);
+      border-color: var(--mcq-selected-border, #4fa3e0);
+    }
+    
+    /* Highlighting for grammar structures */
+    .grammar-highlight {
+      font-weight: bold;
+      color: var(--accent-color, #3498db);
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip link and theme toggle -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  
+  <div class="theme-toggle-container">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="light-icon">☀️</span>
+      <span class="dark-icon">🌙</span>
+    </button>
+  </div>
+  
+  <!-- Navigation -->
+  <nav class="main-navigation">
+    <a href="../../home.html" class="site-logo">
+      <img src="../../images/my-logo.svg" alt="English in Doses" width="150" height="auto">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <div class="nav-links">
+      <a href="../../home.html" class="nav-link">Home</a>
+      <a href="../../about.html" class="nav-link">About Us</a>
+      <a href="../../contact.html" class="nav-link">Contact Us</a>
+      <a href="../../home.html#where-to-start" class="nav-link">Grammar</a>
+      <a href="../../extra-practice.html" class="nav-link">Extra Practice</a>
+      <a href="../../conversation-page.html" class="nav-link">Conversation</a>
+      <a href="../../my-progress.html" class="nav-link">My Progress</a>
+    </div>
+
+    <div class="advanced-nav-indicator"></div>
+  </nav>
+
+  <div class="container">
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs" aria-label="breadcrumb">
+      <span class="breadcrumb-item"><a href="../../home.html">Home</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="advanced-grammar.html">Advanced Grammar</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="advanced-grammar.html#passive-voice">Passive Voice</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item">Passive Reporting Verbs</span>
+    </div>
+
+    <main id="main-content">
+      <h1>Passive Reporting Verbs</h1>
+
+      <!-- INTRODUCTION SECTION -->
+      <section class="intro-section">
+        <h2>Introduction</h2>
+        <p>Passive reporting verbs are used to report information, opinions, or beliefs without stating the source directly. These structures are particularly common in news reports, academic writing, and formal discussions where the emphasis is on the information rather than who provided it. Using these structures effectively adds sophistication to your English and helps you sound more like a native speaker in formal contexts.</p>
+        
+        <h3>After this lesson, you will be able to:</h3>
+        <ul>
+          <li>Use passive reporting structures with present and past reference</li>
+          <li>Form complex passive constructions with reporting verbs</li>
+          <li>Incorporate these advanced structures appropriately in formal writing and speaking</li>
+        </ul>
+      </section>
+
+      <!-- GRAMMAR POINT SECTION 1 -->
+      <section class="grammar-point">
+        <h2>Basic Passive Reporting Structures</h2>
+        
+        <p><strong>Form</strong>: subject + passive reporting verb + infinitive</p>
+
+        <p><strong>Common reporting verbs in passive form</strong>:</p>
+        <ul>
+          <li>is/are said to...</li>
+          <li>is/are thought to...</li>
+          <li>is/are believed to...</li>
+          <li>is/are considered to...</li>
+          <li>is/are reported to...</li>
+          <li>is/are known to...</li>
+          <li>is/are understood to...</li>
+          <li>is/are expected to...</li>
+          <li>is/are supposed to...</li>
+          <li>is/are alleged to...</li>
+        </ul>
+        
+        <p><strong>When to use it</strong>: Use these structures when:</p>
+        <ul>
+          <li>Reporting general opinions or information</li>
+          <li>The source of information is unknown or unimportant</li>
+          <li>Writing formally, especially in academic or journalistic contexts</li>
+        </ul>
+        
+        <div class="example">
+          <ol>
+            <li>The company <span class="grammar-highlight">is said to be</span> developing a new smartphone. (present situation)</li>
+            <li>The treatment <span class="grammar-highlight">is believed to</span> reduce symptoms in most patients. (general fact)</li>
+            <li>The manuscript <span class="grammar-highlight">is thought to</span> date back to the 14th century. (present state)</li>
+          </ol>
+        </div>
+        
+        <div class="note">
+          <p><strong>Native speaker note:</strong> These structures are much more common in written English, especially in newspapers and academic writing, than in casual conversation.</p>
+        </div>
+      </section>
+
+      <!-- GRAMMAR POINT SECTION 2 -->
+      <section class="grammar-point">
+        <h2>Passive Reporting with Past Reference</h2>
+        
+        <p><strong>Form</strong>: subject + passive reporting verb + to have + past participle (V3)</p>
+        
+        <p><strong>When to use it</strong>: Use this structure when:</p>
+        <ul>
+          <li>Reporting something that happened in the past</li>
+          <li>Distancing yourself from the reliability of the information</li>
+          <li>Discussing historical events or past actions</li>
+        </ul>
+        
+        <div class="example">
+          <ol>
+            <li>The politician <span class="grammar-highlight">is said to have accepted</span> bribes from business leaders. (past action)</li>
+            <li>The painting <span class="grammar-highlight">is believed to have been stolen</span> during the war. (past passive)</li>
+            <li>Several witnesses <span class="grammar-highlight">are reported to have seen</span> the accident. (past experience)</li>
+          </ol>
+        </div>
+        
+        <div class="note">
+          <p><strong>Native speaker note:</strong> This structure allows you to report past events without committing to their truth. It's especially useful in journalism when facts haven't been fully verified.</p>
+        </div>
+      </section>
+
+      <!-- GRAMMAR POINT SECTION 3 -->
+      <section class="grammar-point">
+        <h2>Complex Passive Reporting Structures</h2>
+        
+        <p><strong>Form for ongoing actions</strong>: subject + passive reporting verb + to be + verb-ing</p>
+        
+        <p><strong>Form for passive infinitives</strong>: subject + passive reporting verb + to be + past participle (V3)</p>
+        
+        <p><strong>When to use it</strong>: Use these complex forms when:</p>
+        <ul>
+          <li>Reporting current ongoing actions (to be verb-ing)</li>
+          <li>Reporting a passive situation or state (to be + past participle)</li>
+          <li>Discussing formal or academic topics</li>
+        </ul>
+        
+        <div class="example">
+          <ol>
+            <li>The prime minister <span class="grammar-highlight">is reported to be considering</span> a cabinet reshuffle. (ongoing action)</li>
+            <li>The suspect <span class="grammar-highlight">is believed to be hiding</span> somewhere in the mountains. (current situation)</li>
+            <li>The ancient text <span class="grammar-highlight">is thought to be written</span> in a previously unknown language. (passive state)</li>
+          </ol>
+        </div>
+        
+        <div class="note">
+          <p><strong>Native speaker note:</strong> These complex forms sound very formal and are typically found in news reports and academic writing rather than everyday speech.</p>
+        </div>
+      </section>
+
+      <!-- VISUAL COMPARISON TABLE -->
+      <section id="summary">
+        <h2>Summary: Passive Reporting Verbs</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Structure</th>
+              <th>Form</th>
+              <th>Time Reference</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Present simple</td>
+              <td>is/are + reported verb + to + infinitive</td>
+              <td>Present facts or states</td>
+              <td><span class="example">He is said to live in Paris.</span></td>
+            </tr>
+            <tr>
+              <td>Perfect form</td>
+              <td>is/are + reported verb + to have + past participle</td>
+              <td>Past events</td>
+              <td><span class="example">She is believed to have left the country.</span></td>
+            </tr>
+            <tr>
+              <td>Continuous form</td>
+              <td>is/are + reported verb + to be + verb-ing</td>
+              <td>Current ongoing actions</td>
+              <td><span class="example">They are thought to be working on a solution.</span></td>
+            </tr>
+            <tr>
+              <td>Passive infinitive</td>
+              <td>is/are + reported verb + to be + past participle</td>
+              <td>Present passive situations</td>
+              <td><span class="example">The document is believed to be signed by the president.</span></td>
+            </tr>
+            <tr>
+              <td>Perfect passive</td>
+              <td>is/are + reported verb + to have been + past participle</td>
+              <td>Past passive actions</td>
+              <td><span class="example">The painting is thought to have been stolen.</span></td>
+            </tr>
+            <tr>
+              <td>Active equivalent</td>
+              <td>People + reporting verb + that + subject + verb</td>
+              <td>Varies with tense</td>
+              <td><span class="example">People say that he lives in Paris.</span></td>
+            </tr>
+            <tr>
+              <td>Modal + passive reporting</td>
+              <td>Subject + may/might + be + reported verb + to + verb</td>
+              <td>Uncertain information</td>
+              <td><span class="example">He may be thought to have valuable information.</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- COMMON ERRORS SECTION -->
+      <section class="common-errors">
+        <h2 class="common-errors-heading">Common Errors</h2>
+        
+        <div class="error-pattern">
+          <p class="error-title"><strong>1: Using "that" instead of infinitive</strong></p>
+          <p class="incorrect">The company is expected that will increase profits.</p><br>
+          <p class="correct">The company is expected to increase profits. ✓</p>
+          <p class="explanation"><em>After passive reporting verbs, use the infinitive form (to + verb) not a "that" clause.</em></p>
+        </div>
+        
+        <div class="error-pattern">
+          <p class="error-title"><strong>2: Wrong form for past reference</strong></p>
+          <p class="incorrect">The suspect is believed to steal the painting last month.</p><br>
+          <p class="correct">The suspect is believed to have stolen the painting last month. ✓</p>
+          <p class="explanation"><em>For past actions, use "to have + past participle (V3)" after the reporting verb.</em></p>
+        </div>
+        
+        <div class="error-pattern">
+          <p class="error-title"><strong>3: Incorrect passive structure in complex forms</strong></p>
+          <p class="incorrect">The treatment is thought to been working well.</p><br>
+          <p class="correct">The treatment is thought to be working well. ✓</p>
+          <p class="explanation"><em>Remember to use "to be + verb-ing" for ongoing actions, not "to been".</em></p>
+        </div>
+      </section>
+
+      <!-- TIPS SECTION -->
+      <section class="tips">
+        <h2 class="tips-heading">Useful Tips</h2>
+        
+        <div class="grammar-tip">
+          <p>📝 <strong>TIP 1:</strong> Passive reporting structures are excellent for academic writing and formal reports when you want to distance yourself from the information or when the source isn't important.</p>
+        </div>
+        
+        <div class="grammar-tip">
+          <p>📝 <strong>TIP 2:</strong> To remember the structure, think of the pattern: subject + is/are + reporting verb + to + verb form. The verb form changes depending on whether you're talking about present (to be), past (to have been), or ongoing actions (to be verb-ing).</p>
+        </div>
+        
+        <div class="grammar-tip">
+          <p>📝 <strong>TIP 3:</strong> Practice identifying these structures in newspaper articles, academic journals, and formal reports, as they appear frequently in these types of texts.</p>
+        </div>
+      </section>
+
+      <!-- MCQ PRACTICE SECTION -->
+      <section class="content-section mcq-container">
+        <h2>Test Your Knowledge</h2>
+        <p>Choose the correct option for each question to test your understanding of passive reporting verbs.</p>
+        
+        <div id="mcq" class="activity-container active">
+          <!-- Question 1 (easy) -->
+          <div class="question" id="q1">
+            <p class="mcq-question">1. Which sentence uses passive reporting verb structure correctly?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. The company is said that it makes high-quality products.</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. The company is said to make high-quality products.</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. The company said to make high-quality products.</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. The company is saying to make high-quality products.</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 2 -->
+          <div class="question" id="q2">
+            <p class="mcq-question">2. Complete the sentence with the correct form: "The author __________ inspired by real events."</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. is believed been</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. is believed that was</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. is believed to be</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. is believed had been</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 3 -->
+          <div class="question" id="q3">
+            <p class="mcq-question">3. Which sentence correctly reports a past event using passive reporting structure?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. The painting is thought to steal during the war.</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. The painting is thought to have been stolen during the war.</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. The painting is thought that was stolen during the war.</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. The painting is thought to stealing during the war.</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 4 -->
+          <div class="question" id="q4">
+            <p class="mcq-question">4. Which sentence shows an ongoing action correctly?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. The company is reported to developing a new product.</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. The company is reported to be developing a new product.</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. The company is reported to developed a new product.</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. The company is reported that is developing a new product.</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 5 -->
+          <div class="question" id="q5">
+            <p class="mcq-question">5. What is the active voice equivalent of "He is believed to have left the country"?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. People are believing he left the country.</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. People believe he has left the country.</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. He believes to have left the country.</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. He has left the country.</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 6 -->
+          <div class="question" id="q6">
+            <p class="mcq-question">6. In which context would passive reporting verbs be MOST appropriate?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. Informal conversation with friends</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. A text message to a family member</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. An academic research paper</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. A personal diary entry</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 7 -->
+          <div class="question" id="q7">
+            <p class="mcq-question">7. Which of these verbs is commonly used in passive reporting structures?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. sing</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. believe</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. walk</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. eat</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 8 -->
+          <div class="question" id="q8">
+            <p class="mcq-question">8. How would you correctly report this in passive form: "People consider him to be the best candidate"?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. He considers to be the best candidate.</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. He is considered the best candidate.</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. He is considered to be the best candidate.</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. He is considered that he is the best candidate.</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 9 -->
+          <div class="question" id="q9">
+            <p class="mcq-question">9. Which sentence contains an ERROR in passive reporting structure?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. The disease is known to affect mostly children.</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. The suspect is reported to have confessed to the crime.</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. The building is understood to be designed by a famous architect.</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. The minister is expected that will resign next week.</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <!-- Question 10 -->
+          <div class="question" id="q10">
+            <p class="mcq-question">10. What's the main purpose of using passive reporting structures?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. To make sentences shorter and simpler</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. To report information without specifying the source</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. To make informal conversation more interesting</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. To avoid using past tense forms</span>
+              </div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+          
+          <div class="control-buttons">
+            <button id="mcq-submit" class="submit-btn">Check Answers</button>
+            <a href="#summary" id="check-grammar" class="nav-button" style="display:none;">Review Grammar</a>
+            <button id="mcq-restart" class="restart-btn" style="display:none;">Try Again</button>
+          </div>
+          
+          <div class="score-display" id="mcq-score" style="display:none;">
+            Your score: <span class="score-value">0</span>/10
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <!-- BOTTOM NAVIGATION -->
+  <nav class="bottom-navigation">
+    <a href="passive-infinitives-gerunds.html" class="nav-button previous">← Previous: Passive Infinitives and Gerunds</a>
+    <div class="center-buttons">
+      <button class="nav-button print-button" onclick="window.print()">Print This Page</button>
+      <a href="passive-reporting-verbs-practice.html" class="nav-button activities">Practice Activities</a>
+    </div>
+    <a href="passive-causatives.html" class="nav-button next">Next: Complex Passive Causatives →</a>
+  </nav>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="../../home.html">Home</a></li>
+          <li><a href="../../home.html#where-to-start">Grammar</a></li>
+          <li><a href="../../extra-practice.html">Extra Practice</a></li>
+          <li><a href="../../my-progress.html">My Progress</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Grammar Topics</h3>
+        <ul>
+          <li><a href="advanced-grammar.html#advanced-tenses-and-aspect">Advanced Tenses</a></li>
+          <li><a href="advanced-grammar.html#conditionals">Advanced Conditionals</a></li>
+          <li><a href="advanced-grammar.html#modals">Advanced Modal Verbs</a></li>
+          <li><a href="advanced-grammar.html#passive">Advanced Passive Voice</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="../../about.html">About</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© 2025 English in Doses | All rights reserved | <a href="../../license.html">Licensing Information</a></p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="../../js/core.js"></script>
+  <script src="../../js/mcq.js"></script>
+  <script src="../../js/progress-tracking.js"></script>
+  
+  <!-- MCQ JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize MCQ Module
+      MCQModule.init({
+        containerId: 'mcq',
+        answers: {
+          'q1': 1,  // B - The company is said to make high-quality products.
+          'q2': 2,  // C - is believed to be
+          'q3': 1,  // B - The painting is thought to have been stolen during the war.
+          'q4': 1,  // B - The company is reported to be developing a new product.
+          'q5': 1,  // B - People believe he has left the country.
+          'q6': 2,  // C - An academic research paper
+          'q7': 1,  // B - believe
+          'q8': 2,  // C - He is considered to be the best candidate.
+          'q9': 3,  // D - The minister is expected that will resign next week.
+          'q10': 1  // B - To report information without specifying the source
+        },
+        correctExplanations: {
+          'q1': "Correct! Passive reporting verbs are followed by the infinitive form (to + verb).",
+          'q2': "Correct! The passive reporting structure requires 'to be' before the complement.",
+          'q3': "Correct! To report a past action in passive reporting structure, we use 'to have been + past participle'.",
+          'q4': "Correct! To express an ongoing action, we use 'to be + verb-ing' after the reporting verb.",
+          'q5': "Correct! This is the active equivalent, where 'people' becomes the subject with the active verb 'believe'.",
+          'q6': "Correct! Academic research papers often use passive reporting structures to maintain an objective tone.",
+          'q7': "Correct! 'Believe' is commonly used in passive reporting structures (is believed to...).",
+          'q8': "Correct! The passive form of 'People consider him to be...' is 'He is considered to be...'.",
+          'q9': "Correct! This sentence contains an error. It should be 'The minister is expected to resign next week.'",
+          'q10': "Correct! The main purpose is to report information or beliefs without specifying who said or believed it."
+        },
+        incorrectExplanations: {
+          'q1': "Incorrect. Passive reporting verbs are not followed by 'that' clauses.",
+          'q2': "This structure is incorrect. After 'is believed', we need 'to be' before the complement.",
+          'q3': "This form is incorrect. To report a past action, we need 'to have been + past participle'.",
+          'q4': "This structure is incorrect. For ongoing actions, we need 'to be + verb-ing'.",
+          'q5': "This is not the correct active equivalent of the passive reporting structure.",
+          'q6': "Passive reporting structures are not typically used in this context. They're more common in formal writing.",
+          'q7': "This verb is not commonly used in passive reporting structures.",
+          'q8': "This formulation is incorrect for passive reporting.",
+          'q9': "This sentence is correct and uses proper passive reporting structure.",
+          'q10': "This is not the main purpose of passive reporting structures."
+        },
+        showAllQuestionsAtOnce: true, // Show all questions at once
+        onComplete: function(score, total) {
+          console.log(`MCQ completed with score: ${score}/${total}`);
+          
+          // Track this activity completion in the progress system
+          if (typeof ProgressTracker !== "undefined") {
+            // Mark the MCQ as completed in the 'activities' category
+            ProgressTracker.markItemCompleted('activities', 'mcq-passive-reporting-verbs', {
+              score: score,
+              maxScore: total,
+              completed: true,
+              completedAt: new Date().toISOString(),
+              title: "Passive Reporting Verbs Quick Practice"
+            });
+            
+            // Also mark the lesson itself as viewed/completed
+            ProgressTracker.updateItemProgress('lessons', 'passive-reporting-verbs', {
+              lastViewed: new Date().toISOString(),
+              progress: 100, // Percent complete
+              title: "Passive Reporting Verbs"
+            });
+          }
+        }
+      });
+    });
+    </script>
+</body>
+</html>
