@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Include standardized head content -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Practice activities for Inverted Conditionals - Advanced ESL grammar practice">
+  <title>Inverted Conditionals Practice - Advanced ESL Grammar</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../../images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../images//favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../images//favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/activities.css">
+  <link rel="stylesheet" href="../../css/progress-tracking-styles.css">
+</head>
+<body>
+  <!-- Include skip link and theme toggle -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  
+  <div class="theme-toggle-container">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="light-icon">☀️</span>
+      <span class="dark-icon">🌙</span>
+    </button>
+  </div>
+  
+  <!-- Include navigation -->
+  <nav class="main-navigation">
+    <a href="../../home.html" class="site-logo">
+      <img src="../../images/my-logo.svg" alt="English in Doses" width="150" height="auto">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <div class="nav-links">
+      <a href="../../home.html" class="nav-link">Home</a>
+      <a href="../../about.html" class="nav-link">About Us</a>
+      <a href="../../contact.html" class="nav-link">Contact Us</a>
+      <a href="../../home.html#where-to-start" class="nav-link">Grammar</a>
+      <a href="../../extra-practice.html" class="nav-link">Extra Practice</a>     
+      <a href="../../conversation-page.html" class="nav-link">Conversation</a>
+      <a href="../../my-progress.html" class="nav-link">My Progress</a>
+    </div>
+
+    <div class="advanced-nav-indicator"></div>
+  </nav>
+
+  <div class="container">
+    <!-- Include breadcrumbs -->
+    <div class="breadcrumbs" aria-label="breadcrumb">
+      <span class="breadcrumb-item"><a href="../../home.html">Home</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="../advanced/advanced-grammar.html">Advanced Grammar</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="inverted-conditionals.html">Inverted Conditionals</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item">Practice</span>
+    </div>
+
+    <main id="main-content">
+      <h1>Inverted Conditionals Practice</h1>
+
+      <!-- Introduction Section -->
+      <section class="intro-section">
+        <h2>Practice Activities</h2>
+        <p>Now it's time to practice what you've learned about inverted conditionals. Complete the activities below to test your understanding and build your skills with this advanced grammar structure.</p>
+        
+        <div id="progress-container" class="progress-container">
+          <div id="progress-bar" class="progress-bar" style="width: 0%"></div>
+        </div>
+        <div id="progress-info" class="progress-info">
+          Progress: 0% complete (0/4 activities completed)
+        </div>
+      </section>
+
+      <!-- Activity Navigation -->
+      <div id="activity-nav" class="activity-nav">
+        <button data-activity="mcq" class="activity-nav-btn active">Multiple Choice</button>
+        <button data-activity="gap-fill" class="activity-nav-btn">Gap Fill</button>
+        <button data-activity="matching" class="activity-nav-btn">Matching</button>
+        <button data-activity="transformation" class="activity-nav-btn">Transformation</button>
+      </div>
+
+      <!-- Multiple Choice Questions -->
+      <section id="mcq" class="activity-container active">
+        <h2>Multiple Choice Questions</h2>
+        <p>Choose the correct inverted conditional form for each sentence.</p>
+        
+        <div class="question" id="q1">
+          <p class="mcq-question">1. "If I were you, I would accept the job offer." The inverted form is:</p>
+          <div class="options">
+            <div class="option" data-index="0" onclick="MCQModule.selectOption('q1', 0)">
+              <span>A. Were I you, I would accept the job offer.</span>
+            </div>
+            <div class="option" data-index="1" onclick="MCQModule.selectOption('q1', 1)">
+              <span>B. Were I you, I will accept the job offer.</span>
+            </div>
+            <div class="option" data-index="2" onclick="MCQModule.selectOption('q1', 2)">
+              <span>C. I were you, I would accept the job offer.</span>
+            </div>
+            <div class="option" data-index="3" onclick="MCQModule.selectOption('q1', 3)">
+              <span>D. Were you I, I would accept the job offer.</span>
+            </div>
+          </div>
+          <div class="feedback" id="feedback-q1"></div>
+        </div>
+        
+        <div class="question" id="q2">
+          <p class="mcq-question">2. "If she had told me earlier, I would have helped her." The inverted form is:</p>
+          <div class="options">
+            <div class="option" data-index="0" onclick="MCQModule.selectOption('q2', 0)">
+              <span>A. Had she told me earlier, I would have helped her.</span>
+            </div>
+            <div class="option" data-index="1" onclick="MCQModule.selectOption('q2', 1)">
+              <span>B. Had she told earlier me, I would have helped her.</span>
+            </div>
+            <div class="option" data-index="2" onclick="MCQModule.selectOption('q2', 2)">
+              <span>C. She had told me earlier, I would have helped her.</span>
+            </div>
+            <div class="option" data-index="3" onclick="MCQModule.selectOption('q2', 3)">
+              <span>D. Had told she me earlier, I would have helped her.</span>
+            </div>
+          </div>
+          <div class="feedback" id="feedback-q2"></div>
+        </div>
+        
+        <div class="question" id="q3">
+          <p class="mcq-question">3. "If you should have any questions, please call this number." The inverted form is:</p>
+          <div class="options">
+            <div class="option" data-index="0" onclick="MCQModule.selectOption('q3', 0)">
+              <span>A. Should you have any questions, please call this number.</span>
+            </div>
+            <div class="option" data-index="1" onclick="MCQModule.selectOption('q3', 1)">
+              <span>B. You should have any questions, please call this number.</span>
+            </div>
+            <div class="option" data-index="2" onclick="MCQModule.selectOption('q3', 2)">
+              <span>C. Should any questions you have, please call this number.</span>
+            </div>
+            <div class="option" data-index="3" onclick="MCQModule.selectOption('q3', 3)">
+              <span>D. If should you have any questions, please call this number.</span>
+            </div>
+          </div>
+          <div class="feedback" id="feedback-q3"></div>
+        </div>
+        
+        <div class="question" id="q4">
+          <p class="mcq-question">4. "If it were not for your help, I would have failed the exam." The inverted form is:</p>
+          <div class="options">
+            <div class="option" data-index="0" onclick="MCQModule.selectOption('q4', 0)">
+              <span>A. Were it for your help, I would have failed the exam.</span>
+            </div>
+            <div class="option" data-index="1" onclick="MCQModule.selectOption('q4', 1)">
+              <span>B. Were it not for your help, I would have failed the exam.</span>
+            </div>
+            <div class="option" data-index="2" onclick="MCQModule.selectOption('q4', 2)">
+              <span>C. Were not it for your help, I would have failed the exam.</span>
+            </div>
+            <div class="option" data-index="3" onclick="MCQModule.selectOption('q4', 3)">
+              <span>D. Not were it for your help, I would have failed the exam.</span>
+            </div>
+          </div>
+          <div class="feedback" id="feedback-q4"></div>
+        </div>
+        
+        <div class="question" id="q5">
+          <p class="mcq-question">5. Which of these is a correctly formed negative inverted conditional?</p>
+          <div class="options">
+            <div class="option" data-index="0" onclick="MCQModule.selectOption('q5', 0)">
+              <span>A. Had not I studied, I would have failed.</span>
+            </div>
+            <div class="option" data-index="1" onclick="MCQModule.selectOption('q5', 1)">
+              <span>B. Not had I studied, I would have failed.</span>
+            </div>
+            <div class="option" data-index="2" onclick="MCQModule.selectOption('q5', 2)">
+              <span>C. Had I not studied, I would have failed.</span>
+            </div>
+            <div class="option" data-index="3" onclick="MCQModule.selectOption('q5', 3)">
+              <span>D. If had I not studied, I would have failed.</span>
+            </div>
+          </div>
+          <div class="feedback" id="feedback-q5"></div>
+        </div>
+        
+        <div class="question" id="q6">
+          <p class="mcq-question">6. "If I were to win the lottery, I would buy a house." The inverted form is:</p>
+          <div class="options">
+            <div class="option" data-index="0" onclick="MCQModule.selectOption('q6', 0)">
+              <span>A. Were I to win the lottery, I would buy a house.</span>
+            </div>
+            <div class="option" data-index="1" onclick="MCQModule.selectOption('q6', 1)">
+              <span>B. Were to I win the lottery, I would buy a house.</span>
+            </div>
+            <div class="option" data-index="2" onclick="MCQModule.selectOption('q6', 2)">
+              <span>C. Were I win the lottery, I would buy a house.</span>
+            </div>
+            <div class="option" data-index="3" onclick="MCQModule.selectOption('q6', 3)">
+              <span>D. I were to win the lottery, I would buy a house.</span>
+            </div>
+          </div>
+          <div class="feedback" id="feedback-q6"></div>
+        </div>
+        
+        <div class="question" id="q7">
+          <p class="mcq-question">7. What is the correct inverted form of "If they had arrived on time, they would have seen the performance"?</p>
+          <div class="options">
+            <div class="option" data-index="0" onclick="MCQModule.selectOption('q7', 0)">
+              <span>A. Arrived had they on time, they would have seen the performance.</span>
+            </div>
+            <div class="option" data-index="1" onclick="MCQModule.selectOption('q7', 1)">
+              <span>B. Had they on time arrived, they would have seen the performance.</span>
+            </div>
+            <div class="option" data-index="2" onclick="MCQModule.selectOption('q7', 2)">
+              <span>C. Had they arrived on time, they would have seen the performance.</span>
+            </div>
+            <div class="option" data-index="3" onclick="MCQModule.selectOption('q7', 3)">
+              <span>D. They had arrived on time, they would have seen the performance.</span>
+            </div>
+          </div>
+          <div class="feedback" id="feedback-q7"></div>
+        </div>
+        
+        <div class="question" id="q8">
+          <p class="mcq-question">8. "If we were to know the truth, we might be shocked." The inverted form is:</p>
+          <div class="options">
+            <div class="option" data-index="0" onclick="MCQModule.selectOption('q8', 0)">
+              <span>A. Were we to know the truth, we might be shocked.</span>
+            </div>
+            <div class="option" data-index="1" onclick="MCQModule.selectOption('q8', 1)">
+              <span>B. Were we know the truth, we might be shocked.</span>
+            </div>
+            <div class="option" data-index="2" onclick="MCQModule.selectOption('q8', 2)">
+              <span>C. We were to know the truth, we might be shocked.</span>
+            </div>
+            <div class="option" data-index="3" onclick="MCQModule.selectOption('q8', 3)">
+              <span>D. Were to we know the truth, we might be shocked.</span>
+            </div>
+          </div>
+          <div class="feedback" id="feedback-q8"></div>
+        </div>
+        
+        <div class="question" id="q9">
+          <p class="mcq-question">9. Which of these is NOT a correctly formed inverted conditional?</p>
+          <div class="options">
+            <div class="option" data-index="0" onclick="MCQModule.selectOption('q9', 0)">
+              <span>A. Were she to arrive early, she would get a good seat.</span>
+            </div>
+            <div class="option" data-index="1" onclick="MCQModule.selectOption('q9', 1)">
+              <span>B. Had I known about the party, I would have attended.</span>
+            </div>
+            <div class="option" data-index="2" onclick="MCQModule.selectOption('q9', 2)">
+              <span>C. Should you need help, please ask the staff.</span>
+            </div>
+            <div class="option" data-index="3" onclick="MCQModule.selectOption('q9', 3)">
+              <span>D. If would I have studied, I would have passed.</span>
+            </div>
+          </div>
+          <div class="feedback" id="feedback-q9"></div>
+        </div>
+        
+        <div class="question" id="q10">
+          <p class="mcq-question">10. "If you could change one thing about your past, what would it be?" The inverted form is:</p>
+          <div class="options">
+            <div class="option" data-index="0" onclick="MCQModule.selectOption('q10', 0)">
+              <span>A. Could you change one thing about your past, what would it be?</span>
+            </div>
+            <div class="option" data-index="1" onclick="MCQModule.selectOption('q10', 1)">
+              <span>B. You could change one thing about your past, what would it be?</span>
+            </div>
+            <div class="option" data-index="2" onclick="MCQModule.selectOption('q10', 2)">
+              <span>C. Could change you one thing about your past, what would it be?</span>
+            </div>
+            <div class="option" data-index="3" onclick="MCQModule.selectOption('q10', 3)">
+              <span>D. If could you change one thing about your past, what would it be?</span>
+            </div>
+          </div>
+          <div class="feedback" id="feedback-q10"></div>
+        </div>
+        
+        <div class="control-buttons">
+          <button id="mcq-submit" class="submit-btn">Check Answers</button>
+          <button id="mcq-restart" class="restart-btn" style="display:none;">Try Again</button>
+        </div>
+        
+        <div class="score-display" id="mcq-score" style="display:none;">
+          Your score: <span>0</span>/10
+        </div>
+      </section>
+
+      <!-- Gap Fill Activity -->
+      <section id="gap-fill" class="activity-container">
+        <h2>Gap Fill Exercise</h2>
+        <p>Complete the sentences with the correct form of the inverted conditional. Use the verb in brackets.</p>
+        
+        <div class="question" id="gf1">
+          <p class="gap-fill-sentence">1. __________ (know) the consequences, I would never have agreed to the plan.</p>
+          <input type="text" class="gap-input" data-answer="Had I known" placeholder="Type your answer">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="gf2">
+          <p class="gap-fill-sentence">2. __________ (be) possible, I would have attended the meeting yesterday.</p>
+          <input type="text" class="gap-input" data-answer="Had it been" placeholder="Type your answer">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="gf3">
+          <p class="gap-fill-sentence">3. __________ (have) more time, we could explore the entire museum.</p>
+          <input type="text" class="gap-input" data-answer="Were we to have" placeholder="Type your answer">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="gf4">
+          <p class="gap-fill-sentence">4. __________ (be) a millionaire, I would donate to charity.</p>
+          <input type="text" class="gap-input" data-answer="Were I" placeholder="Type your answer">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="gf5">
+          <p class="gap-fill-sentence">5. __________ (should) you need any assistance, please don't hesitate to contact us.</p>
+          <input type="text" class="gap-input" data-answer="Should" placeholder="Type your answer">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="gf6">
+          <p class="gap-fill-sentence">6. __________ (have) not received your email, I would never have known about the change in plans.</p>
+          <input type="text" class="gap-input" data-answer="Had I not" placeholder="Type your answer">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="gf7">
+          <p class="gap-fill-sentence">7. __________ (be) he more careful, the accident wouldn't have happened.</p>
+          <input type="text" class="gap-input" data-answer="Had he been" placeholder="Type your answer">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="gf8">
+          <p class="gap-fill-sentence">8. __________ (be) it not for the rain, we would have had a picnic.</p>
+          <input type="text" class="gap-input" data-answer="Were" placeholder="Type your answer">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="gf9">
+          <p class="gap-fill-sentence">9. __________ (be) to choose again, I would make the same decision.</p>
+          <input type="text" class="gap-input" data-answer="Were I" placeholder="Type your answer">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="gf10">
+          <p class="gap-fill-sentence">10. __________ (could) I turn back time, I would change many things.</p>
+          <input type="text" class="gap-input" data-answer="Could" placeholder="Type your answer">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="control-buttons">
+          <button id="gap-fill-submit" class="submit-btn">Check Answers</button>
+          <button id="gap-fill-restart" class="restart-btn" style="display:none;">Try Again</button>
+        </div>
+        
+        <div class="score-display" id="gap-fill-score" style="display:none;">
+          Your score: <span>0</span>/10
+        </div>
+      </section>
+
+      <!-- Matching Activity -->
+      <section id="matching" class="activity-container">
+        <h2>Matching Exercise</h2>
+        <p>Match the beginning of each inverted conditional sentence with the correct ending.</p>
+        
+        <div id="line-container" class="matching-line-container"></div>
+        
+        <div class="matching-container">
+          <div class="matching-item">
+            <div class="matching-question" data-index="1">Had I realized the importance</div>
+            <div class="matching-answer" data-index="1">I would have paid more attention.</div>
+          </div>
+          
+          <div class="matching-item">
+            <div class="matching-question" data-index="2">Were she to win the competition</div>
+            <div class="matching-answer" data-index="2">she would be extremely happy.</div>
+          </div>
+          
+          <div class="matching-item">
+            <div class="matching-question" data-index="3">Should you change your mind</div>
+            <div class="matching-answer" data-index="3">please let us know immediately.</div>
+          </div>
+          
+          <div class="matching-item">
+            <div class="matching-question" data-index="4">Had they not missed their flight</div>
+            <div class="matching-answer" data-index="4">they would have arrived on time.</div>
+          </div>
+          
+          <div class="matching-item">
+            <div class="matching-question" data-index="5">Were I in your position</div>
+            <div class="matching-answer" data-index="5">I would make a different decision.</div>
+          </div>
+          
+          <div class="matching-item">
+            <div class="matching-question" data-index="6">Should anyone call for me</div>
+            <div class="matching-answer" data-index="6">please take a message.</div>
+          </div>
+          
+          <div class="matching-item">
+            <div class="matching-question" data-index="7">Were it not for his quick thinking</div>
+            <div class="matching-answer" data-index="7">the situation could have been worse.</div>
+          </div>
+          
+          <div class="matching-item">
+            <div class="matching-question" data-index="8">Had we been informed earlier</div>
+            <div class="matching-answer" data-index="8">we would have made better preparations.</div>
+          </div>
+        </div>
+        
+        <div class="control-buttons">
+          <button id="matching-restart" class="restart-btn" style="display:none;">Try Again</button>
+        </div>
+        
+        <div class="score-display" id="matching-score" style="display:none;">
+          Your score: <span>0</span>/8
+        </div>
+      </section>
+
+      <!-- Transformation Activity -->
+      <section id="transformation" class="activity-container">
+        <h2>Sentence Transformation</h2>
+        <p>Rewrite each sentence using inverted conditionals. Keep the same meaning.</p>
+        
+        <div class="question" id="tr1">
+          <p class="question-text">1. If I had more free time, I would learn to play the piano.</p>
+          <input type="text" class="transformation-input" data-answer="Had I more free time, I would learn to play the piano." placeholder="Rewrite the sentence here...">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="tr2">
+          <p class="question-text">2. If she were more confident, she would speak up in meetings.</p>
+          <input type="text" class="transformation-input" data-answer="Were she more confident, she would speak up in meetings." placeholder="Rewrite the sentence here...">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="tr3">
+          <p class="question-text">3. If you should need any help with your homework, you can call me.</p>
+          <input type="text" class="transformation-input" data-answer="Should you need any help with your homework, you can call me." placeholder="Rewrite the sentence here...">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="tr4">
+          <p class="question-text">4. If I had known about the test, I would have studied harder.</p>
+          <input type="text" class="transformation-input" data-answer="Had I known about the test, I would have studied harder." placeholder="Rewrite the sentence here...">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="tr5">
+          <p class="question-text">5. If we had not received your email, we would have cancelled the meeting.</p>
+          <input type="text" class="transformation-input" data-answer="Had we not received your email, we would have cancelled the meeting." placeholder="Rewrite the sentence here...">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="tr6">
+          <p class="question-text">6. If it were not for your assistance, we would not have completed the project.</p>
+          <input type="text" class="transformation-input" data-answer="Were it not for your assistance, we would not have completed the project." placeholder="Rewrite the sentence here...">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="tr7">
+          <p class="question-text">7. If I were to explain the situation to him, he might understand.</p>
+          <input type="text" class="transformation-input" data-answer="Were I to explain the situation to him, he might understand." placeholder="Rewrite the sentence here...">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="tr8">
+          <p class="question-text">8. If the weather had been better, we would have gone hiking.</p>
+          <input type="text" class="transformation-input" data-answer="Had the weather been better, we would have gone hiking." placeholder="Rewrite the sentence here...">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="control-buttons">
+          <button id="transformation-submit" class="submit-btn">Check Answers</button>
+          <button id="transformation-restart" class="restart-btn" style="display:none;">Try Again</button>
+        </div>
+        
+        <div class="score-display" id="transformation-score" style="display:none;">
+          Your score: <span>0</span>/8
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <!-- BOTTOM NAVIGATION -->
+  <nav class="bottom-navigation">
+    <a href="inverted-conditionals.html" class="nav-button previous">← Back to: Inverted Conditionals Explanation</a>
+    <div class="center-buttons">
+      <button class="nav-button print-button" onclick="window.print()">Print This Page</button>
+    </div>
+    <a href="../../my-progress.html" class="nav-button next">View My Progress →</a>
+  </nav>
+
+  <!-- Include footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="../../home.html">Home</a></li>
+          <li><a href="../../home.html#where-to-start">Grammar</a></li>
+          <li><a href="../../extra-practice.html">Extra Practice</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Grammar Topics</h3>
+        <ul>
+          <li><a href="advanced-grammar.html#advanced-tenses-and-aspect">Advanced Tenses</a></li>
+          <li><a href="advanced-grammar.html#conditionals">Advanced Conditionals</a></li>
+          <li><a href="advanced-grammar.html#modals">Advanced Modal Verbs</a></li>
+          <li><a href="advanced-grammar.html#passive">Advanced Passive Voice</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="../../about.html">About</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© 2025 English in Doses | All rights reserved | <a href="../../license.html">Licensing Information</a></p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="../../js/core.js"></script>
+  <script src="../../js/mcq.js"></script>
+  <script src="../../js/gap-fill.js"></script>
+  <script src="../../js/matching.js"></script>
+  <script src="../../js/transformation.js"></script>
+  <script src="../../js/activity-nav.js"></script>
+  <script src="../../js/progress-tracking-module.js"></script>
+  <script src="../../js/progress-manager-ui.js"></script>
+  <script src="../../js/init-progress.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize activity modules
+      MCQModule.init({
+        containerId: 'mcq',
+        answers: {
+          'q1': 0,  // Were I you, I would accept the job offer.
+          'q2': 0,  // Had she told me earlier, I would have helped her.
+          'q3': 0,  // Should you have any questions, please call this number.
+          'q4': 1,  // Were it not for your help, I would have failed the exam.
+          'q5': 2,  // Had I not studied, I would have failed.
+          'q6': 0,  // Were I to win the lottery, I would buy a house.
+          'q7': 2,  // Had they arrived on time, they would have seen the performance.
+          'q8': 0,  // Were we to know the truth, we might be shocked.
+          'q9': 3,  // If would I have studied, I would have passed.
+          'q10': 0,  // Could you change one thing about your past, what would it be?
+        },
+        correctExplanations: {
+          'q1': 'Correct! In a second conditional inversion, we place "were" at the beginning followed by the subject "I".',
+          'q2': 'Correct! In a third conditional inversion, we move "had" to the beginning followed by the subject "she".',
+          'q3': 'Correct! With modal verbs like "should", we place the modal at the beginning followed by the subject.',
+          'q4': 'Correct! For negative expressions like "if it were not for", the inverted form is "were it not for".',
+          'q5': 'Correct! In negative inverted conditionals, "not" comes after the subject, not between the auxiliary and subject.',
+          'q6': 'Correct! With "were to", we place "were" at the beginning, followed by the subject and "to + infinitive".',
+          'q7': 'Correct! For past unreal conditions, we move "had" to the beginning followed by the subject and past participle.',
+          'q8': 'Correct! For hypothetical situations with "were to", we place "were" at the beginning followed by the subject.',
+          'q9': 'Correct! This is not a proper inverted conditional. We don\'t use "if" when we\'ve already inverted the auxiliary and subject.',
+          'q10': 'Correct! With "could" in conditionals, we place "could" at the beginning followed by the subject.'
+        },
+        incorrectExplanations: {
+          'q1': 'Incorrect. In inverted conditionals, the word order is: auxiliary verb (were) + subject.',
+          'q2': 'Incorrect. In inverted conditionals, the word order is: auxiliary verb (had) + subject + past participle.',
+          'q3': 'Incorrect. In inverted conditionals with modals, the modal verb comes first, followed by the subject.',
+          'q4': 'Incorrect. In negative expressions, the "not" comes after the subject: "were it not for".',
+          'q5': 'Incorrect. In negative inverted conditionals, "not" comes after the subject: "Had I not studied".',
+          'q6': 'Incorrect. With "were to", the word order is: were + subject + to + infinitive.',
+          'q7': 'Incorrect. In third conditional inversions, "had" is placed at the beginning, followed by the subject and past participle.',
+          'q8': 'Incorrect. With "were to", the word order is: were + subject + to + infinitive.',
+          'q9': 'Incorrect. Check the word order in inverted conditionals and remember not to use "if" with inverted forms.',
+          'q10': 'Incorrect. In inverted conditionals with "could", the modal verb comes first, followed by the subject.'
+        },
+        onComplete: function(score, total) {
+          ProgressTrackingModule.updateItemProgress('activities', 'mcq-inverted', {
+            completed: true,
+            score: score,
+            maxScore: total
+          });
+          ActivityNavModule.notifyActivityCompleted('mcq', {
+            score: score,
+            maxScore: total
+          });
+        }
+      });
+      
+      GapFillModule.init({
+        containerId: 'gap-fill',
+        acceptAlternativeAnswers: true,
+        alternativeAnswers: {
+          'gf1': ['Had I known'],
+          'gf2': ['Had it been'],
+          'gf3': ['Were we to have'],
+          'gf4': ['Were I'],
+          'gf5': ['Should'],
+          'gf6': ['Had I not'],
+          'gf7': ['Had he been'],
+          'gf8': ['Were'],
+          'gf9': ['Were I'],
+          'gf10': ['Could']
+        },
+        feedback: {
+          correct: 'Correct! This is the proper inverted conditional form.',
+          incorrect: 'Incorrect. Remember the pattern for inverted conditionals.'
+        },
+        onComplete: function(score, total) {
+          ProgressTrackingModule.updateItemProgress('activities', 'gap-fill-inverted', {
+            completed: true,
+            score: score,
+            maxScore: total
+          });
+          ActivityNavModule.notifyActivityCompleted('gap-fill', {
+            score: score,
+            maxScore: total
+          });
+        }
+      });
+      
+      MatchingModule.init({
+        containerId: 'matching',
+        onComplete: function(score, total) {
+          ProgressTrackingModule.updateItemProgress('activities', 'matching-inverted', {
+            completed: true,
+            score: score,
+            maxScore: total
+          });
+          ActivityNavModule.notifyActivityCompleted('matching', {
+            score: score,
+            maxScore: total
+          });
+        }
+      });
+      
+      TransformationModule.init({
+        containerId: 'transformation',
+        acceptAlternativeAnswers: true,
+        alternativeAnswers: {
+          'tr1': ['Had I more free time, I would learn to play the piano.'],
+          'tr2': ['Were she more confident, she would speak up in meetings.'],
+          'tr3': ['Should you need any help with your homework, you can call me.'],
+          'tr4': ['Had I known about the test, I would have studied harder.'],
+          'tr5': ['Had we not received your email, we would have cancelled the meeting.'],
+          'tr6': ['Were it not for your assistance, we would not have completed the project.'],
+          'tr7': ['Were I to explain the situation to him, he might understand.'],
+          'tr8': ['Had the weather been better, we would have gone hiking.']
+        },
+        feedback: {
+          correct: 'Excellent! You've correctly transformed this sentence using an inverted conditional.',
+          incorrect: 'That's not quite right. Check the pattern for inverted conditionals and try again.'
+        },
+        onComplete: function(score, total) {
+          ProgressTrackingModule.updateItemProgress('activities', 'transformation-inverted', {
+            completed: true,
+            score: score,
+            maxScore: total
+          });
+          ActivityNavModule.notifyActivityCompleted('transformation', {
+            score: score,
+            maxScore: total
+          });
+        }
+      });
+      
+      // Initialize activity navigation
+      ActivityNavModule.init({
+        containerId: 'activity-nav',
+        activities: ['mcq', 'gap-fill', 'matching', 'transformation'],
+        progressContainerId: 'progress-bar',
+        progressInfoContainerId: 'progress-info',
+        onActivityChange: function(activityId) {
+          console.log('Activity changed to:', activityId);
+        }
+      });
+      
+      // Initialize progress tracking
+      ProgressTrackingModule.init({
+        categories: {
+          activities: {
+            grammarActivities: ['mcq-inverted', 'gap-fill-inverted', 'matching-inverted', 'transformation-inverted']
+          }
+        },
+        onProgressChange: function(details) {
+          ActivityNavModule.updateProgressDisplay();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Extra practice activities for all grammar topics - English in Doses">
+  <title>Extra Practice Hub - English in Doses</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  
+  <!-- Base Styles -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/activities.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <style>
+    /* Extra Practice specific styles */
+    .practice-container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    
+    /* Search and Filter Section */
+    .search-filter-section {
+      background-color: var(--card-bg);
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 4px var(--shadow-color);
+    }
+    
+    .search-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+    
+    .search-input-container {
+      flex-grow: 1;
+      position: relative;
+      min-width: 200px;
+    }
+    
+    .search-input {
+      width: 100%;
+      padding: 10px 15px 10px 40px;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      font-size: 1rem;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+    }
+    
+    .search-icon {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-color);
+      opacity: 0.6;
+    }
+    
+    .filter-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    
+    .filter-select {
+      padding: 10px 15px;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      min-width: 150px;
+      font-size: 0.9rem;
+    }
+    
+    /* Level Tabs */
+    .level-tabs {
+      display: flex;
+      border-bottom: 2px solid var(--border-color);
+      margin-bottom: 30px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+    }
+    
+    .level-tab {
+      padding: 12px 20px;
+      font-weight: 600;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: all 0.3s;
+      white-space: nowrap;
+      color: var(--text-color);
+    }
+    
+    .level-tab:hover {
+      background-color: var(--card-bg);
+    }
+    
+    .level-tab.active {
+      border-bottom-color: var(--accent-color);
+      color: var(--accent-color);
+    }
+    
+    .level-tab.beginner.active {
+      border-bottom-color: #4CAF50;
+      color: #4CAF50;
+    }
+    
+    .level-tab.intermediate.active {
+      border-bottom-color: #FF9800;
+      color: #FF9800;
+    }
+    
+    .level-tab.advanced.active {
+      border-bottom-color: #F44336;
+      color: #F44336;
+    }
+    
+    /* Practice Activities List */
+    .practice-level-container {
+      display: none;
+    }
+    
+    .practice-level-container.active {
+      display: block;
+    }
+    
+    .practice-category {
+      margin-bottom: 30px;
+    }
+    
+    .category-title {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .activity-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    
+    .activity-card {
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 3px 6px var(--shadow-color);
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    
+    .activity-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px var(--shadow-color);
+    }
+    
+    .activity-header {
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .activity-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin: 0;
+    }
+    
+    .activity-badge {
+      font-size: 0.8rem;
+      padding: 3px 8px;
+      border-radius: 12px;
+      background-color: var(--accent-color);
+      color: white;
+    }
+    
+    .activity-badge.mcq {
+      background-color: #4CAF50;
+    }
+    
+    .activity-badge.gap-fill {
+      background-color: #2196F3;
+    }
+    
+    .activity-badge.transformation {
+      background-color: #9C27B0;
+    }
+    
+    .activity-badge.matching {
+      background-color: #FF9800;
+    }
+    
+    .activity-badge.drag-drop {
+      background-color: #E91E63;
+    }
+    
+    .activity-content {
+      padding: 15px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .activity-description {
+      margin-bottom: 15px;
+      font-size: 0.95rem;
+      flex-grow: 1;
+    }
+    
+    .activity-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: var(--text-color);
+      opacity: 0.8;
+      margin-bottom: 15px;
+    }
+    
+    .activity-time, .activity-difficulty {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .activity-link {
+      text-align: center;
+      background-color: var(--accent-color);
+      color: white;
+      padding: 8px 15px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+      font-weight: 600;
+      margin-top: auto;
+    }
+    
+    .activity-link:hover {
+      background-color: #2980b9;
+      text-decoration: none;
+    }
+    
+    /* No results message */
+    .no-results {
+      text-align: center;
+      padding: 40px 20px;
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      margin: 30px 0;
+      display: none;
+    }
+    
+    .no-results-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      opacity: 0.7;
+    }
+    
+    /* Pagination */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+      gap: 5px;
+    }
+    
+    .page-link {
+      padding: 8px 15px;
+      border-radius: 4px;
+      background-color: var(--card-bg);
+      color: var(--text-color);
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+    
+    .page-link:hover, .page-link.active {
+      background-color: var(--accent-color);
+      color: white;
+      text-decoration: none;
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .search-row, .filter-container {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .level-tab {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+      }
+      
+      .activity-cards {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .activity-cards {
+        grid-template-columns: 1fr;
+      }
+      
+      .activity-meta {
+        flex-direction: column;
+        gap: 5px;
+        align-items: flex-start;
+      }
+      
+      .level-tabs {
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  
+  <!-- Theme toggle button -->
+  <div class="theme-toggle-container">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="light-icon">☀️</span>
+      <span class="dark-icon">🌙</span>
+    </button>
+  </div>
+  
+  <!-- Main navigation -->
+  <nav class="main-navigation">
+    <a href="home.html" class="site-logo">
+      <img src="images/my-logo.svg" alt="English in Doses" width="150" height="auto">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <div class="nav-links">
+      <a href="home.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About Us</a>
+      <a href="contact.html" class="nav-link">Contact Us</a>
+      <a href="home.html#where-to-start" class="nav-link">Grammar</a>
+      <a href="extra-practice.html" class="nav-link active" aria-current="page">Extra Practice</a>
+      <a href="conversation-page.html" class="nav-link">Conversation</a>
+      <a href="my-progress.html" class="nav-link">My Progress</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs" aria-label="breadcrumb">
+      <span class="breadcrumb-item"><a href="home.html">Home</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item">Extra Practice</span>
+    </div>
+
+    <main id="main-content" class="practice-container">
+      <h1>Extra Practice Hub</h1>
+      
+      <section class="intro-section">
+        <p>Welcome to our Extra Practice Hub! Here you'll find additional activities to help you master English grammar. Choose from different types of exercises based on your level and the specific grammar topics you want to practice.</p>
+      </section>
+      
+      <!-- Search and Filter Section -->
+      <section class="search-filter-section">
+        <div class="search-row">
+          <div class="search-input-container">
+            <i class="fa fa-search search-icon"></i>
+            <input type="text" class="search-input" placeholder="Search for a grammar topic..." id="activity-search">
+          </div>
+        </div>
+        
+        <div class="filter-container">
+          <select class="filter-select" id="activity-type-filter">
+            <option value="">All Activity Types</option>
+            <option value="mcq">Multiple Choice</option>
+            <option value="gap-fill">Gap Fill</option>
+            <option value="transformation">Sentence Transformation</option>
+            <option value="matching">Matching Exercise</option>
+            <option value="drag-drop">Drag and Drop</option>
+          </select>
+          
+          <select class="filter-select" id="difficulty-filter">
+            <option value="">All Difficulties</option>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+          
+          <select class="filter-select" id="time-filter">
+            <option value="">Any Length</option>
+            <option value="short">Quick (< 5 min)</option>
+            <option value="medium">Medium (5-10 min)</option>
+            <option value="long">Extended (> 10 min)</option>
+          </select>
+          
+          <select class="filter-select" id="topic-filter">
+            <option value="">All Topics</option>
+            <option value="tenses">Tenses</option>
+            <option value="conditionals">Conditionals</option>
+            <option value="modals">Modal Verbs</option>
+            <option value="passive">Passive Voice</option>
+            <option value="articles">Articles</option>
+            <option value="prepositions">Prepositions</option>
+          </select>
+        </div>
+      </section>
+      
+      <!-- Level Tabs -->
+      <div class="level-tabs">
+        <div class="level-tab beginner active" data-level="beginner">Beginner</div>
+        <div class="level-tab intermediate" data-level="intermediate">Intermediate</div>
+        <div class="level-tab advanced" data-level="advanced">Advanced</div>
+        <div class="level-tab" data-level="mixed">Mixed Levels</div>
+        <div class="level-tab" data-level="recommended">Recommended for You</div>
+      </div>
+      
+      <!-- No Results Message (initially hidden) -->
+      <div class="no-results" id="no-results">
+        <div class="no-results-icon"><i class="fa fa-search"></i></div>
+        <h2>No matching activities found</h2>
+        <p>Try adjusting your search or filters to find activities.</p>
+      </div>
+      
+      <!-- Beginner Level Activities -->
+      <div class="practice-level-container active" id="beginner-activities">
+        <!-- Present Simple Category -->
+        <div class="practice-category">
+          <h2 class="category-title">Present Simple</h2>
+          <div class="activity-cards">
+            <!-- Activity 1 -->
+            <div class="activity-card">
+              <div class="activity-header">
+                <h3 class="activity-title">Daily Routines</h3>
+                <span class="activity-badge mcq">MCQ</span>
+              </div>
+              <div class="activity-content">
+                <p class="activity-description">Practice using Present Simple to talk about habits and daily routines. Choose the correct verb forms in various contexts.</p>
+                <div class="activity-meta">
+                  <span class="activity-time"><i class="fa fa-clock-o"></i> 5 min</span>
+                  <span class="activity-difficulty"><i class="fa fa-bar-chart"></i> Easy</span>
+                </div>
+                <a href="practice/beginner/present-simple-mcq.html" class="activity-link">Start Activity</a>
+              </div>
+            </div>
+            
+            <!-- Activity 2 -->
+            <div class="activity-card">
+              <div class="activity-header">
+                <h3 class="activity-title">Present Simple Questions</h3>
+                <span class="activity-badge gap-fill">Gap Fill</span>
+              </div>
+              <div class="activity-content">
+                <p class="activity-description">Complete sentences by filling in the correct form of the verbs to create questions in the Present Simple tense.</p>
+                <div class="activity-meta">
+                  <span class="activity-time"><i class="fa fa-clock-o"></i> 7 min</span>
+                  <span class="activity-difficulty"><i class="fa fa-bar-chart"></i> Medium</span>
+                </div>
+                <a href="practice/beginner/present-simple-gap-fill.html" class="activity-link">Start Activity</a>
+              </div>
+            </div>
+            
+            <!-- Activity 3 -->
+            <div class="activity-card">
+              <div class="activity-header">
+                <h3 class="activity-title">Frequency Adverbs</h3>
+                <span class="activity-badge drag-drop">Drag & Drop</span>
+              </div>
+              <div class="activity-content">
+                <p class="activity-description">Practice placing frequency adverbs in the correct position in Present Simple sentences by dragging and dropping them.</p>
+                <div class="activity-meta">
+                  <span class="activity-time"><i class="fa fa-clock-o"></i> 6 min</span>
+                  <span class="activity-difficulty"><i class="fa fa-bar-chart"></i> Easy</span>
+                </div>
+                <a href="practice/beginner/frequency-adverbs-drag.html" class="activity-link">Start Activity</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Past Simple Category -->
+        <div class="practice-category">
+          <h2 class="category-title">Past Simple</h2>
+          <div class="activity-cards">
+            <!-- Activity 1 -->
+            <div class="activity-card">
+              <div class="activity-header">
+                <h3 class="activity-title">Regular vs Irregular Verbs</h3>
+                <span class="activity-badge matching">Matching</span>
+              </div>
+              <div class="activity-content">
+                <p class="activity-description">Match base forms of verbs with their correct Past Simple forms, focusing on both regular and irregular verb patterns.</p>
+                <div class="activity-meta">
+                  <span class="activity-time"><i class="fa fa-clock-o"></i> 8 min</span>
+                  <span class="activity-difficulty"><i class="fa fa-bar-chart"></i> Medium</span>
+                </div>
+                <a href="practice/beginner/past-simple-matching.html" class="activity-link">Start Activity</a>
+              </div>
+            </div>
+            
+            <!-- Activity 2 -->
+            <div class="activity-card">
+              <div class="activity-header">
+                <h3 class="activity-title">Past Simple Story</h3>
+                <span class="activity-badge gap-fill">Gap Fill</span>
+              </div>
+              <div class="activity-content">
+                <p class="activity-description">Complete a short story by filling in the blanks with the Past Simple form of the verbs provided in brackets.</p>
+                <div class="activity-meta">
+                  <span class="activity-time"><i class="fa fa-clock-o"></i> 10 min</span>
+                  <span class="activity-difficulty"><i class="fa fa-bar-chart"></i> Medium</span>
+                </div>
+                <a href="practice/beginner/past-simple-story.html" class="activity-link">Start Activity</a>
+              </div>
+            </div>
+            
+            <!-- Activity 3 -->
+            <div class="activity-card">
+              <div class="activity-header">
+                <h3 class="activity-title">Past Simple Questions</h3>
+                <span class="activity-badge transformation">Transformation</span>
+              </div>
+              <div class="activity-content">
+                <p class="activity-description">Transform affirmative statements into questions and negative sentences using the Past Simple tense.</p>
+                <div class="activity-meta">
+                  <span class="activity-time"><i class="fa fa-clock-o"></i> 7 min</span>
+                  <span class="activity-difficulty"><i class="fa fa-bar-chart"></i> Hard</span>
+                </div>
+                <a href="practice/beginner/past-simple-transformation.html" class="activity-link">Start Activity</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Intermediate Level Activities (initially hidden) -->
+      <div class="practice-level-container" id="intermediate-activities">
+        <!-- Present Perfect Category -->
+        <div class="practice-category">
+          <h2 class="category-title">Present Perfect</h2>
+          <div class="activity-cards">
+            <!-- Activity 1 -->
+            <div class="activity-card">
+              <div class="activity-header">
+                <h3 class="activity-title">Present Perfect vs Past Simple</h3>
+                <span class="activity-badge mcq">MCQ</span>
+              </div>
+              <div class="activity-content">
+                <p class="activity-description">Choose between Present Perfect and Past Simple in various sentences, focusing on the differences in meaning and usage.</p>
+                <div class="activity-meta">
+                  <span class="activity-time"><i class="fa fa-clock-o"></i> 8 min</span>
+                  <span class="activity-difficulty"><i class="fa fa-bar-chart"></i> Medium</span>
+                </div>
+                <a href="practice/intermediate/present-perfect-vs-past-simple.html" class="activity-link">Start Activity</a>
+              </div>
+            </div>
+            
+            <!-- Activity 2 -->
+            <div class="activity-card">
+              <div class="activity-header">
+                <h3 class="activity-title">For & Since</h3>
+                <span class="activity-badge gap-fill">Gap Fill</span>
+              </div>
+              <div class="activity-content">
+                <p class="activity-description">Complete sentences using 'for' or 'since' with the Present Perfect tense to express how long something has been happening.</p>
+                <div class="activity-meta">
+                  <span class="activity-time"><i class="fa fa-clock-o"></i> 6 min</span>
+                  <span class="activity-difficulty"><i class="fa fa-bar-chart"></i> Medium</span>
+                </div>
+                <a href="practice/intermediate/for-since-gap-fill.html" class="activity-link">Start Activity</a>
+              </div>
+            </div>
+            
+            <!-- Activity 3 -->
+            <div class="activity-card">
+              <div class="activity-header">
+                <h3 class="activity-title">Present Perfect Story</h3>
+                <span class="activity-badge gap-fill">Gap Fill</span>
+              </div>
+              <div class="activity-content">
+                <p class="activity-description">Complete a story by filling in the blanks with the Present Perfect form of the verbs. Understand when to use this tense in context.</p>
+                <div class="activity-meta">
+                  <span class="activity-time"><i class="fa fa-clock-o"></i> 12 min</span>
+                  <span class="activity-difficulty"><i class="fa fa-bar-chart"></i> Hard</span>
+                </div>
+                <a href="practice/intermediate/present-perfect-story.html" class="activity-link">Start Activity</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Conditionals Category -->
+        <div class="practice-category">
+          <h2 class="category-title">Conditionals</h2>
+          <div class="activity-cards">
+            <!-- Activity 1 -->
+            <div class="activity-card">
+              <div class="activity-header">
+                <h3 class="activity-title">First & Second Conditionals</h3>
+                <span class="activity-badge transformation">Transformation</span>
+              </div>
+              <div class="activity-content">
+                <p class="activity-description">Transform sentences between first and second conditionals, understanding the difference in meaning between real and hypothetical situations.</p>
+                <div class="activity-meta">
+                  <span class="activity-time"><i class="fa fa-clock-o"></i> 10 min</span>
+                  <span class="activity-difficulty"><i class="fa fa-bar-chart"></i> Medium</span>
+                </div>
+                <a href="practice/intermediate/conditional-transformation.html" class="activity-link">Start Activity</a>
+              </div>
+            </div>
+            
+            <!-- Activity 2 -->
+            <div class="activity-card">
+              <div class="activity-header">
+                <h3 class="activity-title">Conditional Types</h3>
+                <span class="activity-badge matching">Matching</span>
+              </div>
+              <div class="activity-content">
+                <p class="activity-description">Match condition clauses with their appropriate results, and identify which type of conditional is being used in each pair.</p>
+                <div class="activity-meta">
+                  <span class="activity-time"><i class="fa fa-clock-o"></i> 7 min</span>
+                  <span class="activity-difficulty"><i class="fa fa-bar-chart"></i> Medium</span>
+                </div>
+                <a href="practice/intermediate/conditional-matching.html" class="activity-link">Start Activity</a>
+              </div>
+            </div>
+            
+            <!-- Activity 3 -->
+            <div class="activity-card">
+              <div class="activity-header">
+                <h3 class="activity-title">Mixed Conditionals</h3>
+                <span class="activity-badge gap-fill">Gap Fill</span>
+              </div>
+              <div class="activity-content">
+                <p class="activity-description">Complete conditional sentences by filling in the correct verb forms, covering all conditional types including mixed conditionals.</p>
+                <div class="activity-meta">
+                  <span class="activity-time"><i class="fa fa-clock-o"></i> 15 min</span>
+                  <span class="activity-difficulty"><i class="fa fa-bar-chart"></i> Hard</span>
+                </div>
+                <a href="practice/intermediate/mixed-conditionals.html" class="activity-link">Start Activity</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Advanced Level Activities (initially hidden) -->
+      <div class="practice-level-container" id="advanced-activities">
+        <!-- Perfect Tenses Category -->
+        <div class="practice-category">
+          <h2 class="category-title">Perfect Tenses</h2>
+          <div class="activity-cards">
+            <!-- Activity 1 -->
+            <div class="activity-card">
+              <div class="activity-header">
+                <h3 class="activity-title">Present Perfect Progressive</h3>
+                <span class="activity-badge mcq">MCQ</span>
+              </div>
+              <div class="activity-content">
+                <p class="activity-description">Choose between Present Perfect Simple and Present Perfect Progressive, understanding the subtle differences in meaning.</p>
+                <div class="activity-meta">
+                  <span class="activity-time"><i class="fa fa-clock-o"></i> 8 min</span>
+                  <span class="activity-difficulty"><i class="fa fa-bar-chart"></i> Hard</span>
+                </div>
+                <a href="practice/advanced/present-perfect-progressive-mcq.html" class="activity-link">Start Activity</a>
+              </div>
+            </div>
+            
+            <!-- Activity 2 -->
+            <div class="activity-card">
+              <div class="activity-header">
+                <h3 class="activity-title">Past Perfect Simple & Progressive</h3>
+                <span class="activity-badge gap-fill">Gap Fill</span>
+              </div>
+              <div class="activity-content">
+                <p class="activity-description">Fill in the blanks with either Past Perfect Simple or Progressive forms, focusing on the differences in usage and meaning.</p>
+                <div class="activity-meta">
+                  <span class="activity-time"><i class="fa fa-clock-o"></i> 10 min</span>
+                  <span class="activity-difficulty"><i class="fa fa-bar-chart"></i> Hard</span>
+                </div>
+                <a href="practice/advanced/past-perfect-gap-fill.html" class="activity-link">Start Activity</a>
+              </div>
+            </div>
+            
+            <!-- Activity 3 -->
+            <div class="activity-card">
+              <div class="activity-header">
+                <h3 class="activity-title">Future Perfect Forms</h3>
+                <span class="activity-badge transformation">Transformation</span>
+              </div>
+              <div class="activity-content">
+                <p class="activity-description">Transform sentences into Future Perfect Simple or Future Perfect Progressive, understanding time expressions and context.</p>
+                <div class="activity-meta">
+                  <span class="activity-time"><i class="fa fa-clock-o"></i> 12 min</span>
+                  <span class="activity-difficulty"><i class="fa fa-bar-chart"></i> Hard</span>
+                </div>
+                <a href="practice/advanced/future-perfect-transformation.html" class="activity-link">Start Activity</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Modal Verbs Category -->
+        <div class="practice-category">
+          <h2 class="category-title">Modal Verbs</h2>
+          <div class="activity-cards">
+            <!-- Activity 1 -->
+            <div class="activity-card">
+              <div class="activity-header">
+                <h3 class="activity-title">Modal Perfect Forms</h3>
+                <span class="activity-badge mcq">MCQ</span>
+              </div>
+              <div class="activity-content">
+                <p class="activity-description">Practice using modal perfect forms (must have been, could have done, etc.) to express judgments about past situations.</p>
+                <div class="activity-meta">
+                  <span class="activity-time"><i class="fa fa-clock-o"></i> 9 min</span>
+                  <span class="activity-difficulty"><i class="fa fa-bar-chart"></i> Hard</span>
+                </div>
+                <a href="practice/advanced/modal-perfect-mcq.html" class="activity-link">Start Activity</a>
+              </div>
+            </div>
+            
+            <!-- Activity 2 -->
+            <div class="activity-card">
+              <div class="activity-header">
+                <h3 class="activity-title">Advanced Modal Meanings</h3>
+                <span class="activity-badge matching">Matching</span>
+              </div>
+              <div class="activity-content">
+                <p class="activity-description">Match modal verbs with their advanced meanings such as criticism, reproach, regret, and logical deduction.</p>
+                <div class="activity-meta">
+                  <span class="activity-time"><i class="fa fa-clock-o"></i> 7 min</span>
+                  <span class="activity-difficulty"><i class="fa fa-bar-chart"></i> Hard</span>
+                </div>
+                <a href="practice/advanced/advanced-modal-meanings.html" class="activity-link">Start Activity</a>
+              </div>
+            </div>
+            
+            <!-- Activity 3 -->
+            <div class="activity-card">
+              <div class="activity-header">
+                <h3 class="activity-title">Modal Progressive Forms</h3>
+                <span class="activity-badge gap-fill">Gap Fill</span>
+              </div>
+              <div class="activity-content">
+                <p class="activity-description">Complete sentences with modal progressive forms (must be doing, should be working) to express present deductions.</p>
+                <div class="activity-meta">
+                  <span class="activity-time"><i class="fa fa-clock-o"></i> 8 min</span>
+                  <span class="activity-difficulty"><i class="fa fa-bar-chart"></i> Hard</span>
+                </div>
+                <a href="practice/advanced/modal-progressive-gap-fill.html" class="activity-link">Start Activity</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Mixed Levels Activities (initially hidden) -->
+      <div class="practice-level-container" id="mixed-activities">
+        <!-- Prepositions Category -->
+        <div class="practice-category">
+          <h2 class="category-title">Prepositions</h2>
+          <div class="activity-cards">
+            <!-- Activity 1 -->
+            <div class="activity-card">
+              <div class="activity-header">
+                <h3 class="activity-title">Prepositions of Time</h3>
+                <span class="activity-badge mcq">MCQ</span>
+              </div>
+              <div class="activity-content">
+                <p class="activity-description">Practice using prepositions of time (in, on, at) correctly in various contexts.</p>
+                <div class="activity-meta">
+                  <span class="activity-time"><i class="fa fa-clock-o"></i> 5 min</span>
+                  <span class="activity-difficulty"><i class="fa fa-bar-chart"></i> Easy</span>
+                </div>
+                <a href="practice/mixed/prepositions-time-mcq.html" class="activity-link">Start Activity</a>
+              </div>
+            </div>
+            
+            <!-- Activity 2 -->
+            <div class="activity-card">
+              <div class="activity-header">
+                <h3 class="activity-title">Prepositions of Place</h3>
+                <span class="activity-badge gap-fill">Gap Fill</span>
+              </div>
+              <div class="activity-content">
+                <p class="activity-description">Fill in the blanks with appropriate prepositions of place to complete sentences about locations and positions.</p>
+                <div class="activity-meta">
+                  <span class="activity-time"><i class="fa fa-clock-o"></i> 6 min</span>
+                  <span class="activity-difficulty"><i class="fa fa-bar-chart"></i> Medium</span>
+                </div>
+                <a href="practice/mixed/prepositions-place-gap-fill.html" class="activity-link">Start Activity</a>
+              </div>
+            </div>
+            
+            <!-- Activity 3 -->
+            <div class="activity-card">
+              <div class="activity-header">
+                <h3 class="activity-title">Dependent Prepositions</h3>
+                <span class="activity-badge matching">Matching</span>
+              </div>
+              <div class="activity-content">
+                <p class="activity-description">Match verbs, nouns, and adjectives with their correct dependent prepositions. Advanced level practice for common collocations.</p>
+                <div class="activity-meta">
+                  <span class="activity-time"><i class="fa fa-clock-o"></i> 10 min</span>
+                  <span class="activity-difficulty"><i class="fa fa-bar-chart"></i> Hard</span>
+                </div>
+                <a href="practice/mixed/dependent-prepositions-matching.html" class="activity-link">Start Activity</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Articles Category -->
+        <div class="practice-category">
+          <h2 class="category-title">Articles</h2>
+          <div class="activity-cards">
+            <!-- Activity 1 -->
+            <div class="activity-card">
+              <div class="activity-header">
+                <h3 class="activity-title">Basic Article Usage</h3>
+                <span class="activity-badge gap-fill">Gap Fill</span>
+              </div>
+              <div class="activity-content">
+                <p class="activity-description">Practice basic usage of articles (a, an, the, zero article) by filling in the blanks in various sentences.</p>
+                <div class="activity-meta">
+                  <span class="activity-time"><i class="fa fa-clock-o"></i> 7 min</span>
+                  <span class="activity-difficulty"><i class="fa fa-bar-chart"></i> Easy</span>
+                </div>
+                <a href="practice/mixed/basic-articles-gap-fill.html" class="activity-link">Start Activity</a>
+              </div>
+            </div>
+            
+            <!-- Activity 2 -->
+            <div class="activity-card">
+              <div class="activity-header">
+                <h3 class="activity-title">Articles with Countable & Uncountable Nouns</h3>
+                <span class="activity-badge mcq">MCQ</span>
+              </div>
+              <div class="activity-content">
+                <p class="activity-description">Choose the correct article usage with different types of nouns, focusing on the distinctions between countable and uncountable nouns.</p>
+                <div class="activity-meta">
+                  <span class="activity-time"><i class="fa fa-clock-o"></i> 8 min</span>
+                  <span class="activity-difficulty"><i class="fa fa-bar-chart"></i> Medium</span>
+                </div>
+                <a href="practice/mixed/articles-countable-uncountable.html" class="activity-link">Start Activity</a>
+              </div>
+            </div>
+            
+            <!-- Activity 3 -->
+            <div class="activity-card">
+              <div class="activity-header">
+                <h3 class="activity-title">Academic Article Usage</h3>
+                <span class="activity-badge gap-fill">Gap Fill</span>
+              </div>
+              <div class="activity-content">
+                <p class="activity-description">Advanced practice on article usage in academic contexts, including generic references and abstract concepts.</p>
+                <div class="activity-meta">
+                  <span class="activity-time"><i class="fa fa-clock-o"></i> 12 min</span>
+                  <span class="activity-difficulty"><i class="fa fa-bar-chart"></i> Hard</span>
+                </div>
+                <a href="practice/mixed/academic-articles-gap-fill.html" class="activity-link">Start Activity</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Recommended for You Section (initially hidden) -->
+      <div class="practice-level-container" id="recommended-activities">
+        <div class="practice-category">
+          <h2 class="category-title">Based on Your Recent Activity</h2>
+          <div class="activity-cards" id="personalized-recommendations">
+            <!-- This will be populated by JavaScript based on user's activity -->
+            <p class="no-activities-message">Please complete some activities or login to see personalized recommendations.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Pagination -->
+      <div class="pagination">
+        <a href="#" class="page-link active">1</a>
+        <a href="#" class="page-link">2</a>
+        <a href="#" class="page-link">3</a>
+        <a href="#" class="page-link">Next »</a>
+      </div>
+    </main>
+  </div>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="home.html#where-to-start">Grammar</a></li>
+          <li><a href="extra-practice.html">Extra Practice</a></li>
+          <li><a href="my-progress.html">My Progress</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Grammar Topics</h3>
+        <ul>
+          <li><a href="grammar/advanced/advanced-grammar.html#advanced-tenses-and-aspect">Advanced Tenses</a></li>
+          <li><a href="grammar/advanced/advanced-grammar.html#conditionals">Advanced Conditionals</a></li>
+          <li><a href="grammar/advanced/advanced-grammar.html#modals">Advanced Modal Verbs</a></li>
+          <li><a href="grammar/advanced/advanced-grammar.html#passive">Advanced Passive Voice</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© 2025 English in Doses | All rights reserved | <a href="license.html">Licensing Information</a></p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/core.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Level tab functionality
+      const levelTabs = document.querySelectorAll('.level-tab');
+      const levelContainers = document.querySelectorAll('.practice-level-container');
+      
+      levelTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          // Update active tab
+          levelTabs.forEach(t => t.classList.remove('active'));
+          this.classList.add('active');
+          
+          // Show corresponding content
+          const level = this.getAttribute('data-level');
+          levelContainers.forEach(container => {
+            container.classList.remove('active');
+          });
+          document.getElementById(level + '-activities').classList.add('active');
+          
+          // Update URL hash
+          history.pushState(null, null, '#' + level);
+        });
+      });
+      
+      // Check URL hash on page load
+      if (location.hash) {
+        const level = location.hash.substring(1);
+        const tab = document.querySelector(`.level-tab[data-level="${level}"]`);
+        if (tab) {
+          tab.click();
+        }
+      }
+      
+      // Search functionality
+      const searchInput = document.getElementById('activity-search');
+      const filterType = document.getElementById('activity-type-filter');
+      const filterDifficulty = document.getElementById('difficulty-filter');
+      const filterTime = document.getElementById('time-filter');
+      const filterTopic = document.getElementById('topic-filter');
+      const noResults = document.getElementById('no-results');
+      
+      // Combined filter function
+      function filterActivities() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const typeFilter = filterType.value;
+        const difficultyFilter = filterDifficulty.value;
+        const timeFilter = filterTime.value;
+        const topicFilter = filterTopic.value;
+        
+        let hasResults = false;
+        
+        // Get all activity cards that are in the currently visible level
+        const activeLevel = document.querySelector('.practice-level-container.active');
+        const activityCards = activeLevel.querySelectorAll('.activity-card');
+        
+        activityCards.forEach(card => {
+          const title = card.querySelector('.activity-title').textContent.toLowerCase();
+          const description = card.querySelector('.activity-description').textContent.toLowerCase();
+          const type = card.querySelector('.activity-badge').classList[1];
+          const difficulty = card.querySelector('.activity-difficulty').textContent.toLowerCase();
+          const time = card.querySelector('.activity-time').textContent.toLowerCase();
+          
+          // Get parent category for topic filter
+          const category = card.closest('.practice-category').querySelector('.category-title').textContent.toLowerCase();
+          
+          // Check all filter conditions
+          const matchesSearch = searchTerm === '' || 
+            title.includes(searchTerm) || 
+            description.includes(searchTerm);
+          
+          const matchesType = typeFilter === '' || type.includes(typeFilter);
+          
+          const matchesDifficulty = difficultyFilter === '' || 
+            (difficultyFilter === 'easy' && difficulty.includes('easy')) ||
+            (difficultyFilter === 'medium' && difficulty.includes('medium')) ||
+            (difficultyFilter === 'hard' && difficulty.includes('hard'));
+          
+          const matchesTime = timeFilter === '' || 
+            (timeFilter === 'short' && parseInt(time.match(/\d+/)[0]) < 5) ||
+            (timeFilter === 'medium' && parseInt(time.match(/\d+/)[0]) >= 5 && parseInt(time.match(/\d+/)[0]) <= 10) ||
+            (timeFilter === 'long' && parseInt(time.match(/\d+/)[0]) > 10);
+          
+          const matchesTopic = topicFilter === '' || category.includes(topicFilter);
+          
+          // Show or hide the card based on filters
+          if (matchesSearch && matchesType && matchesDifficulty && matchesTime && matchesTopic) {
+            card.style.display = 'flex';
+            hasResults = true;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+        
+        // For each category, hide it if all its cards are hidden
+        const categories = activeLevel.querySelectorAll('.practice-category');
+        categories.forEach(category => {
+          const visibleCards = category.querySelectorAll('.activity-card[style="display: flex;"]');
+          category.style.display = visibleCards.length > 0 ? 'block' : 'none';
+        });
+        
+        // Show or hide the "no results" message
+        noResults.style.display = hasResults ? 'none' : 'block';
+      }
+      
+      // Attach event listeners to all filter controls
+      [searchInput, filterType, filterDifficulty, filterTime, filterTopic].forEach(filter => {
+        filter.addEventListener('input', filterActivities);
+        filter.addEventListener('change', filterActivities);
+      });
+      
+      // Check for user's progress data to show recommendations
+      if (typeof localStorage !== 'undefined') {
+        try {
+          const progressData = JSON.parse(localStorage.getItem('esl-progress-data'));
+          const recommendationsContainer = document.getElementById('personalized-recommendations');
+          
+          if (progressData && progressData.activities && Object.keys(progressData.activities).length > 0) {
+            // Clear placeholder message
+            recommendationsContainer.innerHTML = '';
+            
+            // Add sample recommended activities based on user's activity
+            // In a real implementation, you would analyze the user's progress data
+            // and generate recommendations based on their needs
+            
+            // Sample recommended activity
+            const activityCard = document.createElement('div');
+            activityCard.className = 'activity-card';
+            activityCard.innerHTML = `
+              <div class="activity-header">
+                <h3 class="activity-title">Present Perfect Progressive Practice</h3>
+                <span class="activity-badge transformation">Transformation</span>
+              </div>
+              <div class="activity-content">
+                <p class="activity-description">Based on your recent activity, we recommend more practice with transforming sentences using Present Perfect Progressive forms.</p>
+                <div class="activity-meta">
+                  <span class="activity-time"><i class="fa fa-clock-o"></i> 10 min</span>
+                  <span class="activity-difficulty"><i class="fa fa-bar-chart"></i> Hard</span>
+                </div>
+                <a href="practice/advanced/present-perfect-progressive-transformation.html" class="activity-link">Start Activity</a>
+              </div>
+            `;
+            
+            recommendationsContainer.appendChild(activityCard);
+            
+            // Add another sample recommendation
+            const activityCard2 = document.createElement('div');
+            activityCard2.className = 'activity-card';
+            activityCard2.innerHTML = `
+              <div class="activity-header">
+                <h3 class="activity-title">Modal Perfect Forms</h3>
+                <span class="activity-badge mcq">MCQ</span>
+              </div>
+              <div class="activity-content">
+                <p class="activity-description">We noticed you were having some difficulty with modal perfect forms. This activity will help you practice them more.</p>
+                <div class="activity-meta">
+                  <span class="activity-time"><i class="fa fa-clock-o"></i> 8 min</span>
+                  <span class="activity-difficulty"><i class="fa fa-bar-chart"></i> Hard</span>
+                </div>
+                <a href="practice/advanced/modal-perfect-mcq.html" class="activity-link">Start Activity</a>
+              </div>
+            `;
+            
+            recommendationsContainer.appendChild(activityCard2);
+          }
+        } catch (error) {
+          console.error('Error loading progress data:', error);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

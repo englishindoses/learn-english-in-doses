@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Include standardized head content -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Practice activities for Conditional Types - Advanced ESL grammar practice">
+  <title>Conditional Types Practice - Advanced ESL Grammar</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../../images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../images//favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../images//favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/activities.css">
+  <link rel="stylesheet" href="../../css/progress-tracking-styles.css">
+</head>
+<body>
+  <!-- Include skip link and theme toggle -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  
+  <div class="theme-toggle-container">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="light-icon">☀️</span>
+      <span class="dark-icon">🌙</span>
+    </button>
+  </div>
+  
+  <!-- Include navigation -->
+  <nav class="main-navigation">
+    <a href="../../home.html" class="site-logo">
+      <img src="../../images/my-logo.svg" alt="English in Doses" width="150" height="auto">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <div class="nav-links">
+      <a href="../../home.html" class="nav-link">Home</a>
+      <a href="../../about.html" class="nav-link">About Us</a>
+      <a href="../../contact.html" class="nav-link">Contact Us</a>
+      <a href="../../home.html#where-to-start" class="nav-link">Grammar</a>
+      <a href="../../extra-practice.html" class="nav-link">Extra Practice</a>     
+      <a href="../../conversation-page.html" class="nav-link">Conversation</a>
+      <a href="../../my-progress.html" class="nav-link">My Progress</a>
+    </div>
+
+    <div class="advanced-nav-indicator"></div>
+  </nav>
+
+  <div class="container">
+    <!-- Include breadcrumbs -->
+    <div class="breadcrumbs" aria-label="breadcrumb">
+      <span class="breadcrumb-item"><a href="../../home.html">Home</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="../advanced/advanced-grammar.html">Advanced Grammar</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="conditional-types.html">Conditional Types</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item">Practice</span>
+    </div>
+
+    <main id="main-content">
+      <h1>Conditional Types Practice</h1>
+
+      <!-- Introduction Section -->
+      <section class="intro-section">
+        <h2>Practice Activities</h2>
+        <p>Now it's time to practice what you've learned about conditional types. Complete the activities below to test your understanding and build your skills with zero, first, second, third, and mixed conditionals.</p>
+        
+        <div id="progress-container" class="progress-container">
+          <div id="progress-bar" class="progress-bar" style="width: 0%"></div>
+        </div>
+        <div id="progress-info" class="progress-info">
+          Progress: 0% complete (0/4 activities completed)
+        </div>
+      </section>
+
+      <!-- Activity Navigation -->
+      <div id="activity-nav" class="activity-nav">
+        <button data-activity="mcq" class="activity-nav-btn active">Multiple Choice</button>
+        <button data-activity="gap-fill" class="activity-nav-btn">Gap Fill</button>
+        <button data-activity="matching" class="activity-nav-btn">Matching</button>
+        <button data-activity="transformation" class="activity-nav-btn">Transformation</button>
+      </div>
+
+      <!-- Multiple Choice Questions -->
+      <section id="mcq" class="activity-container active">
+        <h2>Multiple Choice Questions</h2>
+        <p>Choose the correct option to complete each conditional sentence.</p>
+        
+        <div class="question" id="q1">
+          <p class="mcq-question">1. If you heat ice, it _____. (Zero conditional)</p>
+          <div class="options">
+            <div class="option" data-index="0" onclick="MCQModule.selectOption('q1', 0)">
+              <span>A. melts</span>
+            </div>
+            <div class="option" data-index="1" onclick="MCQModule.selectOption('q1', 1)">
+              <span>B. will melt</span>
+            </div>
+            <div class="option" data-index="2" onclick="MCQModule.selectOption('q1', 2)">
+              <span>C. would melt</span>
+            </div>
+            <div class="option" data-index="3" onclick="MCQModule.selectOption('q1', 3)">
+              <span>D. would have melted</span>
+            </div>
+          </div>
+          <div class="feedback" id="feedback-q1"></div>
+        </div>
+        
+        <div class="question" id="q2">
+          <p class="mcq-question">2. If it rains tomorrow, we _____ to the museum instead of the park. (First conditional)</p>
+          <div class="options">
+            <div class="option" data-index="0" onclick="MCQModule.selectOption('q2', 0)">
+              <span>A. go</span>
+            </div>
+            <div class="option" data-index="1" onclick="MCQModule.selectOption('q2', 1)">
+              <span>B. will go</span>
+            </div>
+            <div class="option" data-index="2" onclick="MCQModule.selectOption('q2', 2)">
+              <span>C. would go</span>
+            </div>
+            <div class="option" data-index="3" onclick="MCQModule.selectOption('q2', 3)">
+              <span>D. would have gone</span>
+            </div>
+          </div>
+          <div class="feedback" id="feedback-q2"></div>
+        </div>
+        
+        <div class="question" id="q3">
+          <p class="mcq-question">3. If I _____ rich, I would buy a private island. (Second conditional)</p>
+          <div class="options">
+            <div class="option" data-index="0" onclick="MCQModule.selectOption('q3', 0)">
+              <span>A. am</span>
+            </div>
+            <div class="option" data-index="1" onclick="MCQModule.selectOption('q3', 1)">
+              <span>B. will be</span>
+            </div>
+            <div class="option" data-index="2" onclick="MCQModule.selectOption('q3', 2)">
+              <span>C. were</span>
+            </div>
+            <div class="option" data-index="3" onclick="MCQModule.selectOption('q3', 3)">
+              <span>D. had been</span>
+            </div>
+          </div>
+          <div class="feedback" id="feedback-q3"></div>
+        </div>
+        
+        <div class="question" id="q4">
+          <p class="mcq-question">4. If she had studied harder, she _____ the exam. (Third conditional)</p>
+          <div class="options">
+            <div class="option" data-index="0" onclick="MCQModule.selectOption('q4', 0)">
+              <span>A. passes</span>
+            </div>
+            <div class="option" data-index="1" onclick="MCQModule.selectOption('q4', 1)">
+              <span>B. will pass</span>
+            </div>
+            <div class="option" data-index="2" onclick="MCQModule.selectOption('q4', 2)">
+              <span>C. would pass</span>
+            </div>
+            <div class="option" data-index="3" onclick="MCQModule.selectOption('q4', 3)">
+              <span>D. would have passed</span>
+            </div>
+          </div>
+          <div class="feedback" id="feedback-q4"></div>
+        </div>
+        
+        <div class="question" id="q5">
+          <p class="mcq-question">5. If I had taken that job in New York, I _____ there now. (Mixed conditional: past → present)</p>
+          <div class="options">
+            <div class="option" data-index="0" onclick="MCQModule.selectOption('q5', 0)">
+              <span>A. lived</span>
+            </div>
+            <div class="option" data-index="1" onclick="MCQModule.selectOption('q5', 1)">
+              <span>B. will live</span>
+            </div>
+            <div class="option" data-index="2" onclick="MCQModule.selectOption('q5', 2)">
+              <span>C. would live</span>
+            </div>
+            <div class="option" data-index="3" onclick="MCQModule.selectOption('q5', 3)">
+              <span>D. would have lived</span>
+            </div>
+          </div>
+          <div class="feedback" id="feedback-q5"></div>
+        </div>
+        
+        <div class="question" id="q6">
+          <p class="mcq-question">6. If I spoke Japanese, I _____ for the translator position last month. (Mixed conditional: present → past)</p>
+          <div class="options">
+            <div class="option" data-index="0" onclick="MCQModule.selectOption('q6', 0)">
+              <span>A. applied</span>
+            </div>
+            <div class="option" data-index="1" onclick="MCQModule.selectOption('q6', 1)">
+              <span>B. would apply</span>
+            </div>
+            <div class="option" data-index="2" onclick="MCQModule.selectOption('q6', 2)">
+              <span>C. will apply</span>
+            </div>
+            <div class="option" data-index="3" onclick="MCQModule.selectOption('q6', 3)">
+              <span>D. would have applied</span>
+            </div>
+          </div>
+          <div class="feedback" id="feedback-q6"></div>
+        </div>
+        
+        <div class="question" id="q7">
+          <p class="mcq-question">7. Which of these is a correctly formed first conditional sentence?</p>
+          <div class="options">
+            <div class="option" data-index="0" onclick="MCQModule.selectOption('q7', 0)">
+              <span>A. If I will study hard, I will pass the exam.</span>
+            </div>
+            <div class="option" data-index="1" onclick="MCQModule.selectOption('q7', 1)">
+              <span>B. If I study hard, I will pass the exam.</span>
+            </div>
+            <div class="option" data-index="2" onclick="MCQModule.selectOption('q7', 2)">
+              <span>C. If I studied hard, I will pass the exam.</span>
+            </div>
+            <div class="option" data-index="3" onclick="MCQModule.selectOption('q7', 3)">
+              <span>D. If I study hard, I would pass the exam.</span>
+            </div>
+          </div>
+          <div class="feedback" id="feedback-q7"></div>
+        </div>
+        
+        <div class="question" id="q8">
+          <p class="mcq-question">8. Which sentence is an example of a mixed conditional?</p>
+          <div class="options">
+            <div class="option" data-index="0" onclick="MCQModule.selectOption('q8', 0)">
+              <span>A. If you come to the party, you'll have a great time.</span>
+            </div>
+            <div class="option" data-index="1" onclick="MCQModule.selectOption('q8', 1)">
+              <span>B. If you came to the party, you would have a great time.</span>
+            </div>
+            <div class="option" data-index="2" onclick="MCQModule.selectOption('q8', 2)">
+              <span>C. If you had come to the party, you would have had a great time.</span>
+            </div>
+            <div class="option" data-index="3" onclick="MCQModule.selectOption('q8', 3)">
+              <span>D. If you weren't so shy, you would have come to the party last night.</span>
+            </div>
+          </div>
+          <div class="feedback" id="feedback-q8"></div>
+        </div>
+        
+        <div class="question" id="q9">
+          <p class="mcq-question">9. Complete this zero conditional: "If you mix blue and yellow, _____."</p>
+          <div class="options">
+            <div class="option" data-index="0" onclick="MCQModule.selectOption('q9', 0)">
+              <span>A. you get green</span>
+            </div>
+            <div class="option" data-index="1" onclick="MCQModule.selectOption('q9', 1)">
+              <span>B. you will get green</span>
+            </div>
+            <div class="option" data-index="2" onclick="MCQModule.selectOption('q9', 2)">
+              <span>C. you would get green</span>
+            </div>
+            <div class="option" data-index="3" onclick="MCQModule.selectOption('q9', 3)">
+              <span>D. you would have gotten green</span>
+            </div>
+          </div>
+          <div class="feedback" id="feedback-q9"></div>
+        </div>
+        
+        <div class="question" id="q10">
+          <p class="mcq-question">10. Which conditional type expresses the highest probability (scientific fact)?</p>
+          <div class="options">
+            <div class="option" data-index="0" onclick="MCQModule.selectOption('q10', 0)">
+              <span>A. Zero conditional</span>
+            </div>
+            <div class="option" data-index="1" onclick="MCQModule.selectOption('q10', 1)">
+              <span>B. First conditional</span>
+            </div>
+            <div class="option" data-index="2" onclick="MCQModule.selectOption('q10', 2)">
+              <span>C. Second conditional</span>
+            </div>
+            <div class="option" data-index="3" onclick="MCQModule.selectOption('q10', 3)">
+              <span>D. Third conditional</span>
+            </div>
+          </div>
+          <div class="feedback" id="feedback-q10"></div>
+        </div>
+        
+        <div class="control-buttons">
+          <button id="mcq-submit" class="submit-btn">Check Answers</button>
+          <button id="mcq-restart" class="restart-btn" style="display:none;">Try Again</button>
+        </div>
+        
+        <div class="score-display" id="mcq-score" style="display:none;">
+          Your score: <span>0</span>/10
+        </div>
+      </section>
+
+      <!-- Gap Fill Activity -->
+      <section id="gap-fill" class="activity-container">
+        <h2>Gap Fill Exercise</h2>
+        <p>Complete the conditional sentences with the correct form of the verbs in brackets.</p>
+        
+        <div class="question" id="gf1">
+          <p class="gap-fill-sentence">1. If you leave ice cream in the sun, it __________ (melt). [Zero conditional]</p>
+          <input type="text" class="gap-input" data-answer="melts" placeholder="Type your answer">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="gf2">
+          <p class="gap-fill-sentence">2. If it __________ (rain) tomorrow, we'll cancel the picnic. [First conditional]</p>
+          <input type="text" class="gap-input" data-answer="rains" placeholder="Type your answer">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="gf3">
+          <p class="gap-fill-sentence">3. If I __________ (be) younger, I would travel around the world. [Second conditional]</p>
+          <input type="text" class="gap-input" data-answer="were" placeholder="Type your answer">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="gf4">
+          <p class="gap-fill-sentence">4. If they __________ (listen) to the weather forecast, they wouldn't have got caught in the storm. [Third conditional]</p>
+          <input type="text" class="gap-input" data-answer="had listened" placeholder="Type your answer">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="gf5">
+          <p class="gap-fill-sentence">5. If we __________ (not/miss) our flight, we would be in Paris now. [Mixed conditional: past → present]</p>
+          <input type="text" class="gap-input" data-answer="hadn't missed" placeholder="Type your answer">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="gf6">
+          <p class="gap-fill-sentence">6. If she __________ (speak) French, she would have applied for that job in Quebec. [Mixed conditional: present → past]</p>
+          <input type="text" class="gap-input" data-answer="spoke" placeholder="Type your answer">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="gf7">
+          <p class="gap-fill-sentence">7. If you __________ (touch) a hot pan, you burn yourself. [Zero conditional]</p>
+          <input type="text" class="gap-input" data-answer="touch" placeholder="Type your answer">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="gf8">
+          <p class="gap-fill-sentence">8. If my presentation __________ (go) well tomorrow, my boss will be impressed. [First conditional]</p>
+          <input type="text" class="gap-input" data-answer="goes" placeholder="Type your answer">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="gf9">
+          <p class="gap-fill-sentence">9. If I __________ (have) his phone number, I would call him right now. [Second conditional]</p>
+          <input type="text" class="gap-input" data-answer="had" placeholder="Type your answer">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="gf10">
+          <p class="gap-fill-sentence">10. If I __________ (study) medicine instead of law, I would be working in a hospital now. [Mixed conditional: past → present]</p>
+          <input type="text" class="gap-input" data-answer="had studied" placeholder="Type your answer">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="control-buttons">
+          <button id="gap-fill-submit" class="submit-btn">Check Answers</button>
+          <button id="gap-fill-restart" class="restart-btn" style="display:none;">Try Again</button>
+        </div>
+        
+        <div class="score-display" id="gap-fill-score" style="display:none;">
+          Your score: <span>0</span>/10
+        </div>
+      </section>
+
+      <!-- Matching Activity -->
+      <section id="matching" class="activity-container">
+        <h2>Matching Exercise</h2>
+        <p>Match each conditional sentence with its correct type.</p>
+        
+        <div id="line-container" class="matching-line-container"></div>
+        
+        <div class="matching-container">
+          <div class="matching-item">
+            <div class="matching-question" data-index="1">If you heat water to 100°C, it boils.</div>
+            <div class="matching-answer" data-index="1">Zero conditional (100% certain)</div>
+          </div>
+          
+          <div class="matching-item">
+            <div class="matching-question" data-index="2">If it rains tomorrow, we'll stay at home.</div>
+            <div class="matching-answer" data-index="2">First conditional (possible future)</div>
+          </div>
+          
+          <div class="matching-item">
+            <div class="matching-question" data-index="3">If I won the lottery, I would buy a house.</div>
+            <div class="matching-answer" data-index="3">Second conditional (unlikely present/future)</div>
+          </div>
+          
+          <div class="matching-item">
+            <div class="matching-question" data-index="4">If I had known you were coming, I would have baked a cake.</div>
+            <div class="matching-answer" data-index="4">Third conditional (impossible past)</div>
+          </div>
+          
+          <div class="matching-item">
+            <div class="matching-question" data-index="5">If I had studied medicine, I would be a doctor now.</div>
+            <div class="matching-answer" data-index="5">Mixed conditional (past → present)</div>
+          </div>
+          
+          <div class="matching-item">
+            <div class="matching-question" data-index="6">If I weren't so busy right now, I would have attended the conference yesterday.</div>
+            <div class="matching-answer" data-index="6">Mixed conditional (present → past)</div>
+          </div>
+          
+          <div class="matching-item">
+            <div class="matching-question" data-index="7">If you mix red and white, you get pink.</div>
+            <div class="matching-answer" data-index="7">Zero conditional (100% certain)</div>
+          </div>
+          
+          <div class="matching-item">
+            <div class="matching-question" data-index="8">If you work hard, you will succeed.</div>
+            <div class="matching-answer" data-index="8">First conditional (possible future)</div>
+          </div>
+        </div>
+        
+        <div class="control-buttons">
+          <button id="matching-restart" class="restart-btn" style="display:none;">Try Again</button>
+        </div>
+        
+        <div class="score-display" id="matching-score" style="display:none;">
+          Your score: <span>0</span>/8
+        </div>
+      </section>
+
+      <!-- Transformation Activity -->
+      <section id="transformation" class="activity-container">
+        <h2>Sentence Transformation</h2>
+        <p>Rewrite each sentence using the indicated conditional type, keeping the same meaning.</p>
+        
+        <div class="question" id="tr1">
+          <p class="question-text">1. I don't have a car, so I can't drive you to the airport. (Second conditional)</p>
+          <input type="text" class="transformation-input" data-answer="If I had a car, I could drive you to the airport." placeholder="Rewrite the sentence here...">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="tr2">
+          <p class="question-text">2. She didn't call me, so I didn't know about the party. (Third conditional)</p>
+          <input type="text" class="transformation-input" data-answer="If she had called me, I would have known about the party." placeholder="Rewrite the sentence here...">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="tr3">
+          <p class="question-text">3. Plants die when they don't get water. (Zero conditional)</p>
+          <input type="text" class="transformation-input" data-answer="If plants don't get water, they die." placeholder="Rewrite the sentence here...">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="tr4">
+          <p class="question-text">4. I'll probably finish work early, so I'll come to your party. (First conditional)</p>
+          <input type="text" class="transformation-input" data-answer="If I finish work early, I'll come to your party." placeholder="Rewrite the sentence here...">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="tr5">
+          <p class="question-text">5. I didn't take that job in London five years ago, so I don't live there now. (Mixed conditional: past → present)</p>
+          <input type="text" class="transformation-input" data-answer="If I had taken that job in London five years ago, I would live there now." placeholder="Rewrite the sentence here...">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="tr6">
+          <p class="question-text">6. I'm not good at languages, so I didn't apply for the translator position. (Mixed conditional: present → past)</p>
+          <input type="text" class="transformation-input" data-answer="If I were good at languages, I would have applied for the translator position." placeholder="Rewrite the sentence here...">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="tr7">
+          <p class="question-text">7. I advise you to take an umbrella. It might rain. (First conditional)</p>
+          <input type="text" class="transformation-input" data-answer="If it rains, you'll be glad you took an umbrella." placeholder="Rewrite the sentence here...">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="tr8">
+          <p class="question-text">8. I'm not the company director, so I can't make that decision. (Second conditional)</p>
+          <input type="text" class="transformation-input" data-answer="If I were the company director, I could make that decision." placeholder="Rewrite the sentence here...">
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="control-buttons">
+          <button id="transformation-submit" class="submit-btn">Check Answers</button>
+          <button id="transformation-restart" class="restart-btn" style="display:none;">Try Again</button>
+        </div>
+        
+        <div class="score-display" id="transformation-score" style="display:none;">
+          Your score: <span>0</span>/8
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <!-- BOTTOM NAVIGATION -->
+  <nav class="bottom-navigation">
+    <a href="conditional-types.html" class="nav-button previous">← Back to: Conditional Types Explanation</a>
+    <div class="center-buttons">
+      <button class="nav-button print-button" onclick="window.print()">Print This Page</button>
+    </div>
+    <a href="../../my-progress.html" class="nav-button next">View My Progress →</a>
+  </nav>
+
+  <!-- Include footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="../../home.html">Home</a></li>
+          <li><a href="../../home.html#where-to-start">Grammar</a></li>
+          <li><a href="../../extra-practice.html">Extra Practice</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Grammar Topics</h3>
+        <ul>
+          <li><a href="advanced-grammar.html#advanced-tenses-and-aspect">Advanced Tenses</a></li>
+          <li><a href="advanced-grammar.html#conditionals">Advanced Conditionals</a></li>
+          <li><a href="advanced-grammar.html#modals">Advanced Modal Verbs</a></li>
+          <li><a href="advanced-grammar.html#passive">Advanced Passive Voice</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="../../about.html">About</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© 2025 English in Doses | All rights reserved | <a href="../../license.html">Licensing Information</a></p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="../../js/core.js"></script>
+  <script src="../../js/mcq.js"></script>
+  <script src="../../js/gap-fill.js"></script>
+  <script src="../../js/matching.js"></script>
+  <script src="../../js/transformation.js"></script>
+  <script src="../../js/activity-nav.js"></script>
+  <script src="../../js/progress-tracking-module.js"></script>
+  <script src="../../js/progress-manager-ui.js"></script>
+  <script src="../../js/init-progress.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize activity modules
+      MCQModule.init({
+        containerId: 'mcq',
+        answers: {
+          'q1': 0,  // melts (zero conditional)
+          'q2': 1,  // will go (first conditional)
+          'q3': 2,  // were (second conditional)
+          'q4': 3,  // would have passed (third conditional)
+          'q5': 2,  // would live (mixed conditional: past→present)
+          'q6': 3,  // would have applied (mixed conditional: present→past)
+          'q7': 1,  // If I study hard, I will pass the exam. (correct first conditional)
+          'q8': 3,  // Mixed conditional example
+          'q9': 0,  // you get green (zero conditional)
+          'q10': 0,  // Zero conditional (100% certain)
+        },
+        correctExplanations: {
+          'q1': 'Correct! The zero conditional uses present simple in both clauses to express scientific facts or things that are always true.',
+          'q2': 'Correct! The first conditional uses present simple in the if-clause and "will + infinitive" in the main clause to express real possibilities in the future.',
+          'q3': 'Correct! The second conditional uses past simple (or "were" for all subjects) in the if-clause and "would + infinitive" in the main clause for unlikely situations.',
+          'q4': 'Correct! The third conditional uses past perfect in the if-clause and "would have + past participle" in the main clause for impossible past situations.',
+          'q5': 'Correct! This mixed conditional uses past perfect in the if-clause (past condition) and "would + infinitive" in the main clause (present result).',
+          'q6': 'Correct! This mixed conditional uses past simple in the if-clause (present condition) and "would have + past participle" in the main clause (past result).',
+          'q7': 'Correct! This is a properly formed first conditional with present simple in the if-clause and "will + infinitive" in the main clause.',
+          'q8': 'Correct! This is a mixed conditional combining a present condition (being shy) with a past result (not coming to the party).',
+          'q9': 'Correct! The zero conditional uses present simple in both clauses to express facts that are always true.',
+          'q10': 'Correct! The zero conditional expresses scientific facts and things that are 100% certain.'
+        },
+        incorrectExplanations: {
+          'q1': 'Incorrect. The zero conditional uses present simple in both clauses to express facts that are always true.',
+          'q2': 'Incorrect. The first conditional uses "will + infinitive" in the main clause to express real possibilities in the future.',
+          'q3': 'Incorrect. The second conditional uses past simple (or "were" for all subjects) in the if-clause for unlikely present or future situations.',
+          'q4': 'Incorrect. The third conditional uses "would have + past participle" in the main clause for impossible past situations.',
+          'q5': 'Incorrect. For mixed conditionals with a past condition and present result, we use "would + infinitive" in the main clause.',
+          'q6': 'Incorrect. For mixed conditionals with a present condition and past result, we use "would have + past participle" in the main clause.',
+          'q7': 'Incorrect. Check the tense forms used in first conditionals: present simple in the if-clause and "will + infinitive" in the main clause.',
+          'q8': 'Incorrect. Mixed conditionals combine different time references between the if-clause and main clause.',
+          'q9': 'Incorrect. The zero conditional uses present simple in both clauses to express scientific facts.',
+          'q10': 'Incorrect. Consider the probability levels of each conditional type.'
+        },
+        onComplete: function(score, total) {
+          ProgressTrackingModule.updateItemProgress('activities', 'mcq-conditionals', {
+            completed: true,
+            score: score,
+            maxScore: total
+          });
+          ActivityNavModule.notifyActivityCompleted('mcq', {
+            score: score,
+            maxScore: total
+          });
+        }
+      });
+      
+      GapFillModule.init({
+        containerId: 'gap-fill',
+        acceptAlternativeAnswers: true,
+        alternativeAnswers: {
+          'gf1': ['melts'],
+          'gf2': ['rains'],
+          'gf3': ['were', 'was'],
+          'gf4': ['had listened'],
+          'gf5': ['hadn't missed', 'had not missed'],
+          'gf6': ['spoke'],
+          'gf7': ['touch'],
+          'gf8': ['goes'],
+          'gf9': ['had'],
+          'gf10': ['had studied']
+        },
+        feedback: {
+          correct: 'Correct! You've used the proper verb form for this type of conditional.',
+          incorrect: 'Incorrect. Check the verb form required for this type of conditional.'
+        },
+        onComplete: function(score, total) {
+          ProgressTrackingModule.updateItemProgress('activities', 'gap-fill-conditionals', {
+            completed: true,
+            score: score,
+            maxScore: total
+          });
+          ActivityNavModule.notifyActivityCompleted('gap-fill', {
+            score: score,
+            maxScore: total
+          });
+        }
+      });
+      
+      MatchingModule.init({
+        containerId: 'matching',
+        onComplete: function(score, total) {
+          ProgressTrackingModule.updateItemProgress('activities', 'matching-conditionals', {
+            completed: true,
+            score: score,
+            maxScore: total
+          });
+          ActivityNavModule.notifyActivityCompleted('matching', {
+            score: score,
+            maxScore: total
+          });
+        }
+      });
+      
+      TransformationModule.init({
+        containerId: 'transformation',
+        acceptAlternativeAnswers: true,
+        alternativeAnswers: {
+          'tr1': ['If I had a car, I could drive you to the airport.', 'If I had a car, I would be able to drive you to the airport.'],
+          'tr2': ['If she had called me, I would have known about the party.'],
+          'tr3': ['If plants don't get water, they die.', 'If plants do not get water, they die.'],
+          'tr4': ['If I finish work early, I'll come to your party.', 'If I finish work early, I will come to your party.'],
+          'tr5': ['If I had taken that job in London five years ago, I would live there now.'],
+          'tr6': ['If I were good at languages, I would have applied for the translator position.', 'If I was good at languages, I would have applied for the translator position.'],
+          'tr7': ['If it rains, you'll be glad you took an umbrella.', 'If it rains, you will be glad you took an umbrella.'],
+          'tr8': ['If I were the company director, I could make that decision.', 'If I was the company director, I could make that decision.']
+        },
+        feedback: {
+          correct: 'Excellent! You've transformed this sentence correctly using the indicated conditional type.',
+          incorrect: 'That's not quite right. Make sure you're using the correct conditional form.'
+        },
+        onComplete: function(score, total) {
+          ProgressTrackingModule.updateItemProgress('activities', 'transformation-conditionals', {
+            completed: true,
+            score: score,
+            maxScore: total
+          });
+          ActivityNavModule.notifyActivityCompleted('transformation', {
+            score: score,
+            maxScore: total
+          });
+        }
+      });
+      
+      // Initialize activity navigation
+      ActivityNavModule.init({
+        containerId: 'activity-nav',
+        activities: ['mcq', 'gap-fill', 'matching', 'transformation'],
+        progressContainerId: 'progress-bar',
+        progressInfoContainerId: 'progress-info',
+        onActivityChange: function(activityId) {
+          console.log('Activity changed to:', activityId);
+        }
+      });
+      
+      // Initialize progress tracking
+      ProgressTrackingModule.init({
+        categories: {
+          activities: {
+            grammarActivities: ['mcq-conditionals', 'gap-fill-conditionals', 'matching-conditionals', 'transformation-conditionals']
+          }
+        },
+        onProgressChange: function(details) {
+          ActivityNavModule.updateProgressDisplay();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
