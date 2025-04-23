@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="English in Doses Extra Practice - Additional grammar activities for all levels. Improve your English through targeted practice exercises.">
+  <title>Extra Practice | English in Doses</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
+  
+  <!-- Include your CSS files -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/activities.css">
+  
+  <style>
+    /* Additional styles specific to the Extra Practice page */
+    .extra-practice-container {
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    
+    .practice-section {
+      width: 100%;
+      padding: 60px 5%;
+      box-sizing: border-box;
+    }
+    
+    .practice-section-content {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    
+    /* Hero section styles */
+    .hero-section {
+      background: linear-gradient(135deg, var(--header-bg) 0%, var(--accent-color) 100%);
+      color: white;
+      padding: 80px 5%;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-content {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .hero-title {
+      font-size: 3rem;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: white;
+      font-weight: 700;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.25rem;
+      margin-bottom: 30px;
+      opacity: 0.9;
+      color: white;
+    }
+    
+    /* Search box styles */
+    .search-container {
+      margin-bottom: 30px;
+    }
+    
+    .search-box {
+      position: relative;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .search-box input {
+      width: 100%;
+      padding: 15px 50px 15px 20px;
+      border-radius: 50px;
+      border: none;
+      font-size: 1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .search-icon {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.2rem;
+    }
+    
+    /* Search results styles */
+    .search-results-section {
+      background-color: var(--bg-color);
+    }
+    
+    .search-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    
+    .search-header h2 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+    
+    #results-count {
+      margin: 0;
+      font-size: 1.1rem;
+      opacity: 0.8;
+    }
+    
+    .no-results {
+      text-align: center;
+      padding: 40px 0;
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 5px 15px var(--shadow-color);
+    }
+    
+    /* Level navigation styles */
+    .level-navigation {
+      background-color: var(--bg-color);
+      padding: 20px 5%;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .level-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    
+    .level-tab {
+      padding: 15px 25px;
+      border-radius: 8px 8px 0 0;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+      min-width: 180px;
+      border: none;
+      background-color: var(--card-bg);
+      color: var(--text-color);
+      border-bottom: 4px solid transparent;
+    }
+    
+    .level-tab.beginner {
+      border-bottom-color: var(--beginner-primary, #4CAF50);
+    }
+    
+    .level-tab.intermediate {
+      border-bottom-color: var(--intermediate-color, #FF9800);
+    }
+    
+    .level-tab.advanced {
+      border-bottom-color: var(--advanced-color, #3498db);
+    }
+    
+    .level-tab.active.beginner {
+      background-color: rgba(76, 175, 80, 0.1);
+      color: var(--beginner-primary, #4CAF50);
+    }
+    
+    .level-tab.active.intermediate {
+      background-color: rgba(255, 152, 0, 0.1);
+      color: var(--intermediate-color, #FF9800);
+    }
+    
+    .level-tab.active.advanced {
+      background-color: rgba(52, 152, 219, 0.1);
+      color: var(--advanced-color, #3498db);
+    }
+    
+    .level-tab:hover {
+      transform: translateY(-3px);
+    }
+    
+    /* Level section styles */
+    .level-section {
+      padding: 60px 5%;
+      display: none; /* Hide all sections by default */
+    }
+    
+    .level-section.active {
+      display: block; /* Show only active section */
+    }
+    
+    .level-header {
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    
+    .level-icon {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+    
+    .level-title {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .level-title::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      border-radius: 2px;
+    }
+    
+    .level-desc {
+      max-width: 700px;
+      margin: 0 auto 40px;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+    
+    /* Beginner section styling */
+    .beginner-section {
+      background-color: rgba(76, 175, 80, 0.05);
+    }
+    
+    .beginner-section .level-title::after {
+      background-color: var(--beginner-primary, #4CAF50);
+    }
+    
+    /* Intermediate section styling */
+    .intermediate-section {
+      background-color: rgba(255, 152, 0, 0.05);
+    }
+    
+    .intermediate-section .level-title::after {
+      background-color: var(--intermediate-color, #FF9800);
+    }
+    
+    /* Advanced section styling - Updated to blue theme */
+    .advanced-section {
+      background-color: rgba(52, 152, 219, 0.05);
+    }
+    
+    .advanced-section .level-title::after {
+      background-color: var(--advanced-color, #3498db);
+    }
+    
+    /* Topic grid styling */
+    .topic-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+    
+    .topic-card {
+      background-color: var(--bg-color);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px var(--shadow-color);
+      transition: transform 0.3s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .topic-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .topic-header {
+      padding: 20px;
+      font-size: 1.4rem;
+      font-weight: 600;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .beginner-section .topic-header {
+      color: var(--beginner-primary, #4CAF50);
+    }
+    
+    .intermediate-section .topic-header {
+      color: var(--intermediate-color, #FF9800);
+    }
+    
+    .advanced-section .topic-header {
+      color: var(--advanced-color, #3498db);
+    }
+    
+    .topic-content {
+      padding: 20px;
+      flex: 1;
+    }
+    
+    .activity-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .activity-item {
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .activity-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    
+    .activity-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-color);
+      padding: 8px;
+      border-radius: 4px;
+      transition: background-color 0.2s;
+    }
+    
+    .activity-link:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+      text-decoration: none;
+    }
+    
+    [data-theme="dark"] .activity-link:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+    
+    .activity-icon {
+      font-size: 1.2rem;
+      min-width: 24px;
+      text-align: center;
+    }
+    
+    .beginner-section .activity-icon {
+      color: var(--beginner-primary, #4CAF50);
+    }
+    
+    .intermediate-section .activity-icon {
+      color: var(--intermediate-color, #FF9800);
+    }
+    
+    .advanced-section .activity-icon {
+      color: var(--advanced-color, #3498db);
+    }
+    
+    /* Count badge */
+    .activity-count {
+      background-color: var(--card-bg);
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-size: 0.8rem;
+      margin-top: 10px;
+      display: inline-block;
+    }
+    
+    .beginner-section .activity-count {
+      color: var(--beginner-primary, #4CAF50);
+      border: 1px solid var(--beginner-primary, #4CAF50);
+    }
+    
+    .intermediate-section .activity-count {
+      color: var(--intermediate-color, #FF9800);
+      border: 1px solid var(--intermediate-color, #FF9800);
+    }
+    
+    .advanced-section .activity-count {
+      color: var(--advanced-color, #3498db);
+      border: 1px solid var(--advanced-color, #3498db);
+    }
+    
+    /* Call to Action Section */
+    .cta-section {
+      background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-accent) 100%);
+      color: white;
+      padding: 80px 5%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .cta-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .cta-title {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: white;
+    }
+    
+    .cta-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+    
+    /* View all container */
+    .view-all-container {
+      text-align: center;
+      margin-top: 40px;
+    }
+    
+    /* Buttons */
+    .btn-primary {
+      background-color: var(--secondary-accent);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      font-size: 1rem;
+    }
+    
+    .btn-primary:hover {
+      background-color: #e06d2e;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      text-decoration: none;
+    }
+    
+    .btn-secondary {
+      background-color: transparent;
+      color: white;
+      padding: 11px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      transition: all 0.3s ease;
+      border: 2px solid white;
+      font-size: 1rem;
+    }
+    
+    .btn-secondary:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-3px);
+      text-decoration: none;
+    }
+    
+    .btn-secondary.dark {
+      color: var(--text-color);
+      border-color: var(--text-color);
+    }
+    
+    /* Responsive styles */
+    @media (max-width: 992px) {
+      .level-tabs {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .level-tab {
+        width: 100%;
+      }
+      
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .level-title {
+        font-size: 2rem;
+      }
+      
+      .topic-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .practice-section {
+        padding: 40px 20px;
+      }
+      
+      .hero-title {
+        font-size: 2rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .level-title {
+        font-size: 1.8rem;
+      }
+      
+      .topic-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  
+  <!-- Theme toggle button -->
+  <div class="theme-toggle-container">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="light-icon">☀️</span>
+      <span class="dark-icon">🌙</span>
+    </button>
+  </div>
+  
+  <!-- Main navigation -->
+  <nav class="main-navigation">
+    <a href="home.html" class="site-logo">
+      <img src="images/my-logo.svg" alt="English in Doses" width="150" height="auto">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <div class="nav-links">
+      <a href="home.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About Us</a>
+      <a href="contact.html" class="nav-link">Contact Us</a>
+      <a href="home.html#where-to-start" class="nav-link">Grammar</a>
+      <a href="extra-practice.html" class="nav-link active" aria-current="page">Extra Practice</a>
+      <a href="conversation-page.html" class="nav-link">Conversation</a>
+      <a href="my-progress.html" class="nav-link">My Progress</a>
+    </div>
+  </nav>
+
+  <div class="extra-practice-container">
+    <main id="main-content">
+      <!-- Hero Section -->
+      <section class="hero-section practice-section">
+        <div class="practice-section-content">
+          <div class="hero-content">
+            <h1 class="hero-title">Extra Practice Activities</h1>
+            <p class="hero-subtitle">Strengthen your English grammar with targeted practice exercises across all levels. Perfect your skills through active learning and immediate feedback.</p>
+            
+            <!-- Search Box - Simplified -->
+            <div class="search-container">
+              <div class="search-box">
+                <input type="text" id="activity-search" placeholder="Type to search for any activity or grammar topic">
+                <span class="search-icon">🔍</span>
+              </div>
+            </div>
+            
+            <a href="#level-navigation" class="btn-primary">Browse by Level</a>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Search Results Section (initially hidden) -->
+      <section id="search-results" class="search-results-section practice-section" style="display: none;">
+        <div class="practice-section-content">
+          <div class="search-header">
+            <h2>Search Results: <span id="search-term"></span></h2>
+            <p id="results-count">Showing 0 results</p>
+            <button id="clear-search" class="btn-secondary dark">Clear Search</button>
+          </div>
+          <div id="results-container" class="topic-grid">
+            <!-- Search results will be populated here by JavaScript -->
+          </div>
+        </div>
+      </section>
+      
+      <!-- Tab Navigation -->
+      <section id="level-navigation" class="level-navigation">
+        <div class="level-tabs">
+          <button class="level-tab beginner active" data-level="beginner">Beginner Level</button>
+          <button class="level-tab intermediate" data-level="intermediate">Intermediate Level</button>
+          <button class="level-tab advanced" data-level="advanced">Advanced Level</button>
+        </div>
+      </section>
+      
+      <!-- Beginner Level Section -->
+      <section id="beginner" class="beginner-section level-section practice-section active">
+        <div class="practice-section-content">
+          <div class="level-header">
+            <div class="level-icon">🔰</div>
+            <h2 class="level-title">Beginner Level</h2>
+            <p class="level-desc">Master the fundamentals of English grammar with these activities designed for beginners. Practice basic structures and build a solid foundation.</p>
+          </div>
+          
+          <div class="topic-grid featured-only">
+            <!-- Present Tense -->
+            <div class="topic-card">
+              <div class="topic-header">
+                <span>📝</span> Present Tense
+              </div>
+              <div class="topic-content">
+                <ul class="activity-list">
+                  <li class="activity-item">
+                    <a href="grammar/beginner/present-simple-practice.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Present Simple Practice</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/beginner/present-continuous-practice.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Present Continuous Practice</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/beginner/present-simple-vs-continuous.html" class="activity-link">
+                      <span class="activity-icon">🔄</span>
+                      <span>Present Simple vs Continuous</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/beginner/present-tense-mixed.html" class="activity-link">
+                      <span class="activity-icon">🔍</span>
+                      <span>Mixed Present Tense Activities</span>
+                    </a>
+                  </li>
+                </ul>
+                <div class="activity-count">4 activities</div>
+              </div>
+            </div>
+            
+            <!-- Past Tense -->
+            <div class="topic-card">
+              <div class="topic-header">
+                <span>📝</span> Past Tense
+              </div>
+              <div class="topic-content">
+                <ul class="activity-list">
+                  <li class="activity-item">
+                    <a href="grammar/beginner/past-simple-practice.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Past Simple Practice</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/beginner/past-continuous-practice.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Past Continuous Practice</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/beginner/past-tense-mixed.html" class="activity-link">
+                      <span class="activity-icon">🔍</span>
+                      <span>Mixed Past Tense Activities</span>
+                    </a>
+                  </li>
+                </ul>
+                <div class="activity-count">3 activities</div>
+              </div>
+            </div>
+            
+            <!-- Future Tense -->
+            <div class="topic-card">
+              <div class="topic-header">
+                <span>📝</span> Future Tense
+              </div>
+              <div class="topic-content">
+                <ul class="activity-list">
+                  <li class="activity-item">
+                    <a href="grammar/beginner/going-to-practice.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>'Going to' Practice</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/beginner/will-practice.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>'Will' Practice</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/beginner/future-forms-mixed.html" class="activity-link">
+                      <span class="activity-icon">🔄</span>
+                      <span>Mixed Future Forms</span>
+                    </a>
+                  </li>
+                </ul>
+                <div class="activity-count">3 activities</div>
+              </div>
+            </div>
+            
+            <!-- Articles -->
+            <div class="topic-card">
+              <div class="topic-header">
+                <span>📝</span> Articles
+              </div>
+              <div class="topic-content">
+                <ul class="activity-list">
+                  <li class="activity-item">
+                    <a href="grammar/beginner/a-an-practice.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>A/An Practice</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/beginner/the-practice.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>'The' Practice</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/beginner/no-article-practice.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>No Article Practice</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/beginner/articles-mixed.html" class="activity-link">
+                      <span class="activity-icon">🔍</span>
+                      <span>Mixed Article Activities</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/beginner/articles-gap-fill.html" class="activity-link">
+                      <span class="activity-icon">📝</span>
+                      <span>Articles Gap Fill</span>
+                    </a>
+                  </li>
+                </ul>
+                <div class="activity-count">5 activities</div>
+              </div>
+            </div>
+            
+            <!-- Prepositions -->
+            <div class="topic-card">
+              <div class="topic-header">
+                <span>📝</span> Prepositions
+              </div>
+              <div class="topic-content">
+                <ul class="activity-list">
+                  <li class="activity-item">
+                    <a href="grammar/beginner/prepositions-place.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Prepositions of Place</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/beginner/prepositions-time.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Prepositions of Time</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/beginner/prepositions-mixed.html" class="activity-link">
+                      <span class="activity-icon">🔍</span>
+                      <span>Mixed Preposition Activities</span>
+                    </a>
+                  </li>
+                </ul>
+                <div class="activity-count">3 activities</div>
+              </div>
+            </div>
+            
+            <!-- Adjectives -->
+            <div class="topic-card">
+              <div class="topic-header">
+                <span>📝</span> Adjectives
+              </div>
+              <div class="topic-content">
+                <ul class="activity-list">
+                  <li class="activity-item">
+                    <a href="grammar/beginner/adjective-order.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Adjective Order</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/beginner/comparative-superlative.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Comparative & Superlative</span>
+                    </a>
+                  </li>
+                </ul>
+                <div class="activity-count">2 activities</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="view-all-container">
+            <a href="grammar/beginner/beginner-practice.html" class="btn-secondary dark">View All Beginner Activities</a>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Intermediate Level Section -->
+      <section id="intermediate" class="intermediate-section level-section practice-section">
+        <div class="practice-section-content">
+          <div class="level-header">
+            <div class="level-icon">📈</div>
+            <h2 class="level-title">Intermediate Level</h2>
+            <p class="level-desc">Deepen your grammar knowledge with these intermediate activities designed to help you express more complex ideas accurately.</p>
+          </div>
+          
+          <div class="topic-grid featured-only">
+            <!-- Perfect Tenses -->
+            <div class="topic-card">
+              <div class="topic-header">
+                <span>📝</span> Perfect Tenses
+              </div>
+              <div class="topic-content">
+                <ul class="activity-list">
+                  <li class="activity-item">
+                    <a href="grammar/intermediate/present-perfect-practice.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Present Perfect Practice</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/intermediate/present-perfect-continuous.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Present Perfect Continuous</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/intermediate/past-perfect-practice.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Past Perfect Practice</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/intermediate/perfect-tenses-mixed.html" class="activity-link">
+                      <span class="activity-icon">🔄</span>
+                      <span>Mixed Perfect Tenses</span>
+                    </a>
+                  </li>
+                </ul>
+                <div class="activity-count">4 activities</div>
+              </div>
+            </div>
+            
+            <!-- Conditionals -->
+            <div class="topic-card">
+              <div class="topic-header">
+                <span>📝</span> Conditionals
+              </div>
+              <div class="topic-content">
+                <ul class="activity-list">
+                  <li class="activity-item">
+                    <a href="grammar/intermediate/zero-first-conditional.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Zero & First Conditional</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/intermediate/second-conditional.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Second Conditional</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/intermediate/third-conditional.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Third Conditional</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/intermediate/mixed-conditionals.html" class="activity-link">
+                      <span class="activity-icon">🔄</span>
+                      <span>Mixed Conditionals</span>
+                    </a>
+                  </li>
+                </ul>
+                <div class="activity-count">4 activities</div>
+              </div>
+            </div>
+            
+            <!-- Modal Verbs -->
+            <div class="topic-card">
+              <div class="topic-header">
+                <span>📝</span> Modal Verbs
+              </div>
+              <div class="topic-content">
+                <ul class="activity-list">
+                  <li class="activity-item">
+                    <a href="grammar/intermediate/obligation-modals.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Obligation & Necessity</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/intermediate/probability-modals.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Probability & Possibility</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/intermediate/advice-modals.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Advice & Suggestions</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/intermediate/modals-mixed.html" class="activity-link">
+                      <span class="activity-icon">🔍</span>
+                      <span>Mixed Modal Activities</span>
+                    </a>
+                  </li>
+                </ul>
+                <div class="activity-count">4 activities</div>
+              </div>
+            </div>
+            
+            <!-- Passive Voice -->
+            <div class="topic-card">
+              <div class="topic-header">
+                <span>📝</span> Passive Voice
+              </div>
+              <div class="topic-content">
+                <ul class="activity-list">
+                  <li class="activity-item">
+                    <a href="grammar/intermediate/present-past-passive.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Present & Past Passive</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/intermediate/perfect-passive.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Perfect Passive Forms</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/intermediate/passive-transformations.html" class="activity-link">
+                      <span class="activity-icon">🔄</span>
+                      <span>Active to Passive Transformations</span>
+                    </a>
+                  </li>
+                </ul>
+                <div class="activity-count">3 activities</div>
+              </div>
+            </div>
+            
+            <!-- Reported Speech -->
+            <div class="topic-card">
+              <div class="topic-header">
+                <span>📝</span> Reported Speech
+              </div>
+              <div class="topic-content">
+                <ul class="activity-list">
+                  <li class="activity-item">
+                    <a href="grammar/intermediate/reported-statements.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Reported Statements</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/intermediate/reported-questions.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Reported Questions</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/intermediate/reported-commands.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Reported Commands</span>
+                    </a>
+                  </li>
+                </ul>
+                <div class="activity-count">3 activities</div>
+              </div>
+            </div>
+            
+            <!-- Relative Clauses -->
+            <div class="topic-card">
+              <div class="topic-header">
+                <span>📝</span> Relative Clauses
+              </div>
+              <div class="topic-content">
+                <ul class="activity-list">
+                  <li class="activity-item">
+                    <a href="grammar/intermediate/defining-relative-clauses.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Defining Relative Clauses</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/intermediate/non-defining-relative-clauses.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Non-defining Relative Clauses</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/intermediate/relative-clauses-mixed.html" class="activity-link">
+                      <span class="activity-icon">🔍</span>
+                      <span>Mixed Relative Clause Activities</span>
+                    </a>
+                  </li>
+                </ul>
+                <div class="activity-count">3 activities</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="view-all-container">
+            <a href="grammar/intermediate/intermediate-practice.html" class="btn-secondary dark">View All Intermediate Activities</a>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Advanced Level Section -->
+      <section id="advanced" class="advanced-section level-section practice-section">
+        <div class="practice-section-content">
+          <div class="level-header">
+            <div class="level-icon">🚀</div>
+            <h2 class="level-title">Advanced Level</h2>
+            <p class="level-desc">Master sophisticated grammar structures and bring precision and nuance to your English communication with these challenging activities.</p>
+          </div>
+          
+          <div class="topic-grid featured-only">
+            <!-- Advanced Tenses -->
+            <div class="topic-card">
+              <div class="topic-header">
+                <span>📝</span> Advanced Tenses
+              </div>
+              <div class="topic-content">
+                <ul class="activity-list">
+                  <li class="activity-item">
+                    <a href="grammar/advanced/future-perfect-continuous.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Future Perfect Continuous</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/advanced/past-perfect-continuous.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Past Perfect Continuous</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/advanced/narrative-tenses.html" class="activity-link">
+                      <span class="activity-icon">🔄</span>
+                      <span>Narrative Tenses</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/advanced/mixed-perfect-continuous.html" class="activity-link">
+                      <span class="activity-icon">🔍</span>
+                      <span>Mixed Perfect Continuous Forms</span>
+                    </a>
+                  </li>
+                </ul>
+                <div class="activity-count">4 activities</div>
+              </div>
+            </div>
+            
+            <!-- Advanced Conditionals -->
+            <div class="topic-card">
+              <div class="topic-header">
+                <span>📝</span> Advanced Conditionals
+              </div>
+              <div class="topic-content">
+                <ul class="activity-list">
+                  <li class="activity-item">
+                    <a href="grammar/advanced/mixed-conditionals-advanced.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Complex Mixed Conditionals</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/advanced/inverted-conditionals.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Inverted Conditionals</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/advanced/implied-conditionals.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Implied Conditionals</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/advanced/conditional-expressions.html" class="activity-link">
+                      <span class="activity-icon">🔄</span>
+                      <span>Alternative Conditional Expressions</span>
+                    </a>
+                  </li>
+                </ul>
+                <div class="activity-count">4 activities</div>
+              </div>
+            </div>
+            
+            <!-- Modal Perfect Forms -->
+            <div class="topic-card">
+              <div class="topic-header">
+                <span>📝</span> Modal Perfect Forms
+              </div>
+              <div class="topic-content">
+                <ul class="activity-list">
+                  <li class="activity-item">
+                    <a href="grammar/advanced/modal-perfect-deduction.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Modal Perfect for Deduction</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/advanced/modal-perfect-regret.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Modal Perfect for Regret</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/advanced/mixed-modal-perfects.html" class="activity-link">
+                      <span class="activity-icon">🔍</span>
+                      <span>Mixed Modal Perfect Activities</span>
+                    </a>
+                  </li>
+                </ul>
+                <div class="activity-count">3 activities</div>
+              </div>
+            </div>
+            
+            <!-- Advanced Passive Structures -->
+            <div class="topic-card">
+              <div class="topic-header">
+                <span>📝</span> Advanced Passive
+              </div>
+              <div class="topic-content">
+                <ul class="activity-list">
+                  <li class="activity-item">
+                    <a href="grammar/advanced/passive-reporting-verbs.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Passive Reporting Verbs</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/advanced/passive-infinitives-gerunds.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Passive Infinitives & Gerunds</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/advanced/advanced-passive-transformations.html" class="activity-link">
+                      <span class="activity-icon">🔄</span>
+                      <span>Complex Passive Transformations</span>
+                    </a>
+                  </li>
+                </ul>
+                <div class="activity-count">3 activities</div>
+              </div>
+            </div>
+            
+            <!-- Inversion -->
+            <div class="topic-card">
+              <div class="topic-header">
+                <span>📝</span> Inversion
+              </div>
+              <div class="topic-content">
+                <ul class="activity-list">
+                  <li class="activity-item">
+                    <a href="grammar/advanced/negative-inversion.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Negative Inversion</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/advanced/limiting-expressions.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Inversion with Limiting Expressions</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/advanced/emphasis-inversion.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Inversion for Emphasis</span>
+                    </a>
+                  </li>
+                </ul>
+                <div class="activity-count">3 activities</div>
+              </div>
+            </div>
+            
+            <!-- Subjunctive & Unreal Uses -->
+            <div class="topic-card">
+              <div class="topic-header">
+                <span>📝</span> Subjunctive & Unreal Uses
+              </div>
+              <div class="topic-content">
+                <ul class="activity-list">
+                  <li class="activity-item">
+                    <a href="grammar/advanced/formal-subjunctive.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Formal Subjunctive</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/advanced/wish-if-only.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Wish & If Only</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/advanced/would-rather-sooner.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>Would Rather & Would Sooner</span>
+                    </a>
+                  </li>
+                  <li class="activity-item">
+                    <a href="grammar/advanced/as-if-though.html" class="activity-link">
+                      <span class="activity-icon">✅</span>
+                      <span>As If & As Though</span>
+                    </a>
+                  </li>
+                </ul>
+                <div class="activity-count">4 activities</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="view-all-container">
+            <a href="grammar/advanced/advanced-practice.html" class="btn-secondary dark">View All Advanced Activities</a>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Call to Action Section -->
+      <section class="cta-section practice-section">
+        <div class="practice-section-content cta-content">
+          <h2 class="cta-title">Track Your Progress</h2>
+          <p class="cta-subtitle">Keep track of the activities you've completed and see your improvement over time. Your progress is automatically saved as you work through the exercises.</p>
+          <a href="my-progress.html" class="btn-primary">View My Progress</a>
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="home.html#where-to-start">Grammar</a></li>
+          <li><a href="extra-practice.html">Extra Practice</a></li>
+          <li><a href="my-progress.html">My Progress</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Grammar Levels</h3>
+        <ul>
+          <li><a href="#beginner">Beginner</a></li>
+          <li><a href="#intermediate">Intermediate</a></li>
+          <li><a href="#advanced">Advanced</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© 2025 English in Doses | All rights reserved</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Debounce function implementation - this was missing
+      function debounce(func, delay) {
+        let timeout;
+        return function() {
+          const context = this;
+          const args = arguments;
+          clearTimeout(timeout);
+          timeout = setTimeout(function() {
+            func.apply(context, args);
+          }, delay);
+        };
+      }
+      
+      // Theme toggle functionality
+      const themeToggle = document.getElementById('theme-toggle');
+      
+      // Set initial theme based on stored preference or system preference
+      setInitialTheme();
+      
+      // Handle theme toggle click
+      themeToggle.addEventListener('click', function() {
+        toggleTheme();
+      });
+      
+      function setInitialTheme() {
+        // Check for stored theme preference
+        const storedTheme = localStorage.getItem('theme');
+        
+        if (storedTheme) {
+          // Apply stored theme preference
+          document.documentElement.setAttribute('data-theme', storedTheme);
+        } else {
+          // Check for system dark mode preference
+          const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          
+          if (prefersDarkMode) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+          } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+          }
+        }
+      }
+      
+      function toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        // Update the theme attribute
+        document.documentElement.setAttribute('data-theme', newTheme);
+        
+        // Save theme preference to local storage
+        localStorage.setItem('theme', newTheme);
+      }
+
+      // Mobile navigation functionality
+      const navToggle = document.querySelector('.nav-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      
+      if (navToggle && navLinks) {
+        navToggle.addEventListener('click', function() {
+          navLinks.classList.toggle('show');
+        });
+      }
+      
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          if (this.getAttribute('href') !== '#') {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+              const headerOffset = 80;
+              const elementPosition = targetElement.getBoundingClientRect().top;
+              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+              
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+              });
+            }
+          }
+        });
+      });
+      
+      // Tab switching functionality - fixed to work with the actual section IDs
+      const levelTabs = document.querySelectorAll('.level-tab');
+      const levelSections = document.querySelectorAll('.level-section');
+      
+      levelTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          // Remove active class from all tabs
+          levelTabs.forEach(t => t.classList.remove('active'));
+          
+          // Add active class to clicked tab
+          this.classList.add('active');
+          
+          // Get the level to show
+          const level = this.getAttribute('data-level');
+          
+          // Hide all level sections
+          levelSections.forEach(section => {
+            section.classList.remove('active');
+          });
+          
+          // Show the selected level section
+          const selectedSection = document.getElementById(level);
+          if (selectedSection) {
+            selectedSection.classList.add('active');
+          }
+          
+          // Save the selected tab to localStorage
+          localStorage.setItem('selected-practice-level', level);
+          
+          // Update URL with level parameter
+          const url = new URL(window.location);
+          url.searchParams.set('level', level);
+          window.history.replaceState({}, '', url);
+        });
+      });
+      
+      // Set initial tab based on URL parameter or localStorage
+      function setInitialTab() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const levelParam = urlParams.get('level');
+        const storedLevel = localStorage.getItem('selected-practice-level');
+        
+        let level = 'beginner'; // Default level
+        
+        if (levelParam && ['beginner', 'intermediate', 'advanced'].includes(levelParam)) {
+          level = levelParam;
+        } else if (storedLevel && ['beginner', 'intermediate', 'advanced'].includes(storedLevel)) {
+          level = storedLevel;
+        }
+        
+        // Activate the correct tab
+        const tabToActivate = document.querySelector(`.level-tab[data-level="${level}"]`);
+        if (tabToActivate) {
+          tabToActivate.click();
+        }
+      }
+      
+      // Call setInitialTab on page load
+      setInitialTab();
+      
+      // Search functionality
+      const searchInput = document.getElementById('activity-search');
+      const searchResultsSection = document.getElementById('search-results');
+      const resultsContainer = document.getElementById('results-container');
+      const searchTermDisplay = document.getElementById('search-term');
+      const resultsCountDisplay = document.getElementById('results-count');
+      const clearSearchButton = document.getElementById('clear-search');
+      
+      // Sample activity database (in a real site, this would come from a server or API)
+      const allActivities = [
+        // Beginner activities
+        { id: 'present-simple', title: 'Present Simple Practice', level: 'beginner', type: 'mcq', topic: 'Present Tense', url: 'grammar/beginner/present-simple-practice.html' },
+        { id: 'present-continuous', title: 'Present Continuous Practice', level: 'beginner', type: 'gap-fill', topic: 'Present Tense', url: 'grammar/beginner/present-continuous-practice.html' },
+        { id: 'present-simple-vs-continuous', title: 'Present Simple vs Continuous', level: 'beginner', type: 'mcq', topic: 'Present Tense', url: 'grammar/beginner/present-simple-vs-continuous.html' },
+        { id: 'past-simple', title: 'Past Simple Practice', level: 'beginner', type: 'mcq', topic: 'Past Tense', url: 'grammar/beginner/past-simple-practice.html' },
+        { id: 'past-continuous', title: 'Past Continuous Practice', level: 'beginner', type: 'gap-fill', topic: 'Past Tense', url: 'grammar/beginner/past-continuous-practice.html' },
+        { id: 'a-an', title: 'A/An Practice', level: 'beginner', type: 'mcq', topic: 'Articles', url: 'grammar/beginner/a-an-practice.html' },
+        { id: 'the', title: 'The Practice', level: 'beginner', type: 'gap-fill', topic: 'Articles', url: 'grammar/beginner/the-practice.html' },
+        
+        // Intermediate activities
+        { id: 'present-perfect', title: 'Present Perfect Practice', level: 'intermediate', type: 'mcq', topic: 'Perfect Tenses', url: 'grammar/intermediate/present-perfect-practice.html' },
+        { id: 'present-perfect-continuous', title: 'Present Perfect Continuous', level: 'intermediate', type: 'gap-fill', topic: 'Perfect Tenses', url: 'grammar/intermediate/present-perfect-continuous.html' },
+        { id: 'zero-first-conditional', title: 'Zero & First Conditional', level: 'intermediate', type: 'transformation', topic: 'Conditionals', url: 'grammar/intermediate/zero-first-conditional.html' },
+        { id: 'second-conditional', title: 'Second Conditional', level: 'intermediate', type: 'transformation', topic: 'Conditionals', url: 'grammar/intermediate/second-conditional.html' },
+        { id: 'third-conditional', title: 'Third Conditional', level: 'intermediate', type: 'gap-fill', topic: 'Conditionals', url: 'grammar/intermediate/third-conditional.html' },
+        
+        // Advanced activities
+        { id: 'future-perfect-continuous', title: 'Future Perfect Continuous', level: 'advanced', type: 'gap-fill', topic: 'Advanced Tenses', url: 'grammar/advanced/future-perfect-continuous.html' },
+        { id: 'mixed-conditionals', title: 'Complex Mixed Conditionals', level: 'advanced', type: 'transformation', topic: 'Advanced Conditionals', url: 'grammar/advanced/mixed-conditionals-advanced.html' },
+        { id: 'inverted-conditionals', title: 'Inverted Conditionals', level: 'advanced', type: 'transformation', topic: 'Advanced Conditionals', url: 'grammar/advanced/inverted-conditionals.html' },
+        { id: 'modal-perfect-deduction', title: 'Modal Perfect for Deduction', level: 'advanced', type: 'mcq', topic: 'Modal Perfect Forms', url: 'grammar/advanced/modal-perfect-deduction.html' }
+      ];
+      
+      // Icon mapping for activity types
+      const typeIcons = {
+        'mcq': '✅',
+        'gap-fill': '📝',
+        'transformation': '🔄',
+        'matching': '🔗'
+      };
+      
+      // Level color classes - updated advanced to blue theme
+      const levelClasses = {
+        'beginner': 'beginner-section',
+        'intermediate': 'intermediate-section',
+        'advanced': 'advanced-section'
+      };
+      
+      // Search function - simplified for just text search
+      function searchActivities() {
+        const searchTerm = searchInput.value.trim().toLowerCase();
+        
+        if (searchTerm === '') {
+          // Hide results if no search criteria
+          searchResultsSection.style.display = 'none';
+          return;
+        }
+        
+        // Filter activities based on search term
+        const filteredResults = allActivities.filter(activity => {
+          return activity.title.toLowerCase().includes(searchTerm) || 
+                 activity.topic.toLowerCase().includes(searchTerm);
+        });
+        
+        // Update results count
+        resultsCountDisplay.textContent = `Showing ${filteredResults.length} result${filteredResults.length !== 1 ? 's' : ''}`;
+        
+        // Display search term
+        searchTermDisplay.textContent = `"${searchTerm}"`;
+        
+        // Clear previous results
+        resultsContainer.innerHTML = '';
+        
+        // Show results section
+        searchResultsSection.style.display = 'block';
+        
+        // Group results by level and topic
+        const groupedResults = {};
+        
+        filteredResults.forEach(activity => {
+          if (!groupedResults[activity.level]) {
+            groupedResults[activity.level] = {};
+          }
+          
+          if (!groupedResults[activity.level][activity.topic]) {
+            groupedResults[activity.level][activity.topic] = [];
+          }
+          
+          groupedResults[activity.level][activity.topic].push(activity);
+        });
+        
+        // If no results found
+        if (filteredResults.length === 0) {
+          resultsContainer.innerHTML = `
+            <div class="no-results">
+              <p>No activities found matching your search criteria.</p>
+              <p>Try adjusting your search terms.</p>
+            </div>
+          `;
+          return;
+        }
+        
+        // Create results HTML
+        Object.entries(groupedResults).forEach(([level, topics]) => {
+          Object.entries(topics).forEach(([topic, activities]) => {
+            const topicCard = document.createElement('div');
+            topicCard.className = `topic-card ${levelClasses[level]}`;
+            
+            topicCard.innerHTML = `
+              <div class="topic-header">
+                <span>📝</span> ${topic} (${level})
+              </div>
+              <div class="topic-content">
+                <ul class="activity-list">
+                  ${activities.map(activity => `
+                    <li class="activity-item">
+                      <a href="${activity.url}" class="activity-link">
+                        <span class="activity-icon">${typeIcons[activity.type] || '📝'}</span>
+                        <span>${activity.title}</span>
+                      </a>
+                    </li>
+                  `).join('')}
+                </ul>
+                <div class="activity-count">${activities.length} ${activities.length === 1 ? 'activity' : 'activities'}</div>
+              </div>
+            `;
+            
+            resultsContainer.appendChild(topicCard);
+          });
+        });
+      }
+      
+      // Set up search event listener
+      searchInput.addEventListener('input', debounce(searchActivities, 300));
+      
+      // Clear search - removed references to non-existent filter elements
+      clearSearchButton.addEventListener('click', function() {
+        searchInput.value = '';
+        searchResultsSection.style.display = 'none';
+      });
+      
+      // Initialize progress tracking if the module is available
+      if (typeof ProgressTrackingModule !== 'undefined') {
+        console.log('Progress Tracking Module is available');
+        
+        // Initialize the module if not already initialized
+        if (typeof ProgressTrackingModule.init === 'function') {
+          ProgressTrackingModule.init();
+        }
+        
+        // Mark page as viewed
+        if (typeof ProgressTrackingModule.updateItemProgress === 'function') {
+          ProgressTrackingModule.updateItemProgress('pages', 'extra-practice', {
+            viewed: true,
+            viewedAt: new Date().toISOString(),
+            title: 'Extra Practice'
+          });
+        }
+      }
+    });
+  </script>
+</body>
+</html>
