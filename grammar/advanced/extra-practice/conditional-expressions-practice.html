@@ -550,50 +550,50 @@
     document.addEventListener('DOMContentLoaded', function() {
       // Initialize activity modules
       MCQModule.init({
-        containerId: 'mcq',
+        containerId: "mcq",
         answers: {
-          'q1': 2,  // C. provided that
-          'q2': 0,  // A. Unless
-          'q3': 2,  // C. as long as
-          'q4': 1,  // B. unless
-          'q5': 1,  // B. providing that
-          'q6': 2,  // C. Unless
-          'q7': 0,  // A. so long as
-          'q8': 2,  // C. As long as you keep practicing, you'll improve your skills.
-          'q9': 1,  // B. Provided that
-          'q10': 1,  // B. If not
+          "q1": 2,  // C. provided that
+          "q2": 0,  // A. Unless
+          "q3": 2,  // C. as long as
+          "q4": 1,  // B. unless
+          "q5": 1,  // B. providing that
+          "q6": 2,  // C. Unless
+          "q7": 0,  // A. so long as
+          "q8": 2,  // C. As long as you keep practicing, you'll improve your skills.
+          "q9": 1,  // B. Provided that
+          "q10": 1,  // B. If not
         },
         correctExplanations: {
-          'q1': 'Correct! "Provided that" is used to express a strict requirement or condition. It means "on the condition that" you return the book next week.',
-          'q2': 'Correct! "Unless" means "if not" or "except if". This sentence means: "If it does not rain, we'll have the picnic inside."',
-          'q3': 'Correct! "As long as" expresses a continuing condition. It means you can use the laptop on the continuing condition that you don't download anything.',
-          'q4': 'Correct! "Unless" means "if not" or "except if". This sentence means: "The concert will go ahead if there is not a power failure."',
-          'q5': 'Correct! "Providing that" (same as "provided that") expresses a specific requirement. It means the job offer depends on passing the final interview.',
-          'q6': 'Correct! "Unless" means "if not". This sentence means: "If you do not hurry, you'll miss the train."',
-          'q7': 'Correct! "So long as" (same as "as long as") expresses a continuing condition. It means you can attend on the condition that you register before the deadline.',
-          'q8': 'Correct! This sentence uses "as long as" correctly. The other sentences contain errors in how the conditional expressions are used.',
-          'q9': 'Correct! "Provided that" is used to emphasize strict requirements or conditions that must be fulfilled.',
-          'q10': 'Correct! "Unless" means "if not" or "except if". It expresses a negative condition.'
+          "q1": "Correct! 'Provided that' is used to express a strict requirement or condition. It means 'on the condition that' you return the book next week.",
+          "q2": "Correct! 'Unless' means 'if not' or 'except if'. This sentence means: 'If it does not rain, we'll have the picnic inside.'",
+          "q3": "Correct! 'As long as' expresses a continuing condition. It means you can use the laptop on the continuing condition that you don't download anything.",
+          "q4": "Correct! 'Unless' means 'if not' or 'except if'. This sentence means: 'The concert will go ahead if there is not a power failure.'",
+          "q5": "Correct! 'Providing that' (same as 'provided that') expresses a specific requirement. It means the job offer depends on passing the final interview.",
+          "q6": "Correct! 'Unless' means 'if not'. This sentence means: 'If you do not hurry, you'll miss the train.'",
+          "q7": "Correct! 'So long as' (same as 'as long as') expresses a continuing condition. It means you can attend on the condition that you register before the deadline.",
+          "q8": "Correct! This sentence uses 'as long as' correctly. The other sentences contain errors in how the conditional expressions are used.",
+          "q9": "Correct! 'Provided that' is used to emphasize strict requirements or conditions that must be fulfilled.",
+          "q10": "Correct! 'Unless' means 'if not' or 'except if'. It expresses a negative condition."
         },
         incorrectExplanations: {
-          'q1': 'Incorrect. Consider which expression expresses a specific requirement or condition that must be fulfilled.',
-          'q2': 'Incorrect. Think about which expression would make sense in the context of having a picnic indoors when it rains.',
-          'q3': 'Incorrect. Consider which expression would be appropriate for a continuing condition about not downloading anything.',
-          'q4': 'Incorrect. Think about which expression means "if not" - the concert will happen if there is not a power failure.',
-          'q5': 'Incorrect. Consider which expression expresses a strict requirement that must be met for the job offer.',
-          'q6': 'Incorrect. Think about which expression means "if not" - you will miss the train if you do not hurry.',
-          'q7': 'Incorrect. Consider which expression expresses a continuing condition for conference attendance.',
-          'q8': 'Incorrect. Look carefully for errors in how conditional expressions are used in each sentence.',
-          'q9': 'Incorrect. Think about which expression emphasizes strict requirements that must be fulfilled.',
-          'q10': 'Incorrect. Consider the basic meaning of "unless" - it expresses a negative condition.'
+          "q1": "Incorrect. Consider which expression expresses a specific requirement or condition that must be fulfilled.",
+          "q2": "Incorrect. Think about which expression would make sense in the context of having a picnic indoors when it rains.",
+          "q3": "Incorrect. Consider which expression would be appropriate for a continuing condition about not downloading anything.",
+          "q4": "Incorrect. Think about which expression means 'if not' - the concert will happen if there is not a power failure.",
+          "q5": "Incorrect. Consider which expression expresses a strict requirement that must be met for the job offer.",
+          "q6": "Incorrect. Think about which expression means 'if not' - you will miss the train if you do not hurry.",
+          "q7": "Incorrect. Consider which expression expresses a continuing condition for conference attendance.",
+          "q8": "Incorrect. Look carefully for errors in how conditional expressions are used in each sentence.",
+          "q9": "Incorrect. Think about which expression emphasizes strict requirements that must be fulfilled.",
+          "q10": "Incorrect. Consider the basic meaning of 'unless' - it expresses a negative condition."
         },
         onComplete: function(score, total) {
-          ProgressTrackingModule.updateItemProgress('activities', 'mcq-conditional-expressions', {
+          ProgressTrackingModule.updateItemProgress("activities", "mcq-conditional-expressions", {
             completed: true,
             score: score,
             maxScore: total
           });
-          ActivityNavModule.notifyActivityCompleted('mcq', {
+          ActivityNavModule.notifyActivityCompleted("mcq", {
             score: score,
             maxScore: total
           });
@@ -601,31 +601,31 @@
       });
       
       GapFillModule.init({
-        containerId: 'gap-fill',
+        containerId: "gap-fill",
         acceptAlternativeAnswers: true,
         alternativeAnswers: {
-          'gf1': ['as long as', 'so long as', 'provided that', 'providing that'],
-          'gf2': ['unless'],
-          'gf3': ['provided that', 'providing that'],
-          'gf4': ['as long as', 'so long as', 'provided that', 'providing that'],
-          'gf5': ['unless'],
-          'gf6': ['provided that', 'providing that', 'as long as', 'so long as'],
-          'gf7': ['as long as', 'so long as', 'provided that', 'providing that'],
-          'gf8': ['unless'],
-          'gf9': ['provided that', 'providing that'],
-          'gf10': ['as long as', 'so long as', 'provided that', 'providing that']
+          "gf1": ["as long as", "so long as", "provided that", "providing that"],
+          "gf2": ["unless"],
+          "gf3": ["provided that", "providing that"],
+          "gf4": ["as long as", "so long as", "provided that", "providing that"],
+          "gf5": ["unless"],
+          "gf6": ["provided that", "providing that", "as long as", "so long as"],
+          "gf7": ["as long as", "so long as", "provided that", "providing that"],
+          "gf8": ["unless"],
+          "gf9": ["provided that", "providing that"],
+          "gf10": ["as long as", "so long as", "provided that", "providing that"]
         },
         feedback: {
-          correct: 'Correct! You've used the appropriate conditional expression.',
-          incorrect: 'Incorrect. Consider which conditional expression would be appropriate in this context.'
+          correct: "Correct! You've used the appropriate conditional expression.",
+          incorrect: "Incorrect. Consider which conditional expression would be appropriate in this context."
         },
         onComplete: function(score, total) {
-          ProgressTrackingModule.updateItemProgress('activities', 'gap-fill-conditional-expressions', {
+          ProgressTrackingModule.updateItemProgress("activities", "gap-fill-conditional-expressions", {
             completed: true,
             score: score,
             maxScore: total
           });
-          ActivityNavModule.notifyActivityCompleted('gap-fill', {
+          ActivityNavModule.notifyActivityCompleted("gap-fill", {
             score: score,
             maxScore: total
           });
@@ -633,14 +633,14 @@
       });
       
       MatchingModule.init({
-        containerId: 'matching',
+        containerId: "matching",
         onComplete: function(score, total) {
-          ProgressTrackingModule.updateItemProgress('activities', 'matching-conditional-expressions', {
+          ProgressTrackingModule.updateItemProgress("activities", "matching-conditional-expressions", {
             completed: true,
             score: score,
             maxScore: total
           });
-          ActivityNavModule.notifyActivityCompleted('matching', {
+          ActivityNavModule.notifyActivityCompleted("matching", {
             score: score,
             maxScore: total
           });
@@ -648,29 +648,29 @@
       });
       
       TransformationModule.init({
-        containerId: 'transformation',
+        containerId: "transformation",
         acceptAlternativeAnswers: true,
         alternativeAnswers: {
-          'tr1': ['Unless you hurry, you'll miss the bus.', 'Unless you hurry, you will miss the bus.'],
-          'tr2': ['You can watch TV provided that you finish your homework.', 'Provided that you finish your homework, you can watch TV.'],
-          'tr3': ['As long as you practice every day, you will improve.', 'You will improve as long as you practice every day.'],
-          'tr4': ['The trip will happen unless it rains.', 'Unless it rains, the trip will happen.'],
-          'tr5': ['We'll go ahead with the wedding provided that the weather permits.', 'Provided that the weather permits, we'll go ahead with the wedding.'],
-          'tr6': ['As long as the noise continues, I can't concentrate.', 'I can't concentrate as long as the noise continues.'],
-          'tr7': ['Unless you apologize, I won't speak to you again.', 'I won't speak to you again unless you apologize.'],
-          'tr8': ['So long as you stay within the budget, the project can continue.', 'The project can continue so long as you stay within the budget.']
+          "tr1": ["Unless you hurry, you'll miss the bus.", "Unless you hurry, you will miss the bus."],
+          "tr2": ["You can watch TV provided that you finish your homework.", "Provided that you finish your homework, you can watch TV."],
+          "tr3": ["As long as you practice every day, you will improve.", "You will improve as long as you practice every day."],
+          "tr4": ["The trip will happen unless it rains.", "Unless it rains, the trip will happen."],
+          "tr5": ["We'll go ahead with the wedding provided that the weather permits.", "Provided that the weather permits, we'll go ahead with the wedding."],
+          "tr6": ["As long as the noise continues, I can't concentrate.", "I can't concentrate as long as the noise continues."],
+          "tr7": ["Unless you apologize, I won't speak to you again.", "I won't speak to you again unless you apologize."],
+          "tr8": ["So long as you stay within the budget, the project can continue.", "The project can continue so long as you stay within the budget."]
         },
         feedback: {
-          correct: 'Excellent! You've correctly transformed the sentence using the specified conditional expression.',
-          incorrect: 'That's not quite right. Make sure you're using the conditional expression correctly and keeping the same meaning.'
+          correct: "Excellent! You've correctly transformed the sentence using the specified conditional expression.",
+          incorrect: "That's not quite right. Make sure you're using the conditional expression correctly and keeping the same meaning."
         },
         onComplete: function(score, total) {
-          ProgressTrackingModule.updateItemProgress('activities', 'transformation-conditional-expressions', {
+          ProgressTrackingModule.updateItemProgress("activities", "transformation-conditional-expressions", {
             completed: true,
             score: score,
             maxScore: total
           });
-          ActivityNavModule.notifyActivityCompleted('transformation', {
+          ActivityNavModule.notifyActivityCompleted("transformation", {
             score: score,
             maxScore: total
           });
@@ -679,12 +679,12 @@
       
       // Initialize activity navigation
       ActivityNavModule.init({
-        containerId: 'activity-nav',
-        activities: ['mcq', 'gap-fill', 'matching', 'transformation'],
-        progressContainerId: 'progress-bar',
-        progressInfoContainerId: 'progress-info',
+        containerId: "activity-nav",
+        activities: ["mcq", "gap-fill", "matching", "transformation"],
+        progressContainerId: "progress-bar",
+        progressInfoContainerId: "progress-info",
         onActivityChange: function(activityId) {
-          console.log('Activity changed to:', activityId);
+          console.log("Activity changed to:", activityId);
         }
       });
       
@@ -692,7 +692,7 @@
       ProgressTrackingModule.init({
         categories: {
           activities: {
-            grammarActivities: ['mcq-conditional-expressions', 'gap-fill-conditional-expressions', 'matching-conditional-expressions', 'transformation-conditional-expressions']
+            grammarActivities: ["mcq-conditional-expressions", "gap-fill-conditional-expressions", "matching-conditional-expressions", "transformation-conditional-expressions"]
           }
         },
         onProgressChange: function(details) {

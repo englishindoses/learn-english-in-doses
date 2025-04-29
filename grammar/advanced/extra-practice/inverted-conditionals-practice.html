@@ -550,50 +550,50 @@
     document.addEventListener('DOMContentLoaded', function() {
       // Initialize activity modules
       MCQModule.init({
-        containerId: 'mcq',
+        containerId: "mcq",
         answers: {
-          'q1': 0,  // Were I you, I would accept the job offer.
-          'q2': 0,  // Had she told me earlier, I would have helped her.
-          'q3': 0,  // Should you have any questions, please call this number.
-          'q4': 1,  // Were it not for your help, I would have failed the exam.
-          'q5': 2,  // Had I not studied, I would have failed.
-          'q6': 0,  // Were I to win the lottery, I would buy a house.
-          'q7': 2,  // Had they arrived on time, they would have seen the performance.
-          'q8': 0,  // Were we to know the truth, we might be shocked.
-          'q9': 3,  // If would I have studied, I would have passed.
-          'q10': 0,  // Could you change one thing about your past, what would it be?
+          "q1": 0,  // Were I you, I would accept the job offer.
+          "q2": 0,  // Had she told me earlier, I would have helped her.
+          "q3": 0,  // Should you have any questions, please call this number.
+          "q4": 1,  // Were it not for your help, I would have failed the exam.
+          "q5": 2,  // Had I not studied, I would have failed.
+          "q6": 0,  // Were I to win the lottery, I would buy a house.
+          "q7": 2,  // Had they arrived on time, they would have seen the performance.
+          "q8": 0,  // Were we to know the truth, we might be shocked.
+          "q9": 3,  // If would I have studied, I would have passed.
+          "q10": 0,  // Could you change one thing about your past, what would it be?
         },
         correctExplanations: {
-          'q1': 'Correct! In a second conditional inversion, we place "were" at the beginning followed by the subject "I".',
-          'q2': 'Correct! In a third conditional inversion, we move "had" to the beginning followed by the subject "she".',
-          'q3': 'Correct! With modal verbs like "should", we place the modal at the beginning followed by the subject.',
-          'q4': 'Correct! For negative expressions like "if it were not for", the inverted form is "were it not for".',
-          'q5': 'Correct! In negative inverted conditionals, "not" comes after the subject, not between the auxiliary and subject.',
-          'q6': 'Correct! With "were to", we place "were" at the beginning, followed by the subject and "to + infinitive".',
-          'q7': 'Correct! For past unreal conditions, we move "had" to the beginning followed by the subject and past participle.',
-          'q8': 'Correct! For hypothetical situations with "were to", we place "were" at the beginning followed by the subject.',
-          'q9': 'Correct! This is not a proper inverted conditional. We don\'t use "if" when we\'ve already inverted the auxiliary and subject.',
-          'q10': 'Correct! With "could" in conditionals, we place "could" at the beginning followed by the subject.'
+          "q1": "Correct! In a second conditional inversion, we place 'were' at the beginning followed by the subject 'I'.",
+          "q2": "Correct! In a third conditional inversion, we move 'had' to the beginning followed by the subject 'she'.",
+          "q3": "Correct! With modal verbs like 'should', we place the modal at the beginning followed by the subject.",
+          "q4": "Correct! For negative expressions like 'if it were not for', the inverted form is 'were it not for'.",
+          "q5": "Correct! In negative inverted conditionals, 'not' comes after the subject, not between the auxiliary and subject.",
+          "q6": "Correct! With 'were to', we place 'were' at the beginning, followed by the subject and 'to + infinitive'.",
+          "q7": "Correct! For past unreal conditions, we move 'had' to the beginning followed by the subject and past participle.",
+          "q8": "Correct! For hypothetical situations with 'were to', we place 'were' at the beginning followed by the subject.",
+          "q9": "Correct! This is not a proper inverted conditional. We don't use 'if' when we've already inverted the auxiliary and subject.",
+          "q10": "Correct! With 'could' in conditionals, we place 'could' at the beginning followed by the subject."
         },
         incorrectExplanations: {
-          'q1': 'Incorrect. In inverted conditionals, the word order is: auxiliary verb (were) + subject.',
-          'q2': 'Incorrect. In inverted conditionals, the word order is: auxiliary verb (had) + subject + past participle.',
-          'q3': 'Incorrect. In inverted conditionals with modals, the modal verb comes first, followed by the subject.',
-          'q4': 'Incorrect. In negative expressions, the "not" comes after the subject: "were it not for".',
-          'q5': 'Incorrect. In negative inverted conditionals, "not" comes after the subject: "Had I not studied".',
-          'q6': 'Incorrect. With "were to", the word order is: were + subject + to + infinitive.',
-          'q7': 'Incorrect. In third conditional inversions, "had" is placed at the beginning, followed by the subject and past participle.',
-          'q8': 'Incorrect. With "were to", the word order is: were + subject + to + infinitive.',
-          'q9': 'Incorrect. Check the word order in inverted conditionals and remember not to use "if" with inverted forms.',
-          'q10': 'Incorrect. In inverted conditionals with "could", the modal verb comes first, followed by the subject.'
+          "q1": "Incorrect. In inverted conditionals, the word order is: auxiliary verb (were) + subject.",
+          "q2": "Incorrect. In inverted conditionals, the word order is: auxiliary verb (had) + subject + past participle.",
+          "q3": "Incorrect. In inverted conditionals with modals, the modal verb comes first, followed by the subject.",
+          "q4": "Incorrect. In negative expressions, the 'not' comes after the subject: 'were it not for'.",
+          "q5": "Incorrect. In negative inverted conditionals, 'not' comes after the subject: 'Had I not studied'.",
+          "q6": "Incorrect. With 'were to', the word order is: were + subject + to + infinitive.",
+          "q7": "Incorrect. In third conditional inversions, 'had' is placed at the beginning, followed by the subject and past participle.",
+          "q8": "Incorrect. With 'were to', the word order is: were + subject + to + infinitive.",
+          "q9": "Incorrect. Check the word order in inverted conditionals and remember not to use 'if' with inverted forms.",
+          "q10": "Incorrect. In inverted conditionals with 'could', the modal verb comes first, followed by the subject."
         },
         onComplete: function(score, total) {
-          ProgressTrackingModule.updateItemProgress('activities', 'mcq-inverted', {
+          ProgressTrackingModule.updateItemProgress("activities", "mcq-inverted", {
             completed: true,
             score: score,
             maxScore: total
           });
-          ActivityNavModule.notifyActivityCompleted('mcq', {
+          ActivityNavModule.notifyActivityCompleted("mcq", {
             score: score,
             maxScore: total
           });
@@ -601,31 +601,31 @@
       });
       
       GapFillModule.init({
-        containerId: 'gap-fill',
+        containerId: "gap-fill",
         acceptAlternativeAnswers: true,
         alternativeAnswers: {
-          'gf1': ['Had I known'],
-          'gf2': ['Had it been'],
-          'gf3': ['Were we to have'],
-          'gf4': ['Were I'],
-          'gf5': ['Should'],
-          'gf6': ['Had I not'],
-          'gf7': ['Had he been'],
-          'gf8': ['Were'],
-          'gf9': ['Were I'],
-          'gf10': ['Could']
+          "gf1": ["Had I known"],
+          "gf2": ["Had it been"],
+          "gf3": ["Were we to have"],
+          "gf4": ["Were I"],
+          "gf5": ["Should"],
+          "gf6": ["Had I not"],
+          "gf7": ["Had he been"],
+          "gf8": ["Were"],
+          "gf9": ["Were I"],
+          "gf10": ["Could"]
         },
         feedback: {
-          correct: 'Correct! This is the proper inverted conditional form.',
-          incorrect: 'Incorrect. Remember the pattern for inverted conditionals.'
+          correct: "Correct! This is the proper inverted conditional form.",
+          incorrect: "Incorrect. Remember the pattern for inverted conditionals."
         },
         onComplete: function(score, total) {
-          ProgressTrackingModule.updateItemProgress('activities', 'gap-fill-inverted', {
+          ProgressTrackingModule.updateItemProgress("activities", "gap-fill-inverted", {
             completed: true,
             score: score,
             maxScore: total
           });
-          ActivityNavModule.notifyActivityCompleted('gap-fill', {
+          ActivityNavModule.notifyActivityCompleted("gap-fill", {
             score: score,
             maxScore: total
           });
@@ -633,14 +633,14 @@
       });
       
       MatchingModule.init({
-        containerId: 'matching',
+        containerId: "matching",
         onComplete: function(score, total) {
-          ProgressTrackingModule.updateItemProgress('activities', 'matching-inverted', {
+          ProgressTrackingModule.updateItemProgress("activities", "matching-inverted", {
             completed: true,
             score: score,
             maxScore: total
           });
-          ActivityNavModule.notifyActivityCompleted('matching', {
+          ActivityNavModule.notifyActivityCompleted("matching", {
             score: score,
             maxScore: total
           });
@@ -648,29 +648,29 @@
       });
       
       TransformationModule.init({
-        containerId: 'transformation',
+        containerId: "transformation",
         acceptAlternativeAnswers: true,
         alternativeAnswers: {
-          'tr1': ['Had I more free time, I would learn to play the piano.'],
-          'tr2': ['Were she more confident, she would speak up in meetings.'],
-          'tr3': ['Should you need any help with your homework, you can call me.'],
-          'tr4': ['Had I known about the test, I would have studied harder.'],
-          'tr5': ['Had we not received your email, we would have cancelled the meeting.'],
-          'tr6': ['Were it not for your assistance, we would not have completed the project.'],
-          'tr7': ['Were I to explain the situation to him, he might understand.'],
-          'tr8': ['Had the weather been better, we would have gone hiking.']
+          "tr1": ["Had I more free time, I would learn to play the piano."],
+          "tr2": ["Were she more confident, she would speak up in meetings."],
+          "tr3": ["Should you need any help with your homework, you can call me."],
+          "tr4": ["Had I known about the test, I would have studied harder."],
+          "tr5": ["Had we not received your email, we would have cancelled the meeting."],
+          "tr6": ["Were it not for your assistance, we would not have completed the project."],
+          "tr7": ["Were I to explain the situation to him, he might understand."],
+          "tr8": ["Had the weather been better, we would have gone hiking."]
         },
         feedback: {
-          correct: 'Excellent! You've correctly transformed this sentence using an inverted conditional.',
-          incorrect: 'That's not quite right. Check the pattern for inverted conditionals and try again.'
+          correct: "Excellent! You've correctly transformed this sentence using an inverted conditional.",
+          incorrect: "That's not quite right. Check the pattern for inverted conditionals and try again."
         },
         onComplete: function(score, total) {
-          ProgressTrackingModule.updateItemProgress('activities', 'transformation-inverted', {
+          ProgressTrackingModule.updateItemProgress("activities", "transformation-inverted", {
             completed: true,
             score: score,
             maxScore: total
           });
-          ActivityNavModule.notifyActivityCompleted('transformation', {
+          ActivityNavModule.notifyActivityCompleted("transformation", {
             score: score,
             maxScore: total
           });
@@ -679,12 +679,12 @@
       
       // Initialize activity navigation
       ActivityNavModule.init({
-        containerId: 'activity-nav',
-        activities: ['mcq', 'gap-fill', 'matching', 'transformation'],
-        progressContainerId: 'progress-bar',
-        progressInfoContainerId: 'progress-info',
+        containerId: "activity-nav",
+        activities: ["mcq", "gap-fill", "matching", "transformation"],
+        progressContainerId: "progress-bar",
+        progressInfoContainerId: "progress-info",
         onActivityChange: function(activityId) {
-          console.log('Activity changed to:', activityId);
+          console.log("Activity changed to:", activityId);
         }
       });
       
@@ -692,7 +692,7 @@
       ProgressTrackingModule.init({
         categories: {
           activities: {
-            grammarActivities: ['mcq-inverted', 'gap-fill-inverted', 'matching-inverted', 'transformation-inverted']
+            grammarActivities: ["mcq-inverted", "gap-fill-inverted", "matching-inverted", "transformation-inverted"]
           }
         },
         onProgressChange: function(details) {

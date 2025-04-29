@@ -550,50 +550,50 @@
     document.addEventListener('DOMContentLoaded', function() {
       // Initialize activity modules
       MCQModule.init({
-        containerId: 'mcq',
+        containerId: "mcq",
         answers: {
-          'q1': 1,  // B. were
-          'q2': 2,  // C. had gone
-          'q3': 0,  // A. stay
-          'q4': 2,  // C. had accepted
-          'q5': 1,  // B. didn't
-          'q6': 2,  // C. would stop
-          'q7': 1,  // B. wasn't
-          'q8': 2,  // C. have traveled
-          'q9': 1,  // B. I wish I had more time.
-          'q10': 2,  // C. I'd rather you didn't smoke in here.
+          "q1": 1,  // B. were
+          "q2": 2,  // C. had gone
+          "q3": 0,  // A. stay
+          "q4": 2,  // C. had accepted
+          "q5": 1,  // B. didn't
+          "q6": 2,  // C. would stop
+          "q7": 1,  // B. wasn't
+          "q8": 2,  // C. have traveled
+          "q9": 1,  // B. I wish I had more time.
+          "q10": 2,  // C. I'd rather you didn't smoke in here.
         },
         correctExplanations: {
-          'q1': 'Correct! For present wishes, we use "wish" + past simple (were).',
-          'q2': 'Correct! For past regrets with "if only", we use past perfect (had gone).',
-          'q3': 'Correct! For present/future preferences with "would rather", we use the base form of the verb (stay).',
-          'q4': 'Correct! For past regrets with "wish", we use past perfect (had accepted).',
-          'q5': 'Correct! For preferences about others' actions in the present/future, we use past simple after "would rather" (didn't).',
-          'q6': 'Correct! For future wishes or desires for change, we use "would" + verb (would stop).',
-          'q7': 'Correct! For present wishes, we use past simple (wasn't).',
-          'q8': 'Correct! For past preferences with "would rather", we use "have" + past participle (have traveled).',
-          'q9': 'Correct! For present wishes, we use "wish" + past simple (had).',
-          'q10': 'Correct! For preferences about others' actions, we use "would rather" + subject + past simple (didn't smoke).'
+          "q1": "Correct! For present wishes, we use 'wish' + past simple (were).",
+          "q2": "Correct! For past regrets with 'if only', we use past perfect (had gone).",
+          "q3": "Correct! For present/future preferences with 'would rather', we use the base form of the verb (stay).",
+          "q4": "Correct! For past regrets with 'wish', we use past perfect (had accepted).",
+          "q5": "Correct! For preferences about others' actions in the present/future, we use past simple after 'would rather' (didn't).",
+          "q6": "Correct! For future wishes or desires for change, we use 'would' + verb (would stop).",
+          "q7": "Correct! For present wishes, we use past simple (wasn't).",
+          "q8": "Correct! For past preferences with 'would rather', we use 'have' + past participle (have traveled).",
+          "q9": "Correct! For present wishes, we use 'wish' + past simple (had).",
+          "q10": "Correct! For preferences about others' actions, we use 'would rather' + subject + past simple (didn't smoke)."
         },
         incorrectExplanations: {
-          'q1': 'Incorrect. For present wishes, we use "wish" + past simple.',
-          'q2': 'Incorrect. For past regrets with "if only", we use past perfect.',
-          'q3': 'Incorrect. For present/future preferences with "would rather", we use the base form of the verb.',
-          'q4': 'Incorrect. For past regrets with "wish", we use past perfect.',
-          'q5': 'Incorrect. For preferences about others' actions in the present/future, we use past simple after "would rather".',
-          'q6': 'Incorrect. For future wishes or desires for change, we use "would" + verb.',
-          'q7': 'Incorrect. For present wishes, we use past simple.',
-          'q8': 'Incorrect. For past preferences with "would rather", we use "have" + past participle.',
-          'q9': 'Incorrect. Check the verb form used after "wish" for present situations.',
-          'q10': 'Incorrect. Look for the sentence expressing a preference about what another person should or shouldn't do.'
+          "q1": "Incorrect. For present wishes, we use 'wish' + past simple.",
+          "q2": "Incorrect. For past regrets with 'if only', we use past perfect.",
+          "q3": "Incorrect. For present/future preferences with 'would rather', we use the base form of the verb.",
+          "q4": "Incorrect. For past regrets with 'wish', we use past perfect.",
+          "q5": "Incorrect. For preferences about others' actions in the present/future, we use past simple after 'would rather'.",
+          "q6": "Incorrect. For future wishes or desires for change, we use 'would' + verb.",
+          "q7": "Incorrect. For present wishes, we use past simple.",
+          "q8": "Incorrect. For past preferences with 'would rather', we use 'have' + past participle.",
+          "q9": "Incorrect. Check the verb form used after 'wish' for present situations.",
+          "q10": "Incorrect. Look for the sentence expressing a preference about what another person should or shouldn't do."
         },
         onComplete: function(score, total) {
-          ProgressTrackingModule.updateItemProgress('activities', 'mcq-wish-if-only', {
+          ProgressTrackingModule.updateItemProgress("activities", "mcq-wish-if-only", {
             completed: true,
             score: score,
             maxScore: total
           });
-          ActivityNavModule.notifyActivityCompleted('mcq', {
+          ActivityNavModule.notifyActivityCompleted("mcq", {
             score: score,
             maxScore: total
           });
@@ -601,31 +601,31 @@
       });
       
       GapFillModule.init({
-        containerId: 'gap-fill',
+        containerId: "gap-fill",
         acceptAlternativeAnswers: true,
         alternativeAnswers: {
-          'gf1': ['knew'],
-          'gf2': ['had studied'],
-          'gf3': ['go'],
-          'gf4': ['would stop'],
-          'gf5': ['wasn't', 'were not', 'weren't'],
-          'gf6': ['had told'],
-          'gf7': ['didn't use', 'did not use'],
-          'gf8': ['could'],
-          'gf9': ['had listened'],
-          'gf10': ['have']
+          "gf1": ["knew"],
+          "gf2": ["had studied"],
+          "gf3": ["go"],
+          "gf4": ["would stop"],
+          "gf5": ["wasn't", "were not", "weren't"],
+          "gf6": ["had told"],
+          "gf7": ["didn't use", "did not use"],
+          "gf8": ["could"],
+          "gf9": ["had listened"],
+          "gf10": ["have"]
         },
         feedback: {
-          correct: 'Correct! You've used the right verb form for this expression.',
-          incorrect: 'Incorrect. Check the verb form required for this type of expression.'
+          correct: "Correct! You've used the right verb form for this expression.",
+          incorrect: "Incorrect. Check the verb form required for this type of expression."
         },
         onComplete: function(score, total) {
-          ProgressTrackingModule.updateItemProgress('activities', 'gap-fill-wish-if-only', {
+          ProgressTrackingModule.updateItemProgress("activities", "gap-fill-wish-if-only", {
             completed: true,
             score: score,
             maxScore: total
           });
-          ActivityNavModule.notifyActivityCompleted('gap-fill', {
+          ActivityNavModule.notifyActivityCompleted("gap-fill", {
             score: score,
             maxScore: total
           });
@@ -633,14 +633,14 @@
       });
       
       MatchingModule.init({
-        containerId: 'matching',
+        containerId: "matching",
         onComplete: function(score, total) {
-          ProgressTrackingModule.updateItemProgress('activities', 'matching-wish-if-only', {
+          ProgressTrackingModule.updateItemProgress("activities", "matching-wish-if-only", {
             completed: true,
             score: score,
             maxScore: total
           });
-          ActivityNavModule.notifyActivityCompleted('matching', {
+          ActivityNavModule.notifyActivityCompleted("matching", {
             score: score,
             maxScore: total
           });
@@ -648,29 +648,29 @@
       });
       
       TransformationModule.init({
-        containerId: 'transformation',
+        containerId: "transformation",
         acceptAlternativeAnswers: true,
         alternativeAnswers: {
-          'tr1': ['I wish I had enough money to buy a car.'],
-          'tr2': ['I wish I had gone to the party last night.'],
-          'tr3': ['I would rather go to the beach than the cinema.', 'I'd rather go to the beach than the cinema.'],
-          'tr4': ['I'd rather you didn't tell anyone about this.', 'I would rather you didn't tell anyone about this.'],
-          'tr5': ['If only we lived closer to the city center.', 'If only we didn't live so far from the city center.'],
-          'tr6': ['I wish I could speak French.'],
-          'tr7': ['I would rather have taken the train yesterday than the bus.', 'I'd rather have taken the train yesterday than the bus.'],
-          'tr8': ['If only it wasn't raining today.', 'If only it weren't raining today.']
+          "tr1": ["I wish I had enough money to buy a car."],
+          "tr2": ["I wish I had gone to the party last night."],
+          "tr3": ["I would rather go to the beach than the cinema.", "I'd rather go to the beach than the cinema."],
+          "tr4": ["I'd rather you didn't tell anyone about this.", "I would rather you didn't tell anyone about this."],
+          "tr5": ["If only we lived closer to the city center.", "If only we didn't live so far from the city center."],
+          "tr6": ["I wish I could speak French."],
+          "tr7": ["I would rather have taken the train yesterday than the bus.", "I'd rather have taken the train yesterday than the bus."],
+          "tr8": ["If only it wasn't raining today.", "If only it weren't raining today."]
         },
         feedback: {
-          correct: 'Excellent! You've transformed this sentence correctly using the specified expression.',
-          incorrect: 'That's not quite right. Make sure you're using the correct form with "wish", "if only", or "would rather".'
+          correct: "Excellent! You've transformed this sentence correctly using the specified expression.",
+          incorrect: "That's not quite right. Make sure you're using the correct form with 'wish', 'if only', or 'would rather'."
         },
         onComplete: function(score, total) {
-          ProgressTrackingModule.updateItemProgress('activities', 'transformation-wish-if-only', {
+          ProgressTrackingModule.updateItemProgress("activities", "transformation-wish-if-only", {
             completed: true,
             score: score,
             maxScore: total
           });
-          ActivityNavModule.notifyActivityCompleted('transformation', {
+          ActivityNavModule.notifyActivityCompleted("transformation", {
             score: score,
             maxScore: total
           });
@@ -679,12 +679,12 @@
       
       // Initialize activity navigation
       ActivityNavModule.init({
-        containerId: 'activity-nav',
-        activities: ['mcq', 'gap-fill', 'matching', 'transformation'],
-        progressContainerId: 'progress-bar',
-        progressInfoContainerId: 'progress-info',
+        containerId: "activity-nav",
+        activities: ["mcq", "gap-fill", "matching", "transformation"],
+        progressContainerId: "progress-bar",
+        progressInfoContainerId: "progress-info",
         onActivityChange: function(activityId) {
-          console.log('Activity changed to:', activityId);
+          console.log("Activity changed to:", activityId);
         }
       });
       
@@ -692,7 +692,7 @@
       ProgressTrackingModule.init({
         categories: {
           activities: {
-            grammarActivities: ['mcq-wish-if-only', 'gap-fill-wish-if-only', 'matching-wish-if-only', 'transformation-wish-if-only']
+            grammarActivities: ["mcq-wish-if-only", "gap-fill-wish-if-only", "matching-wish-if-only", "transformation-wish-if-only"]
           }
         },
         onProgressChange: function(details) {

@@ -550,50 +550,50 @@
     document.addEventListener('DOMContentLoaded', function() {
       // Initialize activity modules
       MCQModule.init({
-        containerId: 'mcq',
+        containerId: "mcq",
         answers: {
-          'q1': 0,  // melts (zero conditional)
-          'q2': 1,  // will go (first conditional)
-          'q3': 2,  // were (second conditional)
-          'q4': 3,  // would have passed (third conditional)
-          'q5': 2,  // would live (mixed conditional: past→present)
-          'q6': 3,  // would have applied (mixed conditional: present→past)
-          'q7': 1,  // If I study hard, I will pass the exam. (correct first conditional)
-          'q8': 3,  // Mixed conditional example
-          'q9': 0,  // you get green (zero conditional)
-          'q10': 0,  // Zero conditional (100% certain)
+          "q1": 0,  // melts (zero conditional)
+          "q2": 1,  // will go (first conditional)
+          "q3": 2,  // were (second conditional)
+          "q4": 3,  // would have passed (third conditional)
+          "q5": 2,  // would live (mixed conditional: past→present)
+          "q6": 3,  // would have applied (mixed conditional: present→past)
+          "q7": 1,  // If I study hard, I will pass the exam. (correct first conditional)
+          "q8": 3,  // Mixed conditional example
+          "q9": 0,  // you get green (zero conditional)
+          "q10": 0,  // Zero conditional (100% certain)
         },
         correctExplanations: {
-          'q1': 'Correct! The zero conditional uses present simple in both clauses to express scientific facts or things that are always true.',
-          'q2': 'Correct! The first conditional uses present simple in the if-clause and "will + infinitive" in the main clause to express real possibilities in the future.',
-          'q3': 'Correct! The second conditional uses past simple (or "were" for all subjects) in the if-clause and "would + infinitive" in the main clause for unlikely situations.',
-          'q4': 'Correct! The third conditional uses past perfect in the if-clause and "would have + past participle" in the main clause for impossible past situations.',
-          'q5': 'Correct! This mixed conditional uses past perfect in the if-clause (past condition) and "would + infinitive" in the main clause (present result).',
-          'q6': 'Correct! This mixed conditional uses past simple in the if-clause (present condition) and "would have + past participle" in the main clause (past result).',
-          'q7': 'Correct! This is a properly formed first conditional with present simple in the if-clause and "will + infinitive" in the main clause.',
-          'q8': 'Correct! This is a mixed conditional combining a present condition (being shy) with a past result (not coming to the party).',
-          'q9': 'Correct! The zero conditional uses present simple in both clauses to express facts that are always true.',
-          'q10': 'Correct! The zero conditional expresses scientific facts and things that are 100% certain.'
+          "q1": "Correct! The zero conditional uses present simple in both clauses to express scientific facts or things that are always true.",
+          "q2": "Correct! The first conditional uses present simple in the if-clause and 'will + infinitive' in the main clause to express real possibilities in the future.",
+          "q3": "Correct! The second conditional uses past simple (or 'were' for all subjects) in the if-clause and 'would + infinitive' in the main clause for unlikely situations.",
+          "q4": "Correct! The third conditional uses past perfect in the if-clause and 'would have + past participle' in the main clause for impossible past situations.",
+          "q5": "Correct! This mixed conditional uses past perfect in the if-clause (past condition) and 'would + infinitive' in the main clause (present result).",
+          "q6": "Correct! This mixed conditional uses past simple in the if-clause (present condition) and 'would have + past participle' in the main clause (past result).",
+          "q7": "Correct! This is a properly formed first conditional with present simple in the if-clause and 'will + infinitive' in the main clause.",
+          "q8": "Correct! This is a mixed conditional combining a present condition (being shy) with a past result (not coming to the party).",
+          "q9": "Correct! The zero conditional uses present simple in both clauses to express facts that are always true.",
+          "q10": "Correct! The zero conditional expresses scientific facts and things that are 100% certain."
         },
         incorrectExplanations: {
-          'q1': 'Incorrect. The zero conditional uses present simple in both clauses to express facts that are always true.',
-          'q2': 'Incorrect. The first conditional uses "will + infinitive" in the main clause to express real possibilities in the future.',
-          'q3': 'Incorrect. The second conditional uses past simple (or "were" for all subjects) in the if-clause for unlikely present or future situations.',
-          'q4': 'Incorrect. The third conditional uses "would have + past participle" in the main clause for impossible past situations.',
-          'q5': 'Incorrect. For mixed conditionals with a past condition and present result, we use "would + infinitive" in the main clause.',
-          'q6': 'Incorrect. For mixed conditionals with a present condition and past result, we use "would have + past participle" in the main clause.',
-          'q7': 'Incorrect. Check the tense forms used in first conditionals: present simple in the if-clause and "will + infinitive" in the main clause.',
-          'q8': 'Incorrect. Mixed conditionals combine different time references between the if-clause and main clause.',
-          'q9': 'Incorrect. The zero conditional uses present simple in both clauses to express scientific facts.',
-          'q10': 'Incorrect. Consider the probability levels of each conditional type.'
+          "q1": "Incorrect. The zero conditional uses present simple in both clauses to express facts that are always true.",
+          "q2": "Incorrect. The first conditional uses 'will + infinitive' in the main clause to express real possibilities in the future.",
+          "q3": "Incorrect. The second conditional uses past simple (or 'were' for all subjects) in the if-clause for unlikely present or future situations.",
+          "q4": "Incorrect. The third conditional uses 'would have + past participle' in the main clause for impossible past situations.",
+          "q5": "Incorrect. For mixed conditionals with a past condition and present result, we use 'would + infinitive' in the main clause.",
+          "q6": "Incorrect. For mixed conditionals with a present condition and past result, we use 'would have + past participle' in the main clause.",
+          "q7": "Incorrect. Check the tense forms used in first conditionals: present simple in the if-clause and 'will + infinitive' in the main clause.",
+          "q8": "Incorrect. Mixed conditionals combine different time references between the if-clause and main clause.",
+          "q9": "Incorrect. The zero conditional uses present simple in both clauses to express scientific facts.",
+          "q10": "Incorrect. Consider the probability levels of each conditional type."
         },
         onComplete: function(score, total) {
-          ProgressTrackingModule.updateItemProgress('activities', 'mcq-conditionals', {
+          ProgressTrackingModule.updateItemProgress("activities", "mcq-conditionals", {
             completed: true,
             score: score,
             maxScore: total
           });
-          ActivityNavModule.notifyActivityCompleted('mcq', {
+          ActivityNavModule.notifyActivityCompleted("mcq", {
             score: score,
             maxScore: total
           });
@@ -601,31 +601,31 @@
       });
       
       GapFillModule.init({
-        containerId: 'gap-fill',
+        containerId: "gap-fill",
         acceptAlternativeAnswers: true,
         alternativeAnswers: {
-          'gf1': ['melts'],
-          'gf2': ['rains'],
-          'gf3': ['were', 'was'],
-          'gf4': ['had listened'],
-          'gf5': ['hadn't missed', 'had not missed'],
-          'gf6': ['spoke'],
-          'gf7': ['touch'],
-          'gf8': ['goes'],
-          'gf9': ['had'],
-          'gf10': ['had studied']
+          "gf1": ["melts"],
+          "gf2": ["rains"],
+          "gf3": ["were", "was"],
+          "gf4": ["had listened"],
+          "gf5": ["hadn't missed", "had not missed"],
+          "gf6": ["spoke"],
+          "gf7": ["touch"],
+          "gf8": ["goes"],
+          "gf9": ["had"],
+          "gf10": ["had studied"]
         },
         feedback: {
-          correct: 'Correct! You've used the proper verb form for this type of conditional.',
-          incorrect: 'Incorrect. Check the verb form required for this type of conditional.'
+          correct: "Correct! You've used the proper verb form for this type of conditional.",
+          incorrect: "Incorrect. Check the verb form required for this type of conditional."
         },
         onComplete: function(score, total) {
-          ProgressTrackingModule.updateItemProgress('activities', 'gap-fill-conditionals', {
+          ProgressTrackingModule.updateItemProgress("activities", "gap-fill-conditionals", {
             completed: true,
             score: score,
             maxScore: total
           });
-          ActivityNavModule.notifyActivityCompleted('gap-fill', {
+          ActivityNavModule.notifyActivityCompleted("gap-fill", {
             score: score,
             maxScore: total
           });
@@ -633,14 +633,14 @@
       });
       
       MatchingModule.init({
-        containerId: 'matching',
+        containerId: "matching",
         onComplete: function(score, total) {
-          ProgressTrackingModule.updateItemProgress('activities', 'matching-conditionals', {
+          ProgressTrackingModule.updateItemProgress("activities", "matching-conditionals", {
             completed: true,
             score: score,
             maxScore: total
           });
-          ActivityNavModule.notifyActivityCompleted('matching', {
+          ActivityNavModule.notifyActivityCompleted("matching", {
             score: score,
             maxScore: total
           });
@@ -648,29 +648,29 @@
       });
       
       TransformationModule.init({
-        containerId: 'transformation',
+        containerId: "transformation",
         acceptAlternativeAnswers: true,
         alternativeAnswers: {
-          'tr1': ['If I had a car, I could drive you to the airport.', 'If I had a car, I would be able to drive you to the airport.'],
-          'tr2': ['If she had called me, I would have known about the party.'],
-          'tr3': ['If plants don't get water, they die.', 'If plants do not get water, they die.'],
-          'tr4': ['If I finish work early, I'll come to your party.', 'If I finish work early, I will come to your party.'],
-          'tr5': ['If I had taken that job in London five years ago, I would live there now.'],
-          'tr6': ['If I were good at languages, I would have applied for the translator position.', 'If I was good at languages, I would have applied for the translator position.'],
-          'tr7': ['If it rains, you'll be glad you took an umbrella.', 'If it rains, you will be glad you took an umbrella.'],
-          'tr8': ['If I were the company director, I could make that decision.', 'If I was the company director, I could make that decision.']
+          "tr1": ["If I had a car, I could drive you to the airport.", "If I had a car, I would be able to drive you to the airport."],
+          "tr2": ["If she had called me, I would have known about the party."],
+          "tr3": ["If plants don't get water, they die.", "If plants do not get water, they die."],
+          "tr4": ["If I finish work early, I'll come to your party.", "If I finish work early, I will come to your party."],
+          "tr5": ["If I had taken that job in London five years ago, I would live there now."],
+          "tr6": ["If I were good at languages, I would have applied for the translator position.", "If I was good at languages, I would have applied for the translator position."],
+          "tr7": ["If it rains, you'll be glad you took an umbrella.", "If it rains, you will be glad you took an umbrella."],
+          "tr8": ["If I were the company director, I could make that decision.", "If I was the company director, I could make that decision."]
         },
         feedback: {
-          correct: 'Excellent! You've transformed this sentence correctly using the indicated conditional type.',
-          incorrect: 'That's not quite right. Make sure you're using the correct conditional form.'
+          correct: "Excellent! You've transformed this sentence correctly using the indicated conditional type.",
+          incorrect: "That's not quite right. Make sure you're using the correct conditional form."
         },
         onComplete: function(score, total) {
-          ProgressTrackingModule.updateItemProgress('activities', 'transformation-conditionals', {
+          ProgressTrackingModule.updateItemProgress("activities", "transformation-conditionals", {
             completed: true,
             score: score,
             maxScore: total
           });
-          ActivityNavModule.notifyActivityCompleted('transformation', {
+          ActivityNavModule.notifyActivityCompleted("transformation", {
             score: score,
             maxScore: total
           });
@@ -679,12 +679,12 @@
       
       // Initialize activity navigation
       ActivityNavModule.init({
-        containerId: 'activity-nav',
-        activities: ['mcq', 'gap-fill', 'matching', 'transformation'],
-        progressContainerId: 'progress-bar',
-        progressInfoContainerId: 'progress-info',
+        containerId: "activity-nav",
+        activities: ["mcq", "gap-fill", "matching", "transformation"],
+        progressContainerId: "progress-bar",
+        progressInfoContainerId: "progress-info",
         onActivityChange: function(activityId) {
-          console.log('Activity changed to:', activityId);
+          console.log("Activity changed to:", activityId);
         }
       });
       
@@ -692,7 +692,7 @@
       ProgressTrackingModule.init({
         categories: {
           activities: {
-            grammarActivities: ['mcq-conditionals', 'gap-fill-conditionals', 'matching-conditionals', 'transformation-conditionals']
+            grammarActivities: ["mcq-conditionals", "gap-fill-conditionals", "matching-conditionals", "transformation-conditionals"]
           }
         },
         onProgressChange: function(details) {
