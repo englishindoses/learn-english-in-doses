@@ -1102,21 +1102,21 @@
    19. Level-specific Styling (Conversation)
    ---------------------------------------- */
    :root {
-    /* Conversation section theme variables - Friendly & Approachable */
-    --conversation-primary:  #7b6db0;      /* Medium purple */
-    --conversation-primary-dark: #564c82; /* Darker purple for hover states */
-    --conversation-secondary: #f1c40f;    /* Bright yellow accent */
-    --conversation-card-bg: #f8f0ff;      /* Very light lavender background */
-    --conversation-icon-bg: #f3e5f8;      /* Slightly darker lavender for icons */
+    /* Conversation section theme variables - Professional & Inviting */
+    --conversation-primary: #2b90a9;      /* Teal blue */
+    --conversation-primary-dark: #1e6c80; /* Darker teal for hover states */
+    --conversation-secondary: #f5ae51;    /* Soft orange accent */
+    --conversation-card-bg: #f0f7f9;      /* Very light blue background */
+    --conversation-icon-bg: #e0f0f5;      /* Slightly darker blue for icons */
   }
   
-  /* Dark theme conversation-specific colors */
+  /* Dark theme conversation-specific colors - Replace lines 452-458 */
   [data-theme="dark"] {
-    --conversation-primary: #b26bd3;      /* Brighter purple for dark mode */
-    --conversation-primary-dark: #9c59b5; /* Darker purple for hover states */
-    --conversation-secondary: #f9ca24;    /* Brighter yellow for dark mode */
-    --conversation-card-bg: #271a2f;      /* Dark purple-tinted background */
-    --conversation-icon-bg: #352044;      /* Darker purple for icons */
+    --conversation-primary: #39a7c2;      /* Brighter teal for dark mode */
+    --conversation-primary-dark: #2d899e; /* Darker teal for hover states */
+    --conversation-secondary: #f7bd6d;    /* Warmer orange for dark mode */
+    --conversation-card-bg: #1a2c32;      /* Dark blue-tinted background */
+    --conversation-icon-bg: #264048;      /* Darker blue for icons */
   }
   
   /* Conversation section specific styling */
