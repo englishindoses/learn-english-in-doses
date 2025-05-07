@@ -1103,25 +1103,25 @@
    ---------------------------------------- */
    :root {
     /* Conversation section theme variables - Professional & Inviting */
-    --conversation-primary: #2b90a9;      /* Teal blue */
-    --conversation-primary-dark: #1e6c80; /* Darker teal for hover states */
-    --conversation-secondary: #f5ae51;    /* Soft orange accent */
-    --conversation-card-bg: #f0f7f9;      /* Very light blue background */
-    --conversation-icon-bg: #e0f0f5;      /* Slightly darker blue for icons */
+    --conversation-primary: #26A69A;      /* Sea green teal (updated from blue teal) */
+    --conversation-primary-dark: #1E8A7E; /* Darker sea green for hover states */
+    --conversation-secondary: #f5ae51;    /* Soft orange accent (unchanged) */
+    --conversation-card-bg: #f0f9f6;      /* Light sea green background */
+    --conversation-icon-bg: #e0f5f0;      /* Slightly darker sea green for icons */
+    --conversation-nav-indicator: #1E8A7E; /* Deeper sea green for navigation indicator */
   }
   
-  /* Dark theme conversation-specific colors - Replace lines 452-458 */
+  /* Dark theme variables */
   [data-theme="dark"] {
-    --conversation-primary: #39a7c2;      /* Brighter teal for dark mode */
-    --conversation-primary-dark: #2d899e; /* Darker teal for hover states */
-    --conversation-secondary: #f7bd6d;    /* Warmer orange for dark mode */
-    --conversation-card-bg: #1a2c32;      /* Dark blue-tinted background */
-    --conversation-icon-bg: #264048;      /* Darker blue for icons */
+    --conversation-primary: #2DBDAF;      /* Brighter sea green for dark mode */
+    --conversation-primary-dark: #25A095; /* Darker sea green for hover states */
+    --conversation-secondary: #FF9F43;    /* Brighter orange for dark mode */
+    --conversation-card-bg: #1a2e2c;      /* Dark green-tinted background */
+    --conversation-icon-bg: #26423f;      /* Darker green for icons */
+    --conversation-nav-indicator: #25A095; /* Deeper sea green for navigation */
   }
   
   /* Conversation section specific styling */
-
-  /* Navigation indicator for beginner section */
 
   .conversation-section .function-card {
     background-color: var(--conversation-card-bg);
@@ -1174,7 +1174,7 @@
     padding-left: 30px;
     border-radius: 10px;
     margin-bottom: 30px;
-    box-shadow: 0 4px 6px rgba(155, 89, 182, 0.3); /* Purple-tinted shadow */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     font-size: 2rem;
     border-left: 5px solid var(--conversation-primary);
   }
@@ -1202,7 +1202,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: var(--conversation-primary);
+    background-color: var(--conversation-nav-indicator);
   }
   
   /* Active navigation link in conversation section */
@@ -1269,7 +1269,7 @@
   
   .conversation-section .faq-item {
     margin-bottom: 15px;
-    border-bottom: 1px solid rgba(155, 89, 182, 0.2);
+    border-bottom: 1px solid rgba(38, 166, 154, 0.2);
     padding-bottom: 15px;
   }
   
@@ -1304,7 +1304,7 @@
   
   /* Dark mode specific styles for conversation section */
   [data-theme="dark"] .conversation-section h1 {
-    background-color: #34214a;
+    background-color: #1a2e2c; /* Sea green background */
     color: #ffffff;
     border-left: 5px solid var(--conversation-primary);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
@@ -1313,7 +1313,7 @@
   [data-theme="dark"] .conversation-section .intro-section,
   [data-theme="dark"] .conversation-section .content-section,
   [data-theme="dark"] .conversation-section .section-intro {
-    background-color: #271a2f;
+    background-color: #1a2e2c;
     border-left: 5px solid var(--conversation-primary);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
   }
@@ -1321,7 +1321,7 @@
   [data-theme="dark"] .conversation-section .topic-card,
   [data-theme="dark"] .conversation-section .testimonial,
   [data-theme="dark"] .conversation-section .function-card {
-    background-color: #271a2f;
+    background-color: #1a2e2c;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   }
   
@@ -1339,19 +1339,27 @@
   }
   
   [data-theme="dark"] .conversation-section .highlight {
-    color: #d2a0e7;
+    color: #4FCDBF; /* Sea green instead of purple */
   }
   
   [data-theme="dark"] .conversation-section .accent {
-    color: #f9d44d;
+    color: var(--conversation-secondary); /* Orange from variables */
   }
   
   [data-theme="dark"] .conversation-section a {
-    color: #d2a0e7;
+    color: #4FCDBF; /* Sea green instead of purple */
   }
   
   [data-theme="dark"] .conversation-section a:hover {
-    color: #e4bdf2;
+    color: #70DAD0; /* Lighter sea green instead of purple */
+  }
+  
+  [data-theme="dark"] .conversation-section .breadcrumb-item a {
+    color: #4FCDBF; /* Sea green instead of purple */
+  }
+  
+  [data-theme="dark"] .conversation-section .breadcrumb-item a:hover {
+    color: #70DAD0; /* Lighter sea green instead of purple */
   }
   
   [data-theme="dark"] .conversation-section .section-intro h3 {
@@ -1382,6 +1390,11 @@
     color: #ffffff;
   }
   
+  /* Fix for testimonial author colors */
+  [data-theme="dark"] .conversation-section .testimonial-author {
+    color: #4FCDBF; /* Sea green instead of purple */
+  }
+  
   /* Function grid cards in dark mode */
   [data-theme="dark"] .conversation-section .function-card {
     border-top: 4px solid var(--conversation-primary);
@@ -1392,5 +1405,10 @@
   }
 
   [data-theme="dark"] .conversation-nav-indicator {
-    background-color: var(--conversation-primary);
+    background-color: var(--conversation-nav-indicator);
+  }
+  
+  /* Border-bottom color fix for consistency */
+  [data-theme="dark"] .conversation-section .faq-item {
+    border-bottom: 1px solid rgba(45, 189, 175, 0.2); /* Sea green tint instead of purple */
   }
