@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Include standardized head content -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Sorry! Not ready, yet! - Coming Soon to the Advanced ESL Grammar Course">
-  <title>Coming Soon - Advanced ESL Grammar</title>
+  <meta name="description" content="About English in Doses - Learn English with short, regular practice sessions for busy adults">
+  <title>About - English in Doses</title>
   
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
   
   <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
@@ -19,11 +18,597 @@
   <!-- Styles -->
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/activities.css">
+  
+  <style>
+    /* Additional styles specific to about page */
+    :root {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      line-height: 1.6;
+    }
+    
+    .about-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .about-hero {
+      background: linear-gradient(135deg, var(--header-bg) 0%, var(--accent-color) 100%);
+      padding: 80px 20px;
+      color: white;
+      border-radius: 10px;
+      margin-bottom: 60px;
+      text-align: center;
+      box-shadow: 0 8px 25px var(--shadow-color);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* Add decorative elements to hero */
+    .about-hero::before {
+      content: "";
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      z-index: 1;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .about-hero::after {
+      content: "";
+      position: absolute;
+      bottom: -80px;
+      left: -80px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      z-index: 1;
+      animation: floatReverse 8s ease-in-out infinite;
+    }
+    
+    .about-hero h1 {
+      background: transparent;
+      box-shadow: none;
+      padding: 0;
+      margin-bottom: 25px;
+      font-size: 2.8rem;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .about-hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .about-hero-content p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .about-section {
+      margin-bottom: 80px;
+      position: relative;
+    }
+
+    /* Add subtle divider between sections */
+    .about-section:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    }
+    
+    .about-section-title {
+      position: relative;
+      padding-bottom: 15px;
+      margin-bottom: 35px;
+      font-size: 2.2rem;
+    }
+    
+    .about-section-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 4px;
+      background-color: var(--accent-color);
+      border-radius: 2px;
+    }
+    
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 50px;
+      align-items: center;
+    }
+    
+    .about-photo {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 8px 25px var(--shadow-color);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .about-photo:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px var(--shadow-color);
+    }
+    
+    .photo-placeholder {
+      background-color: var(--card-bg);
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 400px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 8px 25px var(--shadow-color);
+    }
+
+    .photo-placeholder:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px var(--shadow-color);
+    }
+    
+    .credential-badge {
+      margin-top: 25px;
+      padding: 20px;
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      display: inline-block;
+      box-shadow: 0 5px 15px var(--shadow-color);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .credential-badge:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px var(--shadow-color);
+    }
+    
+    .badge-placeholder {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background-color: var(--accent-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-weight: bold;
+      margin: 0 auto;
+    }
+    
+    .teaching-approach {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 8px 25px var(--shadow-color);
+      margin: 50px 0;
+      border-left: 5px solid var(--accent-color);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .teaching-approach:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px var(--shadow-color);
+    }
+    
+    .teaching-approach h3 {
+      margin-top: 0;
+      font-size: 1.5rem;
+      color: var(--accent-color);
+    }
+
+    .teaching-approach p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      row-gap: 90px; /* Added larger row gap to prevent overlap */
+      margin-top: 50px;
+      margin-bottom: 60px;
+      width: 100%; /* Added to ensure full width */
+    }
+    
+    .feature-card {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 8px 25px var(--shadow-color);
+      border-left: 5px solid var(--secondary-accent);
+      height: 100%;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px var(--shadow-color);
+      z-index: 2; /* Added to ensure hovered card appears above others */
+    }
+    
+    .feature-icon {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      color: var(--secondary-accent);
+    }
+
+    .feature-card h3 {
+      font-size: 1.4rem;
+      margin-top: 30px;
+      margin-bottom: 30pxpx;
+      color: var(--text-color);
+    }
+
+    .feature-card p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    
+    .testimonials-section {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      padding: 50px 40px;
+      margin: 60px 0;
+      box-shadow: 0 8px 25px var(--shadow-color);
+    }
+    
+    .testimonials-title {
+      text-align: center;
+      margin-bottom: 50px;
+      font-size: 2rem;
+      position: relative;
+    }
+
+    .testimonials-title::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: var(--accent-color);
+      border-radius: 2px;
+    }
+    
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+    
+    .testimonial-card {
+      background-color: var(--bg-color);
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 8px 20px var(--shadow-color);
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px var(--shadow-color);
+    }
+    
+    .testimonial-placeholder {
+      padding: 60px 20px;
+      text-align: center;
+      font-style: italic;
+      color: var(--text-color);
+      opacity: 0.7;
+      font-size: 1.1rem;
+    }
+    
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+    
+    .testimonial-text::before {
+      content: "\201C"; /* Using the Unicode escape sequence for opening double quote */
+      font-size: 6rem;
+      color: var(--accent-color);
+      opacity: 0.1;
+      position: absolute;
+      top: -50px;
+      left: -20px;
+      font-family: Georgia, serif;
+      z-index: -1;
+    }
+    
+    .testimonial-author {
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    
+    .cta-section {
+      text-align: center;
+      padding: 60px 0;
+      position: relative;
+    }
+
+    /* Add decorative wave background to CTA section */
+    .cta-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23f3f4f5' fill-opacity='0.3' d='M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,202.7C672,203,768,181,864,186.7C960,192,1056,224,1152,229.3C1248,235,1344,213,1392,202.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+      background-size: cover;
+      background-position: center;
+      opacity: 0.1;
+      z-index: -1;
+    }
+
+    .cta-section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+    }
+
+    .cta-section p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 30px;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 25px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .cta-button {
+      background-color: var(--accent-color);
+      color: white;
+      padding: 16px 35px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      display: inline-block;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      font-size: 1.05rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-button::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: -100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      text-decoration: none;
+    }
+
+    .cta-button:hover::after {
+      left: 100%;
+    }
+    
+    .cta-button.secondary {
+      background-color: var(--secondary-accent);
+    }
+    
+    .teacher-info {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 8px 25px var(--shadow-color);
+      margin: 50px 0;
+    }
+
+    .about-content h3 {
+      font-size: 1.8rem;
+      margin-top: 0;
+      margin-bottom: 20px;
+      color: var(--accent-color);
+    }
+
+    .about-content p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    /* Service cards styling */
+    .service-card {
+      background-color: var(--bg-color);
+      padding: 25px;
+      border-radius: 12px;
+      border-left: 3px solid var(--accent-color);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px var(--shadow-color);
+    }
+
+    .service-card strong {
+      color: var(--accent-color);
+      font-size: 1.1rem;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    /* Floating CTA button */
+    .floating-cta {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: var(--accent-color);
+      color: white;
+      padding: 15px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      z-index: 100;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .floating-cta:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .floating-cta-icon {
+      font-size: 1.2rem;
+    }
+    
+    /* Responsive styles */
+    @media (max-width: 992px) {
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-section-title {
+        font-size: 1.8rem;
+      }
+
+      .about-hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .cta-section h2 {
+        font-size: 1.8rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .photo-placeholder {
+        height: 300px;
+      }
+      
+      .about-hero {
+        padding: 50px 20px;
+      }
+      
+      .about-hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .about-hero-content p {
+        font-size: 1rem;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .floating-cta {
+        bottom: 20px;
+        right: 20px;
+        padding: 12px 20px;
+        font-size: 0.9rem;
+      }
+
+      .feature-icon {
+        font-size: 2.2rem;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    @keyframes floatReverse {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(15px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .about-hero, .teaching-approach, .feature-card, .testimonial-card, .about-photo-container {
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    /* Accessibility improvements */
+    :focus {
+      outline: 2px solid var(--accent-color);
+      outline-offset: 3px;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-color);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent-color);
+      border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--secondary-accent);
+    }
+  </style>
 </head>
 <body>
-  <!-- Include skip link and theme toggle -->
+  <!-- Skip link for accessibility -->
   <a href="#main-content" class="skip-link">Skip to content</a>
   
+  <!-- Theme toggle button -->
   <div class="theme-toggle-container">
     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
       <span class="light-icon">☀️</span>
@@ -31,7 +616,7 @@
     </button>
   </div>
   
-  <!-- Include navigation -->
+  <!-- Main navigation -->
   <nav class="main-navigation">
     <a href="home.html" class="site-logo">
       <img src="images/my-logo.svg" alt="English in Doses" width="150" height="auto">
@@ -48,34 +633,210 @@
     </div>
   </nav>
 
-  <div class="container">
-    <!-- Include breadcrumbs -->
+  <!-- Floating CTA button -->
+  <a href="#" class="floating-cta">
+    <span class="floating-cta-icon">📅</span>
+    <span>Book a Lesson</span>
+  </a>
+
+  <div class="about-container">
+    <!-- Breadcrumbs -->
     <div class="breadcrumbs" aria-label="breadcrumb">
       <span class="breadcrumb-item"><a href="home.html">Home</a></span>
       <span class="breadcrumb-separator">›</span>
-      <span class="breadcrumb-item">Sorry, not ready yet!</span>
+      <span class="breadcrumb-item">About</span>
     </div>
 
     <main id="main-content">
-      <h1>Sorry! Not ready, yet!</h1>
-
-      <!-- COMING SOON SECTION -->
-      <section class="intro-section coming-soon">
-        <div class="coming-soon-icon">🚧</div>
-        <h2>Coming Soon</h2>
-        <div class="coming-soon-content">
-          <p>We're currently developing comprehensive content for this page.</p>
-          <p>Please check back soon!</p>
+      <!-- Hero section -->
+      <section class="about-hero">
+        <div class="about-hero-content">
+          <h1>About English in Doses</h1>
+          <p>Master English in bite-sized sessions — because small, regular doses are more powerful than occasional marathons.</p>
+        </div>
+      </section>
+      
+      <!-- About Website section -->
+      <section class="about-section">
+        <h2 class="about-section-title">Our Approach to Language Learning</h2>
+        
+        <div class="teaching-approach">
+          <h3>Why "English in Doses"?</h3>
+          <p>The name "English in Doses" reflects our core teaching philosophy. We firmly believe that multiple, regular, short practice sessions with low stress levels are more effective than single, long, tiring sessions each week.</p>
+          
+          <p>This approach is based on both extensive teaching experience and fundamental principles of language acquisition. Regular engagement with the language in a relaxed, supportive environment leads to better retention and more natural language use.</p>
+          
+          <p>Just like medicine works better when taken in the right doses at regular intervals, language learning is most effective when done consistently in manageable amounts.</p>
         </div>
         
-        <div class="center-buttons" style="margin-top: 30px;">
-          <a href="home.html" class="nav-button">Back to Home</a>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🎯</div>
+            <h3>Tailored Learning</h3>
+            <p>We understand that each student has unique goals, interests, and learning styles. Our approach prioritises understanding your specific needs and tailoring lessons accordingly, rather than following a one-size-fits-all curriculum.</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">⏱️</div>
+            <h3>Time-Efficient</h3>
+            <p>Our short, focused lessons are designed to fit into your busy schedule. You don't need to set aside large blocks of time to make progress—just consistent, manageable practice sessions that work for you.</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">🧠</div>
+            <h3>Based on Learning Science</h3>
+            <p>Our methodology is grounded in research on how the brain processes and retains language. Spaced repetition and regular practice have been proven more effective than cramming or infrequent study sessions.</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">💬</div>
+            <h3>Real-World Focus</h3>
+            <p>We focus on practical, useful English that you can immediately apply in real-life situations. We use authentic materials and relevant scenarios rather than unrealistic textbook examples.</p>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Who We Serve section -->
+      <section class="about-section">
+        <h2 class="about-section-title">Who We Serve</h2>
+        
+        <div style="background-color: var(--card-bg); border-radius: 12px; padding: 40px; box-shadow: 0 8px 25px var(--shadow-color); transition: transform 0.3s ease;">
+          <p style="font-size: 1.1rem; margin-bottom: 25px;">English in Doses is designed specifically for:</p>
+          
+          <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; padding-left: 0; list-style: none; margin-top: 25px;">
+            <li class="service-card">
+              <strong>Adult Learners</strong>
+              Students 17 years and older who are motivated to improve their English.
+            </li>
+            <li class="service-card">
+              <strong>Intermediate+ Level</strong>
+              Students at B1 level and above who already have a foundation in English.
+            </li>
+            <li class="service-card">
+              <strong>Busy Professionals</strong>
+              People with limited time who benefit from flexible, efficient learning.
+            </li>
+            <li class="service-card">
+              <strong>Practical Learners</strong>
+              Those who need English for work, travel, or living in English-speaking countries.
+            </li>
+          </ul>
+        </div>
+      </section>
+      
+      <!-- What We Offer section -->
+      <section class="about-section">
+        <h2 class="about-section-title">What We Offer</h2>
+        
+        <div style="background-color: var(--card-bg); border-radius: 12px; padding: 40px; box-shadow: 0 8px 25px var(--shadow-color); margin-bottom: 40px; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 15px 30px var(--shadow-color)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 25px var(--shadow-color)';">
+          <h3 style="font-size: 1.5rem; color: var(--accent-color); margin-top: 0; margin-bottom: 20px;">Conversation Classes</h3>
+          <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 25px;">Our primary focus is on helping students improve their speaking skills through regular conversation practice. These sessions can cover a wide range of topics based on your interests and needs:</p>
+          
+          <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; padding-left: 0; list-style: none; margin-top: 25px;">
+            <li class="service-card">
+              <strong>Business English</strong>
+              Meetings, presentations, negotiations, emails, and workplace communication.
+            </li>
+            <li class="service-card">
+              <strong>Travel English</strong>
+              Navigating airports, hotels, restaurants, and tourist attractions.
+            </li>
+            <li class="service-card">
+              <strong>Daily English</strong>
+              Everyday conversations, social interactions, and practical situations.
+            </li>
+            <li class="service-card">
+              <strong>Custom Topics</strong>
+              Lessons tailored to your specific interests, industry, or learning goals.
+            </li>
+          </ul>
+        </div>
+        
+        <div style="background-color: var(--card-bg); border-radius: 12px; padding: 40px; box-shadow: 0 8px 25px var(--shadow-color); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 15px 30px var(--shadow-color)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 25px var(--shadow-color)';">
+          <h3 style="font-size: 1.5rem; color: var(--accent-color); margin-top: 0; margin-bottom: 20px;">Free Learning Resources</h3>
+          <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 25px;">In addition to our conversation classes, we provide a variety of free resources to support your learning journey:</p>
+          
+          <ul style="margin-top: 25px; padding-left: 20px; line-height: 1.8; font-size: 1.05rem;">
+            <li>Grammar explanations designed for practical use.</li>
+            <li>Interactive practice activities with immediate feedback.</li>
+            <li>Conversation starters and useful phrases.</li>
+            <li>Progress tracking to monitor your improvement.</li>
+          </ul>
+          
+          <p style="margin-top: 25px; padding: 15px; background-color: var(--bg-color); border-radius: 8px; font-size: 1.05rem;"><strong>Coming soon:</strong> We plan to offer exam preparation resources in the future, helping students prepare for internationally recognised English proficiency exams.</p>
+        </div>
+      </section>
+      
+      <!-- Meet the Teacher section -->
+      <section class="about-section">
+        <h2 class="about-section-title">Meet Your Teacher</h2>
+        
+        <div class="about-grid">
+          <div class="about-photo-container">
+            <!-- Photo placeholder - replace with actual photo -->
+            <div class="photo-placeholder">
+              <span>Teacher Photo</span>
+            </div>
+            
+            <!-- Credentials badge placeholder -->
+            <div class="credential-badge">
+              <div class="badge-placeholder">
+                <span>IELTS Badge</span>
+              </div>
+              <p style="text-align: center; margin-top: 15px; font-size: 1.05rem;">IELTS Teaching Certification</p>
+            </div>
+          </div>
+          
+          <div class="about-content">
+            <h3>Katerina Samara</h3>
+            <p>Hello! I'm Katerina Samara, the founder of English in Doses. I've been teaching English since 2013 and moved to online teaching in 2020, which has allowed me to connect with students from all over the world.</p>
+            
+            <p>I'm half Greek, half English, with experiences living and studying in both countries. Currently, I'm based in Brazil, where I continue to teach English online to adult students. My multicultural background gives me unique insights into the challenges of language learning.</p>
+            
+            <p>Throughout my career, I've taught students of all ages and levels, but now I specialise in working with adult learners at intermediate (B1) level and above. I focus primarily on conversation classes covering a wide range of topics including travel, business, and daily English usage.</p>
+            
+            <p>My teaching approach is student-centered, focusing on creating a relaxed, safe environment where you can speak freely and gain confidence. I believe in using English rather than just talking about it, and I make sure my examples and activities are relevant to real-life situations.</p>
+            
+            <p>When I'm not teaching, I enjoy exploring nature, travelling, learning languages, and relaxing with a good cup of coffee.</p>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Testimonials section -->
+      <section class="testimonials-section">
+        <h2 class="testimonials-title">What Our Students Say</h2>
+        
+        <div class="testimonials-grid">
+          <!-- Testimonial placeholder 1 -->
+          <div class="testimonial-card">
+            <div class="testimonial-placeholder">
+              Testimonial placeholder - Student feedback will be added here.
+            </div>
+          </div>
+          
+          <!-- Testimonial placeholder 2 -->
+          <div class="testimonial-card">
+            <div class="testimonial-placeholder">
+              Testimonial placeholder - Student feedback will be added here.
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- CTA section -->
+      <section class="cta-section">
+        <h2>Ready to improve your English?</h2>
+        <p>Let's work together to achieve your language goals through short, effective practice sessions.</p>
+        
+        <div class="cta-buttons">
+          <a href="#" class="cta-button secondary">Book a Lesson</a>
+          <a href="home.html#where-to-start" class="cta-button">Check Out Free Materials</a>
         </div>
       </section>
     </main>
   </div>
   
-  <!-- Include footer -->
+  <!-- Footer -->
   <footer>
     <div class="footer-content">
       <div class="footer-section">
@@ -113,5 +874,24 @@
 
   <!-- JavaScript -->
   <script src="js/core.js"></script>
+  
+  <!-- Additional JavaScript for enhanced interactivity -->
+  <script>
+    // Add smooth reveal animations on scroll
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add event listener for hovering on cards with inline styles
+      document.querySelectorAll('.feature-card, .testimonial-card, .teaching-approach').forEach(card => {
+        card.addEventListener('mouseover', function() {
+          this.style.transform = 'translateY(-5px)';
+          this.style.boxShadow = '0 15px 30px var(--shadow-color)';
+        });
+        
+        card.addEventListener('mouseout', function() {
+          this.style.transform = 'translateY(0)';
+          this.style.boxShadow = '0 8px 25px var(--shadow-color)';
+        });
+      });
+    });
+  </script>
 </body>
 </html>
