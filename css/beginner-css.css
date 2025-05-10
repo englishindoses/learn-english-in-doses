@@ -1,0 +1,242 @@
+/* 
+ * ESL Grammar Website - Beginner Section Styles
+ * Styling specific to the beginner section (light and dark mode)
+ */
+
+/* ----------------------------------------
+   1. Beginner Section - Light Theme
+   ---------------------------------------- */
+:root {
+  /* Beginner section theme variables */
+  --beginner-primary: #2ecc71;      /* Vibrant green */
+  --beginner-primary-dark: #27ae60; /* Darker green for hover states */
+  --beginner-secondary: #f39c12;    /* Warm orange accent */
+  --beginner-card-bg: #f0fff5;      /* Very light green background */
+  --beginner-icon-bg: #e8f8e8;      /* Slightly darker green for icons */
+}
+
+.beginner-section .function-card {
+  background-color: var(--beginner-card-bg);
+  border-top: 4px solid var(--beginner-primary);
+}
+
+.beginner-section .function-icon {
+  background-color: var(--beginner-icon-bg);
+  color: var(--beginner-primary);
+}
+
+.beginner-section .star {
+  color: var(--beginner-secondary);
+}
+
+.beginner-section .section-intro {
+  background-color: var(--beginner-card-bg);
+  border-left: 5px solid var(--beginner-primary);
+}
+
+.beginner-section .category-title {
+  border-bottom: 2px solid var(--beginner-primary);
+}
+
+.beginner-section .learn-button {
+  background-color: var(--beginner-primary);
+}
+
+.beginner-section .learn-button:hover {
+  background-color: var(--beginner-primary-dark);
+}
+
+.beginner-section h1 {
+  background-color: var(--beginner-primary-dark);
+  border-left: 5px solid var(--beginner-primary);
+}
+
+.beginner-section .translate-tip strong {
+  color: var(--beginner-secondary);
+}
+
+/* Change intro and content sections to use beginner colors */
+.beginner-section .intro-section,
+.beginner-section .content-section {
+  border-left: 5px solid var(--beginner-primary);
+}
+
+/* Navigation indicator for beginner section */
+.beginner-nav-indicator {
+  height: 3px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--beginner-primary);
+}
+
+/* Active navigation link in beginner section */
+.beginner-section .nav-link.active {
+  background-color: var(--beginner-primary);
+}
+
+/* Change the h2 element border colors to match the beginner theme */
+.beginner-section h2 {
+  border-bottom: 2px solid var(--beginner-primary);
+}
+
+/* Table headers should match the theme */
+.beginner-section th {
+  background-color: var(--beginner-primary);
+}
+
+/* Buttons should use the beginner theme colors */
+.beginner-section .nav-button {
+  background-color: var(--beginner-primary);
+}
+
+.beginner-section .nav-button:hover {
+  background-color: var(--beginner-primary-dark);
+}
+
+.beginner-section .nav-button.activities {
+  background-color: var(--beginner-secondary);
+}
+
+.beginner-section .nav-button.activities:hover {
+  background-color: #e67e22; /* Darker orange */
+}
+
+/* ----------------------------------------
+   2. Beginner Section - Dark Theme
+   ---------------------------------------- */
+[data-theme="dark"] {
+  /* Dark theme beginner-specific colors */
+  --beginner-primary: #3dd685;       /* Brighter green for dark mode */
+  --beginner-primary-dark: #2fb672;  /* Slightly darker green */
+  --beginner-secondary: #ffab38;     /* Brighter orange for dark mode */
+  --beginner-card-bg: #1e2a23;       /* Dark green-tinted background */
+  --beginner-icon-bg: #223c2a;       /* Darker green for icons */
+}
+
+/* Dark theme beginner-specific element styles */
+[data-theme="dark"] .beginner-section h1 {
+  background-color: #1a2a20;
+  border-left: 5px solid var(--beginner-primary);
+  color: #ffffff;
+}
+
+[data-theme="dark"] .beginner-section .intro-section,
+[data-theme="dark"] .beginner-section .content-section,
+[data-theme="dark"] .beginner-section .section-intro {
+  background-color: #1a2e22; /* Same darker green as cards */
+  border-left: 5px solid var(--beginner-primary);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .beginner-section .function-card {
+  background-color: #1a2e22; /* Darker green instead of light mint */
+  border-top: 4px solid var(--beginner-primary);
+}
+
+[data-theme="dark"] .beginner-section .function-header {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .beginner-section .function-icon {
+  background-color: var(--beginner-icon-bg);
+  color: var(--beginner-primary);
+}
+
+[data-theme="dark"] .beginner-section .function-title {
+  color: #ffffff; /* Pure white */
+  font-weight: 600; /* Semi-bold to make it stand out */
+  text-shadow: 0 1px 1px rgba(0,0,0,0.2); /* Subtle shadow to improve legibility */
+}
+
+[data-theme="dark"] .beginner-section .function-desc {
+  color: #ffffff; /* Pure white for maximum contrast */
+  font-weight: 400; /* Slightly bolder to improve visibility */
+}
+
+[data-theme="dark"] .beginner-section .function-example {
+  background-color: #111111; /* Darker background */
+  border: 1px solid #333333;
+  color: #e6e6e6; /* Slightly off-white for code text */
+}
+
+[data-theme="dark"] .beginner-section .function-time {
+  color: #ffffff; /* White instead of gray */
+  font-weight: 500; /* Medium weight for better visibility */
+}
+
+[data-theme="dark"] .beginner-section .star {
+  color: #ffcc29; /* Brighter yellow/gold */
+  text-shadow: 0 0 2px rgba(0,0,0,0.3); /* Subtle shadow for definition */
+}
+
+[data-theme="dark"] .beginner-section .star.empty {
+  color: #ffffff; /* White empty stars */
+  opacity: 0.5; /* More visible than before */
+}
+
+[data-theme="dark"] .beginner-section .category-title {
+  color: #ffffff;
+  border-bottom: 2px solid var(--beginner-primary);
+}
+
+[data-theme="dark"] .beginner-section .learn-button {
+  background-color: #2ecc71; /* Bright green */
+  color: #000000; /* Black text */
+  font-weight: 600; /* Semi-bold for clarity */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+}
+
+[data-theme="dark"] .beginner-section .learn-button:hover {
+  background-color: var(--beginner-primary-dark);
+}
+
+[data-theme="dark"] .beginner-nav-indicator {
+  background-color: var(--beginner-primary);
+}
+
+[data-theme="dark"] .beginner-section .nav-link.active {
+  background-color: var(--beginner-primary);
+}
+
+/* Dark theme common elements in beginner pages */
+[data-theme="dark"] .beginner-section a {
+  color: #5dd898;
+}
+
+[data-theme="dark"] .beginner-section a:hover {
+  color: #7ae2ac;
+}
+
+[data-theme="dark"] .beginner-section .breadcrumb-item a {
+  color: #5dd898;
+}
+
+[data-theme="dark"] .beginner-section .translate-tip strong {
+  color: var(--beginner-secondary);
+}
+
+/* Improve heading contrast in section boxes */
+[data-theme="dark"] .beginner-section .section-intro h3 {
+  color: #ffffff;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+/* Improve list item and paragraph text contrast */
+[data-theme="dark"] .beginner-section .section-intro p,
+[data-theme="dark"] .beginner-section .section-intro li {
+  color: #ffffff;
+}
+
+/* Add a subtle accent color to list markers for better visibility */
+[data-theme="dark"] .beginner-section .section-intro ul li::marker,
+[data-theme="dark"] .beginner-section .section-intro ol li::marker {
+  color: var(--beginner-primary);
+}
+
+/* For any strong/bold text in these sections */
+[data-theme="dark"] .beginner-section .section-intro strong {
+  color: var(--beginner-secondary);
+}
