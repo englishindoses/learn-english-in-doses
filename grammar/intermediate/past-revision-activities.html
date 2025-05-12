@@ -3,26 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Extra practice activities for the simple past tense. Interactive exercises focusing on first and third person forms.">
-  <title>Past Tense Extra Practice Activities | English in Doses</title>
+  <meta name="description" content="Interactive simple past tense practice activities with spot the error exercises, irregular verb challenges, story completion, and past tense quizzes.">
+  <title>Simple Past Tense Practice Activities | English in Doses</title>
   
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
   
   <!-- Base Styles -->
-  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="../../css/base.css">
   
   <!-- Activities Styles -->
-  <link rel="stylesheet" href="css/activities.css">
+  <link rel="stylesheet" href="../../css/activities.css">
   
   <!-- Progress Tracking Styles -->
-  <link rel="stylesheet" href="css/progress-tracking-styles.css">
+  <link rel="stylesheet" href="../../css/progress-tracking-styles.css">
   
   <!-- Favicon -->
-  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../images/favicon-16x16.png">
+  <link rel="manifest" href="../../site.webmanifest">
   
   <style>
     /* Intermediate-specific styles */
@@ -74,99 +74,6 @@
       background-color: var(--intermediate-primary);
     }
     
-    /* Activity cards styling */
-    .activity-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 20px;
-      margin: 30px 0;
-    }
-    
-    .activity-card {
-      background-color: var(--card-bg);
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 8px var(--shadow-color);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border-top: 4px solid var(--intermediate-primary);
-    }
-    
-    .activity-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 16px var(--shadow-color);
-    }
-    
-    .activity-header {
-      padding: 15px;
-      background-color: var(--card-bg);
-      border-bottom: 1px solid var(--border-color);
-    }
-    
-    .activity-title {
-      margin: 0;
-      font-size: 1.25rem;
-      color: var(--intermediate-primary-dark);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    
-    .activity-icon {
-      font-size: 1.5rem;
-    }
-    
-    .activity-content {
-      padding: 15px;
-    }
-    
-    .activity-desc {
-      margin-bottom: 15px;
-    }
-    
-    .activity-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 15px;
-      background-color: var(--card-bg);
-      border-top: 1px solid var(--border-color);
-    }
-    
-    .activity-level {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 0.9rem;
-      color: var(--text-color);
-    }
-    
-    .activity-time {
-      font-size: 0.9rem;
-      color: var(--text-color);
-    }
-    
-    .activity-button {
-      display: inline-block;
-      background-color: var(--intermediate-primary);
-      color: white;
-      padding: 8px 15px;
-      border-radius: 5px;
-      text-decoration: none;
-      transition: background-color 0.3s;
-      margin-top: 10px;
-    }
-    
-    .activity-button:hover {
-      background-color: var(--intermediate-primary-dark);
-      text-decoration: none;
-    }
-    
-    /* Difficulty level indicators */
-    .difficulty-stars {
-      color: var(--intermediate-primary);
-      font-size: 0.9rem;
-    }
-    
     /* Review box styling */
     .review-box {
       background-color: var(--card-bg);
@@ -190,126 +97,379 @@
       margin-bottom: 8px;
     }
     
-    /* Resources section styling */
-    .resources-section {
+    /* Tabs navigation styling */
+    .activity-tabs {
+      display: flex;
+      overflow-x: auto;
+      margin-bottom: 0;
+      border-bottom: 2px solid var(--intermediate-primary);
+      padding-bottom: 0;
+      background-color: var(--bg-color);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    
+    .activity-tab {
+      padding: 12px 20px;
+      cursor: pointer;
       background-color: var(--card-bg);
-      border-radius: 10px;
-      padding: 20px;
-      margin: 30px 0;
+      border: none;
+      border-radius: 8px 8px 0 0;
+      margin-right: 4px;
+      font-weight: 600;
+      color: var(--text-color);
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
     }
     
-    .resources-title {
+    .activity-tab:hover {
+      background-color: var(--intermediate-card-bg);
+    }
+    
+    .activity-tab.active {
+      background-color: var(--intermediate-primary);
+      color: white;
+      border-bottom: 2px solid var(--intermediate-primary);
+    }
+    
+    .activity-tab-icon {
+      font-size: 1.2rem;
+    }
+    
+    /* Activity container styling */
+    .activity-container {
+      display: none;
+      background-color: var(--card-bg);
+      border-radius: 0 0 8px 8px;
+      padding: 25px;
       margin-top: 0;
-      color: var(--intermediate-primary-dark);
+      animation: fadeIn 0.5s ease forwards;
+      border: 1px solid var(--border-color);
+      border-top: none;
     }
     
-    .resources-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 15px;
+    .activity-container.active {
+      display: block;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    /* Common exercise styling */
+    .exercise-title {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .exercise-instructions {
+      margin-bottom: 20px;
+      padding: 15px;
+      background-color: var(--intermediate-card-bg);
+      border-radius: 8px;
+      border-left: 4px solid var(--intermediate-primary);
+    }
+    
+    /* Submit button styling */
+    .submit-button {
+      background-color: var(--intermediate-primary);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      display: inline-block;
       margin-top: 20px;
     }
     
-    .resource-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px;
-      background-color: var(--bg-color);
+    .submit-button:hover {
+      background-color: var(--intermediate-primary-dark);
+    }
+    
+    .restart-button {
+      background-color: var(--secondary-accent);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      display: inline-block;
+      margin-top: 20px;
+      margin-left: 10px;
+      display: none;
+    }
+    
+    .restart-button:hover {
+      background-color: var(--accent-color);
+    }
+    
+    /* Score display */
+    .score-display {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: var(--intermediate-card-bg);
       border-radius: 8px;
-      transition: transform 0.2s ease;
-      text-decoration: none;
+      text-align: center;
+      font-weight: 600;
+      display: none;
+    }
+    
+    /* Spot the Error exercise styling */
+    .error-item {
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .error-sentence {
+      font-family: 'Source Code Pro', monospace;
+      margin-bottom: 10px;
+      line-height: 1.6;
+      background-color: var(--example-bg);
+      padding: 10px;
+      border-radius: 5px;
+    }
+    
+    .correction-input {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid var(--border-color);
+      border-radius: 5px;
+      font-family: 'Source Code Pro', monospace;
+      background-color: var(--bg-color);
       color: var(--text-color);
     }
     
-    .resource-item:hover {
-      transform: translateY(-3px);
-      text-decoration: none;
+    .correction-input:focus {
+      outline: none;
+      border-color: var(--intermediate-primary);
     }
     
-    .resource-icon {
-      font-size: 1.25rem;
-      color: var(--intermediate-primary);
+    .feedback {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      display: none;
     }
     
-    /* Practice progress section */
-    .practice-progress {
-      background-color: var(--card-bg);
-      border-radius: 10px;
-      padding: 20px;
-      margin: 30px 0;
-      text-align: center;
+    .correct-feedback {
+      background-color: var(--success-bg);
+      color: var(--success-color);
+      display: block;
     }
     
-    .progress-circle {
+    .incorrect-feedback {
+      background-color: var(--error-bg);
+      color: var(--error-color);
+      display: block;
+    }
+    
+    /* Irregular Verb Challenge styling */
+    .verb-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 15px;
+    }
+    
+    .verb-item {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      background-color: var(--bg-color);
+      border-radius: 5px;
+      border: 1px solid var(--border-color);
+    }
+    
+    .base-verb {
       width: 120px;
-      height: 120px;
-      margin: 0 auto 20px;
-      position: relative;
+      font-weight: 600;
+      margin-right: 10px;
+      font-family: 'Source Code Pro', monospace;
     }
     
-    .progress-ring {
-      transform: rotate(-90deg);
-      width: 100%;
-      height: 100%;
+    .past-verb-input {
+      flex-grow: 1;
+      padding: 8px;
+      border: 2px solid var(--border-color);
+      border-radius: 4px;
+      font-family: 'Source Code Pro', monospace;
+      background-color: var(--bg-color);
+      color: var(--text-color);
     }
     
-    .progress-ring-circle {
-      stroke: var(--intermediate-primary);
-      fill: transparent;
-      stroke-width: 8;
-      stroke-linecap: round;
-      transition: stroke-dashoffset 0.3s;
+    .past-verb-input:focus {
+      outline: none;
+      border-color: var(--intermediate-primary);
     }
     
-    .progress-ring-bg {
-      stroke: var(--progress-bg);
-      fill: transparent;
-      stroke-width: 8;
+    .past-verb-input.correct {
+      border-color: var(--success-color);
+      background-color: var(--success-bg);
     }
     
-    .progress-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 1.5rem;
+    .past-verb-input.incorrect {
+      border-color: var(--error-color);
+      background-color: var(--error-bg);
+    }
+    
+    /* Story Completion styling */
+    .story-container {
+      line-height: 1.8;
+      margin-bottom: 20px;
+      font-family: 'Source Code Pro', monospace;
+    }
+    
+    .story-gap {
+      display: inline-block;
+      width: 150px;
+      padding: 5px 8px;
+      margin: 0 5px;
+      border: 2px solid var(--border-color);
+      border-radius: 4px;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Source Code Pro', monospace;
+    }
+    
+    .story-gap:focus {
+      outline: none;
+      border-color: var(--intermediate-primary);
+    }
+    
+    .story-base-verb {
       font-weight: bold;
       color: var(--intermediate-primary);
     }
     
-    .activity-status {
-      display: inline-block;
-      padding: 3px 8px;
-      border-radius: 4px;
-      font-size: 0.8rem;
+    .story-gap.correct {
+      border-color: var(--success-color);
+      background-color: var(--success-bg);
+    }
+    
+    .story-gap.incorrect {
+      border-color: var(--error-color);
+      background-color: var(--error-bg);
+    }
+    
+    /* Past Tense Quiz styling */
+    .quiz-question {
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .quiz-question-text {
+      margin-bottom: 15px;
       font-weight: 600;
-      margin-left: 10px;
     }
     
-    .status-completed {
-      background-color: #d4edda;
-      color: #155724;
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
     
-    .status-in-progress {
-      background-color: #fff3cd;
-      color: #856404;
+    .quiz-option {
+      display: flex;
+      align-items: center;
+      padding: 10px 15px;
+      background-color: var(--bg-color);
+      border: 1px solid var(--border-color);
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.2s;
     }
     
-    .status-not-started {
-      background-color: #f8f9fa;
-      color: #6c757d;
+    .quiz-option:hover {
+      background-color: var(--example-bg);
+    }
+    
+    .quiz-option.selected {
+      background-color: var(--intermediate-card-bg);
+      border-color: var(--intermediate-primary);
+    }
+    
+    .quiz-option.correct {
+      background-color: var(--success-bg);
+      border-color: var(--success-color);
+    }
+    
+    .quiz-option.incorrect {
+      background-color: var(--error-bg);
+      border-color: var(--error-color);
+    }
+    
+    .quiz-option input[type="radio"] {
+      margin-right: 10px;
+    }
+    
+    .quiz-feedback {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      display: none;
     }
     
     /* Responsive adjustments */
     @media (max-width: 768px) {
-      .activity-cards {
+      .activity-tab {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+      }
+      
+      .activity-tab-icon {
+        font-size: 1rem;
+      }
+      
+      .activity-container {
+        padding: 15px;
+      }
+      
+      .verb-grid {
         grid-template-columns: 1fr;
       }
       
-      .resources-list {
-        grid-template-columns: 1fr;
+      .story-gap {
+        width: 120px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .activity-tabs {
+        flex-wrap: wrap;
+      }
+      
+      .activity-tab {
+        margin-bottom: 4px;
+        width: 100%;
+      }
+      
+      .base-verb {
+        width: 100px;
+      }
+      
+      .story-gap {
+        width: 100px;
+        display: block;
+        margin: 5px 0;
       }
     }
   </style>
@@ -328,18 +488,18 @@
   
   <!-- Main navigation -->
   <nav class="main-navigation">
-    <a href="home.html" class="site-logo">
-      <img src="images/my-logo.svg" alt="English in Doses" width="150" height="auto">
+    <a href="../../home.html" class="site-logo">
+      <img src="../../images/my-logo.svg" alt="English in Doses" width="150" height="auto">
     </a>
     <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
     <div class="nav-links">
-      <a href="home.html" class="nav-link">Home</a>
-      <a href="about.html" class="nav-link">About Us</a>
-      <a href="contact.html" class="nav-link">Contact Us</a>
-      <a href="home.html#where-to-start" class="nav-link">Grammar</a>
-      <a href="extra-practice.html" class="nav-link active">Extra Practice</a>
-      <a href="conversation-page.html" class="nav-link">Conversation</a>
-      <a href="my-progress.html" class="nav-link">My Progress</a>
+      <a href="../../home.html" class="nav-link">Home</a>
+      <a href="../../about.html" class="nav-link">About Us</a>
+      <a href="../../contact.html" class="nav-link">Contact Us</a>
+      <a href="../../home.html#where-to-start" class="nav-link">Grammar</a>
+      <a href="../../extra-practice.html" class="nav-link active">Extra Practice</a>
+      <a href="../../conversation-page.html" class="nav-link">Conversation</a>
+      <a href="../../my-progress.html" class="nav-link">My Progress</a>
       <div class="intermediate-nav-indicator"></div>
     </div>
   </nav>
@@ -348,22 +508,21 @@
     <main id="main-content">
       <!-- Breadcrumbs -->
       <div class="breadcrumbs">
-        <span class="breadcrumb-item"><a href="home.html">Home</a></span>
+        <span class="breadcrumb-item"><a href="../../home.html">Home</a></span>
         <span class="breadcrumb-separator">›</span>
-        <span class="breadcrumb-item"><a href="extra-practice.html">Extra Practice</a></span>
+        <span class="breadcrumb-item"><a href="../../extra-practice.html">Extra Practice</a></span>
         <span class="breadcrumb-separator">›</span>
-        <span class="breadcrumb-item"><a href="past-revision.html">Simple Past Tense</a></span>
+        <span class="breadcrumb-item"><a href="../intermediate/past-revision.html">Simple Past Tense</a></span>
         <span class="breadcrumb-separator">›</span>
         <span class="breadcrumb-item">Practice Activities</span>
       </div>
       
-      <h1>Simple Past Tense Extra Practice</h1>
+      <h1>Simple Past Tense Practice Activities</h1>
       
-      <!-- Practice overview section -->
+      <!-- Practice overview section with Quick Review -->
       <section class="intro-section">
         <h2>Practice Makes Perfect</h2>
-        <p>Welcome to the extra practice section for the simple past tense! Here you'll find a variety of interactive activities to help you master the simple past tense, with a special focus on first and third person forms.</p>
-        <p>Complete these activities to solidify your understanding of when and how to use the simple past, distinguish it from other tenses, and avoid common errors.</p>
+        <p>Welcome to the practice section for the simple past tense! Complete these activities to solidify your understanding of when and how to use the simple past, distinguish it from other tenses, and avoid common errors.</p>
         
         <div class="review-box">
           <h3>Quick Review</h3>
@@ -378,218 +537,286 @@
         </div>
       </section>
       
-      <!-- User progress section (for returning users) -->
-      <section class="practice-progress" id="progress-section" style="display: none;">
-        <h2>Your Practice Progress</h2>
-        
-        <div class="progress-circle">
-          <svg class="progress-ring" width="120" height="120">
-            <circle class="progress-ring-bg" cx="60" cy="60" r="54" />
-            <circle class="progress-ring-circle" cx="60" cy="60" r="54" stroke-dasharray="339.292" stroke-dashoffset="339.292" />
-          </svg>
-          <div class="progress-text">0%</div>
-        </div>
-        
-        <p><span id="completed-count">0</span> of <span id="total-count">6</span> activities completed</p>
-        <p><a href="#activity-list" class="activity-button">Continue Practice</a></p>
-      </section>
-      
-      <!-- Activity list section -->
-      <section class="content-section" id="activity-list">
-        <h2>Practice Activities</h2>
-        <p>Choose from the following activities to practice the simple past tense:</p>
-        
-        <div class="activity-cards">
-          <div class="activity-card">
-            <div class="activity-header">
-              <h3 class="activity-title">
-                <span class="activity-icon">📋</span>
-                Simple Past Fill in the Gaps
-              </h3>
-            </div>
-            <div class="activity-content">
-              <p class="activity-desc">Fill in the gaps with the correct simple past form of the verbs in brackets. Focus on both regular and irregular verbs.</p>
-              <a href="activities/simple-past-gaps.html" class="activity-button">Start Activity</a>
-            </div>
-            <div class="activity-footer">
-              <div class="activity-level">
-                Difficulty: 
-                <span class="difficulty-stars">★★☆</span>
-              </div>
-              <div class="activity-time">
-                5-7 minutes
-              </div>
-            </div>
-          </div>
-          
-          <div class="activity-card">
-            <div class="activity-header">
-              <h3 class="activity-title">
-                <span class="activity-icon">🔄</span>
-                First & Third Person Practice
-              </h3>
-            </div>
-            <div class="activity-content">
-              <p class="activity-desc">Transform sentences between first person (I/we) and third person (he/she/they) while maintaining the correct past tense forms.</p>
-              <a href="activities/simple-past-persons.html" class="activity-button">Start Activity</a>
-            </div>
-            <div class="activity-footer">
-              <div class="activity-level">
-                Difficulty: 
-                <span class="difficulty-stars">★★☆</span>
-              </div>
-              <div class="activity-time">
-                8-10 minutes
-              </div>
-            </div>
-          </div>
-          
-          <div class="activity-card">
-            <div class="activity-header">
-              <h3 class="activity-title">
-                <span class="activity-icon">🔍</span>
-                Spot the Error
-              </h3>
-            </div>
-            <div class="activity-content">
-              <p class="activity-desc">Identify and correct common errors in simple past tense usage, particularly those related to first and third person forms.</p>
-              <a href="activities/simple-past-errors.html" class="activity-button">Start Activity</a>
-            </div>
-            <div class="activity-footer">
-              <div class="activity-level">
-                Difficulty: 
-                <span class="difficulty-stars">★★★</span>
-              </div>
-              <div class="activity-time">
-                10-12 minutes
-              </div>
-            </div>
-          </div>
-          
-          <div class="activity-card">
-            <div class="activity-header">
-              <h3 class="activity-title">
-                <span class="activity-icon">🎯</span>
-                Irregular Verb Challenge
-              </h3>
-            </div>
-            <div class="activity-content">
-              <p class="activity-desc">Test your knowledge of irregular verb forms in the simple past. Can you remember all the tricky ones?</p>
-              <a href="activities/irregular-past.html" class="activity-button">Start Activity</a>
-            </div>
-            <div class="activity-footer">
-              <div class="activity-level">
-                Difficulty: 
-                <span class="difficulty-stars">★★☆</span>
-              </div>
-              <div class="activity-time">
-                6-8 minutes
-              </div>
-            </div>
-          </div>
-          
-          <div class="activity-card">
-            <div class="activity-header">
-              <h3 class="activity-title">
-                <span class="activity-icon">📝</span>
-                Story Completion
-              </h3>
-            </div>
-            <div class="activity-content">
-              <p class="activity-desc">Complete a short story by filling in the blanks with the simple past tense of the verbs in brackets.</p>
-              <a href="activities/simple-past-story.html" class="activity-button">Start Activity</a>
-            </div>
-            <div class="activity-footer">
-              <div class="activity-level">
-                Difficulty: 
-                <span class="difficulty-stars">★★★</span>
-              </div>
-              <div class="activity-time">
-                10-15 minutes
-              </div>
-            </div>
-          </div>
-          
-          <div class="activity-card">
-            <div class="activity-header">
-              <h3 class="activity-title">
-                <span class="activity-icon">🎮</span>
-                Past Tense Quiz
-              </h3>
-            </div>
-            <div class="activity-content">
-              <p class="activity-desc">Test your overall understanding of the simple past tense with this comprehensive quiz covering form and usage.</p>
-              <a href="activities/simple-past-quiz.html" class="activity-button">Start Activity</a>
-            </div>
-            <div class="activity-footer">
-              <div class="activity-level">
-                Difficulty: 
-                <span class="difficulty-stars">★★★</span>
-              </div>
-              <div class="activity-time">
-                15-20 minutes
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      <!-- Additional resources section -->
-      <section class="resources-section">
-        <h2 class="resources-title">Additional Resources</h2>
-        <p>Explore these resources to further strengthen your understanding of the simple past tense:</p>
-        
-        <div class="resources-list">
-          <a href="resources/irregular-verbs-list.html" class="resource-item">
-            <span class="resource-icon">📄</span>
-            <span>Printable Irregular Verbs List</span>
-          </a>
-          <a href="resources/past-tense-exercises.pdf" class="resource-item">
-            <span class="resource-icon">📝</span>
-            <span>Downloadable Practice Exercises</span>
-          </a>
-          <a href="resources/simple-past-vs-present-perfect.html" class="resource-item">
-            <span class="resource-icon">⚔️</span>
-            <span>Simple Past vs. Present Perfect</span>
-          </a>
-          <a href="resources/past-tense-time-expressions.html" class="resource-item">
-            <span class="resource-icon">⏰</span>
-            <span>Time Expressions with Past Tense</span>
-          </a>
-        </div>
-      </section>
-      
-      <!-- Next steps section -->
+      <!-- Activities Section with Tabs -->
       <section class="content-section">
-        <h2>Next Steps</h2>
-        <p>After practicing the simple past tense, we recommend exploring these related topics:</p>
+        <h2>Practice Activities</h2>
+        <p>Select an activity below to practice different aspects of the simple past tense:</p>
         
-        <div class="activity-cards">
-          <div class="activity-card">
-            <div class="activity-header">
-              <h3 class="activity-title">
-                <span class="activity-icon">🔄</span>
-                Present Perfect
-              </h3>
+        <!-- Tab Navigation -->
+        <div class="activity-tabs">
+          <button class="activity-tab" data-tab="spot-the-error">
+            <span class="activity-tab-icon">🔍</span> Spot the Error
+          </button>
+          <button class="activity-tab" data-tab="irregular-verbs">
+            <span class="activity-tab-icon">🎯</span> Irregular Verb Challenge
+          </button>
+          <button class="activity-tab" data-tab="story-completion">
+            <span class="activity-tab-icon">📝</span> Story Completion
+          </button>
+          <button class="activity-tab" data-tab="past-tense-quiz">
+            <span class="activity-tab-icon">🎮</span> Past Tense Quiz
+          </button>
+        </div>
+        
+        <!-- Spot the Error Activity -->
+        <div id="spot-the-error" class="activity-container">
+          <h3 class="exercise-title">Spot the Error: Simple Past Tense</h3>
+          <div class="exercise-instructions">
+            <p>Each sentence below contains an error in the use of the simple past tense. Identify the error and type the correct sentence in the box provided. Pay special attention to irregular verbs and subject-verb agreement.</p>
+          </div>
+          
+          <div id="error-exercise">
+            <div class="error-item">
+              <p class="error-sentence">1. She goed to the market yesterday.</p>
+              <input type="text" class="correction-input" data-correct="She went to the market yesterday." placeholder="Type the corrected sentence here...">
+              <div class="feedback"></div>
             </div>
-            <div class="activity-content">
-              <p class="activity-desc">Learn when to use the present perfect instead of the simple past, and how they differ in usage.</p>
-              <a href="present-perfect.html" class="activity-button">Learn More</a>
+            
+            <div class="error-item">
+              <p class="error-sentence">2. They was very happy with the results.</p>
+              <input type="text" class="correction-input" data-correct="They were very happy with the results." placeholder="Type the corrected sentence here...">
+              <div class="feedback"></div>
+            </div>
+            
+            <div class="error-item">
+              <p class="error-sentence">3. I writed a letter to my friend last week.</p>
+              <input type="text" class="correction-input" data-correct="I wrote a letter to my friend last week." placeholder="Type the corrected sentence here...">
+              <div class="feedback"></div>
+            </div>
+            
+            <div class="error-item">
+              <p class="error-sentence">4. He don't visited us last summer.</p>
+              <input type="text" class="correction-input" data-correct="He didn't visit us last summer." placeholder="Type the corrected sentence here...">
+              <div class="feedback"></div>
+            </div>
+            
+            <div class="error-item">
+              <p class="error-sentence">5. The children finded the hidden treasure.</p>
+              <input type="text" class="correction-input" data-correct="The children found the hidden treasure." placeholder="Type the corrected sentence here...">
+              <div class="feedback"></div>
             </div>
           </div>
           
-          <div class="activity-card">
-            <div class="activity-header">
-              <h3 class="activity-title">
-                <span class="activity-icon">⏪</span>
-                Past Continuous
-              </h3>
+          <button id="check-errors" class="submit-button">Check Answers</button>
+          <button id="restart-errors" class="restart-button">Try Again</button>
+          
+          <div id="error-score" class="score-display"></div>
+        </div>
+        
+        <!-- Irregular Verb Challenge Activity -->
+        <div id="irregular-verbs" class="activity-container">
+          <h3 class="exercise-title">Irregular Verb Challenge</h3>
+          <div class="exercise-instructions">
+            <p>Fill in the simple past form of these irregular verbs. Type the correct past form in each box.</p>
+          </div>
+          
+          <div class="verb-grid">
+            <div class="verb-item">
+              <span class="base-verb">go</span>
+              <input type="text" class="past-verb-input" data-correct="went" placeholder="Past form?">
             </div>
-            <div class="activity-content">
-              <p class="activity-desc">Understand how to talk about actions that were in progress in the past.</p>
-              <a href="past-continuous.html" class="activity-button">Learn More</a>
+            
+            <div class="verb-item">
+              <span class="base-verb">see</span>
+              <input type="text" class="past-verb-input" data-correct="saw" placeholder="Past form?">
+            </div>
+            
+            <div class="verb-item">
+              <span class="base-verb">bring</span>
+              <input type="text" class="past-verb-input" data-correct="brought" placeholder="Past form?">
+            </div>
+            
+            <div class="verb-item">
+              <span class="base-verb">eat</span>
+              <input type="text" class="past-verb-input" data-correct="ate" placeholder="Past form?">
+            </div>
+            
+            <div class="verb-item">
+              <span class="base-verb">think</span>
+              <input type="text" class="past-verb-input" data-correct="thought" placeholder="Past form?">
+            </div>
+            
+            <div class="verb-item">
+              <span class="base-verb">buy</span>
+              <input type="text" class="past-verb-input" data-correct="bought" placeholder="Past form?">
+            </div>
+            
+            <div class="verb-item">
+              <span class="base-verb">feel</span>
+              <input type="text" class="past-verb-input" data-correct="felt" placeholder="Past form?">
+            </div>
+            
+            <div class="verb-item">
+              <span class="base-verb">take</span>
+              <input type="text" class="past-verb-input" data-correct="took" placeholder="Past form?">
+            </div>
+            
+            <div class="verb-item">
+              <span class="base-verb">make</span>
+              <input type="text" class="past-verb-input" data-correct="made" placeholder="Past form?">
+            </div>
+            
+            <div class="verb-item">
+              <span class="base-verb">tell</span>
+              <input type="text" class="past-verb-input" data-correct="told" placeholder="Past form?">
             </div>
           </div>
+          
+          <button id="check-verbs" class="submit-button">Check Answers</button>
+          <button id="restart-verbs" class="restart-button">Try Again</button>
+          
+          <div id="verb-score" class="score-display"></div>
+        </div>
+        
+        <!-- Story Completion Activity -->
+        <div id="story-completion" class="activity-container">
+          <h3 class="exercise-title">Story Completion</h3>
+          <div class="exercise-instructions">
+            <p>Complete the story by filling in the blanks with the simple past form of the verbs in brackets.</p>
+          </div>
+          
+          <div class="story-container">
+            <p>Last summer, I <input type="text" class="story-gap" data-verb="visit" data-correct="visited"> <span class="story-base-verb">(visit)</span> my grandparents in the countryside. We <input type="text" class="story-gap" data-verb="have" data-correct="had"> <span class="story-base-verb">(have)</span> a wonderful time together. Every morning, I <input type="text" class="story-gap" data-verb="wake" data-correct="woke"> <span class="story-base-verb">(wake)</span> up early and <input type="text" class="story-gap" data-verb="help" data-correct="helped"> <span class="story-base-verb">(help)</span> my grandmother with breakfast.</p>
+            
+            <p>One day, my grandfather <input type="text" class="story-gap" data-verb="take" data-correct="took"> <span class="story-base-verb">(take)</span> me fishing at the nearby lake. We <input type="text" class="story-gap" data-verb="catch" data-correct="caught"> <span class="story-base-verb">(catch)</span> three fish and <input type="text" class="story-gap" data-verb="bring" data-correct="brought"> <span class="story-base-verb">(bring)</span> them home for dinner. My grandmother <input type="text" class="story-gap" data-verb="cook" data-correct="cooked"> <span class="story-base-verb">(cook)</span> them perfectly.</p>
+            
+            <p>In the evenings, we often <input type="text" class="story-gap" data-verb="sit" data-correct="sat"> <span class="story-base-verb">(sit)</span> on the porch and <input type="text" class="story-gap" data-verb="tell" data-correct="told"> <span class="story-base-verb">(tell)</span> stories. My grandfather <input type="text" class="story-gap" data-verb="know" data-correct="knew"> <span class="story-base-verb">(know)</span> many interesting tales about the old days. Before I <input type="text" class="story-gap" data-verb="leave" data-correct="left"> <span class="story-base-verb">(leave)</span>, I <input type="text" class="story-gap" data-verb="promise" data-correct="promised"> <span class="story-base-verb">(promise)</span> to return soon.</p>
+          </div>
+          
+          <button id="check-story" class="submit-button">Check Answers</button>
+          <button id="restart-story" class="restart-button">Try Again</button>
+          
+          <div id="story-score" class="score-display"></div>
+        </div>
+        
+        <!-- Past Tense Quiz Activity -->
+        <div id="past-tense-quiz" class="activity-container">
+          <h3 class="exercise-title">Past Tense Quiz</h3>
+          <div class="exercise-instructions">
+            <p>Choose the correct answer for each question to test your understanding of the simple past tense.</p>
+          </div>
+          
+          <div id="quiz-questions">
+            <div class="quiz-question" data-correct="2">
+              <p class="quiz-question-text">1. Which sentence uses the simple past tense correctly?</p>
+              <div class="quiz-options">
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="0">
+                  She have gone to Paris last year.
+                </label>
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="1">
+                  She goed to Paris last year.
+                </label>
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="2">
+                  She went to Paris last year.
+                </label>
+                <label class="quiz-option">
+                  <input type="radio" name="q1" value="3">
+                  She has went to Paris last year.
+                </label>
+              </div>
+              <div class="quiz-feedback"></div>
+            </div>
+            
+            <div class="quiz-question" data-correct="0">
+              <p class="quiz-question-text">2. When do we use the simple past tense?</p>
+              <div class="quiz-options">
+                <label class="quiz-option">
+                  <input type="radio" name="q2" value="0">
+                  For completed actions in the past
+                </label>
+                <label class="quiz-option">
+                  <input type="radio" name="q2" value="1">
+                  For actions happening now
+                </label>
+                <label class="quiz-option">
+                  <input type="radio" name="q2" value="2">
+                  For actions that will happen in the future
+                </label>
+                <label class="quiz-option">
+                  <input type="radio" name="q2" value="3">
+                  For actions that started in the past and continue to the present
+                </label>
+              </div>
+              <div class="quiz-feedback"></div>
+            </div>
+            
+            <div class="quiz-question" data-correct="1">
+              <p class="quiz-question-text">3. What is the past form of "write"?</p>
+              <div class="quiz-options">
+                <label class="quiz-option">
+                  <input type="radio" name="q3" value="0">
+                  writed
+                </label>
+                <label class="quiz-option">
+                  <input type="radio" name="q3" value="1">
+                  wrote
+                </label>
+                <label class="quiz-option">
+                  <input type="radio" name="q3" value="2">
+                  writen
+                </label>
+                <label class="quiz-option">
+                  <input type="radio" name="q3" value="3">
+                  wright
+                </label>
+              </div>
+              <div class="quiz-feedback"></div>
+            </div>
+            
+            <div class="quiz-question" data-correct="3">
+              <p class="quiz-question-text">4. Which time expression is NOT typically used with the simple past?</p>
+              <div class="quiz-options">
+                <label class="quiz-option">
+                  <input type="radio" name="q4" value="0">
+                  yesterday
+                </label>
+                <label class="quiz-option">
+                  <input type="radio" name="q4" value="1">
+                  last week
+                </label>
+                <label class="quiz-option">
+                  <input type="radio" name="q4" value="2">
+                  in 2010
+                </label>
+                <label class="quiz-option">
+                  <input type="radio" name="q4" value="3">
+                  since Monday
+                </label>
+              </div>
+              <div class="quiz-feedback"></div>
+            </div>
+            
+            <div class="quiz-question" data-correct="2">
+              <p class="quiz-question-text">5. How do we form the negative in the simple past?</p>
+              <div class="quiz-options">
+                <label class="quiz-option">
+                  <input type="radio" name="q5" value="0">
+                  don't + base form
+                </label>
+                <label class="quiz-option">
+                  <input type="radio" name="q5" value="1">
+                  no + past form
+                </label>
+                <label class="quiz-option">
+                  <input type="radio" name="q5" value="2">
+                  didn't + base form
+                </label>
+                <label class="quiz-option">
+                  <input type="radio" name="q5" value="3">
+                  not + past form
+                </label>
+              </div>
+              <div class="quiz-feedback"></div>
+            </div>
+          </div>
+          
+          <button id="check-quiz" class="submit-button">Check Answers</button>
+          <button id="restart-quiz" class="restart-button">Try Again</button>
+          
+          <div id="quiz-score" class="score-display"></div>
         </div>
       </section>
     </main>
@@ -597,15 +824,15 @@
   
   <!-- Bottom Navigation -->
   <div class="bottom-navigation">
-    <a href="past-revision.html" class="nav-button previous">
+    <a href="../intermediate/past-revision.html" class="nav-button previous">
       ← Back to Simple Past Explanation
     </a>
     <div class="center-buttons">
-      <a href="extra-practice.html" class="nav-button activities">
+      <a href="../../extra-practice.html" class="nav-button activities">
         Other Topics
       </a>
     </div>
-    <a href="present-perfect.html" class="nav-button next">
+    <a href="../intermediate/present-perfect.html" class="nav-button next">
       Present Perfect →
     </a>
   </div>
@@ -616,120 +843,402 @@
       <div class="footer-section">
         <h3>Quick Links</h3>
         <ul>
-          <li><a href="home.html">Home</a></li>
-          <li><a href="home.html#where-to-start">Grammar</a></li>
-          <li><a href="extra-practice.html">Extra Practice</a></li>
-          <li><a href="my-progress.html">My Progress</a></li>
+          <li><a href="../../home.html">Home</a></li>
+          <li><a href="../../home.html#where-to-start">Grammar</a></li>
+          <li><a href="../../extra-practice.html">Extra Practice</a></li>
+          <li><a href="../../my-progress.html">My Progress</a></li>
         </ul>
       </div>
       
       <div class="footer-section">
         <h3>Grammar Topics</h3>
         <ul>
-          <li><a href="past-revision.html">Simple Past Tense</a></li>
-          <li><a href="present-perfect.html">Present Perfect</a></li>
-          <li><a href="conditionals.html">Conditionals</a></li>
-          <li><a href="passive-voice.html">Passive Voice</a></li>
+          <li><a href="../intermediate/past-revision.html">Simple Past Tense</a></li>
+          <li><a href="../intermediate/present-perfect.html">Present Perfect</a></li>
+          <li><a href="../intermediate/conditionals.html">Conditionals</a></li>
+          <li><a href="../intermediate/passive-voice.html">Passive Voice</a></li>
         </ul>
       </div>
       
       <div class="footer-section">
         <h3>Connect</h3>
         <ul>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="../../about.html">About</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
         </ul>
       </div>
     </div>
     
     <div class="footer-bottom">
-      <p>© 2025 English in Doses | All rights reserved | <a href="license.html">Licensing Information</a></p>
+      <p>© 2025 English in Doses | All rights reserved | <a href="../../license.html">Licensing Information</a></p>
     </div>
   </footer>
 
   <!-- Main JavaScript -->
-  <script src="js/core.js"></script>
+  <script src="../../js/core.js"></script>
   
   <!-- Progress Tracking Module -->
-  <script src="js/progress-tracking-module.js"></script>
+  <script src="../../js/progress-tracking-module.js"></script>
   
   <!-- Activity specific scripts -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Initialize Progress Tracking
+      // Tab functionality
+      const tabs = document.querySelectorAll('.activity-tab');
+      const containers = document.querySelectorAll('.activity-container');
+      
+      // Set first tab as active by default
+      tabs[0].classList.add('active');
+      document.getElementById(tabs[0].getAttribute('data-tab')).classList.add('active');
+      
+      // Add click event listeners to tabs
+      tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          // Remove active class from all tabs
+          tabs.forEach(t => t.classList.remove('active'));
+          
+          // Add active class to clicked tab
+          this.classList.add('active');
+          
+          // Hide all containers
+          containers.forEach(container => container.classList.remove('active'));
+          
+          // Show selected container
+          const targetId = this.getAttribute('data-tab');
+          document.getElementById(targetId).classList.add('active');
+        });
+      });
+      
+      // Initialize Progress Tracking if available
       if (typeof ProgressTracker !== 'undefined') {
         ProgressTracker.init({
           storageKeyPrefix: 'esl-progress-',
           enableAchievements: true,
           autoSaveInterval: 30000 // 30 seconds
         });
-        
-        // Check for user progress and update UI if needed
-        checkUserProgress();
       }
       
-      // Function to check user progress and update UI
-      function checkUserProgress() {
-        try {
-          // Get completed activities count
-          let completedCount = 0;
-          const totalCount = 6; // Number of activities in this section
+      // SPOT THE ERROR EXERCISE FUNCTIONALITY
+      const checkErrorsButton = document.getElementById('check-errors');
+      const restartErrorsButton = document.getElementById('restart-errors');
+      const errorScore = document.getElementById('error-score');
+      const errorInputs = document.querySelectorAll('#error-exercise .correction-input');
+      
+      checkErrorsButton.addEventListener('click', function() {
+        let correctCount = 0;
+        
+        errorInputs.forEach(input => {
+          const correctAnswer = input.getAttribute('data-correct').toLowerCase().trim();
+          const userAnswer = input.value.toLowerCase().trim();
+          const feedbackElement = input.nextElementSibling;
           
-          if (typeof ProgressTracker.getProgressData === 'function') {
-            const progressData = ProgressTracker.getProgressData();
+          if (userAnswer === correctAnswer) {
+            feedbackElement.textContent = 'Correct!';
+            feedbackElement.className = 'feedback correct-feedback';
+            correctCount++;
+          } else {
+            feedbackElement.textContent = `Incorrect. The correct answer is: "${input.getAttribute('data-correct')}"`;
+            feedbackElement.className = 'feedback incorrect-feedback';
+          }
+        });
+        
+        // Display score
+        errorScore.textContent = `Your score: ${correctCount} out of ${errorInputs.length} correct`;
+        errorScore.style.display = 'block';
+        
+        // Show restart button
+        restartErrorsButton.style.display = 'inline-block';
+        
+        // Track progress
+        if (typeof ProgressTracker !== 'undefined' && typeof ProgressTracker.markItemCompleted === 'function') {
+          ProgressTracker.markItemCompleted('activities', 'simple-past-error-spotting', {
+            completed: true,
+            completedAt: new Date().toISOString(),
+            score: correctCount,
+            maxScore: errorInputs.length,
+            title: 'Simple Past: Spot the Error'
+          });
+        }
+        
+        // Dispatch custom event for progress tracking
+        const event = new CustomEvent('activityCompleted', {
+          detail: {
+            activityId: 'simple-past-error-spotting',
+            score: correctCount,
+            maxScore: errorInputs.length,
+            timestamp: new Date().toISOString(),
+            title: 'Simple Past: Spot the Error'
+          }
+        });
+        document.dispatchEvent(event);
+      });
+      
+      restartErrorsButton.addEventListener('click', function() {
+        // Clear all inputs
+        errorInputs.forEach(input => {
+          input.value = '';
+        });
+        
+        // Hide all feedback
+        document.querySelectorAll('#error-exercise .feedback').forEach(feedback => {
+          feedback.textContent = '';
+          feedback.className = 'feedback';
+        });
+        
+        // Hide score
+        errorScore.style.display = 'none';
+        
+        // Hide restart button
+        restartErrorsButton.style.display = 'none';
+      });
+      
+      // IRREGULAR VERB CHALLENGE FUNCTIONALITY
+      const checkVerbsButton = document.getElementById('check-verbs');
+      const restartVerbsButton = document.getElementById('restart-verbs');
+      const verbScore = document.getElementById('verb-score');
+      const verbInputs = document.querySelectorAll('.past-verb-input');
+      
+      checkVerbsButton.addEventListener('click', function() {
+        let correctCount = 0;
+        
+        verbInputs.forEach(input => {
+          const correctAnswer = input.getAttribute('data-correct').toLowerCase().trim();
+          const userAnswer = input.value.toLowerCase().trim();
+          
+          if (userAnswer === correctAnswer) {
+            input.classList.add('correct');
+            input.classList.remove('incorrect');
+            correctCount++;
+          } else {
+            input.classList.add('incorrect');
+            input.classList.remove('correct');
+          }
+        });
+        
+        // Display score
+        verbScore.textContent = `Your score: ${correctCount} out of ${verbInputs.length} correct`;
+        verbScore.style.display = 'block';
+        
+        // Show restart button
+        restartVerbsButton.style.display = 'inline-block';
+        
+        // Track progress
+        if (typeof ProgressTracker !== 'undefined' && typeof ProgressTracker.markItemCompleted === 'function') {
+          ProgressTracker.markItemCompleted('activities', 'irregular-past-verb-challenge', {
+            completed: true,
+            completedAt: new Date().toISOString(),
+            score: correctCount,
+            maxScore: verbInputs.length,
+            title: 'Irregular Past Verb Challenge'
+          });
+        }
+        
+        // Dispatch custom event for progress tracking
+        const event = new CustomEvent('activityCompleted', {
+          detail: {
+            activityId: 'irregular-past-verb-challenge',
+            score: correctCount,
+            maxScore: verbInputs.length,
+            timestamp: new Date().toISOString(),
+            title: 'Irregular Past Verb Challenge'
+          }
+        });
+        document.dispatchEvent(event);
+      });
+      
+      restartVerbsButton.addEventListener('click', function() {
+        // Clear all inputs and remove classes
+        verbInputs.forEach(input => {
+          input.value = '';
+          input.classList.remove('correct', 'incorrect');
+        });
+        
+        // Hide score
+        verbScore.style.display = 'none';
+        
+        // Hide restart button
+        restartVerbsButton.style.display = 'none';
+      });
+      
+      // STORY COMPLETION FUNCTIONALITY
+      const checkStoryButton = document.getElementById('check-story');
+      const restartStoryButton = document.getElementById('restart-story');
+      const storyScore = document.getElementById('story-score');
+      const storyGaps = document.querySelectorAll('.story-gap');
+      
+      checkStoryButton.addEventListener('click', function() {
+        let correctCount = 0;
+        
+        storyGaps.forEach(gap => {
+          const correctAnswer = gap.getAttribute('data-correct').toLowerCase().trim();
+          const userAnswer = gap.value.toLowerCase().trim();
+          
+          if (userAnswer === correctAnswer) {
+            gap.classList.add('correct');
+            gap.classList.remove('incorrect');
+            correctCount++;
+          } else {
+            gap.classList.add('incorrect');
+            gap.classList.remove('correct');
+            gap.value = correctAnswer; // Show the correct answer
+          }
+        });
+        
+        // Display score
+        storyScore.textContent = `Your score: ${correctCount} out of ${storyGaps.length} correct`;
+        storyScore.style.display = 'block';
+        
+        // Show restart button
+        restartStoryButton.style.display = 'inline-block';
+        
+        // Track progress
+        if (typeof ProgressTracker !== 'undefined' && typeof ProgressTracker.markItemCompleted === 'function') {
+          ProgressTracker.markItemCompleted('activities', 'simple-past-story-completion', {
+            completed: true,
+            completedAt: new Date().toISOString(),
+            score: correctCount,
+            maxScore: storyGaps.length,
+            title: 'Simple Past: Story Completion'
+          });
+        }
+        
+        // Dispatch custom event for progress tracking
+        const event = new CustomEvent('activityCompleted', {
+          detail: {
+            activityId: 'simple-past-story-completion',
+            score: correctCount,
+            maxScore: storyGaps.length,
+            timestamp: new Date().toISOString(),
+            title: 'Simple Past: Story Completion'
+          }
+        });
+        document.dispatchEvent(event);
+      });
+      
+      restartStoryButton.addEventListener('click', function() {
+        // Clear all inputs and remove classes
+        storyGaps.forEach(gap => {
+          gap.value = '';
+          gap.classList.remove('correct', 'incorrect');
+        });
+        
+        // Hide score
+        storyScore.style.display = 'none';
+        
+        // Hide restart button
+        restartStoryButton.style.display = 'none';
+      });
+      
+      // PAST TENSE QUIZ FUNCTIONALITY
+      const checkQuizButton = document.getElementById('check-quiz');
+      const restartQuizButton = document.getElementById('restart-quiz');
+      const quizScore = document.getElementById('quiz-score');
+      const quizQuestions = document.querySelectorAll('.quiz-question');
+      
+      // Add click event to quiz options to select them
+      document.querySelectorAll('.quiz-option').forEach(option => {
+        option.addEventListener('click', function() {
+          // Find all options in this question
+          const questionEl = this.closest('.quiz-question');
+          const options = questionEl.querySelectorAll('.quiz-option');
+          
+          // Remove selected class from all options
+          options.forEach(opt => opt.classList.remove('selected'));
+          
+          // Add selected class to clicked option
+          this.classList.add('selected');
+          
+          // Check the radio button
+          const radio = this.querySelector('input[type="radio"]');
+          if (radio) {
+            radio.checked = true;
+          }
+        });
+      });
+      
+      checkQuizButton.addEventListener('click', function() {
+        let correctCount = 0;
+        
+        quizQuestions.forEach(question => {
+          const correctAnswer = question.getAttribute('data-correct');
+          const selectedOption = question.querySelector('input[type="radio"]:checked');
+          const feedbackElement = question.querySelector('.quiz-feedback');
+          
+          if (selectedOption && selectedOption.value === correctAnswer) {
+            // Correct answer
+            feedbackElement.textContent = 'Correct!';
+            feedbackElement.className = 'quiz-feedback correct-feedback';
+            selectedOption.closest('.quiz-option').classList.add('correct');
+            correctCount++;
+          } else {
+            // Incorrect answer
+            feedbackElement.textContent = 'Incorrect!';
+            feedbackElement.className = 'quiz-feedback incorrect-feedback';
+            if (selectedOption) {
+              selectedOption.closest('.quiz-option').classList.add('incorrect');
+            }
             
-            if (progressData && progressData.activities) {
-              // Count completed activities related to simple past
-              completedCount = Object.values(progressData.activities)
-                .filter(activity => 
-                  activity.completed && 
-                  (activity.id?.includes('simple-past') || activity.id?.includes('irregular-past'))
-                ).length;
-              
-              // If user has started any activities, show progress section
-              if (completedCount > 0) {
-                document.getElementById('progress-section').style.display = 'block';
-                document.getElementById('completed-count').textContent = completedCount;
-                document.getElementById('total-count').textContent = totalCount;
-                
-                // Update progress circle
-                const progressPercent = Math.round((completedCount / totalCount) * 100);
-                document.querySelector('.progress-text').textContent = progressPercent + '%';
-                
-                // Calculate stroke-dashoffset for progress ring
-                const circle = document.querySelector('.progress-ring-circle');
-                const radius = circle.getAttribute('r');
-                const circumference = 2 * Math.PI * radius;
-                const offset = circumference - (progressPercent / 100) * circumference;
-                circle.style.strokeDasharray = `${circumference} ${circumference}`;
-                circle.style.strokeDashoffset = offset;
-              }
-              
-              // Update activity cards with completion status
-              Object.entries(progressData.activities).forEach(([id, data]) => {
-                if (data.completed) {
-                  const activityLinks = document.querySelectorAll(`a[href*="${id}"]`);
-                  
-                  activityLinks.forEach(link => {
-                    const card = link.closest('.activity-card');
-                    if (card) {
-                      const header = card.querySelector('.activity-header');
-                      if (header) {
-                        const status = document.createElement('span');
-                        status.className = 'activity-status status-completed';
-                        status.textContent = 'Completed';
-                        header.appendChild(status);
-                      }
-                    }
-                  });
-                }
-              });
+            // Highlight the correct answer
+            const correctOption = question.querySelector(`input[value="${correctAnswer}"]`);
+            if (correctOption) {
+              correctOption.closest('.quiz-option').classList.add('correct');
             }
           }
-        } catch (error) {
-          console.error('Error checking user progress:', error);
+        });
+        
+        // Display score
+        quizScore.textContent = `Your score: ${correctCount} out of ${quizQuestions.length} correct`;
+        quizScore.style.display = 'block';
+        
+        // Show restart button
+        restartQuizButton.style.display = 'inline-block';
+        
+        // Track progress
+        if (typeof ProgressTracker !== 'undefined' && typeof ProgressTracker.markItemCompleted === 'function') {
+          ProgressTracker.markItemCompleted('activities', 'simple-past-tense-quiz', {
+            completed: true,
+            completedAt: new Date().toISOString(),
+            score: correctCount,
+            maxScore: quizQuestions.length,
+            title: 'Simple Past Tense Quiz'
+          });
         }
-      }
+        
+        // Dispatch custom event for progress tracking
+        const event = new CustomEvent('activityCompleted', {
+          detail: {
+            activityId: 'simple-past-tense-quiz',
+            score: correctCount,
+            maxScore: quizQuestions.length,
+            timestamp: new Date().toISOString(),
+            title: 'Simple Past Tense Quiz'
+          }
+        });
+        document.dispatchEvent(event);
+      });
+      
+      restartQuizButton.addEventListener('click', function() {
+        // Uncheck all radio buttons and remove classes
+        document.querySelectorAll('.quiz-option').forEach(option => {
+          option.classList.remove('selected', 'correct', 'incorrect');
+          const radio = option.querySelector('input[type="radio"]');
+          if (radio) {
+            radio.checked = false;
+          }
+        });
+        
+        // Hide all feedback
+        document.querySelectorAll('.quiz-feedback').forEach(feedback => {
+          feedback.textContent = '';
+          feedback.className = 'quiz-feedback';
+        });
+        
+        // Hide score
+        quizScore.style.display = 'none';
+        
+        // Hide restart button
+        restartQuizButton.style.display = 'none';
+      });
     });
   </script>
 </body>
