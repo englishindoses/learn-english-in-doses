@@ -1,0 +1,62 @@
+/* 
+ * Button Shine Effect - English in Doses Website
+ * 
+ * This file adds a shine effect to buttons when hovered.
+ * No HTML changes required - it targets existing button classes.
+ */
+
+/* Apply base styles to all buttons */
+.btn-primary, .btn-secondary, .chat-button, .nav-button, 
+.activity-nav-btn, .submit-btn, .restart-btn, .check-btn,
+.cta-button, .floating-cta, .view-all-button {
+  position: relative;  /* Required for absolute positioning of the shine */
+  overflow: hidden;    /* Keeps the shine contained within the button */
+}
+
+/* Create the shine element */
+.btn-primary::after, .btn-secondary::after, .chat-button::after, 
+.nav-button::after, .activity-nav-btn::after, .submit-btn::after, 
+.restart-btn::after, .check-btn::after, .cta-button::after,
+.floating-cta::after, .view-all-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;     /* Start off-screen to the left */
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right, 
+    transparent, 
+    rgba(255, 255, 255, 0.3), 
+    transparent
+  );
+  z-index: 1;      /* Ensure the shine appears above the button but below the text */
+  pointer-events: none;  /* Allow clicks to pass through to the button */
+}
+
+/* Animate the shine effect on hover */
+.btn-primary:hover::after, .btn-secondary:hover::after, 
+.chat-button:hover::after, .nav-button:hover::after,
+.activity-nav-btn:hover::after, .submit-btn:hover::after, 
+.restart-btn:hover::after, .check-btn:hover::after,
+.cta-button:hover::after, .floating-cta:hover::after,
+.view-all-button:hover::after {
+  animation: shine 1s;  /* 1 second animation duration */
+}
+
+/* Subtler effect for dark theme buttons */
+[data-theme="dark"] .btn-secondary.dark::after {
+  background: linear-gradient(
+    to right, 
+    transparent, 
+    rgba(255, 255, 255, 0.15),  /* Less bright on dark themes */
+    transparent
+  );
+}
+
+/* Animation keyframes */
+@keyframes shine {
+  100% {
+    left: 100%;  /* Move from left to right */
+  }
+}
