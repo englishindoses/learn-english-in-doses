@@ -93,7 +93,7 @@
 
 .option:hover::before {
   /* Animation that fills the option with the hover background color */
-  animation: fillHoverBackground 1.2s ease-in-out forwards;
+  animation: fillHoverBackground 0.5s ease-in-out forwards;
 }
 
 @keyframes fillHoverBackground {
