@@ -60,3 +60,52 @@
     left: 100%;  /* Move from left to right */
   }
 }
+
+/* MCQ Options Animation */
+.option {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  background-color: transparent; /* Start with transparent background */
+  transition: transform 0.2s ease; /* Only for the subtle lift effect */
+}
+
+/* Remove any existing hover background color change */
+.option:hover {
+  background-color: transparent; /* Override any existing hover background */
+  transform: translateY(-1px); /* Optional: subtle lift effect */
+}
+
+.option::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Use EXACTLY the same color as your original hover background */
+  background-color: var(--mcq-hover-bg, #d0e6f7);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: none;
+}
+
+.option:hover::before {
+  /* Animation that fills the option with the hover background color */
+  animation: fillHoverBackground 1.2s ease-in-out forwards;
+}
+
+@keyframes fillHoverBackground {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+/* Dark mode support */
+[data-theme="dark"] .option::before {
+  background-color: var(--mcq-hover-bg, #253545);
+}
