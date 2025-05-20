@@ -17,6 +17,35 @@
   <!-- CSS files -->
   <link rel="stylesheet" href="css/button-shine.css">
   <link rel="stylesheet" href="css/home.css">
+  <style>
+    /* Additional styles for the quiz container */
+    .loading-indicator {
+      text-align: center;
+      padding: 30px;
+      font-size: 1.2rem;
+      color: var(--text-color);
+    }
+    
+    .loading-spinner {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      border: 3px solid rgba(0, 0, 0, 0.1);
+      border-radius: 50%;
+      border-top-color: var(--accent-color);
+      animation: spin 1s ease-in-out infinite;
+      margin-bottom: 10px;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    [data-theme="dark"] .loading-spinner {
+      border-color: rgba(255, 255, 255, 0.1);
+      border-top-color: var(--accent-color);
+    }
+  </style>
 </head>
 <body>
   <!-- Skip link for accessibility -->
@@ -129,6 +158,16 @@
               <h3>Avoid Common Errors</h3>
               <p>Special focus on mistakes that English learners typically make and how to fix them.</p>
             </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Level Test Quiz Section - Loaded from external file -->
+      <section id="quiz-container" class="home-section">
+        <div class="home-section-content">
+          <div class="loading-indicator">
+            <div class="loading-spinner"></div>
+            <p>Loading level test quiz...</p>
           </div>
         </div>
       </section>
@@ -255,44 +294,6 @@
         </div>
       </section>
       
-      <!-- Progress Section (for returning users, initially hidden) -->
-      <section id="user-progress" class="progress-section home-section">
-        <div class="home-section-content">
-          <h2 class="section-title">Welcome Back!</h2>
-          
-          <div class="progress-container">
-            <h3 class="progress-title">Your Learning Progress</h3>
-            
-            <div class="progress-stats">
-              <div class="progress-stat">
-                <div class="progress-number" id="completed-topics">0</div>
-                <div class="progress-label">Topics Completed</div>
-              </div>
-              <div class="progress-stat">
-                <div class="progress-number" id="completed-activities">0</div>
-                <div class="progress-label">Activities Completed</div>
-              </div>
-              <div class="progress-stat">
-                <div class="progress-number" id="daily-streak">0</div>
-                <div class="progress-label">Day Streak</div>
-              </div>
-            </div>
-            
-            <div class="progress-recent">
-              <h4 class="progress-recent-title">Your Recent Activity</h4>
-              <ul class="progress-list" id="recent-activity-list">
-                <!-- Activities will be populated by JavaScript -->
-              </ul>
-            </div>
-            
-            <div class="progress-buttons">
-              <a href="#" id="continue-learning" class="btn-primary">Continue Learning</a>
-              <a href="my-progress.html" class="btn-secondary dark">View Detailed Progress</a>
-            </div>
-          </div>
-        </div>
-      </section>
-      
       <!-- Call to Action Section -->
       <section class="cta-section home-section">
         <div class="home-section-content cta-content">
@@ -397,92 +398,75 @@
         });
       }
 
-      // Check for returning user
-      if (typeof localStorage !== 'undefined') {
-        // Function to get from localStorage
-        function getFromLocalStorage(key, defaultValue = null) {
-          try {
-            const value = localStorage.getItem(key);
-            
-            if (value === null) return defaultValue;
-            
-            // Try to parse JSON
-            try {
-              return JSON.parse(value);
-            } catch (e) {
-              return value;
-            }
-          } catch (error) {
-            console.error('Error retrieving from localStorage:', error);
-            return defaultValue;
-          }
-        }
-        
-        try {
-          // Check for progress data
-          const progressData = getFromLocalStorage('esl-progress-data');
-          
-          if (progressData && progressData.activities) {
-            // Count completed activities
-            const completedActivities = Object.values(progressData.activities).filter(item => item.completed).length;
-            
-            if (completedActivities > 0) {
-              // Show progress section for returning users
-              document.getElementById('user-progress').style.display = 'block';
-              
-              // Update statistics
-              document.getElementById('completed-activities').textContent = completedActivities;
-              document.getElementById('completed-topics').textContent = Object.values(progressData.lessons || {}).filter(item => item.completed).length;
-              document.getElementById('daily-streak').textContent = progressData.stats?.dailyStreak || 0;
-              
-              // Sample activities for display
-              const sampleActivities = [
-                { title: 'Present Perfect Practice', type: 'activity', date: new Date(Date.now() - 86400000), url: 'present-perfect.html' },
-                { title: 'Conditionals Quiz', type: 'quiz', date: new Date(Date.now() - 172800000), url: 'conditionals.html' },
-                { title: 'Modal Verbs Lesson', type: 'lesson', date: new Date(Date.now() - 259200000), url: 'modal-verbs.html' }
-              ];
-              
-              // Populate recent activity list
-              const recentActivityList = document.getElementById('recent-activity-list');
-              
-              if (recentActivityList) {
-                sampleActivities.forEach(activity => {
-                  const item = document.createElement('li');
-                  item.className = 'progress-item';
-                  
-                  // Format the date
-                  const daysAgo = Math.floor((new Date() - activity.date) / (1000 * 60 * 60 * 24));
-                  let dateText;
-                  if (daysAgo === 0) dateText = 'Today';
-                  else if (daysAgo === 1) dateText = 'Yesterday';
-                  else dateText = `${daysAgo} days ago`;
-                  
-                  // Icon based on activity type
-                  let icon = '📝';
-                  if (activity.type === 'quiz') icon = '✅';
-                  if (activity.type === 'lesson') icon = '📚';
-                  
-                  item.innerHTML = `
-                    <span class="progress-icon">${icon}</span>
-                    <div class="progress-item-info">
-                      <div class="progress-item-title">${activity.title}</div>
-                      <div class="progress-item-date">${dateText}</div>
-                    </div>
-                  `;
-                  
-                  recentActivityList.appendChild(item);
-                });
-              }
-              
-              // Set continue learning link
-              document.getElementById('continue-learning').href = sampleActivities[0].url;
-            }
-          }
-        } catch (error) {
-          console.log('Error loading progress data:', error);
-        }
-      }
+      // Load the quiz from external file
+      loadQuiz();
     });
+
+    /**
+     * Loads the quiz from the external file and inserts it into the page
+     */
+    function loadQuiz() {
+      const quizContainer = document.getElementById('quiz-container');
+      
+      fetch('homepage-quiz.html')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Failed to load quiz file');
+          }
+          return response.text();
+        })
+        .then(html => {
+          // Create a temporary element to parse the HTML
+          const tempDiv = document.createElement('div');
+          tempDiv.innerHTML = html;
+          
+          // Find the quiz container in the loaded HTML
+          const quizContent = tempDiv.querySelector('.quiz-container');
+          
+          if (!quizContent) {
+            throw new Error('Quiz content not found in the loaded file');
+          }
+          
+          // Replace the loading indicator with the quiz content
+          const contentDiv = quizContainer.querySelector('.home-section-content');
+          contentDiv.innerHTML = '';
+          contentDiv.appendChild(quizContent);
+          
+          // Extract and rerun scripts
+          const scripts = Array.from(tempDiv.querySelectorAll('script'));
+          
+          scripts.forEach(script => {
+            const newScript = document.createElement('script');
+            
+            // Copy all attributes from the original script
+            Array.from(script.attributes).forEach(attr => {
+              newScript.setAttribute(attr.name, attr.value);
+            });
+            
+            // Handle both inline and external scripts
+            if (script.src) {
+              newScript.src = script.src;
+            } else {
+              newScript.textContent = script.textContent;
+            }
+            
+            // Append to document to execute
+            document.body.appendChild(newScript);
+          });
+          
+          console.log('Quiz loaded successfully');
+        })
+        .catch(error => {
+          console.error('Error loading quiz:', error);
+          quizContainer.querySelector('.home-section-content').innerHTML = `
+            <div class="error-message">
+              <h3>Sorry, we couldn't load the quiz</h3>
+              <p>There was an error loading the level test quiz. Please try refreshing the page.</p>
+              <p>Error details: ${error.message}</p>
+            </div>
+          `;
+        });
+    }
   </script>
 </body>
 </html>
