@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESL Level Test Quiz</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
+  
+  <!-- Styles-->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/activities.css">
+  <link rel="stylesheet" href="css/button-shine.css">
+  
+  <style>
+    /* Quiz Container Styling */
+    .quiz-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    /* Tab Styling */
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 20px;
+    }
+    
+    .tab {
+      padding: 12px 20px;
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--text-color);
+      background-color: transparent;
+      border: none;
+      border-bottom: 3px solid transparent;
+      transition: all 0.3s;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .tab:hover {
+      background-color: rgba(52, 152, 219, 0.05);
+    }
+    
+    .tab.active {
+      border-bottom: 3px solid var(--accent-color);
+      color: var(--accent-color);
+    }
+    
+    /* Level-specific styling */
+    .tab.beginner.active {
+      border-bottom-color: var(--beginner-color, #4CAF50);
+      color: var(--beginner-color, #4CAF50);
+    }
+    
+    .tab.intermediate.active {
+      border-bottom-color: var(--intermediate-color, #FF9800);
+      color: var(--intermediate-color, #FF9800);
+    }
+    
+    .tab.advanced.active {
+      border-bottom-color: var(--advanced-color, #1B263B);
+      color: var(--advanced-color, #1B263B);
+    }
+    
+    /* Quiz tab content */
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    .quiz-header {
+      margin-bottom: 20px;
+    }
+    
+    .quiz-intro {
+      background-color: var(--card-bg);
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      border-left: 5px solid var(--accent-color);
+    }
+    
+    .beginner-intro {
+      border-left: 5px solid var(--beginner-color, #4CAF50);
+    }
+    
+    .intermediate-intro {
+      border-left: 5px solid var(--intermediate-color, #FF9800);
+    }
+    
+    .advanced-intro {
+      border-left: 5px solid var(--advanced-color, #1B263B);
+    }
+    
+    /* Score Display Styling */
+    .level-result {
+      display: none;
+      background-color: var(--card-bg);
+      padding: 15px;
+      border-radius: 5px;
+      margin: 20px 0;
+      border-left: 5px solid var(--accent-color);
+      text-align: center;
+    }
+    
+    .level-result h3 {
+      margin-top: 0;
+    }
+    
+    .result-score {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--accent-color);
+      margin: 15px 0;
+    }
+    
+    .level-recommendation {
+      margin: 15px 0;
+      font-weight: 600;
+    }
+    
+    .action-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    
+    /* Level-specific buttons */
+    .beginner-btn {
+      background-color: var(--beginner-color, #4CAF50);
+    }
+    
+    .beginner-btn:hover {
+      background-color: #3d8b40;
+    }
+    
+    .intermediate-btn {
+      background-color: var(--intermediate-color, #FF9800);
+    }
+    
+    .intermediate-btn:hover {
+      background-color: #e68900;
+    }
+    
+    .advanced-btn {
+      background-color: var(--advanced-color, #1B263B);
+    }
+    
+    .advanced-btn:hover {
+      background-color: #141e2d;
+    }
+    
+    /* Added styles for the control buttons section */
+    .control-buttons .btn-primary {
+      padding: 10px 20px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      display: inline-block;
+      text-align: center;
+      color: white;
+      font-weight: 600;
+      border-radius: 4px;
+    }
+    
+    .control-buttons .btn-primary:hover {
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .tabs {
+        flex-direction: column;
+        border-bottom: none;
+      }
+      
+      .tab {
+        border-bottom: 1px solid var(--border-color);
+        text-align: center;
+      }
+      
+      .tab.active {
+        border-left: 3px solid var(--accent-color);
+        border-bottom: 1px solid var(--border-color);
+      }
+      
+      .action-buttons {
+        flex-direction: column;
+      }
+      
+      .action-buttons button, 
+      .action-buttons a {
+        width: 100%;
+      }
+      
+      .control-buttons {
+        flex-direction: column;
+      }
+      
+      .control-buttons button,
+      .control-buttons a {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h2 class="section-title">Test Your English Level</h2>
+    
+    <!-- Level Tabs -->
+    <div class="tabs">
+      <button class="tab beginner active" data-tab="beginner">Beginner</button>
+      <button class="tab intermediate" data-tab="intermediate">Intermediate</button>
+      <button class="tab advanced" data-tab="advanced">Advanced</button>
+    </div>
+    
+    <!-- Beginner Tab Content -->
+    <div id="beginner-tab" class="tab-content active">
+      <div class="quiz-intro beginner-intro">
+        <h3>Beginner Level Test</h3>
+        <p>This short quiz will test your knowledge of basic English grammar. Choose the correct answer for each question.</p>
+        <p>Topics include: Present Simple, Present Continuous, Personal Pronouns, Basic Vocabulary, and Simple Question Forms.</p>
+      </div>
+      
+      <div id="beginner-quiz" class="activity-container active mcq-container">
+        <!-- Questions will be dynamically inserted here -->
+      </div>
+      
+      <div class="control-buttons">
+        <button id="beginner-check" class="submit-btn">Check Answers</button>
+        <button id="beginner-try-new" class="restart-btn">Try New Quiz</button>
+        <a href="grammar/beginner/beginner-grammar.html" class="btn-primary beginner-btn">Start at Beginner Level</a>
+      </div>
+      
+      <div id="beginner-result" class="level-result">
+        <h3>Your Beginner Level Result</h3>
+        <div class="result-score">
+          <span id="beginner-score">0</span>/5
+        </div>
+        <div class="level-recommendation" id="beginner-recommendation">
+          <!-- Recommendation will appear here -->
+        </div>
+        <div class="action-buttons">
+          <a href="grammar/beginner/beginner-grammar.html" class="btn-primary beginner-btn">Start at Beginner Level</a>
+          <a href="intermediate-path.html" class="btn-primary intermediate-btn">Start at Intermediate Level</a>
+          <a href="grammar/advanced/advanced-grammar.html" class="btn-primary advanced-btn">Start at Advanced Level</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Intermediate Tab Content -->
+    <div id="intermediate-tab" class="tab-content">
+      <div class="quiz-intro intermediate-intro">
+        <h3>Intermediate Level Test</h3>
+        <p>This quiz will test your knowledge of intermediate English grammar concepts. Select the best answer for each question.</p>
+        <p>Topics include: Perfect Tenses, Conditionals, Modal Verbs, Passive Voice, and Indirect Speech.</p>
+      </div>
+      
+      <div id="intermediate-quiz" class="activity-container active mcq-container">
+        <!-- Questions will be dynamically inserted here -->
+      </div>
+      
+      <div class="control-buttons">
+        <button id="intermediate-check" class="submit-btn">Check Answers</button>
+        <button id="intermediate-try-new" class="restart-btn">Try New Quiz</button>
+        <a href="intermediate-path.html" class="btn-primary intermediate-btn">Start at Intermediate Level</a>
+      </div>
+      
+      <div id="intermediate-result" class="level-result">
+        <h3>Your Intermediate Level Result</h3>
+        <div class="result-score">
+          <span id="intermediate-score">0</span>/5
+        </div>
+        <div class="level-recommendation" id="intermediate-recommendation">
+          <!-- Recommendation will appear here -->
+        </div>
+        <div class="action-buttons">
+          <a href="grammar/beginner/beginner-grammar.html" class="btn-primary beginner-btn">Start at Beginner Level</a>
+          <a href="intermediate-path.html" class="btn-primary intermediate-btn">Start at Intermediate Level</a>
+          <a href="grammar/advanced/advanced-grammar.html" class="btn-primary advanced-btn">Start at Advanced Level</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Advanced Tab Content -->
+    <div id="advanced-tab" class="tab-content">
+      <div class="quiz-intro advanced-intro">
+        <h3>Advanced Level Test</h3>
+        <p>This challenging quiz will test your mastery of advanced English grammar. Choose the most appropriate answer for each question.</p>
+        <p>Topics include: Perfect Modal Forms, Advanced Conditionals, Subjunctive Mood, Complex Preposition Usage, and Nuanced Tense Distinctions.</p>
+      </div>
+      
+      <div id="advanced-quiz" class="activity-container active mcq-container">
+        <!-- Questions will be dynamically inserted here -->
+      </div>
+      
+      <div class="control-buttons">
+        <button id="advanced-check" class="submit-btn">Check Answers</button>
+        <button id="advanced-try-new" class="restart-btn">Try New Quiz</button>
+        <a href="grammar/advanced/advanced-grammar.html" class="btn-primary advanced-btn">Start at Advanced Level</a>
+      </div>
+      
+      <div id="advanced-result" class="level-result">
+        <h3>Your Advanced Level Result</h3>
+        <div class="result-score">
+          <span id="advanced-score">0</span>/5
+        </div>
+        <div class="level-recommendation" id="advanced-recommendation">
+          <!-- Recommendation will appear here -->
+        </div>
+        <div class="action-buttons">
+          <a href="grammar/beginner/beginner-grammar.html" class="btn-primary beginner-btn">Start at Beginner Level</a>
+          <a href="intermediate-path.html" class="btn-primary intermediate-btn">Start at Intermediate Level</a>
+          <a href="grammar/advanced/advanced-grammar.html" class="btn-primary advanced-btn">Start at Advanced Level</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- JavaScript -->
+  <script>
+    /**
+     * Level Test Quiz Module
+     * 
+     * This module provides a self-assessment quiz for ESL learners to determine
+     * their level (beginner, intermediate, or advanced).
+     */
+    const LevelTestQuiz = (function() {
+      // Private variables to store question banks for each level
+      const questionBanks = {
+        beginner: [
+          {
+            question: "What ____ your name?",
+            options: ["is", "are", "am", "be"],
+            correctAnswer: 0
+          },
+          {
+            question: "She ____ TV every evening.",
+            options: ["watch", "watching", "watches", "is watch"],
+            correctAnswer: 2
+          },
+          {
+            question: "We ____ students.",
+            options: ["is", "am", "are", "be"],
+            correctAnswer: 2
+          },
+          {
+            question: "I ____ coffee now.",
+            options: ["drink", "drinking", "am drinking", "drinks"],
+            correctAnswer: 2
+          },
+          {
+            question: "He ____ like spicy food.",
+            options: ["don't", "not", "doesn't", "isn't"],
+            correctAnswer: 2
+          },
+          {
+            question: "Where ____ you live?",
+            options: ["are", "do", "does", "is"],
+            correctAnswer: 1
+          },
+          {
+            question: "They ____ at home yesterday.",
+            options: ["are", "was", "were", "is"],
+            correctAnswer: 2
+          },
+          {
+            question: "I ____ breakfast every morning.",
+            options: ["having", "have", "has", "am having"],
+            correctAnswer: 1
+          },
+          {
+            question: "She ____ English and Spanish.",
+            options: ["speak", "speaks", "speaking", "is speaking"],
+            correctAnswer: 1
+          },
+          {
+            question: "We ____ to the park tomorrow.",
+            options: ["go", "goes", "going", "are going"],
+            correctAnswer: 3
+          },
+          {
+            question: "____ is that? It's my brother.",
+            options: ["Who", "What", "Where", "When"],
+            correctAnswer: 0
+          },
+          {
+            question: "There ____ a book on the table.",
+            options: ["is", "are", "be", "has"],
+            correctAnswer: 0
+          },
+          {
+            question: "I ____ like pizza.",
+            options: ["very", "much", "many", "a lot"],
+            correctAnswer: 1
+          },
+          {
+            question: "She ____ have a cat.",
+            options: ["no", "don't", "not", "doesn't"],
+            correctAnswer: 3
+          },
+          {
+            question: "We ____ watching a movie now.",
+            options: ["is", "am", "are", "be"],
+            correctAnswer: 2
+          },
+          {
+            question: "He ____ to work by bus.",
+            options: ["go", "goes", "going", "went"],
+            correctAnswer: 1
+          },
+          {
+            question: "I ____ 25 years old.",
+            options: ["is", "am", "are", "be"],
+            correctAnswer: 1
+          },
+          {
+            question: "They ____ like classical music.",
+            options: ["doesn't", "isn't", "aren't", "don't"],
+            correctAnswer: 3
+          },
+          {
+            question: "What time ____ you wake up?",
+            options: ["are", "do", "does", "is"],
+            correctAnswer: 1
+          },
+          {
+            question: "She ____ from Spain.",
+            options: ["is", "am", "are", "be"],
+            correctAnswer: 0
+          },
+          {
+            question: "I ____ understand this word.",
+            options: ["am not", "doesn't", "isn't", "don't"],
+            correctAnswer: 3
+          },
+          {
+            question: "He ____ his teeth every morning.",
+            options: ["brush", "brushing", "brushes", "is brushing"],
+            correctAnswer: 2
+          },
+          {
+            question: "They ____ dinner now.",
+            options: ["have", "having", "has", "are having"],
+            correctAnswer: 3
+          },
+          {
+            question: "We ____ to the cinema last night.",
+            options: ["go", "going", "goes", "went"],
+            correctAnswer: 3
+          },
+          {
+            question: "What ____ you do yesterday?",
+            options: ["do", "did", "are", "were"],
+            correctAnswer: 1
+          },
+          {
+            question: "She ____ at home last weekend.",
+            options: ["is", "was", "were", "are"],
+            correctAnswer: 1
+          },
+          {
+            question: "I ____ a brother and a sister.",
+            options: ["have", "has", "having", "am having"],
+            correctAnswer: 0
+          },
+          {
+            question: "He ____ speak French very well.",
+            options: ["do", "can", "does", "is"],
+            correctAnswer: 1
+          },
+          {
+            question: "We ____ going to the beach tomorrow.",
+            options: ["is", "am", "are", "be"],
+            correctAnswer: 2
+          },
+          {
+            question: "She ____ playing the piano now.",
+            options: ["is", "am", "are", "be"],
+            correctAnswer: 0
+          },
+          {
+            question: "I ____ a coffee, please.",
+            options: ["wanting", "wants", "want", "am wanting"],
+            correctAnswer: 2
+          },
+          {
+            question: "They ____ listening to music right now.",
+            options: ["is", "am", "are", "be"],
+            correctAnswer: 2
+          },
+          {
+            question: "He ____ to school every day.",
+            options: ["walk", "walks", "walking", "is walking"],
+            correctAnswer: 1
+          },
+          {
+            question: "We ____ have a meeting tomorrow.",
+            options: ["not", "don't", "doesn't", "aren't"],
+            correctAnswer: 1
+          },
+          {
+            question: "What ____ she doing right now?",
+            options: ["do", "is", "does", "are"],
+            correctAnswer: 1
+          },
+          {
+            question: "I ____ TV last night.",
+            options: ["watch", "watches", "watched", "watching"],
+            correctAnswer: 2
+          },
+          {
+            question: "He ____ help you tomorrow.",
+            options: ["can", "do", "does", "is"],
+            correctAnswer: 0
+          },
+          {
+            question: "They ____ at school yesterday.",
+            options: ["wasn't", "weren't", "didn't", "isn't"],
+            correctAnswer: 1
+          },
+          {
+            question: "She ____ like chocolate ice cream.",
+            options: ["don't", "doesn't", "isn't", "aren't"],
+            correctAnswer: 1
+          },
+          {
+            question: "We ____ to the cinema every weekend.",
+            options: ["go", "goes", "going", "went"],
+            correctAnswer: 0
+          },
+          {
+            question: "He ____ reading a book now.",
+            options: ["is", "am", "are", "be"],
+            correctAnswer: 0
+          },
+          {
+            question: "I ____ understand the question.",
+            options: ["am not", "don't", "doesn't", "not"],
+            correctAnswer: 1
+          },
+          {
+            question: "They ____ have a car.",
+            options: ["don't", "doesn't", "aren't", "isn't"],
+            correctAnswer: 0
+          },
+          {
+            question: "What ____ he want?",
+            options: ["do", "does", "is", "are"],
+            correctAnswer: 1
+          },
+          {
+            question: "She ____ working here since 2020.",
+            options: ["is", "are", "has been", "have been"],
+            correctAnswer: 2
+          },
+          {
+            question: "I ____ to the gym twice a week.",
+            options: ["goes", "going", "go", "am going"],
+            correctAnswer: 2
+          },
+          {
+            question: "____ she have a pet?",
+            options: ["Is", "Are", "Does", "Do"],
+            correctAnswer: 2
+          },
+          {
+            question: "They ____ football at the moment.",
+            options: ["play", "plays", "are playing", "playing"],
+            correctAnswer: 2
+          },
+          {
+            question: "We ____ to the party last Saturday.",
+            options: ["go", "goes", "went", "going"],
+            correctAnswer: 2
+          },
+          {
+            question: "He ____ coffee every morning.",
+            options: ["drink", "drinks", "drinking", "is drinking"],
+            correctAnswer: 1
+          }
+        ],
+        intermediate: [
+          {
+            question: "If I ____ more time, I would learn another language.",
+            options: ["have", "had", "would have", "having"],
+            correctAnswer: 1
+          },
+          {
+            question: "She ____ in Paris for three years before moving to London.",
+            options: ["lives", "lived", "has lived", "had lived"],
+            correctAnswer: 3
+          },
+          {
+            question: "By the time we arrived, the film ____ already.",
+            options: ["started", "has started", "had started", "was starting"],
+            correctAnswer: 2
+          },
+          {
+            question: "This time next week, we ____ on the beach in Spain.",
+            options: ["are lying", "will lie", "will be lying", "lie"],
+            correctAnswer: 2
+          },
+          {
+            question: "I wish I ____ to her more carefully yesterday.",
+            options: ["listen", "listened", "had listened", "would listen"],
+            correctAnswer: 2
+          },
+          {
+            question: "You ____ take an umbrella. It's not going to rain.",
+            options: ["mustn't", "shouldn't", "couldn't", "don't have to"],
+            correctAnswer: 3
+          },
+          {
+            question: "She suggested ____ to the cinema.",
+            options: ["to go", "going", "go", "that we went"],
+            correctAnswer: 1
+          },
+          {
+            question: "The package ____ tomorrow morning.",
+            options: ["delivers", "delivered", "will deliver", "will be delivered"],
+            correctAnswer: 3
+          },
+          {
+            question: "He ____ there before, so he was excited to visit.",
+            options: ["hasn't been", "hadn't been", "wasn't", "didn't go"],
+            correctAnswer: 1
+          },
+          {
+            question: "I ____ my phone. I can't find it anywhere.",
+            options: ["lose", "lost", "have lost", "had lost"],
+            correctAnswer: 2
+          },
+          {
+            question: "If I ____ the lottery, I would buy a big house.",
+            options: ["win", "wins", "won", "would win"],
+            correctAnswer: 2
+          },
+          {
+            question: "By next month, I ____ in this company for five years.",
+            options: ["will work", "will have worked", "work", "am working"],
+            correctAnswer: 1
+          },
+          {
+            question: "She ____ to the radio when the phone rang.",
+            options: ["listened", "was listening", "had listened", "has listened"],
+            correctAnswer: 1
+          },
+          {
+            question: "They ____ to London three times so far this year.",
+            options: ["went", "go", "have been", "had been"],
+            correctAnswer: 2
+          },
+          {
+            question: "The house ____ last year by a famous architect.",
+            options: ["designed", "was designed", "has designed", "had designed"],
+            correctAnswer: 1
+          },
+          {
+            question: "We ____ to tell her the news, but we decided not to.",
+            options: ["were going", "would go", "had gone", "went"],
+            correctAnswer: 0
+          },
+          {
+            question: "I'd rather you ____ it to me yesterday.",
+            options: ["tell", "told", "had told", "would tell"],
+            correctAnswer: 1
+          },
+          {
+            question: "He ____ be very rich – he drives a Porsche!",
+            options: ["can", "should", "might", "must"],
+            correctAnswer: 3
+          },
+          {
+            question: "____ worrying about it. There's nothing we can do.",
+            options: ["Stop", "Stopping", "Stopped", "To stop"],
+            correctAnswer: 0
+          },
+          {
+            question: "It's the first time I ____ sushi.",
+            options: ["eat", "ate", "have eaten", "had eaten"],
+            correctAnswer: 2
+          },
+          {
+            question: "She's the woman ____ car was stolen last week.",
+            options: ["who", "which", "whose", "whom"],
+            correctAnswer: 2
+          },
+          {
+            question: "If you ____ studied harder, you would have passed the exam.",
+            options: ["would have", "have", "had", "would"],
+            correctAnswer: 2
+          },
+          {
+            question: "You ____ to clean your room. I've already done it.",
+            options: ["mustn't", "shouldn't", "needn't", "don't have"],
+            correctAnswer: 2
+          },
+          {
+            question: "The book ____ by the end of next week.",
+            options: ["will publish", "publishes", "will be published", "is published"],
+            correctAnswer: 2
+          },
+          {
+            question: "She asked me what ____ to do the next day.",
+            options: ["am I going", "I was going", "was I going", "I am going"],
+            correctAnswer: 1
+          },
+          {
+            question: "I ____ the film already, so I didn't want to see it again.",
+            options: ["saw", "have seen", "had seen", "was seeing"],
+            correctAnswer: 2
+          },
+          {
+            question: "We ____ to have the meeting yesterday, but it was canceled.",
+            options: ["supposed", "were supposed", "had supposed", "would suppose"],
+            correctAnswer: 1
+          },
+          {
+            question: "I wish I ____ speak Chinese.",
+            options: ["can", "could", "would", "should"],
+            correctAnswer: 1
+          },
+          {
+            question: "You should ____ more attention in class.",
+            options: ["paying", "to pay", "pay", "paid"],
+            correctAnswer: 2
+          },
+          {
+            question: "I ____ to the cinema when I met my friend.",
+            options: ["went", "was going", "had gone", "have gone"],
+            correctAnswer: 1
+          },
+          {
+            question: "She denied ____ the window.",
+            options: ["break", "to break", "breaking", "broke"],
+            correctAnswer: 2
+          },
+          {
+            question: "This time tomorrow, I ____ on the beach!",
+            options: ["lie", "am lying", "will lie", "will be lying"],
+            correctAnswer: 3
+          },
+          {
+            question: "If I ____ you, I would take the job.",
+            options: ["am", "was", "were", "would be"],
+            correctAnswer: 2
+          },
+          {
+            question: "They ____ each other for ten years before they got married.",
+            options: ["knew", "had known", "have known", "know"],
+            correctAnswer: 1
+          },
+          {
+            question: "She suggested that we ____ a different restaurant.",
+            options: ["try", "tried", "trying", "to try"],
+            correctAnswer: 0
+          },
+          {
+            question: "I would rather ____ at home than go out tonight.",
+            options: ["staying", "to stay", "stay", "stayed"],
+            correctAnswer: 2
+          },
+          {
+            question: "The concert ____ at 7:30 PM tomorrow.",
+            options: ["starts", "will start", "is starting", "start"],
+            correctAnswer: 1
+          },
+          {
+            question: "I ____ television when the phone rang.",
+            options: ["watched", "was watching", "had watched", "am watching"],
+            correctAnswer: 1
+          },
+          {
+            question: "She asked me where ____ the day before.",
+            options: ["did I go", "I had gone", "had I gone", "I went"],
+            correctAnswer: 1
+          },
+          {
+            question: "I'll help you ____ you help me first.",
+            options: ["if", "when", "unless", "until"],
+            correctAnswer: 0
+          },
+          {
+            question: "He ____ never been to Paris before his trip last year.",
+            options: ["has", "had", "would have", "have"],
+            correctAnswer: 1
+          },
+          {
+            question: "I regret ____ him what happened.",
+            options: ["tell", "to tell", "telling", "told"],
+            correctAnswer: 2
+          },
+          {
+            question: "She ____ not come to the meeting tomorrow.",
+            options: ["can", "would", "might", "ought"],
+            correctAnswer: 2
+          },
+          {
+            question: "If I had studied harder, I ____ the exam.",
+            options: ["will pass", "would pass", "passed", "would have passed"],
+            correctAnswer: 3
+          },
+          {
+            question: "The meeting ____ by the time we arrived.",
+            options: ["started", "was starting", "has started", "had started"],
+            correctAnswer: 3
+          },
+          {
+            question: "She promised ____ me as soon as she arrived.",
+            options: ["calling", "call", "to call", "called"],
+            correctAnswer: 2
+          },
+          {
+            question: "I ____ to London three times this year.",
+            options: ["went", "have been", "had been", "was going"],
+            correctAnswer: 1
+          },
+          {
+            question: "This is the first time I ____ sushi.",
+            options: ["eat", "ate", "have eaten", "had eaten"],
+            correctAnswer: 2
+          },
+          {
+            question: "We ____ to the park if it hadn't rained.",
+            options: ["would go", "went", "had gone", "would have gone"],
+            correctAnswer: 3
+          },
+          {
+            question: "She's the woman ____ car I borrowed.",
+            options: ["who", "whose", "which", "that"],
+            correctAnswer: 1
+          }
+        ],
+        advanced: [
+          {
+            question: "Had I known about the problem sooner, I ____ able to fix it.",
+            options: ["would be", "was", "would have been", "had been"],
+            correctAnswer: 2
+          },
+          {
+            question: "No sooner ____ home than the phone rang.",
+            options: ["I had got", "had I got", "I got", "got I"],
+            correctAnswer: 1
+          },
+          {
+            question: "Not only ____ the exam, but she also got the highest score.",
+            options: ["she passed", "passed she", "did she pass", "she did pass"],
+            correctAnswer: 2
+          },
+          {
+            question: "Never before ____ such a magnificent sunset.",
+            options: ["I saw", "did I see", "I had seen", "had I seen"],
+            correctAnswer: 3
+          },
+          {
+            question: "By the time you read this, I ____ the country.",
+            options: ["will leave", "will have left", "would leave", "would have left"],
+            correctAnswer: 1
+          },
+          {
+            question: "She ____ to be the best candidate for the position.",
+            options: ["is said", "says", "said", "is saying"],
+            correctAnswer: 0
+          },
+          {
+            question: "It is essential that he ____ immediately.",
+            options: ["leave", "leaves", "will leave", "left"],
+            correctAnswer: 0
+          },
+          {
+            question: "Should you ____ any assistance, please do not hesitate to contact us.",
+            options: ["require", "requires", "required", "requiring"],
+            correctAnswer: 0
+          },
+          {
+            question: "The novel, along with several short stories, ____ being adapted for television.",
+            options: ["are", "were", "is", "have"],
+            correctAnswer: 2
+          },
+          {
+            question: "Hardly ____ the words when she regretted them.",
+            options: ["had she spoken", "she had spoken", "she spoke", "did she speak"],
+            correctAnswer: 0
+          },
+          {
+            question: "Were I ____ in your position, I would accept the offer.",
+            options: ["be", "being", "to be", "been"],
+            correctAnswer: 2
+          },
+          {
+            question: "But for his help, I ____ able to solve the problem.",
+            options: ["wouldn't be", "hadn't been", "wouldn't have been", "won't be"],
+            correctAnswer: 2
+          },
+          {
+            question: "Under no circumstances ____ to be disturbed during the meeting.",
+            options: ["the president is", "is the president", "the president", "president is"],
+            correctAnswer: 1
+          },
+          {
+            question: "Seldom ____ such an impressive performance.",
+            options: ["I have seen", "have I seen", "had I seen", "I had seen"],
+            correctAnswer: 1
+          },
+          {
+            question: "Not until the end of the presentation ____ the full impact of his proposal.",
+            options: ["we understood", "did we understand", "we had understood", "understood we"],
+            correctAnswer: 1
+          },
+          {
+            question: "Having ____ the assignment, she decided to take a break.",
+            options: ["completed", "complete", "completing", "been completed"],
+            correctAnswer: 0
+          },
+          {
+            question: "It is imperative that the document ____ before the deadline.",
+            options: ["is submitted", "be submitted", "will be submitted", "submitted"],
+            correctAnswer: 1
+          },
+          {
+            question: "Should the flight ____ due to bad weather, passengers will be accommodated.",
+            options: ["be delayed", "delays", "is delayed", "delayed"],
+            correctAnswer: 0
+          },
+          {
+            question: "Only after checking the results twice ____ the announcement.",
+            options: ["he made", "did he make", "made he", "he had made"],
+            correctAnswer: 1
+          },
+          {
+            question: "Not for a moment ____ that she would fail.",
+            options: ["I thought", "did I think", "I had thought", "had I thought"],
+            correctAnswer: 1
+          },
+          {
+            question: "Little ____ about the consequences of his actions.",
+            options: ["he cared", "did he care", "he did care", "cared he"],
+            correctAnswer: 1
+          },
+          {
+            question: "Such ____ the force of the impact that the building shook.",
+            options: ["is", "was", "has been", "had been"],
+            correctAnswer: 1
+          },
+          {
+            question: "In no way ____ responsible for the accident.",
+            options: ["she was", "was she", "is she", "she is"],
+            correctAnswer: 2
+          },
+          {
+            question: "Only when ____ the truth did I fully understand the situation.",
+            options: ["I discovered", "did I discover", "I had discovered", "had I discovered"],
+            correctAnswer: 1
+          },
+          {
+            question: "So engrossed ____ in the book that she didn't hear the doorbell.",
+            options: ["she was", "was she", "she had been", "had she been"],
+            correctAnswer: 1
+          },
+          {
+            question: "Scarcely ____ when it started to rain heavily.",
+            options: ["had we left", "we had left", "did we leave", "we left"],
+            correctAnswer: 0
+          },
+          {
+            question: "Were ____ to rain, the event would be canceled.",
+            options: ["it", "that", "there", "this"],
+            correctAnswer: 0
+          },
+          {
+            question: "On no account ____ to handle the equipment without supervision.",
+            options: ["you are", "are you", "you", "are"],
+            correctAnswer: 1
+          },
+          {
+            question: "So demanding ____ that many students dropped the course.",
+            options: ["the professor was", "was the professor", "the professor had been", "had the professor been"],
+            correctAnswer: 1
+          },
+          {
+            question: "Rarely ____ such dedication to a cause.",
+            options: ["I have seen", "have I seen", "I had seen", "had I seen"],
+            correctAnswer: 1
+          },
+          {
+            question: "Not once ____ to explain her actions.",
+            options: ["she bothered", "did she bother", "bothered she", "she had bothered"],
+            correctAnswer: 1
+          },
+          {
+            question: "To ____ extent do you agree with this statement?",
+            options: ["what", "which", "whose", "where"],
+            correctAnswer: 0
+          },
+          {
+            question: "Only by working together ____ overcome these challenges.",
+            options: ["we can", "can we", "we could", "could we"],
+            correctAnswer: 1
+          },
+          {
+            question: "The committee, including all the department heads, ____ the proposal.",
+            options: ["approve", "approves", "has approved", "have approved"],
+            correctAnswer: 2
+          },
+          {
+            question: "Never before ____ so clear to me.",
+            options: ["the solution was", "was the solution", "the solution had been", "had the solution been"],
+            correctAnswer: 3
+          },
+          {
+            question: "So concerned ____ about the outcome that he couldn't sleep.",
+            options: ["he was", "was he", "he had been", "had he been"],
+            correctAnswer: 1
+          },
+          {
+            question: "Not only ____ fail the test, but he also had to retake the course.",
+            options: ["he did", "did he", "he had", "had he"],
+            correctAnswer: 1
+          },
+          {
+            question: "Seldom ____ such poor customer service.",
+            options: ["I have experienced", "have I experienced", "I had experienced", "had I experienced"],
+            correctAnswer: 1
+          },
+          {
+            question: "At no time ____ the rules of the competition.",
+            options: ["she broke", "broke she", "did she break", "she did break"],
+            correctAnswer: 2
+          },
+          {
+            question: "In no way ____ be held responsible for the delay.",
+            options: ["we can", "can we", "we could", "could we"],
+            correctAnswer: 1
+          },
+          {
+            question: "Not until the last minute ____ to attend the conference.",
+            options: ["she decided", "did she decide", "she had decided", "had she decided"],
+            correctAnswer: 1
+          },
+          {
+            question: "Rarely, if ever, ____ such an outstanding performance.",
+            options: ["I have witnessed", "have I witnessed", "I had witnessed", "had I witnessed"],
+            correctAnswer: 1
+          },
+          {
+            question: "Should there ____ any issues, please contact the help desk immediately.",
+            options: ["be", "is", "are", "were"],
+            correctAnswer: 0
+          },
+          {
+            question: "Only after thorough investigation ____ a conclusion.",
+            options: ["we can reach", "can we reach", "we could reach", "could we reach"],
+            correctAnswer: 1
+          },
+          {
+            question: "It is imperative that the meeting ____ promptly at 9 AM.",
+            options: ["starts", "start", "will start", "should start"],
+            correctAnswer: 1
+          },
+          {
+            question: "Were you ____ more time, what would you do?",
+            options: ["having", "have", "to have", "had"],
+            correctAnswer: 2
+          },
+          {
+            question: "Under no circumstances ____ this information with outsiders.",
+            options: ["you should share", "should you share", "you share", "share you"],
+            correctAnswer: 1
+          },
+          {
+            question: "Not until all the evidence ____ will a decision be made.",
+            options: ["is examined", "will be examined", "has been examined", "examined"],
+            correctAnswer: 2
+          },
+          {
+            question: "Little ____ that the project would require so much effort.",
+            options: ["I knew", "did I know", "I had known", "had I known"],
+            correctAnswer: 1
+          },
+          {
+            question: "No sooner ____ the house than it started to rain.",
+            options: ["I left", "had I left", "I had left", "did I leave"],
+            correctAnswer: 1
+          }
+        ]
+      };
+      
+      // Variables to track current state
+      let currentLevel = "beginner";
+      let currentQuestions = [];
+      let userAnswers = {};
+      let score = 0;
+      
+      /**
+       * Initializes the quiz module
+       */
+      function init() {
+        // Set up tab switching
+        setupTabs();
+        
+        // Load initial questions for beginner level
+        loadQuestions("beginner");
+        
+        // Set up event listeners for level-specific buttons
+        setupButtonListeners("beginner");
+        setupButtonListeners("intermediate");
+        setupButtonListeners("advanced");
+        
+        console.log("Level Test Quiz initialized");
+      }
+      
+      /**
+       * Sets up tab switching functionality
+       */
+      function setupTabs() {
+        const tabs = document.querySelectorAll('.tab');
+        
+        tabs.forEach(tab => {
+          tab.addEventListener('click', function() {
+            const level = this.getAttribute('data-tab');
+            
+            // Deactivate all tabs and content
+            tabs.forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => {
+              content.classList.remove('active');
+            });
+            
+            // Activate selected tab and content
+            this.classList.add('active');
+            document.getElementById(`${level}-tab`).classList.add('active');
+            
+            // Load questions for this level
+            loadQuestions(level);
+            
+            // Update current level
+            currentLevel = level;
+          });
+        });
+      }
+      
+      /**
+       * Sets up button listeners for a specific level
+       * 
+       * @param {string} level - The level (beginner, intermediate, advanced)
+       */
+      function setupButtonListeners(level) {
+        // Check answers button
+        const checkButton = document.getElementById(`${level}-check`);
+        if (checkButton) {
+          checkButton.addEventListener('click', function() {
+            checkAnswers(level);
+          });
+        }
+        
+        // Try new quiz button
+        const tryNewButton = document.getElementById(`${level}-try-new`);
+        if (tryNewButton) {
+          tryNewButton.addEventListener('click', function() {
+            loadQuestions(level);
+            
+            // Hide results
+            document.getElementById(`${level}-result`).style.display = 'none';
+          });
+        }
+      }
+      
+      /**
+       * Loads random questions for a specific level
+       * 
+       * @param {string} level - The level (beginner, intermediate, advanced)
+       */
+      function loadQuestions(level) {
+        const questions = questionBanks[level];
+        const quizContainer = document.getElementById(`${level}-quiz`);
+        
+        // Randomly select 5 questions
+        currentQuestions = getRandomQuestions(questions, 5);
+        
+        // Reset user answers
+        userAnswers = {};
+        
+        // Generate HTML for questions
+        let questionsHTML = '';
+        
+        currentQuestions.forEach((question, index) => {
+          const questionId = `${level}-q${index + 1}`;
+          
+          questionsHTML += `
+            <div class="question" id="${questionId}">
+              <p class="mcq-question">${index + 1}. ${question.question}</p>
+              <div class="options">
+                ${question.options.map((option, optIndex) => `
+                  <div class="option" data-index="${optIndex}">
+                    <span>${String.fromCharCode(65 + optIndex)}. ${option}</span>
+                  </div>
+                `).join('')}
+              </div>
+              <div class="feedback"></div>
+            </div>
+          `;
+        });
+        
+        // Update DOM
+        quizContainer.innerHTML = questionsHTML;
+        
+        // Attach click handlers to options
+        setupOptionClickHandlers(level);
+      }
+      
+      /**
+       * Gets random questions from a question bank
+       * 
+       * @param {Array} questions - Array of all questions
+       * @param {number} count - Number of questions to select
+       * @returns {Array} - Selected random questions
+       */
+      function getRandomQuestions(questions, count) {
+        // Make a copy of the questions array
+        const questionsCopy = [...questions];
+        const result = [];
+        
+        // Select 'count' random questions
+        for (let i = 0; i < count && questionsCopy.length > 0; i++) {
+          const randomIndex = Math.floor(Math.random() * questionsCopy.length);
+          result.push(questionsCopy.splice(randomIndex, 1)[0]);
+        }
+        
+        return result;
+      }
+      
+      /**
+       * Sets up click handlers for option selection
+       * 
+       * @param {string} level - The level (beginner, intermediate, advanced)
+       */
+      function setupOptionClickHandlers(level) {
+        const quizContainer = document.getElementById(`${level}-quiz`);
+        const options = quizContainer.querySelectorAll('.option');
+        
+        options.forEach(option => {
+          option.addEventListener('click', function() {
+            const questionElement = this.closest('.question');
+            const questionId = questionElement.id;
+            const optionIndex = parseInt(this.getAttribute('data-index'));
+            
+            // Clear previous selection for this question
+            questionElement.querySelectorAll('.option').forEach(opt => {
+              opt.classList.remove('selected');
+            });
+            
+            // Select this option
+            this.classList.add('selected');
+            
+            // Store user's answer
+            userAnswers[questionId] = optionIndex;
+          });
+        });
+      }
+      
+      /**
+       * Checks answers and displays feedback
+       * 
+       * @param {string} level - The level (beginner, intermediate, advanced)
+       */
+      function checkAnswers(level) {
+        const quizContainer = document.getElementById(`${level}-quiz`);
+        const questions = quizContainer.querySelectorAll('.question');
+        
+        // Calculate score
+        score = 0;
+        let answeredQuestions = 0;
+        
+        questions.forEach((question, index) => {
+          const questionId = question.id;
+          const userAnswer = userAnswers[questionId];
+          const correctAnswer = currentQuestions[index].correctAnswer;
+          const feedbackElement = question.querySelector('.feedback');
+          
+          // If the question wasn't answered
+          if (userAnswer === undefined) {
+            feedbackElement.textContent = `Not answered. The correct answer is: ${currentQuestions[index].options[correctAnswer]}`;
+            feedbackElement.className = "feedback incorrect";
+            
+            // Highlight the correct option
+            const options = question.querySelectorAll('.option');
+            options.forEach((option, optIndex) => {
+              if (optIndex === correctAnswer) {
+                option.classList.add('correct');
+              }
+            });
+          } 
+          // If the question was answered
+          else {
+            // Count this as an answered question
+            answeredQuestions++;
+            
+            const isCorrect = userAnswer === correctAnswer;
+            
+            // Update feedback
+            if (isCorrect) {
+              feedbackElement.textContent = "Correct!";
+              feedbackElement.className = "feedback correct";
+              score++;
+            } else {
+              feedbackElement.textContent = `Incorrect. The correct answer is: ${currentQuestions[index].options[correctAnswer]}`;
+              feedbackElement.className = "feedback incorrect";
+            }
+            
+            // Highlight correct and incorrect options
+            const options = question.querySelectorAll('.option');
+            
+            options.forEach((option, optIndex) => {
+              if (optIndex === correctAnswer) {
+                option.classList.add('correct');
+              } else if (optIndex === userAnswer && userAnswer !== correctAnswer) {
+                option.classList.add('incorrect');
+              }
+            });
+          }
+        });
+        
+        // Update score display
+        document.getElementById(`${level}-score`).textContent = score;
+        
+        // Show message about number of questions answered if not all were answered
+        const recommendationElement = document.getElementById(`${level}-recommendation`);
+        if (answeredQuestions < questions.length) {
+          recommendationElement.textContent = `You answered ${answeredQuestions} out of ${questions.length} questions, with ${score} correct.`;
+        } else {
+          // Update recommendation based on score
+          updateRecommendation(level, score);
+        }
+        
+        // Show results
+        document.getElementById(`${level}-result`).style.display = 'block';
+      }
+      
+      /**
+       * Updates the level recommendation based on score
+       * 
+       * @param {string} level - The level (beginner, intermediate, advanced)
+       * @param {number} score - The user's score
+       */
+      function updateRecommendation(level, score) {
+        const recommendationElement = document.getElementById(`${level}-recommendation`);
+        
+        if (score <= 1) {
+          if (level === "beginner") {
+            recommendationElement.textContent = "This level is perfect for you to start with. Focus on the basics first.";
+          } else if (level === "intermediate") {
+            recommendationElement.textContent = "You should start with the Beginner level to build a strong foundation.";
+          } else {
+            recommendationElement.textContent = "This level is challenging for you. We recommend starting with Intermediate or Beginner level.";
+          }
+        } else if (score <= 3) {
+          if (level === "beginner") {
+            recommendationElement.textContent = "You know some basics. Continue with Beginner level, but you'll be ready for Intermediate soon.";
+          } else if (level === "intermediate") {
+            recommendationElement.textContent = "You have some intermediate knowledge. Continue at this level to strengthen your skills.";
+          } else {
+            recommendationElement.textContent = "This level is challenging for you. Practice more at the Intermediate level first.";
+          }
+        } else {
+          if (level === "beginner") {
+            recommendationElement.textContent = "Great job! You're ready to move to the Intermediate level.";
+          } else if (level === "intermediate") {
+            recommendationElement.textContent = "Excellent! You're ready to tackle the Advanced level.";
+          } else {
+            recommendationElement.textContent = "Outstanding! This level is appropriate for you.";
+          }
+        }
+      }
+      
+      // Initialize the module when the page loads
+      document.addEventListener('DOMContentLoaded', init);
+      
+      // Return public API
+      return {
+        loadQuestions: loadQuestions,
+        checkAnswers: checkAnswers
+      };
+    })();
+  </script>
+
+</body>
+</html>
