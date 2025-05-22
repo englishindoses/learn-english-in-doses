@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="css/button-shine.css">
   <link rel="stylesheet" href="css/home.css">
   <link rel="stylesheet" href="css/activities.css">
-  <link rel="stylesheet" href="css/base.css">
+ 
   <style>
     /* Additional styles for the quiz container */
     .loading-indicator {
@@ -46,6 +46,205 @@
     [data-theme="dark"] .loading-spinner {
       border-color: rgba(255, 255, 255, 0.1);
       border-top-color: var(--accent-color);
+    }
+
+    /* Quiz Container Styling */
+    .quiz-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    /* Tab Styling */
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 20px;
+    }
+    
+    .tab {
+      padding: 12px 20px;
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--text-color);
+      background-color: transparent;
+      border: none;
+      border-bottom: 3px solid transparent;
+      transition: all 0.3s;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .tab:hover {
+      background-color: rgba(52, 152, 219, 0.05);
+    }
+    
+    .tab.active {
+      border-bottom: 3px solid var(--accent-color);
+      color: var(--accent-color);
+    }
+    
+    /* Level-specific styling */
+    .tab.beginner.active {
+      border-bottom-color: var(--beginner-color, #4CAF50);
+      color: var(--beginner-color, #4CAF50);
+    }
+    
+    .tab.intermediate.active {
+      border-bottom-color: var(--intermediate-color, #FF9800);
+      color: var(--intermediate-color, #FF9800);
+    }
+    
+    .tab.advanced.active {
+      border-bottom-color: var(--advanced-color, #1B263B);
+      color: var(--advanced-color, #1B263B);
+    }
+    
+    /* Quiz tab content */
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    .quiz-header {
+      margin-bottom: 20px;
+    }
+    
+    .quiz-intro {
+      background-color: var(--card-bg);
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      border-left: 5px solid var(--accent-color);
+    }
+    
+    .beginner-intro {
+      border-left: 5px solid var(--beginner-color, #4CAF50);
+    }
+    
+    .intermediate-intro {
+      border-left: 5px solid var(--intermediate-color, #FF9800);
+    }
+    
+    .advanced-intro {
+      border-left: 5px solid var(--advanced-color, #1B263B);
+    }
+    
+    /* Score Display Styling */
+    .level-result {
+      display: none;
+      background-color: var(--card-bg);
+      padding: 15px;
+      border-radius: 5px;
+      margin: 20px 0;
+      border-left: 5px solid var(--accent-color);
+      text-align: center;
+    }
+    
+    .level-result h3 {
+      margin-top: 0;
+    }
+    
+    .result-score {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--accent-color);
+      margin: 15px 0;
+    }
+    
+    .level-recommendation {
+      margin: 15px 0;
+      font-weight: 600;
+    }
+    
+    .action-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    
+    /* Level-specific buttons */
+    .beginner-btn {
+      background-color: var(--beginner-color, #4CAF50);
+    }
+    
+    .beginner-btn:hover {
+      background-color: #3d8b40;
+    }
+    
+    .intermediate-btn {
+      background-color: var(--intermediate-color, #FF9800);
+    }
+    
+    .intermediate-btn:hover {
+      background-color: #e68900;
+    }
+    
+    .advanced-btn {
+      background-color: var(--advanced-color, #1B263B);
+    }
+    
+    .advanced-btn:hover {
+      background-color: #141e2d;
+    }
+    
+    /* Added styles for the control buttons section */
+    .control-buttons .btn-primary {
+      padding: 10px 20px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      display: inline-block;
+      text-align: center;
+      color: white;
+      font-weight: 600;
+      border-radius: 4px;
+    }
+    
+    .control-buttons .btn-primary:hover {
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .tabs {
+        flex-direction: column;
+        border-bottom: none;
+      }
+      
+      .tab {
+        border-bottom: 1px solid var(--border-color);
+        text-align: center;
+      }
+      
+      .tab.active {
+        border-left: 3px solid var(--accent-color);
+        border-bottom: 1px solid var(--border-color);
+      }
+      
+      .action-buttons {
+        flex-direction: column;
+      }
+      
+      .action-buttons button, 
+      .action-buttons a {
+        width: 100%;
+      }
+      
+      .control-buttons {
+        flex-direction: column;
+      }
+      
+      .control-buttons button,
+      .control-buttons a {
+        width: 100%;
+        margin-bottom: 10px;
+      }
     }
   </style>
 </head>
@@ -418,45 +617,17 @@
           return response.text();
         })
         .then(html => {
-          // Create a temporary element to parse the HTML
-          const tempDiv = document.createElement('div');
-          tempDiv.innerHTML = html;
-          
-          // Find the quiz container in the loaded HTML
-          const quizContent = tempDiv.querySelector('.quiz-container');
-          
-          if (!quizContent) {
-            throw new Error('Quiz content not found in the loaded file');
-          }
-          
           // Replace the loading indicator with the quiz content
           const contentDiv = quizContainer.querySelector('.home-section-content');
-          contentDiv.innerHTML = '';
-          contentDiv.appendChild(quizContent);
+          contentDiv.innerHTML = html;
           
-          // Extract and rerun scripts
-          const scripts = Array.from(tempDiv.querySelectorAll('script'));
-          
-          scripts.forEach(script => {
-            const newScript = document.createElement('script');
-            
-            // Copy all attributes from the original script
-            Array.from(script.attributes).forEach(attr => {
-              newScript.setAttribute(attr.name, attr.value);
-            });
-            
-            // Handle both inline and external scripts
-            if (script.src) {
-              newScript.src = script.src;
-            } else {
-              newScript.textContent = script.textContent;
-            }
-            
-            // Append to document to execute
-            document.body.appendChild(newScript);
-          });
-          
-          console.log('Quiz loaded successfully');
+          // Initialize the quiz after content is loaded
+          if (typeof LevelTestQuiz !== 'undefined' && LevelTestQuiz.init) {
+            LevelTestQuiz.init();
+            console.log('Quiz loaded and initialized successfully');
+          } else {
+            console.error('LevelTestQuiz module not found or init method missing');
+          }
         })
         .catch(error => {
           console.error('Error loading quiz:', error);
