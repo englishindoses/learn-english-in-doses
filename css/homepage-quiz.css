@@ -1,0 +1,280 @@
+/* Quiz Container Styling */
+.quiz-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Tab Styling */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 12px 20px;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--text-color);
+  background-color: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.tab:hover {
+  background-color: rgba(52, 152, 219, 0.05);
+}
+
+.tab.active {
+  border-bottom: 3px solid var(--accent-color);
+  color: var(--accent-color);
+}
+
+/* Level-specific styling */
+.tab.beginner.active {
+  border-bottom-color: var(--beginner-color, #4CAF50);
+  color: var(--beginner-color, #4CAF50);
+}
+
+.tab.intermediate.active {
+  border-bottom-color: var(--intermediate-color, #FF9800);
+  color: var(--intermediate-color, #FF9800);
+}
+
+.tab.advanced.active {
+  border-bottom-color: var(--advanced-color, #1B263B);
+  color: var(--advanced-color, #1B263B);
+}
+
+/* Quiz tab content */
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.quiz-header {
+  margin-bottom: 20px;
+}
+
+.quiz-intro {
+  background-color: var(--card-bg);
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  border-left: 5px solid var(--accent-color);
+}
+
+.beginner-intro {
+  border-left: 5px solid var(--beginner-color, #4CAF50);
+}
+
+.intermediate-intro {
+  border-left: 5px solid var(--intermediate-color, #FF9800);
+}
+
+.advanced-intro {
+  border-left: 5px solid var(--advanced-color, #1B263B);
+}
+
+/* Question and option styling */
+.question {
+  margin-bottom: 25px;
+  padding: 20px;
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.mcq-question {
+  font-weight: 600;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option {
+  padding: 12px 15px;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+  background-color: var(--card-bg);
+}
+
+.option:hover {
+  border-color: var(--accent-color);
+  background-color: rgba(52, 152, 219, 0.05);
+}
+
+.option.selected {
+  border-color: var(--accent-color);
+  background-color: rgba(52, 152, 219, 0.1);
+}
+
+.option.correct {
+  border-color: #4CAF50;
+  background-color: rgba(76, 175, 80, 0.1);
+  color: #2e7d32;
+}
+
+.option.incorrect {
+  border-color: #f44336;
+  background-color: rgba(244, 67, 54, 0.1);
+  color: #c62828;
+}
+
+.feedback {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.feedback.correct {
+  background-color: rgba(76, 175, 80, 0.1);
+  color: #2e7d32;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.feedback.incorrect {
+  background-color: rgba(244, 67, 54, 0.1);
+  color: #c62828;
+  border: 1px solid rgba(244, 67, 54, 0.3);
+}
+
+/* Score Display Styling */
+.level-result {
+  display: none;
+  background-color: var(--card-bg);
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+  border-left: 5px solid var(--accent-color);
+  text-align: center;
+}
+
+.level-result h3 {
+  margin-top: 0;
+}
+
+.result-score {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--accent-color);
+  margin: 15px 0;
+}
+
+.level-recommendation {
+  margin: 15px 0;
+  font-weight: 600;
+}
+
+.control-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+/* Level-specific buttons */
+.beginner-btn {
+  background-color: var(--beginner-color, #4CAF50);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.beginner-btn:hover {
+  background-color: #3d8b40;
+}
+
+.intermediate-btn {
+  background-color: var(--intermediate-color, #FF9800);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.intermediate-btn:hover {
+  background-color: #e68900;
+}
+
+.advanced-btn {
+  background-color: var(--advanced-color, #1B263B);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.advanced-btn:hover {
+  background-color: #141e2d;
+}
+
+.btn-primary {
+  background-color: var(--accent-color);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background-color: #2980b9;
+  text-decoration: none;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .tabs {
+    flex-direction: column;
+    border-bottom: none;
+  }
+  
+  .tab {
+    border-bottom: 1px solid var(--border-color);
+    text-align: center;
+  }
+  
+  .tab.active {
+    border-left: 3px solid var(--accent-color);
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .control-buttons {
+    flex-direction: column;
+  }
+  
+  .control-buttons button,
+  .control-buttons a {
+    width: 100%;
+  }
+}

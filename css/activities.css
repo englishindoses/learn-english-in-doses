@@ -227,6 +227,9 @@
 
 /* ----------------------------------------
    2. MCQ Specific Styles
+   Guidelines for multiple choice questions:
+   - Never use radio buttons.
+   - Make all buttons used (e.g. check answers, try again, etc) visible at all times.
    ---------------------------------------- */
 /* Question Container */
 .question {
