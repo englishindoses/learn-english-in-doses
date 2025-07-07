@@ -290,6 +290,21 @@ footer {
   margin: 0 auto;
 }
 
+/* Quiz Section */
+
+.quiz-section {
+ max-width: 100%; /* Changed from 800px to match site sections */
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f9fa; /* Light background - same as card background */
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* same as cards */
+  transition: transform 0.3s ease;
+  border-left: 5px solid #3498db;
+}
+ 
+
 /* Hero Section */
 @keyframes float {
   0% {
