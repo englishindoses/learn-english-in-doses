@@ -5,19 +5,21 @@
  * No HTML changes required - it targets existing button classes.
  */
 
-/* Apply base styles to all buttons */
+/* Apply base styles to all buttons - INCLUDING QUIZ BUTTONS */
 .btn-primary, .btn-secondary, .chat-button, .nav-button, 
 .activity-nav-btn, .submit-btn, .restart-btn, .check-btn,
-.cta-button, .floating-cta, .view-all-button {
+.cta-button, .floating-cta, .view-all-button,
+.beginner-btn, .intermediate-btn, .advanced-btn {
   position: relative;  /* Required for absolute positioning of the shine */
   overflow: hidden;    /* Keeps the shine contained within the button */
 }
 
-/* Create the shine element */
+/* Create the shine element - INCLUDING QUIZ BUTTONS */
 .btn-primary::after, .btn-secondary::after, .chat-button::after, 
 .nav-button::after, .activity-nav-btn::after, .submit-btn::after, 
 .restart-btn::after, .check-btn::after, .cta-button::after,
-.floating-cta::after, .view-all-button::after {
+.floating-cta::after, .view-all-button::after,
+.beginner-btn::after, .intermediate-btn::after, .advanced-btn::after {
   content: '';
   position: absolute;
   top: 0;
@@ -34,13 +36,14 @@
   pointer-events: none;  /* Allow clicks to pass through to the button */
 }
 
-/* Animate the shine effect on hover */
+/* Animate the shine effect on hover - INCLUDING QUIZ BUTTONS */
 .btn-primary:hover::after, .btn-secondary:hover::after, 
 .chat-button:hover::after, .nav-button:hover::after,
 .activity-nav-btn:hover::after, .submit-btn:hover::after, 
 .restart-btn:hover::after, .check-btn:hover::after,
 .cta-button:hover::after, .floating-cta:hover::after,
-.view-all-button:hover::after {
+.view-all-button:hover::after,
+.beginner-btn:hover::after, .intermediate-btn:hover::after, .advanced-btn:hover::after {
   animation: shine 1s;  /* 1 second animation duration */
 }
 

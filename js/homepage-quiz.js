@@ -104,191 +104,123 @@ const LevelTestQuiz = (function() {
         correctAnswer: 1
       },
       {
-        question: "She ____ from Spain.",
+        question: "The children ____ playing outside.",
         options: ["is", "am", "are", "be"],
-        correctAnswer: 0
+        correctAnswer: 2
       }
     ],
+    
     intermediate: [
       {
-        question: "If I ____ more time, I would learn another language.",
-        options: ["have", "had", "would have", "having"],
-        correctAnswer: 1
-      },
-      {
-        question: "She ____ in Paris for three years before moving to London.",
-        options: ["lives", "lived", "has lived", "had lived"],
-        correctAnswer: 3
-      },
-      {
-        question: "By the time we arrived, the film ____ already.",
-        options: ["started", "has started", "had started", "was starting"],
+        question: "I ____ in London for five years.",
+        options: ["live", "am living", "have lived", "lived"],
         correctAnswer: 2
       },
       {
-        question: "This time next week, we ____ on the beach in Spain.",
-        options: ["are lying", "will lie", "will be lying", "lie"],
+        question: "If I ____ rich, I would travel the world.",
+        options: ["am", "was", "were", "will be"],
         correctAnswer: 2
       },
       {
-        question: "I wish I ____ to her more carefully yesterday.",
-        options: ["listen", "listened", "had listened", "would listen"],
-        correctAnswer: 2
-      },
-      {
-        question: "You ____ take an umbrella. It's not going to rain.",
-        options: ["mustn't", "shouldn't", "couldn't", "don't have to"],
-        correctAnswer: 3
-      },
-      {
-        question: "She suggested ____ to the cinema.",
-        options: ["to go", "going", "go", "that we went"],
+        question: "The book ____ by millions of people.",
+        options: ["has read", "has been read", "have read", "have been read"],
         correctAnswer: 1
       },
       {
-        question: "The package ____ tomorrow morning.",
-        options: ["delivers", "delivered", "will deliver", "will be delivered"],
-        correctAnswer: 3
-      },
-      {
-        question: "He ____ there before, so he was excited to visit.",
-        options: ["hasn't been", "hadn't been", "wasn't", "didn't go"],
+        question: "She told me that she ____ the movie the night before.",
+        options: ["watched", "had watched", "has watched", "was watching"],
         correctAnswer: 1
       },
       {
-        question: "I ____ my phone. I can't find it anywhere.",
-        options: ["lose", "lost", "have lost", "had lost"],
-        correctAnswer: 2
-      },
-      {
-        question: "If I ____ the lottery, I would buy a big house.",
-        options: ["win", "wins", "won", "would win"],
-        correctAnswer: 2
-      },
-      {
-        question: "By next month, I ____ in this company for five years.",
-        options: ["will work", "will have worked", "work", "am working"],
+        question: "I wish I ____ speak French fluently.",
+        options: ["can", "could", "will", "would"],
         correctAnswer: 1
       },
       {
-        question: "She ____ to the radio when the phone rang.",
-        options: ["listened", "was listening", "had listened", "has listened"],
+        question: "The weather is getting ____.",
+        options: ["more bad", "worse", "more worse", "badder"],
         correctAnswer: 1
       },
       {
-        question: "They ____ to London three times so far this year.",
-        options: ["went", "go", "have been", "had been"],
-        correctAnswer: 2
-      },
-      {
-        question: "The house ____ last year by a famous architect.",
-        options: ["designed", "was designed", "has designed", "had designed"],
-        correctAnswer: 1
-      },
-      {
-        question: "We ____ to tell her the news, but we decided not to.",
-        options: ["were going", "would go", "had gone", "went"],
+        question: "You ____ have told me about the meeting earlier.",
+        options: ["should", "must", "could", "would"],
         correctAnswer: 0
       },
       {
-        question: "I'd rather you ____ it to me yesterday.",
-        options: ["tell", "told", "had told", "would tell"],
+        question: "The project will be finished ____ next month.",
+        options: ["until", "by", "since", "for"],
         correctAnswer: 1
       },
       {
-        question: "He ____ be very rich – he drives a Porsche!",
-        options: ["can", "should", "might", "must"],
+        question: "I ____ studying English since I was ten years old.",
+        options: ["am", "was", "have been", "had been"],
+        correctAnswer: 2
+      },
+      {
+        question: "If he ____ harder, he would have passed the exam.",
+        options: ["studied", "had studied", "studies", "was studying"],
+        correctAnswer: 1
+      },
+      {
+        question: "The house ____ painted last summer.",
+        options: ["is", "was", "has been", "had been"],
+        correctAnswer: 1
+      },
+      {
+        question: "I'd rather you ____ smoke in here.",
+        options: ["don't", "didn't", "won't", "wouldn't"],
+        correctAnswer: 1
+      },
+      {
+        question: "She's the most intelligent person I've ____ met.",
+        options: ["never", "ever", "always", "often"],
+        correctAnswer: 1
+      },
+      {
+        question: "By the time we arrived, the concert ____.",
+        options: ["started", "had started", "has started", "was starting"],
+        correctAnswer: 1
+      },
+      {
+        question: "I'm used to ____ early in the morning.",
+        options: ["wake up", "waking up", "wake", "woken up"],
+        correctAnswer: 1
+      },
+      {
+        question: "The more you practice, ____ you'll become.",
+        options: ["better", "the better", "good", "the good"],
+        correctAnswer: 1
+      },
+      {
+        question: "She asked me where ____.",
+        options: ["do I live", "I live", "did I live", "I lived"],
         correctAnswer: 3
       },
       {
-        question: "____ worrying about it. There's nothing we can do.",
-        options: ["Stop", "Stopping", "Stopped", "To stop"],
+        question: "I can't stand ____ to loud music.",
+        options: ["listen", "listening", "to listen", "listened"],
+        correctAnswer: 1
+      },
+      {
+        question: "He speaks English ____ he's lived here all his life.",
+        options: ["as if", "like", "such as", "so that"],
         correctAnswer: 0
       },
       {
-        question: "It's the first time I ____ sushi.",
-        options: ["eat", "ate", "have eaten", "had eaten"],
+        question: "I'll call you ____ I arrive.",
+        options: ["while", "during", "as soon as", "until"],
         correctAnswer: 2
       }
     ],
+    
     advanced: [
       {
-        question: "Had I known about the problem sooner, I ____ able to fix it.",
-        options: ["would be", "was", "would have been", "had been"],
-        correctAnswer: 2
-      },
-      {
-        question: "No sooner ____ home than the phone rang.",
-        options: ["I had got", "had I got", "I got", "got I"],
+        question: "Had I known about the traffic, I ____ earlier.",
+        options: ["would leave", "would have left", "will leave", "left"],
         correctAnswer: 1
       },
       {
-        question: "Not only ____ the exam, but she also got the highest score.",
-        options: ["she passed", "passed she", "did she pass", "she did pass"],
-        correctAnswer: 2
-      },
-      {
-        question: "Never before ____ such a magnificent sunset.",
-        options: ["I saw", "did I see", "I had seen", "had I seen"],
-        correctAnswer: 3
-      },
-      {
-        question: "By the time you read this, I ____ the country.",
-        options: ["will leave", "will have left", "would leave", "would have left"],
-        correctAnswer: 1
-      },
-      {
-        question: "She ____ to be the best candidate for the position.",
-        options: ["is said", "says", "said", "is saying"],
-        correctAnswer: 0
-      },
-      {
-        question: "It is essential that he ____ immediately.",
-        options: ["leave", "leaves", "will leave", "left"],
-        correctAnswer: 0
-      },
-      {
-        question: "Should you ____ any assistance, please do not hesitate to contact us.",
-        options: ["require", "requires", "required", "requiring"],
-        correctAnswer: 0
-      },
-      {
-        question: "The novel, along with several short stories, ____ being adapted for television.",
-        options: ["are", "were", "is", "have"],
-        correctAnswer: 2
-      },
-      {
-        question: "Hardly ____ the words when she regretted them.",
-        options: ["had she spoken", "she had spoken", "she spoke", "did she speak"],
-        correctAnswer: 0
-      },
-      {
-        question: "Were I ____ in your position, I would accept the offer.",
-        options: ["be", "being", "to be", "been"],
-        correctAnswer: 2
-      },
-      {
-        question: "But for his help, I ____ able to solve the problem.",
-        options: ["wouldn't be", "hadn't been", "wouldn't have been", "won't be"],
-        correctAnswer: 2
-      },
-      {
-        question: "Under no circumstances ____ to be disturbed during the meeting.",
-        options: ["the president is", "is the president", "the president", "president is"],
-        correctAnswer: 1
-      },
-      {
-        question: "Seldom ____ such an impressive performance.",
-        options: ["I have seen", "have I seen", "had I seen", "I had seen"],
-        correctAnswer: 1
-      },
-      {
-        question: "Not until the end of the presentation ____ the full impact of his proposal.",
-        options: ["we understood", "did we understand", "we had understood", "understood we"],
-        correctAnswer: 1
-      },
-      {
-        question: "Having ____ the assignment, she decided to take a break.",
+        question: "The task needs ____.",
         options: ["completed", "complete", "completing", "been completed"],
         correctAnswer: 0
       },
@@ -310,6 +242,76 @@ const LevelTestQuiz = (function() {
       {
         question: "Not for a moment ____ that she would fail.",
         options: ["I thought", "did I think", "I had thought", "had I thought"],
+        correctAnswer: 1
+      },
+      {
+        question: "The proposal ____ by the committee next week.",
+        options: ["will consider", "will be considered", "considers", "is considering"],
+        correctAnswer: 1
+      },
+      {
+        question: "____ the weather been better, we would have had the picnic.",
+        options: ["If", "Had", "Should", "Were"],
+        correctAnswer: 1
+      },
+      {
+        question: "It's high time you ____ responsibility for your actions.",
+        options: ["take", "took", "taken", "taking"],
+        correctAnswer: 1
+      },
+      {
+        question: "No sooner ____ the door than the phone rang.",
+        options: ["I had opened", "had I opened", "I opened", "did I open"],
+        correctAnswer: 1
+      },
+      {
+        question: "The meeting is supposed to ____ started by now.",
+        options: ["be", "have", "had", "being"],
+        correctAnswer: 1
+      },
+      {
+        question: "Little ____ he know what awaited him.",
+        options: ["does", "did", "had", "would"],
+        correctAnswer: 1
+      },
+      {
+        question: "I'd sooner ____ than apologize to him.",
+        options: ["die", "dying", "died", "to die"],
+        correctAnswer: 0
+      },
+      {
+        question: "The phenomenon ____ by scientists for decades.",
+        options: ["has been studying", "has been studied", "is studying", "was studying"],
+        correctAnswer: 1
+      },
+      {
+        question: "Were it not for your help, I ____ succeeded.",
+        options: ["wouldn't have", "won't have", "didn't", "haven't"],
+        correctAnswer: 0
+      },
+      {
+        question: "Rarely ____ such dedication in young people.",
+        options: ["we see", "do we see", "we have seen", "have we seen"],
+        correctAnswer: 1
+      },
+      {
+        question: "The legislation ____ effect next year.",
+        options: ["will come into", "comes into", "came into", "has come into"],
+        correctAnswer: 0
+      },
+      {
+        question: "But for his intervention, the situation ____ much worse.",
+        options: ["would be", "would have been", "will be", "was"],
+        correctAnswer: 1
+      },
+      {
+        question: "Scarcely ____ when it started to rain.",
+        options: ["we had arrived", "had we arrived", "we arrived", "did we arrive"],
+        correctAnswer: 1
+      },
+      {
+        question: "The accused ____ to have committed the crime.",
+        options: ["is alleging", "is alleged", "alleges", "has alleged"],
         correctAnswer: 1
       }
     ]
@@ -561,6 +563,33 @@ const LevelTestQuiz = (function() {
       updateRecommendation(level, score);
     }
     
+    // **NEW CELEBRATION LOGIC FOR HIGH SCORES**
+    if (score >= 4) {
+      // Show celebration animation
+      const celebrationContainer = document.getElementById(`${level}-celebration`);
+      if (celebrationContainer) {
+        celebrationContainer.classList.add('show');
+      }
+      
+      // Add glow effect to score
+      const scoreElement = document.querySelector(`#${level}-result .result-score`);
+      if (scoreElement) {
+        scoreElement.classList.add('high-score');
+      }
+    } else {
+      // Hide celebration if score is low
+      const celebrationContainer = document.getElementById(`${level}-celebration`);
+      if (celebrationContainer) {
+        celebrationContainer.classList.remove('show');
+      }
+      
+      // Remove glow effect from score
+      const scoreElement = document.querySelector(`#${level}-result .result-score`);
+      if (scoreElement) {
+        scoreElement.classList.remove('high-score');
+      }
+    }
+    
     // Show results
     document.getElementById(`${level}-result`).style.display = 'block';
   }
@@ -608,3 +637,8 @@ const LevelTestQuiz = (function() {
     checkAnswers: checkAnswers
   };
 })();
+
+// Initialize the quiz when the DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  LevelTestQuiz.init();
+});

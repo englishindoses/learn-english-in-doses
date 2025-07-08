@@ -139,7 +139,7 @@
       </section>
       
       <!-- Level Test Quiz Section -->
-      <section id="quiz-section" class="home-section">
+<section id="quiz-section" class="home-section">
   <div class="quiz-section">
     <h2 class="section-title">Find Your Level</h2>
     
@@ -148,104 +148,118 @@
       <p class="assessment-subtext">Each test takes just 3-5 minutes to complete</p>
     </div>
   
-    
-          <div class="quiz-container">
-            <!-- Quiz Tabs -->
-            <div class="tabs">
-              <button class="tab beginner active" data-tab="beginner">🔰 Beginner</button>
-              <button class="tab intermediate" data-tab="intermediate">📈 Intermediate</button>
-              <button class="tab advanced" data-tab="advanced">🚀 Advanced</button>
-            </div>
-            
-            <!-- Beginner Tab Content -->
-            <div id="beginner-tab" class="tab-content active">
-              <div class="quiz-header">
-                <div class="quiz-intro beginner-intro">
-                  <h3>Beginner Level Test</h3>
-                  <p>Test your knowledge of basic English grammar including present tense, simple past, articles, and basic sentence structure.</p>
-                </div>
-              </div>
-              
-              <div id="beginner-quiz">
-                <!-- Questions will be loaded here by JavaScript -->
-              </div>
-              
-              <div class="control-buttons">
-                <button id="beginner-check" class="beginner-btn">Check Answers</button>
-                <button id="beginner-try-new" class="beginner-btn">Try New Questions</button>
-              </div>
-              
-              <div id="beginner-result" class="level-result">
-                <h3>Your Score</h3>
-                <div class="result-score"><span id="beginner-score">0</span> / 5</div>
-                <div id="beginner-recommendation" class="level-recommendation"></div>
-                <div class="control-buttons">
-                  <a href="grammar/beginner/beginner-grammar.html" class="beginner-btn">Start Beginner Lessons</a>
-                  <a href="#where-to-start" class="btn-primary">View All Levels</a>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Intermediate Tab Content -->
-            <div id="intermediate-tab" class="tab-content">
-              <div class="quiz-header">
-                <div class="quiz-intro intermediate-intro">
-                  <h3>Intermediate Level Test</h3>
-                  <p>Challenge yourself with perfect tenses, conditionals, modal verbs, and more complex grammar structures.</p>
-                </div>
-              </div>
-              
-              <div id="intermediate-quiz">
-                <!-- Questions will be loaded here by JavaScript -->
-              </div>
-              
-              <div class="control-buttons">
-                <button id="intermediate-check" class="intermediate-btn">Check Answers</button>
-                <button id="intermediate-try-new" class="intermediate-btn">Try New Questions</button>
-              </div>
-              
-              <div id="intermediate-result" class="level-result">
-                <h3>Your Score</h3>
-                <div class="result-score"><span id="intermediate-score">0</span> / 5</div>
-                <div id="intermediate-recommendation" class="level-recommendation"></div>
-                <div class="control-buttons">
-                  <a href="intermediate-path.html" class="intermediate-btn">Start Intermediate Lessons</a>
-                  <a href="#where-to-start" class="btn-primary">View All Levels</a>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Advanced Tab Content -->
-            <div id="advanced-tab" class="tab-content">
-              <div class="quiz-header">
-                <div class="quiz-intro advanced-intro">
-                  <h3>Advanced Level Test</h3>
-                  <p>Master sophisticated grammar with inversion, subjunctive mood, complex conditionals, and nuanced structures.</p>
-                </div>
-              </div>
-              
-              <div id="advanced-quiz">
-                <!-- Questions will be loaded here by JavaScript -->
-              </div>
-              
-              <div class="control-buttons">
-                <button id="advanced-check" class="advanced-btn">Check Answers</button>
-                <button id="advanced-try-new" class="advanced-btn">Try New Questions</button>
-              </div>
-              
-              <div id="advanced-result" class="level-result">
-                <h3>Your Score</h3>
-                <div class="result-score"><span id="advanced-score">0</span> / 5</div>
-                <div id="advanced-recommendation" class="level-recommendation"></div>
-                <div class="control-buttons">
-                  <a href="grammar/advanced/advanced-grammar.html" class="advanced-btn">Start Advanced Lessons</a>
-                  <a href="#where-to-start" class="btn-primary">View All Levels</a>
-                </div>
-              </div>
-            </div>
+    <div class="quiz-container">
+      <!-- Quiz Tabs -->
+      <div class="tabs">
+        <button class="tab beginner active" data-tab="beginner">🔰 Beginner</button>
+        <button class="tab intermediate" data-tab="intermediate">📈 Intermediate</button>
+        <button class="tab advanced" data-tab="advanced">🚀 Advanced</button>
+      </div>
+      
+      <!-- Beginner Tab Content -->
+      <div id="beginner-tab" class="tab-content active">
+        <div class="quiz-header">
+          <div class="quiz-intro beginner-intro">
+            <h3>Beginner Level Test</h3>
+            <p>Test your knowledge of basic English grammar including present tense, simple past, articles, and basic sentence structure.</p>
           </div>
         </div>
-      </section>
+        
+        <div id="beginner-quiz">
+          <!-- Questions will be loaded here by JavaScript -->
+        </div>
+        
+        <div class="control-buttons">
+          <button id="beginner-check" class="beginner-btn">Check Answers</button>
+          <button id="beginner-try-new" class="beginner-btn">Try New Questions</button>
+        </div>
+        
+        <div id="beginner-result" class="level-result">
+          <h3>Your Score</h3>
+          <!-- CELEBRATION CONTAINER ADDED -->
+          <div class="celebration-container" id="beginner-celebration">
+            <div class="celebration-emojis">🎉 ⭐ 🎉</div>
+            <div class="celebration-text">Great work!</div>
+          </div>
+          <div class="result-score"><span id="beginner-score">0</span> / 5</div>
+          <div id="beginner-recommendation" class="level-recommendation"></div>
+          <div class="control-buttons">
+            <a href="grammar/beginner/beginner-grammar.html" class="beginner-btn">Start Beginner Lessons</a>
+            <a href="#where-to-start" class="btn-primary">View All Levels</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Intermediate Tab Content -->
+      <div id="intermediate-tab" class="tab-content">
+        <div class="quiz-header">
+          <div class="quiz-intro intermediate-intro">
+            <h3>Intermediate Level Test</h3>
+            <p>Challenge yourself with perfect tenses, conditionals, modal verbs, and more complex grammar structures.</p>
+          </div>
+        </div>
+        
+        <div id="intermediate-quiz">
+          <!-- Questions will be loaded here by JavaScript -->
+        </div>
+        
+        <div class="control-buttons">
+          <button id="intermediate-check" class="intermediate-btn">Check Answers</button>
+          <button id="intermediate-try-new" class="intermediate-btn">Try New Questions</button>
+        </div>
+        
+        <div id="intermediate-result" class="level-result">
+          <h3>Your Score</h3>
+          <!-- CELEBRATION CONTAINER ADDED -->
+          <div class="celebration-container" id="intermediate-celebration">
+            <div class="celebration-emojis">🎉 ⭐ 🎉</div>
+            <div class="celebration-text">Excellent!</div>
+          </div>
+          <div class="result-score"><span id="intermediate-score">0</span> / 5</div>
+          <div id="intermediate-recommendation" class="level-recommendation"></div>
+          <div class="control-buttons">
+            <a href="intermediate-path.html" class="intermediate-btn">Start Intermediate Lessons</a>
+            <a href="#where-to-start" class="btn-primary">View All Levels</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Advanced Tab Content -->
+      <div id="advanced-tab" class="tab-content">
+        <div class="quiz-header">
+          <div class="quiz-intro advanced-intro">
+            <h3>Advanced Level Test</h3>
+            <p>Master sophisticated grammar with inversion, subjunctive mood, complex conditionals, and nuanced structures.</p>
+          </div>
+        </div>
+        
+        <div id="advanced-quiz">
+          <!-- Questions will be loaded here by JavaScript -->
+        </div>
+        
+        <div class="control-buttons">
+          <button id="advanced-check" class="advanced-btn">Check Answers</button>
+          <button id="advanced-try-new" class="advanced-btn">Try New Questions</button>
+        </div>
+        
+        <div id="advanced-result" class="level-result">
+          <h3>Your Score</h3>
+          <!-- CELEBRATION CONTAINER ADDED -->
+          <div class="celebration-container" id="advanced-celebration">
+            <div class="celebration-emojis">🎉 ⭐ 🎉</div>
+            <div class="celebration-text">Outstanding!</div>
+          </div>
+          <div class="result-score"><span id="advanced-score">0</span> / 5</div>
+          <div id="advanced-recommendation" class="level-recommendation"></div>
+          <div class="control-buttons">
+            <a href="grammar/advanced/advanced-grammar.html" class="advanced-btn">Start Advanced Lessons</a>
+            <a href="#where-to-start" class="btn-primary">View All Levels</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
       
       <!-- Learning Paths Section -->
       <section id="where-to-start" class="paths-section home-section">
