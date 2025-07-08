@@ -994,3 +994,28 @@ footer {
   color: #666;
   margin: 0;
 }
+/* Dark mode styling for "Find Your Level" section */
+[data-theme="dark"] .quiz-section {
+  background-color: #1e1e1e; /* Dark background instead of light */
+  color: #e0e0e0; /* Light text for better contrast */
+  border-left: 5px solid #4fa3e0; /* Keep the accent border but use dark theme accent color */
+}
+
+[data-theme="dark"] .quiz-section .section-title {
+  color: #ffffff; /* White text for headings */
+}
+
+[data-theme="dark"] .assessment-highlight {
+  background-color: #2a2a2a; /* Slightly lighter dark background */
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+[data-theme="dark"] .assessment-text {
+  color: #ffffff; /* White text for main description */
+}
+
+[data-theme="dark"] .assessment-subtext {
+  color: #b0b0b0; /* Slightly dimmed white for secondary text */
+}

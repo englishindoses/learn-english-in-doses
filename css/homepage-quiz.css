@@ -392,3 +392,225 @@
     width: 100%;
   }
 }
+
+/* ----------------------------------------
+   Dark Theme Styling for Find Your Level Quiz Section
+   Add this to your css/homepage-quiz.css file
+   ---------------------------------------- */
+
+/* Dark theme styling for quiz container and main elements */
+[data-theme="dark"] .quiz-container {
+  background-color: var(--bg-color-dark, #1a1a1a);
+  color: var(--text-color-dark, #ffffff);
+}
+
+/* Dark theme tab styling */
+[data-theme="dark"] .tabs {
+  border-bottom: 1px solid var(--border-color-dark, #444);
+}
+
+[data-theme="dark"] .tab {
+  color: var(--text-color-dark, #ffffff);
+  background-color: transparent;
+}
+
+[data-theme="dark"] .tab:hover {
+  background-color: rgba(52, 152, 219, 0.1);
+}
+
+[data-theme="dark"] .tab.active {
+  color: var(--accent-color);
+  border-bottom: 3px solid var(--accent-color);
+}
+
+/* Level-specific dark theme tab styling */
+[data-theme="dark"] .tab.beginner.active {
+  border-bottom-color: var(--beginner-color, #4CAF50);
+  color: var(--beginner-color, #4CAF50);
+}
+
+[data-theme="dark"] .tab.intermediate.active {
+  border-bottom-color: var(--intermediate-color, #FF9800);
+  color: var(--intermediate-color, #FF9800);
+}
+
+[data-theme="dark"] .tab.advanced.active {
+  border-bottom-color: var(--advanced-color, #3498db);
+  color: var(--advanced-color, #3498db);
+}
+
+/* Dark theme quiz intro sections */
+[data-theme="dark"] .quiz-intro {
+  background-color: var(--card-bg-dark, #2a2a2a);
+  color: var(--text-color-dark, #ffffff);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .quiz-intro h3 {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .quiz-intro p {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .beginner-intro {
+  border-left: 5px solid var(--beginner-color, #4CAF50);
+  background-color: rgba(76, 175, 80, 0.1);
+}
+
+[data-theme="dark"] .intermediate-intro {
+  border-left: 5px solid var(--intermediate-color, #FF9800);
+  background-color: rgba(255, 152, 0, 0.1);
+}
+
+[data-theme="dark"] .advanced-intro {
+  border-left: 5px solid var(--advanced-color, #3498db);
+  background-color: rgba(52, 152, 219, 0.1);
+}
+
+/* Dark theme question styling */
+[data-theme="dark"] .question {
+  background-color: var(--card-bg-dark, #2a2a2a);
+  border: 1px solid var(--border-color-dark, #444);
+  color: var(--text-color-dark, #ffffff);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .mcq-question {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Dark theme option styling */
+[data-theme="dark"] .option {
+  background-color: var(--card-bg-dark, #2a2a2a);
+  border: 2px solid var(--border-color-dark, #444);
+  color: var(--text-color-dark, #ffffff);
+}
+
+[data-theme="dark"] .option:hover {
+  border-color: var(--accent-color);
+  background-color: rgba(52, 152, 219, 0.1);
+}
+
+[data-theme="dark"] .option.selected {
+  border-color: var(--accent-color);
+  background-color: rgba(52, 152, 219, 0.15);
+}
+
+[data-theme="dark"] .option.correct {
+  border-color: #4CAF50;
+  background-color: rgba(76, 175, 80, 0.15);
+  color: #5dd898;
+}
+
+[data-theme="dark"] .option.incorrect {
+  border-color: #f44336;
+  background-color: rgba(244, 67, 54, 0.15);
+  color: #ff6b6b;
+}
+
+/* Dark theme feedback styling */
+[data-theme="dark"] .feedback.correct {
+  background-color: rgba(76, 175, 80, 0.15);
+  color: #5dd898;
+  border: 1px solid rgba(76, 175, 80, 0.4);
+}
+
+[data-theme="dark"] .feedback.incorrect {
+  background-color: rgba(244, 67, 54, 0.15);
+  color: #ff6b6b;
+  border: 1px solid rgba(244, 67, 54, 0.4);
+}
+
+/* Dark theme score display styling */
+[data-theme="dark"] .level-result {
+  background-color: var(--card-bg-dark, #2a2a2a);
+  color: var(--text-color-dark, #ffffff);
+  border-left: 5px solid var(--accent-color);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .level-result h3 {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .result-score {
+  color: var(--accent-color);
+}
+
+[data-theme="dark"] .level-recommendation {
+  color: #e0e0e0;
+}
+
+/* Dark theme button styling */
+[data-theme="dark"] .beginner-btn {
+  background-color: var(--beginner-color, #4CAF50);
+  color: white;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+}
+
+[data-theme="dark"] .beginner-btn:hover {
+  background-color: #3d8b40;
+  box-shadow: 0 8px 20px rgba(76, 175, 80, 0.5);
+}
+
+[data-theme="dark"] .intermediate-btn {
+  background-color: var(--intermediate-color, #FF9800);
+  color: white;
+  box-shadow: 0 4px 12px rgba(255, 152, 0, 0.4);
+}
+
+[data-theme="dark"] .intermediate-btn:hover {
+  background-color: #e68900;
+  box-shadow: 0 8px 20px rgba(255, 152, 0, 0.5);
+}
+
+[data-theme="dark"] .advanced-btn {
+  background-color: var(--advanced-color, #3498db);
+  color: white;
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
+}
+
+[data-theme="dark"] .advanced-btn:hover {
+  background-color: #2980b9;
+  box-shadow: 0 8px 20px rgba(52, 152, 219, 0.5);
+}
+
+[data-theme="dark"] .btn-primary {
+  background-color: var(--accent-color);
+  color: white;
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
+}
+
+[data-theme="dark"] .btn-primary:hover {
+  background-color: #2980b9;
+  box-shadow: 0 8px 20px rgba(52, 152, 219, 0.5);
+}
+
+/* Dark theme assessment highlight section */
+[data-theme="dark"] .assessment-highlight {
+  color: var(--text-color-dark, #ffffff);
+}
+
+[data-theme="dark"] .assessment-text {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .assessment-subtext {
+  color: #b0b0b0;
+}
+
+/* Dark theme mobile responsive adjustments */
+@media (max-width: 768px) {
+  [data-theme="dark"] .tab {
+    border-bottom: 1px solid var(--border-color-dark, #444);
+  }
+  
+  [data-theme="dark"] .tab.active {
+    border-left: 3px solid var(--accent-color);
+    border-bottom: 1px solid var(--border-color-dark, #444);
+  }
+}
