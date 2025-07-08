@@ -78,7 +78,7 @@
 
 .quiz-intro:hover {
   transform: translateY(-3px); /* Added standard hover transform */
-  box-shadow: 0 12px 30px var(--shadow-color);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* I increased shadow on hover */
 }
 
 .beginner-intro {
@@ -106,8 +106,7 @@
 
 .question:hover {
   transform: translateY(-3px); /* Added standard hover transform */
-  box-shadow: 0 12px 30px var(--shadow-color);
-}
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);} /* I increased shadow on hover */
 
 .mcq-question {
   font-weight: 600;
@@ -187,7 +186,7 @@
 
 .level-result:hover {
   transform: translateY(-3px); /* Added standard hover transform */
-  box-shadow: 0 12px 30px var(--shadow-color);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* I increased shadow on hover */
 }
 
 .level-result h3 {
