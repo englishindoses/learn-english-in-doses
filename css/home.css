@@ -434,6 +434,7 @@ footer {
 
 .stat-card:hover {
   transform: translateY(-10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* I increased shadow on hover */
 }
 
 .stat-number {
@@ -501,7 +502,7 @@ footer {
 
 .feature-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* I increased shadow on hover */
 }
 
 .feature-icon {
@@ -545,6 +546,7 @@ footer {
 
 .path-card:hover {
   transform: translateY(-10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* I increased shadow on hover */
 }
 
 .path-header {
@@ -625,6 +627,7 @@ footer {
 
 .topic-card:hover {
   transform: translateY(-10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* I increased shadow on hover */
 }
 
 .topic-title {
@@ -961,4 +964,33 @@ footer {
   .progress-buttons {
     flex-direction: column;
   }
+}
+
+/* Simple Assessment Text Styling */
+.assessment-highlight {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin-bottom: 25px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.assessment-highlight:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.assessment-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.assessment-subtext {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
 }
