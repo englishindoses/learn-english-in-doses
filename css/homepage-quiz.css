@@ -395,7 +395,6 @@
 
 /* ----------------------------------------
    Dark Theme Styling for Find Your Level Quiz Section
-   Add this to your css/homepage-quiz.css file
    ---------------------------------------- */
 
 /* Dark theme styling for quiz container and main elements */
@@ -547,49 +546,48 @@
 
 /* Dark theme button styling */
 [data-theme="dark"] .beginner-btn {
-  background-color: var(--beginner-color, #4CAF50);
+  background-color: #2d5a31; /* Much darker green */
   color: white;
-  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+  box-shadow: 0 4px 12px rgba(45, 90, 49, 0.4);
 }
 
 [data-theme="dark"] .beginner-btn:hover {
-  background-color: #3d8b40;
-  box-shadow: 0 8px 20px rgba(76, 175, 80, 0.5);
+  background-color: #245127; /* Even darker on hover */
+  box-shadow: 0 8px 20px rgba(45, 90, 49, 0.5);
 }
 
 [data-theme="dark"] .intermediate-btn {
-  background-color: var(--intermediate-color, #FF9800);
+  background-color: #cc7a00; /* Much darker orange */
   color: white;
-  box-shadow: 0 4px 12px rgba(255, 152, 0, 0.4);
+  box-shadow: 0 4px 12px rgba(204, 122, 0, 0.4);
 }
 
 [data-theme="dark"] .intermediate-btn:hover {
-  background-color: #e68900;
-  box-shadow: 0 8px 20px rgba(255, 152, 0, 0.5);
+  background-color: #b36b00; /* Even darker on hover */
+  box-shadow: 0 8px 20px rgba(204, 122, 0, 0.5);
 }
 
 [data-theme="dark"] .advanced-btn {
-  background-color: var(--advanced-color, #3498db);
+  background-color: #1e3a52; /* Much darker blue */
   color: white;
-  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
+  box-shadow: 0 4px 12px rgba(30, 58, 82, 0.4);
 }
 
 [data-theme="dark"] .advanced-btn:hover {
-  background-color: #2980b9;
-  box-shadow: 0 8px 20px rgba(52, 152, 219, 0.5);
+  background-color: #17314a; /* Even darker on hover */
+  box-shadow: 0 8px 20px rgba(30, 58, 82, 0.5);
 }
 
 [data-theme="dark"] .btn-primary {
-  background-color: var(--accent-color);
+  background-color: #2c5aa0; /* Darker blue for primary buttons */
   color: white;
-  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
+  box-shadow: 0 4px 12px rgba(44, 90, 160, 0.4);
 }
 
 [data-theme="dark"] .btn-primary:hover {
-  background-color: #2980b9;
-  box-shadow: 0 8px 20px rgba(52, 152, 219, 0.5);
+  background-color: #245187; /* Even darker on hover */
+  box-shadow: 0 8px 20px rgba(44, 90, 160, 0.5);
 }
-
 /* Dark theme assessment highlight section */
 [data-theme="dark"] .assessment-highlight {
   color: var(--text-color-dark, #ffffff);
