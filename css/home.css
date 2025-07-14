@@ -946,7 +946,7 @@ footer {
   }
 
   .hero-buttons {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     gap: 12px; /* Reduced spacing between buttons */
   }
