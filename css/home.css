@@ -922,37 +922,69 @@ footer {
   }
 
   .site-logo img {
-    max-height: 40px;
+    max-height: 35px; /* Reduced from 40px */
   }
 
+  /* 1. Reduced vertical spacing */
   .home-section {
-    padding: 40px 20px;
+    padding: 30px 15px; /* Reduced from 40px 20px */
   }
 
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 30px; /* Reduced from default 50px */
+  }
+
+  /* 2. Hero section optimization */
+  .hero-title {
+    font-size: 1.8rem; /* Reduced from 2rem */
+    line-height: 1.2;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem; /* Reduced from 1.1rem */
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px; /* Reduced spacing between buttons */
+  }
+
+  /* 4. Typography improvements */
+  body {
+    font-size: 15px; /* Smaller base font */
+    line-height: 1.5; /* Tighter line height */
+  }
+
+  .path-desc, .feature-card p {
+    font-size: 0.95rem; /* Smaller descriptive text */
+  }
+
+  /* 5. Touch-friendly improvements */
+  .btn-primary, .btn-secondary, .nav-button, 
+  .beginner-btn, .intermediate-btn, .advanced-btn {
+    min-height: 44px; /* Apple's recommended touch target */
+    padding: 12px 20px; /* Increased padding */
+  }
+
+  .nav-link {
+    padding: 12px 16px; /* Increased touch area */
+  }
+
+  /* Additional spacing reductions */
   .stats-grid,
   .progress-stats {
     grid-template-columns: 1fr;
+    gap: 15px; /* Reduced gap */
   }
   
   .topics-grid {
     grid-template-columns: 1fr;
   }
 
-  .hero-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .hero-title {
-    font-size: 2rem;
-  }
-
-  .hero-subtitle {
-    font-size: 1.1rem;
-  }
-
-  .section-title {
-    font-size: 1.8rem;
+  .feature-card, .path-card {
+    margin-bottom: 20px; /* Reduced spacing between cards */
   }
 
   .progress-container {
@@ -961,6 +993,36 @@ footer {
 
   .progress-buttons {
     flex-direction: column;
+    gap: 12px; /* Added consistent button spacing */
+  }
+}
+
+@media (max-width: 480px) {
+  /* Further optimizations for very small screens */
+  .hero-title {
+    font-size: 1.6rem; /* Even smaller on phones */
+  }
+
+  .site-logo img {
+    max-height: 30px; /* Even smaller logo */
+  }
+
+  .home-section {
+    padding: 25px 15px; /* Even more compact */
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+    margin-bottom: 25px;
+  }
+
+  .hero-buttons {
+    gap: 10px; /* Minimal button spacing */
+  }
+
+  .path-list li {
+    margin-bottom: 5px; /* Compact list items */
+    font-size: 0.9rem;
   }
 }
 
