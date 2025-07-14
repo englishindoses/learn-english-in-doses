@@ -880,10 +880,6 @@ footer {
   .hero-buttons {
     justify-content: center;
   }
-
-  .feature-cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
   
   .topics-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -901,6 +897,12 @@ footer {
 
   .hero-title {
     font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 850px) {
+  .feature-cards {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -929,10 +931,6 @@ footer {
 
   .stats-grid,
   .progress-stats {
-    grid-template-columns: 1fr;
-  }
-  
-  .feature-cards {
     grid-template-columns: 1fr;
   }
   
