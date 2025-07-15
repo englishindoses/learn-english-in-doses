@@ -1303,7 +1303,7 @@
   }
 
    /* Example highlighting */
-    .modal-highlight {
+    .grammar-highlight {
       font-weight: bold;
       color: var(--accent-color, #3498db);
     }
