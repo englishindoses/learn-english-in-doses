@@ -971,7 +971,7 @@ footer {
   .btn-primary, .btn-secondary, .nav-button, 
   .beginner-btn, .intermediate-btn, .advanced-btn {
     min-height: 44px; /* Apple's recommended touch target */
-    padding: 12px 12px; /* Increased padding */
+    padding: 12px 20px; /* Increased padding */
   }
 
   .nav-link {
