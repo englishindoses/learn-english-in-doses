@@ -1301,6 +1301,34 @@
     font-family: 'Source Code Pro', monospace;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   }
+
+   /* Example highlighting */
+    .modal-highlight {
+      font-weight: bold;
+      color: var(--accent-color, #3498db);
+    }
+
+    /* Table alignments */
+    .meaning-table td:first-child {
+      width: 15%;
+      font-weight: bold;
+    }
+
+    .meaning-table td:nth-child(2) {
+      width: 45%;
+    }
+
+    .meaning-table td:nth-child(3) {
+      width: 40%;
+    }
+
+    /* Emphasis on context */
+    .context-note {
+      font-style: italic;
+      color: #666;
+      font-size: 0.9em;
+      margin-top: 5px;
+    }
   
   /* Dark mode specific styles for conversation section */
   [data-theme="dark"] .conversation-section h1 {
