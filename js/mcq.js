@@ -395,7 +395,7 @@ const MCQModule = (function() {
             
             if (feedback) {
                 feedback.innerHTML = `<span class="feedback-result incorrect-result">Incorrect!</span> ${explanation}`;
-                feedback.className = 'feedback incorrect';
+                feedback.className = 'feedback incorrect-answer';
             }
             
             // Mark as answered incorrectly

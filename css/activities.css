@@ -100,7 +100,7 @@
   display: block;
 }
 
-.feedback.incorrect {
+.feedback.incorrect-answer {
   background-color: var(--error-bg, #f8d7da);
   color: var(--error-color, #721c24);
   border: 1px solid var(--error-bg, #f8d7da);
@@ -293,7 +293,7 @@
   display: block;
 }
 
-.feedback.incorrect {
+.feedback.incorrect-answer {
   background-color: var(--error-bg, #f8d7da);
   color: var(--error-color, #721c24);
   border: 1px solid var(--error-bg, #f8d7da);

@@ -107,6 +107,11 @@
     font-size: 1.25rem;
     margin-bottom: 15px;
   }
+
+  h4 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
   
   .example, span.example, em {
     font-family: 'Source Code Pro', monospace;
@@ -750,6 +755,21 @@
     max-width: 760px;
     margin-left: auto;
     margin-right: auto;
+  }
+  
+  /* Imporant note */
+  .important-note {
+    background-color: var(--note-bg);
+    border: 1px solid var(--note-border);
+    padding: 15px;
+    border-radius: 4px;
+    margin: 20px 0;
+    font-size: 0.9em;
+    position: relative;
+  }
+
+  [data-theme="dark"] .important-note {
+    background-color: rgba(60, 60, 60, 0.6);
   }
   
   /* Native Speaker Note with speech bubble icon */
