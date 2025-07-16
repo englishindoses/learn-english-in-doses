@@ -748,9 +748,7 @@
   /* Tips section styling */
   .tips {
     background-color: transparent;
-    padding: 15px;
     border-radius: 5px;
-    margin: 20px 0;
     border-left: none;
     max-width: 760px;
     margin-left: auto;
@@ -766,6 +764,8 @@
     margin: 20px 0;
     font-size: 0.9em;
     position: relative;
+    display: flex;       
+  align-items: center;
   }
 
   [data-theme="dark"] .important-note {
