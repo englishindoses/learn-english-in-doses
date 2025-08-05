@@ -305,7 +305,7 @@
           <span>A. was approved</span>
         </div>
         <div class="option" data-index="1">
-          <span>B. got approved</span>
+          <span>B. get approved</span>
         </div>
         <div class="option" data-index="2">
           <span>C. is approved</span>
@@ -325,7 +325,7 @@
           <span>A. My bicycle was stolen from outside the shop.</span>
         </div>
         <div class="option" data-index="1">
-          <span>B. My bike got nicked from outside the shop.</span>
+          <span>B. My bike got stolen from outside the shop.</span>
         </div>
         <div class="option" data-index="2">
           <span>C. My bicycle is reported to have been stolen.</span>
@@ -339,7 +339,7 @@
     
     <!-- Question 3 -->
     <div class="question" id="q3">
-      <p class="mcq-question">3. Complete the sentence: "I need _______ my hair before the wedding."</p>
+      <p class="mcq-question">3. Complete the sentence: "I need _______ before the wedding."</p>
       <div class="options">
         <div class="option" data-index="0">
           <span>A. to get cut</span>
@@ -359,19 +359,19 @@
     
     <!-- Question 4 -->
     <div class="question" id="q4">
-      <p class="mcq-question">4. Which sentence uses passive reporting correctly?</p>
+      <p class="mcq-question">4. Complete the sentence: "The lost documents _______ in the old filing cabinet."</p>
       <div class="options">
         <div class="option" data-index="0">
-          <span>A. The company is considered very successful.</span>
+          <span>A. are thought to be hidden</span>
         </div>
         <div class="option" data-index="1">
-          <span>B. The treasure is believed to be hidden somewhere on the island.</span>
+          <span>B. are thinking to be hidden</span>
         </div>
         <div class="option" data-index="2">
-          <span>C. The results are expected very soon.</span>
+          <span>C. are thought to hide</span>
         </div>
         <div class="option" data-index="3">
-          <span>D. The problem is understood by everyone.</span>
+          <span>D. think to be hidden</span>
         </div>
       </div>
       <div class="feedback"></div>
@@ -419,19 +419,19 @@
     
     <!-- Question 7 -->
     <div class="question" id="q7">
-      <p class="mcq-question">7. Complete the sentence: "The ancient artifact _______ in a tomb in Egypt last year."</p>
+      <p class="mcq-question">7. Complete the sentence: "The famous painting _______ by Leonardo da Vinci in the 16th century."</p>
       <div class="options">
         <div class="option" data-index="0">
-          <span>A. is believed to be discovered</span>
+          <span>A. is believed to be painted</span>
         </div>
         <div class="option" data-index="1">
-          <span>B. is believed to have been discovered</span>
+          <span>B. is believed to have been painted</span>
         </div>
         <div class="option" data-index="2">
-          <span>C. was believed to be discovered</span>
+          <span>C. was believed to be painted</span>
         </div>
         <div class="option" data-index="3">
-          <span>D. believes to have been discovered</span>
+          <span>D. believes to have been painted</span>
         </div>
       </div>
       <div class="feedback"></div>
@@ -488,7 +488,7 @@
           <span>B. Writing a scientific research paper</span>
         </div>
         <div class="option" data-index="2">
-          <span>C. Having a casual conversation with family</span>
+          <span>C. Chatting with friends at a party</span>
         </div>
         <div class="option" data-index="3">
           <span>D. Asking someone for directions</span>
@@ -561,24 +561,24 @@ document.addEventListener('DOMContentLoaded', function() {
     containerId: 'mcq',
     answers: {
       'q1': 0,  // A - was approved
-      'q2': 1,  // B - My bike got nicked from outside the shop
+      'q2': 1,  // B - My bike got stolen from outside the shop
       'q3': 2,  // C - to get my hair cut
-      'q4': 1,  // B - The treasure is believed to be hidden somewhere on the island
+      'q4': 0,  // A - are thought to be hidden
       'q5': 1,  // B - being disturbed
       'q6': 2,  // C - The project was completed ahead of schedule
-      'q7': 1,  // B - is believed to have been discovered
+      'q7': 1,  // B - is believed to have been painted
       'q8': 1,  // B - I had my computer repaired yesterday
       'q9': 0,  // A - be reviewed / be sent
       'q10': 1  // B - Writing a scientific research paper
     },
     correctExplanations: {
       'q1': "Use past simple passive 'was approved' for a completed action in the past with a specific time reference.",
-      'q2': "Get-passive with informal vocabulary ('got nicked') is most natural in casual conversation.",
+      'q2': "Get-passive with 'got stolen' is most natural in casual conversation compared to formal passive structures.",
       'q3': "Causative passive: 'get + object + past participle' - you arrange for someone to cut your hair.",
-      'q4': "Passive reporting structure: 'is believed to be + past participle' for present/future situations.",
+      'q4': "Passive reporting structure: 'are thought to be + past participle' - correct form with reporting verb.",
       'q5': "Use 'being + past participle' (passive gerund) after the verb 'hate'.",
       'q6': "Standard passive voice 'was completed' is most appropriate for formal business writing.",
-      'q7': "Use 'to have been + past participle' for past events in passive reporting structures.",
+      'q7': "Use 'to have been + past participle' for past events in passive reporting structures - the painting happened in the past.",
       'q8': "Correct causative structure: 'had + object + past participle' - you arranged for repair.",
       'q9': "Both parts need passive voice: modal + be + past participle for both clauses.",
       'q10': "Scientific writing commonly uses passive voice to focus on research and results rather than researchers."
@@ -587,13 +587,13 @@ document.addEventListener('DOMContentLoaded', function() {
       'q1': "Check the time reference - 'yesterday' requires past tense, and focus is on the policy, not who approved it.",
       'q2': "For informal conversation, get-passive is more natural than formal passive structures.",
       'q3': "You need the full causative structure with object - you don't cut your own hair.",
-      'q4': "Look for the complete passive reporting structure with infinitive after the reporting verb.",
+      'q4': "Look for the correct passive reporting structure: 'are + past participle + to be + past participle'.",
       'q5': "After 'hate', use the passive gerund form 'being + past participle'.",
       'q6': "Formal business reports typically use standard passive voice rather than get-passive or active voice.",
-      'q7': "Past events in passive reporting need the perfect infinitive 'to have been + past participle'.",
+      'q7': "Past events in passive reporting need the perfect infinitive 'to have been + past participle' because the painting was done in the past.",
       'q8': "The causative structure means you arranged for someone else to do the action for you.",
       'q9': "Both actions (reviewing and sending) need to be in passive voice with proper modal structure.",
-      'q10': "Consider which context requires formal, objective language focusing on processes rather than people."
+      'q10': "Consider which context requires formal, objective language focusing on processes rather than people - chatting at parties is very informal."
     },
     showAllQuestionsAtOnce: true,
     onComplete: function(score, total) {

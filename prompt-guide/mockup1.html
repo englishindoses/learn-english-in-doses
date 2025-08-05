@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Front Page - Combined Design</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #FDF8F5; /* warm apricot background */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 95vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Top and bottom color bars */
+    .bar-top, .bar-bottom {
+      position: absolute;
+      width: 100%;
+      height: 40px;
+      background-color: #A74F39; /* coral-brown bar color */
+    }
+    .bar-top { top: 0; }
+    .bar-bottom { bottom: 0; }
+
+    /* Decorative circles */
+    .shape {
+      position: absolute;
+      border-radius: 50%;
+    }
+    .circle1 {
+      width: 200px;
+      height: 200px;
+      background: #753221; /* deeper accent */
+      top: -60px;
+      left: -60px;
+    }
+    .circle2 {
+      width: 210px;
+      height: 200px;
+      background: #863622; /* lighter variation */
+      bottom: -60px;
+      right: -60px;
+    }
+
+    /* Title box */
+    .title-container {
+      text-align: center;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #753221;
+      margin-bottom: 0.3em;
+    }
+
+    h2 {
+      font-size: 1.8em;
+      color: #A74F39;
+    }
+
+    p {
+      color: #5A2A1B;
+      font-size: 1em;
+    }
+
+    @media print {
+  @page {
+    margin: 0; /* removes browser default margins */
+    size: A4;  /* optional: define page size */
+  }
+}
+  </style>
+</head>
+<body>
+  <!-- Decorative bars and shapes -->
+  <div class="bar-top"></div>
+  <div class="bar-bottom"></div>
+  <div class="circle1 shape"></div>
+  <div class="circle2 shape"></div>
+
+  <!-- Title section -->
+  <div class="title-container">
+    <h1>The Practical Prompt Book</h1>
+    <h2>for ESL Teachers</h2>
+    <p>Create ESL Material with AI</p>
+  </div>
+</body>
+</html>
