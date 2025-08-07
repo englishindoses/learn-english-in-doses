@@ -1,0 +1,76 @@
+<!-- File: mcq-quiz-template.html -->
+<!-- Template for Multiple Choice Question (MCQ) Quiz -->
+<!-- Instructions:
+  - Create 10 questions starting from easier ones and increasing in difficulty.
+  - Each question must test the ability to use the grammar point (not just identify it).
+  - Only 1 correct answer per question.
+  - All options should sound natural; avoid obviously wrong or unnatural distractors.
+  - Correct and incorrect explanations should give helpful feedback.
+-->
+
+<section class="content-section mcq-container">
+  <h2>Test Your Knowledge</h2>
+  <p>Choose the correct option for each question to test your understanding of [GRAMMAR_POINT].</p>
+
+  <div id="mcq" class="activity-container active">
+    <!-- QUESTION TEMPLATE: Repeat for each question -->
+    <div class="question" id="q1">
+      <p class="mcq-question">1. [QUESTION_TEXT]</p>
+      <div class="options">
+        <div class="option" data-index="0"><span>A. [OPTION_A]</span></div>
+        <div class="option" data-index="1"><span>B. [OPTION_B]</span></div>
+        <div class="option" data-index="2"><span>C. [OPTION_C]</span></div>
+        <div class="option" data-index="3"><span>D. [OPTION_D]</span></div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+    <!-- END QUESTION TEMPLATE -->
+
+    <div class="control-buttons">
+      <button id="mcq-submit" class="submit-btn">Check Answers</button>
+      <a href="#grammar-summary" class="nav-button">Review Grammar</a>
+      <button id="mcq-restart" class="restart-btn" style="display:none;">Try Again</button>
+    </div>
+
+    <div class="score-display" id="mcq-score" style="display:none;">
+      Your score: <span>0</span>/[TOTAL_QUESTIONS]
+    </div>
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  MCQModule.init({
+    containerId: 'mcq',
+    answers: {
+      'q1': [CORRECT_INDEX_Q1],
+      // Add remaining question IDs and correct indexes here
+    },
+    correctExplanations: {
+      'q1': '[CORRECT_EXPLANATION_Q1]',
+      // Add remaining correct explanations here
+    },
+    incorrectExplanations: {
+      'q1': '[INCORRECT_EXPLANATION_Q1]',
+      // Add remaining incorrect explanations here
+    },
+    showAllQuestionsAtOnce: true,
+    onComplete: function(score, total) {
+      if (typeof ProgressTracker !== 'undefined') {
+        ProgressTracker.markItemCompleted('activities', '[ACTIVITY_ID]', {
+          score: score,
+          maxScore: total,
+          completed: true,
+          completedAt: new Date().toISOString(),
+          title: '[ACTIVITY_TITLE]'
+        });
+        ProgressTracker.updateItemProgress('lessons', '[LESSON_ID]', {
+          lastViewed: new Date().toISOString(),
+          progress: 100,
+          title: '[LESSON_TITLE]'
+        });
+      }
+    }
+  });
+});
+</script>

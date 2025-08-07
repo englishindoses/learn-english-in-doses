@@ -1,416 +1,108 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <!-- Standard head content -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="[GRAMMAR TOPIC] - Advanced ESL grammar explanation with examples and practice">
-  <title>[GRAMMAR TOPIC] - Advanced ESL Grammar</title>
-  
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
-  
-  <!-- Favicon -->
-  <link rel="apple-touch-icon" sizes="180x180" href="../../images/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../../images//favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../../images//favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  
-  <!-- Styles -->
-   <link rel="stylesheet" href="../../css/base.css">
-  <link rel="stylesheet" href="../../css/activities.css">
-  <link rel="stylesheet" href="../../css/progress-tracking-styles.css">
-  <link rel="stylesheet" href="../../css/button-shine.css">
+<!-- File: grammar-content-template.html -->
+<!-- This template covers the grammar explanation content, excluding the MCQ section -->
+<!-- Instructions:
+  - Each example sentence should include a short clarification in brackets to explain its meaning.
+  - Examples should draw from work, daily life, and travel contexts (no need to label the context).
+  - Examples must always match the grammar point being taught and should sound natural in their context.
+  - There must always be at least 3 examples per grammar point. More can be added if necessary, but not if it's not needed.
+  - The "Native speaker note" is optional and should only be included if it gives useful insight into how native speakers actually use the grammar point.
+  - Common errors should be real mistakes that ESL students actually make, and the incorrect sentences should genuinely be wrong.
+  - Tips should provide useful, practical advice or strategies, not repeat information already given in the lesson.
+  - This template is slightly flexible: maximum of 3 learning objectives, 3 common errors, and 3 tips.
+-->
 
-  <!-- Additional styles for MCQ and highlighting -->
-  <style>
-    /* Make sure all MCQ questions remain visible */
-    #mcq-container .question {
-      display: block !important;
-      margin-bottom: 25px;
-      padding-bottom: 15px;
-      border-bottom: 1px solid var(--border-color, #ddd);
-    }
-    
-    .activity-container.active {
-      display: block !important;
-    }
-    
-    /* Ensure proper spacing between options */
-    .options {
-      margin-bottom: 15px;
-    }
-    
-    /* Make sure feedback is visible */
-    .feedback {
-      margin-top: 10px;
-      min-height: 20px;
-    }
+<main id="main-content">
+  <!-- Introduction Section -->
+  <section class="intro-section">
+    <h2>Introduction</h2>
+    <p>[INTRO_PARAGRAPH]</p>
+    <h3>After this lesson, you will be able to:</h3>
+    <ul>
+      <li>[LEARNING_OUTCOME_1]</li>
+      <li>[LEARNING_OUTCOME_2]</li>
+      <li>[LEARNING_OUTCOME_3]</li>
+    </ul>
+  </section>
 
-    /* Additional styles for clickable option divs */
-    .option {
-      cursor: pointer;
-      transition: background-color 0.2s;
-       
-</head>
-<body>
-  <!-- Skip link and theme toggle -->
-  <a href="#main-content" class="skip-link">Skip to content</a>
-  
-  <div class="theme-toggle-container">
-    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
-      <span class="light-icon">☀️</span>
-      <span class="dark-icon">🌙</span>
-    </button>
-  </div>
-  
-  <!-- Navigation -->
-  <nav class="main-navigation">
-    <a href="../../home.html" class="site-logo">
-      <img src="../../images/my-logo.svg" alt="English in Doses" width="150" height="auto">
-    </a>
-    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
-    <div class="nav-links">
-      <a href="../../home.html" class="nav-link">Home</a>
-      <a href="../../about.html" class="nav-link">About Us</a>
-      <a href="../../contact.html" class="nav-link">Contact Us</a>
-      <a href="../../home.html#where-to-start" class="nav-link">Grammar</a>
-      <a href="../../extra-practice.html" class="nav-link">Extra Practice</a>
-      <a href="../../conversation-page.html" class="nav-link">Conversation</a>
-      <a href="../../my-progress.html" class="nav-link">My Progress</a>
+  <!-- Grammar Point Section -->
+  <section class="grammar-point">
+    <h2>[SECTION_TITLE]</h2>
+    <p><strong>Form:</strong> [FORM_DESCRIPTION]</p>
+    <div class="example">
+      <ol>
+        <li>[EXAMPLE_SENTENCE_1] <em>([SHORT_CLARIFICATION_1])</em></li>
+        <li>[EXAMPLE_SENTENCE_2] <em>([SHORT_CLARIFICATION_2])</em></li>
+        <li>[EXAMPLE_SENTENCE_3] <em>([SHORT_CLARIFICATION_3])</em></li>
+      </ol>
     </div>
-
-    <div class="advanced-nav-indicator"></div>
-  </nav>
-
-  <div class="container">
-    <!-- Breadcrumbs -->
-    <div class="breadcrumbs" aria-label="breadcrumb">
-      <span class="breadcrumb-item"><a href="../../home.html">Home</a></span>
-      <span class="breadcrumb-separator">›</span>
-      <span class="breadcrumb-item"><a href="advanced-grammar.html">Advanced Grammar</a></span>
-      <span class="breadcrumb-separator">›</span>
-      <span class="breadcrumb-item"><a href="advanced-grammar.html#[SECTION-ANCHOR]">[SECTION NAME]</a></span>
-      <span class="breadcrumb-separator">›</span>
-      <span class="breadcrumb-item">[GRAMMAR TOPIC]</span>
+    <p><strong>When to use it:</strong> [USAGE_DESCRIPTION]</p>
+    <ul>
+      <li>[USAGE_POINT_1]</li>
+      <li>[USAGE_POINT_2]</li>
+      <li>[USAGE_POINT_3]</li>
+    </ul>
+    <!-- Optional native speaker note -->
+    <div class="note">
+      <p><strong>Native speaker note:</strong> [NATIVE_NOTE]</p>
     </div>
+  </section>
 
-    <main id="main-content">
-      <h1>[GRAMMAR TOPIC]</h1>
-
-      <!-- Please use these guidelines when showing grammar rules:
-* past participle -> past particple (V3)
-* present participle -> verb-ing
-* always use verb-ing when the -ing form of the verb is required
-Also don't capitalise when giving formulas. For example:
-"Form: Modal + have + past participle (V3)" -> "Form: modal + have + past participle (V3)"-->
-
-      <!-- INTRODUCTION SECTION -->
-      <section class="intro-section">
-        <h2>Introduction</h2>
-        <p>[Brief introduction to the grammar topic - what it is and why it's important]</p>
-        
-        <h3>After this lesson, you will be able to:</h3>
-        <ul>
-          <li>[Learning goal 1].</li>
-          <li>[Learning goal 2].</li>
-          <li>[Learning goal 3].</li>
-        </ul>
-      </section>
-
-      <!-- GRAMMAR POINT SECTION 1 -->
-      <section class="grammar-point">
-        <h2>[Grammar point 1 title]</h2>
-        
-        <p><strong>Form</strong>: [Structure/formula of the grammar]</p>
-        
-        <p><strong>When to use it</strong>: [Explanation of meaning and usage]</p>
-        
-        <div class="example">
-          <ol>
-            <li>[Example 1 from work context (brief clarification)]</li>
-            <li>[Example 2 from daily life context (brief clarification)]</li>
-            <li>[Example 3 from travel context (brief clarification)]</li>
-          </ol>
-        </div>
-        
-        <div class="note">
-          <p><strong>Native speaker note:</strong> [How native speakers actually use this in real life, any shortcuts, etc.]</p>
-        </div>
-      </section>
-
-      <!-- GRAMMAR POINT SECTION 2 -->
-      <section class="grammar-point">
-        <h2>[Grammar point 2 title]</h2>
-        
-        <p><strong>Form</strong>: [Structure/formula of the grammar]</p>
-        
-        <p><strong>When to use it</strong>: [Explanation of meaning and usage]</p>
-        
-        <div class="example">
-          <ol>
-            <li>[Example 1 from work context (brief clarification)]</li>
-            <li>[Example 2 from daily life context (brief clarification)]</li>
-            <li>[Example 3 from travel context (brief clarification)]</li>
-          </ol>
-        </div>
-        
-        <div class="note">
-          <p><strong>Native speaker note:</strong> [How native speakers actually use this in real life, any shortcuts, etc.]</p>
-        </div>
-      </section>
-
-      <!-- GRAMMAR POINT SECTION 3 (if needed) -->
-      <section class="grammar-point">
-        <h2>[Grammar point 3 title - Key differences/Choosing between forms]</h2>
-        
-        <p><strong>Key differences</strong>: [Explanation of when to choose one form over another]</p>
-        
-        <div class="example">
-          <p><strong>Compare these pairs:</strong></p>
-          <ol>
-            <li>[Example 1 from work context (brief clarification)]</li>
-            <li>[Example 2 from daily life context (brief clarification)]</li>
-            <li>[Example 3 from travel context (brief clarification)]</li>
-          </ol>
-        </div>
-        
-        <div class="note">
-          <p><strong>Native speaker note:</strong> [Any relevant information about native speaker usage]</p>
-        </div>
-      </section>
-      <!-- Add more grammar points as needed. Always give an explanation, form and 3 examples. Include a native speaker's note when needed. -->
-
-      <!-- VISUAL COMPARISON TABLE -->
-      <section id="summary">
-        <h2>Summary: [Grammar Topic]</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>[Column 1 Header]</th>
-              <th>[Column 2 Header]</th>
-              <th>[Column 3 Header]</th>
-              <th>Example</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>[Row 1, Column 1]</td>
-              <td>[Row 1, Column 2]</td>
-              <td>[Row 1, Column 3]</td>
-              <td><span class="example">[Example]</span></td>
-            </tr>
-            <!-- Additional rows as needed -->
-          </tbody>
-        </table>
-      </section>
-
-      <!-- COMMON ERRORS SECTION -->
-      <section class="common-errors">
-        <h2 class="common-errors-heading">Common Errors</h2>
-        
-        <div class="error-pattern">
-          <p class="error-title"><strong>1: [Error 1 title]</strong></p>
-          <p class="incorrect">[Incorrect example]</p><br>
-          <p class="correct">[Correct example] ✓</p>
-          <p class="explanation"><em>[Explanation of why it's wrong and how to fix it]</em></p>
-        </div>
-        
-        <div class="error-pattern">
-          <p class="error-title"><strong>2: [Error 2 title]</strong></p>
-          <p class="incorrect">[Incorrect example]</p><br>
-          <p class="correct">[Correct example] ✓</p>
-          <p class="explanation"><em>[Explanation of why it's wrong and how to fix it]</em></p>
-        </div>
-        
-        <div class="error-pattern">
-          <p class="error-title"><strong>3: [Error 3 title]</strong></p>
-          <p class="incorrect">[Incorrect example]</p><br>
-          <p class="correct">[Correct example] ✓</p>
-          <p class="explanation"><em>[Explanation of why it's wrong and how to fix it]</em></p>
-        </div>
-      </section>
-
-      <!-- TIPS SECTION -->
-      <section class="tips">
-        <h2 class="tips-heading">Useful Tips</h2>
-        
-        <div class="grammar-tip">
-          <p>📝 <strong>TIP 1:</strong> [Learning/memorization tip 1]</p>
-        </div>
-        
-        <div class="grammar-tip">
-          <p>📝 <strong>TIP 2:</strong> [Learning/memorization tip 2]</p>
-        </div>
-        
-        <div class="grammar-tip">
-          <p>📝 <strong>TIP 3:</strong> [Learning/memorization tip 3]</p>
-        </div>
-      </section>
-
-      <!-- MCQ PRACTICE SECTION -->
-      <section class="content-section mcq-container">
-        <h2>Test Your Knowledge</h2>
-        <p>Choose the correct option for each question to test your understanding of [Grammar Topic].</p>
-        
-        <div id="mcq" class="activity-container active">
-          <!-- Question 1 (easy) -->
-          <div class="question" id="q1">
-            <p class="mcq-question">1. [Question 1]</p>
-            <div class="options">
-              <div class="option" data-index="0">
-                <span>A. [Option A]</span>
-              </div>
-              <div class="option" data-index="1">
-                <span>B. [Option B]</span>
-              </div>
-              <div class="option" data-index="2">
-                <span>C. [Option C]</span>
-              </div>
-              <div class="option" data-index="3">
-                <span>D. [Option D]</span>
-              </div>
-            </div>
-            <div class="feedback"></div>
-          </div>
-          
-          <!-- Questions 2-10 follow the same pattern -->
-          <!-- Include all 10 questions, gradually increasing in difficulty -->
-          
-          <div class="control-buttons">
-            <button id="mcq-submit" class="submit-btn">Check Answers</button>
-            <!-- Always maintain the Review Gammar button as is. -->
-            <a href="#summary" class="nav-button">Review Grammar</a>
-            <button id="mcq-restart" class="restart-btn" style="display:none;">Try Again</button>
-          </div>
-          
-          <div class="score-display" id="mcq-score" style="display:none;">
-            Your score: <span>0</span>/10
-          </div>
-        </div>
-      </section>
-    </main>
-  </div>
-  
-  <!-- BOTTOM NAVIGATION -->
-  <nav class="bottom-navigation">
-    <a href="[PREVIOUS-PAGE].html" class="nav-button previous">← Previous: [Previous Topic]</a>
-    <div class="center-buttons">
-      <button class="nav-button print-button" onclick="window.print()">Print This Page</button>
-      <a href="[CURRENT-PAGE]-practice.html" class="nav-button activities">Practice Activities</a>
+  <!-- Key Differences Section -->
+  <section class="grammar-point">
+    <h2>Key Differences and Choosing Between Forms</h2>
+    <div class="example">
+      <p>[EXPLANATION_WITH_EXAMPLES]</p>
     </div>
-    <a href="[NEXT-PAGE].html" class="nav-button next">Next: [Next Topic] →</a>
-  </nav>
+  </section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="footer-content">
-      <div class="footer-section">
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="../../home.html">Home</a></li>
-          <li><a href="../../home.html#where-to-start">Grammar</a></li>
-          <li><a href="../../extra-practice.html">Extra Practice</a></li>
-          <li><a href="../../my-progress.html">My Progress</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-section">
-        <h3>Grammar Topics</h3>
-        <ul>
-          <li><a href="advanced-grammar.html#advanced-tenses-and-aspect">Advanced Tenses</a></li>
-          <li><a href="advanced-grammar.html#conditionals">Advanced Conditionals</a></li>
-          <li><a href="advanced-grammar.html#modals">Advanced Modal Verbs</a></li>
-          <li><a href="advanced-grammar.html#passive">Advanced Passive Voice</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-section">
-        <h3>Connect</h3>
-        <ul>
-          <li><a href="../../about.html">About</a></li>
-          <li><a href="../../contact.html">Contact</a></li>
-        </ul>
-      </div>
-    </div>
-    
-    <div class="footer-bottom">
-      <p>© 2025 English in Doses | All rights reserved | <a href="../../license.html">Licensing Information</a></p>
-    </div>
-  </footer>
+  <!-- Visual Summary Table -->
+  <section id="summary">
+    <h2>Summary Table</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>[FORM_1]</th>
+          <th>[FORM_2]</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Form</strong></td>
+          <td>[FORM_1_STRUCTURE]</td>
+          <td>[FORM_2_STRUCTURE]</td>
+        </tr>
+        <tr>
+          <td><strong>Focus</strong></td>
+          <td>[FORM_1_FOCUS]</td>
+          <td>[FORM_2_FOCUS]</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
 
-  <!-- JavaScript -->
-  <script src="../../js/core.js"></script>
-  <script src="../../js/mcq.js"></script>
-  <script src="../../js/progress-tracking.js"></script>
-  
-  <!-- MCQ JavaScript -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Initialize MCQ Module
-      MCQModule.init({
-        containerId: 'mcq',
-        answers: {
-          'q1': [CORRECT-ANSWER-INDEX],  // e.g., 2 for option C
-          'q2': [CORRECT-ANSWER-INDEX],
-          'q3': [CORRECT-ANSWER-INDEX],
-          'q4': [CORRECT-ANSWER-INDEX],
-          'q5': [CORRECT-ANSWER-INDEX],
-          'q6': [CORRECT-ANSWER-INDEX],
-          'q7': [CORRECT-ANSWER-INDEX],
-          'q8': [CORRECT-ANSWER-INDEX],
-          'q9': [CORRECT-ANSWER-INDEX],
-          'q10': [CORRECT-ANSWER-INDEX]
-        },
-        correctExplanations: {
-          'q1': "[Explanation for correct answer]",
-          'q2': "[Explanation for correct answer]",
-          'q3': "[Explanation for correct answer]",
-          'q4': "[Explanation for correct answer]",
-          'q5': "[Explanation for correct answer]",
-          'q6': "[Explanation for correct answer]",
-          'q7': "[Explanation for correct answer]",
-          'q8': "[Explanation for correct answer]",
-          'q9': "[Explanation for correct answer]",
-          'q10': "[Explanation for correct answer]"
-        },
-        incorrectExplanations: {
-          'q1': "[Explanation for incorrect answers]",
-          'q2': "[Explanation for incorrect answers]",
-          'q3': "[Explanation for incorrect answers]",
-          'q4': "[Explanation for incorrect answers]",
-          'q5': "[Explanation for incorrect answers]",
-          'q6': "[Explanation for incorrect answers]",
-          'q7': "[Explanation for incorrect answers]",
-          'q8': "[Explanation for incorrect answers]",
-          'q9': "[Explanation for incorrect answers]",
-          'q10': "[Explanation for incorrect answers]"
-        },
-        showAllQuestionsAtOnce: true, // Show all questions at once
-        onComplete: function(score, total) {
-          console.log(`MCQ completed with score: ${score}/${total}`);
-          
-          // Track this activity completion in the progress system
-          if (typeof ProgressTracker !== "undefined") {
-            // Mark the MCQ as completed in the 'activities' category
-            ProgressTracker.markItemCompleted('activities', 'mcq-[ACTIVITY-ID]', {
-              score: score,
-              maxScore: total,
-              completed: true,
-              completedAt: new Date().toISOString(),
-              title: "[GRAMMAR TOPIC] Quick Practice"
-            });
-            
-            // Also mark the lesson itself as viewed/completed
-            ProgressTracker.updateItemProgress('lessons', '[LESSON-ID]', {
-              lastViewed: new Date().toISOString(),
-              progress: 100, // Percent complete
-              title: "[GRAMMAR TOPIC]"
-            });
-          }
-        }
-      });
-    });
-    </script>
-</body>
-</html>
+  <!-- Common Errors Section -->
+  <section class="common-errors">
+    <h2 class="common-errors-heading">Common Errors</h2>
+    <div class="error-pattern">
+      <p class="error-title"><strong>[ERROR_TITLE]</strong></p>
+      <p class="incorrect">[INCORRECT_SENTENCE]</p>
+      <p class="correct">[CORRECT_SENTENCE]</p>
+      <p class="explanation">[ERROR_EXPLANATION]</p>
+    </div>
+  </section>
+
+  <!-- Tips Section -->
+  <section class="tips">
+    <h2 class="tips-heading">How to Remember and Practice</h2>
+    <div class="grammar-tip">
+      <p>📝 <strong>Tip:</strong> [TIP_TEXT]</p>
+    </div>
+    <div class="grammar-tip">
+      <p>📝 <strong>Tip:</strong> [TIP_TEXT]</p>
+    </div>
+    <div class="grammar-tip">
+      <p>📝 <strong>Tip:</strong> [TIP_TEXT]</p>
+    </div>
+  </section>
+</main>
