@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Standardized Head Section -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn basic English sentence structure and word order - Essential grammar lesson for beginners">
+  <title>Basic Sentence Structure & Word Order | English in Doses</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
+
+  <!-- Base and Activity Styles -->
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/activities.css">
+  <link rel="stylesheet" href="../../css/components.css">
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../../images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../images//favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../images//favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Conditional polyfills -->
+  <!--[if IE]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <![endif]-->
+  
+</head>
+<body class="beginner-section">
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <!-- Theme toggle button -->
+  <div class="theme-toggle-container">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="light-icon">☀️</span>
+      <span class="dark-icon">🌙</span>
+    </button>
+  </div>
+
+  <!-- Main navigation -->
+  <nav class="main-navigation">
+    <a href="../../home.html" class="site-logo">
+      <img src="../../images/my-logo.svg" alt="English in Doses" width="150" height="auto">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <div class="nav-links">
+      <a href="../../home.html" class="nav-link">Home</a>
+      <a href="../../about.html" class="nav-link">About Us</a>
+      <a href="../../contact.html" class="nav-link">Contact Us</a>
+      <a href="../../home.html#where-to-start" class="nav-link">Grammar</a>
+      <a href="../../extra-practice.html" class="nav-link">Extra Practice</a>
+      <a href="../../conversation-page.html" class="nav-link">Conversation</a>
+      <a href="../../my-progress.html" class="nav-link">My Progress</a>
+    </div>
+
+    <div class="beginner-nav-indicator"></div>
+    
+  </nav>
+
+  <div class="container">
+    <!-- Include breadcrumbs on section index -->
+    <div class="breadcrumbs" aria-label="breadcrumb">
+      <span class="breadcrumb-item"><a href="../../home.html">Home</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="../../home.html#where-to-start">Grammar Levels</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="beginner-grammar.html">Beginner Grammar</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item">Basic Sentence Structure</span>
+    </div>
+    
+    <main id="main-content">
+      <h1>Basic Sentence Structure & Word Order</h1>
+      
+      <!-- Quick Introduction -->
+      <section class="intro-section">
+        <p>English sentences follow a basic pattern that helps people understand your meaning. Learning this pattern will help you speak and write clearly from the beginning.</p>
+      </section>
+
+      <!-- Form Section -->
+      <section class="content-section">
+        <h2>Form</h2>
+        <div class="activity-container active">
+          <h3>Basic English Sentence Pattern:</h3>
+          <div class="sentence-pattern">
+            <span class="subject">Subject</span> + 
+            <span class="verb">Verb</span> + 
+            <span class="object">Object (if needed)</span>
+          </div>
+          
+          <div class="form-examples">
+            <p><span class="subject">I</span> <span class="verb">work</span> <span class="object">in London</span>.</p>
+            <p><span class="subject">She</span> <span class="verb">speaks</span> <span class="object">English</span>.</p>
+            <p><span class="subject">The train</span> <span class="verb">arrives</span> <span class="object">at 9 o'clock</span>.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- When to Use It - Statements -->
+      <section class="content-section">
+        <h2>When to Use This Pattern</h2>
+        <h3>1. Making Statements (Positive Sentences)</h3>
+        <p>Use this pattern when you want to tell someone information or facts.</p>
+        
+        <div class="context-examples">
+          <h4>Examples in Daily Life:</h4>
+          <ul>
+            <li><strong>At work:</strong> "I finish work at 5 o'clock."</li>
+            <li><strong>At home:</strong> "My family lives in Manchester."</li>
+            <li><strong>When travelling:</strong> "The hotel has a swimming pool."</li>
+            <li><strong>About yourself:</strong> "I speak two languages."</li>
+          </ul>
+        </div>
+
+        <!-- Quick Practice Activity 1 -->
+        <div class="activity-container active">
+          <h4>Quick Practice: Put the words in the correct order</h4>
+          <div class="practice-activity" id="practice1">
+            <div class="question">
+              <p class="question-text"><strong>1.</strong> coffee / I / drink / every morning</p>
+              <div class="word-bank">
+                <button class="word-btn" data-word="I">I</button>
+                <button class="word-btn" data-word="drink">drink</button>
+                <button class="word-btn" data-word="coffee">coffee</button>
+                <button class="word-btn" data-word="every morning">every morning</button>
+              </div>
+              <div class="answer-area" data-correct="I drink coffee every morning"></div>
+              <button class="check-btn" onclick="checkAnswer(1)">Check Answer</button>
+              <div class="feedback" id="feedback1"></div>
+            </div>
+
+            <div class="question">
+              <p class="question-text"><strong>2.</strong> the meeting / starts / at 10 o'clock</p>
+              <div class="word-bank">
+                <button class="word-btn" data-word="The meeting">The meeting</button>
+                <button class="word-btn" data-word="starts">starts</button>
+                <button class="word-btn" data-word="at 10 o'clock">at 10 o'clock</button>
+              </div>
+              <div class="answer-area" data-correct="The meeting starts at 10 o'clock"></div>
+              <button class="check-btn" onclick="checkAnswer(2)">Check Answer</button>
+              <div class="feedback" id="feedback2"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Usage Point 2 - Questions -->
+      <section class="content-section">
+        <h3>2. Making Questions</h3>
+        <p>For questions, we change the word order slightly.</p>
+        
+        <div class="activity-container active">
+          <h4>Question Pattern with 'be' verbs (am/is/are):</h4>
+          <div class="sentence-pattern">
+            <span class="verb">Am/Is/Are</span> + 
+            <span class="subject">Subject</span> + 
+            <span class="object">Rest of sentence</span>?
+          </div>
+          <div class="form-examples">
+            <p><span class="verb">Are</span> <span class="subject">you</span> <span class="object">from London</span>?</p>
+            <p><span class="verb">Is</span> <span class="subject">the hotel</span> <span class="object">near the airport</span>?</p>
+          </div>
+        </div>
+
+        <div class="context-examples">
+          <h4>Useful Questions for Daily Life:</h4>
+          <ul>
+            <li><strong>At work:</strong> "Are you busy today?"</li>
+            <li><strong>When travelling:</strong> "Is the train station far?"</li>
+            <li><strong>Meeting people:</strong> "Are you from here?"</li>
+          </ul>
+        </div>
+
+        <!-- Quick Practice Activity 2 -->
+        <div class="activity-container active">
+          <h4>Quick Practice: Choose the correct question</h4>
+          <div class="practice-activity" id="practice2">
+            <div class="question">
+              <p class="question-text"><strong>1.</strong> You want to ask if someone is from Spain.</p>
+              <div class="multiple-choice">
+                <button class="option" data-correct="false">You are from Spain?</button>
+                <button class="option" data-correct="true">Are you from Spain?</button>
+                <button class="option" data-correct="false">From Spain you are?</button>
+              </div>
+              <div class="feedback" id="feedback3"></div>
+            </div>
+
+            <div class="question">
+              <p class="question-text"><strong>2.</strong> You want to ask if the meeting is important.</p>
+              <div class="multiple-choice">
+                <button class="option" data-correct="false">The meeting is important?</button>
+                <button class="option" data-correct="true">Is the meeting important?</button>
+                <button class="option" data-correct="false">Important the meeting is?</button>
+              </div>
+              <div class="feedback" id="feedback4"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Common Errors -->
+      <section class="content-section">
+        <h2>Common Errors</h2>
+        <div class="error-examples">
+          <div class="error-item">
+            <p class="incorrect">❌ <strong>Wrong:</strong> "Work I in London."</p>
+            <p class="correct">✅ <strong>Right:</strong> "I work in London."</p>
+            <p class="explanation">Always put the subject before the verb.</p>
+          </div>
+          
+          <div class="error-item">
+            <p class="incorrect">❌ <strong>Wrong:</strong> "You are from London?"</p>
+            <p class="correct">✅ <strong>Right:</strong> "Are you from London?"</p>
+            <p class="explanation">Move 'are/is/am' to the front for questions.</p>
+          </div>
+          
+          <div class="error-item">
+            <p class="incorrect">❌ <strong>Wrong:</strong> "English I speak very well."</p>
+            <p class="correct">✅ <strong>Right:</strong> "I speak English very well."</p>
+            <p class="explanation">Don't put the object before the subject and verb.</p>
+          </div>
+        </div>
+
+        <!-- Quick Practice Activity 3 - Error Correction -->
+        <div class="activity-container active">
+          <h4>Quick Practice: Find and correct the errors</h4>
+          <div class="practice-activity" id="practice3">
+            <div class="question">
+              <p class="question-text"><strong>1.</strong> "Tomorrow I travel to Paris."</p>
+              <div class="multiple-choice">
+                <button class="option" data-correct="true">This sentence is correct</button>
+                <button class="option" data-correct="false">Should be: "Travel I tomorrow to Paris"</button>
+                <button class="option" data-correct="false">Should be: "To Paris I travel tomorrow"</button>
+              </div>
+              <div class="feedback" id="feedback5"></div>
+            </div>
+
+            <div class="question">
+              <p class="question-text"><strong>2.</strong> "Coffee you drink in the morning?"</p>
+              <div class="multiple-choice">
+                <button class="option" data-correct="false">This sentence is correct</button>
+                <button class="option" data-correct="true">Should be: "Do you drink coffee in the morning?"</button>
+                <button class="option" data-correct="false">Should be: "In the morning coffee you drink?"</button>
+              </div>
+              <div class="feedback" id="feedback6"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Summary Table -->
+      <section class="content-section">
+        <h2>Summary Table</h2>
+        <div class="summary-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Sentence Type</th>
+                <th>Pattern</th>
+                <th>Example</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Statement</td>
+                <td>Subject + Verb + Object</td>
+                <td>"I work in London."</td>
+              </tr>
+              <tr>
+                <td>Question with 'be'</td>
+                <td>Am/Is/Are + Subject + Rest?</td>
+                <td>"Are you from Spain?"</td>
+              </tr>
+              <tr>
+                <td>Question with other verbs</td>
+                <td>Do/Does + Subject + Verb + Rest?</td>
+                <td>"Do you speak English?"</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Final Practice Quiz -->
+      <section class="activity-container active">
+        <h2>Final Practice Quiz</h2>
+        <div class="quiz-container">
+          <div class="quiz-progress">
+            <span>Question <span id="current-question">1</span> of <span id="total-questions">8</span></span>
+            <div class="progress-bar-container">
+              <div class="progress-bar" id="progress-fill"></div>
+            </div>
+          </div>
+
+          <div class="quiz-question" id="quiz-question">
+            <p class="question-text" id="question-text">Choose the correct sentence:</p>
+            <div class="quiz-options" id="quiz-options">
+              <!-- Questions will be loaded by JavaScript -->
+            </div>
+            <button class="submit-btn" id="next-btn" onclick="nextQuestion()" style="display: none;">Next Question</button>
+          </div>
+
+          <div class="quiz-results" id="quiz-results" style="display: none;">
+            <h3>Quiz Complete!</h3>
+            <p>Your score: <span id="final-score"></span></p>
+            <p id="score-message"></p>
+            <button class="restart-btn" onclick="restartQuiz()">Try Again</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Useful Tips -->
+      <section class="content-section">
+        <h2>Useful Tips</h2>
+        <div class="tips-container">
+          <div class="tip-item">
+            <h4>💡 Memory Tip:</h4>
+            <p>Think: "Who does what?" Subject (who) + Verb (does) + Object (what).</p>
+          </div>
+          
+          <div class="tip-item">
+            <h4>🎯 Practice Tip:</h4>
+            <p>Listen to simple English conversations. Notice the word order patterns.</p>
+          </div>
+          
+          <div class="tip-item">
+            <h4>⚡ Quick Check:</h4>
+            <p>Always ask: "Who is doing the action?" That person/thing comes first.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Navigation -->
+      <section class="lesson-navigation">
+        <div class="nav-buttons">
+          <a href="beginner-grammar.html" class="nav-btn prev-btn">← Back to Course Index</a>
+          <a href="subject-pronouns.html" class="nav-btn next-btn">Next: Subject Pronouns →</a>
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <!-- Footer -->
+  <footer>
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="../../home.html">Home</a></li>
+        <li><a href="../../home.html#where-to-start">Grammar</a></li>
+        <li><a href="../../extra-practice.html">Extra Practice</a></li>
+        <li><a href="../../my-progress.html">My Progress</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <h3>Grammar Topics</h3>
+      <ul>
+        <li><a href="../beginner/beginner-grammar.html#basic-sentence-building">Basic Sentences</a></li>
+        <li><a href="../beginner/beginner-grammar.html#present-tense">Present Tense</a></li>
+        <li><a href="../beginner/beginner-grammar.html#past-tense">Past Tense</a></li>
+        <li><a href="../beginner/beginner-grammar.html#future-tenses">Future Tenses</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <h3>Connect</h3>
+      <ul>
+        <li><a href="../../about.html">About</a></li>
+        <li><a href="../../contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>© 2025 English in Doses | All rights reserved | <a href="../../license.html">Licensing Information</a></p>
+  </div>
+</footer>
+
+  <!-- Core JavaScript -->
+  <script src="../../js/core.js"></script>
+  
+  <!-- Lesson-specific JavaScript -->
+  <script>
+    // Quick Practice Activities
+    let selectedWords = [];
+    let currentAnswers = {};
+
+    // Word ordering activity
+    function setupWordOrdering() {
+      document.querySelectorAll('.word-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const word = this.dataset.word;
+          const questionNum = this.closest('.question').querySelector('.answer-area').dataset.correct;
+          const answerArea = this.closest('.question').querySelector('.answer-area');
+          
+          if (!currentAnswers[questionNum]) {
+            currentAnswers[questionNum] = [];
+          }
+          
+          currentAnswers[questionNum].push(word);
+          answerArea.textContent = currentAnswers[questionNum].join(' ');
+          this.disabled = true;
+          this.style.opacity = '0.5';
+        });
+      });
+    }
+
+    // Multiple choice activities
+    function setupMultipleChoice() {
+      document.querySelectorAll('.option').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const questionDiv = this.closest('.question');
+          const allBtns = questionDiv.querySelectorAll('.option');
+          
+          // Reset all buttons
+          allBtns.forEach(b => {
+            b.classList.remove('selected', 'correct', 'incorrect');
+          });
+          
+          this.classList.add('selected');
+          
+          const isCorrect = this.dataset.correct === 'true';
+          const feedbackDiv = questionDiv.querySelector('.feedback');
+          
+          if (isCorrect) {
+            this.classList.add('correct');
+            feedbackDiv.innerHTML = '<p class="correct-feedback">✅ Well done! That\'s correct.</p>';
+          } else {
+            this.classList.add('incorrect');
+            feedbackDiv.innerHTML = '<p class="incorrect-feedback">❌ Not quite right. Try again!</p>';
+          }
+          
+          feedbackDiv.style.display = 'block';
+        });
+      });
+    }
+
+    // Check answers for word ordering
+    function checkAnswer(questionNum) {
+      const question = document.querySelector(`#practice1 .question:nth-child(${questionNum})`);
+      const answerArea = question.querySelector('.answer-area');
+      const correctAnswer = answerArea.dataset.correct;
+      const userAnswer = currentAnswers[correctAnswer] ? currentAnswers[correctAnswer].join(' ') : '';
+      const feedbackDiv = document.getElementById(`feedback${questionNum}`);
+      
+      if (userAnswer.toLowerCase().trim() === correctAnswer.toLowerCase().trim()) {
+        feedbackDiv.innerHTML = '<p class="correct-feedback">✅ Perfect! That\'s the correct word order.</p>';
+        feedbackDiv.className = 'feedback correct';
+      } else {
+        feedbackDiv.innerHTML = `<p class="incorrect-feedback">❌ Try again! The correct answer is: "${correctAnswer}"</p>`;
+        feedbackDiv.className = 'feedback incorrect';
+        
+        // Reset for retry
+        const questionKey = correctAnswer;
+        currentAnswers[questionKey] = [];
+        answerArea.textContent = '';
+        question.querySelectorAll('.word-btn').forEach(btn => {
+          btn.disabled = false;
+          btn.style.opacity = '1';
+        });
+      }
+      
+      feedbackDiv.style.display = 'block';
+    }
+
+    // Final Quiz Data and Functions
+    const quizData = [
+      {
+        question: "Choose the correct sentence:",
+        options: ["Work I in London", "I work in London", "London in work I"],
+        correct: 1
+      },
+      {
+        question: "Choose the correct question:",
+        options: ["You are ready?", "Ready you are?", "Are you ready?"],
+        correct: 2
+      },
+      {
+        question: "Put the words in order: 'every day / English / study / I'",
+        options: ["English I study every day", "I study English every day", "Every day English I study"],
+        correct: 1
+      },
+      {
+        question: "Choose the correct sentence:",
+        options: ["My family lives in Manchester", "Lives my family in Manchester", "In Manchester my family lives"],
+        correct: 0
+      },
+      {
+        question: "Choose the correct question:",
+        options: ["Is the hotel near the station?", "The hotel is near the station?", "Near the station is the hotel?"],
+        correct: 0
+      },
+      {
+        question: "Which is correct?",
+        options: ["Coffee I drink every morning", "I coffee drink every morning", "I drink coffee every morning"],
+        correct: 2
+      },
+      {
+        question: "Choose the correct question:",
+        options: ["You are from Spain?", "From Spain you are?", "Are you from Spain?"],
+        correct: 2
+      },
+      {
+        question: "Which sentence is correct?",
+        options: ["The meeting starts at 10", "Starts the meeting at 10", "At 10 the meeting starts"],
+        correct: 0
+      }
+    ];
+
+    let currentQuizQuestion = 0;
+    let quizScore = 0;
+    let userAnswers = [];
+
+    function loadQuizQuestion() {
+      if (currentQuizQuestion >= quizData.length) {
+        showQuizResults();
+        return;
+      }
+
+      const question = quizData[currentQuizQuestion];
+      document.getElementById('question-text').textContent = question.question;
+      document.getElementById('current-question').textContent = currentQuizQuestion + 1;
+      document.getElementById('total-questions').textContent = quizData.length;
+      
+      const optionsContainer = document.getElementById('quiz-options');
+      optionsContainer.innerHTML = '';
+      
+      question.options.forEach((option, index) => {
+        const button = document.createElement('button');
+        button.className = 'option';
+        button.textContent = option;
+        button.onclick = () => selectQuizAnswer(index);
+        optionsContainer.appendChild(button);
+      });
+      
+      // Update progress bar
+      const progress = ((currentQuizQuestion) / quizData.length) * 100;
+      document.getElementById('progress-fill').style.width = progress + '%';
+      
+      document.getElementById('next-btn').style.display = 'none';
+    }
+
+    function selectQuizAnswer(selectedIndex) {
+      const question = quizData[currentQuizQuestion];
+      const isCorrect = selectedIndex === question.correct;
+      
+      if (isCorrect) {
+        quizScore++;
+      }
+      
+      userAnswers.push({
+        question: currentQuizQuestion,
+        selected: selectedIndex,
+        correct: isCorrect
+      });
+      
+      // Show feedback on buttons
+      const buttons = document.querySelectorAll('#quiz-options .option');
+      buttons.forEach((btn, index) => {
+        btn.disabled = true;
+        if (index === question.correct) {
+          btn.classList.add('correct');
+        } else if (index === selectedIndex && !isCorrect) {
+          btn.classList.add('incorrect');
+        }
+      });
+      
+      document.getElementById('next-btn').style.display = 'block';
+    }
+
+    function nextQuestion() {
+      currentQuizQuestion++;
+      loadQuizQuestion();
+    }
+
+    function showQuizResults() {
+      document.getElementById('quiz-question').style.display = 'none';
+      document.getElementById('quiz-results').style.display = 'block';
+      
+      const percentage = Math.round((quizScore / quizData.length) * 100);
+      document.getElementById('final-score').textContent = `${quizScore}/${quizData.length} (${percentage}%)`;
+      
+      let message = '';
+      if (percentage >= 80) {
+        message = '🎉 Excellent! You understand English sentence structure very well.';
+      } else if (percentage >= 60) {
+        message = '👍 Good work! Review the lesson and try again to improve your score.';
+      } else {
+        message = '📚 Keep practising! Review the lesson and try the quiz again.';
+      }
+      
+      document.getElementById('score-message').textContent = message;
+      
+      // Update progress bar to 100%
+      document.getElementById('progress-fill').style.width = '100%';
+    }
+
+    function restartQuiz() {
+      currentQuizQuestion = 0;
+      quizScore = 0;
+      userAnswers = [];
+      document.getElementById('quiz-question').style.display = 'block';
+      document.getElementById('quiz-results').style.display = 'none';
+      loadQuizQuestion();
+    }
+
+    // Initialize everything when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      setupWordOrdering();
+      setupMultipleChoice();
+      loadQuizQuestion();
+    });
+  </script>
+
+  <style>
+    /* Lesson-specific styles for components not covered by existing CSS */
+    .sentence-pattern {
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-align: center;
+      margin: 1rem 0;
+      padding: 1rem;
+      background: white;
+      border-radius: 4px;
+    }
+
+    .subject { color: #e74c3c; }
+    .verb { color: #3498db; }
+    .object { color: #27ae60; }
+
+    .form-examples p {
+      font-size: 1.1rem;
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      background: white;
+      border-radius: 4px;
+    }
+
+    .context-examples {
+      background: #f0f8ff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .word-bank {
+      margin: 1rem 0;
+    }
+
+    .word-btn {
+      background: var(--accent-color, #3498db);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      margin: 0.25rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .word-btn:hover:not(:disabled) {
+      background: var(--btn-hover, #2980b9);
+    }
+
+    .word-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .answer-area {
+      min-height: 2rem;
+      background: white;
+      border: 2px dashed #ccc;
+      border-radius: 4px;
+      padding: 0.5rem;
+      margin: 1rem 0;
+      font-weight: 600;
+    }
+
+    .multiple-choice {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .error-item {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+
+    .incorrect {
+      color: #e74c3c;
+      font-weight: 600;
+    }
+
+    .correct {
+      color: #27ae60;
+      font-weight: 600;
+    }
+
+    .explanation {
+      font-style: italic;
+      color: #666;
+      margin-top: 0.5rem;
+    }
+
+    .summary-table {
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .summary-table table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .summary-table th,
+    .summary-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .summary-table th {
+      background: var(--accent-color, #3498db);
+      color: white;
+      font-weight: 600;
+    }
+
+    .summary-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .quiz-progress {
+      margin-bottom: 1.5rem;
+    }
+
+    .quiz-results {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .tips-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .tip-item {
+      background: #e8f5e8;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border-left: 4px solid #27ae60;
+    }
+
+    .tip-item h4 {
+      color: #27ae60;
+      margin-bottom: 0.5rem;
+    }
+
+    .lesson-navigation {
+      margin: 3rem 0;
+      padding: 2rem 0;
+      border-top: 1px solid #ddd;
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .nav-btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: var(--accent-color, #3498db);
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+
+    .nav-btn:hover {
+      background: var(--btn-hover, #2980b9);
+    }
+
+    .prev-btn {
+      background: #6c757d;
+    }
+
+    .prev-btn:hover {
+      background: #5a6268;
+    }
+
+    @media (max-width: 768px) {
+      .nav-buttons {
+        flex-direction: column;
+      }
+      
+      .nav-btn {
+        text-align: center;
+      }
+      
+      .sentence-pattern {
+        font-size: 1rem;
+      }
+      
+      .tips-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</body>
+</html>

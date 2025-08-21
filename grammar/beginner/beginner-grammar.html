@@ -1,690 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Beginner Grammar - Learn English grammar for daily life, work and travel. Simple explanations with practical examples for adult ESL learners.">
-  <title>Beginner Grammar - English in Doses</title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
-  
-  <!-- Favicon -->
-  <link rel="apple-touch-icon" sizes="180x180" href="../../images/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../../images//favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../../images//favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  
-  <!-- Styles -->
-  <link rel="stylesheet" href="../../css/base.css">
-  <link rel="stylesheet" href="../../css/activities.css">
-  
-  <style>
-    /* Green color theme for beginner section - Growth & Support theme */
-    :root {
-      --beginner-primary: #2ecc71;      /* Vibrant green */
-      --beginner-primary-dark: #27ae60; /* Darker green for hover states */
-      --beginner-secondary: #f39c12;    /* Warm orange accent */
-      --beginner-card-bg: #f0fff5;      /* Very light green background */
-      --beginner-icon-bg: #e8f8e8;      /* Slightly darker green for icons */
-    }
-  
-    /* Additional styles specific to the beginner landing page */
-    .nav-indicator {
-  height: 3px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: var(--beginner-primary);
-}
-
-[data-theme="dark"] .nav-indicator {
-    background-color: var(--beginner-primary);
-  }
-
-    .function-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 25px;
-      margin-top: 30px;
-    }
-    
-    .function-card {
-      background-color: var(--beginner-card-bg);
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 4px 8px var(--shadow-color);
-      transition: transform 0.3s ease;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      border-top: 4px solid var(--beginner-primary);
-    }
-    
-    .function-card:hover {
-      transform: translateY(-6px);
-    }
-    
-    .function-header {
-      display: flex;
-      align-items: center;
-      margin-bottom: 15px;
-    }
-    
-    .function-icon {
-      font-size: 2rem;
-      margin-right: 15px;
-      background-color: var(--beginner-icon-bg);
-      width: 50px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      color: var(--beginner-primary);
-    }
-    
-    .function-title {
-      margin: 0;
-      font-size: 1.25rem;
-      color: var(--text-color);
-    }
-    
-    .function-desc {
-      margin-bottom: 15px;
-      flex-grow: 1;
-    }
-    
-    .function-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: auto;
-    }
-    
-    .function-level {
-      display: flex;
-      gap: 2px;
-    }
-    
-    .star {
-      color: var(--beginner-secondary);
-    }
-    
-    .star.empty {
-      opacity: 0.3;
-    }
-    
-    .function-time {
-      font-size: 0.9rem;
-      color: var(--text-color);
-      opacity: 0.8;
-    }
-    
-    .function-example {
-      background-color: var(--bg-color);
-      border-radius: 6px;
-      padding: 10px;
-      margin: 10px 0;
-      font-family: 'Source Code Pro', monospace;
-    }
-    
-    .section-intro {
-      margin-bottom: 30px;
-      background-color: var(--beginner-card-bg);
-      border-radius: 10px;
-      padding: 20px;
-      border-left: 5px solid var(--beginner-primary);
-    }
-    
-    .about-beginner {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-      margin-bottom: 30px;
-    }
-    
-    .about-image {
-      flex: 0 0 30%;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-    
-    .about-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    
-    .about-content {
-      flex: 1;
-    }
-    
-    .category-title {
-      margin-top: 50px;
-      margin-bottom: 20px;
-      padding-bottom: 10px;
-      border-bottom: 2px solid var(--beginner-primary);
-      color: var(--text-color);
-    }
-    
-    .learn-button {
-      display: inline-block;
-      background-color: var(--beginner-primary);
-      color: white;
-      padding: 8px 15px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-    
-    .learn-button:hover {
-      background-color: var(--beginner-primary-dark);
-      transform: translateY(-2px);
-      text-decoration: none;
-    }
-    
-    /* Add green accent to main heading */
-    h1 {
-      border-left: 5px solid var(--beginner-primary);
-    }
-    
-    /* Style the translation tip with beginner secondary color */
-    .translate-tip strong {
-      color: var(--beginner-secondary);
-    }
-    
-    /* Make sure it's responsive */
-    @media (max-width: 768px) {
-      .function-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .about-beginner {
-        flex-direction: column;
-      }
-      
-      .about-image {
-        flex: 0 0 100%;
-      }
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Beginner Grammar — Index</title>
 </head>
-<body>
-  <!-- Skip link for accessibility -->
-  <a href="#main-content" class="skip-link">Skip to content</a>
-  
-  <!-- Theme toggle button -->
-  <div class="theme-toggle-container">
-    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
-      <span class="light-icon">☀️</span>
-      <span class="dark-icon">🌙</span>
-    </button>
-  </div>
-  
-  <!-- Main navigation -->
-  <nav class="main-navigation">
-    <a href="../../home.html" class="site-logo">
-      <img src="../../images/my-logo.svg" alt="English in Doses" width="150" height="auto">
-    </a>
-    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
-    <div class="nav-links">
-      <a href="../../home.html" class="nav-link">Home</a>
-      <a href="../../about.html" class="nav-link">About Us</a>
-      <a href="../../contact.html" class="nav-link">Contact Us</a>
-      <a href="../../home.html#where-to-start" class="nav-link">Grammar</a>
-      <a href="../../extra-practice.html" class="nav-link">Extra Practice</a>
-      <a href="../../conversation-page.html" class="nav-link">Conversation</a>
-      <a href="../../my-progress.html" class="nav-link">My Progress</a>
+
+<body class="beginner-section" data-page-type="beginner-grammar-index">
+  <a class="skip-link" href="#content">Skip to main content</a>
+
+  <header id="site-header" class="site-header">
+    <div class="container nav-container">
+      <a class="site-logo" href="/" aria-label="Homepage">English</a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li class="has-submenu">
+            <a href="/grammar/">Grammar</a>
+            <ul class="submenu">
+              <li><a class="is-active" href="/grammar/beginner/beginner-grammar.html">Beginner</a></li>
+              <li><a href="/grammar/advanced/">Advanced</a></li>
+            </ul>
+          </li>
+          <li><a href="/about/">About</a></li>
+        </ul>
+      </nav>
     </div>
     <div class="beginner-nav-indicator"></div>
+  </header>
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="/">Home</a></li>
+      <li><a href="/grammar/">Grammar</a></li>
+      <li aria-current="page">Beginner</li>
+    </ol>
   </nav>
 
-  <div class="container beginner-section">
-    <!-- Breadcrumbs -->
-    <div class="breadcrumbs" aria-label="breadcrumb">
-      <span class="breadcrumb-item"><a href="../../home.html">Home</a></span>
-      <span class="breadcrumb-separator">›</span>
-      <span class="breadcrumb-item"><a href="../../home.html#where-to-start">Grammar Levels</a></span>
-      <span class="breadcrumb-separator">›</span>
-      <span class="breadcrumb-item">Beginner Grammar</span>
-    </div>
+  <main id="content" class="container content-area" tabindex="-1">
+    <section id="bg-hero" class="section hero">
+  <div class="container">
+    <h1 class="page-title">Beginner Grammar</h1>
+    <p class="page-intro">Short review, then straight into practice. Learn by doing with clear examples and quick checks.</p>
+  </div>
+</section>
 
-    <main id="main-content">
-      <h1>Beginner Grammar for Daily Life</h1>
-      
-      <div class="about-beginner">
-        <div class="about-image">
-          <img src="https://placehold.co/400x300" alt="Adult ESL learners practicing English">
-        </div>
-        <div class="about-content">
-          <h2>English for Real-Life Situations</h2>
-          <p>This beginner section helps you learn the essential English grammar you need for everyday situations, work, and travel. Each lesson focuses on practical language you can use immediately.</p>
-          <p>All lessons are in small, manageable "doses" (15-30 minutes) perfect for busy adults. Choose the topics you need most, or follow our suggested learning path.</p>
-          <p><strong>Tip:</strong> 🌐 Your browser can translate these pages into your language. Look for the translation icon (usually "G 🔄" or "🌐") in your address bar or menu.</p>
-        </div>
+<section id="bg-actions" class="section actions" data-progress-scope="beginner-grammar" data-category="beginner" data-progress-type="grammar-index">
+  <div class="container actions-row">
+    <label for="bg-search" class="sr-only">Search grammar topics</label>
+    <input id="bg-search" type="search" class="input search" placeholder="Search topics" autocomplete="off" />
+
+    <label for="bg-filter" class="sr-only">Filter by progress</label>
+    <select id="bg-filter" class="select filter">
+      <option value="all">All</option>
+      <option value="not-started">Not started</option>
+      <option value="in-progress">In progress</option>
+      <option value="completed">Completed</option>
+    </select>
+
+    <label for="bg-sort" class="sr-only">Sort topics</label>
+    <select id="bg-sort" class="select sort">
+      <option value="recommended">Recommended order</option>
+      <option value="az">A–Z</option>
+      <option value="progress">Progress</option>
+    </select>
+
+    <button id="bg-continue" class="button continue" type="button">Continue where you left off</button>
+  </div>
+</section>
+
+<section id="bg-progress" class="section progress-summary" aria-labelledby="bg-progress-title" data-progress-scope="beginner-grammar">
+  <div class="container">
+    <h2 id="bg-progress-title" class="section-title">Your progress</h2>
+    <div class="progress-wrap">
+      <div class="progress-meta">
+        <span id="bg-progress-count" class="progress-count">0/12 completed</span>
+        <span id="bg-progress-status" class="progress-status">Not started</span>
       </div>
-      
-      <div class="section-intro">
-        <h3>How to Use This Section</h3>
-        <ul>
-          <li>Each topic focuses on a real communication need, not abstract grammar rules</li>
-          <li>Practice with interactive exercises that you can complete at your own pace</li>
-          <li>Come back and review topics as often as you need</li>
-          <li>All examples use simple vocabulary so you can focus on learning the grammar</li>
-          <li>Look for the difficulty level (⭐) and time estimate for each topic</li>
+      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="12" aria-valuenow="0" aria-label="Beginner grammar completion">
+        <div id="bg-progress-meter" class="progress-meter" style="width: 0%;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="bg-index" class="section topic-index" aria-labelledby="bg-index-title" data-progress-scope="beginner-grammar">
+  <div class="container">
+    <h2 id="bg-index-title" class="section-title">Topics</h2>
+
+    <div class="bg-card-grid">
+      <a class="bg-card" href="/grammar/beginner/getting-to-know-you.html" data-grammar-id="bg-01" data-keywords="to be, am, is, are, pronouns, questions, introductions, personal information">
+        <h3 class="bg-card-title">Getting to Know You</h3>
+        <p class="bg-card-desc">To be, pronouns, and basic Wh‑questions for introductions.</p>
+        <ul class="bg-card-points">
+          <li>am / is / are</li>
+          <li>Subject pronouns</li>
+          <li>What, where, how old</li>
         </ul>
-      </div>
+        <span class="progress-chip" data-grammar-id="bg-01">Start</span>
+      </a>
 
-      <h2 class="category-title">Getting Started with Communication</h2>
-      
-      <div class="function-grid">
-        <div class="function-card">
-          <div class="function-header">
-            <div class="function-icon">👋</div>
-            <h3 class="function-title">Introducing Yourself and Others</h3>
-          </div>
-          <p class="function-desc">Learn how to introduce yourself, ask for personal information, and talk about where you're from.</p>
-          <div class="function-example">
-            "Hello, I'm Maria. I'm from Spain."<br>
-            "This is my colleague, John."
-          </div>
-          <div class="function-footer">
-            <div class="function-level">
-              <span class="star">★</span>
-              <span class="star empty">★</span>
-              <span class="star empty">★</span>
-            </div>
-            <span class="function-time">15 min</span>
-          </div>
-          <a href="introducing-yourself.html" class="learn-button">Learn This</a>
-        </div>
-        
-        <div class="function-card">
-          <div class="function-header">
-            <div class="function-icon">🔄</div>
-            <h3 class="function-title">Talking About Your Daily Routine</h3>
-          </div>
-          <p class="function-desc">Learn to describe your everyday activities, schedules, and habits.</p>
-          <div class="function-example">
-            "I work from Monday to Friday."<br>
-            "She usually starts work at 9am."
-          </div>
-          <div class="function-footer">
-            <div class="function-level">
-              <span class="star">★</span>
-              <span class="star">★</span>
-              <span class="star empty">★</span>
-            </div>
-            <span class="function-time">20 min</span>
-          </div>
-          <a href="daily-routines.html" class="learn-button">Learn This</a>
-        </div>
-        
-        <div class="function-card">
-          <div class="function-header">
-            <div class="function-icon">🏠</div>
-            <h3 class="function-title">Describing Your Home or Workplace</h3>
-          </div>
-          <p class="function-desc">Learn to describe locations, rooms, and furniture. Explain where things are.</p>
-          <div class="function-example">
-            "There is a desk in my office."<br>
-            "The bathroom is next to the kitchen."
-          </div>
-          <div class="function-footer">
-            <div class="function-level">
-              <span class="star">★</span>
-              <span class="star">★</span>
-              <span class="star empty">★</span>
-            </div>
-            <span class="function-time">20 min</span>
-          </div>
-          <a href="describing-places.html" class="learn-button">Learn This</a>
-        </div>
-        
-        <div class="function-card">
-          <div class="function-header">
-            <div class="function-icon">🛒</div>
-            <h3 class="function-title">Shopping and Asking About Prices</h3>
-          </div>
-          <p class="function-desc">Learn language for shopping, asking about costs, and talking about basic quantities.</p>
-          <div class="function-example">
-            "How much is this shirt?"<br>
-            "I'd like two kilos of apples, please."
-          </div>
-          <div class="function-footer">
-            <div class="function-level">
-              <span class="star">★</span>
-              <span class="star">★</span>
-              <span class="star empty">★</span>
-            </div>
-            <span class="function-time">25 min</span>
-          </div>
-          <a href="shopping-vocabulary.html" class="learn-button">Learn This</a>
-        </div>
-      </div>
-      
-      <h2 class="category-title">Essential Communication for Daily Life</h2>
-      
-      <div class="function-grid">
-        <div class="function-card">
-          <div class="function-header">
-            <div class="function-icon">🍽️</div>
-            <h3 class="function-title">Ordering Food and Drinks</h3>
-          </div>
-          <p class="function-desc">Learn how to order in restaurants and cafés, express preferences, and make polite requests.</p>
-          <div class="function-example">
-            "I'd like a coffee, please."<br>
-            "Could I have the menu, please?"
-          </div>
-          <div class="function-footer">
-            <div class="function-level">
-              <span class="star">★</span>
-              <span class="star">★</span>
-              <span class="star empty">★</span>
-            </div>
-            <span class="function-time">20 min</span>
-          </div>
-          <a href="ordering-food.html" class="learn-button">Learn This</a>
-        </div>
-        
-        <div class="function-card">
-          <div class="function-header">
-            <div class="function-icon">✅</div>
-            <h3 class="function-title">Talking About Abilities</h3>
-          </div>
-          <p class="function-desc">Learn to talk about things you can and can't do, ask for permission, and discuss possibilities.</p>
-          <div class="function-example">
-            "I can speak a little English."<br>
-            "Can you help me with this form?"
-          </div>
-          <div class="function-footer">
-            <div class="function-level">
-              <span class="star">★</span>
-              <span class="star">★</span>
-              <span class="star empty">★</span>
-            </div>
-            <span class="function-time">15 min</span>
-          </div>
-          <a href="abilities-possibilities.html" class="learn-button">Learn This</a>
-        </div>
-        
-        <div class="function-card">
-          <div class="function-header">
-            <div class="function-icon">🗺️</div>
-            <h3 class="function-title">Giving and Following Directions</h3>
-          </div>
-          <p class="function-desc">Learn how to ask for and give directions, understand maps, and find your way around.</p>
-          <div class="function-example">
-            "Turn left at the traffic lights."<br>
-            "How do I get to the train station?"
-          </div>
-          <div class="function-footer">
-            <div class="function-level">
-              <span class="star">★</span>
-              <span class="star">★</span>
-              <span class="star empty">★</span>
-            </div>
-            <span class="function-time">25 min</span>
-          </div>
-          <a href="giving-directions.html" class="learn-button">Learn This</a>
-        </div>
-        
-        <div class="function-card">
-          <div class="function-header">
-            <div class="function-icon">👨‍👩‍👧</div>
-            <h3 class="function-title">Describing People and Things</h3>
-          </div>
-          <p class="function-desc">Learn to describe appearance, personality, and characteristics of people and objects.</p>
-          <div class="function-example">
-            "She has long brown hair."<br>
-            "My boss is very friendly but serious."
-          </div>
-          <div class="function-footer">
-            <div class="function-level">
-              <span class="star">★</span>
-              <span class="star">★</span>
-              <span class="star">★</span>
-            </div>
-            <span class="function-time">25 min</span>
-          </div>
-          <a href="describing-people.html" class="learn-button">Learn This</a>
-        </div>
-      </div>
-      
-      <h2 class="category-title">Work and Social Communication</h2>
-      
-      <div class="function-grid">
-        <div class="function-card">
-          <div class="function-header">
-            <div class="function-icon">📅</div>
-            <h3 class="function-title">Making Plans and Arrangements</h3>
-          </div>
-          <p class="function-desc">Learn to talk about future plans, arrange meetings, and discuss schedules.</p>
-          <div class="function-example">
-            "I'm meeting John at 6pm tomorrow."<br>
-            "Are you going to attend the conference?"
-          </div>
-          <div class="function-footer">
-            <div class="function-level">
-              <span class="star">★</span>
-              <span class="star">★</span>
-              <span class="star">★</span>
-            </div>
-            <span class="function-time">25 min</span>
-          </div>
-          <a href="making-plans.html" class="learn-button">Learn This</a>
-        </div>
-        
-        <div class="function-card">
-          <div class="function-header">
-            <div class="function-icon">⏳</div>
-            <h3 class="function-title">Talking About Past Experiences</h3>
-          </div>
-          <p class="function-desc">Learn to discuss things that happened in the past, including your experiences and activities.</p>
-          <div class="function-example">
-            "I worked in London for two years."<br>
-            "Did you enjoy the film last night?"
-          </div>
-          <div class="function-footer">
-            <div class="function-level">
-              <span class="star">★</span>
-              <span class="star">★</span>
-              <span class="star">★</span>
-            </div>
-            <span class="function-time">30 min</span>
-          </div>
-          <a href="past-experiences.html" class="learn-button">Learn This</a>
-        </div>
-        
-        <div class="function-card">
-          <div class="function-header">
-            <div class="function-icon">⚖️</div>
-            <h3 class="function-title">Making Comparisons</h3>
-          </div>
-          <p class="function-desc">Learn to compare people, places, and things - discussing similarities and differences.</p>
-          <div class="function-example">
-            "This restaurant is cheaper than that one."<br>
-            "Tokyo is the most expensive city I've visited."
-          </div>
-          <div class="function-footer">
-            <div class="function-level">
-              <span class="star">★</span>
-              <span class="star">★</span>
-              <span class="star">★</span>
-            </div>
-            <span class="function-time">25 min</span>
-          </div>
-          <a href="making-comparisons.html" class="learn-button">Learn This</a>
-        </div>
-        
-        <div class="function-card">
-          <div class="function-header">
-            <div class="function-icon">📞</div>
-            <h3 class="function-title">Making Simple Phone Calls</h3>
-          </div>
-          <p class="function-desc">Learn telephone English for making calls, leaving and taking messages, and arranging callbacks.</p>
-          <div class="function-example">
-            "Hello, can I speak to Mr. Johnson, please?"<br>
-            "Could you take a message, please?"
-          </div>
-          <div class="function-footer">
-            <div class="function-level">
-              <span class="star">★</span>
-              <span class="star">★</span>
-              <span class="star">★</span>
-            </div>
-            <span class="function-time">25 min</span>
-          </div>
-          <a href="phone-calls.html" class="learn-button">Learn This</a>
-        </div>
-      </div>
-      
-      <h2 class="category-title">Travel and Broader Communication</h2>
-      
-      <div class="function-grid">
-        <div class="function-card">
-          <div class="function-header">
-            <div class="function-icon">✈️</div>
-            <h3 class="function-title">Travel and Transportation</h3>
-          </div>
-          <p class="function-desc">Learn language for tickets, schedules, transportation, and solving travel problems.</p>
-          <div class="function-example">
-            "What time does the train leave?"<br>
-            "I'd like to book a single ticket to London."
-          </div>
-          <div class="function-footer">
-            <div class="function-level">
-              <span class="star">★</span>
-              <span class="star">★</span>
-              <span class="star">★</span>
-            </div>
-            <span class="function-time">30 min</span>
-          </div>
-          <a href="travel-transportation.html" class="learn-button">Learn This</a>
-        </div>
-        
-        <div class="function-card">
-          <div class="function-header">
-            <div class="function-icon">🌟</div>
-            <h3 class="function-title">Talking About Experiences</h3>
-          </div>
-          <p class="function-desc">Learn to discuss your experiences and achievements, including travel and life events.</p>
-          <div class="function-example">
-            "I've visited Paris three times."<br>
-            "Have you ever tried sushi?"
-          </div>
-          <div class="function-footer">
-            <div class="function-level">
-              <span class="star">★</span>
-              <span class="star">★</span>
-              <span class="star">★</span>
-            </div>
-            <span class="function-time">30 min</span>
-          </div>
-          <a href="talking-experiences.html" class="learn-button">Learn This</a>
-        </div>
-        
-        <div class="function-card">
-          <div class="function-header">
-            <div class="function-icon">❤️</div>
-            <h3 class="function-title">Expressing Likes and Preferences</h3>
-          </div>
-          <p class="function-desc">Learn to talk about what you enjoy, your preferences, and things you don't like.</p>
-          <div class="function-example">
-            "I love Italian food but I don't like spicy food."<br>
-            "I'd rather have coffee than tea."
-          </div>
-          <div class="function-footer">
-            <div class="function-level">
-              <span class="star">★</span>
-              <span class="star">★</span>
-              <span class="star empty">★</span>
-            </div>
-            <span class="function-time">20 min</span>
-          </div>
-          <a href="likes-preferences.html" class="learn-button">Learn This</a>
-        </div>
-        
-        <div class="function-card">
-          <div class="function-header">
-            <div class="function-icon">🔮</div>
-            <h3 class="function-title">Making Predictions and Promises</h3>
-          </div>
-          <p class="function-desc">Learn to talk about future possibilities, make promises, and offer help.</p>
-          <div class="function-example">
-            "I think it will rain tomorrow."<br>
-            "I'll help you with your English homework."
-          </div>
-          <div class="function-footer">
-            <div class="function-level">
-              <span class="star">★</span>
-              <span class="star">★</span>
-              <span class="star">★</span>
-            </div>
-            <span class="function-time">25 min</span>
-          </div>
-          <a href="predictions-promises.html" class="learn-button">Learn This</a>
-        </div>
-      </div>
-      
-      <div class="section-intro" style="margin-top: 40px;">
-        <h3>Suggested Learning Path for Complete Beginners</h3>
-        <p>If you're just starting to learn English, we recommend following these topics in order:</p>
-        <ol>
-          <li>Introducing Yourself and Others</li>
-          <li>Describing Your Home or Workplace</li>
-          <li>Shopping and Asking About Prices</li>
-          <li>Talking About Abilities</li>
-          <li>Talking About Your Daily Routine</li>
-        </ol>
-        <p>After these topics, you can choose others based on your personal needs and interests.</p>
-      </div>
-    </main>
-  </div>
-  
-  <!-- Footer -->
-  <footer>
-  <div class="footer-content">
-    <div class="footer-section">
-      <h3>Quick Links</h3>
-      <ul>
-        <li><a href="../../home.html">Home</a></li>
-        <li><a href="../../home.html#where-to-start">Grammar</a></li>
-        <li><a href="../../extra-practice.html">Extra Practice</a></li>
-        <li><a href="../../my-progress.html">My Progress</a></li>
-      </ul>
-    </div>
-    
-    <div class="footer-section">
-      <h3>Grammar Topics</h3>
-      <ul>
-        <li><a href="../advanced/advanced-grammar.html#advanced-tenses-and-aspect">Advanced Tenses</a></li>
-        <li><a href="../advanced/advanced-grammar.html#conditionals">Advanced Conditionals</a></li>
-        <li><a href="../advanced/advanced-grammar.html#modals">Advanced Modal Verbs</a></li>
-        <li><a href="../advanced/advanced-grammar.html#passive">Advanced Passive Voice</a></li>
-      </ul>
-    </div>
-    
-    <div class="footer-section">
-      <h3>Connect</h3>
-      <ul>
-        <li><a href="../../about.html">About</a></li>
-        <li><a href="../../contact.html">Contact</a></li>
-      </ul>
-    </div>
-  </div>
-  
-  <div class="footer-bottom">
-    <p>© 2025 English in Doses | All rights reserved | <a href="../../license.html">Licensing Information</a></p>
-  </div>
-</footer>
+      <a class="bg-card" href="/grammar/beginner/everyday-routines.html" data-grammar-id="bg-02" data-keywords="present simple, routines, frequency, adverbs, time expressions">
+        <h3 class="bg-card-title">Everyday Routines</h3>
+        <p class="bg-card-desc">Present Simple with frequency and time expressions.</p>
+        <ul class="bg-card-points">
+          <li>Present Simple (I/you/we/they)</li>
+          <li>always, sometimes, never</li>
+          <li>in the morning, on Mondays</li>
+        </ul>
+        <span class="progress-chip" data-grammar-id="bg-02">Start</span>
+      </a>
 
-  <!-- JavaScript -->
-  <script src="../../js/core.js"></script>
+      <a class="bg-card" href="/grammar/beginner/talking-about-people.html" data-grammar-id="bg-03" data-keywords="he she it, present simple, possessives, adjectives, descriptions">
+        <h3 class="bg-card-title">Talking About People</h3>
+        <p class="bg-card-desc">He/She/It forms, possessives, and describing people.</p>
+        <ul class="bg-card-points">
+          <li>Present Simple (he/she/it)</li>
+          <li>my, your, his, her</li>
+          <li>appearance and personality</li>
+        </ul>
+        <span class="progress-chip" data-grammar-id="bg-03">Start</span>
+      </a>
+
+      <a class="bg-card" href="/grammar/beginner/places-and-things.html" data-grammar-id="bg-04" data-keywords="there is, there are, some, any, this that these those, places, objects">
+        <h3 class="bg-card-title">Places & Things</h3>
+        <p class="bg-card-desc">There is/are, some/any, and demonstratives.</p>
+        <ul class="bg-card-points">
+          <li>there is / there are</li>
+          <li>some / any</li>
+          <li>this / that / these / those</li>
+        </ul>
+        <span class="progress-chip" data-grammar-id="bg-04">Start</span>
+      </a>
+
+      <a class="bg-card" href="/grammar/beginner/shopping-and-food.html" data-grammar-id="bg-05" data-keywords="countable, uncountable, a an, some any, how much, how many, likes">
+        <h3 class="bg-card-title">Shopping & Food</h3>
+        <p class="bg-card-desc">Countables, uncountables, and quantifiers for shopping.</p>
+        <ul class="bg-card-points">
+          <li>a/an, some/any</li>
+          <li>how much / how many</li>
+          <li>like / don’t like</li>
+        </ul>
+        <span class="progress-chip" data-grammar-id="bg-05">Start</span>
+      </a>
+
+      <a class="bg-card" href="/grammar/beginner/free-time-and-abilities.html" data-grammar-id="bg-06" data-keywords="can, can't, ability, present continuous, hobbies, free time">
+        <h3 class="bg-card-title">Free Time & Abilities</h3>
+        <p class="bg-card-desc">Can/can’t and Present Continuous for actions now.</p>
+        <ul class="bg-card-points">
+          <li>can / can’t</li>
+          <li>am/is/are + ‑ing</li>
+          <li>sports and hobbies</li>
+        </ul>
+        <span class="progress-chip" data-grammar-id="bg-06">Start</span>
+      </a>
+
+      <a class="bg-card" href="/grammar/beginner/past-time.html" data-grammar-id="bg-07" data-keywords="past simple, was, were, regular verbs, irregular verbs, ago, past time expressions">
+        <h3 class="bg-card-title">Past Time</h3>
+        <p class="bg-card-desc">Past Simple with was/were, regular and irregular verbs.</p>
+        <ul class="bg-card-points">
+          <li>was / were</li>
+          <li>regular and irregular verbs</li>
+          <li>ago + time</li>
+        </ul>
+        <span class="progress-chip" data-grammar-id="bg-07">Start</span>
+      </a>
+
+      <a class="bg-card" href="/grammar/beginner/travel-and-holidays.html" data-grammar-id="bg-08" data-keywords="past simple questions, sequencing words, travel, holidays, stories">
+        <h3 class="bg-card-title">Travel & Holidays</h3>
+        <p class="bg-card-desc">Past questions and sequencing for telling travel stories.</p>
+        <ul class="bg-card-points">
+          <li>did + base verb</li>
+          <li>first, then, after that, finally</li>
+          <li>irregular verb review</li>
+        </ul>
+        <span class="progress-chip" data-grammar-id="bg-08">Start</span>
+      </a>
+
+      <a class="bg-card" href="/grammar/beginner/future-plans.html" data-grammar-id="bg-09" data-keywords="going to, present continuous future, plans, arrangements, time expressions">
+        <h3 class="bg-card-title">Future Plans</h3>
+        <p class="bg-card-desc">Going to for intentions and Present Continuous for arrangements.</p>
+        <ul class="bg-card-points">
+          <li>going to + verb</li>
+          <li>am/is/are + ‑ing (future)</li>
+          <li>next week, tomorrow</li>
+        </ul>
+        <span class="progress-chip" data-grammar-id="bg-09">Start</span>
+      </a>
+
+      <a class="bg-card" href="/grammar/beginner/at-the-restaurant.html" data-grammar-id="bg-10" data-keywords="would like, polite requests, offers, ordering, restaurant">
+        <h3 class="bg-card-title">At the Restaurant</h3>
+        <p class="bg-card-desc">Would like and polite requests for ordering food and drink.</p>
+        <ul class="bg-card-points">
+          <li>would like</li>
+          <li>Can I have…? Would you like…?</li>
+          <li>some / any review</li>
+        </ul>
+        <span class="progress-chip" data-grammar-id="bg-10">Start</span>
+      </a>
+
+      <a class="bg-card" href="/grammar/beginner/directions-and-getting-around.html" data-grammar-id="bg-11" data-keywords="imperatives, prepositions of place, prepositions of movement, directions, maps">
+        <h3 class="bg-card-title">Directions & Getting Around</h3>
+        <p class="bg-card-desc">Imperatives and prepositions for giving and following directions.</p>
+        <ul class="bg-card-points">
+          <li>Go straight, turn left/right</li>
+          <li>next to, in front of, behind</li>
+          <li>past, along, across</li>
+        </ul>
+        <span class="progress-chip" data-grammar-id="bg-11">Start</span>
+      </a>
+
+      <a class="bg-card" href="/grammar/beginner/review-and-mix.html" data-grammar-id="bg-12" data-keywords="review, mixed practice, revision, beginner">
+        <h3 class="bg-card-title">Review & Mix</h3>
+        <p class="bg-card-desc">Mixed practice that revisits all beginner grammar in context.</p>
+        <ul class="bg-card-points">
+          <li>Present and past review</li>
+          <li>there is/are, some/any</li>
+          <li>can, going to</li>
+        </ul>
+        <span class="progress-chip" data-grammar-id="bg-12">Start</span>
+      </a>
+    </div>
+  </div>
+</section>
+  </main>
+
+  <footer id="site-footer" class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/grammar/">Grammar</a></li>
+            <li><a href="/about/">About</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Grammar Topics</h4>
+          <ul>
+            <li><a href="/grammar/beginner/beginner-grammar.html">Beginner</a></li>
+            <li><a href="/grammar/advanced/">Advanced</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">YouTube</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 YourSite. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/core.js"></script>
+  <script src="/assets/js/progress-manager-ui.js"></script>
+  <script src="/assets/js/progress-tracking-module.js"></script>
+  <script src="/assets/js/init-progress.js"></script>
 </body>
 </html>
