@@ -46,6 +46,29 @@
       font-size: 1.8rem;
       margin-right: 10px;
     }
+    
+    /* Story styling for the gap fill */
+    .story-container {
+      background-color: var(--bg-offset);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .story-container h3 {
+      margin-top: 0;
+      color: var(--beginner-primary);
+    }
+    
+    .story-text p {
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+    
+    .story-text input {
+      width: 70px;
+      text-align: center;
+    }
   </style>
 </head>
 <body class="beginner-section">
@@ -117,8 +140,6 @@
         <h2>Match the Question to the Answer</h2>
         <p>Match each question about someone's job to the correct answer.</p>
         
-        <div id="line-container" class="matching-line-container"></div>
-        
         <div class="matching-container">
           <div class="matching-item">
             <div class="matching-question" data-index="1">
@@ -133,7 +154,8 @@
               <div class="job-image">👩‍🏫</div>
               What's her job?
             </div>
-            <div class="matching-answer" data-index="2">She's a teacher.</div>
+            <!-- Reordered answers start here -->
+            <div class="matching-answer" data-index="4">She's a pilot.</div>
           </div>
           
           <div class="matching-item">
@@ -141,7 +163,7 @@
               <div class="job-image">👨‍🍳</div>
               What's his job?
             </div>
-            <div class="matching-answer" data-index="3">He's a chef.</div>
+            <div class="matching-answer" data-index="5">He's a manager.</div>
           </div>
           
           <div class="matching-item">
@@ -149,7 +171,7 @@
               <div class="job-image">👩‍✈️</div>
               What's her job?
             </div>
-            <div class="matching-answer" data-index="4">She's a pilot.</div>
+            <div class="matching-answer" data-index="3">He's a chef.</div>
           </div>
           
           <div class="matching-item">
@@ -157,7 +179,7 @@
               <div class="job-image">👨‍💼</div>
               What's his job?
             </div>
-            <div class="matching-answer" data-index="5">He's a manager.</div>
+            <div class="matching-answer" data-index="2">She's a teacher.</div>
           </div>
         </div>
         
@@ -170,34 +192,27 @@
         </div>
       </section>
 
-      <!-- Activity 2: Gap Fill -->
+      <!-- Activity 2: Gap Fill - Completely new story -->
       <section id="gap-fill" class="activity-container">
         <h2>Fill in the Gaps</h2>
-        <p>Complete the conversations about jobs. Choose: <strong>he</strong>, <strong>she</strong>, <strong>his</strong>, <strong>her</strong>, <strong>he's</strong>, or <strong>she's</strong>.</p>
+        <p>Complete the story about Sarah and Tom by filling in the gaps with <strong>he</strong>, <strong>she</strong>, <strong>his</strong>, <strong>her</strong>, <strong>he's</strong>, or <strong>she's</strong>.</p>
         
-        <div class="question" id="gf1">
-          <p class="gap-fill-sentence">A: What's <input type="text" class="gap-input" data-answer="her" placeholder="?"> job? B: <input type="text" class="gap-input" data-answer="She's" placeholder="?"> a nurse.</p>
-          <div class="feedback"></div>
-        </div>
-        
-        <div class="question" id="gf2">
-          <p class="gap-fill-sentence">A: What's <input type="text" class="gap-input" data-answer="his" placeholder="?"> job? B: <input type="text" class="gap-input" data-answer="He's" placeholder="?"> a policeman.</p>
-          <div class="feedback"></div>
-        </div>
-        
-        <div class="question" id="gf3">
-          <p class="gap-fill-sentence">A: Is <input type="text" class="gap-input" data-answer="she" placeholder="?"> a dentist? B: Yes, <input type="text" class="gap-input" data-answer="she's" placeholder="?"> a dentist.</p>
-          <div class="feedback"></div>
-        </div>
-        
-        <div class="question" id="gf4">
-          <p class="gap-fill-sentence">A: Is <input type="text" class="gap-input" data-answer="he" placeholder="?"> a farmer? B: No, <input type="text" class="gap-input" data-answer="he's" placeholder="?"> a driver.</p>
-          <div class="feedback"></div>
-        </div>
-        
-        <div class="question" id="gf5">
-          <p class="gap-fill-sentence">A: What's <input type="text" class="gap-input" data-answer="her" placeholder="?"> job? B: <input type="text" class="gap-input" data-answer="She's" placeholder="?"> a shop assistant.</p>
-          <div class="feedback"></div>
+        <div class="story-container">
+          <h3>Meet Sarah and Tom</h3>
+          
+          <div class="story-text">
+            <p>Sarah is a doctor. <input type="text" class="gap-input" data-answer="She" placeholder="?"> works at City Hospital. <input type="text" class="gap-input" data-answer="Her" placeholder="?"> job is very important. <input type="text" class="gap-input" data-answer="She's" placeholder="?"> very busy every day.</p>
+            
+            <p>Tom is a teacher. <input type="text" class="gap-input" data-answer="He" placeholder="?"> teaches English at a school. <input type="text" class="gap-input" data-answer="His" placeholder="?"> students love <input type="text" class="gap-input" data-answer="him" placeholder="?"> because <input type="text" class="gap-input" data-answer="he's" placeholder="?"> very friendly.</p>
+            
+            <p>Sarah and Tom are friends. Sometimes <input type="text" class="gap-input" data-answer="she" placeholder="?"> visits Tom at school. <input type="text" class="gap-input" data-answer="He" placeholder="?"> always makes coffee for <input type="text" class="gap-input" data-answer="her" placeholder="?">.</p>
+            
+            <p>"What's <input type="text" class="gap-input" data-answer="your" placeholder="?"> job?" people often ask Sarah.</p>
+            
+            <p>"<input type="text" class="gap-input" data-answer="I'm" placeholder="?"> a doctor," <input type="text" class="gap-input" data-answer="she" placeholder="?"> answers.</p>
+            
+            <p>When people ask Tom about <input type="text" class="gap-input" data-answer="his" placeholder="?"> job, <input type="text" class="gap-input" data-answer="he" placeholder="?"> says, "<input type="text" class="gap-input" data-answer="I'm" placeholder="?"> a teacher."</p>
+          </div>
         </div>
         
         <div class="control-buttons">
@@ -206,18 +221,18 @@
         </div>
         
         <div class="score-display" id="gap-fill-score" style="display:none;">
-          Your score: <span>0</span>/10
+          Your score: <span>0</span>/15
         </div>
       </section>
 
-      <!-- Activity 3: Drag and Drop Word Order -->
+      <!-- Activity 3: Drag and Drop Word Order - Fixed to not show answers in question -->
       <section id="drag-drop" class="activity-container">
         <h2>Put the Words in Order</h2>
         <p>Drag the words to make correct sentences about jobs.</p>
         
         <div class="question" id="dd1">
-          <p class="question-text">Make a question: "What's his job?"</p>
-          <div class="drop-zone" data-answer="What's his job?"></div>
+          <p class="question-text">Make a question:</p>
+          <div class="drop-zone" data-answer="what's his job?"></div>
           <div class="drag-items">
             <div class="drag-item" draggable="true">What's</div>
             <div class="drag-item" draggable="true">his</div>
@@ -227,8 +242,8 @@
         </div>
         
         <div class="question" id="dd2">
-          <p class="question-text">Make an answer: "She's a teacher."</p>
-          <div class="drop-zone" data-answer="She's a teacher."></div>
+          <p class="question-text">Make an answer:</p>
+          <div class="drop-zone" data-answer="she's a teacher."></div>
           <div class="drag-items">
             <div class="drag-item" draggable="true">She's</div>
             <div class="drag-item" draggable="true">a</div>
@@ -238,8 +253,8 @@
         </div>
         
         <div class="question" id="dd3">
-          <p class="question-text">Make a question: "What's her job?"</p>
-          <div class="drop-zone" data-answer="What's her job?"></div>
+          <p class="question-text">Make a question:</p>
+          <div class="drop-zone" data-answer="what's her job?"></div>
           <div class="drag-items">
             <div class="drag-item" draggable="true">What's</div>
             <div class="drag-item" draggable="true">her</div>
@@ -249,8 +264,8 @@
         </div>
         
         <div class="question" id="dd4">
-          <p class="question-text">Make an answer: "He's a doctor."</p>
-          <div class="drop-zone" data-answer="He's a doctor."></div>
+          <p class="question-text">Make an answer:</p>
+          <div class="drop-zone" data-answer="he's a doctor."></div>
           <div class="drag-items">
             <div class="drag-item" draggable="true">He's</div>
             <div class="drag-item" draggable="true">a</div>
@@ -260,8 +275,8 @@
         </div>
         
         <div class="question" id="dd5">
-          <p class="question-text">Make a question: "Is she a nurse?"</p>
-          <div class="drop-zone" data-answer="Is she a nurse?"></div>
+          <p class="question-text">Make a question:</p>
+          <div class="drop-zone" data-answer="is she a nurse?"></div>
           <div class="drag-items">
             <div class="drag-item" draggable="true">Is</div>
             <div class="drag-item" draggable="true">she</div>
@@ -395,6 +410,48 @@
       }
       
       if (typeof DragDropModule !== 'undefined') {
+        // Store the original drag items for each question
+        const originalDragItems = {};
+        
+        document.querySelectorAll('#drag-drop .question').forEach((question) => {
+          const questionId = question.id;
+          const dragItemsContainer = question.querySelector('.drag-items');
+          
+          if (dragItemsContainer) {
+            // Store the original word texts only
+            originalDragItems[questionId] = Array.from(dragItemsContainer.querySelectorAll('.drag-item')).map(
+              item => item.textContent
+            );
+          }
+        });
+        
+        // Override the init function to fix answer checking
+        const originalInit = DragDropModule.init;
+        
+        DragDropModule.init = function(config = {}) {
+          const container = document.getElementById(config.containerId || 'drag-drop');
+          if (!container) return originalInit(config);
+          
+          // Extract the correct answers from drop zones' data-answer attributes
+          const answers = {};
+          container.querySelectorAll('.drop-zone').forEach((zone, index) => {
+            const answer = zone.getAttribute('data-answer');
+            if (answer) {
+              answers[index] = answer.toLowerCase();
+            }
+          });
+          
+          // Call the original init with our extracted answers
+          const newConfig = {
+            ...config,
+            answers: answers,
+            allowMultipleCorrectOrders: false
+          };
+          
+          return originalInit(newConfig);
+        };
+        
+        // Initialize with the fixed init function
         DragDropModule.init({
           containerId: 'drag-drop',
           onComplete: function(score, total) {
@@ -413,6 +470,84 @@
             }
           }
         });
+        
+        // Fix the restart button to prevent duplicatable items
+        const restartButton = document.getElementById('drag-drop-restart');
+        if (restartButton) {
+          // Replace any existing event listeners by cloning the button
+          const newRestartButton = restartButton.cloneNode(true);
+          if (restartButton.parentNode) {
+            restartButton.parentNode.replaceChild(newRestartButton, restartButton);
+          }
+          
+          // Add our fixed event listener
+          newRestartButton.addEventListener('click', function() {
+            // Get all questions
+            document.querySelectorAll('#drag-drop .question').forEach((question) => {
+              const questionId = question.id;
+              
+              // Clear the drop zone
+              const dropZone = question.querySelector('.drop-zone');
+              if (dropZone) {
+                dropZone.innerHTML = '';
+                dropZone.style.borderColor = 'var(--border-color)';
+                dropZone.style.backgroundColor = 'var(--drop-zone-bg)';
+              }
+              
+              // Get the drag items container
+              const dragItemsContainer = question.querySelector('.drag-items');
+              if (dragItemsContainer) {
+                // Clear all existing items
+                dragItemsContainer.innerHTML = '';
+                
+                // Recreate the drag items from the stored words
+                if (originalDragItems[questionId]) {
+                  originalDragItems[questionId].forEach(word => {
+                    const newItem = document.createElement('div');
+                    newItem.className = 'drag-item';
+                    newItem.setAttribute('draggable', 'true');
+                    newItem.textContent = word;
+                    
+                    // Add fresh event listeners
+                    newItem.addEventListener('dragstart', function(e) {
+                      this.classList.add('dragging');
+                      e.dataTransfer.setData('text/plain', this.textContent);
+                      e.dataTransfer.effectAllowed = 'move';
+                      window.currentDraggedItem = this;
+                    });
+                    
+                    newItem.addEventListener('dragend', function() {
+                      this.classList.remove('dragging');
+                      window.currentDraggedItem = null;
+                    });
+                    
+                    dragItemsContainer.appendChild(newItem);
+                  });
+                }
+              }
+              
+              // Clear feedback
+              const feedback = question.querySelector('.feedback');
+              if (feedback) {
+                feedback.textContent = '';
+                feedback.className = 'feedback';
+              }
+            });
+            
+            // Toggle buttons
+            const submitButton = document.getElementById('drag-drop-submit');
+            if (submitButton) {
+              submitButton.style.display = 'block';
+              newRestartButton.style.display = 'none';
+            }
+            
+            // Hide score
+            const scoreDisplay = document.getElementById('drag-drop-score');
+            if (scoreDisplay) {
+              scoreDisplay.style.display = 'none';
+            }
+          });
+        }
       }
       
       // Initialize Activity Navigation
