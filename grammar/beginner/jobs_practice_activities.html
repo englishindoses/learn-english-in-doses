@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Practice What's His/Her Job? - Learn he/she, his/her, he's/she's with interactive activities for beginner ESL learners.">
+  <title>What's His/Her Job? - Practice Activities</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../../images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../images/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/activities.css">
+
+  <!-- Page specific styles -->
+  <style>
+    .nav-indicator {
+      height: 3px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: var(--beginner-primary);
+    }
+    
+    [data-theme="dark"] .nav-indicator {
+      background-color: var(--beginner-primary);
+    }
+    
+    .job-image {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: var(--beginner-icon-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body class="beginner-section">
+  <!-- Skip link and theme toggle -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  
+  <div class="theme-toggle-container">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="light-icon">☀️</span>
+      <span class="dark-icon">🌙</span>
+    </button>
+  </div>
+
+  <!-- Main navigation -->
+  <nav class="main-navigation">
+    <a href="../../home.html" class="site-logo">
+      <img src="../../images/my-logo.svg" alt="English in Doses" width="150" height="auto">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <div class="nav-links">
+      <a href="../../home.html" class="nav-link">Home</a>
+      <a href="../../about.html" class="nav-link">About Us</a>
+      <a href="../../contact.html" class="nav-link">Contact Us</a>
+      <a href="../../home.html#where-to-start" class="nav-link">Grammar</a>
+      <a href="../../extra-practice.html" class="nav-link">Extra Practice</a>
+      <a href="../../conversation-page.html" class="nav-link">Conversation</a>
+      <a href="../../my-progress.html" class="nav-link">My Progress</a>
+      <div class="nav-indicator"></div>
+    </div>
+  </nav>
+
+  <!-- Breadcrumbs -->
+  <nav class="breadcrumb">
+    <a href="../../home.html">Home</a> / 
+    <a href="beginner-grammar.html">Beginner Grammar</a> / 
+    <span>What's His/Her Job? - Practice</span>
+  </nav>
+
+  <div class="container">
+    <main id="main-content">
+      <h1>What's His/Her Job? - Practice Activities</h1>
+      
+      <div class="section-intro">
+        <p>Practice using <strong>he/she</strong>, <strong>his/her</strong>, and <strong>he's/she's</strong> when talking about jobs.</p>
+        <p>Remember: <span class="highlight">he/she</span> = person, <span class="highlight">his/her</span> = belonging, <span class="highlight">he's/she's</span> = he is/she is</p>
+      </div>
+
+      <!-- Activity Navigation -->
+      <div class="activity-nav" id="activity-nav">
+        <button class="activity-nav-btn active" data-activity="matching">Match Questions</button>
+        <button class="activity-nav-btn" data-activity="gap-fill">Fill the Gaps</button>
+        <button class="activity-nav-btn" data-activity="drag-drop">Put in Order</button>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="progress-container">
+        <div class="progress-bar" id="progress-bar">
+          <div class="progress-fill"></div>
+        </div>
+        <div class="progress-info" id="progress-info">0 of 3 activities completed</div>
+      </div>
+
+      <!-- Activity 1: Matching Questions to Answers -->
+      <section id="matching" class="activity-container active">
+        <h2>Match the Question to the Answer</h2>
+        <p>Match each question about someone's job to the correct answer.</p>
+        
+        <div id="line-container" class="matching-line-container"></div>
+        
+        <div class="matching-container">
+          <div class="matching-item">
+            <div class="matching-question" data-index="1">
+              <div class="job-image">👨‍⚕️</div>
+              What's his job?
+            </div>
+            <div class="matching-answer" data-index="1">He's a doctor.</div>
+          </div>
+          
+          <div class="matching-item">
+            <div class="matching-question" data-index="2">
+              <div class="job-image">👩‍🏫</div>
+              What's her job?
+            </div>
+            <div class="matching-answer" data-index="2">She's a teacher.</div>
+          </div>
+          
+          <div class="matching-item">
+            <div class="matching-question" data-index="3">
+              <div class="job-image">👨‍🍳</div>
+              What's his job?
+            </div>
+            <div class="matching-answer" data-index="3">He's a chef.</div>
+          </div>
+          
+          <div class="matching-item">
+            <div class="matching-question" data-index="4">
+              <div class="job-image">👩‍✈️</div>
+              What's her job?
+            </div>
+            <div class="matching-answer" data-index="4">She's a pilot.</div>
+          </div>
+          
+          <div class="matching-item">
+            <div class="matching-question" data-index="5">
+              <div class="job-image">👨‍💼</div>
+              What's his job?
+            </div>
+            <div class="matching-answer" data-index="5">He's a manager.</div>
+          </div>
+        </div>
+        
+        <div class="control-buttons">
+          <button id="matching-restart" class="restart-btn" style="display:none;">Try Again</button>
+        </div>
+        
+        <div class="score-display" id="matching-score" style="display:none;">
+          Your score: <span>0</span>/5
+        </div>
+      </section>
+
+      <!-- Activity 2: Gap Fill -->
+      <section id="gap-fill" class="activity-container">
+        <h2>Fill in the Gaps</h2>
+        <p>Complete the conversations about jobs. Choose: <strong>he</strong>, <strong>she</strong>, <strong>his</strong>, <strong>her</strong>, <strong>he's</strong>, or <strong>she's</strong>.</p>
+        
+        <div class="question" id="gf1">
+          <p class="gap-fill-sentence">A: What's <input type="text" class="gap-input" data-answer="her" placeholder="?"> job? B: <input type="text" class="gap-input" data-answer="She's" placeholder="?"> a nurse.</p>
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="gf2">
+          <p class="gap-fill-sentence">A: What's <input type="text" class="gap-input" data-answer="his" placeholder="?"> job? B: <input type="text" class="gap-input" data-answer="He's" placeholder="?"> a policeman.</p>
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="gf3">
+          <p class="gap-fill-sentence">A: Is <input type="text" class="gap-input" data-answer="she" placeholder="?"> a dentist? B: Yes, <input type="text" class="gap-input" data-answer="she's" placeholder="?"> a dentist.</p>
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="gf4">
+          <p class="gap-fill-sentence">A: Is <input type="text" class="gap-input" data-answer="he" placeholder="?"> a farmer? B: No, <input type="text" class="gap-input" data-answer="he's" placeholder="?"> a driver.</p>
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="gf5">
+          <p class="gap-fill-sentence">A: What's <input type="text" class="gap-input" data-answer="her" placeholder="?"> job? B: <input type="text" class="gap-input" data-answer="She's" placeholder="?"> a shop assistant.</p>
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="control-buttons">
+          <button id="gap-fill-submit" class="submit-btn">Check Answers</button>
+          <button id="gap-fill-restart" class="restart-btn" style="display:none;">Try Again</button>
+        </div>
+        
+        <div class="score-display" id="gap-fill-score" style="display:none;">
+          Your score: <span>0</span>/10
+        </div>
+      </section>
+
+      <!-- Activity 3: Drag and Drop Word Order -->
+      <section id="drag-drop" class="activity-container">
+        <h2>Put the Words in Order</h2>
+        <p>Drag the words to make correct sentences about jobs.</p>
+        
+        <div class="question" id="dd1">
+          <p class="question-text">Make a question: "What's his job?"</p>
+          <div class="drop-zone" data-answer="What's his job?"></div>
+          <div class="drag-items">
+            <div class="drag-item" draggable="true">What's</div>
+            <div class="drag-item" draggable="true">his</div>
+            <div class="drag-item" draggable="true">job?</div>
+          </div>
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="dd2">
+          <p class="question-text">Make an answer: "She's a teacher."</p>
+          <div class="drop-zone" data-answer="She's a teacher."></div>
+          <div class="drag-items">
+            <div class="drag-item" draggable="true">She's</div>
+            <div class="drag-item" draggable="true">a</div>
+            <div class="drag-item" draggable="true">teacher.</div>
+          </div>
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="dd3">
+          <p class="question-text">Make a question: "What's her job?"</p>
+          <div class="drop-zone" data-answer="What's her job?"></div>
+          <div class="drag-items">
+            <div class="drag-item" draggable="true">What's</div>
+            <div class="drag-item" draggable="true">her</div>
+            <div class="drag-item" draggable="true">job?</div>
+          </div>
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="dd4">
+          <p class="question-text">Make an answer: "He's a doctor."</p>
+          <div class="drop-zone" data-answer="He's a doctor."></div>
+          <div class="drag-items">
+            <div class="drag-item" draggable="true">He's</div>
+            <div class="drag-item" draggable="true">a</div>
+            <div class="drag-item" draggable="true">doctor.</div>
+          </div>
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="dd5">
+          <p class="question-text">Make a question: "Is she a nurse?"</p>
+          <div class="drop-zone" data-answer="Is she a nurse?"></div>
+          <div class="drag-items">
+            <div class="drag-item" draggable="true">Is</div>
+            <div class="drag-item" draggable="true">she</div>
+            <div class="drag-item" draggable="true">a</div>
+            <div class="drag-item" draggable="true">nurse?</div>
+          </div>
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="control-buttons">
+          <button id="drag-drop-submit" class="submit-btn">Check Answers</button>
+          <button id="drag-drop-restart" class="restart-btn" style="display:none;">Try Again</button>
+        </div>
+        
+        <div class="score-display" id="drag-drop-score" style="display:none;">
+          Your score: <span>0</span>/5
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <!-- Bottom Navigation -->
+  <nav class="bottom-navigation">
+    <a href="beginner-grammar.html" class="nav-button previous">← Back to: Beginner Grammar</a>
+    <div class="center-buttons">
+      <button class="nav-button print-button" onclick="window.print()">Print This Page</button>
+    </div>
+    <a href="../../my-progress.html" class="nav-button next">View My Progress →</a>
+  </nav>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="../../home.html">Home</a></li>
+          <li><a href="../../home.html#where-to-start">Grammar</a></li>
+          <li><a href="../../extra-practice.html">Extra Practice</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Grammar Topics</h3>
+        <ul>
+          <li><a href="beginner-grammar.html#basic-grammar">Basic Grammar</a></li>
+          <li><a href="beginner-grammar.html#present-simple">Present Simple</a></li>
+          <li><a href="beginner-grammar.html#question-words">Question Words</a></li>
+          <li><a href="beginner-grammar.html#jobs-vocabulary">Jobs Vocabulary</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="../../about.html">About</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+          <li><a href="../../privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© 2025 English in Doses | All rights reserved | <a href="../../license.html">Licensing Information</a></p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="../../js/core.js"></script>
+  <script src="../../js/matching.js"></script>
+  <script src="../../js/gap-fill.js"></script>
+  <script src="../../js/drag-drop.js"></script>
+  <script src="../../js/activity-nav.js"></script>
+  <script src="../../js/progress-tracking-module.js"></script>
+  <script src="../../js/progress-manager-ui.js"></script>
+  <script src="../../js/init-progress.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check if modules are available first
+      console.log('Available modules:', {
+        matching: typeof window.MatchingModule !== 'undefined',
+        gapFill: typeof window.GapFillModule !== 'undefined', 
+        dragDrop: typeof window.DragDropModule !== 'undefined',
+        activityNav: typeof window.ActivityNavModule !== 'undefined',
+        progress: typeof window.ProgressTrackingModule !== 'undefined'
+      });
+      
+      // Initialize activity modules based on your infrastructure
+      if (typeof window.MatchingModule !== 'undefined') {
+        MatchingModule.init({
+          containerId: 'matching',
+          onComplete: function(score, total) {
+            if (typeof window.ProgressTrackingModule !== 'undefined') {
+              ProgressTrackingModule.updateItemProgress('activities', 'jobs-matching', {
+                completed: true,
+                score: score,
+                maxScore: total
+              });
+            }
+            if (typeof window.ActivityNavModule !== 'undefined') {
+              ActivityNavModule.notifyActivityCompleted('matching', {
+                score: score,
+                maxScore: total
+              });
+            }
+          }
+        });
+      }
+      
+      if (typeof window.GapFillModule !== 'undefined') {
+        GapFillModule.init({
+          containerId: 'gap-fill',
+          onComplete: function(score, total) {
+            if (typeof window.ProgressTrackingModule !== 'undefined') {
+              ProgressTrackingModule.updateItemProgress('activities', 'jobs-gap-fill', {
+                completed: true,
+                score: score,
+                maxScore: total
+              });
+            }
+            if (typeof window.ActivityNavModule !== 'undefined') {
+              ActivityNavModule.notifyActivityCompleted('gap-fill', {
+                score: score,
+                maxScore: total
+              });
+            }
+          }
+        });
+      }
+      
+      if (typeof window.DragDropModule !== 'undefined') {
+        DragDropModule.init({
+          containerId: 'drag-drop',
+          onComplete: function(score, total) {
+            if (typeof window.ProgressTrackingModule !== 'undefined') {
+              ProgressTrackingModule.updateItemProgress('activities', 'jobs-drag-drop', {
+                completed: true,
+                score: score,
+                maxScore: total
+              });
+            }
+            if (typeof window.ActivityNavModule !== 'undefined') {
+              ActivityNavModule.notifyActivityCompleted('drag-drop', {
+                score: score,
+                maxScore: total
+              });
+            }
+          }
+        });
+      }
+      
+      // Initialize Activity Navigation
+      if (typeof window.ActivityNavModule !== 'undefined') {
+        ActivityNavModule.init({
+          containerId: 'activity-nav',
+          activities: ['matching', 'gap-fill', 'drag-drop'],
+          progressContainerId: 'progress-bar',
+          progressInfoContainerId: 'progress-info',
+          onActivityChange: function(activityId) {
+            console.log('Activity changed to:', activityId);
+          }
+        });
+      }
+      
+      // Initialize Progress Tracking
+      if (typeof window.ProgressTrackingModule !== 'undefined') {
+        ProgressTrackingModule.init({
+          categories: {
+            activities: {
+              grammarActivities: ['jobs-matching', 'jobs-gap-fill', 'jobs-drag-drop']
+            }
+          },
+          onProgressChange: function(details) {
+            if (typeof window.ActivityNavModule !== 'undefined') {
+              ActivityNavModule.updateProgressDisplay();
+            }
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
