@@ -8,16 +8,17 @@
   
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
-  
-  <!-- Favicon -->
-  <link rel="apple-touch-icon" sizes="180x180" href="../../images/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../../images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../../images/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  
-  <!-- Styles -->
+
+  <!-- Base and Activity Styles -->
   <link rel="stylesheet" href="../../css/base.css">
   <link rel="stylesheet" href="../../css/activities.css">
+  <link rel="stylesheet" href="../../css/components.css">
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../../images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../images//favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../images//favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
 
   <!-- Page specific styles -->
   <style>
@@ -75,19 +76,23 @@
       <div class="nav-indicator"></div>
     </div>
   </nav>
-
+<div class="container">
   <!-- Breadcrumbs -->
-  <nav class="breadcrumb">
-    <a href="../../home.html">Home</a> / 
-    <a href="beginner-grammar.html">Beginner Grammar</a> / 
-    <span>What's His/Her Job? - Practice</span>
-  </nav>
+   <div class="breadcrumbs" aria-label="breadcrumb">
+      <span class="breadcrumb-item"><a href="../../home.html">Home</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="../../home.html#where-to-start">Grammar Levels</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="beginner-grammar.html">Beginner Grammar</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item">What's his/her job?</span>
+    </div>
 
   <div class="container">
     <main id="main-content">
       <h1>What's His/Her Job? - Practice Activities</h1>
       
-      <div class="section-intro">
+      <div class=".beginner-section .section-intro">
         <p>Practice using <strong>he/she</strong>, <strong>his/her</strong>, and <strong>he's/she's</strong> when talking about jobs.</p>
         <p>Remember: <span class="highlight">he/she</span> = person, <span class="highlight">his/her</span> = belonging, <span class="highlight">he's/she's</span> = he is/she is</p>
       </div>
@@ -277,6 +282,7 @@
       </section>
     </main>
   </div>
+</div>
   
   <!-- Bottom Navigation -->
   <nav class="bottom-navigation">
@@ -338,26 +344,26 @@
     document.addEventListener('DOMContentLoaded', function() {
       // Check if modules are available first
       console.log('Available modules:', {
-        matching: typeof window.MatchingModule !== 'undefined',
-        gapFill: typeof window.GapFillModule !== 'undefined', 
-        dragDrop: typeof window.DragDropModule !== 'undefined',
-        activityNav: typeof window.ActivityNavModule !== 'undefined',
-        progress: typeof window.ProgressTrackingModule !== 'undefined'
+        matching: typeof MatchingModule !== 'undefined',
+        gapFill: typeof GapFillModule !== 'undefined', 
+        dragDrop: typeof DragDropModule !== 'undefined',
+        activityNav: typeof ActivityNavModule !== 'undefined',
+        progress: typeof ProgressTrackingModule !== 'undefined'
       });
       
       // Initialize activity modules based on your infrastructure
-      if (typeof window.MatchingModule !== 'undefined') {
+      if (typeof MatchingModule !== 'undefined') {
         MatchingModule.init({
           containerId: 'matching',
           onComplete: function(score, total) {
-            if (typeof window.ProgressTrackingModule !== 'undefined') {
+            if (typeof ProgressTrackingModule !== 'undefined') {
               ProgressTrackingModule.updateItemProgress('activities', 'jobs-matching', {
                 completed: true,
                 score: score,
                 maxScore: total
               });
             }
-            if (typeof window.ActivityNavModule !== 'undefined') {
+            if (typeof ActivityNavModule !== 'undefined') {
               ActivityNavModule.notifyActivityCompleted('matching', {
                 score: score,
                 maxScore: total
@@ -367,18 +373,18 @@
         });
       }
       
-      if (typeof window.GapFillModule !== 'undefined') {
+      if (typeof GapFillModule !== 'undefined') {
         GapFillModule.init({
           containerId: 'gap-fill',
           onComplete: function(score, total) {
-            if (typeof window.ProgressTrackingModule !== 'undefined') {
+            if (typeof ProgressTrackingModule !== 'undefined') {
               ProgressTrackingModule.updateItemProgress('activities', 'jobs-gap-fill', {
                 completed: true,
                 score: score,
                 maxScore: total
               });
             }
-            if (typeof window.ActivityNavModule !== 'undefined') {
+            if (typeof ActivityNavModule !== 'undefined') {
               ActivityNavModule.notifyActivityCompleted('gap-fill', {
                 score: score,
                 maxScore: total
@@ -388,18 +394,18 @@
         });
       }
       
-      if (typeof window.DragDropModule !== 'undefined') {
+      if (typeof DragDropModule !== 'undefined') {
         DragDropModule.init({
           containerId: 'drag-drop',
           onComplete: function(score, total) {
-            if (typeof window.ProgressTrackingModule !== 'undefined') {
+            if (typeof ProgressTrackingModule !== 'undefined') {
               ProgressTrackingModule.updateItemProgress('activities', 'jobs-drag-drop', {
                 completed: true,
                 score: score,
                 maxScore: total
               });
             }
-            if (typeof window.ActivityNavModule !== 'undefined') {
+            if (typeof ActivityNavModule !== 'undefined') {
               ActivityNavModule.notifyActivityCompleted('drag-drop', {
                 score: score,
                 maxScore: total
@@ -410,7 +416,7 @@
       }
       
       // Initialize Activity Navigation
-      if (typeof window.ActivityNavModule !== 'undefined') {
+      if (typeof ActivityNavModule !== 'undefined') {
         ActivityNavModule.init({
           containerId: 'activity-nav',
           activities: ['matching', 'gap-fill', 'drag-drop'],
@@ -423,7 +429,7 @@
       }
       
       // Initialize Progress Tracking
-      if (typeof window.ProgressTrackingModule !== 'undefined') {
+      if (typeof ProgressTrackingModule !== 'undefined') {
         ProgressTrackingModule.init({
           categories: {
             activities: {
@@ -431,7 +437,7 @@
             }
           },
           onProgressChange: function(details) {
-            if (typeof window.ActivityNavModule !== 'undefined') {
+            if (typeof ActivityNavModule !== 'undefined') {
               ActivityNavModule.updateProgressDisplay();
             }
           }
