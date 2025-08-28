@@ -1,267 +1,517 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Beginner Grammar — Index</title>
+  <!-- Standardized Head Section -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Beginner ESL Grammar Course - Essential grammar lessons for A1-A2 level English learners">
+  <title>Beginner ESL Grammar Course</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
+
+  <!-- Base and Activity Styles -->
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/activities.css">
+  <link rel="stylesheet" href="../../css/components.css">
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../../images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../images//favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../images//favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Conditional polyfills -->
+  <!--[if IE]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <![endif]-->
+  
 </head>
+<body class="beginner-section">
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
 
-<body class="beginner-section" data-page-type="beginner-grammar-index">
-  <a class="skip-link" href="#content">Skip to main content</a>
+  <!-- Theme toggle button -->
+  <div class="theme-toggle-container">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="light-icon">☀️</span>
+      <span class="dark-icon">🌙</span>
+    </button>
+  </div>
 
-  <header id="site-header" class="site-header">
-    <div class="container nav-container">
-      <a class="site-logo" href="/" aria-label="Homepage">English</a>
-      <nav class="site-nav" aria-label="Primary">
-        <ul class="nav-links">
-          <li><a href="/">Home</a></li>
-          <li class="has-submenu">
-            <a href="/grammar/">Grammar</a>
-            <ul class="submenu">
-              <li><a class="is-active" href="/grammar/beginner/beginner-grammar.html">Beginner</a></li>
-              <li><a href="/grammar/advanced/">Advanced</a></li>
-            </ul>
-          </li>
-          <li><a href="/about/">About</a></li>
-        </ul>
-      </nav>
+  <!-- Main navigation -->
+  <nav class="main-navigation">
+    <a href="../../home.html" class="site-logo">
+      <img src="../../images/my-logo.svg" alt="English in Doses" width="150" height="auto">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <div class="nav-links">
+      <a href="../../home.html" class="nav-link">Home</a>
+      <a href="../../about.html" class="nav-link">About Us</a>
+      <a href="../../contact.html" class="nav-link">Contact Us</a>
+      <a href="../../home.html#where-to-start" class="nav-link">Grammar</a>
+      <a href="../../extra-practice.html" class="nav-link">Extra Practice</a>
+      <a href="../../conversation-page.html" class="nav-link">Conversation</a>
+      <a href="../../my-progress.html" class="nav-link">My Progress</a>
     </div>
-    <div class="beginner-nav-indicator"></div>
-  </header>
 
-  <nav class="breadcrumbs" aria-label="Breadcrumb">
-    <ol>
-      <li><a href="/">Home</a></li>
-      <li><a href="/grammar/">Grammar</a></li>
-      <li aria-current="page">Beginner</li>
-    </ol>
+    <div class="beginner-nav-indicator"></div>
+    
   </nav>
 
-  <main id="content" class="container content-area" tabindex="-1">
-    <section id="bg-hero" class="section hero">
   <div class="container">
-    <h1 class="page-title">Beginner Grammar</h1>
-    <p class="page-intro">Short review, then straight into practice. Learn by doing with clear examples and quick checks.</p>
-  </div>
-</section>
-
-<section id="bg-actions" class="section actions" data-progress-scope="beginner-grammar" data-category="beginner" data-progress-type="grammar-index">
-  <div class="container actions-row">
-    <label for="bg-search" class="sr-only">Search grammar topics</label>
-    <input id="bg-search" type="search" class="input search" placeholder="Search topics" autocomplete="off" />
-
-    <label for="bg-filter" class="sr-only">Filter by progress</label>
-    <select id="bg-filter" class="select filter">
-      <option value="all">All</option>
-      <option value="not-started">Not started</option>
-      <option value="in-progress">In progress</option>
-      <option value="completed">Completed</option>
-    </select>
-
-    <label for="bg-sort" class="sr-only">Sort topics</label>
-    <select id="bg-sort" class="select sort">
-      <option value="recommended">Recommended order</option>
-      <option value="az">A–Z</option>
-      <option value="progress">Progress</option>
-    </select>
-
-    <button id="bg-continue" class="button continue" type="button">Continue where you left off</button>
-  </div>
-</section>
-
-<section id="bg-progress" class="section progress-summary" aria-labelledby="bg-progress-title" data-progress-scope="beginner-grammar">
-  <div class="container">
-    <h2 id="bg-progress-title" class="section-title">Your progress</h2>
-    <div class="progress-wrap">
-      <div class="progress-meta">
-        <span id="bg-progress-count" class="progress-count">0/12 completed</span>
-        <span id="bg-progress-status" class="progress-status">Not started</span>
-      </div>
-      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="12" aria-valuenow="0" aria-label="Beginner grammar completion">
-        <div id="bg-progress-meter" class="progress-meter" style="width: 0%;"></div>
-      </div>
+    <!-- Include breadcrumbs on section index -->
+    <div class="breadcrumbs" aria-label="breadcrumb">
+      <span class="breadcrumb-item"><a href="../../home.html">Home</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="../../home.html#where-to-start">Grammar Levels</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item">Beginner Grammar</span>
+      
     </div>
-  </div>
-</section>
+    
+    <main id="main-content">
+      <h1>Beginner ESL Grammar Course</h1>
+      
+      <p>Welcome to the Beginner English Grammar Course by English in Doses. This course is designed to help you build a strong foundation in English grammar. You will learn the essential grammar rules step by step, starting from the basics and building up to more complex structures. Each lesson includes clear explanations, simple examples, and practice activities to help you understand and use English grammar correctly.</p>
 
-<section id="bg-index" class="section topic-index" aria-labelledby="bg-index-title" data-progress-scope="beginner-grammar">
-  <div class="container">
-    <h2 id="bg-index-title" class="section-title">Topics</h2>
-
-    <div class="bg-card-grid">
-      <a class="bg-card" href="/grammar/beginner/getting-to-know-you.html" data-grammar-id="bg-01" data-keywords="to be, am, is, are, pronouns, questions, introductions, personal information">
-        <h3 class="bg-card-title">Getting to Know You</h3>
-        <p class="bg-card-desc">To be, pronouns, and basic Wh‑questions for introductions.</p>
-        <ul class="bg-card-points">
-          <li>am / is / are</li>
-          <li>Subject pronouns</li>
-          <li>What, where, how old</li>
+      <section class="intro-section">
+        <h2>This course will help you:</h2>
+        <ul>
+          <li>Build a strong foundation in English grammar.</li>
+          <li>Express yourself clearly in everyday situations.</li>
+          <li>Understand basic English texts and conversations.</li>
+          <li>Prepare for A1 and A2 level English exams.</li>
+          <li>Move confidently to intermediate level English.</li>
         </ul>
-        <span class="progress-chip" data-grammar-id="bg-01">Start</span>
-      </a>
+      </section>
 
-      <a class="bg-card" href="/grammar/beginner/everyday-routines.html" data-grammar-id="bg-02" data-keywords="present simple, routines, frequency, adverbs, time expressions">
-        <h3 class="bg-card-title">Everyday Routines</h3>
-        <p class="bg-card-desc">Present Simple with frequency and time expressions.</p>
-        <ul class="bg-card-points">
-          <li>Present Simple (I/you/we/they)</li>
-          <li>always, sometimes, never</li>
-          <li>in the morning, on Mondays</li>
-        </ul>
-        <span class="progress-chip" data-grammar-id="bg-02">Start</span>
-      </a>
+      <section class="intro-section">
+        <h2>Course Structure</h2>
+        <p>Each topic includes:</p>
+        <ol>
+          <li><strong>Introduction</strong> - Simple overview of the grammar rule.</li>
+          <li><strong>Form</strong> - How to make the grammar structure.</li>
+          <li><strong>When to use it</strong> - Clear explanations of when to use each grammar rule.</li>
+          <li><strong>Examples</strong> - Simple, clear examples you can understand easily.</li>
+          <li><strong>Native Speaker Note</strong> - How native speakers really use the grammar.</li>
+          <li><strong>Common Errors</strong> - Mistakes to avoid.</li>
+          <li><strong>Practice Exercises</strong> - Test your knowledge with multiple choice questions.</li>
+          <li><strong>Useful Tips</strong> - Extra help to learn and remember the grammar.</li>
+          <li><strong>Extra Practice</strong> - More activities to practice what you have learned.</li>
+        </ol>
+      </section>
 
-      <a class="bg-card" href="/grammar/beginner/talking-about-people.html" data-grammar-id="bg-03" data-keywords="he she it, present simple, possessives, adjectives, descriptions">
-        <h3 class="bg-card-title">Talking About People</h3>
-        <p class="bg-card-desc">He/She/It forms, possessives, and describing people.</p>
-        <ul class="bg-card-points">
-          <li>Present Simple (he/she/it)</li>
-          <li>my, your, his, her</li>
-          <li>appearance and personality</li>
-        </ul>
-        <span class="progress-chip" data-grammar-id="bg-03">Start</span>
-      </a>
+      <hr>
 
-      <a class="bg-card" href="/grammar/beginner/places-and-things.html" data-grammar-id="bg-04" data-keywords="there is, there are, some, any, this that these those, places, objects">
-        <h3 class="bg-card-title">Places & Things</h3>
-        <p class="bg-card-desc">There is/are, some/any, and demonstratives.</p>
-        <ul class="bg-card-points">
-          <li>there is / there are</li>
-          <li>some / any</li>
-          <li>this / that / these / those</li>
-        </ul>
-        <span class="progress-chip" data-grammar-id="bg-04">Start</span>
-      </a>
+      <h2>Course Index</h2>
+      <p>The topics are in order from easiest to hardest. Follow them in order for the best learning experience, or look for specific topics you want to study. Tick the checkboxes to track your progress!</p>
 
-      <a class="bg-card" href="/grammar/beginner/shopping-and-food.html" data-grammar-id="bg-05" data-keywords="countable, uncountable, a an, some any, how much, how many, likes">
-        <h3 class="bg-card-title">Shopping & Food</h3>
-        <p class="bg-card-desc">Countables, uncountables, and quantifiers for shopping.</p>
-        <ul class="bg-card-points">
-          <li>a/an, some/any</li>
-          <li>how much / how many</li>
-          <li>like / don’t like</li>
-        </ul>
-        <span class="progress-chip" data-grammar-id="bg-05">Start</span>
-      </a>
-
-      <a class="bg-card" href="/grammar/beginner/free-time-and-abilities.html" data-grammar-id="bg-06" data-keywords="can, can't, ability, present continuous, hobbies, free time">
-        <h3 class="bg-card-title">Free Time & Abilities</h3>
-        <p class="bg-card-desc">Can/can’t and Present Continuous for actions now.</p>
-        <ul class="bg-card-points">
-          <li>can / can’t</li>
-          <li>am/is/are + ‑ing</li>
-          <li>sports and hobbies</li>
-        </ul>
-        <span class="progress-chip" data-grammar-id="bg-06">Start</span>
-      </a>
-
-      <a class="bg-card" href="/grammar/beginner/past-time.html" data-grammar-id="bg-07" data-keywords="past simple, was, were, regular verbs, irregular verbs, ago, past time expressions">
-        <h3 class="bg-card-title">Past Time</h3>
-        <p class="bg-card-desc">Past Simple with was/were, regular and irregular verbs.</p>
-        <ul class="bg-card-points">
-          <li>was / were</li>
-          <li>regular and irregular verbs</li>
-          <li>ago + time</li>
-        </ul>
-        <span class="progress-chip" data-grammar-id="bg-07">Start</span>
-      </a>
-
-      <a class="bg-card" href="/grammar/beginner/travel-and-holidays.html" data-grammar-id="bg-08" data-keywords="past simple questions, sequencing words, travel, holidays, stories">
-        <h3 class="bg-card-title">Travel & Holidays</h3>
-        <p class="bg-card-desc">Past questions and sequencing for telling travel stories.</p>
-        <ul class="bg-card-points">
-          <li>did + base verb</li>
-          <li>first, then, after that, finally</li>
-          <li>irregular verb review</li>
-        </ul>
-        <span class="progress-chip" data-grammar-id="bg-08">Start</span>
-      </a>
-
-      <a class="bg-card" href="/grammar/beginner/future-plans.html" data-grammar-id="bg-09" data-keywords="going to, present continuous future, plans, arrangements, time expressions">
-        <h3 class="bg-card-title">Future Plans</h3>
-        <p class="bg-card-desc">Going to for intentions and Present Continuous for arrangements.</p>
-        <ul class="bg-card-points">
-          <li>going to + verb</li>
-          <li>am/is/are + ‑ing (future)</li>
-          <li>next week, tomorrow</li>
-        </ul>
-        <span class="progress-chip" data-grammar-id="bg-09">Start</span>
-      </a>
-
-      <a class="bg-card" href="/grammar/beginner/at-the-restaurant.html" data-grammar-id="bg-10" data-keywords="would like, polite requests, offers, ordering, restaurant">
-        <h3 class="bg-card-title">At the Restaurant</h3>
-        <p class="bg-card-desc">Would like and polite requests for ordering food and drink.</p>
-        <ul class="bg-card-points">
-          <li>would like</li>
-          <li>Can I have…? Would you like…?</li>
-          <li>some / any review</li>
-        </ul>
-        <span class="progress-chip" data-grammar-id="bg-10">Start</span>
-      </a>
-
-      <a class="bg-card" href="/grammar/beginner/directions-and-getting-around.html" data-grammar-id="bg-11" data-keywords="imperatives, prepositions of place, prepositions of movement, directions, maps">
-        <h3 class="bg-card-title">Directions & Getting Around</h3>
-        <p class="bg-card-desc">Imperatives and prepositions for giving and following directions.</p>
-        <ul class="bg-card-points">
-          <li>Go straight, turn left/right</li>
-          <li>next to, in front of, behind</li>
-          <li>past, along, across</li>
-        </ul>
-        <span class="progress-chip" data-grammar-id="bg-11">Start</span>
-      </a>
-
-      <a class="bg-card" href="/grammar/beginner/review-and-mix.html" data-grammar-id="bg-12" data-keywords="review, mixed practice, revision, beginner">
-        <h3 class="bg-card-title">Review & Mix</h3>
-        <p class="bg-card-desc">Mixed practice that revisits all beginner grammar in context.</p>
-        <ul class="bg-card-points">
-          <li>Present and past review</li>
-          <li>there is/are, some/any</li>
-          <li>can, going to</li>
-        </ul>
-        <span class="progress-chip" data-grammar-id="bg-12">Start</span>
-      </a>
-    </div>
-  </div>
-</section>
-  </main>
-
-  <footer id="site-footer" class="site-footer">
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-section">
-          <h4>Quick Links</h4>
+        <div class="module">
+          <h3 id="basic-sentence-building">1. Basic Sentence Building (A1)</h3>
           <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/grammar/">Grammar</a></li>
-            <li><a href="/about/">About</a></li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="sentence-structure" class="topic-checkbox" aria-label="Mark Basic Sentence Structure as completed">
+              <a href="sentence-structure.html">Basic Sentence Structure & Word Order</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="subject-pronouns" class="topic-checkbox" aria-label="Mark Subject Pronouns as completed">
+              <a href="subject-pronouns.html">Subject Pronouns (I, you, he, she, it, we, they)</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="object-pronouns" class="topic-checkbox" aria-label="Mark Object Pronouns as completed">
+              <a href="object-pronouns.html">Object Pronouns (me, you, him, her, it, us, them)</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="basic-questions" class="topic-checkbox" aria-label="Mark Basic Question Formation as completed">
+              <a href="basic-questions.html">Basic Question Formation (Yes/No and Wh- questions)</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="imperatives" class="topic-checkbox" aria-label="Mark Imperatives as completed">
+              <a href="imperatives.html">Imperatives (Commands and Instructions)</a>
+            </li>
           </ul>
         </div>
-        <div class="footer-section">
-          <h4>Grammar Topics</h4>
-          <ul>
-            <li><a href="/grammar/beginner/beginner-grammar.html">Beginner</a></li>
-            <li><a href="/grammar/advanced/">Advanced</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h4>Connect</h4>
-          <ul>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Instagram</a></li>
-            <li><a href="#">YouTube</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 YourSite. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
 
-  <script src="/assets/js/core.js"></script>
-  <script src="/assets/js/progress-manager-ui.js"></script>
-  <script src="/assets/js/progress-tracking-module.js"></script>
-  <script src="/assets/js/init-progress.js"></script>
+        <div class="module">
+          <h3 id="present-tense">2. Present Tense (A1)</h3>
+          <ul>
+            <li class="grammar-topic">
+              <input type="checkbox" id="present-simple-be" class="topic-checkbox" aria-label="Mark Present Simple with Be as completed">
+              <a href="present-simple-be.html">Present Simple with 'be' (am/is/are)</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="present-simple-verbs" class="topic-checkbox" aria-label="Mark Present Simple with Other Verbs as completed">
+              <a href="present-simple-verbs.html">Present Simple with Other Verbs</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="present-continuous" class="topic-checkbox" aria-label="Mark Present Continuous as completed">
+              <a href="present-continuous.html">Present Continuous (Actions Happening Now)</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="present-simple-vs-continuous" class="topic-checkbox" aria-label="Mark Present Simple vs Present Continuous as completed">
+              <a href="present-simple-vs-continuous.html">Present Simple vs Present Continuous (A2)</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="adverbs-frequency" class="topic-checkbox" aria-label="Mark Adverbs of Frequency as completed">
+              <a href="adverbs-frequency.html">Adverbs of Frequency (always, usually, sometimes, never)</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="module">
+          <h3 id="nouns-articles">3. Nouns, Articles & Possession (A1)</h3>
+          <ul>
+            <li class="grammar-topic">
+              <input type="checkbox" id="singular-plural-nouns" class="topic-checkbox" aria-label="Mark Singular and Plural Nouns as completed">
+              <a href="singular-plural-nouns.html">Singular and Plural Nouns</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="articles" class="topic-checkbox" aria-label="Mark Articles as completed">
+              <a href="articles.html">Articles (a/an/the)</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="demonstratives" class="topic-checkbox" aria-label="Mark Demonstratives as completed">
+              <a href="demonstratives.html">Demonstratives (this/that/these/those)</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="possessive-adjectives" class="topic-checkbox" aria-label="Mark Possessive Adjectives as completed">
+              <a href="possessive-adjectives.html">Possessive Adjectives (my, your, his, her, its, our, their)</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="possessive-s" class="topic-checkbox" aria-label="Mark Possessive 's as completed">
+              <a href="possessive-s.html">Possessive 's (John's book)</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="have-have-got" class="topic-checkbox" aria-label="Mark Have and Have Got as completed">
+              <a href="have-have-got.html">Have / Have Got (Possession)</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="module">
+          <h3 id="prepositions-location">4. Prepositions & Location (A1)</h3>
+          <ul>
+            <li class="grammar-topic">
+              <input type="checkbox" id="there-is-are" class="topic-checkbox" aria-label="Mark There is/There are as completed">
+              <a href="there-is-are.html">There is / There are</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="prepositions-place" class="topic-checkbox" aria-label="Mark Prepositions of Place as completed">
+              <a href="prepositions-place.html">Prepositions of Place (in, on, under, next to, between)</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="prepositions-time" class="topic-checkbox" aria-label="Mark Prepositions of Time as completed">
+              <a href="prepositions-time.html">Prepositions of Time (in, on, at, from...to)</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="module">
+          <h3 id="basic-verbs-abilities">5. Basic Verbs & Abilities (A1)</h3>
+          <ul>
+            <li class="grammar-topic">
+              <input type="checkbox" id="can-cant" class="topic-checkbox" aria-label="Mark Can and Can't as completed">
+              <a href="can-cant.html">Can / Can't (Ability and Possibility)</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="like-love-hate" class="topic-checkbox" aria-label="Mark Like, Love, Hate + -ing as completed">
+              <a href="like-love-hate.html">Like / Love / Hate + -ing (Basic Gerunds)</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="module">
+          <h3 id="past-tense">6. Past Tense (A2)</h3>
+          <ul>
+            <li class="grammar-topic">
+              <input type="checkbox" id="past-simple-be" class="topic-checkbox" aria-label="Mark Past Simple with Be as completed">
+              <a href="past-simple-be.html">Past Simple with 'be' (was/were)</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="past-simple-verbs" class="topic-checkbox" aria-label="Mark Past Simple with Other Verbs as completed">
+              <a href="past-simple-verbs.html">Past Simple with Other Verbs (Regular and Irregular)</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="past-time-expressions" class="topic-checkbox" aria-label="Mark Past Time Expressions as completed">
+              <a href="past-time-expressions.html">Past Time Expressions (yesterday, last week, ago)</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="past-continuous-basic" class="topic-checkbox" aria-label="Mark Past Continuous Basic as completed">
+              <a href="past-continuous-basic.html">Past Continuous (Basic - Actions in Progress in the Past)</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="module">
+          <h3 id="comparisons">7. Comparisons (A2)</h3>
+          <ul>
+            <li class="grammar-topic">
+              <input type="checkbox" id="comparative-adjectives" class="topic-checkbox" aria-label="Mark Comparative Adjectives as completed">
+              <a href="comparative-adjectives.html">Comparative Adjectives (-er, more, irregular forms)</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="superlative-adjectives" class="topic-checkbox" aria-label="Mark Superlative Adjectives as completed">
+              <a href="superlative-adjectives.html">Superlative Adjectives (-est, most, irregular forms)</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="as-as-comparisons" class="topic-checkbox" aria-label="Mark As...As Comparisons as completed">
+              <a href="as-as-comparisons.html">Comparisons with as...as</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="module">
+          <h3 id="quantity-amount">8. Quantity & Amount (A2)</h3>
+          <ul>
+            <li class="grammar-topic">
+              <input type="checkbox" id="countable-uncountable" class="topic-checkbox" aria-label="Mark Countable and Uncountable Nouns as completed">
+              <a href="countable-uncountable.html">Countable & Uncountable Nouns (a/an, some, any, much, many)</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="how-much-many" class="topic-checkbox" aria-label="Mark How Much/How Many as completed">
+              <a href="how-much-many.html">How Much / How Many</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="too-enough" class="topic-checkbox" aria-label="Mark Too and Enough as completed">
+              <a href="too-enough.html">Too / Enough (with adjectives and nouns)</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="module">
+          <h3 id="future-tenses">9. Future Tenses (A2)</h3>
+          <ul>
+            <li class="grammar-topic">
+              <input type="checkbox" id="going-to-future" class="topic-checkbox" aria-label="Mark Going To Future as completed">
+              <a href="going-to-future.html">Future with 'going to' (Plans and Intentions)</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="will-future" class="topic-checkbox" aria-label="Mark Will Future as completed">
+              <a href="will-future.html">Future with 'will' (Predictions and Spontaneous Decisions)</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="module">
+          <h3 id="modal-verbs">10. Modal Verbs (A2)</h3>
+          <ul>
+            <li class="grammar-topic">
+              <input type="checkbox" id="should-advice" class="topic-checkbox" aria-label="Mark Should for Advice as completed">
+              <a href="should-advice.html">Modal Verbs: 'should' (Giving Advice)</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="must-mustnt" class="topic-checkbox" aria-label="Mark Must and Mustn't as completed">
+              <a href="must-mustnt.html">Modal Verbs: 'must' / 'mustn't' (Obligation and Prohibition)</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="have-to-dont-have-to" class="topic-checkbox" aria-label="Mark Have To and Don't Have To as completed">
+              <a href="have-to-dont-have-to.html">Modal Verbs: 'have to' / 'don't have to' (Necessity)</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="module">
+          <h3 id="linking-words">11. Linking Words (A2)</h3>
+          <ul>
+            <li class="grammar-topic">
+              <input type="checkbox" id="basic-linking-words" class="topic-checkbox" aria-label="Mark Basic Linking Words as completed">
+              <a href="basic-linking-words.html">Basic Linking Words (and, but, because, so, then, after that, finally)</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="module">
+          <h3 id="basic-conditionals">12. Basic Conditionals (A2)</h3>
+          <ul>
+            <li class="grammar-topic">
+              <input type="checkbox" id="zero-conditional" class="topic-checkbox" aria-label="Mark Zero Conditional as completed">
+              <a href="zero-conditional.html">Zero Conditional (General Truths and Facts)</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="first-conditional" class="topic-checkbox" aria-label="Mark First Conditional as completed">
+              <a href="first-conditional.html">First Conditional (Real Future Possibilities)</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="module">
+          <h3 id="present-perfect-basic">13. Present Perfect (Basic A2)</h3>
+          <ul>
+            <li class="grammar-topic">
+              <input type="checkbox" id="present-perfect-experiences" class="topic-checkbox" aria-label="Mark Present Perfect for Experiences as completed">
+              <a href="present-perfect-experiences.html">Present Perfect (Basic - Experiences with ever/never)</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="present-perfect-recent" class="topic-checkbox" aria-label="Mark Present Perfect for Recent Actions as completed">
+              <a href="present-perfect-recent.html">Present Perfect (Recent Actions with just/already/yet)</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="present-perfect-vs-past" class="topic-checkbox" aria-label="Mark Present Perfect vs Past Simple as completed">
+              <a href="present-perfect-vs-past.html">Present Perfect vs Past Simple (Basic Distinction)</a>
+            </li>
+          </ul>
+        </div>
+
+      <hr>
+
+      <section class="intro-section">
+        <h2>Getting Started</h2>
+        <p>Start with module one to follow the complete course structure, or jump to any specific grammar topic you need to study. Make sure you complete the practice activities after each lesson. For extra help and practice, book a private conversation lesson designed just for you.</p>
+        <a href="sentence-structure.html" class="get-started-btn">Begin with Basic Sentence Structure →</a>
+      </section>
+
+      <section class="intro-section">
+        <h2>Learning Objectives</h2>
+        <p>By the end of this course, you will be able to:</p>
+        <ul>
+          <li>Use basic English grammar correctly in everyday situations.</li>
+          <li>Make simple sentences with correct word order.</li>
+          <li>Ask and answer basic questions.</li>
+          <li>Talk about the present, past, and future.</li>
+          <li>Express your needs, wants, and opinions clearly.</li>
+          <li>Understand simple English texts and conversations.</li>
+        </ul>
+      </section>
+
+      <section class="intro-section">
+        <h2>Assessment</h2>
+        <p>Your progress will be checked through:</p>
+        <ul>
+          <li>Practice exercises after each lesson</li>
+          <li>Quick quizzes to test your understanding</li>
+          <li><strong>Extra Assessments Include:</strong></li>
+          <ul>
+            <li>Speaking practice focused on specific grammar rules.</li>
+            <li>Writing exercises to check your grammar understanding.</li>
+          </ul>
+        </ul>
+      </section>
+    </main>
+  </div>
+  
+  <!-- Footer -->
+  <footer>
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="../../home.html">Home</a></li>
+        <li><a href="../../home.html#where-to-start">Grammar</a></li>
+        <li><a href="../../extra-practice.html">Extra Practice</a></li>
+        <li><a href="../../my-progress.html">My Progress</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <h3>Grammar Topics</h3>
+      <ul>
+        <li><a href="../beginner/beginner-grammar.html#basic-sentence-building">Basic Sentences</a></li>
+        <li><a href="../beginner/beginner-grammar.html#present-tense">Present Tense</a></li>
+        <li><a href="../beginner/beginner-grammar.html#past-tense">Past Tense</a></li>
+        <li><a href="../beginner/beginner-grammar.html#future-tenses">Future Tenses</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <h3>Connect</h3>
+      <ul>
+        <li><a href="../../about.html">About</a></li>
+        <li><a href="../../contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>© 2025 English in Doses | All rights reserved | <a href="../../license.html">Licensing Information</a></p>
+  </div>
+</footer>
+
+  <!-- Core JavaScript -->
+  <script src="../../js/core.js"></script>
+  
+  <!-- Checkbox Management Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get all checkboxes
+      const checkboxes = document.querySelectorAll('.topic-checkbox');
+      
+      // Load checkbox states from localStorage
+      loadCheckboxStates();
+      
+      // Add event listeners to checkboxes
+      checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+          // Update the link styling
+          updateLinkStyle(this);
+          
+          // Save checkbox state to localStorage
+          saveCheckboxState(this.id, this.checked);
+          
+          // Integrate with progress tracking system
+          if (typeof ProgressTracker !== 'undefined') {
+            try {
+              // Check if the checkbox is checked
+              if (this.checked) {
+                // Mark item as completed in ProgressTracker
+                ProgressTracker.markItemCompleted('lessons', this.id, {
+                  completedAt: new Date().toISOString(),
+                  title: this.nextElementSibling.textContent
+                });
+              } else {
+                // Update item as not completed
+                ProgressTracker.updateItemProgress('lessons', this.id, {
+                  completed: false,
+                  lastUpdated: new Date().toISOString()
+                });
+              }
+            } catch (error) {
+              console.error('Error updating progress tracking:', error);
+            }
+          }
+        });
+      });
+      
+      /**
+       * Loads checkbox states from localStorage
+       */
+      function loadCheckboxStates() {
+        checkboxes.forEach(checkbox => {
+          const isChecked = localStorage.getItem('grammar-topic-' + checkbox.id) === 'true';
+          checkbox.checked = isChecked;
+          
+          // Update link styling based on loaded state
+          if (isChecked) {
+            updateLinkStyle(checkbox);
+          }
+        });
+      }
+      
+      /**
+       * Saves checkbox state to localStorage
+       * 
+       * @param {string} id - The checkbox ID
+       * @param {boolean} isChecked - Whether the checkbox is checked
+       */
+      function saveCheckboxState(id, isChecked) {
+        localStorage.setItem('grammar-topic-' + id, isChecked);
+      }
+      
+      /**
+       * Updates the link styling based on checkbox state
+       * 
+       * @param {HTMLElement} checkbox - The checkbox element
+       */
+      function updateLinkStyle(checkbox) {
+        const link = checkbox.nextElementSibling;
+        
+        if (checkbox.checked) {
+          link.classList.add('completed-topic');
+        } else {
+          link.classList.remove('completed-topic');
+        }
+      }
+    });
+  </script>
 </body>
 </html>
