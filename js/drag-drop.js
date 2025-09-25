@@ -1,9 +1,10 @@
 /**
- * ESL Grammar Website - Drag and Drop Module
+ * ESL Grammar Website - Enhanced Drag and Drop Module
  * 
  * This module handles all functionality related to drag and drop exercises:
  * - Setting up draggable items
- * - Creating drop zones
+ * - Creating drop zones with free rearrangement
+ * - Allowing words to be reordered within drop zones
  * - Validating correct arrangements
  * - Providing feedback
  * - Tracking score and progress
@@ -11,7 +12,7 @@
  */
 
 /**
- * DragDropModule - Provides functionality for drag and drop exercises
+ * DragDropModule - Provides functionality for drag and drop exercises with free rearrangement
  */
 const DragDropModule = (function() {
   // Private variables
@@ -22,6 +23,8 @@ const DragDropModule = (function() {
   let correctAnswers = {};
   let currentDraggedItem = null;
   let touchDevice = false;
+  let dragStartContainer = null;
+  let insertionIndicator = null;
   
   /**
    * Initializes the Drag and Drop module
@@ -56,6 +59,9 @@ const DragDropModule = (function() {
     const dropZones = container.querySelectorAll('.drop-zone');
     totalQuestions = dropZones.length;
     
+    // Create insertion indicator
+    createInsertionIndicator();
+    
     // Set up drag items
     setupDragItems();
     
@@ -80,6 +86,64 @@ const DragDropModule = (function() {
   }
   
   /**
+   * Creates an insertion indicator element for visual feedback
+   */
+  function createInsertionIndicator() {
+    insertionIndicator = document.createElement('div');
+    insertionIndicator.className = 'insertion-indicator';
+    insertionIndicator.style.cssText = `
+      width: 3px;
+      height: 30px;
+      background-color: var(--accent-color, #3498db);
+      position: absolute;
+      z-index: 1000;
+      border-radius: 2px;
+      display: none;
+      animation: pulse 1s infinite;
+    `;
+    
+    // Add CSS animation if not already present
+    if (!document.querySelector('#insertion-indicator-styles')) {
+      const style = document.createElement('style');
+      style.id = 'insertion-indicator-styles';
+      style.textContent = `
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.5; }
+        }
+        .drop-zone {
+          position: relative;
+          min-height: 40px;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 5px;
+          padding: 10px;
+        }
+        .drop-zone.highlight {
+          background-color: var(--accent-color-light, rgba(52, 152, 219, 0.1));
+          border-color: var(--accent-color, #3498db);
+        }
+        .drag-item {
+          cursor: move;
+          user-select: none;
+          transition: transform 0.2s ease;
+        }
+        .drag-item:hover {
+          transform: scale(1.05);
+        }
+        .drag-item.dragging {
+          opacity: 0.5;
+          transform: rotate(5deg);
+        }
+      `;
+      document.head.appendChild(style);
+    }
+    
+    document.body.appendChild(insertionIndicator);
+  }
+  
+  /**
    * Sets up event handlers for draggable items
    */
   function setupDragItems() {
@@ -89,31 +153,43 @@ const DragDropModule = (function() {
     const dragItems = container.querySelectorAll('.drag-item');
     
     dragItems.forEach(item => {
-      // Set attributes needed for drag operations
-      item.setAttribute('draggable', 'true');
+      setupDragItemEventListeners(item);
+    });
+  }
+  
+  /**
+   * Sets up event listeners for a drag item
+   * 
+   * @param {HTMLElement} item - The drag item
+   */
+  function setupDragItemEventListeners(item) {
+    // Set attributes needed for drag operations
+    item.setAttribute('draggable', 'true');
+    
+    // Dragstart event - triggered when the user starts dragging
+    item.addEventListener('dragstart', function(e) {
+      this.classList.add('dragging');
       
-      // Dragstart event - triggered when the user starts dragging
-      item.addEventListener('dragstart', function(e) {
-        this.classList.add('dragging');
-        
-        // Store the dragged item's text in the dataTransfer object
-        e.dataTransfer.setData('text/plain', this.textContent);
-        e.dataTransfer.effectAllowed = 'move';
-        
-        // Store reference to the currently dragged item
-        currentDraggedItem = this;
-      });
+      // Store the dragged item's text in the dataTransfer object
+      e.dataTransfer.setData('text/plain', this.textContent);
+      e.dataTransfer.effectAllowed = 'move';
       
-      // Dragend event - triggered when the user finishes dragging
-      item.addEventListener('dragend', function() {
-        this.classList.remove('dragging');
-        currentDraggedItem = null;
-      });
-      
-      // Add double-click to remove and return item to options
-      item.addEventListener('dblclick', function() {
-        handleItemDoubleClick(this);
-      });
+      // Store reference to the currently dragged item and its container
+      currentDraggedItem = this;
+      dragStartContainer = this.parentElement;
+    });
+    
+    // Dragend event - triggered when the user finishes dragging
+    item.addEventListener('dragend', function() {
+      this.classList.remove('dragging');
+      currentDraggedItem = null;
+      dragStartContainer = null;
+      hideInsertionIndicator();
+    });
+    
+    // Add double-click to remove and return item to options
+    item.addEventListener('dblclick', function() {
+      handleItemDoubleClick(this);
     });
   }
   
@@ -137,7 +213,7 @@ const DragDropModule = (function() {
         const newItem = item.cloneNode(true);
         
         // Add event listeners to the new item
-        setupClonedItemEventListeners(newItem);
+        setupDragItemEventListeners(newItem);
         
         // Add to options container
         optionsContainer.appendChild(newItem);
@@ -149,29 +225,82 @@ const DragDropModule = (function() {
   }
   
   /**
-   * Sets up event listeners for a cloned drag item
+   * Gets the insertion point within a drop zone based on mouse position
    * 
-   * @param {HTMLElement} item - The cloned drag item
+   * @param {HTMLElement} dropZone - The drop zone element
+   * @param {number} clientX - Mouse X position
+   * @param {number} clientY - Mouse Y position
+   * @returns {Object} Object containing insertBefore element and position info
    */
-  function setupClonedItemEventListeners(item) {
-    // Dragstart event
-    item.addEventListener('dragstart', function(e) {
-      this.classList.add('dragging');
-      e.dataTransfer.setData('text/plain', this.textContent);
-      e.dataTransfer.effectAllowed = 'move';
-      currentDraggedItem = this;
-    });
+  function getInsertionPoint(dropZone, clientX, clientY) {
+    const items = Array.from(dropZone.querySelectorAll('.drag-item:not(.dragging)'));
     
-    // Dragend event
-    item.addEventListener('dragend', function() {
-      this.classList.remove('dragging');
-      currentDraggedItem = null;
-    });
+    if (items.length === 0) {
+      return { insertBefore: null, position: { x: clientX, y: clientY } };
+    }
     
-    // Double-click event
-    item.addEventListener('dblclick', function() {
-      handleItemDoubleClick(this);
-    });
+    let closestItem = null;
+    let minDistance = Infinity;
+    let insertBefore = null;
+    let insertionX = clientX;
+    let insertionY = clientY;
+    
+    // Check each item to find the best insertion point
+    for (let i = 0; i < items.length; i++) {
+      const item = items[i];
+      const rect = item.getBoundingClientRect();
+      const itemCenterX = rect.left + rect.width / 2;
+      const itemCenterY = rect.top + rect.height / 2;
+      
+      // Calculate distance from mouse to item center
+      const distance = Math.sqrt(
+        Math.pow(clientX - itemCenterX, 2) + Math.pow(clientY - itemCenterY, 2)
+      );
+      
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestItem = item;
+        
+        // Determine if we should insert before or after this item
+        if (clientX < itemCenterX) {
+          insertBefore = item;
+          insertionX = rect.left;
+          insertionY = rect.top + rect.height / 2;
+        } else {
+          insertBefore = items[i + 1] || null;
+          insertionX = rect.right + 5;
+          insertionY = rect.top + rect.height / 2;
+        }
+      }
+    }
+    
+    return { 
+      insertBefore: insertBefore, 
+      position: { x: insertionX, y: insertionY } 
+    };
+  }
+  
+  /**
+   * Shows the insertion indicator at the specified position
+   * 
+   * @param {number} x - X position
+   * @param {number} y - Y position
+   */
+  function showInsertionIndicator(x, y) {
+    if (!insertionIndicator) return;
+    
+    insertionIndicator.style.left = x + 'px';
+    insertionIndicator.style.top = (y - 15) + 'px';
+    insertionIndicator.style.display = 'block';
+  }
+  
+  /**
+   * Hides the insertion indicator
+   */
+  function hideInsertionIndicator() {
+    if (insertionIndicator) {
+      insertionIndicator.style.display = 'none';
+    }
   }
   
   /**
@@ -189,38 +318,71 @@ const DragDropModule = (function() {
         // Prevent default to allow drop
         e.preventDefault();
         this.classList.add('highlight');
+        
+        // Show insertion indicator
+        if (currentDraggedItem) {
+          const insertionPoint = getInsertionPoint(this, e.clientX, e.clientY);
+          showInsertionIndicator(insertionPoint.position.x, insertionPoint.position.y);
+        }
       });
       
       // Dragleave event - triggered when a dragged item leaves the drop zone
-      zone.addEventListener('dragleave', function() {
-        this.classList.remove('highlight');
+      zone.addEventListener('dragleave', function(e) {
+        // Only remove highlight if we're actually leaving the drop zone
+        // (not just moving to a child element)
+        if (!this.contains(e.relatedTarget)) {
+          this.classList.remove('highlight');
+          hideInsertionIndicator();
+        }
       });
       
       // Drop event - triggered when a dragged item is dropped
       zone.addEventListener('drop', function(e) {
         e.preventDefault();
         this.classList.remove('highlight');
+        hideInsertionIndicator();
         
-        // Get the dragged item's text
-        const itemText = e.dataTransfer.getData('text/plain');
+        if (!currentDraggedItem) return;
         
-        // Create a new drag item in the drop zone
-        const newItem = document.createElement('div');
-        newItem.className = 'drag-item';
-        newItem.textContent = itemText;
-        newItem.draggable = true;
+        // Get insertion point
+        const insertionPoint = getInsertionPoint(this, e.clientX, e.clientY);
         
-        // Add event listeners to the new item
-        setupClonedItemEventListeners(newItem);
+        // Check if we're moving within the same drop zone
+        const isInternalMove = dragStartContainer === this;
         
-        // Add the new item to the drop zone
-        this.appendChild(newItem);
-        
-        // Remove the original item if it exists
-        if (currentDraggedItem) {
+        if (isInternalMove) {
+          // Move item within the same drop zone
+          if (insertionPoint.insertBefore) {
+            this.insertBefore(currentDraggedItem, insertionPoint.insertBefore);
+          } else {
+            this.appendChild(currentDraggedItem);
+          }
+        } else {
+          // Moving from different container (original drag-items or different drop zone)
+          const itemText = currentDraggedItem.textContent;
+          
+          // Create a new drag item
+          const newItem = document.createElement('div');
+          newItem.className = 'drag-item';
+          newItem.textContent = itemText;
+          newItem.draggable = true;
+          
+          // Add event listeners to the new item
+          setupDragItemEventListeners(newItem);
+          
+          // Insert the new item at the correct position
+          if (insertionPoint.insertBefore) {
+            this.insertBefore(newItem, insertionPoint.insertBefore);
+          } else {
+            this.appendChild(newItem);
+          }
+          
+          // Remove the original item
           currentDraggedItem.remove();
-          currentDraggedItem = null;
         }
+        
+        currentDraggedItem = null;
+        dragStartContainer = null;
       });
     });
   }
@@ -232,26 +394,31 @@ const DragDropModule = (function() {
     const container = document.getElementById(containerId);
     if (!container) return;
     
-    // Implementation of touch drag-and-drop
-    // This is a simplified version - more complex implementations may be needed for production
-    
+    // Implementation of touch drag-and-drop with rearrangement support
     let touchDragItem = null;
     let touchStartX, touchStartY;
+    let touchOffset = { x: 0, y: 0 };
     
     // Touch start event for drag items
-    container.querySelectorAll('.drag-item').forEach(item => {
-      item.addEventListener('touchstart', function(e) {
-        touchDragItem = this;
-        const touch = e.touches[0];
-        touchStartX = touch.clientX;
-        touchStartY = touch.clientY;
-        
-        this.classList.add('dragging');
-        
-        // Prevent scrolling while dragging
-        e.preventDefault();
-      }, { passive: false });
-    });
+    container.addEventListener('touchstart', function(e) {
+      const target = e.target.closest('.drag-item');
+      if (!target) return;
+      
+      touchDragItem = target;
+      const touch = e.touches[0];
+      const rect = target.getBoundingClientRect();
+      
+      touchStartX = touch.clientX;
+      touchStartY = touch.clientY;
+      touchOffset.x = touch.clientX - rect.left;
+      touchOffset.y = touch.clientY - rect.top;
+      
+      target.classList.add('dragging');
+      dragStartContainer = target.parentElement;
+      
+      // Prevent scrolling while dragging
+      e.preventDefault();
+    }, { passive: false });
     
     // Touch move event for the entire container
     container.addEventListener('touchmove', function(e) {
@@ -260,53 +427,114 @@ const DragDropModule = (function() {
       const touch = e.touches[0];
       
       // Move the dragged item with the touch
-      touchDragItem.style.position = 'absolute';
-      touchDragItem.style.left = touch.clientX + 'px';
-      touchDragItem.style.top = touch.clientY + 'px';
+      touchDragItem.style.position = 'fixed';
+      touchDragItem.style.left = (touch.clientX - touchOffset.x) + 'px';
+      touchDragItem.style.top = (touch.clientY - touchOffset.y) + 'px';
+      touchDragItem.style.zIndex = '1000';
+      
+      // Show insertion indicator for drop zones
+      const dropZone = getDropZoneAt(touch.clientX, touch.clientY);
+      if (dropZone) {
+        dropZone.classList.add('highlight');
+        const insertionPoint = getInsertionPoint(dropZone, touch.clientX, touch.clientY);
+        showInsertionIndicator(insertionPoint.position.x, insertionPoint.position.y);
+      } else {
+        // Remove highlights from all drop zones
+        container.querySelectorAll('.drop-zone').forEach(zone => {
+          zone.classList.remove('highlight');
+        });
+        hideInsertionIndicator();
+      }
       
       // Prevent scrolling while dragging
       e.preventDefault();
     }, { passive: false });
     
-    // Touch end event for drop zones
-    container.querySelectorAll('.drop-zone').forEach(zone => {
-      zone.addEventListener('touchend', function(e) {
-        if (!touchDragItem) return;
+    // Touch end event
+    container.addEventListener('touchend', function(e) {
+      if (!touchDragItem) return;
+      
+      const touch = e.changedTouches[0];
+      const dropZone = getDropZoneAt(touch.clientX, touch.clientY);
+      
+      if (dropZone) {
+        const insertionPoint = getInsertionPoint(dropZone, touch.clientX, touch.clientY);
+        const isInternalMove = dragStartContainer === dropZone;
         
-        const touch = e.changedTouches[0];
-        const dropRect = this.getBoundingClientRect();
-        
-        // Check if the touch ended over this drop zone
-        if (touch.clientX >= dropRect.left && touch.clientX <= dropRect.right &&
-            touch.clientY >= dropRect.top && touch.clientY <= dropRect.bottom) {
+        if (isInternalMove) {
+          // Reset position styles
+          touchDragItem.style.position = '';
+          touchDragItem.style.left = '';
+          touchDragItem.style.top = '';
+          touchDragItem.style.zIndex = '';
           
-          // Create a clone of the dragged item
-          const newItem = touchDragItem.cloneNode(true);
-          newItem.style.position = '';
-          newItem.style.left = '';
-          newItem.style.top = '';
-          newItem.classList.remove('dragging');
-          
-          // Add event listeners to the new item
-          setupClonedItemEventListeners(newItem);
-          
-          // Add to the drop zone
-          this.appendChild(newItem);
-          
-          // Remove the original if it was in a different container
-          if (touchDragItem.parentElement !== this) {
-            touchDragItem.remove();
+          // Move within the same drop zone
+          if (insertionPoint.insertBefore) {
+            dropZone.insertBefore(touchDragItem, insertionPoint.insertBefore);
+          } else {
+            dropZone.appendChild(touchDragItem);
           }
+        } else {
+          // Moving from different container
+          const itemText = touchDragItem.textContent;
+          
+          // Create new item
+          const newItem = document.createElement('div');
+          newItem.className = 'drag-item';
+          newItem.textContent = itemText;
+          newItem.draggable = true;
+          setupDragItemEventListeners(newItem);
+          
+          // Insert at correct position
+          if (insertionPoint.insertBefore) {
+            dropZone.insertBefore(newItem, insertionPoint.insertBefore);
+          } else {
+            dropZone.appendChild(newItem);
+          }
+          
+          // Remove original
+          touchDragItem.remove();
         }
-        
-        // Reset the dragged item
-        touchDragItem.classList.remove('dragging');
+      } else {
+        // Reset position if not dropped on valid target
         touchDragItem.style.position = '';
         touchDragItem.style.left = '';
         touchDragItem.style.top = '';
-        touchDragItem = null;
+        touchDragItem.style.zIndex = '';
+      }
+      
+      // Clean up
+      touchDragItem.classList.remove('dragging');
+      container.querySelectorAll('.drop-zone').forEach(zone => {
+        zone.classList.remove('highlight');
       });
+      hideInsertionIndicator();
+      touchDragItem = null;
+      dragStartContainer = null;
     });
+  }
+  
+  /**
+   * Gets the drop zone element at the specified coordinates
+   * 
+   * @param {number} x - X coordinate
+   * @param {number} y - Y coordinate
+   * @returns {HTMLElement|null} Drop zone element or null
+   */
+  function getDropZoneAt(x, y) {
+    const container = document.getElementById(containerId);
+    if (!container) return null;
+    
+    const dropZones = container.querySelectorAll('.drop-zone');
+    
+    for (const zone of dropZones) {
+      const rect = zone.getBoundingClientRect();
+      if (x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom) {
+        return zone;
+      }
+    }
+    
+    return null;
   }
   
   /**
@@ -329,7 +557,7 @@ const DragDropModule = (function() {
         
         const feedback = zone.closest('.question').querySelector('.feedback');
         const userAnswer = Array.from(zone.querySelectorAll('.drag-item'))
-          .map(item => item.textContent.toLowerCase())
+          .map(item => item.textContent.trim())
           .join(' ')
           .replace(/\s+/g, ' ')
           .trim();
@@ -343,11 +571,11 @@ const DragDropModule = (function() {
         const isCorrect = correctAnswersForZone.some(answer => {
           if (allowMultipleCorrectOrders) {
             // For this mode, we'll consider word sets rather than exact order
-            const userWords = userAnswer.split(' ').sort().join(' ');
+            const userWords = userAnswer.toLowerCase().split(' ').sort().join(' ');
             const correctWords = answer.toLowerCase().split(' ').sort().join(' ');
             return userWords === correctWords;
           } else {
-            return userAnswer === answer.toLowerCase();
+            return userAnswer.toLowerCase() === answer.toLowerCase();
           }
         });
         
@@ -500,7 +728,7 @@ const DragDropModule = (function() {
           item.setAttribute('draggable', 'true');
           
           // Add event listeners
-          setupClonedItemEventListeners(item);
+          setupDragItemEventListeners(item);
           
           dragItemsContainer.appendChild(item);
         });
@@ -575,7 +803,7 @@ const DragDropModule = (function() {
         // Clear the zone first
         zone.innerHTML = '';
         
-        // Add items to the zone
+        // Add items to the zone in order
         items.forEach(itemText => {
           const item = document.createElement('div');
           item.className = 'drag-item';
@@ -583,7 +811,7 @@ const DragDropModule = (function() {
           item.setAttribute('draggable', 'true');
           
           // Add event listeners
-          setupClonedItemEventListeners(item);
+          setupDragItemEventListeners(item);
           
           zone.appendChild(item);
         });
@@ -657,7 +885,7 @@ const DragDropModule = (function() {
     item.setAttribute('draggable', 'true');
     
     // Add event listeners
-    setupClonedItemEventListeners(item);
+    setupDragItemEventListeners(item);
     
     // Add to container
     container.appendChild(item);
