@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn to read menus and ask about food confidently - ESL Beginner Restaurant Skills">
+  <title>Reading Menus and Asking About Food - English in Doses</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../../images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../images/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/button-shine.css">
+  <link rel="stylesheet" href="../../css/activities.css">
+</head>
+<body class="beginner-section">
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <!-- Theme toggle button -->
+  <div class="theme-toggle-container">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="light-icon">☀️</span>
+      <span class="dark-icon">🌙</span>
+    </button>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="main-navigation">
+    <a href="../../home.html" class="site-logo">
+      <img src="../../images/my-logo.svg" alt="English in Doses" width="150" height="auto">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <div class="nav-links">
+      <a href="../../home.html" class="nav-link">Home</a>
+      <a href="../../about.html" class="nav-link">About Us</a>
+      <a href="../../contact.html" class="nav-link">Contact Us</a>
+      <a href="../../home.html#where-to-start" class="nav-link">Grammar</a>
+      <a href="../../extra-practice.html" class="nav-link">Extra Practice</a>
+      <a href="../../conversation-page.html" class="nav-link">Conversation</a>
+      <a href="../../my-progress.html" class="nav-link">My Progress</a>
+      <div class="beginner-nav-indicator"></div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs" aria-label="breadcrumb">
+      <span class="breadcrumb-item"><a href="../../home.html">Home</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="beginner-grammar.html">Beginner</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="restaurant-module.html">Restaurant Module</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item">Reading Menus</span>
+    </div>
+
+    <main id="main-content">
+      <h1>Lesson 1: Reading Menus and Asking About Food</h1>
+
+      <!-- Goal Section -->
+      <section class="intro-section">
+        <h2>🎯 Lesson Goal</h2>
+        <p><strong>Understand menu items and ask about ingredients confidently</strong></p>
+        
+        <h3>Warm-up Questions (3 minutes)</h3>
+        <ol>
+          <li>What's your favourite Brazilian restaurant dish?</li>
+          <li>Do you have any food allergies or dietary restrictions?</li>
+          <li>Look at this menu title: "Today's Specials." What questions might you ask?</li>
+        </ol>
+      </section>
+
+      <!-- Key Phrases Section -->
+      <section class="content-section">
+        <h2>📝 Key Phrases to Learn Today</h2>
+        <div class="example">
+          <ul>
+            <li><strong>What's in this dish?</strong></li>
+            <li><strong>Do you have vegetarian options?</strong></li>
+            <li><strong>Is this spicy?</strong></li>
+            <li><strong>What do you recommend?</strong></li>
+            <li><strong>I'm allergic to...</strong></li>
+            <li><strong>Does this contain nuts/dairy/gluten?</strong></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Practice Activities Section -->
+      <section class="intro-section">
+        <h2>✏️ Practice Activities (10 minutes)</h2>
+        <p>Complete the activities below to practice what you've learned about asking about food in restaurants.</p>
+        
+        <div id="progress-container" class="progress-container">
+          <div id="progress-bar" class="progress-bar" style="width: 0%"></div>
+        </div>
+        <div id="progress-info" class="progress-info">
+          Progress: 0% complete (0/3 activities completed)
+        </div>
+      </section>
+
+      <!-- Activity Navigation -->
+      <div id="activity-nav" class="activity-nav">
+        <button data-activity="matching" class="activity-nav-btn active">Vocabulary Match</button>
+        <button data-activity="gap-fill" class="activity-nav-btn">Complete Conversations</button>
+        <button data-activity="pronunciation" class="activity-nav-btn">Pronunciation Tips</button>
+      </div>
+
+      <!-- Activity 1: Menu Vocabulary Matching -->
+      <section id="matching" class="activity-container active">
+        <h2>Activity 1: Menu Vocabulary Match</h2>
+        <p>Match the menu terms with their correct meanings by clicking on pairs.</p>
+        
+        <div id="line-container" class="matching-line-container"></div>
+        
+        <div class="matching-container">
+          <div class="matching-item">
+            <div class="matching-question" data-index="1">Grilled</div>
+            <div class="matching-answer" data-index="6">Cooked on a grill/barbecue</div>
+          </div>
+          
+          <div class="matching-item">
+            <div class="matching-question" data-index="2">Steamed</div>
+            <div class="matching-answer" data-index="2">Cooked with steam/vapour</div>
+          </div>
+          
+          <div class="matching-item">
+            <div class="matching-question" data-index="3">House special</div>
+            <div class="matching-answer" data-index="1">Restaurant's signature dish</div>
+          </div>
+          
+          <div class="matching-item">
+            <div class="matching-question" data-index="4">Side dish</div>
+            <div class="matching-answer" data-index="3">Small dish served with main course</div>
+          </div>
+          
+          <div class="matching-item">
+            <div class="matching-question" data-index="5">Dressing</div>
+            <div class="matching-answer" data-index="4">Sauce for salad</div>
+          </div>
+          
+          <div class="matching-item">
+            <div class="matching-question" data-index="6">Market price</div>
+            <div class="matching-answer" data-index="5">Price changes daily</div>
+          </div>
+        </div>
+        
+        <div class="control-buttons">
+          <button id="matching-submit" class="submit-btn">Check Answers</button>
+          <button id="matching-restart" class="restart-btn" style="display:none;">Try Again</button>
+        </div>
+        
+        <div class="score-display" id="matching-score" style="display:none;">
+          Your score: <span>0</span>/6
+        </div>
+      </section>
+
+      <!-- Activity 2: Gap Fill Conversations -->
+      <section id="gap-fill" class="activity-container">
+        <h2>Activity 2: Complete the Conversations</h2>
+        <p>Fill in the missing words in these restaurant conversations.</p>
+        
+        <div class="question" id="gf1">
+          <p class="gap-fill-sentence"><strong>Conversation 1:</strong><br>
+          Customer: "Excuse me, what's <input type="text" class="gap-input" data-answer="in" placeholder="?"> this pasta dish?"<br>
+          Server: "It has tomatoes, basil, and mozzarella cheese."<br>
+          Customer: "<input type="text" class="gap-input" data-answer="Does" placeholder="?"> it contain any meat?"<br>
+          Server: "No, it's completely vegetarian."</p>
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="gf2">
+          <p class="gap-fill-sentence"><strong>Conversation 2:</strong><br>
+          Customer: "Do you <input type="text" class="gap-input" data-answer="have" placeholder="?"> any gluten-free options?"<br>
+          Server: "Yes, we have a grilled fish with vegetables."<br>
+          Customer: "What do you <input type="text" class="gap-input" data-answer="recommend" placeholder="?"> for someone who doesn't eat spicy food?"</p>
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="control-buttons">
+          <button id="gap-fill-submit" class="submit-btn">Check Answers</button>
+          <button id="gap-fill-restart" class="restart-btn" style="display:none;">Try Again</button>
+        </div>
+        
+        <div class="score-display" id="gap-fill-score" style="display:none;">
+          Your score: <span>0</span>/4
+        </div>
+      </section>
+
+      <!-- Activity 3: Pronunciation Practice -->
+      <section id="pronunciation" class="activity-container">
+        <h2>Activity 3: Pronunciation Practice</h2>
+        <p>Practice these sounds that are often difficult for Brazilian English learners:</p>
+        
+        <div class="grammar-tip">
+          <h3>🔊 TH Sounds</h3>
+          <p><strong>Practice these words slowly:</strong></p>
+          <ul>
+            <li><strong>"this"</strong> - Put your tongue between your teeth</li>
+            <li><strong>"that"</strong> - Same tongue position</li>
+            <li><strong>"with"</strong> - Don't say "wif" - keep the 'th' sound</li>
+          </ul>
+        </div>
+        
+        <div class="grammar-tip">
+          <h3>🔊 Final Consonants</h3>
+          <p><strong>Don't drop the final sounds:</strong></p>
+          <ul>
+            <li><strong>"dish"</strong> - End with a clear 'sh' sound, not "dishe"</li>
+            <li><strong>"meat"</strong> - End with a strong 't' sound</li>
+            <li><strong>"recommend"</strong> - End with a clear 'd' sound</li>
+          </ul>
+        </div>
+        
+        <div class="control-buttons">
+          <button id="pronunciation-complete" class="submit-btn">Mark as Complete</button>
+        </div>
+      </section>
+
+      <!-- Production Activity -->
+      <section class="content-section">
+        <h2>🗣️ Production Activity (9 minutes)</h2>
+        
+        <h3>Real Menu Challenge</h3>
+        <p><strong>Look at this restaurant menu section:</strong></p>
+        
+        <div class="example">
+          <h4>MAIN COURSES</h4>
+          <ul>
+            <li>Grilled Salmon with lemon butter sauce - $24</li>
+            <li>Chicken Parmesan with pasta - $18</li>
+            <li>Vegetarian Quinoa Bowl - $16</li>
+            <li>House Special Steak (market price)</li>
+            <li>Spicy Thai Curry with rice - $19</li>
+          </ul>
+        </div>
+
+        <div class="grammar-tip">
+          <h4>🎭 Your Role Play Task:</h4>
+          <p><strong>You're at this restaurant.</strong> Ask the server about THREE different dishes. Use the key phrases to find out:</p>
+          <ul>
+            <li>What ingredients are in each dish</li>
+            <li>If any are spicy</li>
+            <li>What the server recommends</li>
+            <li>About dietary restrictions you have</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Wrap-up Section -->
+      <section class="intro-section">
+        <h2>🏁 Wrap-up (1 minute)</h2>
+        <p><strong>Quick Review:</strong> Name three questions you can ask about menu items.</p>
+        <p><strong>Next time:</strong> We'll learn how to place your order confidently!</p>
+      </section>
+    </main>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <nav class="bottom-navigation">
+    <a href="restaurant-module.html" class="nav-button previous">← Back to: Restaurant Module</a>
+    <div class="center-buttons">
+      <button class="nav-button print-button" onclick="window.print()">Print This Page</button>
+    </div>
+    <a href="restaurant-lesson2.html" class="nav-button next">Next: Placing Orders →</a>
+  </nav>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="../../home.html">Home</a></li>
+          <li><a href="../../home.html#where-to-start">Grammar</a></li>
+          <li><a href="../../extra-practice.html">Extra Practice</a></li>
+          <li><a href="../../my-progress.html">My Progress</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Beginner Topics</h3>
+        <ul>
+          <li><a href="beginner-grammar.html">Present Simple</a></li>
+          <li><a href="beginner-grammar.html">Past Simple</a></li>
+          <li><a href="restaurant-module.html">Restaurant English</a></li>
+          <li><a href="beginner-grammar.html">Question Forms</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="../../about.html">About</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© 2025 English in Doses | All rights reserved | <a href="../../license.html">Licensing Information</a></p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="../../js/core.js"></script>
+  <script src="../../js/matching.js"></script>
+  <script src="../../js/gap-fill.js"></script>
+  <script src="../../js/activity-nav.js"></script>
+  <script src="../../js/progress-tracking.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize Activity Navigation
+      if (typeof ActivityNavModule !== 'undefined') {
+        ActivityNavModule.init({
+          activities: ['matching', 'gap-fill', 'pronunciation'],
+          progressContainer: 'progress-info',
+          progressBar: 'progress-bar'
+        });
+      }
+      
+      // Initialize Matching Activity
+      if (typeof MatchingModule !== 'undefined') {
+        MatchingModule.init({
+          containerId: 'matching',
+          answers: {
+            1: 6, // Grilled -> Cooked on a grill/barbecue
+            2: 2, // Steamed -> Cooked with steam/vapour
+            3: 1, // House special -> Restaurant's signature dish
+            4: 3, // Side dish -> Small dish served with main course
+            5: 4, // Dressing -> Sauce for salad
+            6: 5  // Market price -> Price changes daily
+          },
+          onComplete: function(score, total) {
+            console.log(`Matching completed with score: ${score}/${total}`);
+            if (typeof ActivityNavModule !== 'undefined') {
+              ActivityNavModule.notifyActivityCompleted('matching', {
+                score: score,
+                maxScore: total
+              });
+            }
+          }
+        });
+      }
+      
+      // Initialize Gap Fill Activity
+      if (typeof GapFillModule !== 'undefined') {
+        GapFillModule.init({
+          containerId: 'gap-fill',
+          onComplete: function(score, total) {
+            console.log(`Gap fill completed with score: ${score}/${total}`);
+            if (typeof ActivityNavModule !== 'undefined') {
+              ActivityNavModule.notifyActivityCompleted('gap-fill', {
+                score: score,
+                maxScore: total
+              });
+            }
+          }
+        });
+      }
+      
+      // Handle pronunciation activity completion
+      const pronunciationComplete = document.getElementById('pronunciation-complete');
+      if (pronunciationComplete) {
+        pronunciationComplete.addEventListener('click', function() {
+          this.textContent = 'Completed ✓';
+          this.style.backgroundColor = '#28a745';
+          this.disabled = true;
+          
+          if (typeof ActivityNavModule !== 'undefined') {
+            ActivityNavModule.notifyActivityCompleted('pronunciation', {
+              score: 1,
+              maxScore: 1
+            });
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
