@@ -9,6 +9,7 @@
  * - Providing feedback
  * - Tracking score and progress
  * - Restarting the activity
+ * - Proper state isolation between different activities
  */
 
 /**
@@ -19,6 +20,7 @@ const DragDropModule = (function() {
   let score = 0;
   let totalQuestions = 0;
   let containerId = 'drag-drop';
+  let storageKey = 'drag-drop'; // NEW: Unique identifier for this activity
   let onCompleteCallback = null;
   let correctAnswers = {};
   let currentDraggedItem = null;
@@ -31,7 +33,8 @@ const DragDropModule = (function() {
    * 
    * @param {Object} config - Configuration object
    * @param {string} config.containerId - ID of the container element (default: 'drag-drop')
-   * @param {Object} config.answers - Object mapping question indices to arrays of correct answers
+   * @param {string} config.storageKey - Unique identifier for this activity (default: containerId)
+   * @param {Object} config.answers - Object mapping question IDs to correct answers
    * @param {Function} config.onComplete - Callback function called when all drop zones are correctly filled
    * @param {boolean} config.allowMultipleCorrectOrders - Whether multiple correct orders are valid (default: false)
    * @param {boolean} config.saveProgress - Whether to save progress to localStorage (default: true)
@@ -39,10 +42,18 @@ const DragDropModule = (function() {
   function init(config = {}) {
     // Set up configuration
     containerId = config.containerId || 'drag-drop';
+    storageKey = config.storageKey || containerId; // NEW: Use unique storageKey
     correctAnswers = config.answers || {};
     onCompleteCallback = config.onComplete || null;
     const allowMultipleCorrectOrders = config.allowMultipleCorrectOrders || false;
     const saveProgress = config.saveProgress !== undefined ? config.saveProgress : true;
+    
+    // NEW: Check if we've switched activities and clear old state if needed
+    const currentActivity = localStorage.getItem('dragdrop-current-activity');
+    if (currentActivity !== storageKey) {
+      clearAllState();
+      localStorage.setItem('dragdrop-current-activity', storageKey);
+    }
     
     // Detect touch device
     touchDevice = ('ontouchstart' in window) || 
@@ -83,6 +94,21 @@ const DragDropModule = (function() {
     if (saveProgress) {
       loadProgress();
     }
+  }
+  
+  /**
+   * NEW: Clears all drag-drop related localStorage items
+   * This prevents state pollution between different activities
+   */
+  function clearAllState() {
+    const keysToRemove = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && key.startsWith('dragdrop-')) {
+        keysToRemove.push(key);
+      }
+    }
+    keysToRemove.forEach(key => localStorage.removeItem(key));
   }
   
   /**
@@ -252,9 +278,9 @@ const DragDropModule = (function() {
       const itemCenterX = rect.left + rect.width / 2;
       const itemCenterY = rect.top + rect.height / 2;
       
-      // Calculate distance from mouse to item center
       const distance = Math.sqrt(
-        Math.pow(clientX - itemCenterX, 2) + Math.pow(clientY - itemCenterY, 2)
+        Math.pow(clientX - itemCenterX, 2) + 
+        Math.pow(clientY - itemCenterY, 2)
       );
       
       if (distance < minDistance) {
@@ -268,7 +294,7 @@ const DragDropModule = (function() {
           insertionY = rect.top + rect.height / 2;
         } else {
           insertBefore = items[i + 1] || null;
-          insertionX = rect.right + 5;
+          insertionX = rect.right;
           insertionY = rect.top + rect.height / 2;
         }
       }
@@ -283,15 +309,15 @@ const DragDropModule = (function() {
   /**
    * Shows the insertion indicator at the specified position
    * 
-   * @param {number} x - X position
-   * @param {number} y - Y position
+   * @param {number} x - X coordinate
+   * @param {number} y - Y coordinate
    */
   function showInsertionIndicator(x, y) {
     if (!insertionIndicator) return;
     
-    insertionIndicator.style.left = x + 'px';
-    insertionIndicator.style.top = (y - 15) + 'px';
     insertionIndicator.style.display = 'block';
+    insertionIndicator.style.left = `${x}px`;
+    insertionIndicator.style.top = `${y - 15}px`;
   }
   
   /**
@@ -315,226 +341,53 @@ const DragDropModule = (function() {
     dropZones.forEach(zone => {
       // Dragover event - triggered when a dragged item is over the drop zone
       zone.addEventListener('dragover', function(e) {
-        // Prevent default to allow drop
-        e.preventDefault();
+        e.preventDefault(); // Allow drop
+        e.dataTransfer.dropEffect = 'move';
+        
         this.classList.add('highlight');
         
+        // Get insertion point
+        const { insertBefore, position } = getInsertionPoint(this, e.clientX, e.clientY);
+        
         // Show insertion indicator
-        if (currentDraggedItem) {
-          const insertionPoint = getInsertionPoint(this, e.clientX, e.clientY);
-          showInsertionIndicator(insertionPoint.position.x, insertionPoint.position.y);
-        }
+        showInsertionIndicator(position.x, position.y);
       });
       
       // Dragleave event - triggered when a dragged item leaves the drop zone
-      zone.addEventListener('dragleave', function(e) {
-        // Only remove highlight if we're actually leaving the drop zone
-        // (not just moving to a child element)
-        if (!this.contains(e.relatedTarget)) {
-          this.classList.remove('highlight');
-          hideInsertionIndicator();
-        }
+      zone.addEventListener('dragleave', function() {
+        this.classList.remove('highlight');
+        hideInsertionIndicator();
       });
       
-      // Drop event - triggered when a dragged item is dropped
+      // Drop event - triggered when an item is dropped into the zone
       zone.addEventListener('drop', function(e) {
         e.preventDefault();
+        e.stopPropagation();
+        
         this.classList.remove('highlight');
         hideInsertionIndicator();
         
-        if (!currentDraggedItem) return;
+        // Get the dragged item's text
+        const draggedText = e.dataTransfer.getData('text/plain');
         
-        // Get insertion point
-        const insertionPoint = getInsertionPoint(this, e.clientX, e.clientY);
-        
-        // Check if we're moving within the same drop zone
-        const isInternalMove = dragStartContainer === this;
-        
-        if (isInternalMove) {
-          // Move item within the same drop zone
-          if (insertionPoint.insertBefore) {
-            this.insertBefore(currentDraggedItem, insertionPoint.insertBefore);
+        if (currentDraggedItem) {
+          // Get insertion point
+          const { insertBefore } = getInsertionPoint(this, e.clientX, e.clientY);
+          
+          // Move the dragged item to the new location
+          if (insertBefore) {
+            this.insertBefore(currentDraggedItem, insertBefore);
           } else {
             this.appendChild(currentDraggedItem);
           }
-        } else {
-          // Moving from different container (original drag-items or different drop zone)
-          const itemText = currentDraggedItem.textContent;
           
-          // Create a new drag item
-          const newItem = document.createElement('div');
-          newItem.className = 'drag-item';
-          newItem.textContent = itemText;
-          newItem.draggable = true;
-          
-          // Add event listeners to the new item
-          setupDragItemEventListeners(newItem);
-          
-          // Insert the new item at the correct position
-          if (insertionPoint.insertBefore) {
-            this.insertBefore(newItem, insertionPoint.insertBefore);
-          } else {
-            this.appendChild(newItem);
+          // Remove from original container if it was from a drag-items container
+          if (dragStartContainer && dragStartContainer.classList.contains('drag-items')) {
+            // Item was moved from options to drop zone, leave it where it is
           }
-          
-          // Remove the original item
-          currentDraggedItem.remove();
         }
-        
-        currentDraggedItem = null;
-        dragStartContainer = null;
       });
     });
-  }
-  
-  /**
-   * Sets up touch events for mobile devices
-   */
-  function setupTouchEvents() {
-    const container = document.getElementById(containerId);
-    if (!container) return;
-    
-    // Implementation of touch drag-and-drop with rearrangement support
-    let touchDragItem = null;
-    let touchStartX, touchStartY;
-    let touchOffset = { x: 0, y: 0 };
-    
-    // Touch start event for drag items
-    container.addEventListener('touchstart', function(e) {
-      const target = e.target.closest('.drag-item');
-      if (!target) return;
-      
-      touchDragItem = target;
-      const touch = e.touches[0];
-      const rect = target.getBoundingClientRect();
-      
-      touchStartX = touch.clientX;
-      touchStartY = touch.clientY;
-      touchOffset.x = touch.clientX - rect.left;
-      touchOffset.y = touch.clientY - rect.top;
-      
-      target.classList.add('dragging');
-      dragStartContainer = target.parentElement;
-      
-      // Prevent scrolling while dragging
-      e.preventDefault();
-    }, { passive: false });
-    
-    // Touch move event for the entire container
-    container.addEventListener('touchmove', function(e) {
-      if (!touchDragItem) return;
-      
-      const touch = e.touches[0];
-      
-      // Move the dragged item with the touch
-      touchDragItem.style.position = 'fixed';
-      touchDragItem.style.left = (touch.clientX - touchOffset.x) + 'px';
-      touchDragItem.style.top = (touch.clientY - touchOffset.y) + 'px';
-      touchDragItem.style.zIndex = '1000';
-      
-      // Show insertion indicator for drop zones
-      const dropZone = getDropZoneAt(touch.clientX, touch.clientY);
-      if (dropZone) {
-        dropZone.classList.add('highlight');
-        const insertionPoint = getInsertionPoint(dropZone, touch.clientX, touch.clientY);
-        showInsertionIndicator(insertionPoint.position.x, insertionPoint.position.y);
-      } else {
-        // Remove highlights from all drop zones
-        container.querySelectorAll('.drop-zone').forEach(zone => {
-          zone.classList.remove('highlight');
-        });
-        hideInsertionIndicator();
-      }
-      
-      // Prevent scrolling while dragging
-      e.preventDefault();
-    }, { passive: false });
-    
-    // Touch end event
-    container.addEventListener('touchend', function(e) {
-      if (!touchDragItem) return;
-      
-      const touch = e.changedTouches[0];
-      const dropZone = getDropZoneAt(touch.clientX, touch.clientY);
-      
-      if (dropZone) {
-        const insertionPoint = getInsertionPoint(dropZone, touch.clientX, touch.clientY);
-        const isInternalMove = dragStartContainer === dropZone;
-        
-        if (isInternalMove) {
-          // Reset position styles
-          touchDragItem.style.position = '';
-          touchDragItem.style.left = '';
-          touchDragItem.style.top = '';
-          touchDragItem.style.zIndex = '';
-          
-          // Move within the same drop zone
-          if (insertionPoint.insertBefore) {
-            dropZone.insertBefore(touchDragItem, insertionPoint.insertBefore);
-          } else {
-            dropZone.appendChild(touchDragItem);
-          }
-        } else {
-          // Moving from different container
-          const itemText = touchDragItem.textContent;
-          
-          // Create new item
-          const newItem = document.createElement('div');
-          newItem.className = 'drag-item';
-          newItem.textContent = itemText;
-          newItem.draggable = true;
-          setupDragItemEventListeners(newItem);
-          
-          // Insert at correct position
-          if (insertionPoint.insertBefore) {
-            dropZone.insertBefore(newItem, insertionPoint.insertBefore);
-          } else {
-            dropZone.appendChild(newItem);
-          }
-          
-          // Remove original
-          touchDragItem.remove();
-        }
-      } else {
-        // Reset position if not dropped on valid target
-        touchDragItem.style.position = '';
-        touchDragItem.style.left = '';
-        touchDragItem.style.top = '';
-        touchDragItem.style.zIndex = '';
-      }
-      
-      // Clean up
-      touchDragItem.classList.remove('dragging');
-      container.querySelectorAll('.drop-zone').forEach(zone => {
-        zone.classList.remove('highlight');
-      });
-      hideInsertionIndicator();
-      touchDragItem = null;
-      dragStartContainer = null;
-    });
-  }
-  
-  /**
-   * Gets the drop zone element at the specified coordinates
-   * 
-   * @param {number} x - X coordinate
-   * @param {number} y - Y coordinate
-   * @returns {HTMLElement|null} Drop zone element or null
-   */
-  function getDropZoneAt(x, y) {
-    const container = document.getElementById(containerId);
-    if (!container) return null;
-    
-    const dropZones = container.querySelectorAll('.drop-zone');
-    
-    for (const zone of dropZones) {
-      const rect = zone.getBoundingClientRect();
-      if (x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom) {
-        return zone;
-      }
-    }
-    
-    return null;
   }
   
   /**
@@ -543,99 +396,120 @@ const DragDropModule = (function() {
    * @param {boolean} allowMultipleCorrectOrders - Whether multiple correct orders are valid
    */
   function setupSubmitButton(allowMultipleCorrectOrders) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    
     const submitButton = document.getElementById(`${containerId}-submit`);
     if (!submitButton) return;
     
     submitButton.addEventListener('click', function() {
-      score = 0;
-      let allCorrect = true;
+      checkAnswers(allowMultipleCorrectOrders);
+    });
+  }
+  
+  /**
+   * Checks the answers and provides feedback
+   * 
+   * @param {boolean} allowMultipleCorrectOrders - Whether multiple correct orders are valid
+   */
+  function checkAnswers(allowMultipleCorrectOrders) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    
+    score = 0;
+    const dropZones = container.querySelectorAll('.drop-zone');
+    
+    dropZones.forEach(zone => {
+      // UPDATED: Get question ID instead of data-index
+      const question = zone.closest('.question');
+      if (!question) return;
       
-      // Check each drop zone
-      Object.keys(correctAnswers).forEach(zoneIndex => {
-        const zone = document.querySelector(`.drop-zone[data-index="${zoneIndex}"]`);
-        if (!zone) return;
-        
-        const feedback = zone.closest('.question').querySelector('.feedback');
-        const userAnswer = Array.from(zone.querySelectorAll('.drag-item'))
-          .map(item => item.textContent.trim())
-          .join(' ')
-          .replace(/\s+/g, ' ')
-          .trim();
-        
-        // Get the correct answers for this zone
-        const correctAnswersForZone = Array.isArray(correctAnswers[zoneIndex]) 
-          ? correctAnswers[zoneIndex] 
-          : [correctAnswers[zoneIndex]];
-        
-        // Check if the user's answer matches any of the correct answers
-        const isCorrect = correctAnswersForZone.some(answer => {
+      const questionId = question.id;
+      const feedback = question.querySelector('.feedback');
+      
+      // Get the words from the drop zone
+      const droppedItems = Array.from(zone.querySelectorAll('.drag-item'));
+      const droppedText = droppedItems.map(item => item.textContent).join(' ');
+      
+      // Get the correct answer(s)
+      let correctAnswer = correctAnswers[questionId];
+      
+      // Check if the answer is correct
+      let isCorrect = false;
+      
+      if (Array.isArray(correctAnswer)) {
+        // Multiple correct answers allowed
+        isCorrect = correctAnswer.some(answer => {
           if (allowMultipleCorrectOrders) {
-            // For this mode, we'll consider word sets rather than exact order
-            const userWords = userAnswer.toLowerCase().split(' ').sort().join(' ');
-            const correctWords = answer.toLowerCase().split(' ').sort().join(' ');
-            return userWords === correctWords;
+            // Check if all words are present regardless of order
+            const droppedWords = droppedText.toLowerCase().split(' ').sort();
+            const correctWords = answer.toLowerCase().split(' ').sort();
+            return JSON.stringify(droppedWords) === JSON.stringify(correctWords);
           } else {
-            return userAnswer.toLowerCase() === answer.toLowerCase();
+            // Check exact match
+            return droppedText.toLowerCase().trim() === answer.toLowerCase().trim();
           }
         });
-        
-        if (isCorrect) {
-          // Correct arrangement
-          zone.style.borderColor = 'var(--success-color)';
-          zone.style.backgroundColor = 'var(--success-bg)';
-          if (feedback) {
-            feedback.textContent = 'Correct! Perfect arrangement.';
-            feedback.className = 'feedback correct';
-          }
-          score++;
+      } else {
+        // Single correct answer
+        if (allowMultipleCorrectOrders) {
+          // Check if all words are present regardless of order
+          const droppedWords = droppedText.toLowerCase().split(' ').sort();
+          const correctWords = correctAnswer.toLowerCase().split(' ').sort();
+          isCorrect = JSON.stringify(droppedWords) === JSON.stringify(correctWords);
         } else {
-          // Incorrect arrangement
-          zone.style.borderColor = 'var(--error-color)';
-          zone.style.backgroundColor = 'var(--error-bg)';
-          allCorrect = false;
-          
-          if (feedback) {
-            let hint;
-            
-            // Try to give a helpful hint based on the content
-            if (userAnswer === '') {
-              hint = "This area is empty. Place some items here.";
-            } else {
-              hint = "Try a different arrangement. Check the order of the words.";
-              
-              if (allowMultipleCorrectOrders) {
-                hint = "You may have missing or extra words. Check your selection.";
-              }
-            }
-            
-            feedback.textContent = hint;
-            feedback.className = 'feedback incorrect';
-          }
+          // Check exact match
+          isCorrect = droppedText.toLowerCase().trim() === correctAnswer.toLowerCase().trim();
         }
-      });
-      
-      // Show score
-      const scoreDisplay = document.getElementById(`${containerId}-score`);
-      if (scoreDisplay) {
-        scoreDisplay.querySelector('span').textContent = score;
-        scoreDisplay.style.display = 'block';
       }
       
-      // Show restart button
-      const restartButton = document.getElementById(`${containerId}-restart`);
-      if (restartButton) {
-        submitButton.style.display = 'none';
-        restartButton.style.display = 'block';
+      // Provide feedback
+      if (isCorrect) {
+        score++;
+        zone.style.borderColor = '#2ecc71'; // Green
+        zone.style.backgroundColor = 'rgba(46, 204, 113, 0.1)';
+        if (feedback) {
+          feedback.textContent = '✓ Correct!';
+          feedback.className = 'feedback correct';
+        }
+      } else {
+        zone.style.borderColor = '#e74c3c'; // Red
+        zone.style.backgroundColor = 'rgba(231, 76, 60, 0.1)';
+        if (feedback) {
+          feedback.textContent = '✗ Try again';
+          feedback.className = 'feedback incorrect';
+        }
       }
-      
-      // Call onComplete callback if all answers are correct
-      if (allCorrect && typeof onCompleteCallback === 'function') {
-        onCompleteCallback(score, totalQuestions);
-      }
-      
-      // Save progress to localStorage if available
-      saveProgress();
     });
+    
+    // Update score display
+    const scoreDisplay = document.getElementById(`${containerId}-score`);
+    if (scoreDisplay) {
+      const scoreValue = scoreDisplay.querySelector('span');
+      if (scoreValue) {
+        scoreValue.textContent = score;
+      }
+      scoreDisplay.style.display = 'block';
+    }
+    
+    // Show restart button, hide submit button
+    const submitButton = document.getElementById(`${containerId}-submit`);
+    const restartButton = document.getElementById(`${containerId}-restart`);
+    
+    if (submitButton) {
+      submitButton.style.display = 'none';
+    }
+    if (restartButton) {
+      restartButton.style.display = 'block';
+    }
+    
+    // Save progress
+    saveProgress();
+    
+    // Call onComplete callback if all answers are correct
+    if (score === totalQuestions && onCompleteCallback) {
+      onCompleteCallback(score, totalQuestions);
+    }
   }
   
   /**
@@ -643,50 +517,58 @@ const DragDropModule = (function() {
    */
   function setupRestartButton() {
     const restartButton = document.getElementById(`${containerId}-restart`);
-    const submitButton = document.getElementById(`${containerId}-submit`);
-    
     if (!restartButton) return;
     
     restartButton.addEventListener('click', function() {
-      const container = document.getElementById(containerId);
-      if (!container) return;
-      
-      // Clear all drop zones
-      container.querySelectorAll('.drop-zone').forEach(zone => {
-        zone.innerHTML = '';
-        zone.style.borderColor = 'var(--border-color)';
-        zone.style.backgroundColor = 'var(--drop-zone-bg)';
-      });
-      
-      // Restore original drag items
-      restoreDragItems();
-      
-      // Clear feedback
-      container.querySelectorAll('.feedback').forEach(feedback => {
-        feedback.textContent = '';
-        feedback.className = 'feedback';
-      });
-      
-      // Hide score
-      const scoreDisplay = document.getElementById(`${containerId}-score`);
-      if (scoreDisplay) {
-        scoreDisplay.style.display = 'none';
-      }
-      
-      // Show submit button, hide restart button
-      if (submitButton) {
-        submitButton.style.display = 'block';
-      }
-      restartButton.style.display = 'none';
-      
-      // Reset score
-      score = 0;
-      
-      // Clear saved progress
-      if (typeof removeFromLocalStorage === 'function') {
-        removeFromLocalStorage(`${containerId}-progress`);
-      }
+      restart();
     });
+  }
+  
+  /**
+   * Restarts the activity
+   */
+  function restart() {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    
+    const submitButton = document.getElementById(`${containerId}-submit`);
+    const restartButton = document.getElementById(`${containerId}-restart`);
+    
+    // Reset all drop zones
+    const dropZones = container.querySelectorAll('.drop-zone');
+    dropZones.forEach(zone => {
+      zone.innerHTML = '';
+      zone.style.borderColor = 'var(--border-color)';
+      zone.style.backgroundColor = 'var(--drop-zone-bg)';
+    });
+    
+    // Clear all feedback
+    const feedbacks = container.querySelectorAll('.feedback');
+    feedbacks.forEach(feedback => {
+      feedback.textContent = '';
+      feedback.className = 'feedback';
+    });
+    
+    // Restore original drag items
+    restoreDragItems();
+    
+    // Hide score display
+    const scoreDisplay = document.getElementById(`${containerId}-score`);
+    if (scoreDisplay) {
+      scoreDisplay.style.display = 'none';
+    }
+    
+    // Show submit button, hide restart button
+    if (submitButton) {
+      submitButton.style.display = 'block';
+    }
+    restartButton.style.display = 'none';
+    
+    // Reset score
+    score = 0;
+    
+    // Clear saved progress
+    clearProgress();
   }
   
   /**
@@ -698,7 +580,7 @@ const DragDropModule = (function() {
     
     // For each question, restore the original drag items
     container.querySelectorAll('.question').forEach(question => {
-      const zoneIndex = question.querySelector('.drop-zone').getAttribute('data-index');
+      const questionId = question.id;
       const dragItemsContainer = question.querySelector('.drag-items');
       
       // Skip if no drag items container
@@ -708,13 +590,13 @@ const DragDropModule = (function() {
       dragItemsContainer.innerHTML = '';
       
       // Get the correct answers to recreate original items
-      if (correctAnswers[zoneIndex]) {
+      if (correctAnswers[questionId]) {
         let words;
-        if (Array.isArray(correctAnswers[zoneIndex])) {
+        if (Array.isArray(correctAnswers[questionId])) {
           // Use the first correct answer if there are multiple options
-          words = correctAnswers[zoneIndex][0].split(' ');
+          words = correctAnswers[questionId][0].split(' ');
         } else {
-          words = correctAnswers[zoneIndex].split(' ');
+          words = correctAnswers[questionId].split(' ');
         }
         
         // Shuffle words
@@ -753,10 +635,9 @@ const DragDropModule = (function() {
   
   /**
    * Saves progress to localStorage
+   * UPDATED: Uses storageKey instead of containerId
    */
   function saveProgress() {
-    if (typeof saveToLocalStorage !== 'function') return;
-    
     const container = document.getElementById(containerId);
     if (!container) return;
     
@@ -764,10 +645,13 @@ const DragDropModule = (function() {
     const dropZonesState = {};
     
     container.querySelectorAll('.drop-zone').forEach(zone => {
-      const zoneIndex = zone.getAttribute('data-index');
+      const question = zone.closest('.question');
+      if (!question) return;
       
-      if (zoneIndex) {
-        dropZonesState[zoneIndex] = Array.from(zone.querySelectorAll('.drag-item'))
+      const questionId = question.id;
+      
+      if (questionId) {
+        dropZonesState[questionId] = Array.from(zone.querySelectorAll('.drag-item'))
           .map(item => item.textContent);
       }
     });
@@ -780,24 +664,31 @@ const DragDropModule = (function() {
       completed: score === totalQuestions
     };
     
-    saveToLocalStorage(`${containerId}-progress`, progressData);
+    // UPDATED: Use storageKey
+    localStorage.setItem(`dragdrop-${storageKey}-progress`, JSON.stringify(progressData));
   }
   
   /**
    * Loads progress from localStorage
+   * UPDATED: Uses storageKey instead of containerId
    */
   function loadProgress() {
-    if (typeof getFromLocalStorage !== 'function') return;
+    // UPDATED: Use storageKey
+    const progressDataString = localStorage.getItem(`dragdrop-${storageKey}-progress`);
+    if (!progressDataString) return;
     
-    const progressData = getFromLocalStorage(`${containerId}-progress`);
+    const progressData = JSON.parse(progressDataString);
     if (!progressData || !progressData.dropZones) return;
     
     const container = document.getElementById(containerId);
     if (!container) return;
     
     // Restore each drop zone
-    Object.entries(progressData.dropZones).forEach(([zoneIndex, items]) => {
-      const zone = container.querySelector(`.drop-zone[data-index="${zoneIndex}"]`);
+    Object.entries(progressData.dropZones).forEach(([questionId, items]) => {
+      const question = container.querySelector(`#${questionId}`);
+      if (!question) return;
+      
+      const zone = question.querySelector('.drop-zone');
       
       if (zone && Array.isArray(items)) {
         // Clear the zone first
@@ -817,21 +708,18 @@ const DragDropModule = (function() {
         });
         
         // Remove these items from the original container
-        const question = zone.closest('.question');
-        if (question) {
-          const dragItemsContainer = question.querySelector('.drag-items');
-          
-          if (dragItemsContainer) {
-            items.forEach(itemText => {
-              const matchingItems = Array.from(dragItemsContainer.querySelectorAll('.drag-item'))
-                .filter(item => item.textContent === itemText);
-              
-              // Remove one instance of matching item
-              if (matchingItems.length > 0) {
-                matchingItems[0].remove();
-              }
-            });
-          }
+        const dragItemsContainer = question.querySelector('.drag-items');
+        
+        if (dragItemsContainer) {
+          items.forEach(itemText => {
+            const matchingItems = Array.from(dragItemsContainer.querySelectorAll('.drag-item'))
+              .filter(item => item.textContent === itemText);
+            
+            // Remove one instance of matching item
+            if (matchingItems.length > 0) {
+              matchingItems[0].remove();
+            }
+          });
         }
       }
     });
@@ -843,6 +731,62 @@ const DragDropModule = (function() {
         submitButton.click();
       }
     }
+  }
+  
+  /**
+   * NEW: Clears progress for the current activity
+   */
+  function clearProgress() {
+    localStorage.removeItem(`dragdrop-${storageKey}-progress`);
+  }
+  
+  /**
+   * Sets up touch events for mobile devices
+   */
+  function setupTouchEvents() {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    
+    const dragItems = container.querySelectorAll('.drag-item');
+    
+    dragItems.forEach(item => {
+      let touchStartX = 0;
+      let touchStartY = 0;
+      
+      item.addEventListener('touchstart', function(e) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        this.classList.add('dragging');
+      });
+      
+      item.addEventListener('touchmove', function(e) {
+        e.preventDefault();
+        const touch = e.touches[0];
+        
+        // Update visual position
+        this.style.position = 'fixed';
+        this.style.left = `${touch.clientX - 50}px`;
+        this.style.top = `${touch.clientY - 20}px`;
+        this.style.zIndex = '1000';
+      });
+      
+      item.addEventListener('touchend', function(e) {
+        this.classList.remove('dragging');
+        this.style.position = '';
+        this.style.left = '';
+        this.style.top = '';
+        this.style.zIndex = '';
+        
+        // Get the element at the touch point
+        const touch = e.changedTouches[0];
+        const dropZone = document.elementFromPoint(touch.clientX, touch.clientY);
+        
+        if (dropZone && dropZone.classList.contains('drop-zone')) {
+          // Move the item to the drop zone
+          dropZone.appendChild(this);
+        }
+      });
+    });
   }
   
   /**
