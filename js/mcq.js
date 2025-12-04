@@ -33,6 +33,184 @@ const MCQModule = (function() {
     let grammarSummaryId = 'grammar-summary';
     
     /**
+     * Creates the custom modal HTML dynamically
+     * This modal is used when not all questions have been answered
+     */
+    function createConfirmModal() {
+        // Check if modal already exists
+        if (document.getElementById('mcq-confirm-modal')) {
+            return;
+        }
+        
+        const modalHTML = `
+            <div id="mcq-confirm-modal" class="mcq-modal-overlay">
+                <div class="mcq-modal">
+                    <div class="mcq-modal-content">
+                        <p class="mcq-modal-message">You haven't answered all of the questions. Do you want to check answers anyway?</p>
+                        <div class="mcq-modal-buttons">
+                            <button id="mcq-modal-yes" class="mcq-modal-btn mcq-modal-btn-yes">Yes</button>
+                            <button id="mcq-modal-no" class="mcq-modal-btn mcq-modal-btn-no">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        // Insert modal into the body
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
+        
+        // Set up event listeners for modal buttons
+        const yesButton = document.getElementById('mcq-modal-yes');
+        const noButton = document.getElementById('mcq-modal-no');
+        const modalOverlay = document.getElementById('mcq-confirm-modal');
+        
+        if (yesButton) {
+            yesButton.addEventListener('click', function() {
+                hideConfirmModal();
+                proceedWithCheckAnswers();
+            });
+        }
+        
+        if (noButton) {
+            noButton.addEventListener('click', function() {
+                hideConfirmModal();
+            });
+        }
+        
+        // Close modal when clicking outside
+        if (modalOverlay) {
+            modalOverlay.addEventListener('click', function(e) {
+                if (e.target === modalOverlay) {
+                    hideConfirmModal();
+                }
+            });
+        }
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                hideConfirmModal();
+            }
+        });
+    }
+    
+    /**
+     * Shows the confirmation modal
+     */
+    function showConfirmModal() {
+        const modal = document.getElementById('mcq-confirm-modal');
+        if (modal) {
+            modal.classList.add('show');
+            // Focus the No button by default (safer option)
+            const noButton = document.getElementById('mcq-modal-no');
+            if (noButton) {
+                noButton.focus();
+            }
+        }
+    }
+    
+    /**
+     * Hides the confirmation modal
+     */
+    function hideConfirmModal() {
+        const modal = document.getElementById('mcq-confirm-modal');
+        if (modal) {
+            modal.classList.remove('show');
+        }
+    }
+    
+    /**
+     * Proceeds with checking answers (called when user clicks Yes in modal)
+     */
+    function proceedWithCheckAnswers() {
+        score = 0;
+        resetDifficultyScores();
+        
+        // Check all answers (including unanswered ones)
+        Object.keys(correctAnswers).forEach(questionId => {
+            const questionElement = document.getElementById(questionId);
+            if (!questionElement) return;
+            
+            // Get the question index and determine its difficulty level
+            const questionIndex = parseInt(questionId.replace('q', '')) - 1;
+            const difficultyLevel = getDifficultyLevelForQuestion(questionIndex);
+            
+            // Check if this question has been answered
+            const selectedOption = userSelections[questionId] !== undefined ? 
+                document.querySelector(`#${questionId} .option[data-index="${userSelections[questionId]}"]`) : null;
+            
+            if (!selectedOption) {
+                // Show feedback for unanswered questions
+                const feedback = questionElement.querySelector('.feedback');
+                if (feedback) {
+                    feedback.textContent = 'You didn\'t answer this question.';
+                    feedback.className = 'feedback incorrect-answer';
+                }
+                answered[questionId] = false;
+            } else {
+                checkSingleAnswer(questionId, difficultyLevel);
+            }
+        });
+        
+        // Show results
+        showResults();
+        
+        // Enhanced score display
+        const scoreDisplay = document.getElementById('mcq-score');
+        if (scoreDisplay) {
+            const scoreValueElem = scoreDisplay.querySelector('.score-value');
+            if (scoreValueElem) {
+                scoreValueElem.textContent = score;
+            } else {
+                const scoreSpan = scoreDisplay.querySelector('span');
+                if (scoreSpan) {
+                    scoreSpan.textContent = score;
+                }
+            }
+            
+            scoreDisplay.style.display = 'block';
+            scoreDisplay.classList.add('show');
+        }
+        
+        // Save progress
+        saveProgress();
+        
+        // Check if all questions are answered correctly
+        const allCorrect = Object.values(answered).every(status => status);
+        
+        console.log(`MCQ submission results: Score: ${score}/${totalQuestions}, All correct: ${allCorrect}`);
+        
+        // Notify about completion
+        notifyCompletion();
+        
+        // Call onComplete callback if provided
+        if (typeof onCompleteCallback === 'function') {
+            try {
+                onCompleteCallback(score, totalQuestions);
+            } catch (error) {
+                console.error('Error in onComplete callback:', error);
+            }
+        }
+        
+        // Show restart button and hide submit button
+        const restartButton = document.getElementById('mcq-restart');
+        if (restartButton) {
+            restartButton.style.display = 'block';
+        }
+        
+        const submitButton = document.getElementById('mcq-submit');
+        if (submitButton) {
+            submitButton.style.display = 'none';
+        }
+        
+        // Show "Check the Grammar" button
+        const checkGrammarButton = document.getElementById('check-grammar');
+        if (checkGrammarButton) {
+            checkGrammarButton.style.display = 'inline-block';
+        }
+    }
+    
+    /**
      * Initializes the MCQ module
      * 
      * @param {Object} config - Configuration object
@@ -100,6 +278,9 @@ const MCQModule = (function() {
         
         // Set up "Check the Grammar" button
         setupCheckGrammarButton();
+        
+        // Create the confirmation modal
+        createConfirmModal();
         
         // Load progress
         loadProgress();
@@ -245,6 +426,23 @@ const MCQModule = (function() {
         let allAnswered = true;
         resetDifficultyScores();
         
+        // First, check if all questions have been answered
+        Object.keys(correctAnswers).forEach(questionId => {
+            const selectedOption = userSelections[questionId] !== undefined ? 
+                document.querySelector(`#${questionId} .option[data-index="${userSelections[questionId]}"]`) : null;
+            
+            if (!selectedOption) {
+                allAnswered = false;
+            }
+        });
+        
+        // If not all questions are answered, show the custom modal
+        if (!allAnswered) {
+            showConfirmModal();
+            return;
+        }
+        
+        // All questions answered - proceed normally
         Object.keys(correctAnswers).forEach(questionId => {
             const questionElement = document.getElementById(questionId);
             if (!questionElement) return;
@@ -253,27 +451,8 @@ const MCQModule = (function() {
             const questionIndex = parseInt(questionId.replace('q', '')) - 1;
             const difficultyLevel = getDifficultyLevelForQuestion(questionIndex);
             
-            // Check if this question has been answered
-            const selectedOption = userSelections[questionId] !== undefined ? 
-                document.querySelector(`#${questionId} .option[data-index="${userSelections[questionId]}"]`) : null;
-            
-            if (!selectedOption) {
-                allAnswered = false;
-                const feedback = questionElement.querySelector('.feedback');
-                if (feedback) {
-                    feedback.textContent = 'Please select an answer.';
-                    feedback.className = 'feedback alert';
-                }
-            } else {
-                checkSingleAnswer(questionId, difficultyLevel);
-            }
+            checkSingleAnswer(questionId, difficultyLevel);
         });
-        
-        // If not all questions are answered, show a message
-        if (!allAnswered) {
-            alert('Please answer all questions before submitting.');
-            return;
-        }
         
         // Show results
         showResults();
@@ -448,46 +627,20 @@ const MCQModule = (function() {
         if (!container) return false;
         
         const questions = container.querySelectorAll('.question');
-        const visibleQuestions = Array.from(questions).filter(q => q.style.display !== 'none');
-        
-        return visibleQuestions.length === questions.length;
+        return Array.from(questions).every(q => q.style.display !== 'none');
     }
     
     /**
-     * Shows the results summary
+     * Shows results after checking answers
      */
     function showResults() {
-        const resultsContainer = document.getElementById('mcq-results');
-        if (!resultsContainer) return;
+        const container = document.getElementById(containerId);
+        if (!container) return;
         
-        // Update score
-        const scoreValue = document.getElementById('score-value');
-        if (scoreValue) {
-            scoreValue.textContent = score;
-        }
+        // Make sure all questions are visible for review
+        showAllQuestions(true);
         
-        const totalQuestionsScore = document.getElementById('total-questions-score');
-        if (totalQuestionsScore) {
-            totalQuestionsScore.textContent = totalQuestions;
-        }
-        
-        // Update progress bar
-        const resultsProgressBar = document.getElementById('results-progress-bar');
-        if (resultsProgressBar) {
-            const percentage = (score / totalQuestions) * 100;
-            resultsProgressBar.style.width = `${percentage}%`;
-        }
-        
-        // Update difficulty breakdown
-        for (const [level, data] of Object.entries(difficultyLevels)) {
-            const scoreElement = document.getElementById(`${level}-score`);
-            if (scoreElement) {
-                scoreElement.textContent = data.score;
-            }
-        }
-        
-        // Show results container
-        resultsContainer.style.display = 'block';
+        console.log(`Showing results: ${score}/${totalQuestions}`);
     }
     
     /**
@@ -495,8 +648,6 @@ const MCQModule = (function() {
      */
     function setupRestartButton() {
         const restartButton = document.getElementById('mcq-restart');
-        const submitButton = document.getElementById('mcq-submit');
-        
         if (!restartButton) {
             console.warn(`Restart button with ID "mcq-restart" not found`);
             return;
@@ -505,45 +656,40 @@ const MCQModule = (function() {
         restartButton.addEventListener('click', function() {
             console.log('MCQ restart button clicked');
             
-            // Clear selections
-            clearAllSelections();
-            
-            // Clear feedback
-            const container = document.getElementById(containerId);
-            container.querySelectorAll('.feedback').forEach(feedback => {
-                feedback.textContent = '';
-                feedback.className = 'feedback';
-            });
-            
-            // Reset answered status
-            Object.keys(answered).forEach(questionId => {
-                answered[questionId] = false;
-            });
-            
             // Reset score
             score = 0;
             resetDifficultyScores();
             
-            // Hide results
-            const resultsContainer = document.getElementById('mcq-results');
-            if (resultsContainer) {
-                resultsContainer.style.display = 'none';
+            // Reset answered status
+            Object.keys(correctAnswers).forEach(questionId => {
+                answered[questionId] = false;
+            });
+            
+            // Clear all selections visually and in the data
+            clearAllSelections();
+            
+            // Clear all feedback
+            const container = document.getElementById(containerId);
+            if (container) {
+                container.querySelectorAll('.feedback').forEach(feedback => {
+                    feedback.textContent = '';
+                    feedback.className = 'feedback';
+                });
             }
             
-            // Hide the score display
+            // Hide score display
             const scoreDisplay = document.getElementById('mcq-score');
             if (scoreDisplay) {
                 scoreDisplay.style.display = 'none';
                 scoreDisplay.classList.remove('show');
             }
             
-            // Show all questions
-            showAllQuestions(true);
-            
             // Show submit button, hide restart button
+            const submitButton = document.getElementById('mcq-submit');
             if (submitButton) {
                 submitButton.style.display = 'block';
             }
+            
             restartButton.style.display = 'none';
             
             // Hide "Check the Grammar" button
@@ -552,14 +698,13 @@ const MCQModule = (function() {
                 checkGrammarButton.style.display = 'none';
             }
             
-            // Hide completion feedback if it exists
-            const feedbackElement = document.getElementById('completion-feedback');
-            if (feedbackElement) {
-                feedbackElement.style.display = 'none';
-            }
+            // Ensure all questions remain visible
+            showAllQuestions(true);
             
-            // Clear progress
+            // Clear saved progress
             clearProgress();
+            
+            console.log('MCQ reset complete');
         });
     }
     
@@ -569,163 +714,97 @@ const MCQModule = (function() {
     function setupCheckGrammarButton() {
         const checkGrammarButton = document.getElementById('check-grammar');
         if (!checkGrammarButton) {
-            console.warn(`Check Grammar button with ID "check-grammar" not found`);
+            console.log('Check Grammar button not found (might not be on this page)');
             return;
         }
         
         checkGrammarButton.addEventListener('click', function(e) {
-            console.log('Check Grammar button clicked');
+            // If it has an href, let it work as a link
+            if (this.getAttribute('href')) {
+                return;
+            }
             
-            // Scroll to the grammar summary section smoothly
+            // Otherwise, scroll to the grammar summary
+            e.preventDefault();
             const grammarSummary = document.getElementById(grammarSummaryId);
             if (grammarSummary) {
-                e.preventDefault();
-                
-                grammarSummary.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+                grammarSummary.scrollIntoView({ behavior: 'smooth' });
             }
         });
     }
     
     /**
-     * Notifies that the activity has been completed
-     * Uses multiple methods to ensure reliable tracking
+     * Notifies about MCQ completion
      */
     function notifyCompletion() {
-        console.log(`MCQ Activity completed: ${containerId}`);
-        
-        // Create completion data object
-        const completionData = {
-            activityId: containerId,
-            score: score,
-            maxScore: totalQuestions,
-            completed: true,
-            completedAt: new Date().toISOString(),
-            title: document.title || `MCQ Activity: ${containerId}`,
-            difficultyScores: difficultyLevels
-        };
-        
-        // Method 1: Save directly to localStorage as a fallback
-        if (typeof saveToLocalStorage === 'function') {
-            saveToLocalStorage(`${containerId}-progress`, completionData);
-        } else {
-            try {
-                localStorage.setItem(`${containerId}-progress`, JSON.stringify(completionData));
-            } catch (e) {
-                console.error('Error saving to localStorage directly:', e);
+        // Dispatch a custom event for other modules to listen to
+        const event = new CustomEvent('mcqCompleted', {
+            detail: {
+                score: score,
+                totalQuestions: totalQuestions,
+                allCorrect: Object.values(answered).every(status => status),
+                difficultyBreakdown: difficultyLevels
             }
-        }
+        });
+        document.dispatchEvent(event);
         
-        // Method 2: Use ProgressTrackingModule directly
-        if (typeof ProgressTrackingModule !== 'undefined' && 
-            typeof ProgressTrackingModule.markItemCompleted === 'function') {
-            try {
-                ProgressTrackingModule.markItemCompleted('activities', containerId, completionData);
-                console.log('Notified ProgressTrackingModule directly');
-            } catch (e) {
-                console.error('Error notifying ProgressTrackingModule:', e);
-            }
-        }
-        
-        // Method 3: Use ActivityNavModule
-        if (typeof ActivityNavModule !== 'undefined' && 
-            typeof ActivityNavModule.notifyActivityCompleted === 'function') {
-            try {
-                ActivityNavModule.notifyActivityCompleted(containerId, completionData);
-                console.log('Notified ActivityNavModule');
-            } catch (e) {
-                console.error('Error notifying ActivityNavModule:', e);
-            }
-        }
-        
-        // Method 4: Dispatch custom event
-        try {
-            const event = new CustomEvent('activityCompleted', {
-                detail: completionData
-            });
-            document.dispatchEvent(event);
-            console.log('Dispatched activityCompleted event');
-        } catch (e) {
-            console.error('Error dispatching event:', e);
-        }
-        
-        // Method 5: Visual feedback if available
-        try {
-            if (typeof showFeedbackMessage === 'function') {
-                showFeedbackMessage(`Activity completed! Score: ${score}/${totalQuestions}`, 'success', 3000);
-            }
-        } catch (e) {
-            console.error('Error showing feedback message:', e);
-        }
+        console.log('MCQ completion event dispatched');
     }
     
     /**
-     * Saves progress to localStorage
+     * Saves progress to local storage
      */
     function saveProgress() {
         try {
-            console.log(`Saving MCQ progress for ${containerId}`);
-            
-            // Create progress data object
             const progressData = {
                 score: score,
-                totalQuestions: totalQuestions,
                 answered: answered,
                 userSelections: userSelections,
-                difficultyScores: difficultyLevels,
-                completed: Object.values(answered).filter(status => status).length === totalQuestions,
-                timestamp: new Date().toISOString(),
-                title: document.title || `MCQ Activity: ${containerId}`
+                difficultyScores: {},
+                completed: Object.values(answered).every(status => status !== false && Object.keys(userSelections).length === totalQuestions),
+                timestamp: new Date().toISOString()
             };
             
-            // Method 1: Use saveToLocalStorage function if available
+            // Save difficulty scores
+            Object.keys(difficultyLevels).forEach(level => {
+                progressData.difficultyScores[level] = {
+                    score: difficultyLevels[level].score,
+                    total: difficultyLevels[level].total
+                };
+            });
+            
+            // Use the saveToLocalStorage function if available, otherwise use localStorage directly
             if (typeof saveToLocalStorage === 'function') {
                 saveToLocalStorage(`${containerId}-progress`, progressData);
-                console.log('Progress saved using saveToLocalStorage function');
-            }
-            // Method 2: Use localStorage directly
-            else if (typeof localStorage !== 'undefined') {
+            } else if (typeof localStorage !== 'undefined') {
                 localStorage.setItem(`${containerId}-progress`, JSON.stringify(progressData));
-                console.log('Progress saved directly to localStorage');
-            } else {
-                console.warn('Unable to save progress: localStorage not available');
             }
             
-            return true;
+            console.log('MCQ progress saved:', progressData);
         } catch (error) {
             console.error('Error saving progress:', error);
-            return false;
         }
     }
     
     /**
-     * Loads progress from localStorage
+     * Loads progress from local storage
      */
     function loadProgress() {
         try {
-            console.log(`Loading MCQ progress for ${containerId}`);
-            
             let savedProgress = null;
             
-            // Method 1: Use getFromLocalStorage function if available
+            // Use the getFromLocalStorage function if available, otherwise use localStorage directly
             if (typeof getFromLocalStorage === 'function') {
                 savedProgress = getFromLocalStorage(`${containerId}-progress`);
-                console.log('Progress loaded using getFromLocalStorage function');
-            }
-            // Method 2: Use localStorage directly
-            else if (typeof localStorage !== 'undefined') {
+            } else if (typeof localStorage !== 'undefined') {
                 const savedData = localStorage.getItem(`${containerId}-progress`);
-                
                 if (savedData) {
                     savedProgress = JSON.parse(savedData);
-                    console.log('Progress loaded directly from localStorage');
                 }
             }
             
             if (savedProgress) {
-                console.log('Saved progress found:', savedProgress);
+                console.log('Loading saved MCQ progress:', savedProgress);
                 
                 // Restore answered state
                 if (savedProgress.answered) {
