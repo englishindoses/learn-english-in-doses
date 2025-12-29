@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Practice I like / I don't like and Do you like...? with interactive activities for beginner ESL learners.">
+  <title>I Like / I Don't Like - Practice Activities</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
+
+  <!-- Base and Activity Styles -->
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/activities.css">
+  <link rel="stylesheet" href="../../css/components.css">
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../../images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../images//favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../images//favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Page specific styles -->
+  <style>
+    .nav-indicator {
+      height: 3px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: var(--beginner-primary);
+    }
+    
+    [data-theme="dark"] .nav-indicator {
+      background-color: var(--beginner-primary);
+    }
+    
+    .conversation-box {
+      background-color: var(--example-bg);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    
+    .conversation-box p {
+      margin: 10px 0;
+      line-height: 1.8;
+    }
+    
+    .speaker {
+      font-weight: 600;
+      color: var(--beginner-primary);
+    }
+    
+    .grammar-highlight {
+      background-color: rgba(46, 204, 113, 0.2);
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-weight: 600;
+    }
+    
+    [data-theme="dark"] .grammar-highlight {
+      background-color: rgba(46, 204, 113, 0.3);
+    }
+    
+    .reading-text {
+      background-color: var(--bg-offset);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+    
+    .reading-text p {
+      margin-bottom: 15px;
+    }
+    
+    .speaking-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      margin: 20px 0;
+    }
+    
+    .speaking-item {
+      background-color: var(--card-bg);
+      border: 2px solid var(--beginner-primary);
+      border-radius: 8px;
+      padding: 12px 15px;
+      text-align: center;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+    
+    .speaking-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    .speaking-item.done {
+      background-color: var(--beginner-primary);
+      color: white;
+      border-color: var(--beginner-primary-dark);
+    }
+    
+    [data-theme="dark"] .speaking-item.done {
+      background-color: var(--beginner-primary);
+      color: #000;
+    }
+    
+    .options-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 15px 0 20px 0;
+      padding: 15px;
+      background-color: var(--bg-offset);
+      border-radius: 8px;
+    }
+    
+    .option-card {
+      background-color: var(--card-bg);
+      border: 2px solid var(--beginner-primary);
+      border-radius: 6px;
+      padding: 8px 14px;
+      font-weight: 600;
+      font-family: 'Source Code Pro', monospace;
+    }
+    
+    .activity-nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 25px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-color);
+    }
+    
+    .activity-nav-buttons .nav-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background-color: var(--beginner-primary);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+    
+    .activity-nav-buttons .nav-button:hover {
+      background-color: var(--beginner-primary-dark);
+    }
+    
+    .activity-nav-buttons .nav-button:disabled {
+      background-color: var(--border-color);
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+    
+    .activity-nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 25px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-color);
+    }
+    
+    .activity-nav-buttons .nav-button {
+      padding: 12px 20px;
+      font-size: 1rem;
+    }
+    
+    .activity-nav-buttons .nav-button:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    
+    .activity-nav-buttons .nav-button:disabled:hover {
+      transform: none;
+      background-color: var(--beginner-primary);
+    }
+    
+    .speaking-example {
+      background-color: var(--example-bg);
+      border-left: 4px solid var(--beginner-primary);
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 0 8px 8px 0;
+    }
+    
+    .form-table {
+      width: 100%;
+      margin: 15px 0;
+      border-collapse: collapse;
+    }
+    
+    .form-table th, .form-table td {
+      padding: 10px 15px;
+      text-align: left;
+      border: 1px solid var(--border-color);
+    }
+    
+    .form-table th {
+      background-color: var(--beginner-primary);
+      color: white;
+    }
+    
+    .form-table td {
+      background-color: var(--card-bg);
+    }
+  </style>
+</head>
+<body class="beginner-section">
+  <!-- Skip link and theme toggle -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  
+  <div class="theme-toggle-container">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="light-icon">☀️</span>
+      <span class="dark-icon">🌙</span>
+    </button>
+  </div>
+
+  <!-- Main navigation -->
+  <nav class="main-navigation">
+    <a href="../../home.html" class="site-logo">
+      <img src="../../images/my-logo.svg" alt="English in Doses" width="150" height="auto">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <div class="nav-links">
+      <a href="../../home.html" class="nav-link">Home</a>
+      <a href="../../about.html" class="nav-link">About Us</a>
+      <a href="../../contact.html" class="nav-link">Contact Us</a>
+      <a href="../../home.html#where-to-start" class="nav-link">Grammar</a>
+      <a href="../../extra-practice.html" class="nav-link">Extra Practice</a>
+      <a href="../../conversation-page.html" class="nav-link">Conversation</a>
+      <a href="../../my-progress.html" class="nav-link">My Progress</a>
+      <div class="nav-indicator"></div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs" aria-label="breadcrumb">
+      <span class="breadcrumb-item"><a href="../../home.html">Home</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="beginner-grammar.html">Beginner Grammar</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item">I Like / I Don't Like Practice</span>
+    </div>
+
+    <main id="main-content">
+      <h1>I Like / I Don't Like</h1>
+
+      <!-- Introduction Section -->
+      <section class="intro-section">
+        <h2>Practice Activities</h2>
+        <p>Let's practise talking about things you like and don't like! Complete the activities below.</p>
+      </section>
+
+      <!-- Language Review Section -->
+      <section class="content-section">
+        <h2>The Language</h2>
+        <p>Read this conversation between two friends:</p>
+        
+        <div class="conversation-box">
+          <p><span class="speaker">Ana:</span> Hi Carlos! Do you want some coffee?</p>
+          <p><span class="speaker">Carlos:</span> No, thanks. <span class="grammar-highlight">I don't like</span> coffee.</p>
+          <p><span class="speaker">Ana:</span> Really? <span class="grammar-highlight">I like</span> coffee a lot! <span class="grammar-highlight">Do you like</span> tea?</p>
+          <p><span class="speaker">Carlos:</span> <span class="grammar-highlight">Yes, I do!</span> <span class="grammar-highlight">I like</span> green tea.</p>
+          <p><span class="speaker">Ana:</span> Me too! <span class="grammar-highlight">Do you like</span> cooking?</p>
+          <p><span class="speaker">Carlos:</span> <span class="grammar-highlight">No, I don't.</span> <span class="grammar-highlight">I don't like</span> cooking. But <span class="grammar-highlight">I like</span> eating!</p>
+        </div>
+        
+        <h3>Quick Reference</h3>
+        <table class="form-table">
+          <tr>
+            <th>Positive (+)</th>
+            <th>Negative (−)</th>
+          </tr>
+          <tr>
+            <td>I <strong>like</strong> coffee.</td>
+            <td>I <strong>don't like</strong> coffee.</td>
+          </tr>
+        </table>
+        
+        <table class="form-table">
+          <tr>
+            <th>Question (?)</th>
+            <th>Short Answers</th>
+          </tr>
+          <tr>
+            <td><strong>Do you like</strong> coffee?</td>
+            <td><strong>Yes, I do.</strong> / <strong>No, I don't.</strong></td>
+          </tr>
+        </table>
+      </section>
+
+      <!-- Activity Navigation -->
+      <div id="activity-nav" class="activity-nav">
+        <button data-activity="mcq" class="activity-nav-btn active">Reading</button>
+        <button data-activity="gap-fill" class="activity-nav-btn">Gap Fill</button>
+        <button data-activity="drag-drop" class="activity-nav-btn">Word Order</button>
+        <button data-activity="speaking" class="activity-nav-btn">Speaking</button>
+      </div>
+
+      <!-- Activity 1: Reading Comprehension MCQ -->
+      <section id="mcq" class="activity-container active">
+        <h2>Reading Comprehension</h2>
+        <p>Read about Maria and answer the questions.</p>
+        
+        <div class="reading-text">
+          <p>My name is Maria. I'm from São Paulo, Brazil. I live in London now. I work in an office.</p>
+          <p>I like my job. I like working with people. I don't like mornings – I always feel tired! I like coffee, but I don't like tea.</p>
+          <p>On weekends, I like cooking Brazilian food. I don't like cooking every day, but on Saturdays it's fun. I like music. I like dancing too!</p>
+          <p>I don't like cold weather. London is very cold in winter. I like summer – it's my favourite season.</p>
+        </div>
+        
+        <div class="question" id="q1">
+          <p class="mcq-question">1. Where does Maria live now?</p>
+          <div class="options">
+            <div class="option" data-index="0" onclick="MCQModule.selectOption('q1', 0)">
+              <span>A. São Paulo</span>
+            </div>
+            <div class="option" data-index="1" onclick="MCQModule.selectOption('q1', 1)">
+              <span>B. London</span>
+            </div>
+            <div class="option" data-index="2" onclick="MCQModule.selectOption('q1', 2)">
+              <span>C. Brazil</span>
+            </div>
+          </div>
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="q2">
+          <p class="mcq-question">2. Does Maria like her job?</p>
+          <div class="options">
+            <div class="option" data-index="0" onclick="MCQModule.selectOption('q2', 0)">
+              <span>A. Yes, she does.</span>
+            </div>
+            <div class="option" data-index="1" onclick="MCQModule.selectOption('q2', 1)">
+              <span>B. No, she doesn't.</span>
+            </div>
+            <div class="option" data-index="2" onclick="MCQModule.selectOption('q2', 2)">
+              <span>C. The text doesn't say.</span>
+            </div>
+          </div>
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="q3">
+          <p class="mcq-question">3. What does Maria like to drink?</p>
+          <div class="options">
+            <div class="option" data-index="0" onclick="MCQModule.selectOption('q3', 0)">
+              <span>A. Tea</span>
+            </div>
+            <div class="option" data-index="1" onclick="MCQModule.selectOption('q3', 1)">
+              <span>B. Coffee</span>
+            </div>
+            <div class="option" data-index="2" onclick="MCQModule.selectOption('q3', 2)">
+              <span>C. Tea and coffee</span>
+            </div>
+          </div>
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="q4">
+          <p class="mcq-question">4. Does Maria like cooking every day?</p>
+          <div class="options">
+            <div class="option" data-index="0" onclick="MCQModule.selectOption('q4', 0)">
+              <span>A. Yes, she does.</span>
+            </div>
+            <div class="option" data-index="1" onclick="MCQModule.selectOption('q4', 1)">
+              <span>B. No, she doesn't.</span>
+            </div>
+            <div class="option" data-index="2" onclick="MCQModule.selectOption('q4', 2)">
+              <span>C. She never cooks.</span>
+            </div>
+          </div>
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="q5">
+          <p class="mcq-question">5. What is Maria's favourite season?</p>
+          <div class="options">
+            <div class="option" data-index="0" onclick="MCQModule.selectOption('q5', 0)">
+              <span>A. Winter</span>
+            </div>
+            <div class="option" data-index="1" onclick="MCQModule.selectOption('q5', 1)">
+              <span>B. Summer</span>
+            </div>
+            <div class="option" data-index="2" onclick="MCQModule.selectOption('q5', 2)">
+              <span>C. Spring</span>
+            </div>
+          </div>
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="control-buttons">
+          <button id="mcq-submit" class="submit-btn">Check Answers</button>
+          <button id="mcq-restart" class="restart-btn" style="display:none;">Try Again</button>
+        </div>
+        
+        <div class="score-display" id="mcq-score" style="display:none;">
+          Your score: <span>0</span>/5
+        </div>
+        
+        <div class="activity-nav-buttons">
+          <button class="nav-button prev-btn" data-prev="" disabled>← Previous</button>
+          <button class="nav-button next-btn" data-next="gap-fill">Next: Gap Fill →</button>
+        </div>
+      </section>
+
+      <!-- Activity 2: Gap Fill -->
+      <section id="gap-fill" class="activity-container">
+        <h2>Complete the Sentences</h2>
+        <p>Fill in the gaps with one of these options:</p>
+        
+        <div class="options-cards">
+          <div class="option-card">like</div>
+          <div class="option-card">don't like</div>
+          <div class="option-card">Do you like</div>
+          <div class="option-card">Yes, I do</div>
+          <div class="option-card">No, I don't</div>
+        </div>
+        
+        <div class="question" id="gf1">
+          <p class="gap-fill-sentence">1. I <input type="text" class="gap-input" data-answer="like" placeholder="?"> pizza. It's delicious!</p>
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="gf2">
+          <p class="gap-fill-sentence">2. I <input type="text" class="gap-input" data-answer="don't like" placeholder="?"> mornings. I always feel tired.</p>
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="gf3">
+          <p class="gap-fill-sentence">3. A: <input type="text" class="gap-input" data-answer="Do you like" placeholder="?"> chocolate?<br>
+          B: <input type="text" class="gap-input" data-answer="Yes, I do" placeholder="?">! I love it!</p>
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="gf4">
+          <p class="gap-fill-sentence">4. A: Do you like cold weather?<br>
+          B: <input type="text" class="gap-input" data-answer="No, I don't" placeholder="?">. I prefer hot weather.</p>
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="gf5">
+          <p class="gap-fill-sentence">5. I <input type="text" class="gap-input" data-answer="like" placeholder="?"> weekends. I <input type="text" class="gap-input" data-answer="don't like" placeholder="?"> Mondays!</p>
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="gf6">
+          <p class="gap-fill-sentence">6. A: <input type="text" class="gap-input" data-answer="Do you like" placeholder="?"> your job?<br>
+          B: <input type="text" class="gap-input" data-answer="Yes, I do" placeholder="?">. It's interesting.</p>
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="control-buttons">
+          <button id="gap-fill-submit" class="submit-btn">Check Answers</button>
+          <button id="gap-fill-restart" class="restart-btn" style="display:none;">Try Again</button>
+        </div>
+        
+        <div class="score-display" id="gap-fill-score" style="display:none;">
+          Your score: <span>0</span>/10
+        </div>
+        
+        <div class="activity-nav-buttons">
+          <button class="nav-button prev-btn" data-prev="mcq">← Previous: Reading</button>
+          <button class="nav-button next-btn" data-next="drag-drop">Next: Word Order →</button>
+        </div>
+      </section>
+
+      <!-- Activity 3: Drag and Drop Word Order -->
+      <section id="drag-drop" class="activity-container">
+        <h2>Put the Words in Order</h2>
+        <p>Drag the words to make correct sentences and questions.</p>
+        
+        <div class="question" id="dd1">
+          <p class="question-text">Make a sentence:</p>
+          <div class="drop-zone" data-answer="i like coffee."></div>
+          <div class="drag-items">
+            <div class="drag-item" draggable="true">coffee.</div>
+            <div class="drag-item" draggable="true">I</div>
+            <div class="drag-item" draggable="true">like</div>
+          </div>
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="dd2">
+          <p class="question-text">Make a negative sentence:</p>
+          <div class="drop-zone" data-answer="i don't like mornings."></div>
+          <div class="drag-items">
+            <div class="drag-item" draggable="true">mornings.</div>
+            <div class="drag-item" draggable="true">don't</div>
+            <div class="drag-item" draggable="true">I</div>
+            <div class="drag-item" draggable="true">like</div>
+          </div>
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="dd3">
+          <p class="question-text">Make a question:</p>
+          <div class="drop-zone" data-answer="do you like pizza?"></div>
+          <div class="drag-items">
+            <div class="drag-item" draggable="true">like</div>
+            <div class="drag-item" draggable="true">Do</div>
+            <div class="drag-item" draggable="true">pizza?</div>
+            <div class="drag-item" draggable="true">you</div>
+          </div>
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="dd4">
+          <p class="question-text">Make a short answer (positive):</p>
+          <div class="drop-zone" data-answer="yes, i do."></div>
+          <div class="drag-items">
+            <div class="drag-item" draggable="true">do.</div>
+            <div class="drag-item" draggable="true">Yes,</div>
+            <div class="drag-item" draggable="true">I</div>
+          </div>
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="dd5">
+          <p class="question-text">Make a short answer (negative):</p>
+          <div class="drop-zone" data-answer="no, i don't."></div>
+          <div class="drag-items">
+            <div class="drag-item" draggable="true">I</div>
+            <div class="drag-item" draggable="true">don't.</div>
+            <div class="drag-item" draggable="true">No,</div>
+          </div>
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="dd6">
+          <p class="question-text">Make a question:</p>
+          <div class="drop-zone" data-answer="do you like working from home?"></div>
+          <div class="drag-items">
+            <div class="drag-item" draggable="true">from</div>
+            <div class="drag-item" draggable="true">Do</div>
+            <div class="drag-item" draggable="true">working</div>
+            <div class="drag-item" draggable="true">home?</div>
+            <div class="drag-item" draggable="true">like</div>
+            <div class="drag-item" draggable="true">you</div>
+          </div>
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="dd7">
+          <p class="question-text">Make a negative sentence:</p>
+          <div class="drop-zone" data-answer="i don't like cold weather."></div>
+          <div class="drag-items">
+            <div class="drag-item" draggable="true">cold</div>
+            <div class="drag-item" draggable="true">I</div>
+            <div class="drag-item" draggable="true">like</div>
+            <div class="drag-item" draggable="true">don't</div>
+            <div class="drag-item" draggable="true">weather.</div>
+          </div>
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="dd8">
+          <p class="question-text">Make a question:</p>
+          <div class="drop-zone" data-answer="do you like your job?"></div>
+          <div class="drag-items">
+            <div class="drag-item" draggable="true">your</div>
+            <div class="drag-item" draggable="true">like</div>
+            <div class="drag-item" draggable="true">Do</div>
+            <div class="drag-item" draggable="true">job?</div>
+            <div class="drag-item" draggable="true">you</div>
+          </div>
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="question" id="dd9">
+          <p class="question-text">Make a sentence:</p>
+          <div class="drop-zone" data-answer="i like listening to music."></div>
+          <div class="drag-items">
+            <div class="drag-item" draggable="true">to</div>
+            <div class="drag-item" draggable="true">I</div>
+            <div class="drag-item" draggable="true">music.</div>
+            <div class="drag-item" draggable="true">like</div>
+            <div class="drag-item" draggable="true">listening</div>
+          </div>
+          <div class="feedback"></div>
+        </div>
+        
+        <div class="control-buttons">
+          <button id="drag-drop-submit" class="submit-btn">Check Answers</button>
+          <button id="drag-drop-restart" class="restart-btn" style="display:none;">Try Again</button>
+        </div>
+        
+        <div class="score-display" id="drag-drop-score" style="display:none;">
+          Your score: <span>0</span>/9
+        </div>
+        
+        <div class="activity-nav-buttons">
+          <button class="nav-button prev-btn" data-prev="gap-fill">← Previous: Gap Fill</button>
+          <button class="nav-button next-btn" data-next="speaking">Next: Speaking →</button>
+        </div>
+      </section>
+
+      <!-- Activity 4: Speaking Practice Section -->
+      <section id="speaking" class="activity-container">
+        <h2>Speaking Practice</h2>
+        <p>Use these words to ask and answer questions with your teacher!</p>
+        
+        <div class="speaking-example">
+          <p><strong>Example:</strong></p>
+          <p>A: Do you like <strong>coffee</strong>?</p>
+          <p>B: Yes, I do! / No, I don't.</p>
+        </div>
+        
+        <h3>🍽️ Food & Drinks</h3>
+        <div class="speaking-list">
+          <div class="speaking-item">☕ coffee</div>
+          <div class="speaking-item">🍵 tea</div>
+          <div class="speaking-item">🍕 pizza</div>
+          <div class="speaking-item">🍫 chocolate</div>
+          <div class="speaking-item">🍣 sushi</div>
+          <div class="speaking-item">🍝 pasta</div>
+          <div class="speaking-item">🍷 wine</div>
+          <div class="speaking-item">🥗 salad</div>
+        </div>
+        
+        <h3>🎯 Activities</h3>
+        <div class="speaking-list">
+          <div class="speaking-item">🍳 cooking</div>
+          <div class="speaking-item">📚 reading</div>
+          <div class="speaking-item">🎬 watching films</div>
+          <div class="speaking-item">🏠 working from home</div>
+          <div class="speaking-item">🏃 exercising</div>
+          <div class="speaking-item">💃 dancing</div>
+          <div class="speaking-item">🎵 listening to music</div>
+          <div class="speaking-item">🛒 shopping</div>
+        </div>
+        
+        <h3>🌡️ Other Things</h3>
+        <div class="speaking-list">
+          <div class="speaking-item">🌅 mornings</div>
+          <div class="speaking-item">🌙 evenings</div>
+          <div class="speaking-item">📅 weekends</div>
+          <div class="speaking-item">☀️ hot weather</div>
+          <div class="speaking-item">❄️ cold weather</div>
+          <div class="speaking-item">🚗 driving</div>
+          <div class="speaking-item">✈️ travelling</div>
+          <div class="speaking-item">📱 social media</div>
+        </div>
+        
+        <div class="activity-nav-buttons">
+          <button class="nav-button prev-btn" data-prev="drag-drop">← Previous: Word Order</button>
+          <button class="nav-button next-btn" data-next="" disabled>Next →</button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="../../home.html">Home</a></li>
+          <li><a href="../../home.html#where-to-start">Grammar</a></li>
+          <li><a href="../../extra-practice.html">Extra Practice</a></li>
+          <li><a href="../../my-progress.html">My Progress</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Grammar Topics</h3>
+        <ul>
+          <li><a href="beginner-grammar.html">Beginner Grammar</a></li>
+          <li><a href="../intermediate/intermediate-grammar.html">Intermediate Grammar</a></li>
+          <li><a href="../advanced/advanced-grammar.html">Advanced Grammar</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="../../about.html">About</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© 2025 English in Doses | All rights reserved | <a href="../../license.html">Licensing Information</a></p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="../../js/core.js"></script>
+  <script src="../../js/mcq.js"></script>
+  <script src="../../js/gap-fill.js"></script>
+  <script src="../../js/drag-drop.js"></script>
+  <script src="../../js/activity-nav.js"></script>
+  <script src="../../js/progress-tracking-module.js"></script>
+  <script src="../../js/progress-manager-ui.js"></script>
+  <script src="../../js/init-progress.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check if modules are available first
+      console.log('Available modules:', {
+        mcq: typeof MCQModule !== 'undefined',
+        gapFill: typeof GapFillModule !== 'undefined', 
+        dragDrop: typeof DragDropModule !== 'undefined',
+        activityNav: typeof ActivityNavModule !== 'undefined',
+        progress: typeof ProgressTrackingModule !== 'undefined'
+      });
+      
+      // Initialize MCQ Module
+      if (typeof MCQModule !== 'undefined') {
+        MCQModule.init({
+          containerId: 'mcq',
+          answers: {
+            'q1': 1,  // B. London
+            'q2': 0,  // A. Yes, she does.
+            'q3': 1,  // B. Coffee
+            'q4': 1,  // B. No, she doesn't.
+            'q5': 1   // B. Summer
+          },
+          correctExplanations: {
+            'q1': 'Correct! Maria lives in London now.',
+            'q2': 'Correct! The text says "I like my job."',
+            'q3': 'Correct! Maria likes coffee but doesn\'t like tea.',
+            'q4': 'Correct! She doesn\'t like cooking every day, only on Saturdays.',
+            'q5': 'Correct! Summer is her favourite season.'
+          },
+          incorrectExplanations: {
+            'q1': 'Read again: "I live in London now."',
+            'q2': 'Read again: "I like my job."',
+            'q3': 'Read again: "I like coffee, but I don\'t like tea."',
+            'q4': 'Read again: "I don\'t like cooking every day, but on Saturdays it\'s fun."',
+            'q5': 'Read again: "I like summer – it\'s my favourite season."'
+          },
+          showAllQuestionsAtOnce: true,
+          onComplete: function(score, total) {
+            if (typeof ProgressTrackingModule !== 'undefined') {
+              ProgressTrackingModule.updateItemProgress('activities', 'like-dont-like-mcq', {
+                completed: true,
+                score: score,
+                maxScore: total
+              });
+            }
+            if (typeof ActivityNavModule !== 'undefined') {
+              ActivityNavModule.notifyActivityCompleted('mcq', {
+                score: score,
+                maxScore: total
+              });
+            }
+          }
+        });
+      }
+      
+      // Initialize Gap Fill Module
+      if (typeof GapFillModule !== 'undefined') {
+        GapFillModule.init({
+          containerId: 'gap-fill',
+          onComplete: function(score, total) {
+            if (typeof ProgressTrackingModule !== 'undefined') {
+              ProgressTrackingModule.updateItemProgress('activities', 'like-dont-like-gap-fill', {
+                completed: true,
+                score: score,
+                maxScore: total
+              });
+            }
+            if (typeof ActivityNavModule !== 'undefined') {
+              ActivityNavModule.notifyActivityCompleted('gap-fill', {
+                score: score,
+                maxScore: total
+              });
+            }
+          }
+        });
+      }
+      
+      // Initialize Drag and Drop Module
+      if (typeof DragDropModule !== 'undefined') {
+        DragDropModule.init({
+          containerId: 'drag-drop',
+          onComplete: function(score, total) {
+            if (typeof ProgressTrackingModule !== 'undefined') {
+              ProgressTrackingModule.updateItemProgress('activities', 'like-dont-like-drag-drop', {
+                completed: true,
+                score: score,
+                maxScore: total
+              });
+            }
+            if (typeof ActivityNavModule !== 'undefined') {
+              ActivityNavModule.notifyActivityCompleted('drag-drop', {
+                score: score,
+                maxScore: total
+              });
+            }
+          }
+        });
+      }
+      
+      // Initialize Activity Navigation
+      if (typeof ActivityNavModule !== 'undefined') {
+        ActivityNavModule.init({
+          containerId: 'activity-nav',
+          activities: ['mcq', 'gap-fill', 'drag-drop', 'speaking'],
+          onActivityChange: function(activityId) {
+            console.log('Activity changed to:', activityId);
+          }
+        });
+      }
+      
+      // Initialize Progress Tracking
+      if (typeof ProgressTrackingModule !== 'undefined') {
+        ProgressTrackingModule.init({
+          categories: {
+            activities: {
+              grammarActivities: ['like-dont-like-mcq', 'like-dont-like-gap-fill', 'like-dont-like-drag-drop']
+            }
+          }
+        });
+      }
+      
+      // Speaking items click to toggle green
+      const speakingItems = document.querySelectorAll('.speaking-item');
+      speakingItems.forEach(item => {
+        item.addEventListener('click', function() {
+          this.classList.toggle('done');
+        });
+      });
+      
+      // Activity navigation buttons (Previous/Next)
+      const activityNavButtons = document.querySelectorAll('.activity-nav-buttons .nav-button');
+      activityNavButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const targetActivity = this.dataset.prev || this.dataset.next;
+          if (targetActivity) {
+            // Find and click the corresponding tab button
+            const tabButton = document.querySelector(`[data-activity="${targetActivity}"]`);
+            if (tabButton) {
+              tabButton.click();
+              // Scroll to top of activities
+              document.getElementById('activity-nav').scrollIntoView({ behavior: 'smooth' });
+            }
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
