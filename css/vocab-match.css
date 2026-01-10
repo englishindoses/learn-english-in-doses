@@ -1,0 +1,430 @@
+/* 
+ * Vocabulary Matching Activity - Drag and Drop with Images
+ * For Travel English Lessons
+ */
+
+/* ----------------------------------------
+   1. Container Styles
+   ---------------------------------------- */
+.vocab-match-container {
+  background-color: var(--card-bg, #f8f9fa);
+  padding: 25px;
+  border-radius: 10px;
+  margin: 20px 0;
+  box-shadow: 0 4px 8px var(--shadow-color, rgba(0, 0, 0, 0.1));
+}
+
+[data-theme="dark"] .vocab-match-container {
+  background-color: var(--card-bg, #1e1e1e);
+}
+
+.vocab-section {
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+  border-bottom: 2px dashed var(--border-color, #ddd);
+}
+
+.vocab-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.vocab-section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.3rem;
+  color: var(--beginner-primary, #2ecc71);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--beginner-primary, #2ecc71);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.vocab-section-title .icon {
+  font-size: 1.5rem;
+}
+
+/* ----------------------------------------
+   2. Images Grid
+   ---------------------------------------- */
+.vocab-images-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.vocab-image-item {
+  background-color: var(--bg-color, #ffffff);
+  border: 2px dashed var(--border-color, #ddd);
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  transition: all 0.3s ease;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+[data-theme="dark"] .vocab-image-item {
+  background-color: var(--card-bg, #2a2a2a);
+  border-color: var(--border-color, #444);
+}
+
+.vocab-image-item:hover {
+  border-color: var(--beginner-primary, #2ecc71);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px var(--shadow-color, rgba(0, 0, 0, 0.15));
+}
+
+.vocab-image-item.highlight {
+  border-color: var(--beginner-primary, #2ecc71);
+  border-style: solid;
+  background-color: var(--beginner-card-bg, #f0fff5);
+}
+
+[data-theme="dark"] .vocab-image-item.highlight {
+  background-color: rgba(46, 204, 113, 0.15);
+}
+
+.vocab-image-wrapper {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.vocab-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 5px;
+}
+
+/* Image placeholder with emoji */
+.vocab-image-placeholder {
+  font-size: 3.5rem;
+  line-height: 1;
+}
+
+/* ----------------------------------------
+   3. Drop Zone (Label Area)
+   ---------------------------------------- */
+.vocab-drop-zone {
+  min-height: 45px;
+  border: 2px dashed var(--border-color, #ddd);
+  border-radius: 8px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--example-bg, #f8f9fa);
+  transition: all 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+[data-theme="dark"] .vocab-drop-zone {
+  background-color: var(--example-bg, #2a2a2a);
+  border-color: var(--border-color, #555);
+}
+
+.vocab-drop-zone.empty::before {
+  content: 'Drop word here';
+  color: #999;
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.vocab-drop-zone.highlight {
+  border-color: var(--beginner-primary, #2ecc71);
+  border-style: solid;
+  background-color: var(--beginner-card-bg, #f0fff5);
+}
+
+[data-theme="dark"] .vocab-drop-zone.highlight {
+  background-color: rgba(46, 204, 113, 0.2);
+}
+
+.vocab-drop-zone.correct {
+  border-color: var(--success-color, #155724);
+  background-color: var(--success-bg, #d4edda);
+  border-style: solid;
+}
+
+[data-theme="dark"] .vocab-drop-zone.correct {
+  background-color: rgba(46, 204, 113, 0.3);
+  border-color: var(--success-color, #7cda9c);
+}
+
+.vocab-drop-zone.incorrect {
+  border-color: var(--error-color, #c0392b);
+  background-color: var(--error-bg, #f8d7da);
+  border-style: solid;
+  animation: shake 0.5s ease;
+  text-decoration: none;
+}
+
+.vocab-drop-zone.incorrect * {
+  text-decoration: none;
+}
+
+[data-theme="dark"] .vocab-drop-zone.incorrect {
+  background-color: rgba(192, 57, 43, 0.3);
+  border-color: var(--error-color, #f87c86);
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
+
+/* ----------------------------------------
+   4. Draggable Words Container
+   ---------------------------------------- */
+.vocab-words-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 20px;
+  background-color: var(--example-bg, #f8f9fa);
+  border-radius: 10px;
+  border: 1px solid var(--border-color, #ddd);
+  min-height: 60px;
+  justify-content: center;
+}
+
+[data-theme="dark"] .vocab-words-container {
+  background-color: var(--example-bg, #2a2a2a);
+  border-color: var(--border-color, #444);
+}
+
+/* ----------------------------------------
+   5. Draggable Word Items
+   ---------------------------------------- */
+.vocab-word-item {
+  padding: 10px 18px;
+  background-color: var(--beginner-primary, #2ecc71);
+  color: white;
+  border-radius: 25px;
+  cursor: grab;
+  user-select: none;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.vocab-word-item:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  background-color: var(--beginner-primary-dark, #27ae60);
+}
+
+.vocab-word-item:active,
+.vocab-word-item.dragging {
+  cursor: grabbing;
+  opacity: 0.7;
+  transform: scale(1.05);
+}
+
+/* Word in drop zone styling */
+.vocab-drop-zone .vocab-word-item {
+  background-color: var(--beginner-primary, #2ecc71);
+  cursor: grab;
+}
+
+.vocab-drop-zone.correct .vocab-word-item {
+  background-color: var(--success-color, #155724);
+  cursor: default;
+}
+
+[data-theme="dark"] .vocab-drop-zone.correct .vocab-word-item {
+  background-color: #2d7a4d;
+}
+
+.vocab-drop-zone.incorrect .vocab-word-item {
+  background-color: var(--error-color, #c0392b);
+  text-decoration: none; /* No strikethrough */
+}
+
+/* ----------------------------------------
+   6. Control Buttons
+   ---------------------------------------- */
+.vocab-controls {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.vocab-check-btn,
+.vocab-reset-btn {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 25px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.vocab-check-btn {
+  background-color: var(--beginner-primary, #2ecc71);
+  color: white;
+}
+
+.vocab-check-btn:hover {
+  background-color: var(--beginner-primary-dark, #27ae60);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.vocab-reset-btn {
+  background-color: var(--secondary-accent, #f07d3e);
+  color: white;
+  display: none;
+}
+
+.vocab-reset-btn:hover {
+  background-color: #e67e22;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ----------------------------------------
+   7. Score Display
+   ---------------------------------------- */
+.vocab-score {
+  text-align: center;
+  margin-top: 20px;
+  padding: 15px 25px;
+  background-color: var(--beginner-card-bg, #f0fff5);
+  border-radius: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  color: var(--beginner-primary-dark, #27ae60);
+  display: none;
+  border: 2px solid var(--beginner-primary, #2ecc71);
+}
+
+[data-theme="dark"] .vocab-score {
+  background-color: rgba(46, 204, 113, 0.15);
+  color: var(--beginner-primary, #3dd685);
+}
+
+.vocab-score.show {
+  display: block;
+}
+
+.vocab-score span {
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+
+/* ----------------------------------------
+   8. Feedback Messages
+   ---------------------------------------- */
+.vocab-feedback {
+  text-align: center;
+  margin-top: 15px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 1rem;
+  display: none;
+}
+
+.vocab-feedback.show {
+  display: block;
+}
+
+.vocab-feedback.success {
+  background-color: var(--success-bg, #d4edda);
+  color: var(--success-color, #155724);
+  border: 1px solid var(--success-color, #155724);
+}
+
+.vocab-feedback.error {
+  background-color: var(--error-bg, #f8d7da);
+  color: var(--error-color, #721c24);
+  border: 1px solid var(--error-color, #721c24);
+}
+
+[data-theme="dark"] .vocab-feedback.success {
+  background-color: rgba(46, 204, 113, 0.2);
+  color: #7cda9c;
+  border-color: #3dd685;
+}
+
+[data-theme="dark"] .vocab-feedback.error {
+  background-color: rgba(192, 57, 43, 0.2);
+  color: #f87c86;
+  border-color: #f87c86;
+}
+
+/* ----------------------------------------
+   9. Responsive Design
+   ---------------------------------------- */
+@media (max-width: 768px) {
+  .vocab-images-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+  }
+  
+  .vocab-image-item {
+    min-height: 150px;
+    padding: 12px;
+  }
+  
+  .vocab-image-placeholder {
+    font-size: 2.8rem;
+  }
+  
+  .vocab-image-wrapper {
+    height: 80px;
+  }
+  
+  .vocab-word-item {
+    padding: 8px 14px;
+    font-size: 0.9rem;
+  }
+  
+  .vocab-drop-zone {
+    min-height: 40px;
+    padding: 6px 10px;
+  }
+  
+  .vocab-section-title {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .vocab-images-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  
+  .vocab-match-container {
+    padding: 15px;
+  }
+  
+  .vocab-controls {
+    flex-direction: column;
+  }
+  
+  .vocab-check-btn,
+  .vocab-reset-btn {
+    width: 100%;
+  }
+}
