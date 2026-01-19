@@ -109,8 +109,11 @@
 
 /* Image placeholder with emoji */
 .vocab-image-placeholder {
-  font-size: 3.5rem;
-  line-height: 1;
+  font-size: 0.85rem;
+  color: #999;
+  text-align: center;
+  padding: 10px;
+  line-height: 1.3;
 }
 
 /* ----------------------------------------
