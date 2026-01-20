@@ -80,13 +80,13 @@
       </section>
 
       <!-- ======================================== -->
-      <!-- SECTION 1: VOCABULARY -->
+      <!-- SECTION 1: VOCABULARY PART 1 - CHECK-IN -->
       <!-- ======================================== -->
       <section class="content-section">
-        <h2>📚 Airport Vocabulary</h2>
-        <p>Learn the important words you will see and hear at the airport. Drag each word to the correct picture.</p>
+        <h2>📚 Airport Vocabulary - Part 1: Check-in</h2>
+        <p>Learn the important words for checking in at the airport. Drag each word to the correct picture.</p>
         
-        <div id="vocab-match" class="vocab-match-container">
+        <div id="vocab-match-1" class="vocab-match-container">
           
           <div class="vocab-section">
             <div class="vocab-images-grid">
@@ -147,8 +147,44 @@
                 </div>
                 <div class="vocab-drop-zone empty" data-answer="scan"></div>
               </div>
-              
-              <!-- Row 3 -->
+            </div>
+            
+            <div class="vocab-words-container">
+              <div class="vocab-word-item">kiosk</div>
+              <div class="vocab-word-item">aisle seat</div>
+              <div class="vocab-word-item">passport</div>
+              <div class="vocab-word-item">suitcase</div>
+              <div class="vocab-word-item">boarding pass</div>
+              <div class="vocab-word-item">scan</div>
+              <div class="vocab-word-item">window seat</div>
+              <div class="vocab-word-item">check-in counter</div>
+            </div>
+          </div>
+          
+          <!-- Controls -->
+          <div class="vocab-controls">
+            <button class="vocab-check-btn">Check Answers</button>
+            <button class="vocab-reset-btn">Try Again</button>
+          </div>
+          
+          <div class="vocab-score">Your score: <span>0</span>/8</div>
+          <div class="vocab-feedback"></div>
+          
+        </div>
+      </section>
+
+      <!-- ======================================== -->
+      <!-- SECTION 1B: VOCABULARY PART 2 - SECURITY & BOARDING -->
+      <!-- ======================================== -->
+      <section class="content-section">
+        <h2>📚 Airport Vocabulary - Part 2: Security & Boarding</h2>
+        <p>Learn more words for going through security and finding your gate. Drag each word to the correct picture.</p>
+        
+        <div id="vocab-match-2" class="vocab-match-container">
+          
+          <div class="vocab-section">
+            <div class="vocab-images-grid">
+              <!-- Row 1 -->
               <div class="vocab-image-item">
                 <div class="vocab-image-wrapper">
                   <img src="../../images/travel-beginner/lesson1/print.png" alt="print boarding pass" class="vocab-image">
@@ -177,7 +213,7 @@
                 <div class="vocab-drop-zone empty" data-answer="liquids"></div>
               </div>
               
-              <!-- Row 4 -->
+              <!-- Row 2 -->
               <div class="vocab-image-item">
                 <div class="vocab-image-wrapper">
                   <img src="../../images/travel-beginner/lesson1/shoes.png" alt="shoes" class="vocab-image">
@@ -208,22 +244,14 @@
             </div>
             
             <div class="vocab-words-container">
-              <div class="vocab-word-item">passport</div>
-              <div class="vocab-word-item">boarding pass</div>
-              <div class="vocab-word-item">check-in counter</div>
-              <div class="vocab-word-item">kiosk</div>
-              <div class="vocab-word-item">suitcase</div>
-              <div class="vocab-word-item">window seat</div>
-              <div class="vocab-word-item">aisle seat</div>
-              <div class="vocab-word-item">scan</div>
-              <div class="vocab-word-item">print</div>
-              <div class="vocab-word-item">belt</div>
-              <div class="vocab-word-item">laptop</div>
-              <div class="vocab-word-item">liquids</div>
-              <div class="vocab-word-item">shoes</div>
               <div class="vocab-word-item">gate</div>
-              <div class="vocab-word-item">terminal</div>
+              <div class="vocab-word-item">liquids</div>
               <div class="vocab-word-item">departure</div>
+              <div class="vocab-word-item">belt</div>
+              <div class="vocab-word-item">terminal</div>
+              <div class="vocab-word-item">shoes</div>
+              <div class="vocab-word-item">print</div>
+              <div class="vocab-word-item">laptop</div>
             </div>
           </div>
           
@@ -233,7 +261,7 @@
             <button class="vocab-reset-btn">Try Again</button>
           </div>
           
-          <div class="vocab-score">Your score: <span>0</span>/16</div>
+          <div class="vocab-score">Your score: <span>0</span>/8</div>
           <div class="vocab-feedback"></div>
           
         </div>
@@ -721,13 +749,30 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       
-      // Initialize Vocabulary Matching
+      // Initialize Vocabulary Matching - Part 1 (Check-in)
       VocabMatchModule.init({
-        containerId: 'vocab-match',
+        containerId: 'vocab-match-1',
         onComplete: function(score, total) {
-          console.log('Vocabulary matching completed:', score, '/', total);
+          console.log('Vocabulary matching Part 1 completed:', score, '/', total);
         }
       });
+      
+      // Initialize Vocabulary Matching - Part 2 (Security & Boarding)
+      // Create a second instance for the second vocabulary section
+      if (typeof VocabMatchModule !== 'undefined' && VocabMatchModule.initMultiple) {
+        VocabMatchModule.initMultiple({
+          containerId: 'vocab-match-2',
+          onComplete: function(score, total) {
+            console.log('Vocabulary matching Part 2 completed:', score, '/', total);
+          }
+        });
+      } else {
+        // Fallback: manually initialize second container
+        const container2 = document.getElementById('vocab-match-2');
+        if (container2) {
+          initVocabMatch(container2);
+        }
+      }
       
       // Initialize Flashcards
       FlashcardModule.init({
@@ -815,6 +860,134 @@
       document.getElementById('drag-drop-prev').addEventListener('click', function() {
         document.querySelector('[data-activity="mcq"]').click();
       });
+      
+      // Manual initialization for second vocab match if module doesn't support multiple instances
+      function initVocabMatch(container) {
+        const dropZones = container.querySelectorAll('.vocab-drop-zone');
+        const wordItems = container.querySelectorAll('.vocab-word-item');
+        const checkBtn = container.querySelector('.vocab-check-btn');
+        const resetBtn = container.querySelector('.vocab-reset-btn');
+        const scoreDisplay = container.querySelector('.vocab-score span');
+        const feedback = container.querySelector('.vocab-feedback');
+        
+        // Make words draggable
+        wordItems.forEach(word => {
+          word.setAttribute('draggable', 'true');
+          
+          word.addEventListener('dragstart', function(e) {
+            e.dataTransfer.setData('text/plain', this.textContent);
+            this.classList.add('dragging');
+          });
+          
+          word.addEventListener('dragend', function() {
+            this.classList.remove('dragging');
+          });
+        });
+        
+        // Set up drop zones
+        dropZones.forEach(zone => {
+          zone.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            this.classList.add('drag-over');
+          });
+          
+          zone.addEventListener('dragleave', function() {
+            this.classList.remove('drag-over');
+          });
+          
+          zone.addEventListener('drop', function(e) {
+            e.preventDefault();
+            this.classList.remove('drag-over');
+            
+            const word = e.dataTransfer.getData('text/plain');
+            
+            // If zone already has content, return it to word bank
+            if (this.textContent && this.textContent.trim()) {
+              const existingWord = this.textContent.trim();
+              wordItems.forEach(item => {
+                if (item.textContent === existingWord) {
+                  item.style.visibility = 'visible';
+                  item.style.opacity = '1';
+                }
+              });
+            }
+            
+            this.textContent = word;
+            this.classList.remove('empty');
+            
+            // Hide the dragged word from word bank
+            wordItems.forEach(item => {
+              if (item.textContent === word) {
+                item.style.visibility = 'hidden';
+                item.style.opacity = '0';
+              }
+            });
+          });
+        });
+        
+        // Check answers
+        if (checkBtn) {
+          checkBtn.addEventListener('click', function() {
+            let score = 0;
+            
+            dropZones.forEach(zone => {
+              const answer = zone.getAttribute('data-answer');
+              const userAnswer = zone.textContent.trim().toLowerCase();
+              
+              zone.classList.remove('correct', 'incorrect');
+              
+              if (userAnswer === answer.toLowerCase()) {
+                zone.classList.add('correct');
+                score++;
+              } else if (userAnswer) {
+                zone.classList.add('incorrect');
+              }
+            });
+            
+            if (scoreDisplay) {
+              scoreDisplay.textContent = score;
+            }
+            
+            if (feedback) {
+              if (score === dropZones.length) {
+                feedback.textContent = '🎉 Perfect! Well done!';
+                feedback.className = 'vocab-feedback success';
+              } else if (score >= dropZones.length / 2) {
+                feedback.textContent = '👍 Good job! Keep practising!';
+                feedback.className = 'vocab-feedback partial';
+              } else {
+                feedback.textContent = 'Keep trying! You can do it!';
+                feedback.className = 'vocab-feedback';
+              }
+            }
+          });
+        }
+        
+        // Reset
+        if (resetBtn) {
+          resetBtn.addEventListener('click', function() {
+            dropZones.forEach(zone => {
+              zone.textContent = '';
+              zone.classList.add('empty');
+              zone.classList.remove('correct', 'incorrect');
+            });
+            
+            wordItems.forEach(item => {
+              item.style.visibility = 'visible';
+              item.style.opacity = '1';
+            });
+            
+            if (scoreDisplay) {
+              scoreDisplay.textContent = '0';
+            }
+            
+            if (feedback) {
+              feedback.textContent = '';
+              feedback.className = 'vocab-feedback';
+            }
+          });
+        }
+      }
       
     });
   </script>
