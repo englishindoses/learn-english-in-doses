@@ -1,6 +1,7 @@
 /* 
  * Flashcard Activity - Turnable Cards
  * For Travel English Lessons
+ * Updated: New colour scheme with improved contrast
  */
 
 /* ----------------------------------------
@@ -60,7 +61,7 @@
   height: 100%;
   cursor: pointer;
   transform-style: preserve-3d;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
 }
 
 .flashcard.flipped {
@@ -88,26 +89,28 @@
   text-align: center;
 }
 
-/* Front of card - Key phrase */
+/* Front of card - Key phrase (Hunter Green) */
 .flashcard-front {
-  background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
-  color: white;
+  background-color: #166534;
+  color: #ffffff;
 }
 
-/* Back of card - Full example */
+/* Back of card - Full example (Mint Cream with dark text) */
 .flashcard-back {
-  background: linear-gradient(135deg, #2ecc71 0%, #58d68d 100%);
-  color: white;
+  background-color: #f7fee7;
+  color: #14532d;
   transform: rotateY(180deg);
 }
 
 /* Dark theme adjustments */
 [data-theme="dark"] .flashcard-front {
-  background: linear-gradient(135deg, #1e8449 0%, #196f3d 100%);
+  background-color: #14532d;
+  color: #ffffff;
 }
 
 [data-theme="dark"] .flashcard-back {
-  background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+  background-color: #ecfccb;
+  color: #14532d;
 }
 
 /* ----------------------------------------
@@ -163,27 +166,23 @@
 }
 
 /* ----------------------------------------
-   7. Card Hover Effects
+   7. Card Hover Effects (No blur/scale)
    ---------------------------------------- */
 .flashcard-wrapper:hover .flashcard {
-  transform: scale(1.02);
+  box-shadow: 0 12px 30px var(--shadow-color, rgba(0, 0, 0, 0.25));
 }
 
 .flashcard-wrapper:hover .flashcard.flipped {
-  transform: rotateY(180deg) scale(1.02);
-}
-
-/* Subtle lift effect */
-.flashcard-front:hover,
-.flashcard-back:hover {
+  transform: rotateY(180deg);
   box-shadow: 0 12px 30px var(--shadow-color, rgba(0, 0, 0, 0.25));
 }
 
 /* ----------------------------------------
-   8. Grammar Highlight in Examples
+   8. Grammar Highlight in Examples (Warm Gold)
    ---------------------------------------- */
 .flashcard-back .grammar-highlight {
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: #fde68a;
+  color: #14532d;
   padding: 2px 6px;
   border-radius: 4px;
   font-weight: 600;
@@ -195,7 +194,8 @@
 .flashcard-usage {
   font-size: 0.9rem;
   opacity: 0.9;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(22, 101, 52, 0.1);
+  color: #14532d;
   padding: 8px 15px;
   border-radius: 20px;
   margin-top: 10px;
@@ -211,7 +211,7 @@
 
 .flip-all-btn {
   padding: 12px 30px;
-  background-color: var(--beginner-primary, #2ecc71);
+  background-color: #166534;
   color: white;
   border: none;
   border-radius: 25px;
@@ -226,8 +226,7 @@
 }
 
 .flip-all-btn:hover {
-  background-color: var(--beginner-primary-dark, #27ae60);
-  transform: translateY(-2px);
+  background-color: #14532d;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -253,6 +252,12 @@
   font-size: 0.9rem;
 }
 
+/* Back card number styling */
+.flashcard-back .flashcard-number {
+  background-color: rgba(22, 101, 52, 0.15);
+  color: #14532d;
+}
+
 /* ----------------------------------------
    12. Progress Indicator (Optional)
    ---------------------------------------- */
@@ -272,7 +277,7 @@
 }
 
 .flashcard-dot.active {
-  background-color: var(--beginner-primary, #2ecc71);
+  background-color: #166534;
   transform: scale(1.2);
 }
 

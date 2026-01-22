@@ -1557,3 +1557,31 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ----------------------------------------
+   Section Divider - Beginners
+   ---------------------------------------- */
+.section-divider-beginner {
+  margin: 50px 0 40px 0;
+  border: none;
+  border-top: 3px solid var(--beginner-primary, #166534);
+}
+
+.section-divider-intro {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.section-divider-intro h2 {
+  font-size: 1.8rem;
+  color: var(--beginner-primary, #166534);
+}
+
+.section-divider-intro p {
+  font-size: 1.1rem;
+  color: var(--text-color-muted, #555);
+}
+
+[data-theme="dark"] .section-divider-intro p {
+  color: var(--text-color-muted, white);
+}
