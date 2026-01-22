@@ -80,84 +80,188 @@
       </section>
 
       <!-- ======================================== -->
-      <!-- SECTION 1: VOCABULARY PART 1 - CHECK-IN -->
+      <!-- SECTION 1: VOCABULARY WITH CAROUSEL -->
       <!-- ======================================== -->
       <section class="content-section">
-        <h2>📚 Airport Vocabulary - Part 1: Check-in</h2>
-        <p>Learn the important words for checking in at the airport. Drag each word to the correct picture.</p>
+        <h2>📚 Airport Vocabulary</h2>
+        <p>Learn the important words you will see and hear at the airport. Drag each word to the correct picture.</p>
         
-        <div id="vocab-match-1" class="vocab-match-container">
+        <div id="vocab-match" class="vocab-match-container">
           
           <div class="vocab-section">
-            <div class="vocab-images-grid">
-              <!-- Row 1 -->
-              <div class="vocab-image-item">
-                <div class="vocab-image-wrapper">
-                  <img src="../../images/travel-beginner/lesson1/passport.png" alt="passport" class="vocab-image">
-                </div>
-                <div class="vocab-drop-zone empty" data-answer="passport"></div>
-              </div>
-              
-              <div class="vocab-image-item">
-                <div class="vocab-image-wrapper">
-                  <img src="../../images/travel-beginner/lesson1/boarding-pass.png" alt="boarding pass" class="vocab-image">
-                </div>
-                <div class="vocab-drop-zone empty" data-answer="boarding pass"></div>
-              </div>
-              
-              <div class="vocab-image-item">
-                <div class="vocab-image-wrapper">
-                  <img src="../../images/travel-beginner/lesson1/check-in-counter.png" alt="check-in counter" class="vocab-image">
-                </div>
-                <div class="vocab-drop-zone empty" data-answer="check-in counter"></div>
-              </div>
-              
-              <div class="vocab-image-item">
-                <div class="vocab-image-wrapper">
-                  <img src="../../images/travel-beginner/lesson1/kiosk.png" alt="self-service kiosk" class="vocab-image">
-                </div>
-                <div class="vocab-drop-zone empty" data-answer="kiosk"></div>
-              </div>
-              
-              <!-- Row 2 -->
-              <div class="vocab-image-item">
-                <div class="vocab-image-wrapper">
-                  <img src="../../images/travel-beginner/lesson1/suitcase.png" alt="suitcase" class="vocab-image">
-                </div>
-                <div class="vocab-drop-zone empty" data-answer="suitcase"></div>
-              </div>
-              
-              <div class="vocab-image-item">
-                <div class="vocab-image-wrapper">
-                  <img src="../../images/travel-beginner/lesson1/window-seat.png" alt="window seat" class="vocab-image">
-                </div>
-                <div class="vocab-drop-zone empty" data-answer="window seat"></div>
-              </div>
-              
-              <div class="vocab-image-item">
-                <div class="vocab-image-wrapper">
-                  <img src="../../images/travel-beginner/lesson1/aisle-seat.png" alt="aisle seat" class="vocab-image">
-                </div>
-                <div class="vocab-drop-zone empty" data-answer="aisle seat"></div>
-              </div>
-              
-              <div class="vocab-image-item">
-                <div class="vocab-image-wrapper">
-                  <img src="../../images/travel-beginner/lesson1/scan.png" alt="scan boarding pass" class="vocab-image">
-                </div>
-                <div class="vocab-drop-zone empty" data-answer="scan"></div>
-              </div>
+            <!-- Carousel Navigation -->
+            <div class="vocab-carousel-nav">
+              <button class="vocab-carousel-btn vocab-carousel-prev" aria-label="Previous page">‹</button>
+              <span class="vocab-carousel-indicator">1 / 4</span>
+              <button class="vocab-carousel-btn vocab-carousel-next" aria-label="Next page">›</button>
             </div>
             
-            <div class="vocab-words-container">
-              <div class="vocab-word-item">kiosk</div>
-              <div class="vocab-word-item">aisle seat</div>
-              <div class="vocab-word-item">passport</div>
-              <div class="vocab-word-item">suitcase</div>
-              <div class="vocab-word-item">boarding pass</div>
-              <div class="vocab-word-item">scan</div>
-              <div class="vocab-word-item">window seat</div>
-              <div class="vocab-word-item">check-in counter</div>
+            <!-- Carousel Container -->
+            <div class="vocab-carousel">
+              
+              <!-- Page 1: Check-in Items -->
+              <div class="vocab-carousel-page active">
+                <div class="vocab-images-grid">
+                  <div class="vocab-image-item">
+                    <div class="vocab-image-wrapper">
+                      <img src="../../images/travel-beginner/lesson1/passport.png" alt="passport" class="vocab-image">
+                    </div>
+                    <div class="vocab-drop-zone empty" data-answer="passport"></div>
+                  </div>
+                  
+                  <div class="vocab-image-item">
+                    <div class="vocab-image-wrapper">
+                      <img src="../../images/travel-beginner/lesson1/boarding-pass.png" alt="boarding pass" class="vocab-image">
+                    </div>
+                    <div class="vocab-drop-zone empty" data-answer="boarding pass"></div>
+                  </div>
+                  
+                  <div class="vocab-image-item">
+                    <div class="vocab-image-wrapper">
+                      <img src="../../images/travel-beginner/lesson1/check-in-counter.png" alt="check-in counter" class="vocab-image">
+                    </div>
+                    <div class="vocab-drop-zone empty" data-answer="check-in counter"></div>
+                  </div>
+                  
+                  <div class="vocab-image-item">
+                    <div class="vocab-image-wrapper">
+                      <img src="../../images/travel-beginner/lesson1/kiosk.png" alt="self-service kiosk" class="vocab-image">
+                    </div>
+                    <div class="vocab-drop-zone empty" data-answer="kiosk"></div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Page 2: Luggage & Seating -->
+              <div class="vocab-carousel-page">
+                <div class="vocab-images-grid">
+                  <div class="vocab-image-item">
+                    <div class="vocab-image-wrapper">
+                      <img src="../../images/travel-beginner/lesson1/suitcase.png" alt="suitcase" class="vocab-image">
+                    </div>
+                    <div class="vocab-drop-zone empty" data-answer="suitcase"></div>
+                  </div>
+                  
+                  <div class="vocab-image-item">
+                    <div class="vocab-image-wrapper">
+                      <img src="../../images/travel-beginner/lesson1/window-seat.png" alt="window seat" class="vocab-image">
+                    </div>
+                    <div class="vocab-drop-zone empty" data-answer="window seat"></div>
+                  </div>
+                  
+                  <div class="vocab-image-item">
+                    <div class="vocab-image-wrapper">
+                      <img src="../../images/travel-beginner/lesson1/aisle-seat.png" alt="aisle seat" class="vocab-image">
+                    </div>
+                    <div class="vocab-drop-zone empty" data-answer="aisle seat"></div>
+                  </div>
+                  
+                  <div class="vocab-image-item">
+                    <div class="vocab-image-wrapper">
+                      <img src="../../images/travel-beginner/lesson1/scan.png" alt="scan boarding pass" class="vocab-image">
+                    </div>
+                    <div class="vocab-drop-zone empty" data-answer="scan"></div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Page 3: Security Items -->
+              <div class="vocab-carousel-page">
+                <div class="vocab-images-grid">
+                  <div class="vocab-image-item">
+                    <div class="vocab-image-wrapper">
+                      <img src="../../images/travel-beginner/lesson1/belt.png" alt="belt" class="vocab-image">
+                    </div>
+                    <div class="vocab-drop-zone empty" data-answer="belt"></div>
+                  </div>
+                  
+                  <div class="vocab-image-item">
+                    <div class="vocab-image-wrapper">
+                      <img src="../../images/travel-beginner/lesson1/laptop.png" alt="laptop" class="vocab-image">
+                    </div>
+                    <div class="vocab-drop-zone empty" data-answer="laptop"></div>
+                  </div>
+                  
+                  <div class="vocab-image-item">
+                    <div class="vocab-image-wrapper">
+                      <img src="../../images/travel-beginner/lesson1/liquids.png" alt="liquids in plastic bag" class="vocab-image">
+                    </div>
+                    <div class="vocab-drop-zone empty" data-answer="liquids"></div>
+                  </div>
+                  
+                  <div class="vocab-image-item">
+                    <div class="vocab-image-wrapper">
+                      <img src="../../images/travel-beginner/lesson1/shoes.png" alt="shoes" class="vocab-image">
+                    </div>
+                    <div class="vocab-drop-zone empty" data-answer="shoes"></div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Page 4: Boarding & Navigation -->
+              <div class="vocab-carousel-page">
+                <div class="vocab-images-grid">
+                  <div class="vocab-image-item">
+                    <div class="vocab-image-wrapper">
+                      <img src="../../images/travel-beginner/lesson1/gate.png" alt="boarding gate" class="vocab-image">
+                    </div>
+                    <div class="vocab-drop-zone empty" data-answer="gate"></div>
+                  </div>
+                  
+                  <div class="vocab-image-item">
+                    <div class="vocab-image-wrapper">
+                      <img src="../../images/travel-beginner/lesson1/terminal.png" alt="airport terminal" class="vocab-image">
+                    </div>
+                    <div class="vocab-drop-zone empty" data-answer="terminal"></div>
+                  </div>
+                  
+                  <div class="vocab-image-item">
+                    <div class="vocab-image-wrapper">
+                      <img src="../../images/travel-beginner/lesson1/departure.png" alt="departure board" class="vocab-image">
+                    </div>
+                    <div class="vocab-drop-zone empty" data-answer="departure"></div>
+                  </div>
+                  
+                  <div class="vocab-image-item">
+                    <div class="vocab-image-wrapper">
+                      <img src="../../images/travel-beginner/lesson1/print.png" alt="print boarding pass" class="vocab-image">
+                    </div>
+                    <div class="vocab-drop-zone empty" data-answer="print"></div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+            
+            <!-- Page Dots -->
+            <div class="vocab-carousel-dots">
+              <span class="vocab-carousel-dot active" data-page="0"></span>
+              <span class="vocab-carousel-dot" data-page="1"></span>
+              <span class="vocab-carousel-dot" data-page="2"></span>
+              <span class="vocab-carousel-dot" data-page="3"></span>
+            </div>
+            
+            <!-- Sticky Word Bank -->
+            <div class="vocab-words-wrapper">
+              <p class="vocab-words-label">👇 Drag words from here</p>
+              <div class="vocab-words-container">
+                <div class="vocab-word-item">terminal</div>
+                <div class="vocab-word-item">boarding pass</div>
+                <div class="vocab-word-item">liquids</div>
+                <div class="vocab-word-item">scan</div>
+                <div class="vocab-word-item">gate</div>
+                <div class="vocab-word-item">passport</div>
+                <div class="vocab-word-item">belt</div>
+                <div class="vocab-word-item">window seat</div>
+                <div class="vocab-word-item">departure</div>
+                <div class="vocab-word-item">kiosk</div>
+                <div class="vocab-word-item">laptop</div>
+                <div class="vocab-word-item">suitcase</div>
+                <div class="vocab-word-item">check-in counter</div>
+                <div class="vocab-word-item">shoes</div>
+                <div class="vocab-word-item">aisle seat</div>
+                <div class="vocab-word-item">print</div>
+              </div>
             </div>
           </div>
           
@@ -167,101 +271,7 @@
             <button class="vocab-reset-btn">Try Again</button>
           </div>
           
-          <div class="vocab-score">Your score: <span>0</span>/8</div>
-          <div class="vocab-feedback"></div>
-          
-        </div>
-      </section>
-
-      <!-- ======================================== -->
-      <!-- SECTION 1B: VOCABULARY PART 2 - SECURITY & BOARDING -->
-      <!-- ======================================== -->
-      <section class="content-section">
-        <h2>📚 Airport Vocabulary - Part 2: Security & Boarding</h2>
-        <p>Learn more words for going through security and finding your gate. Drag each word to the correct picture.</p>
-        
-        <div id="vocab-match-2" class="vocab-match-container">
-          
-          <div class="vocab-section">
-            <div class="vocab-images-grid">
-              <!-- Row 1 -->
-              <div class="vocab-image-item">
-                <div class="vocab-image-wrapper">
-                  <img src="../../images/travel-beginner/lesson1/print.png" alt="print boarding pass" class="vocab-image">
-                </div>
-                <div class="vocab-drop-zone empty" data-answer="print"></div>
-              </div>
-              
-              <div class="vocab-image-item">
-                <div class="vocab-image-wrapper">
-                  <img src="../../images/travel-beginner/lesson1/belt.png" alt="belt" class="vocab-image">
-                </div>
-                <div class="vocab-drop-zone empty" data-answer="belt"></div>
-              </div>
-              
-              <div class="vocab-image-item">
-                <div class="vocab-image-wrapper">
-                  <img src="../../images/travel-beginner/lesson1/laptop.png" alt="laptop" class="vocab-image">
-                </div>
-                <div class="vocab-drop-zone empty" data-answer="laptop"></div>
-              </div>
-              
-              <div class="vocab-image-item">
-                <div class="vocab-image-wrapper">
-                  <img src="../../images/travel-beginner/lesson1/liquids.png" alt="liquids in plastic bag" class="vocab-image">
-                </div>
-                <div class="vocab-drop-zone empty" data-answer="liquids"></div>
-              </div>
-              
-              <!-- Row 2 -->
-              <div class="vocab-image-item">
-                <div class="vocab-image-wrapper">
-                  <img src="../../images/travel-beginner/lesson1/shoes.png" alt="shoes" class="vocab-image">
-                </div>
-                <div class="vocab-drop-zone empty" data-answer="shoes"></div>
-              </div>
-              
-              <div class="vocab-image-item">
-                <div class="vocab-image-wrapper">
-                  <img src="../../images/travel-beginner/lesson1/gate.png" alt="boarding gate" class="vocab-image">
-                </div>
-                <div class="vocab-drop-zone empty" data-answer="gate"></div>
-              </div>
-              
-              <div class="vocab-image-item">
-                <div class="vocab-image-wrapper">
-                  <img src="../../images/travel-beginner/lesson1/terminal.png" alt="airport terminal" class="vocab-image">
-                </div>
-                <div class="vocab-drop-zone empty" data-answer="terminal"></div>
-              </div>
-              
-              <div class="vocab-image-item">
-                <div class="vocab-image-wrapper">
-                  <img src="../../images/travel-beginner/lesson1/departure.png" alt="departure board" class="vocab-image">
-                </div>
-                <div class="vocab-drop-zone empty" data-answer="departure"></div>
-              </div>
-            </div>
-            
-            <div class="vocab-words-container">
-              <div class="vocab-word-item">gate</div>
-              <div class="vocab-word-item">liquids</div>
-              <div class="vocab-word-item">departure</div>
-              <div class="vocab-word-item">belt</div>
-              <div class="vocab-word-item">terminal</div>
-              <div class="vocab-word-item">shoes</div>
-              <div class="vocab-word-item">print</div>
-              <div class="vocab-word-item">laptop</div>
-            </div>
-          </div>
-          
-          <!-- Controls -->
-          <div class="vocab-controls">
-            <button class="vocab-check-btn">Check Answers</button>
-            <button class="vocab-reset-btn">Try Again</button>
-          </div>
-          
-          <div class="vocab-score">Your score: <span>0</span>/8</div>
+          <div class="vocab-score">Your score: <span>0</span>/16</div>
           <div class="vocab-feedback"></div>
           
         </div>
@@ -398,7 +408,7 @@
           </div>
           
           <div class="question" id="gf4">
-            <p class="gap-fill-sentence"><strong>Attendant:</strong> Would you prefer a <input type="text" class="gap-input" data-answer="window seat" placeholder="..." style="width: 110px;"> or an <input type="text" class="gap-input" data-answer="aisle seat" placeholder="..." style="width: 100px;">?</p>
+            <p class="gap-fill-sentence"><strong>Attendant:</strong> Would you prefer a <input type="text" class="gap-input" data-answer="window seat" placeholder="🪟 by the window" style="width: 130px;"> or an <input type="text" class="gap-input" data-answer="aisle seat" placeholder="🚶 by the aisle" style="width: 130px;">?</p>
             <p class="gap-fill-sentence"><strong>Traveller:</strong> <input type="text" class="gap-input" data-answer="Can I have,Could I have,I'd like" placeholder="..." style="width: 100px;"> a window seat, please.</p>
           </div>
           
@@ -429,15 +439,12 @@
             <div class="options" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
               <div class="option" data-index="0" onclick="MCQModule.selectOption('q1', 0)" style="text-align: center; padding: 15px;">
                 <img src="../../images/travel-beginner/lesson1/belt.png" alt="belt" style="max-height: 60px; max-width: 100%;">
-                <p style="margin-top: 10px;">A. Belt</p>
               </div>
               <div class="option" data-index="1" onclick="MCQModule.selectOption('q1', 1)" style="text-align: center; padding: 15px;">
                 <img src="../../images/travel-beginner/lesson1/laptop.png" alt="laptop" style="max-height: 60px; max-width: 100%;">
-                <p style="margin-top: 10px;">B. Laptop</p>
               </div>
               <div class="option" data-index="2" onclick="MCQModule.selectOption('q1', 2)" style="text-align: center; padding: 15px;">
                 <img src="../../images/travel-beginner/lesson1/liquids.png" alt="liquids" style="max-height: 60px; max-width: 100%;">
-                <p style="margin-top: 10px;">C. Liquids</p>
               </div>
             </div>
             <div class="feedback"></div>
@@ -448,15 +455,12 @@
             <div class="options" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
               <div class="option" data-index="0" onclick="MCQModule.selectOption('q2', 0)" style="text-align: center; padding: 15px;">
                 <img src="../../images/travel-beginner/lesson1/shoes.png" alt="shoes" style="max-height: 60px; max-width: 100%;">
-                <p style="margin-top: 10px;">A. Shoes</p>
               </div>
               <div class="option" data-index="1" onclick="MCQModule.selectOption('q2', 1)" style="text-align: center; padding: 15px;">
                 <img src="../../images/travel-beginner/lesson1/laptop.png" alt="laptop" style="max-height: 60px; max-width: 100%;">
-                <p style="margin-top: 10px;">B. Laptop</p>
               </div>
               <div class="option" data-index="2" onclick="MCQModule.selectOption('q2', 2)" style="text-align: center; padding: 15px;">
                 <img src="../../images/travel-beginner/lesson1/suitcase.png" alt="suitcase" style="max-height: 60px; max-width: 100%;">
-                <p style="margin-top: 10px;">C. Suitcase</p>
               </div>
             </div>
             <div class="feedback"></div>
@@ -467,15 +471,12 @@
             <div class="options" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
               <div class="option" data-index="0" onclick="MCQModule.selectOption('q3', 0)" style="text-align: center; padding: 15px;">
                 <img src="../../images/travel-beginner/lesson1/liquids.png" alt="liquids" style="max-height: 60px; max-width: 100%;">
-                <p style="margin-top: 10px;">A. Liquids</p>
               </div>
               <div class="option" data-index="1" onclick="MCQModule.selectOption('q3', 1)" style="text-align: center; padding: 15px;">
                 <img src="../../images/travel-beginner/lesson1/passport.png" alt="passport" style="max-height: 60px; max-width: 100%;">
-                <p style="margin-top: 10px;">B. Passport</p>
               </div>
               <div class="option" data-index="2" onclick="MCQModule.selectOption('q3', 2)" style="text-align: center; padding: 15px;">
                 <img src="../../images/travel-beginner/lesson1/belt.png" alt="belt" style="max-height: 60px; max-width: 100%;">
-                <p style="margin-top: 10px;">C. Belt</p>
               </div>
             </div>
             <div class="feedback"></div>
@@ -486,15 +487,12 @@
             <div class="options" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
               <div class="option" data-index="0" onclick="MCQModule.selectOption('q4', 0)" style="text-align: center; padding: 15px;">
                 <img src="../../images/travel-beginner/lesson1/boarding-pass.png" alt="boarding pass" style="max-height: 60px; max-width: 100%;">
-                <p style="margin-top: 10px;">A. Boarding pass</p>
               </div>
               <div class="option" data-index="1" onclick="MCQModule.selectOption('q4', 1)" style="text-align: center; padding: 15px;">
                 <img src="../../images/travel-beginner/lesson1/laptop.png" alt="laptop" style="max-height: 60px; max-width: 100%;">
-                <p style="margin-top: 10px;">B. Laptop</p>
               </div>
               <div class="option" data-index="2" onclick="MCQModule.selectOption('q4', 2)" style="text-align: center; padding: 15px;">
                 <img src="../../images/travel-beginner/lesson1/shoes.png" alt="shoes" style="max-height: 60px; max-width: 100%;">
-                <p style="margin-top: 10px;">C. Shoes</p>
               </div>
             </div>
             <div class="feedback"></div>
@@ -505,15 +503,12 @@
             <div class="options" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
               <div class="option" data-index="0" onclick="MCQModule.selectOption('q5', 0)" style="text-align: center; padding: 15px;">
                 <img src="../../images/travel-beginner/lesson1/gate.png" alt="gate" style="max-height: 60px; max-width: 100%;">
-                <p style="margin-top: 10px;">A. Gate</p>
               </div>
               <div class="option" data-index="1" onclick="MCQModule.selectOption('q5', 1)" style="text-align: center; padding: 15px;">
                 <img src="../../images/travel-beginner/lesson1/scan.png" alt="scan" style="max-height: 60px; max-width: 100%;">
-                <p style="margin-top: 10px;">B. Scan</p>
               </div>
               <div class="option" data-index="2" onclick="MCQModule.selectOption('q5', 2)" style="text-align: center; padding: 15px;">
                 <img src="../../images/travel-beginner/lesson1/passport.png" alt="passport" style="max-height: 60px; max-width: 100%;">
-                <p style="margin-top: 10px;">C. Passport</p>
               </div>
             </div>
             <div class="feedback"></div>
@@ -537,7 +532,7 @@
           <p>Put the words in the correct order to make sentences you might say or hear when boarding.</p>
           
           <div class="question" id="dd1">
-            <p class="question-text">1. Make a question to ask about the gate:</p>
+            <p class="question-text">1.</p>
             <div class="drop-zone"></div>
             <div class="drag-items">
               <div class="drag-item">gate</div>
@@ -549,7 +544,7 @@
           </div>
           
           <div class="question" id="dd2">
-            <p class="question-text">2. Make a sentence about your flight:</p>
+            <p class="question-text">2.</p>
             <div class="drop-zone"></div>
             <div class="drag-items">
               <div class="drag-item">to</div>
@@ -563,7 +558,7 @@
           </div>
           
           <div class="question" id="dd3">
-            <p class="question-text">3. Ask if this is the correct gate:</p>
+            <p class="question-text">3.</p>
             <div class="drop-zone"></div>
             <div class="drag-items">
               <div class="drag-item">for</div>
@@ -577,7 +572,7 @@
           </div>
           
           <div class="question" id="dd4">
-            <p class="question-text">4. Ask about your seat:</p>
+            <p class="question-text">4.</p>
             <div class="drop-zone"></div>
             <div class="drag-items">
               <div class="drag-item">?</div>
@@ -591,7 +586,7 @@
           </div>
           
           <div class="question" id="dd5">
-            <p class="question-text">5. Make a polite request:</p>
+            <p class="question-text">5.</p>
             <div class="drop-zone"></div>
             <div class="drag-items">
               <div class="drag-item">please</div>
@@ -749,30 +744,13 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       
-      // Initialize Vocabulary Matching - Part 1 (Check-in)
+      // Initialize Vocabulary Matching with Carousel
       VocabMatchModule.init({
-        containerId: 'vocab-match-1',
+        containerId: 'vocab-match',
         onComplete: function(score, total) {
-          console.log('Vocabulary matching Part 1 completed:', score, '/', total);
+          console.log('Vocabulary matching completed:', score, '/', total);
         }
       });
-      
-      // Initialize Vocabulary Matching - Part 2 (Security & Boarding)
-      // Create a second instance for the second vocabulary section
-      if (typeof VocabMatchModule !== 'undefined' && VocabMatchModule.initMultiple) {
-        VocabMatchModule.initMultiple({
-          containerId: 'vocab-match-2',
-          onComplete: function(score, total) {
-            console.log('Vocabulary matching Part 2 completed:', score, '/', total);
-          }
-        });
-      } else {
-        // Fallback: manually initialize second container
-        const container2 = document.getElementById('vocab-match-2');
-        if (container2) {
-          initVocabMatch(container2);
-        }
-      }
       
       // Initialize Flashcards
       FlashcardModule.init({
@@ -815,6 +793,11 @@
         onComplete: function(score, total) {
           console.log('Security MCQ completed:', score, '/', total);
         }
+      });
+      
+      // Clear any preselected MCQ options
+      document.querySelectorAll('#mcq .option').forEach(function(option) {
+        option.classList.remove('selected');
       });
       
       // Initialize Drag and Drop for Boarding
@@ -860,134 +843,6 @@
       document.getElementById('drag-drop-prev').addEventListener('click', function() {
         document.querySelector('[data-activity="mcq"]').click();
       });
-      
-      // Manual initialization for second vocab match if module doesn't support multiple instances
-      function initVocabMatch(container) {
-        const dropZones = container.querySelectorAll('.vocab-drop-zone');
-        const wordItems = container.querySelectorAll('.vocab-word-item');
-        const checkBtn = container.querySelector('.vocab-check-btn');
-        const resetBtn = container.querySelector('.vocab-reset-btn');
-        const scoreDisplay = container.querySelector('.vocab-score span');
-        const feedback = container.querySelector('.vocab-feedback');
-        
-        // Make words draggable
-        wordItems.forEach(word => {
-          word.setAttribute('draggable', 'true');
-          
-          word.addEventListener('dragstart', function(e) {
-            e.dataTransfer.setData('text/plain', this.textContent);
-            this.classList.add('dragging');
-          });
-          
-          word.addEventListener('dragend', function() {
-            this.classList.remove('dragging');
-          });
-        });
-        
-        // Set up drop zones
-        dropZones.forEach(zone => {
-          zone.addEventListener('dragover', function(e) {
-            e.preventDefault();
-            this.classList.add('drag-over');
-          });
-          
-          zone.addEventListener('dragleave', function() {
-            this.classList.remove('drag-over');
-          });
-          
-          zone.addEventListener('drop', function(e) {
-            e.preventDefault();
-            this.classList.remove('drag-over');
-            
-            const word = e.dataTransfer.getData('text/plain');
-            
-            // If zone already has content, return it to word bank
-            if (this.textContent && this.textContent.trim()) {
-              const existingWord = this.textContent.trim();
-              wordItems.forEach(item => {
-                if (item.textContent === existingWord) {
-                  item.style.visibility = 'visible';
-                  item.style.opacity = '1';
-                }
-              });
-            }
-            
-            this.textContent = word;
-            this.classList.remove('empty');
-            
-            // Hide the dragged word from word bank
-            wordItems.forEach(item => {
-              if (item.textContent === word) {
-                item.style.visibility = 'hidden';
-                item.style.opacity = '0';
-              }
-            });
-          });
-        });
-        
-        // Check answers
-        if (checkBtn) {
-          checkBtn.addEventListener('click', function() {
-            let score = 0;
-            
-            dropZones.forEach(zone => {
-              const answer = zone.getAttribute('data-answer');
-              const userAnswer = zone.textContent.trim().toLowerCase();
-              
-              zone.classList.remove('correct', 'incorrect');
-              
-              if (userAnswer === answer.toLowerCase()) {
-                zone.classList.add('correct');
-                score++;
-              } else if (userAnswer) {
-                zone.classList.add('incorrect');
-              }
-            });
-            
-            if (scoreDisplay) {
-              scoreDisplay.textContent = score;
-            }
-            
-            if (feedback) {
-              if (score === dropZones.length) {
-                feedback.textContent = '🎉 Perfect! Well done!';
-                feedback.className = 'vocab-feedback success';
-              } else if (score >= dropZones.length / 2) {
-                feedback.textContent = '👍 Good job! Keep practising!';
-                feedback.className = 'vocab-feedback partial';
-              } else {
-                feedback.textContent = 'Keep trying! You can do it!';
-                feedback.className = 'vocab-feedback';
-              }
-            }
-          });
-        }
-        
-        // Reset
-        if (resetBtn) {
-          resetBtn.addEventListener('click', function() {
-            dropZones.forEach(zone => {
-              zone.textContent = '';
-              zone.classList.add('empty');
-              zone.classList.remove('correct', 'incorrect');
-            });
-            
-            wordItems.forEach(item => {
-              item.style.visibility = 'visible';
-              item.style.opacity = '1';
-            });
-            
-            if (scoreDisplay) {
-              scoreDisplay.textContent = '0';
-            }
-            
-            if (feedback) {
-              feedback.textContent = '';
-              feedback.className = 'vocab-feedback';
-            }
-          });
-        }
-      }
       
     });
   </script>

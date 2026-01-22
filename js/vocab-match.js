@@ -2,16 +2,30 @@
  * Vocabulary Matching Module
  * Drag and Drop Vocabulary to Images Activity
  * For Travel English Lessons
+ * Updated: Carousel with Sticky Word Bank, Multiple Instance Support
  */
 
 const VocabMatchModule = (function() {
-  // Private variables
-  let score = 0;
-  let totalItems = 0;
-  let containerId = 'vocab-match';
-  let onCompleteCallback = null;
-  let currentDraggedItem = null;
-  let isChecked = false;
+  // Store instances for multiple containers
+  const instances = {};
+  
+  /**
+   * Creates a new instance for a container
+   */
+  function createInstance(containerId) {
+    return {
+      containerId: containerId,
+      score: 0,
+      totalItems: 0,
+      currentPage: 0,
+      totalPages: 0,
+      onCompleteCallback: null,
+      currentDraggedItem: null,
+      isChecked: false,
+      touchElement: null,
+      touchClone: null
+    };
+  }
   
   /**
    * Initializes the Vocabulary Matching module
@@ -21,12 +35,12 @@ const VocabMatchModule = (function() {
    * @param {Function} config.onComplete - Callback when all items are correctly matched
    */
   function init(config = {}) {
-    containerId = config.containerId || 'vocab-match';
-    onCompleteCallback = config.onComplete || null;
+    const containerId = config.containerId || 'vocab-match';
     
-    // Reset state
-    score = 0;
-    isChecked = false;
+    // Create new instance
+    const instance = createInstance(containerId);
+    instance.onCompleteCallback = config.onComplete || null;
+    instances[containerId] = instance;
     
     const container = document.getElementById(containerId);
     if (!container) {
@@ -36,78 +50,268 @@ const VocabMatchModule = (function() {
     
     // Count total items
     const dropZones = container.querySelectorAll('.vocab-drop-zone');
-    totalItems = dropZones.length;
+    instance.totalItems = dropZones.length;
+    
+    // Set up carousel
+    setupCarousel(containerId);
     
     // Set up drag and drop
-    setupDragAndDrop();
+    setupDragAndDrop(containerId);
     
     // Set up control buttons
-    setupControlButtons();
+    setupControlButtons(containerId);
     
-    console.log('VocabMatchModule initialized with', totalItems, 'items');
+    console.log('VocabMatchModule initialized:', containerId, 'with', instance.totalItems, 'items');
+  }
+  
+  /**
+   * Sets up carousel navigation
+   */
+  function setupCarousel(containerId) {
+    const instance = instances[containerId];
+    const container = document.getElementById(containerId);
+    if (!container || !instance) return;
+    
+    const pages = container.querySelectorAll('.vocab-carousel-page');
+    instance.totalPages = pages.length;
+    
+    if (instance.totalPages <= 1) return; // No carousel needed
+    
+    // Set first page as active
+    pages.forEach((page, index) => {
+      if (index === 0) {
+        page.classList.add('active');
+      } else {
+        page.classList.remove('active');
+      }
+    });
+    
+    // Set up navigation buttons
+    const prevBtn = container.querySelector('.vocab-carousel-prev');
+    const nextBtn = container.querySelector('.vocab-carousel-next');
+    
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => navigateCarousel(containerId, -1));
+      prevBtn.disabled = true; // Disable on first page
+    }
+    
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => navigateCarousel(containerId, 1));
+      nextBtn.disabled = instance.totalPages <= 1;
+    }
+    
+    // Set up dots
+    const dots = container.querySelectorAll('.vocab-carousel-dot');
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => goToPage(containerId, index));
+      if (index === 0) {
+        dot.classList.add('active');
+      }
+    });
+    
+    // Update indicator
+    updateCarouselIndicator(containerId);
+    
+    // Set initial dot states (all unanswered)
+    updatePageDotStates(containerId);
+  }
+  
+  /**
+   * Navigates the carousel
+   */
+  function navigateCarousel(containerId, direction) {
+    const instance = instances[containerId];
+    if (!instance) return;
+    
+    const newPage = instance.currentPage + direction;
+    
+    if (newPage >= 0 && newPage < instance.totalPages) {
+      goToPage(containerId, newPage);
+    }
+  }
+  
+  /**
+   * Goes to a specific page
+   */
+  function goToPage(containerId, pageIndex) {
+    const instance = instances[containerId];
+    const container = document.getElementById(containerId);
+    if (!container || !instance) return;
+    
+    const pages = container.querySelectorAll('.vocab-carousel-page');
+    const dots = container.querySelectorAll('.vocab-carousel-dot');
+    
+    // Update pages
+    pages.forEach((page, index) => {
+      if (index === pageIndex) {
+        page.classList.add('active');
+      } else {
+        page.classList.remove('active');
+      }
+    });
+    
+    // Update dots
+    dots.forEach((dot, index) => {
+      if (index === pageIndex) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
+    });
+    
+    instance.currentPage = pageIndex;
+    
+    // Update buttons
+    const prevBtn = container.querySelector('.vocab-carousel-prev');
+    const nextBtn = container.querySelector('.vocab-carousel-next');
+    
+    if (prevBtn) prevBtn.disabled = pageIndex === 0;
+    if (nextBtn) nextBtn.disabled = pageIndex === instance.totalPages - 1;
+    
+    // Update indicator
+    updateCarouselIndicator(containerId);
+  }
+  
+  /**
+   * Updates the page indicator text
+   */
+  function updateCarouselIndicator(containerId) {
+    const instance = instances[containerId];
+    const container = document.getElementById(containerId);
+    if (!container || !instance) return;
+    
+    const indicator = container.querySelector('.vocab-carousel-indicator');
+    if (indicator) {
+      indicator.textContent = `${instance.currentPage + 1} / ${instance.totalPages}`;
+    }
+  }
+  
+  /**
+   * Updates the state of page dots based on completion and correctness
+   */
+  function updatePageDotStates(containerId) {
+    const instance = instances[containerId];
+    const container = document.getElementById(containerId);
+    if (!container || !instance) return;
+    
+    const pages = container.querySelectorAll('.vocab-carousel-page');
+    const dots = container.querySelectorAll('.vocab-carousel-dot');
+    
+    pages.forEach((page, index) => {
+      const dot = dots[index];
+      if (!dot) return;
+      
+      const dropZones = page.querySelectorAll('.vocab-drop-zone');
+      let answeredCount = 0;
+      let correctCount = 0;
+      let hasBeenChecked = false;
+      
+      dropZones.forEach(zone => {
+        const hasWord = zone.querySelector('.vocab-word-item');
+        if (hasWord) answeredCount++;
+        
+        // Check if answers have been checked
+        if (zone.classList.contains('correct')) {
+          correctCount++;
+          hasBeenChecked = true;
+        } else if (zone.classList.contains('incorrect')) {
+          hasBeenChecked = true;
+        }
+      });
+      
+      const totalZones = dropZones.length;
+      const allAnswered = answeredCount === totalZones;
+      
+      // Remove all state classes
+      dot.classList.remove('unanswered', 'complete', 'all-correct', 'has-errors');
+      
+      if (hasBeenChecked) {
+        // After checking answers
+        if (correctCount === totalZones) {
+          dot.classList.add('all-correct');
+        } else {
+          dot.classList.add('has-errors');
+        }
+      } else if (allAnswered) {
+        // All answered but not yet checked
+        dot.classList.add('complete');
+      } else {
+        // Missing answers
+        dot.classList.add('unanswered');
+      }
+    });
   }
   
   /**
    * Sets up drag and drop functionality
    */
-  function setupDragAndDrop() {
+  function setupDragAndDrop(containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
     
     // Set up word items
     const wordItems = container.querySelectorAll('.vocab-word-item');
     wordItems.forEach(item => {
-      setupWordItem(item);
+      setupWordItem(item, containerId);
     });
     
     // Set up drop zones
     const dropZones = container.querySelectorAll('.vocab-drop-zone');
     dropZones.forEach(zone => {
-      setupDropZone(zone);
+      setupDropZone(zone, containerId);
     });
     
     // Set up word containers (for returning items)
     const wordContainers = container.querySelectorAll('.vocab-words-container');
-    wordContainers.forEach(container => {
-      setupWordContainer(container);
+    wordContainers.forEach(wordContainer => {
+      setupWordContainer(wordContainer, containerId);
     });
   }
   
   /**
    * Sets up a draggable word item
    */
-  function setupWordItem(item) {
+  function setupWordItem(item, containerId) {
+    const instance = instances[containerId];
+    
     item.setAttribute('draggable', 'true');
+    
+    // Store original container reference
+    item.dataset.originalContainer = containerId;
     
     // Drag start
     item.addEventListener('dragstart', function(e) {
       this.classList.add('dragging');
-      currentDraggedItem = this;
+      instance.currentDraggedItem = this;
       e.dataTransfer.setData('text/plain', this.textContent);
+      e.dataTransfer.setData('containerId', containerId);
       e.dataTransfer.effectAllowed = 'move';
     });
     
     // Drag end
     item.addEventListener('dragend', function(e) {
       this.classList.remove('dragging');
-      currentDraggedItem = null;
+      instance.currentDraggedItem = null;
       
       // Remove all highlights
-      document.querySelectorAll('.vocab-drop-zone.highlight, .vocab-image-item.highlight').forEach(el => {
+      const container = document.getElementById(containerId);
+      container.querySelectorAll('.vocab-drop-zone.highlight, .vocab-image-item.highlight').forEach(el => {
         el.classList.remove('highlight');
       });
     });
     
     // Touch support
-    item.addEventListener('touchstart', handleTouchStart, { passive: false });
-    item.addEventListener('touchmove', handleTouchMove, { passive: false });
-    item.addEventListener('touchend', handleTouchEnd, { passive: false });
+    item.addEventListener('touchstart', (e) => handleTouchStart(e, containerId), { passive: false });
+    item.addEventListener('touchmove', (e) => handleTouchMove(e, containerId), { passive: false });
+    item.addEventListener('touchend', (e) => handleTouchEnd(e, containerId), { passive: false });
   }
   
   /**
    * Sets up a drop zone
    */
-  function setupDropZone(zone) {
+  function setupDropZone(zone, containerId) {
+    const instance = instances[containerId];
+    
     // Check if empty and add class
     updateDropZoneState(zone);
     
@@ -128,46 +332,68 @@ const VocabMatchModule = (function() {
       this.classList.remove('highlight');
       this.closest('.vocab-image-item')?.classList.remove('highlight');
       
-      if (!currentDraggedItem) return;
-      if (isChecked) return; // Don't allow drops after checking
+      if (!instance.currentDraggedItem) return;
+      if (instance.isChecked) return; // Don't allow drops after checking
       
-      // If drop zone already has an item, return it to container
+      const draggedItem = instance.currentDraggedItem;
+      
+      // If drop zone already has an item, return it to word bank
       const existingItem = this.querySelector('.vocab-word-item');
       if (existingItem) {
-        returnToContainer(existingItem);
+        returnToWordBank(existingItem, containerId);
+      }
+      
+      // Check if item was in another drop zone
+      const previousZone = draggedItem.closest('.vocab-drop-zone');
+      if (previousZone) {
+        updateDropZoneState(previousZone);
       }
       
       // Move dragged item to this zone
-      this.appendChild(currentDraggedItem);
+      draggedItem.classList.remove('placed');
+      this.appendChild(draggedItem);
+      draggedItem.classList.add('placed');
       updateDropZoneState(this);
       
       // Clear correct/incorrect states when items are moved
       this.classList.remove('correct', 'incorrect');
+      
+      // Update page dot states
+      updatePageDotStates(containerId);
     });
   }
   
   /**
    * Sets up word container for returning items
    */
-  function setupWordContainer(container) {
-    container.addEventListener('dragover', function(e) {
+  function setupWordContainer(wordContainer, containerId) {
+    const instance = instances[containerId];
+    
+    wordContainer.addEventListener('dragover', function(e) {
       e.preventDefault();
       e.dataTransfer.dropEffect = 'move';
     });
     
-    container.addEventListener('drop', function(e) {
+    wordContainer.addEventListener('drop', function(e) {
       e.preventDefault();
-      if (!currentDraggedItem) return;
-      if (isChecked) return;
+      if (!instance.currentDraggedItem) return;
+      if (instance.isChecked) return;
       
-      // Return item to this container
-      this.appendChild(currentDraggedItem);
+      const draggedItem = instance.currentDraggedItem;
       
       // Clear the drop zone state where item came from
-      const previousZone = currentDraggedItem.closest('.vocab-drop-zone');
+      const previousZone = draggedItem.closest('.vocab-drop-zone');
+      
+      // Return item to this container
+      draggedItem.classList.remove('placed');
+      this.appendChild(draggedItem);
+      
       if (previousZone) {
         updateDropZoneState(previousZone);
       }
+      
+      // Update page dot states
+      updatePageDotStates(containerId);
     });
   }
   
@@ -183,74 +409,75 @@ const VocabMatchModule = (function() {
   }
   
   /**
-   * Returns an item to its section's word container
+   * Returns an item to the word bank
    */
-  function returnToContainer(item) {
-    const section = item.closest('.vocab-section');
-    if (section) {
-      const container = section.querySelector('.vocab-words-container');
-      if (container) {
-        container.appendChild(item);
-      }
+  function returnToWordBank(item, containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    
+    const wordBank = container.querySelector('.vocab-words-container');
+    if (wordBank) {
+      item.classList.remove('placed');
+      wordBank.appendChild(item);
     }
   }
   
   /**
    * Touch event handlers for mobile support
    */
-  let touchStartX, touchStartY, touchElement, touchClone;
-  
-  function handleTouchStart(e) {
-    if (isChecked) return;
+  function handleTouchStart(e, containerId) {
+    const instance = instances[containerId];
+    if (instance.isChecked) return;
     
     const touch = e.touches[0];
-    touchStartX = touch.clientX;
-    touchStartY = touch.clientY;
-    touchElement = e.target.closest('.vocab-word-item');
+    instance.touchElement = e.target.closest('.vocab-word-item');
     
-    if (!touchElement) return;
+    if (!instance.touchElement) return;
     
     e.preventDefault();
-    touchElement.classList.add('dragging');
-    currentDraggedItem = touchElement;
+    instance.touchElement.classList.add('dragging');
+    instance.currentDraggedItem = instance.touchElement;
     
     // Create visual clone for dragging
-    touchClone = touchElement.cloneNode(true);
-    touchClone.style.position = 'fixed';
-    touchClone.style.pointerEvents = 'none';
-    touchClone.style.zIndex = '10000';
-    touchClone.style.opacity = '0.8';
-    touchClone.style.transform = 'scale(1.1)';
-    document.body.appendChild(touchClone);
+    instance.touchClone = instance.touchElement.cloneNode(true);
+    instance.touchClone.style.position = 'fixed';
+    instance.touchClone.style.pointerEvents = 'none';
+    instance.touchClone.style.zIndex = '10000';
+    instance.touchClone.style.opacity = '0.8';
+    instance.touchClone.style.transform = 'scale(1.1)';
+    document.body.appendChild(instance.touchClone);
     
-    positionClone(touch);
+    positionClone(touch, instance);
   }
   
-  function handleTouchMove(e) {
-    if (!touchElement || !touchClone) return;
+  function handleTouchMove(e, containerId) {
+    const instance = instances[containerId];
+    if (!instance.touchElement || !instance.touchClone) return;
     e.preventDefault();
     
     const touch = e.touches[0];
-    positionClone(touch);
+    positionClone(touch, instance);
     
     // Highlight drop zone under touch
     const elementUnder = document.elementFromPoint(touch.clientX, touch.clientY);
     const dropZone = elementUnder?.closest('.vocab-drop-zone');
     
     // Remove all highlights first
-    document.querySelectorAll('.vocab-drop-zone.highlight, .vocab-image-item.highlight').forEach(el => {
+    const container = document.getElementById(containerId);
+    container.querySelectorAll('.vocab-drop-zone.highlight, .vocab-image-item.highlight').forEach(el => {
       el.classList.remove('highlight');
     });
     
     // Add highlight to current zone
-    if (dropZone && !dropZone.contains(touchElement)) {
+    if (dropZone && !dropZone.contains(instance.touchElement)) {
       dropZone.classList.add('highlight');
       dropZone.closest('.vocab-image-item')?.classList.add('highlight');
     }
   }
   
-  function handleTouchEnd(e) {
-    if (!touchElement) return;
+  function handleTouchEnd(e, containerId) {
+    const instance = instances[containerId];
+    if (!instance.touchElement) return;
     e.preventDefault();
     
     const touch = e.changedTouches[0];
@@ -259,53 +486,70 @@ const VocabMatchModule = (function() {
     const wordContainer = elementUnder?.closest('.vocab-words-container');
     
     // Remove clone
-    if (touchClone) {
-      touchClone.remove();
-      touchClone = null;
+    if (instance.touchClone) {
+      instance.touchClone.remove();
+      instance.touchClone = null;
     }
     
+    const container = document.getElementById(containerId);
+    
     // Handle drop
-    if (dropZone && !dropZone.contains(touchElement)) {
+    if (dropZone && dropZone.closest(`#${containerId}`) && !dropZone.contains(instance.touchElement)) {
       // If zone has existing item, return it
       const existingItem = dropZone.querySelector('.vocab-word-item');
       if (existingItem) {
-        returnToContainer(existingItem);
+        returnToWordBank(existingItem, containerId);
       }
       
-      dropZone.appendChild(touchElement);
-      updateDropZoneState(dropZone);
-      dropZone.classList.remove('correct', 'incorrect');
-    } else if (wordContainer) {
-      // Return to container
-      wordContainer.appendChild(touchElement);
-      const previousZone = touchElement.closest('.vocab-drop-zone');
+      // Check if item was in another drop zone
+      const previousZone = instance.touchElement.closest('.vocab-drop-zone');
       if (previousZone) {
         updateDropZoneState(previousZone);
       }
+      
+      instance.touchElement.classList.remove('placed');
+      dropZone.appendChild(instance.touchElement);
+      instance.touchElement.classList.add('placed');
+      updateDropZoneState(dropZone);
+      dropZone.classList.remove('correct', 'incorrect');
+      
+      // Update page dot states
+      updatePageDotStates(containerId);
+    } else if (wordContainer && wordContainer.closest(`#${containerId}`)) {
+      // Return to word bank
+      const previousZone = instance.touchElement.closest('.vocab-drop-zone');
+      instance.touchElement.classList.remove('placed');
+      wordContainer.appendChild(instance.touchElement);
+      if (previousZone) {
+        updateDropZoneState(previousZone);
+      }
+      
+      // Update page dot states
+      updatePageDotStates(containerId);
     }
     
     // Cleanup
-    touchElement.classList.remove('dragging');
-    touchElement = null;
-    currentDraggedItem = null;
+    instance.touchElement.classList.remove('dragging');
+    instance.touchElement = null;
+    instance.currentDraggedItem = null;
     
     // Remove all highlights
-    document.querySelectorAll('.vocab-drop-zone.highlight, .vocab-image-item.highlight').forEach(el => {
+    container.querySelectorAll('.vocab-drop-zone.highlight, .vocab-image-item.highlight').forEach(el => {
       el.classList.remove('highlight');
     });
   }
   
-  function positionClone(touch) {
-    if (touchClone) {
-      touchClone.style.left = (touch.clientX - 50) + 'px';
-      touchClone.style.top = (touch.clientY - 25) + 'px';
+  function positionClone(touch, instance) {
+    if (instance.touchClone) {
+      instance.touchClone.style.left = (touch.clientX - 50) + 'px';
+      instance.touchClone.style.top = (touch.clientY - 25) + 'px';
     }
   }
   
   /**
    * Sets up control buttons
    */
-  function setupControlButtons() {
+  function setupControlButtons(containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
     
@@ -313,23 +557,24 @@ const VocabMatchModule = (function() {
     const resetBtn = container.querySelector('.vocab-reset-btn');
     
     if (checkBtn) {
-      checkBtn.addEventListener('click', checkAnswers);
+      checkBtn.addEventListener('click', () => checkAnswers(containerId));
     }
     
     if (resetBtn) {
-      resetBtn.addEventListener('click', resetActivity);
+      resetBtn.addEventListener('click', () => resetActivity(containerId));
     }
   }
   
   /**
    * Checks all answers
    */
-  function checkAnswers() {
+  function checkAnswers(containerId) {
+    const instance = instances[containerId];
     const container = document.getElementById(containerId);
-    if (!container) return;
+    if (!container || !instance) return;
     
-    score = 0;
-    isChecked = true;
+    instance.score = 0;
+    instance.isChecked = true;
     
     const dropZones = container.querySelectorAll('.vocab-drop-zone');
     
@@ -343,7 +588,7 @@ const VocabMatchModule = (function() {
         if (userAnswer === correctAnswer) {
           zone.classList.add('correct');
           zone.classList.remove('incorrect');
-          score++;
+          instance.score++;
         } else {
           zone.classList.add('incorrect');
           zone.classList.remove('correct');
@@ -357,7 +602,7 @@ const VocabMatchModule = (function() {
     // Show score
     const scoreDisplay = container.querySelector('.vocab-score');
     if (scoreDisplay) {
-      scoreDisplay.querySelector('span').textContent = score;
+      scoreDisplay.querySelector('span').textContent = instance.score;
       scoreDisplay.classList.add('show');
     }
     
@@ -371,10 +616,10 @@ const VocabMatchModule = (function() {
     // Show feedback
     const feedback = container.querySelector('.vocab-feedback');
     if (feedback) {
-      if (score === totalItems) {
+      if (instance.score === instance.totalItems) {
         feedback.textContent = '🎉 Excellent! You got all the words correct!';
         feedback.className = 'vocab-feedback show success';
-      } else if (score >= totalItems * 0.7) {
+      } else if (instance.score >= instance.totalItems * 0.7) {
         feedback.textContent = '👍 Good job! Review the words you missed and try again.';
         feedback.className = 'vocab-feedback show success';
       } else {
@@ -384,30 +629,32 @@ const VocabMatchModule = (function() {
     }
     
     // Callback
-    if (score === totalItems && typeof onCompleteCallback === 'function') {
-      onCompleteCallback(score, totalItems);
+    if (instance.score === instance.totalItems && typeof instance.onCompleteCallback === 'function') {
+      instance.onCompleteCallback(instance.score, instance.totalItems);
     }
+    
+    // Update page dot states to show correct/incorrect
+    updatePageDotStates(containerId);
   }
   
   /**
    * Resets the activity
    */
-  function resetActivity() {
+  function resetActivity(containerId) {
+    const instance = instances[containerId];
     const container = document.getElementById(containerId);
-    if (!container) return;
+    if (!container || !instance) return;
     
-    isChecked = false;
-    score = 0;
+    instance.isChecked = false;
+    instance.score = 0;
     
-    // Return all words to their containers
-    const sections = container.querySelectorAll('.vocab-section');
-    sections.forEach(section => {
-      const wordContainer = section.querySelector('.vocab-words-container');
-      const wordItems = section.querySelectorAll('.vocab-drop-zone .vocab-word-item');
-      
-      wordItems.forEach(item => {
-        wordContainer.appendChild(item);
-      });
+    // Return all words to word bank
+    const wordBank = container.querySelector('.vocab-words-container');
+    const wordItems = container.querySelectorAll('.vocab-drop-zone .vocab-word-item');
+    
+    wordItems.forEach(item => {
+      item.classList.remove('placed');
+      wordBank.appendChild(item);
     });
     
     // Clear drop zone states
@@ -435,16 +682,25 @@ const VocabMatchModule = (function() {
     
     if (checkBtn) checkBtn.style.display = 'inline-block';
     if (resetBtn) resetBtn.style.display = 'none';
+    
+    // Reset to first page
+    goToPage(containerId, 0);
+    
+    // Reset page dot states
+    updatePageDotStates(containerId);
   }
   
   /**
-   * Gets current score
+   * Gets current score for a container
    */
-  function getScore() {
+  function getScore(containerId) {
+    const instance = instances[containerId || Object.keys(instances)[0]];
+    if (!instance) return { score: 0, total: 0, percentage: 0 };
+    
     return {
-      score: score,
-      total: totalItems,
-      percentage: totalItems > 0 ? Math.round((score / totalItems) * 100) : 0
+      score: instance.score,
+      total: instance.totalItems,
+      percentage: instance.totalItems > 0 ? Math.round((instance.score / instance.totalItems) * 100) : 0
     };
   }
   
@@ -453,7 +709,8 @@ const VocabMatchModule = (function() {
     init: init,
     checkAnswers: checkAnswers,
     resetActivity: resetActivity,
-    getScore: getScore
+    getScore: getScore,
+    goToPage: goToPage
   };
 })();
 
