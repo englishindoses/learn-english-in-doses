@@ -87,7 +87,8 @@ const GapFillModule = (function() {
       inputs.forEach(input => {
         const correctAnswers = input.getAttribute('data-answer').split(',');
         const userAnswer = input.value.trim();
-        const feedback = input.closest('.question').querySelector('.feedback');
+        // Feedback div removed from HTML - colours on inputs indicate correct/incorrect
+        // const feedback = input.closest('.question').querySelector('.feedback');
         
         // Check if answer is correct (case insensitive by default)
         const isCorrect = correctAnswers.some(answer => {
@@ -101,48 +102,50 @@ const GapFillModule = (function() {
         if (isCorrect) {
           input.classList.add('correct');
           input.classList.remove('incorrect');
-          if (feedback) {
-            feedback.textContent = `Correct! "${input.value}" is correct.`;
-            feedback.className = 'feedback correct';
-          }
+          // Written feedback removed - colours indicate correct/incorrect
+          // if (feedback) {
+          //   feedback.textContent = `Correct! "${input.value}" is correct.`;
+          //   feedback.className = 'feedback correct';
+          // }
           score++;
         } else {
           input.classList.add('incorrect');
           input.classList.remove('correct');
           allCorrect = false;
           
-          if (feedback) {
-            // Provide hint without giving away the answer
-            let hint;
-            if (userAnswer === '') {
-              hint = "Please enter an answer.";
-            } else if (userAnswer.length < 3) {
-              hint = "Your answer is too short.";
-            } else {
-              // Find the closest correct answer for better feedback
-              let closestAnswer = correctAnswers[0];
-              let minDifference = 100;
-              
-              correctAnswers.forEach(answer => {
-                const cleanAnswer = answer.trim();
-                const difference = levenshteinDistance(userAnswer.toLowerCase(), cleanAnswer.toLowerCase());
-                
-                if (difference < minDifference) {
-                  minDifference = difference;
-                  closestAnswer = cleanAnswer;
-                }
-              });
-              
-              if (minDifference <= 2) {
-                hint = "You're very close! Check your spelling.";
-              } else {
-                hint = "That's not correct. Try again.";
-              }
-            }
-            
-            feedback.textContent = hint;
-            feedback.className = 'feedback incorrect';
-          }
+          // Written feedback removed - colours indicate correct/incorrect
+          // if (feedback) {
+          //   // Provide hint without giving away the answer
+          //   let hint;
+          //   if (userAnswer === '') {
+          //     hint = "Please enter an answer.";
+          //   } else if (userAnswer.length < 3) {
+          //     hint = "Your answer is too short.";
+          //   } else {
+          //     // Find the closest correct answer for better feedback
+          //     let closestAnswer = correctAnswers[0];
+          //     let minDifference = 100;
+          //     
+          //     correctAnswers.forEach(answer => {
+          //       const cleanAnswer = answer.trim();
+          //       const difference = levenshteinDistance(userAnswer.toLowerCase(), cleanAnswer.toLowerCase());
+          //       
+          //       if (difference < minDifference) {
+          //         minDifference = difference;
+          //         closestAnswer = cleanAnswer;
+          //       }
+          //     });
+          //     
+          //     if (minDifference <= 2) {
+          //       hint = "You're very close! Check your spelling.";
+          //     } else {
+          //       hint = "That's not correct. Try again.";
+          //     }
+          //   }
+          //   
+          //   feedback.textContent = hint;
+          //   feedback.className = 'feedback incorrect';
+          // }
         }
       });
       
@@ -187,11 +190,11 @@ const GapFillModule = (function() {
         input.classList.remove('correct', 'incorrect');
       });
       
-      // Clear feedback
-      container.querySelectorAll('.feedback').forEach(feedback => {
-        feedback.textContent = '';
-        feedback.className = 'feedback';
-      });
+      // Clear feedback - commented out as feedback divs removed from HTML
+      // container.querySelectorAll('.feedback').forEach(feedback => {
+      //   feedback.textContent = '';
+      //   feedback.className = 'feedback';
+      // });
       
       // Hide score
       const scoreDisplay = document.getElementById(`${containerId}-score`);
