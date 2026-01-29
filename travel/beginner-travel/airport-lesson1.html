@@ -408,8 +408,8 @@
           </div>
           
           <div class="question" id="gf4">
-            <p class="gap-fill-sentence"><strong>Attendant:</strong> Would you prefer a <input type="text" class="gap-input" data-answer="window seat" placeholder="🪟 by the window" style="width: 130px;"> or an <input type="text" class="gap-input" data-answer="aisle seat" placeholder="🚶 by the aisle" style="width: 130px;">?</p>
-            <p class="gap-fill-sentence"><strong>Traveller:</strong> <input type="text" class="gap-input" data-answer="Can I have,Could I have,I'd like" placeholder="..." style="width: 100px;"> a window seat, please.</p>
+            <p class="gap-fill-sentence"><strong>Attendant:</strong> Would you prefer a <input type="text" class="gap-input" data-answer="window seat" placeholder="..." style="width: 130px;"> or an <input type="text" class="gap-input" data-answer="aisle seat" placeholder="..." style="width: 130px;">?</p>
+            <p class="gap-fill-sentence"><strong>Traveller:</strong> Can <input type="text" class="gap-input" data-answer="I have,I get" placeholder="..." style="width: 80px;"> a window seat, please?</p>
           </div>
           
           <div class="question" id="gf5">
@@ -425,7 +425,7 @@
           </div>
           
           <div class="score-display" id="gap-fill-checkin-score" style="display:none;">
-            Your score: <span>0</span>/8
+            Your score: <span>0</span>/7
           </div>
         </section>
 
@@ -526,10 +526,10 @@
           </div>
         </section>
 
-        <!-- Activity 3: Boarding Sentence Reordering -->
+        <!-- Activity 3: Airport Sentence Reordering -->
         <section id="drag-drop-boarding" class="activity-container">
-          <h3>🚪 Boarding Sentences</h3>
-          <p>Put the words in the correct order to make sentences you might say or hear when boarding.</p>
+          <h3>✈️ At the Airport</h3>
+          <p>Put the words in the correct order to make sentences you might say or hear at the airport.</p>
           
           <div class="question" id="dd1">
             <p class="question-text">1.</p>
@@ -752,6 +752,401 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       
+      // ============================================
+      // QUESTION POOLS FOR RANDOMIZATION
+      // ============================================
+      
+      // Gap-fill conversation pools (4 sets of conversations)
+      const gapFillPools = [
+        // Set 1 (London flight)
+        {
+          conversation: [
+            { speaker: 'Attendant', text: 'Good morning. How can I help you?' },
+            { speaker: 'Traveller', text: 'Hi, ', gap: { answer: "I'd like to,I would like to", width: 120 }, textAfter: ' check in, please.' },
+            { speaker: 'Attendant', text: 'Of course. Can I see your ', gap: { answer: 'passport', width: 100 }, textAfter: ', please?' },
+            { speaker: 'Traveller', text: 'Here you are.' },
+            { speaker: 'Attendant', text: 'Thank you. Do you have any bags to check in?' },
+            { speaker: 'Traveller', text: 'Yes, I have one ', gap: { answer: 'suitcase', width: 100 }, textAfter: '.' },
+            { speaker: 'Attendant', text: 'Would you prefer a ', gap: { answer: 'window seat', width: 130 }, textAfter: ' or an ', gap2: { answer: 'aisle seat', width: 130 }, textAfter2: '?' },
+            { speaker: 'Traveller', text: 'Can ', gap: { answer: 'I have,I get', width: 80 }, textAfter: ' a window seat, please?' },
+            { speaker: 'Attendant', text: 'No problem. Here is your ', gap: { answer: 'boarding pass', width: 120 }, textAfter: '. Have a good flight!' },
+            { speaker: 'Traveller', text: 'Thank you!' }
+          ]
+        },
+        // Set 2 (Rome flight)
+        {
+          conversation: [
+            { speaker: 'Attendant', text: 'Good afternoon. How can I help you?' },
+            { speaker: 'Traveller', text: 'Hello, I\'d like to ', gap: { answer: 'check in', width: 100 }, textAfter: ' for the Rome flight.' },
+            { speaker: 'Attendant', text: 'Certainly. ', gap: { answer: 'Can I have,Can I see', width: 110 }, textAfter: ' your passport?' },
+            { speaker: 'Traveller', text: 'Yes, here it is.' },
+            { speaker: 'Attendant', text: 'Thank you. Are you checking any bags?' },
+            { speaker: 'Traveller', text: 'Yes, I have one ', gap: { answer: 'suitcase', width: 100 }, textAfter: '.' },
+            { speaker: 'Attendant', text: 'Would you like an ', gap: { answer: 'aisle seat', width: 130 }, textAfter: ' or a ', gap2: { answer: 'window seat', width: 130 }, textAfter2: '?' },
+            { speaker: 'Traveller', text: 'Can ', gap: { answer: 'I have,I get', width: 80 }, textAfter: ' an aisle seat, please?' },
+            { speaker: 'Attendant', text: 'Of course. Here is your ', gap: { answer: 'boarding pass', width: 120 }, textAfter: '. Gate B7.' },
+            { speaker: 'Traveller', text: 'Thank you very much!' }
+          ]
+        },
+        // Set 3 (Tokyo flight)
+        {
+          conversation: [
+            { speaker: 'Attendant', text: 'Good evening. Are you checking in?' },
+            { speaker: 'Traveller', text: 'Yes, ', gap: { answer: "I'd like to,I would like to", width: 120 }, textAfter: ' check in for Tokyo.' },
+            { speaker: 'Attendant', text: 'May I have your ', gap: { answer: 'passport', width: 100 }, textAfter: ', please?' },
+            { speaker: 'Traveller', text: 'Of course. Here you go.' },
+            { speaker: 'Attendant', text: 'Do you have any luggage to check in?' },
+            { speaker: 'Traveller', text: 'Yes, this ', gap: { answer: 'suitcase', width: 100 }, textAfter: '.' },
+            { speaker: 'Attendant', text: 'Would you prefer a ', gap: { answer: 'window seat', width: 130 }, textAfter: ' or an ', gap2: { answer: 'aisle seat', width: 130 }, textAfter2: '?' },
+            { speaker: 'Traveller', text: 'Can ', gap: { answer: 'I have,I get', width: 80 }, textAfter: ' a window seat, please?' },
+            { speaker: 'Attendant', text: 'Here\'s your ', gap: { answer: 'boarding pass', width: 120 }, textAfter: '. Boarding starts at 10:35. Gate C12.' },
+            { speaker: 'Traveller', text: 'Great, thanks!' }
+          ]
+        },
+        // Set 4 (Sydney flight)
+        {
+          conversation: [
+            { speaker: 'Attendant', text: 'Hello. Checking in today?' },
+            { speaker: 'Traveller', text: 'Yes, I\'d like to ', gap: { answer: 'check in', width: 100 }, textAfter: ' for Sydney.' },
+            { speaker: 'Attendant', text: 'I will need your ', gap: { answer: 'passport', width: 100 }, textAfter: ', please.' },
+            { speaker: 'Traveller', text: 'Here it is.' },
+            { speaker: 'Attendant', text: 'Are you checking any bags today?' },
+            { speaker: 'Traveller', text: 'Yes, one ', gap: { answer: 'suitcase', width: 100 }, textAfter: ', please.' },
+            { speaker: 'Attendant', text: 'Do you want an ', gap: { answer: 'aisle seat', width: 130 }, textAfter: ' or a ', gap2: { answer: 'window seat', width: 130 }, textAfter2: '?' },
+            { speaker: 'Traveller', text: "I'd ", gap: { answer: 'like', width: 60 }, textAfter: ' an aisle ', gap2: { answer: 'seat', width: 60 }, textAfter2: ', please.' },
+            { speaker: 'Attendant', text: 'Here is your ', gap: { answer: 'boarding pass', width: 120 }, textAfter: '. Gate A15. Enjoy your flight!' },
+            { speaker: 'Traveller', text: 'Thank you!' }
+          ]
+        }
+      ];
+      
+      // MCQ question pool (20 questions total - 5 shown at a time)
+      const mcqPool = [
+        // Set 1 - varied answers
+        { question: '"Take off your belt."', correctIndex: 0, images: ['belt.png', 'laptop.png', 'liquids.png'] },
+        { question: '"Remove your laptop from your bag."', correctIndex: 1, images: ['shoes.png', 'laptop.png', 'suitcase.png'] },
+        { question: '"Put your liquids in a clear plastic bag."', correctIndex: 2, images: ['passport.png', 'belt.png', 'liquids.png'] },
+        { question: '"Take off your shoes."', correctIndex: 0, images: ['shoes.png', 'laptop.png', 'boarding-pass.png'] },
+        { question: '"Scan your boarding pass here."', correctIndex: 1, images: ['gate.png', 'scan.png', 'passport.png'] },
+        // Set 2 - different order
+        { question: '"Take your laptop out of your bag."', correctIndex: 0, images: ['laptop.png', 'belt.png', 'shoes.png'] },
+        { question: '"Please remove your shoes."', correctIndex: 2, images: ['liquids.png', 'suitcase.png', 'shoes.png'] },
+        { question: '"Put your belt in the tray."', correctIndex: 1, images: ['laptop.png', 'belt.png', 'passport.png'] },
+        { question: '"Show me your boarding pass."', correctIndex: 0, images: ['boarding-pass.png', 'gate.png', 'liquids.png'] },
+        { question: '"All liquids must be in a plastic bag."', correctIndex: 2, images: ['shoes.png', 'belt.png', 'liquids.png'] },
+        // Set 3 - more variety
+        { question: '"Shoes go in the tray."', correctIndex: 1, images: ['belt.png', 'shoes.png', 'laptop.png'] },
+        { question: '"Do you have any liquids?"', correctIndex: 0, images: ['liquids.png', 'passport.png', 'suitcase.png'] },
+        { question: '"Laptops must be removed from bags."', correctIndex: 2, images: ['belt.png', 'shoes.png', 'laptop.png'] },
+        { question: '"Please scan your pass at the gate."', correctIndex: 1, images: ['passport.png', 'scan.png', 'suitcase.png'] },
+        { question: '"Remove your belt, please."', correctIndex: 0, images: ['belt.png', 'liquids.png', 'shoes.png'] },
+        // Set 4 - mixed up
+        { question: '"Put liquids in a small bag."', correctIndex: 1, images: ['belt.png', 'liquids.png', 'laptop.png'] },
+        { question: '"Is there a laptop in your bag?"', correctIndex: 2, images: ['shoes.png', 'boarding-pass.png', 'laptop.png'] },
+        { question: '"Take off your shoes, please."', correctIndex: 0, images: ['shoes.png', 'belt.png', 'liquids.png'] },
+        { question: '"Have your boarding pass ready."', correctIndex: 2, images: ['suitcase.png', 'passport.png', 'boarding-pass.png'] },
+        { question: '"Put your belt and shoes in the tray."', correctIndex: 1, images: ['laptop.png', 'belt.png', 'liquids.png'] }
+      ];
+      
+      // Drag-drop sentence pool (20 sentences - 5 shown at a time)
+      const dragDropPool = [
+        // Set 1 - Check-in & Gate
+        { words: ['gate', '?', 'Where', '15', 'is'], answer: 'Where is gate 15 ?' },
+        { words: ['to', 'flight', '.', 'I', 'London', 'a', 'have'], answer: 'I have a flight to London .' },
+        { words: ['for', 'this', '?', 'gate', 'Is', 'the', 'New York'], answer: 'Is this the gate for New York ?' },
+        { words: ['?', 'have', 'seat', 'Can', 'window', 'a', 'I'], answer: 'Can I have a window seat ?' },
+        { words: ['please', 'in', "I'd", '.', 'check', ',', 'to', 'like'], answer: "I'd like to check in , please ." },
+        // Set 2 - Security & Directions
+        { words: ['?', 'security', 'Where', 'is'], answer: 'Where is security ?' },
+        { words: ['suitcase', 'one', '.', 'have', 'I'], answer: 'I have one suitcase .' },
+        { words: ['seat', 'an', '?', 'I', 'aisle', 'have', 'Can'], answer: 'Can I have an aisle seat ?' },
+        { words: ['me', ',', '?', 'Excuse', 'is', 'gate', 'B12', 'where'], answer: 'Excuse me , where is gate B12 ?' },
+        { words: ['.', 'passport', 'is', 'my', 'Here'], answer: 'Here is my passport .' },
+        // Set 3 - Terminal & Requests
+        { words: ['terminal', 'is', '?', '2', 'Where'], answer: 'Where is terminal 2 ?' },
+        { words: ['please', '.', 'pass', 'boarding', 'my', ',', 'is', 'Here'], answer: 'Here is my boarding pass , please .' },
+        { words: ['?', 'the', 'gate', 'Is', 'Tokyo', 'for', 'this'], answer: 'Is this the gate for Tokyo ?' },
+        { words: ['a', 'seat', "I'd", 'window', ',', 'like', 'please', '.'], answer: "I'd like a window seat , please ." },
+        { words: ['.', 'Madrid', 'flight', 'a', 'have', 'to', 'I'], answer: 'I have a flight to Madrid .' },
+        // Set 4 - Mixed Airport
+        { words: ['?', 'gate', 'is', 'the', 'Where'], answer: 'Where is the gate ?' },
+        { words: ['bags', '?', 'I', 'check', 'Can', 'my'], answer: 'Can I check my bags ?' },
+        { words: ['Rome', '?', 'for', 'gate', 'Is', 'this', 'the'], answer: 'Is this the gate for Rome ?' },
+        { words: ['check', '.', ',', 'like', 'to', "I'd", 'in', 'please'], answer: "I'd like to check in , please ." },
+        { words: ['me', 'is', '?', 'Excuse', 'where', ',', 'security'], answer: 'Excuse me , where is security ?' }
+      ];
+      
+      // ============================================
+      // HELPER FUNCTIONS FOR QUESTION POOLS
+      // ============================================
+      
+      // Shuffle array (Fisher-Yates)
+      function shuffleArray(array) {
+        const newArray = [...array];
+        for (let i = newArray.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+        }
+        return newArray;
+      }
+      
+      // Select random items from pool
+      function selectRandomItems(pool, count) {
+        const shuffled = shuffleArray(pool);
+        return shuffled.slice(0, count);
+      }
+      
+      // ============================================
+      // GAP-FILL REGENERATION
+      // ============================================
+      
+      function regenerateGapFill() {
+        const container = document.getElementById('gap-fill-checkin');
+        if (!container) return;
+        
+        // Select a random conversation
+        const randomConvo = gapFillPools[Math.floor(Math.random() * gapFillPools.length)];
+        
+        // Build the HTML
+        let html = '<h3>🧳 At the Check-in Counter</h3>';
+        html += '<p>Complete this conversation between a traveller and a check-in attendant.</p>';
+        
+        let questionNum = 1;
+        let gapNum = 0;
+        
+        for (let i = 0; i < randomConvo.conversation.length; i++) {
+          const line = randomConvo.conversation[i];
+          
+          if (line.gap || line.gap2) {
+            html += `<div class="question" id="gf${questionNum}">`;
+            questionNum++;
+          }
+          
+          html += `<p class="gap-fill-sentence"><strong>${line.speaker}:</strong> `;
+          
+          if (line.gap) {
+            gapNum++;
+            html += line.text;
+            html += `<input type="text" class="gap-input" data-answer="${line.gap.answer}" placeholder="..." style="width: ${line.gap.width}px;">`;
+            
+            if (line.gap2) {
+              gapNum++;
+              html += line.textAfter;
+              html += `<input type="text" class="gap-input" data-answer="${line.gap2.answer}" placeholder="..." style="width: ${line.gap2.width}px;">`;
+              html += line.textAfter2;
+            } else {
+              html += line.textAfter;
+            }
+          } else {
+            html += line.text;
+          }
+          
+          html += '</p>';
+          
+          if (line.gap || line.gap2) {
+            html += '</div>';
+          }
+        }
+        
+        // Add control buttons
+        html += `
+          <div class="control-buttons">
+            <button class="nav-button" id="gap-fill-prev" style="visibility:hidden;">← Previous</button>
+            <button id="gap-fill-checkin-submit" class="submit-btn">Check Answers</button>
+            <button id="gap-fill-checkin-restart" class="restart-btn" style="display:none;">Try Again</button>
+            <button class="nav-button" id="gap-fill-next">Next →</button>
+          </div>
+          <div class="score-display" id="gap-fill-checkin-score" style="display:none;">
+            Your score: <span>0</span>/7
+          </div>
+        `;
+        
+        container.innerHTML = html;
+        
+        // Re-initialize gap fill
+        GapFillModule.init({
+          containerId: 'gap-fill-checkin',
+          onComplete: function(score, total) {
+            console.log('Gap fill completed:', score, '/', total);
+          }
+        });
+        
+        // Re-attach navigation
+        document.getElementById('gap-fill-next').addEventListener('click', function() {
+          document.querySelector('[data-activity="mcq"]').click();
+        });
+        
+        // Override restart to regenerate questions
+        const restartBtn = document.getElementById('gap-fill-checkin-restart');
+        if (restartBtn) {
+          restartBtn.addEventListener('click', function() {
+            setTimeout(regenerateGapFill, 100);
+          });
+        }
+      }
+      
+      // ============================================
+      // MCQ REGENERATION
+      // ============================================
+      
+      function regenerateMCQ() {
+        const container = document.getElementById('mcq');
+        if (!container) return;
+        
+        // Select 5 random questions
+        const selectedQuestions = selectRandomItems(mcqPool, 5);
+        
+        // Build the HTML
+        let html = '<h3>🔒 At Security</h3>';
+        html += '<p>At security, staff give instructions. Match each instruction to the correct picture.</p>';
+        
+        const answers = {};
+        
+        selectedQuestions.forEach((q, index) => {
+          const qId = `q${index + 1}`;
+          answers[qId] = q.correctIndex;
+          
+          html += `<div class="question" id="${qId}">`;
+          html += `<p class="mcq-question">${index + 1}. ${q.question}</p>`;
+          html += '<div class="options" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">';
+          
+          q.images.forEach((img, imgIndex) => {
+            html += `<div class="option" data-index="${imgIndex}" onclick="MCQModule.selectOption('${qId}', ${imgIndex})" style="text-align: center; padding: 15px;">`;
+            html += `<img src="../../images/travel-beginner/lesson1/${img}" alt="${img.replace('.png', '')}" style="max-height: 60px; max-width: 100%;">`;
+            html += '</div>';
+          });
+          
+          html += '</div>';
+          html += '<div class="feedback"></div>';
+          html += '</div>';
+        });
+        
+        // Add control buttons
+        html += `
+          <div class="control-buttons">
+            <button class="nav-button" id="mcq-prev">← Previous</button>
+            <button id="mcq-submit" class="submit-btn">Check Answers</button>
+            <button id="mcq-restart" class="restart-btn" style="display:none;">Try Again</button>
+            <button class="nav-button" id="mcq-next">Next →</button>
+          </div>
+          <div class="score-display" id="mcq-score" style="display:none;">
+            Your score: <span>0</span>/5
+          </div>
+        `;
+        
+        container.innerHTML = html;
+        
+        // Re-initialize MCQ
+        MCQModule.init({
+          containerId: 'mcq',
+          answers: answers,
+          showAllQuestionsAtOnce: true,
+          onComplete: function(score, total) {
+            console.log('Security MCQ completed:', score, '/', total);
+          }
+        });
+        
+        // Clear any preselected options
+        document.querySelectorAll('#mcq .option').forEach(function(option) {
+          option.classList.remove('selected');
+        });
+        
+        // Re-attach navigation
+        document.getElementById('mcq-prev').addEventListener('click', function() {
+          document.querySelector('[data-activity="gap-fill-checkin"]').click();
+        });
+        document.getElementById('mcq-next').addEventListener('click', function() {
+          document.querySelector('[data-activity="drag-drop-boarding"]').click();
+        });
+        
+        // Override restart to regenerate questions
+        const restartBtn = document.getElementById('mcq-restart');
+        if (restartBtn) {
+          restartBtn.addEventListener('click', function() {
+            setTimeout(regenerateMCQ, 100);
+          });
+        }
+      }
+      
+      // ============================================
+      // DRAG-DROP REGENERATION
+      // ============================================
+      
+      function regenerateDragDrop() {
+        const container = document.getElementById('drag-drop-boarding');
+        if (!container) return;
+        
+        // Select 5 random sentences
+        const selectedSentences = selectRandomItems(dragDropPool, 5);
+        
+        // Build the HTML
+        let html = '<h3>✈️ At the Airport</h3>';
+        html += '<p>Put the words in the correct order to make sentences you might say or hear at the airport.</p>';
+        
+        const answers = {};
+        
+        selectedSentences.forEach((s, index) => {
+          const ddId = `dd${index + 1}`;
+          answers[ddId] = s.answer;
+          
+          // Shuffle the words for display
+          const shuffledWords = shuffleArray(s.words);
+          
+          html += `<div class="question" id="${ddId}">`;
+          html += `<p class="question-text">${index + 1}.</p>`;
+          html += '<div class="drop-zone"></div>';
+          html += '<div class="drag-items">';
+          
+          shuffledWords.forEach(word => {
+            html += `<div class="drag-item">${word}</div>`;
+          });
+          
+          html += '</div></div>';
+        });
+        
+        // Add control buttons
+        html += `
+          <div class="control-buttons">
+            <button class="nav-button" id="drag-drop-prev">← Previous</button>
+            <button id="drag-drop-boarding-submit" class="submit-btn">Check Answers</button>
+            <button id="drag-drop-boarding-restart" class="restart-btn" style="display:none;">Try Again</button>
+            <button class="nav-button" id="drag-drop-next" style="visibility:hidden;">Next →</button>
+          </div>
+          <div class="score-display" id="drag-drop-boarding-score" style="display:none;">
+            Your score: <span>0</span>/5
+          </div>
+        `;
+        
+        container.innerHTML = html;
+        
+        // Re-initialize Drag Drop
+        DragDropModule.init({
+          containerId: 'drag-drop-boarding',
+          storageKey: 'travel-lesson1-boarding',
+          answers: answers,
+          onComplete: function(score, total) {
+            console.log('Drag and drop completed:', score, '/', total);
+          }
+        });
+        
+        // Re-attach navigation
+        document.getElementById('drag-drop-prev').addEventListener('click', function() {
+          document.querySelector('[data-activity="mcq"]').click();
+        });
+        
+        // Override restart to regenerate questions
+        const restartBtn = document.getElementById('drag-drop-boarding-restart');
+        if (restartBtn) {
+          restartBtn.addEventListener('click', function() {
+            setTimeout(regenerateDragDrop, 100);
+          });
+        }
+      }
+      
+      // ============================================
+      // INITIALIZE ALL MODULES
+      // ============================================
+      
       // Initialize Vocabulary Matching with Carousel
       VocabMatchModule.init({
         containerId: 'vocab-match',
@@ -773,6 +1168,14 @@
         }
       });
       
+      // Override gap-fill restart button
+      const gapFillRestart = document.getElementById('gap-fill-checkin-restart');
+      if (gapFillRestart) {
+        gapFillRestart.addEventListener('click', function() {
+          setTimeout(regenerateGapFill, 100);
+        });
+      }
+      
       // Initialize MCQ for Security
       MCQModule.init({
         containerId: 'mcq',
@@ -782,20 +1185,6 @@
           'q3': 0,  // Liquids
           'q4': 2,  // Shoes
           'q5': 1   // Scan
-        },
-        correctExplanations: {
-          'q1': "Well done! A belt is what you take off.",
-          'q2': "Well done! A laptop must be removed from your bag.",
-          'q3': "Well done! Liquids go in a clear plastic bag.",
-          'q4': "Well done! Shoes are what you take off.",
-          'q5': "Well done! You scan your boarding pass."
-        },
-        incorrectExplanations: {
-          'q1': "Sorry, try again.",
-          'q2': "Sorry, try again.",
-          'q3': "Sorry, try again.",
-          'q4': "Sorry, try again.",
-          'q5': "Sorry, try again."
         },
         showAllQuestionsAtOnce: true,
         onComplete: function(score, total) {
@@ -807,6 +1196,14 @@
       document.querySelectorAll('#mcq .option').forEach(function(option) {
         option.classList.remove('selected');
       });
+      
+      // Override MCQ restart button
+      const mcqRestart = document.getElementById('mcq-restart');
+      if (mcqRestart) {
+        mcqRestart.addEventListener('click', function() {
+          setTimeout(regenerateMCQ, 100);
+        });
+      }
       
       // Initialize Drag and Drop for Boarding
       DragDropModule.init({
@@ -823,6 +1220,14 @@
           console.log('Drag and drop completed:', score, '/', total);
         }
       });
+      
+      // Override drag-drop restart button
+      const dragDropRestart = document.getElementById('drag-drop-boarding-restart');
+      if (dragDropRestart) {
+        dragDropRestart.addEventListener('click', function() {
+          setTimeout(regenerateDragDrop, 100);
+        });
+      }
       
       // Initialize Activity Navigation
       ActivityNavModule.init({
