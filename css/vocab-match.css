@@ -348,7 +348,7 @@
    5. Sticky Word Bank
    ---------------------------------------- */
 .vocab-words-wrapper {
-  position: sticky;
+  
   bottom: 0;
   background-color: var(--card-bg, #f8f9fa);
   padding: 15px 0 5px 0;
