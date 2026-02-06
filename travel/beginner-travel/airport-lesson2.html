@@ -9,6 +9,9 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
   
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
   <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="../../images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="../../images/favicon-32x32.png">
@@ -40,7 +43,7 @@
       <img src="../../images/my-logo.svg" alt="English in Doses" width="150" height="auto">
     </a>
     <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
-    <div class="nav-links">
+  <div class="nav-links">
       <a href="../../home.html" class="nav-link">Home</a>
       <a href="../../about.html" class="nav-link">About Us</a>
       <a href="../../contact.html" class="nav-link">Contact Us</a>
@@ -72,7 +75,7 @@
       <!-- LESSON GOAL -->
       <!-- ======================================== -->
       <section class="intro-section">
-        <h2>🎯 Lesson Goal</h2>
+        <h2><i class="fa-solid fa-bullseye icon-warning"></i> Lesson Goal</h2>
         <p><strong>Request services during a flight, understand basic announcements, and handle your in-flight needs.</strong></p>
         
         <h3>What you will learn:</h3>
@@ -87,7 +90,7 @@
       <!-- SECTION 1: VOCABULARY -->
       <!-- ======================================== -->
       <section class="content-section">
-        <h2>📚 Vocabulary</h2>
+        <h2><i class="fa-solid fa-book icon-primary"></i> Vocabulary</h2>
         <p>Learn these words for things on an airplane. Drag each word to the correct picture.</p>
         
         <div id="vocab-match" class="vocab-match-container">
@@ -108,18 +111,18 @@
                 <div class="vocab-images-grid" style="overflow: visible; max-height: none;">
                   <div class="vocab-image-item">
                     <div class="vocab-image-wrapper">
-                      <!-- IMAGE: aisle - airplane seat next to the walkway -->
-                      <img src="../../images/travel-beginner/lesson2/aisle.png" alt="aisle" class="vocab-image">
+                      <!-- IMAGE: still water - bottle of still/flat water -->
+                      <img src="../../images/travel-beginner/lesson2/still-water.png" alt="still water" class="vocab-image">
                     </div>
-                    <div class="vocab-drop-zone empty" data-answer="aisle"></div>
+                    <div class="vocab-drop-zone empty" data-answer="still water"></div>
                   </div>
                   
                   <div class="vocab-image-item">
                     <div class="vocab-image-wrapper">
-                      <!-- IMAGE: window - airplane seat next to the window -->
-                      <img src="../../images/travel-beginner/lesson2/window.png" alt="window" class="vocab-image">
+                      <!-- IMAGE: sparkling water - bottle of sparkling/fizzy water -->
+                      <img src="../../images/travel-beginner/lesson2/sparkling-water.png" alt="sparkling water" class="vocab-image">
                     </div>
-                    <div class="vocab-drop-zone empty" data-answer="window"></div>
+                    <div class="vocab-drop-zone empty" data-answer="sparkling water"></div>
                   </div>
                   
                   <div class="vocab-image-item">
@@ -263,11 +266,11 @@
             
             <!-- Sticky Word Bank (jumbled order) -->
             <div class="vocab-words-wrapper">
-              <p class="vocab-words-label">👇 Drag words from here</p>
+              <p class="vocab-words-label"><i class="fa-solid fa-hand-point-down icon-primary"></i> Drag words from here</p>
               <div class="vocab-words-container">
                 <div class="vocab-word-item" data-page="0">overhead bin</div>
-                <div class="vocab-word-item" data-page="0">window</div>
-                <div class="vocab-word-item" data-page="0">aisle</div>
+                <div class="vocab-word-item" data-page="0">sparkling water</div>
+                <div class="vocab-word-item" data-page="0">still water</div>
                 <div class="vocab-word-item" data-page="0">middle seat</div>
                 <div class="vocab-word-item" data-page="1">emergency exit</div>
                 <div class="vocab-word-item" data-page="1">seatbelt</div>
@@ -301,62 +304,62 @@
       <!-- SECTION 2: GRAMMAR - Questions with What & Where -->
       <!-- ======================================== -->
       <section class="content-section">
-        <h2>📖 Grammar: Questions with "What" and "Where"</h2>
+        <h2><i class="fa-solid fa-book-open icon-primary"></i> Grammar: Questions with "What" and "Where"</h2>
         <p>Let's learn how to ask questions with <strong>what</strong> and <strong>where</strong>.</p>
         
-        <h3>Asking about time 🕒❓</h3>
+        <h3>Asking about time <i class="fa-solid fa-clock icon-secondary icon-sm"></i></h3>
         
         <p><strong>Form:</strong> what time + is/are + noun?</p>
         <div class="example">
           <ol>
-          <li><span class="example">What time is it?</span> ⌚❓</li>
-          <li><span class="example">What time is boarding?</span> 🎫</li>
-          <li><span class="example">What time are meals served?</span> 🍽️</li>
+          <li><span class="example">What time is it?</span> <i class="fa-solid fa-clock icon-secondary"></i></li>
+          <li><span class="example">What time is boarding?</span> <i class="fa-solid fa-ticket icon-primary"></i></li>
+          <li><span class="example">What time are meals served?</span> <i class="fa-solid fa-utensils icon-secondary"></i></li>
           </ol>
           </div>
         
           <p><strong>Form:</strong> what time + do/does + subject + verb?</p>
   <div class="example">
     <ol>
-      <li><span class="example">What time do we land?</span> ✈️</li>
-      <li><span class="example">What time does the flight leave?</span> 🛫</li>
-      <li><span class="example">What time do they serve breakfast?</span> ☕</li>
+      <li><span class="example">What time do we land?</span> <i class="fa-solid fa-plane-arrival icon-primary"></i></li>
+      <li><span class="example">What time does the flight leave?</span> <i class="fa-solid fa-plane-departure icon-primary"></i></li>
+      <li><span class="example">What time do they serve breakfast?</span> <i class="fa-solid fa-mug-hot icon-secondary"></i></li>
     </ol>
   </div>
 
-  <h3>Asking about things ❓</h3>
+  <h3>Asking about things</h3>
 
   <p><strong>Form:</strong> what + is/are + noun?</p>
   <div class="example">
     <ol>
-      <li><span class="example">What is the gate number?</span> 🚪</li>
-      <li><span class="example">What is my seat number?</span> 💺</li>
-      <li><span class="example">What are the drink options?</span> 🥤</li>
+      <li><span class="example">What is the gate number?</span> <i class="fa-solid fa-door-open icon-primary"></i></li>
+      <li><span class="example">What is my seat number?</span> <i class="fa-solid fa-chair icon-primary"></i></li>
+      <li><span class="example">What are the drink options?</span> <i class="fa-solid fa-glass-water icon-light-blue"></i></li>
     </ol>
   </div>
 
-  <h3>Asking about location 📍❓</h3>
+  <h3>Asking about location <i class="fa-solid fa-location-dot icon-warning icon-sm"></i></h3>
 
   <p><strong>Form:</strong> where + is/are + noun?</p>
   <div class="example">
     <ol>
-      <li><span class="example">Where is the emergency exit?</span> 🚨</li>
-      <li><span class="example">Where is my seat?</span> 💺</li>
-      <li><span class="example">Where are the bathrooms?</span> 🚻</li>
+      <li><span class="example">Where is the emergency exit?</span> <i class="fa-solid fa-triangle-exclamation icon-warning"></i></li>
+      <li><span class="example">Where is my seat?</span> <i class="fa-solid fa-chair icon-primary"></i></li>
+      <li><span class="example">Where are the bathrooms?</span> <i class="fa-solid fa-restroom icon-primary"></i></li>
     </ol>
   </div>
 
   <p><strong>Form:</strong> where + can + subject + verb?</p>
   <div class="example">
     <ol>
-      <li><span class="example">Where can I put my bag?</span> 🎒</li>
-      <li><span class="example">Where can I get a blanket?</span> 🛏️</li>
-      <li><span class="example">Where can we find the gate?</span> 🚪</li>
+      <li><span class="example">Where can I put my bag?</span> <i class="fa-solid fa-bag-shopping icon-secondary"></i></li>
+      <li><span class="example">Where can I get a blanket?</span> <i class="fa-solid fa-blanket icon-primary"></i></li>
+      <li><span class="example">Where can we find the gate?</span> <i class="fa-solid fa-door-open icon-primary"></i></li>
     </ol>
   </div>
         
         <div class="important-note">
-          <p><strong>💡 Remember:</strong> Use <strong>is</strong> for one thing (the exit, my seat). Use <strong>are</strong> for more than one thing (the bathrooms, the drink options).</p>
+          <p><strong><i class="fa-solid fa-lightbulb icon-secondary"></i> Remember:</strong> Use <strong>is</strong> for one thing (the exit, my seat). Use <strong>are</strong> for more than one thing (the bathrooms, the drink options).</p>
         </div>
         
         <h3>Quick Review</h3>
@@ -365,7 +368,7 @@
         <div id="flashcards" class="flashcard-container">
           
           <div class="flashcard-intro">
-            <p class="hint">👆 Click a card to see the answer</p>
+            <p class="hint"><i class="fa-solid fa-hand-point-up icon-primary"></i> Click a card to see the answer</p>
           </div>
           
           <div class="flashcard-grid">
@@ -377,7 +380,7 @@
                   <span class="flashcard-number">1</span>
                   <span class="flashcard-label">Complete the question</span>
                   <span class="flashcard-phrase">___ are the bathrooms?</span>
-                  <span class="flashcard-hint"><span class="rotate-icon">🔄</span> Click to see answer</span>
+                  <span class="flashcard-hint"><i class="fa-solid fa-rotate rotate-icon icon-primary"></i> Click to see answer</span>
                 </div>
                 <div class="flashcard-back">
                   <span class="flashcard-number">1</span>
@@ -395,7 +398,7 @@
                   <span class="flashcard-number">2</span>
                   <span class="flashcard-label">Complete the question</span>
                   <span class="flashcard-phrase">___ time is boarding?</span>
-                  <span class="flashcard-hint"><span class="rotate-icon">🔄</span> Click to see answer</span>
+                  <span class="flashcard-hint"><i class="fa-solid fa-rotate rotate-icon icon-primary"></i> Click to see answer</span>
                 </div>
                 <div class="flashcard-back">
                   <span class="flashcard-number">2</span>
@@ -413,7 +416,7 @@
                   <span class="flashcard-number">3</span>
                   <span class="flashcard-label">Complete the question</span>
                   <span class="flashcard-phrase">___ is the gate?</span>
-                  <span class="flashcard-hint"><span class="rotate-icon">🔄</span> Click to see answer</span>
+                  <span class="flashcard-hint"><i class="fa-solid fa-rotate rotate-icon icon-primary"></i> Click to see answer</span>
                 </div>
                 <div class="flashcard-back">
                   <span class="flashcard-number">3</span>
@@ -431,7 +434,7 @@
                   <span class="flashcard-number">4</span>
                   <span class="flashcard-label">Complete the question</span>
                   <span class="flashcard-phrase">___ time do we land?</span>
-                  <span class="flashcard-hint"><span class="rotate-icon">🔄</span> Click to see answer</span>
+                  <span class="flashcard-hint"><i class="fa-solid fa-rotate rotate-icon icon-primary"></i> Click to see answer</span>
                 </div>
                 <div class="flashcard-back">
                   <span class="flashcard-number">4</span>
@@ -445,7 +448,7 @@
           </div>
           
           <div class="flashcard-controls">
-            <button class="flip-all-btn"><span class="icon">🔄</span> Show All Answers</button>
+            <button class="flip-all-btn"><i class="fa-solid fa-rotate icon-primary"></i> Show All Answers</button>
           </div>
           
         </div>
@@ -455,7 +458,7 @@
       <!-- SECTION 3: PRACTICE ACTIVITIES -->
       <!-- ======================================== -->
       <section class="content-section">
-        <h2>✏️ Practice Activities</h2>
+        <h2><i class="fa-solid fa-pencil icon-primary"></i> Practice Activities</h2>
         <p>Practise what you have learned with these activities.</p>
 
         <!-- Activity Navigation -->
@@ -530,35 +533,35 @@
       <!-- SECTION 4: PRODUCTION - ROLE PLAY -->
       <!-- ======================================== -->
       <section class="content-section">
-        <h2>🎭 Speaking Practice</h2>
+        <h2><i class="fa-solid fa-users icon-primary"></i> Speaking Practice</h2>
         <p>Practise these conversations with your teacher or a partner.</p>
         
         <h3>Conversation 1: Asking for Comfort Items</h3>
         <div class="example">
-          <p><strong>Passenger:</strong> Excuse me.</p>
-          <p><strong>Flight Attendant:</strong> Yes, how can I help you?</p>
-          <p><strong>Passenger:</strong> Can I have a blanket, please? It's cold.</p>
-          <p><strong>Flight Attendant:</strong> Of course. Here you are.</p>
-          <p><strong>Passenger:</strong> Thank you. And can I have some water?</p>
-          <p><strong>Flight Attendant:</strong> Sure. Would you like still or sparkling?</p>
-          <p><strong>Passenger:</strong> Still, please.</p>
+          <p><i class="fa-solid fa-user icon-primary icon-spacing"></i><strong>Passenger:</strong> Excuse me.</p>
+          <p><i class="fa-solid fa-user-tie icon-secondary icon-spacing"></i><strong>Flight Attendant:</strong> Yes, how can I help you?</p>
+          <p><i class="fa-solid fa-user icon-primary icon-spacing"></i><strong>Passenger:</strong> Can I have a blanket, please? It's cold.</p>
+          <p><i class="fa-solid fa-user-tie icon-secondary icon-spacing"></i><strong>Flight Attendant:</strong> Of course. Here you are.</p>
+          <p><i class="fa-solid fa-user icon-primary icon-spacing"></i><strong>Passenger:</strong> Thank you. And can I have some water, please?</p>
+          <p><i class="fa-solid fa-user-tie icon-secondary icon-spacing"></i><strong>Flight Attendant:</strong> Sure. Would you like still or sparkling?</p>
+          <p><i class="fa-solid fa-user icon-primary icon-spacing"></i><strong>Passenger:</strong> Still, please.</p>
         </div>
         
         <h3>Conversation 2: Asking About the Flight</h3>
         <div class="example">
-          <p><strong>Passenger:</strong> Excuse me, what time do we arrive?</p>
-          <p><strong>Flight Attendant:</strong> We arrive at 3:30 local time.</p>
-          <p><strong>Passenger:</strong> And what time is the meal?</p>
-          <p><strong>Flight Attendant:</strong> We serve lunch in about one hour.</p>
-          <p><strong>Passenger:</strong> Great, thank you.</p>
+          <p><i class="fa-solid fa-user icon-primary icon-spacing"></i><strong>Passenger:</strong> Excuse me, what time do we arrive?</p>
+          <p><i class="fa-solid fa-user-tie icon-secondary icon-spacing"></i><strong>Flight Attendant:</strong> We arrive at 3:30 local time.</p>
+          <p><i class="fa-solid fa-user icon-primary icon-spacing"></i><strong>Passenger:</strong> And what time is the meal?</p>
+          <p><i class="fa-solid fa-user-tie icon-secondary icon-spacing"></i><strong>Flight Attendant:</strong> We serve lunch in about one hour.</p>
+          <p><i class="fa-solid fa-user icon-primary icon-spacing"></i><strong>Passenger:</strong> Great, thank you.</p>
         </div>
         
         <h3>Conversation 3: Finding Things on the Plane</h3>
         <div class="example">
-          <p><strong>Passenger:</strong> Excuse me, where is the emergency exit?</p>
-          <p><strong>Flight Attendant:</strong> It's at the back of the plane, behind row 25.</p>
-          <p><strong>Passenger:</strong> Thank you. And where can I put my bag?</p>
-          <p><strong>Flight Attendant:</strong> In the overhead bin, or under the seat in front of you.</p>
+          <p><i class="fa-solid fa-user icon-primary icon-spacing"></i><strong>Passenger:</strong> Excuse me, where is the emergency exit, please?</p>
+          <p><i class="fa-solid fa-user-tie icon-secondary icon-spacing"></i><strong>Flight Attendant:</strong> It's at the back of the plane, behind row 25.</p>
+          <p><i class="fa-solid fa-user icon-primary icon-spacing"></i><strong>Passenger:</strong> Thank you. And where can I put my bag?</p>
+          <p><i class="fa-solid fa-user-tie icon-secondary icon-spacing"></i><strong>Flight Attendant:</strong> In the overhead bin, or under the seat in front of you.</p>
         </div>
         
         <h3>Role Play Scenarios</h3>
@@ -592,7 +595,7 @@
         </table>
         
         <div class="important-note">
-          <p><strong>💡 Remember:</strong> Use <strong>"Can I have...?"</strong> for requests, <strong>"What time...?"</strong> for time questions, <strong>"Where is...?"</strong> for location, and <strong>"Excuse me"</strong> before asking for help.</p>
+          <p><strong><i class="fa-solid fa-lightbulb icon-secondary"></i> Remember:</strong> Use <strong>"Can I have...?"</strong> for requests, <strong>"What time...?"</strong> for time questions, <strong>"Where is...?"</strong> for location, and <strong>"Excuse me"</strong> before asking for help.</p>
         </div>
       </section>
 
@@ -674,7 +677,7 @@
             { speaker: 'Flight Attendant', text: 'Yes, how can I help you?' },
             { speaker: 'Passenger', text: 'Can I have a ___, please?', gap: true, answer: 'blanket' },
             { speaker: 'Flight Attendant', text: 'Of course. Here you are.' },
-            { speaker: 'Passenger', text: 'Thank you. And can I have some ___?', gap: true, answer: 'water' },
+            { speaker: 'Passenger', text: 'Thank you. And can I have some ___, please?', gap: true, answer: 'water' },
             { speaker: 'Flight Attendant', text: 'Sure. Would you like still or sparkling?' },
             { speaker: 'Passenger', text: 'Still, please.' },
             { speaker: 'Passenger', text: 'What ___ do we arrive?', gap: true, answer: 'time' },
@@ -693,7 +696,7 @@
             { speaker: 'Flight Attendant', text: 'Here you are.' },
             { speaker: 'Passenger', text: 'Thank you. What time is the ___?', gap: true, answer: 'meal' },
             { speaker: 'Flight Attendant', text: 'We serve lunch in about one hour.' },
-            { speaker: 'Passenger', text: 'Great. And can I have a ___? It is cold.', gap: true, answer: 'blanket' },
+            { speaker: 'Passenger', text: 'Great. And can I have a ___, please? It is cold.', gap: true, answer: 'blanket' },
             { speaker: 'Flight Attendant', text: 'Of course.' },
             { speaker: 'Passenger', text: 'Where can I put my bag?', gap: false },
             { speaker: 'Flight Attendant', text: 'In the ___ bin above you.', gap: true, answer: 'overhead' }
@@ -716,7 +719,7 @@
         },
         // Set 4: Asking for pillow and snack
         {
-          wordBank: ['pillow', 'snack', 'time', 'window'],
+          wordBank: ['pillow', 'snack', 'time', 'sparkling'],
           conversation: [
             { speaker: 'Passenger', text: 'Excuse me.' },
             { speaker: 'Flight Attendant', text: 'Yes?' },
@@ -726,14 +729,14 @@
             { speaker: 'Flight Attendant', text: 'Of course. Would you like cookies or nuts?' },
             { speaker: 'Passenger', text: 'Cookies, please. What ___ is the landing?', gap: true, answer: 'time' },
             { speaker: 'Flight Attendant', text: 'We land at 8:45.' },
-            { speaker: 'Passenger', text: 'And where is my seat? I have seat 14A.', gap: false },
-            { speaker: 'Flight Attendant', text: '14A is a ___ seat, on the left side.', gap: true, answer: 'window' }
+            { speaker: 'Passenger', text: 'And can I have some water, please?', gap: false },
+            { speaker: 'Flight Attendant', text: 'Sure. Would you like still or ___?', gap: true, answer: 'sparkling' }
           ]
         }
       ];
       
       // ============================================
-      // MCQ QUESTION POOLS (4 sets of 5 questions) - SIMPLIFIED
+      // MCQ QUESTION POOLS (4 sets of 5 questions) - WITH FEEDBACK
       // ============================================
       const mcqPools = [
         // Set 1
@@ -741,55 +744,75 @@
           {
             question: 'You are cold on the plane. You ask for a ___.',
             options: ['pillow', 'blanket', 'snack'],
-            correctIndex: 1
+            correctIndex: 1,
+            correctFeedback: 'A blanket keeps you warm when you are cold.',
+            incorrectFeedback: 'When you are cold, you need a blanket to keep warm.'
           },
           {
             question: 'You put your bag in the ___ bin.',
             options: ['tray', 'seatbelt', 'overhead'],
-            correctIndex: 2
+            correctIndex: 2,
+            correctFeedback: 'The overhead bin is above your seat, for storing bags.',
+            incorrectFeedback: 'The overhead bin is the compartment above your seat for bags.'
           },
           {
             question: 'The plane goes up. This is called ___.',
             options: ['landing', 'takeoff', 'turbulence'],
-            correctIndex: 1
+            correctIndex: 1,
+            correctFeedback: 'Takeoff is when the plane leaves the ground and goes up.',
+            incorrectFeedback: 'When the plane goes up and leaves the ground, it is called takeoff.'
           },
           {
             question: 'You want to sleep. You ask for a ___.',
             options: ['pillow', 'drink', 'meal'],
-            correctIndex: 0
+            correctIndex: 0,
+            correctFeedback: 'A pillow helps you rest your head when you sleep.',
+            incorrectFeedback: 'A pillow is soft and helps you rest your head when you sleep.'
           },
           {
             question: 'This person helps you on the plane: flight ___.',
             options: ['pilot', 'attendant', 'passenger'],
-            correctIndex: 1
+            correctIndex: 1,
+            correctFeedback: 'A flight attendant helps passengers during the flight.',
+            incorrectFeedback: 'The flight attendant is the person who helps passengers on the plane.'
           }
         ],
         // Set 2
         [
           {
-            question: 'You can see outside from the ___ seat.',
-            options: ['aisle', 'middle', 'window'],
-            correctIndex: 2
+            question: 'Water without bubbles is called ___ water.',
+            options: ['sparkling', 'still', 'fizzy'],
+            correctIndex: 1,
+            correctFeedback: 'Still water has no bubbles. It is also called flat water.',
+            incorrectFeedback: 'Water without bubbles is called still water.'
           },
           {
             question: 'The plane comes down. This is called ___.',
             options: ['takeoff', 'landing', 'turbulence'],
-            correctIndex: 1
+            correctIndex: 1,
+            correctFeedback: 'Landing is when the plane comes down and touches the ground.',
+            incorrectFeedback: 'When the plane comes down and touches the ground, it is called landing.'
           },
           {
             question: 'You must fasten your ___ for takeoff.',
             options: ['blanket', 'tray table', 'seatbelt'],
-            correctIndex: 2
+            correctIndex: 2,
+            correctFeedback: 'You must fasten your seatbelt for safety during takeoff and landing.',
+            incorrectFeedback: 'For safety, you must fasten your seatbelt during takeoff and landing.'
           },
           {
             question: 'You are thirsty. You ask for a ___.',
             options: ['pillow', 'drink', 'blanket'],
-            correctIndex: 1
+            correctIndex: 1,
+            correctFeedback: 'When you are thirsty, you need a drink like water or juice.',
+            incorrectFeedback: 'When you are thirsty, you ask for a drink.'
           },
           {
             question: 'The plane is shaking. This is called ___.',
             options: ['takeoff', 'landing', 'turbulence'],
-            correctIndex: 2
+            correctIndex: 2,
+            correctFeedback: 'Turbulence is when the plane shakes because of rough air.',
+            incorrectFeedback: 'When the plane shakes, it is called turbulence.'
           }
         ],
         // Set 3
@@ -797,27 +820,37 @@
           {
             question: 'The seat in the middle is called the ___ seat.',
             options: ['middle', 'window', 'aisle'],
-            correctIndex: 0
+            correctIndex: 0,
+            correctFeedback: 'The middle seat is between the window seat and the aisle seat.',
+            incorrectFeedback: 'The seat between the window and the aisle is the middle seat.'
           },
           {
             question: 'You put your food on the ___ table.',
             options: ['seat', 'tray', 'overhead'],
-            correctIndex: 1
+            correctIndex: 1,
+            correctFeedback: 'The tray table folds down from the seat in front of you.',
+            incorrectFeedback: 'You put your food on the tray table, which folds down from the seat in front.'
           },
           {
             question: 'You are hungry. You ask for a ___.',
             options: ['blanket', 'pillow', 'snack'],
-            correctIndex: 2
+            correctIndex: 2,
+            correctFeedback: 'A snack is a small amount of food to eat between meals.',
+            incorrectFeedback: 'When you are hungry, you ask for a snack.'
           },
           {
             question: 'You want to eat lunch. You ask: What time is the ___?',
             options: ['exit', 'meal', 'seatbelt'],
-            correctIndex: 1
+            correctIndex: 1,
+            correctFeedback: 'Meal is the word for food served on a plane, like breakfast, lunch, or dinner.',
+            incorrectFeedback: 'On a plane, lunch or dinner is called a meal.'
           },
           {
             question: 'In an emergency, you go to the emergency ___.',
             options: ['bin', 'table', 'exit'],
-            correctIndex: 2
+            correctIndex: 2,
+            correctFeedback: 'The emergency exit is a special door for leaving the plane quickly.',
+            incorrectFeedback: 'In an emergency, you leave through the emergency exit.'
           }
         ],
         // Set 4
@@ -825,27 +858,37 @@
           {
             question: 'The food on a long flight is called the ___.',
             options: ['snack', 'meal', 'drink'],
-            correctIndex: 1
+            correctIndex: 1,
+            correctFeedback: 'A meal is a full serving of food, usually with different dishes.',
+            incorrectFeedback: 'On a long flight, the full food service is called a meal.'
           },
           {
             question: 'Coffee and water are ___.',
             options: ['snacks', 'meals', 'drinks'],
-            correctIndex: 2
+            correctIndex: 2,
+            correctFeedback: 'Coffee and water are drinks, which are liquids you consume.',
+            incorrectFeedback: 'Coffee, water, and other liquids are called drinks.'
           },
           {
-            question: 'You can walk in the ___ seat.',
-            options: ['window', 'middle', 'aisle'],
-            correctIndex: 2
+            question: 'Water with bubbles is called ___ water.',
+            options: ['still', 'sparkling', 'flat'],
+            correctIndex: 1,
+            correctFeedback: 'Sparkling water has bubbles. It is also called fizzy water.',
+            incorrectFeedback: 'Water with bubbles is called sparkling water.'
           },
           {
             question: 'Before takeoff, close your tray ___.',
             options: ['blanket', 'table', 'pillow'],
-            correctIndex: 1
+            correctIndex: 1,
+            correctFeedback: 'The tray table must be closed and locked for takeoff and landing.',
+            incorrectFeedback: 'You must close your tray table before takeoff.'
           },
           {
             question: 'A small snack between meals is called a ___.',
             options: ['meal', 'snack', 'drink'],
-            correctIndex: 1
+            correctIndex: 1,
+            correctFeedback: 'A snack is a small amount of food you eat between meals.',
+            incorrectFeedback: 'A small amount of food between meals is called a snack.'
           }
         ]
       ];
@@ -857,15 +900,15 @@
       const dragDropPools = [
         // Set 1
         [
-          { words: ['blanket', 'I', 'a', 'have', 'Can', '?'], answer: 'Can I have a blanket ?' },
+          { words: ['blanket', 'I', 'a', 'have', 'Can', 'please', '?'], answer: 'Can I have a blanket please ?' },
           { words: ['arrive', 'do', 'time', 'What', 'we', '?'], answer: 'What time do we arrive ?' },
           { words: ['is', 'the', 'exit', 'emergency', 'Where', '?'], answer: 'Where is the emergency exit ?' },
-          { words: ['Excuse me,', 'water', 'some', 'I', 'have', 'can', '?'], answer: 'Excuse me, can I have some water ?' },
+          { words: ['Excuse me,', 'water', 'some', 'I', 'have', 'can', 'please', '?'], answer: 'Excuse me, can I have some water please ?' },
           { words: ['meal', 'time', 'the', 'is', 'What', '?'], answer: 'What time is the meal ?' }
         ],
         // Set 2
         [
-          { words: ['have', 'drink', 'Can', 'I', 'a', '?'], answer: 'Can I have a drink ?' },
+          { words: ['have', 'drink', 'Can', 'I', 'a', 'please', '?'], answer: 'Can I have a drink please ?' },
           { words: ['land', 'time', 'do', 'we', 'What', '?'], answer: 'What time do we land ?' },
           { words: ['pillow', 'I', 'a', 'have', 'Can', 'please', '?'], answer: 'Can I have a pillow please ?' },
           { words: ['the', 'bin', 'is', 'overhead', 'Where', '?'], answer: 'Where is the overhead bin ?' },
@@ -873,18 +916,18 @@
         ],
         // Set 3
         [
-          { words: ['drink', 'I', 'have', 'Can', 'a', '?'], answer: 'Can I have a drink ?' },
+          { words: ['drink', 'I', 'have', 'Can', 'a', 'please', '?'], answer: 'Can I have a drink please ?' },
           { words: ['is', 'takeoff', 'What', 'time', '?'], answer: 'What time is takeoff ?' },
-          { words: ['the', 'aisle', 'seat', 'Where', 'is', '?'], answer: 'Where is the aisle seat ?' },
+          { words: ['the', 'middle', 'seat', 'Where', 'is', '?'], answer: 'Where is the middle seat ?' },
           { words: ['Excuse me,', 'cold', 'I', 'am', '.'], answer: 'Excuse me, I am cold .' },
           { words: ['landing', 'the', 'What', 'is', 'time', '?'], answer: 'What time is the landing ?' }
         ],
         // Set 4
         [
-          { words: ['some', 'water', 'I', 'have', 'Can', '?'], answer: 'Can I have some water ?' },
+          { words: ['some', 'water', 'I', 'have', 'Can', 'please', '?'], answer: 'Can I have some water please ?' },
           { words: ['lunch', 'is', 'time', 'What', '?'], answer: 'What time is lunch ?' },
           { words: ['seat', 'my', 'is', 'Where', '?'], answer: 'Where is my seat ?' },
-          { words: ['blanket', 'a', 'and', 'pillow', 'have', 'I', 'Can', 'a', '?'], answer: 'Can I have a blanket and a pillow ?' },
+          { words: ['blanket', 'a', 'and', 'pillow', 'have', 'I', 'Can', 'a', 'please', '?'], answer: 'Can I have a blanket and a pillow please ?' },
           { words: ['flight', 'the', 'Where', 'is', 'attendant', '?'], answer: 'Where is the flight attendant ?' }
         ]
       ];
@@ -910,16 +953,16 @@
         
         const convoSet = gapFillPools[setIndex % gapFillPools.length];
         
-        let html = '<h3>✈️ On the Airplane</h3>';
+        let html = '<h3><i class="fa-solid fa-plane icon-primary"></i> On the Airplane</h3>';
         html += '<p>Complete this conversation. Use the words from the box.</p>';
         
-        // Add word bank
+        // Add word bank with proper styling classes
         const shuffledWords = shuffleArray(convoSet.wordBank);
-        html += '<div class="word-bank">';
-        html += '<p class="word-bank-label">Word Bank:</p>';
-        html += '<div class="word-bank-words">';
+        html += '<div class="vocab-words-wrapper" style="position: relative; margin-bottom: 20px;">';
+        html += '<p class="vocab-words-label">Word Bank:</p>';
+        html += '<div class="vocab-words-container">';
         shuffledWords.forEach(word => {
-          html += `<span class="word-bank-item">${word}</span>`;
+          html += `<span class="vocab-word-item" style="cursor: default;">${word}</span>`;
         });
         html += '</div></div>';
         
@@ -928,7 +971,17 @@
         let gapCount = 0;
         
         convoSet.conversation.forEach((line, index) => {
-          html += `<p class="gap-fill-sentence"><strong>${line.speaker}:</strong> `;
+          // Add icon based on speaker
+          let speakerIcon = '';
+          if (line.speaker === 'Passenger') {
+            speakerIcon = '<i class="fa-solid fa-user icon-primary icon-spacing"></i>';
+          } else if (line.speaker === 'Flight Attendant') {
+            speakerIcon = '<i class="fa-solid fa-user-tie icon-secondary icon-spacing"></i>';
+          } else if (line.speaker === 'Captain') {
+            speakerIcon = '<i class="fa-solid fa-user-pilot icon-success icon-spacing"></i>';
+          }
+          
+          html += `<p class="gap-fill-sentence">${speakerIcon}<strong>${line.speaker}:</strong> `;
           
           if (line.gap) {
             const parts = line.text.split('___');
@@ -984,25 +1037,55 @@
       }
       
       // ============================================
-      // MCQ GENERATION
+      // MCQ GENERATION - WITH FEEDBACK
       // ============================================
+      function getMCQIcon(question) {
+        // Return appropriate icon based on question content
+        if (question.includes('cold')) {
+          return '<i class="fa-solid fa-snowflake icon-light-blue icon-spacing-sm"></i>';
+        } else if (question.includes('sleep')) {
+          return '<i class="fa-solid fa-bed icon-primary icon-spacing-sm"></i>';
+        } else if (question.includes('thirsty')) {
+          return '<i class="fa-solid fa-glass-water icon-light-blue icon-spacing-sm"></i>';
+        } else if (question.includes('hungry')) {
+          return '<i class="fa-solid fa-burger icon-secondary icon-spacing-sm"></i>';
+        } else if (question.includes('plane goes up') || question.includes('plane leaves')) {
+          return '<i class="fa-solid fa-plane-departure icon-primary icon-spacing-sm"></i>';
+        } else if (question.includes('plane comes down') || question.includes('touches the ground')) {
+          return '<i class="fa-solid fa-plane-arrival icon-primary icon-spacing-sm"></i>';
+        } else if (question.includes('shaking')) {
+          return '<i class="fa-solid fa-wind icon-primary icon-spacing-sm"></i>';
+        } else if (question.includes('emergency')) {
+          return '<i class="fa-solid fa-triangle-exclamation icon-warning icon-spacing-sm"></i>';
+        } else if (question.includes('fasten')) {
+          return '<i class="fa-solid fa-user-shield icon-success icon-spacing-sm"></i>';
+        }
+        return ''; // No icon for other questions
+      }
+      
       function generateMCQ(setIndex) {
         const container = document.getElementById('mcq');
         if (!container) return;
         
         const questionSet = mcqPools[setIndex % mcqPools.length];
         
-        let html = '<h3>🎯 Vocabulary Quiz</h3>';
+        let html = '<h3><i class="fa-solid fa-clipboard-question icon-primary"></i> Vocabulary Quiz</h3>';
         html += '<p>Choose the correct word for each sentence.</p>';
         
         const answers = {};
+        const correctExplanations = {};
+        const incorrectExplanations = {};
         
         questionSet.forEach((q, index) => {
           const qId = `q${index + 1}`;
           answers[qId] = q.correctIndex;
+          correctExplanations[qId] = q.correctFeedback;
+          incorrectExplanations[qId] = q.incorrectFeedback;
+          
+          const questionIcon = getMCQIcon(q.question);
           
           html += `<div class="question" id="${qId}">`;
-          html += `<p class="mcq-question">${index + 1}. ${q.question}</p>`;
+          html += `<p class="mcq-question">${index + 1}. ${questionIcon}${q.question}</p>`;
           html += '<div class="options">';
           
           q.options.forEach((option, optIndex) => {
@@ -1012,7 +1095,9 @@
             html += '</div>';
           });
           
-          html += '</div></div>';
+          html += '</div>';
+          html += '<div class="feedback"></div>';
+          html += '</div>';
         });
         
         // Add control buttons
@@ -1030,10 +1115,12 @@
         
         container.innerHTML = html;
         
-        // Re-initialize MCQ
+        // Re-initialize MCQ with feedback explanations
         MCQModule.init({
           containerId: 'mcq',
           answers: answers,
+          correctExplanations: correctExplanations,
+          incorrectExplanations: incorrectExplanations,
           showAllQuestionsAtOnce: true,
           onComplete: function(score, total) {
             console.log('MCQ completed:', score, '/', total);
@@ -1072,7 +1159,7 @@
         
         const sentenceSet = dragDropPools[setIndex % dragDropPools.length];
         
-        let html = '<h3>📝 Put the Words in Order</h3>';
+        let html = '<h3><i class="fa-solid fa-list-ol icon-primary"></i> Put the Words in Order</h3>';
         html += '<p>Put the words in the correct order to make sentences you might say on an airplane.</p>';
         
         const answers = {};

@@ -1585,3 +1585,55 @@
 [data-theme="dark"] .section-divider-intro p {
   color: var(--text-color-muted, white);
 }
+
+/* ----------------------------------------
+   21. Icon Styles
+   ---------------------------------------- */
+
+/* Icon colour classes using existing colour variables */
+.icon-primary {
+  color: var(--accent-color);
+}
+
+.icon-secondary {
+  color: var(--secondary-accent);
+}
+
+.icon-warning {
+  color: var(--error-text);
+}
+
+.icon-success {
+  color: var(--success-text);
+}
+
+/* Icon spacing utilities */
+.icon-spacing {
+  margin-right: 5px;
+}
+
+.icon-spacing-left {
+  margin-left: 5px;
+}
+
+.icon-spacing-sm {
+  margin-right: 8px;
+}
+
+/* Icon sizing utilities */
+.icon-sm {
+  font-size: 0.9em;
+}
+
+.icon-lg {
+  font-size: 1.2em;
+}
+
+/* Specific icon colours for themed content */
+.icon-light-blue {
+  color: #06a8e0;
+}
+
+.icon-green {
+  color: var(--beginner-primary);
+}
