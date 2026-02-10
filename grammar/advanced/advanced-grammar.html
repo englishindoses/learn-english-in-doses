@@ -13,6 +13,7 @@
   <!-- Base and Activity Styles -->
   <link rel="stylesheet" href="../../css/base.css">
   <link rel="stylesheet" href="../../css/activities.css">
+  
 
   <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="../../images/apple-touch-icon.png">
@@ -40,7 +41,20 @@
   </div>
 
   <!-- Main navigation -->
-  <div id="navbar"></div>
+  <nav class="main-navigation">
+    <a href="../../home.html" class="site-logo">
+      <img src="../../images/my-logo.svg" alt="English in Doses" width="150" height="auto">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <div class="nav-links">
+      <a href="../../home.html" class="nav-link">Home</a>
+      <a href="../../about.html" class="nav-link">About Us</a>
+      <a href="../../contact.html" class="nav-link">Contact Us</a>
+      <a href="../../home.html#where-to-start" class="nav-link">Grammar</a>
+      <a href="../../travel/beginner-travel/travel-english.html" class="nav-link">Travel English</a>
+      <a href="../../conversation-page.html" class="nav-link">Conversation</a>
+      <a href="../../my-progress.html" class="nav-link">My Progress</a>
+    </div>
 
     <div class="advanced-nav-indicator"></div>
     
@@ -589,6 +603,5 @@
       }
     });
   </script>
-  <script src="/navbar.js"></script>
 </body>
 </html>
