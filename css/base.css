@@ -875,9 +875,9 @@
   background-color: var(--beginner-primary-dark);
 }
 
-.beginner-section h1 {
+/* .beginner-section h1 {
   border-left: 5px solid var(--beginner-primary);
-}
+} */
 
 .beginner-section .translate-tip strong {
   color: var(--beginner-secondary);
@@ -885,7 +885,7 @@
 /* Main heading background color change for beginner section */
 .beginner-section h1 {
   background-color: var(--beginner-primary-dark);
-  border-left: 5px solid var(--beginner-primary);
+  /* border-left: 5px solid var(--beginner-primary); */
 }
 
 /* Change intro and content sections to use beginner colors */
@@ -964,7 +964,7 @@
   /* Dark theme beginner-specific element styles */
   [data-theme="dark"] .beginner-section h1 {
     background-color: #1a2a20;
-    border-left: 5px solid var(--beginner-primary);
+    /* border-left: 5px solid var(--beginner-primary); */
     color: #ffffff;
   }
   
@@ -1089,10 +1089,111 @@
 }
 
 /* ----------------------------------------
-   17. Level-specific Styling (Intermediate) 
-   - Placeholder
+   17. Level-specific Styling (Intermediate)
    ---------------------------------------- */
+:root {
+  /* Intermediate section theme variables */
+  --intermediate-primary: #FF9800;      /* Orange */
+  --intermediate-primary-dark: #F57C00; /* Darker orange for hover states */
+  --intermediate-secondary: #3498db;    /* Blue accent */
+  --intermediate-card-bg: #fff8e1;      /* Light orange background */
+  --intermediate-icon-bg: #ffecb3;      /* Slightly darker orange for icons */
+}
 
+[data-theme="dark"] {
+  /* Dark theme intermediate-specific colors */
+  --intermediate-primary: #FFA726;      /* Brighter orange for dark mode */
+  --intermediate-primary-dark: #FB8C00; /* Darker orange */
+  --intermediate-secondary: #4fa3e0;    /* Brighter blue for dark mode */
+  --intermediate-card-bg: #332700;      /* Dark orange-tinted background */
+  --intermediate-icon-bg: #443300;      /* Darker orange-brown for icons */
+}
+
+/* Intermediate section specific styling */
+.intermediate-section h1 {
+  background-color: var(--intermediate-primary-dark);
+  /* border-left: 5px solid var(--intermediate-primary); */
+}
+
+.intermediate-section .intro-section,
+.intermediate-section .content-section {
+  border-left: 5px solid var(--intermediate-primary);
+}
+
+.intermediate-section h2 {
+  border-bottom: 2px solid var(--intermediate-primary);
+}
+
+/* Navigation indicator for intermediate section */
+.intermediate-nav-indicator {
+  height: 3px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--intermediate-primary);
+}
+
+/* Active navigation link in intermediate section */
+.intermediate-section .nav-link.active {
+  background-color: var(--intermediate-primary);
+}
+
+/* Table headers should match the theme */
+.intermediate-section th {
+  background-color: var(--intermediate-primary);
+}
+
+/* Buttons should use the intermediate theme colors */
+.intermediate-section .nav-button {
+  background-color: var(--intermediate-primary);
+}
+
+.intermediate-section .nav-button:hover {
+  background-color: var(--intermediate-primary-dark);
+}
+
+.intermediate-section .nav-button.activities {
+  background-color: var(--intermediate-secondary);
+}
+
+.intermediate-section .nav-button.activities:hover {
+  background-color: #2980b9;
+}
+
+/* Dark theme styling for intermediate section */
+[data-theme="dark"] .intermediate-section h1 {
+  background-color: #332200;
+  /* border-left: 5px solid var(--intermediate-primary); */
+  color: #ffffff;
+}
+
+[data-theme="dark"] .intermediate-section .intro-section,
+[data-theme="dark"] .intermediate-section .content-section {
+  background-color: #2a2000;
+  border-left: 5px solid var(--intermediate-primary);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .intermediate-nav-indicator {
+  background-color: var(--intermediate-primary);
+}
+
+[data-theme="dark"] .intermediate-section .nav-link.active {
+  background-color: var(--intermediate-primary);
+}
+
+[data-theme="dark"] .intermediate-section a {
+  color: #FFB74D;
+}
+
+[data-theme="dark"] .intermediate-section a:hover {
+  color: #FFCC80;
+}
+
+[data-theme="dark"] .intermediate-section .breadcrumb-item a {
+  color: #FFB74D;
+}
 
 /* ----------------------------------------
    18. Level-specific Styling (Advanced)
@@ -1196,7 +1297,7 @@
     margin-bottom: 30px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     font-size: 2rem;
-    border-left: 5px solid var(--conversation-primary);
+    /* border-left: 5px solid var(--conversation-primary); */
   }
   
   /* Change intro and content sections to use conversation colors */
@@ -1354,7 +1455,7 @@
   [data-theme="dark"] .conversation-section h1 {
     background-color: #1a2e2c; /* Sea green background */
     color: #ffffff;
-    border-left: 5px solid var(--conversation-primary);
+    /* border-left: 5px solid var(--conversation-primary); */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
   }
   
