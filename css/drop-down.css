@@ -1,0 +1,307 @@
+/* ===== Drop-down Gap-fill Activity Styles ===== */
+/* ========For ENGLISH IN DOSES website =========*/
+/* Reusable component for sentence completion with dropdown menus */
+
+.dropdown-activity {
+    margin-bottom: 1.5rem;
+}
+
+.dropdown-sentence {
+    background: var(--bg-color);
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1rem;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.dropdown-sentence:hover {
+    border-color: var(--accent-color);
+}
+
+.dropdown-sentence.correct {
+    background: var(--success-bg);
+    border-color: var(--success-text);
+}
+
+.dropdown-sentence.dd-incorrect {
+    background: var(--error-bg);
+    border-color: var(--error-text);
+}
+
+/* Sentence number/label */
+.sentence-number {
+    display: inline-block;
+    background: var(--accent-color);
+    color: #ffffff;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 24px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-right: 0.75rem;
+}
+
+/* The dropdown select element */
+.gap-dropdown {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: var(--note-bg);
+    border: 2px solid var(--accent-color);
+    border-radius: 5px;
+    padding: 0.4rem 2rem 0.4rem 0.75rem;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--accent-color);
+    cursor: pointer;
+    width: 180px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    
+    /* Custom dropdown arrow */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%233498db' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+}
+
+.gap-dropdown:hover {
+    background-color: var(--bg-color);
+    border-color: var(--accent-color);
+}
+
+.gap-dropdown:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.gap-dropdown.answered {
+    background-color: var(--bg-color);
+    font-weight: 500;
+}
+
+.gap-dropdown.correct {
+    background-color: var(--success-bg);
+    border-color: var(--success-text);
+    color: var(--success-text);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2328a745' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+}
+
+.gap-dropdown.dd-incorrect {
+    background-color: var(--error-bg);
+    border-color: var(--error-text);
+    color: var(--error-text);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23dc3545' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+}
+
+/* Placeholder option styling */
+.gap-dropdown option {
+    background: var(--bg-color);
+    color: var(--text-color);
+    padding: 0.5rem;
+}
+
+.gap-dropdown option:disabled {
+    color: #999999;
+}
+
+/* Context label above sentence */
+.sentence-context {
+    font-size: 0.85rem;
+    color: #999999;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+/* Correct answer reveal */
+.correct-answer-text {
+    display: none;
+    font-size: 0.85rem;
+    color: var(--success-text);
+    margin-top: 0.5rem;
+    padding-left: 2rem;
+}
+
+.dropdown-sentence.dd-incorrect .correct-answer-text {
+    display: block;
+}
+
+/* Score display */
+.dropdown-score {
+    display: inline-block;
+    background: var(--note-bg);
+    color: var(--accent-color);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+/* ===== Compact Dropdown Sentence (Inline Layout) ===== */
+/* Use for simple, short sentences in a list format */
+
+.dropdown-sentence-compact {
+    background: var(--bg-color);
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.dropdown-sentence-compact:hover {
+    border-color: var(--accent-color);
+}
+
+.dropdown-sentence-compact.correct {
+    background: var(--success-bg);
+    border-color: var(--success-text);
+}
+
+.dropdown-sentence-compact.dd-incorrect {
+    background: var(--error-bg);
+    border-color: var(--error-text);
+}
+
+.dropdown-sentence-compact .sentence-number {
+    flex-shrink: 0;
+}
+
+.dropdown-sentence-compact p {
+    margin: 0;
+    flex: 1;
+    display: inline;
+    line-height: 1.8;
+}
+
+/* ===== Dark Theme Support ===== */
+[data-theme="dark"] .dropdown-sentence {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .dropdown-sentence:hover {
+    border-color: var(--accent-color);
+}
+
+[data-theme="dark"] .dropdown-sentence.correct {
+    background: var(--success-bg);
+    border-color: var(--success-text);
+}
+
+[data-theme="dark"] .dropdown-sentence.dd-incorrect {
+    background: var(--error-bg);
+    border-color: var(--error-text);
+}
+
+[data-theme="dark"] .gap-dropdown {
+    background-color: var(--note-bg);
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%234fa3e0' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+}
+
+[data-theme="dark"] .gap-dropdown:hover {
+    background-color: var(--card-bg);
+}
+
+[data-theme="dark"] .gap-dropdown:focus {
+    box-shadow: 0 0 0 3px rgba(79, 163, 224, 0.2);
+}
+
+[data-theme="dark"] .gap-dropdown.answered {
+    background-color: var(--card-bg);
+}
+
+[data-theme="dark"] .gap-dropdown.correct {
+    background-color: var(--success-bg);
+    border-color: var(--success-text);
+    color: var(--success-text);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2375e096' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+}
+
+[data-theme="dark"] .gap-dropdown.dd-incorrect {
+    background-color: var(--error-bg);
+    border-color: var(--error-text);
+    color: var(--error-text);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23f87c86' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+}
+
+[data-theme="dark"] .gap-dropdown option {
+    background: var(--card-bg);
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .dropdown-sentence-compact {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .dropdown-sentence-compact:hover {
+    border-color: var(--accent-color);
+}
+
+[data-theme="dark"] .dropdown-sentence-compact.correct {
+    background: var(--success-bg);
+    border-color: var(--success-text);
+}
+
+[data-theme="dark"] .dropdown-sentence-compact.dd-incorrect {
+    background: var(--error-bg);
+    border-color: var(--error-text);
+}
+
+[data-theme="dark"] .dropdown-score {
+    background: var(--note-bg);
+    color: var(--accent-color);
+}
+
+[data-theme="dark"] .sentence-context {
+    color: #aaaaaa;
+}
+
+[data-theme="dark"] .correct-answer-text {
+    color: var(--success-text);
+}
+
+/* Responsive adjustment for compact dropdown */
+@media (max-width: 600px) {
+    .dropdown-sentence-compact {
+        padding: 0.85rem 1rem;
+    }
+    
+    .dropdown-sentence-compact .gap-dropdown {
+        min-width: 130px;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .gap-dropdown {
+        min-width: 150px;
+        font-size: 0.9rem;
+        padding: 0.35rem 1.75rem 0.35rem 0.5rem;
+    }
+    
+    .dropdown-sentence {
+        padding: 1rem;
+        font-size: 0.95rem;
+        line-height: 2;
+    }
+}
+
+/* Print styles */
+@media print {
+    .gap-dropdown {
+        border: 1px solid #000;
+        background: #fff;
+    }
+}
