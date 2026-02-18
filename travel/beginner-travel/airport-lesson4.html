@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Travel English Lesson 4 - Learn essential vocabulary and phrases for baggage claim and reporting lost or damaged luggage. Beginner ESL lesson.">
+  <title>Baggage Claim and Problems - Travel English | English in Doses</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../../images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../images/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/activities.css">
+  <link rel="stylesheet" href="../../css/vocab-match.css">
+  <link rel="stylesheet" href="../../css/flash-cards.css">
+  <link rel="stylesheet" href="../../css/compact-matching.css">
+  
+  <!-- Lesson-specific styles for claim form -->
+  <style>
+    /* Claim Form Styling */
+    .claim-form-container {
+      background: #fff;
+      border: 2px solid #333;
+      border-radius: 8px;
+      padding: 25px 30px;
+      margin-top: 15px;
+      max-width: 500px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    [data-theme="dark"] .claim-form-container {
+      background: #2a2a2a;
+      border-color: #555;
+    }
+    
+    .claim-form-header {
+      text-align: center;
+      border-bottom: 2px solid #333;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+    
+    [data-theme="dark"] .claim-form-header {
+      border-bottom-color: #555;
+    }
+    
+    .claim-form-header h4 {
+      font-size: 1.3em;
+      font-weight: 700;
+      margin: 0 0 5px 0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .claim-form-header p {
+      font-size: 0.9em;
+      color: #666;
+      margin: 0;
+    }
+    
+    [data-theme="dark"] .claim-form-header p {
+      color: #aaa;
+    }
+    
+    .claim-form-section {
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px dashed #ccc;
+    }
+    
+    [data-theme="dark"] .claim-form-section {
+      border-bottom-color: #444;
+    }
+    
+    .claim-form-section:last-of-type {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    
+    .claim-form-section-title {
+      font-weight: 600;
+      font-size: 0.85em;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+    
+    [data-theme="dark"] .claim-form-section-title {
+      color: #aaa;
+    }
+    
+    .claim-form-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      gap: 10px;
+    }
+    
+    .claim-form-row:last-child {
+      margin-bottom: 0;
+    }
+    
+    .claim-form-label {
+      min-width: 120px;
+      font-weight: 500;
+      color: #333;
+    }
+    
+    [data-theme="dark"] .claim-form-label {
+      color: #ddd;
+    }
+    
+    .claim-form-select {
+      flex: 1;
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 0.95em;
+      background: #fafafa;
+      cursor: pointer;
+      max-width: 200px;
+    }
+    
+    [data-theme="dark"] .claim-form-select {
+      background: #333;
+      border-color: #555;
+      color: #eee;
+    }
+    
+    .claim-form-select:focus {
+      outline: 2px solid var(--beginner-primary, #27ae60);
+      outline-offset: 1px;
+    }
+    
+    .claim-form-select.correct {
+      border-color: #27ae60;
+      background-color: #e8f5e9;
+    }
+    
+    [data-theme="dark"] .claim-form-select.correct {
+      background-color: #1b4332;
+    }
+    
+    .claim-form-select.incorrect {
+      border-color: #e74c3c;
+      background-color: #ffebee;
+    }
+    
+    [data-theme="dark"] .claim-form-select.incorrect {
+      background-color: #4a1515;
+    }
+    
+    @media (max-width: 480px) {
+      .claim-form-container {
+        padding: 20px;
+      }
+      
+      .claim-form-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+      }
+      
+      .claim-form-label {
+        min-width: auto;
+      }
+      
+      .claim-form-select {
+        width: 100%;
+        max-width: none;
+      }
+    }
+  </style>
+</head>
+
+<body class="beginner-section">
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <!-- Theme toggle button -->
+  <div class="theme-toggle-container">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="light-icon">☀️</span>
+      <span class="dark-icon">🌙</span>
+    </button>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="main-navigation">
+    <a href="../../home.html" class="site-logo">
+      <img src="../../images/my-logo.svg" alt="English in Doses" width="150" height="auto">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <div class="nav-links">
+      <a href="../../home.html" class="nav-link">Home</a>
+      <a href="../../about.html" class="nav-link">About Us</a>
+      <a href="../../home.html#level-test" class="nav-link">Find Your Level</a>
+      <a href="../../beginner-landing.html" class="nav-link">Beginner</a>
+      <a href="../../intermediate-landing.html" class="nav-link">Intermediate</a>
+      <a href="../../advanced-landing.html" class="nav-link">Advanced</a>
+      <a href="../../travel/beginner-travel/travel-english.html" class="nav-link">Travel English</a>
+      <a href="../../my-progress.html" class="nav-link">My Progress</a>
+      <a href="../../booking-page.html" class="nav-link">Book a Lesson</a>
+    </div>
+    <div class="beginner-nav-indicator"></div>
+  </nav>
+
+  <div class="container">
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <span class="breadcrumb-item"><a href="../../home.html">Home</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="travel-english.html">Travel English</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="travel-english.html#unit-1">Unit 1: Airport</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item">Lesson 4: Baggage Claim and Problems</span>
+    </nav>
+
+    <main id="main-content">
+      <!-- Page Header -->
+      <h1>Lesson 4: Baggage Claim and Problems</h1>
+      <p class="subtitle">Reporting Lost or Damaged Luggage</p>
+
+      <!-- ======================================== -->
+      <!-- LESSON GOAL -->
+      <!-- ======================================== -->
+      <section class="intro-section">
+        <h2><i class="fa-solid fa-bullseye icon-warning"></i> Lesson Goal</h2>
+        <p><strong>Find your luggage at baggage claim, report problems, and describe your bag.</strong></p>
+        
+        <h3>What you will learn:</h3>
+        <ul>
+          <li>Vocabulary for baggage claim and reporting problems.</li>
+          <li>How to report lost or damaged luggage using past simple negative.</li>
+          <li>How to describe your bag (colour, size, and details).</li>
+        </ul>
+      </section>
+
+      <!-- ======================================== -->
+      <!-- SECTION 1: VOCABULARY WITH CAROUSEL -->
+      <!-- ======================================== -->
+      <section class="content-section">
+        <h2><i class="fa-solid fa-book icon-primary"></i> Vocabulary</h2>
+        <p>Learn these words for baggage claim and reporting luggage problems. Drag each word to the correct picture.</p>
+        
+        <div id="vocab-match" class="vocab-match-container">
+          
+          <div class="vocab-section">
+            <!-- Carousel Navigation -->
+            <div class="vocab-carousel-nav">
+              <button class="vocab-carousel-btn vocab-carousel-prev" aria-label="Previous page">‹</button>
+              <span class="vocab-carousel-indicator">1 / 3</span>
+              <button class="vocab-carousel-btn vocab-carousel-next" aria-label="Next page">›</button>
+            </div>
+            
+            <!-- Carousel Container -->
+            <div class="vocab-carousel">
+              
+              <!-- Page 1: Baggage Claim Area -->
+              <div class="vocab-carousel-page active">
+                <div class="vocab-images-grid" style="overflow: visible; max-height: none;">
+                  <div class="vocab-image-item">
+                    <div class="vocab-image-wrapper">
+                      <!-- IMAGE: baggage claim - baggage claim area with sign -->
+                      <img src="../../images/travel-beginner/lesson4/baggage-claim.png" alt="baggage claim area with sign" class="vocab-image">
+                    </div>
+                    <div class="vocab-drop-zone empty" data-answer="baggage claim"></div>
+                  </div>
+                  
+                  <div class="vocab-image-item">
+                    <div class="vocab-image-wrapper">
+                      <!-- IMAGE: carousel - luggage carousel with bags -->
+                      <img src="../../images/travel-beginner/lesson4/carousel.png" alt="luggage carousel with bags" class="vocab-image">
+                    </div>
+                    <div class="vocab-drop-zone empty" data-answer="carousel"></div>
+                  </div>
+                  
+                  <div class="vocab-image-item">
+                    <div class="vocab-image-wrapper">
+                      <!-- IMAGE: carry-on bag - small carry-on bag -->
+                      <img src="../../images/travel-beginner/lesson4/carry-on-bag.png" alt="small carry-on bag" class="vocab-image">
+                    </div>
+                    <div class="vocab-drop-zone empty" data-answer="carry-on bag"></div>
+                  </div>
+                  
+                  <div class="vocab-image-item">
+                    <div class="vocab-image-wrapper">
+                      <!-- IMAGE: tag - luggage tag on bag -->
+                      <img src="../../images/travel-beginner/lesson4/tag.png" alt="luggage tag on bag" class="vocab-image">
+                    </div>
+                    <div class="vocab-drop-zone empty" data-answer="tag"></div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Page 2: Problem Words -->
+              <div class="vocab-carousel-page">
+                <div class="vocab-images-grid" style="overflow: visible; max-height: none;">
+                  <div class="vocab-image-item">
+                    <div class="vocab-image-wrapper">
+                      <!-- IMAGE: missing - person looking for missing bag -->
+                      <img src="../../images/travel-beginner/lesson4/missing.png" alt="person looking for missing bag" class="vocab-image">
+                    </div>
+                    <div class="vocab-drop-zone empty" data-answer="missing"></div>
+                  </div>
+                  
+                  <div class="vocab-image-item">
+                    <div class="vocab-image-wrapper">
+                      <!-- IMAGE: lost - lost luggage sign -->
+                      <img src="../../images/travel-beginner/lesson4/lost.png" alt="lost luggage sign" class="vocab-image">
+                    </div>
+                    <div class="vocab-drop-zone empty" data-answer="lost"></div>
+                  </div>
+                  
+                  <div class="vocab-image-item">
+                    <div class="vocab-image-wrapper">
+                      <!-- IMAGE: damaged - damaged suitcase with broken wheel -->
+                      <img src="../../images/travel-beginner/lesson4/damaged.png" alt="damaged suitcase with broken wheel" class="vocab-image">
+                    </div>
+                    <div class="vocab-drop-zone empty" data-answer="damaged"></div>
+                  </div>
+                  
+                  <div class="vocab-image-item">
+                    <div class="vocab-image-wrapper">
+                      <!-- IMAGE: delayed - delayed luggage notice -->
+                      <img src="../../images/travel-beginner/lesson4/delayed.png" alt="delayed luggage notice" class="vocab-image">
+                    </div>
+                    <div class="vocab-drop-zone empty" data-answer="delayed"></div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Page 3: Office and Forms -->
+              <div class="vocab-carousel-page">
+                <div class="vocab-images-grid" style="overflow: visible; max-height: none;">
+                  <div class="vocab-image-item">
+                    <div class="vocab-image-wrapper">
+                      <!-- IMAGE: baggage office - baggage service office -->
+                      <img src="../../images/travel-beginner/lesson4/baggage-office.png" alt="baggage service office" class="vocab-image">
+                    </div>
+                    <div class="vocab-drop-zone empty" data-answer="baggage office"></div>
+                  </div>
+                  
+                  <div class="vocab-image-item">
+                    <div class="vocab-image-wrapper">
+                      <!-- IMAGE: claim form - claim form document -->
+                      <img src="../../images/travel-beginner/lesson4/claim-form.png" alt="claim form document" class="vocab-image">
+                    </div>
+                    <div class="vocab-drop-zone empty" data-answer="claim form"></div>
+                  </div>
+                  
+                  <div class="vocab-image-item">
+                    <div class="vocab-image-wrapper">
+                      <!-- IMAGE: reference number - reference number on paper -->
+                      <img src="../../images/travel-beginner/lesson4/reference-number.png" alt="reference number on paper" class="vocab-image">
+                    </div>
+                    <div class="vocab-drop-zone empty" data-answer="reference number"></div>
+                  </div>
+                  
+                  <div class="vocab-image-item">
+                    <div class="vocab-image-wrapper">
+                      <!-- IMAGE: description - person describing a bag -->
+                      <img src="../../images/travel-beginner/lesson4/description.png" alt="person describing a bag" class="vocab-image">
+                    </div>
+                    <div class="vocab-drop-zone empty" data-answer="description"></div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+            
+            <!-- Page Dots -->
+            <div class="vocab-carousel-dots">
+              <span class="vocab-carousel-dot active" data-page="0"></span>
+              <span class="vocab-carousel-dot" data-page="1"></span>
+              <span class="vocab-carousel-dot" data-page="2"></span>
+            </div>
+            
+            <!-- Sticky Word Bank (jumbled order) -->
+            <div class="vocab-words-wrapper">
+              <p class="vocab-words-label"><i class="fa-solid fa-hand-point-down icon-primary"></i> Drag words from here</p>
+              <div class="vocab-words-container">
+                <div class="vocab-word-item" data-page="0">carousel</div>
+                <div class="vocab-word-item" data-page="0">tag</div>
+                <div class="vocab-word-item" data-page="0">baggage claim</div>
+                <div class="vocab-word-item" data-page="0">carry-on bag</div>
+                <div class="vocab-word-item" data-page="1">damaged</div>
+                <div class="vocab-word-item" data-page="1">missing</div>
+                <div class="vocab-word-item" data-page="1">delayed</div>
+                <div class="vocab-word-item" data-page="1">lost</div>
+                <div class="vocab-word-item" data-page="2">claim form</div>
+                <div class="vocab-word-item" data-page="2">baggage office</div>
+                <div class="vocab-word-item" data-page="2">description</div>
+                <div class="vocab-word-item" data-page="2">reference number</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Controls -->
+          <div class="vocab-controls">
+            <button class="vocab-check-btn">Check Answers</button>
+            <button class="vocab-reset-btn">Try Again</button>
+          </div>
+          
+          <div class="vocab-score">Your score: <span>0</span>/12</div>
+          <div class="vocab-feedback"></div>
+          
+        </div>
+      </section>
+
+      <!-- ======================================== -->
+      <!-- SECTION 2: KEY PHRASES WITH FLASHCARDS -->
+      <!-- ======================================== -->
+      <section class="content-section">
+        <h2><i class="fa-solid fa-comments icon-primary"></i> Key Phrases</h2>
+        <p>At baggage claim, you may need to report problems or ask questions. Learn these useful phrases. Click each card to see an example.</p>
+        
+        <div id="flashcards" class="flashcard-container">
+          
+          <div class="flashcard-intro">
+            <p class="hint"><i class="fa-solid fa-hand-point-up icon-primary"></i> Click a card to see an example.</p>
+          </div>
+          
+          <div class="flashcard-grid">
+            
+            <!-- Card 1: Reporting the problem -->
+            <div class="flashcard-wrapper">
+              <div class="flashcard" tabindex="0">
+                <div class="flashcard-front">
+                  <span class="flashcard-number">1</span>
+                  <span class="flashcard-label">Reporting a Problem</span>
+                  <span class="flashcard-phrase">My bag didn't arrive.</span>
+                  <span class="flashcard-hint"><span class="rotate-icon">🔄</span> Click to see example</span>
+                </div>
+                <div class="flashcard-back">
+                  <span class="flashcard-number">1</span>
+                  <span class="flashcard-label">Example</span>
+                  <span class="flashcard-example">Excuse me, <span class="grammar-highlight">my bag didn't arrive</span>.</span>
+                  <span class="flashcard-usage">Use this to tell staff your bag is missing.</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Card 2: Describing your bag -->
+            <div class="flashcard-wrapper">
+              <div class="flashcard" tabindex="0">
+                <div class="flashcard-front">
+                  <span class="flashcard-number">2</span>
+                  <span class="flashcard-label">Describing Your Bag</span>
+                  <span class="flashcard-phrase">It's a big blue suitcase.</span>
+                  <span class="flashcard-hint"><span class="rotate-icon">🔄</span> Click to see example</span>
+                </div>
+                <div class="flashcard-back">
+                  <span class="flashcard-number">2</span>
+                  <span class="flashcard-label">Example</span>
+                  <span class="flashcard-example"><span class="grammar-highlight">It's a big blue suitcase</span> with wheels.</span>
+                  <span class="flashcard-usage">Use size + colour + type to describe your bag.</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Card 3: Asking about timing -->
+            <div class="flashcard-wrapper">
+              <div class="flashcard" tabindex="0">
+                <div class="flashcard-front">
+                  <span class="flashcard-number">3</span>
+                  <span class="flashcard-label">Asking About Timing</span>
+                  <span class="flashcard-phrase">When will it arrive?</span>
+                  <span class="flashcard-hint"><span class="rotate-icon">🔄</span> Click to see example</span>
+                </div>
+                <div class="flashcard-back">
+                  <span class="flashcard-number">3</span>
+                  <span class="flashcard-label">Example</span>
+                  <span class="flashcard-example"><span class="grammar-highlight">When will</span> my bag <span class="grammar-highlight">arrive</span>?</span>
+                  <span class="flashcard-usage">Use this to ask about delivery time.</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Card 4: Asking about delivery -->
+            <div class="flashcard-wrapper">
+              <div class="flashcard" tabindex="0">
+                <div class="flashcard-front">
+                  <span class="flashcard-number">4</span>
+                  <span class="flashcard-label">Asking About Delivery</span>
+                  <span class="flashcard-phrase">Can you deliver it to my hotel?</span>
+                  <span class="flashcard-hint"><span class="rotate-icon">🔄</span> Click to see example</span>
+                </div>
+                <div class="flashcard-back">
+                  <span class="flashcard-number">4</span>
+                  <span class="flashcard-label">Example</span>
+                  <span class="flashcard-example"><span class="grammar-highlight">Can you deliver it</span> to the Park Hotel?</span>
+                  <span class="flashcard-usage">Use this to ask about bag delivery.</span>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          
+          <div class="flashcard-controls">
+            <button class="flip-all-btn"><span class="icon">🔄</span> Show All Examples</button>
+          </div>
+          
+        </div>
+
+        <div class="note">
+          <p><strong><i class="fa-solid fa-lightbulb icon-secondary"></i> Tip:</strong> When describing your bag, use this order: size + colour + type. For example: "a big blue suitcase" or "a small black bag".</p>
+        </div>
+      </section>
+
+      <!-- ======================================== -->
+      <!-- SECTION 3: GRAMMAR - PAST SIMPLE NEGATIVE -->
+      <!-- ======================================== -->
+      <section class="content-section">
+        <h2><i class="fa-solid fa-book-open icon-primary"></i> Grammar: Past Simple Negative</h2>
+        <p>This is how we form the simple past negative. We use <strong>didn't</strong> (did not) + the base form of the verb.</p>
+        
+        <p><strong>Form:</strong> subject + <span class="grammar-highlight">didn't</span> + <span class="grammar-highlight">verb (base form)</span></p>
+        
+        <div class="example">
+          <ol>
+            <li>I <span class="grammar-highlight">didn't see</span> him at the party. (daily life)</li>
+            <li>She <span class="grammar-highlight">didn't finish</span> her report yesterday. (work)</li>
+            <li>The train <span class="grammar-highlight">didn't arrive</span> on time. (travel)</li>
+          </ol>
+        </div>
+        
+        <div class="note">
+          <p><strong><i class="fa-solid fa-lightbulb icon-secondary"></i> Remember:</strong> After <strong>didn't</strong>, always use the base form of the verb. Say "didn't arrive" (NOT "didn't arrived").</p>
+        </div>
+        
+        <h3>Common Sentences at Baggage Claim</h3>
+        <div class="example">
+          <ol>
+            <li>My bag <span class="grammar-highlight">didn't arrive</span>.</li>
+            <li>My suitcase <span class="grammar-highlight">didn't come</span> out on the carousel.</li>
+            <li>I <span class="grammar-highlight">didn't get</span> my luggage.</li>
+            <li>The airline <span class="grammar-highlight">didn't call</span> me.</li>
+            <li>They <span class="grammar-highlight">didn't find</span> my bag.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ======================================== -->
+      <!-- SECTION 4: PRACTICE ACTIVITIES -->
+      <!-- ======================================== -->
+      <section class="content-section">
+        <h2><i class="fa-solid fa-pencil icon-primary"></i> Practice Activities</h2>
+        <p>Practise what you have learned with these activities.</p>
+
+        <!-- Activity Navigation -->
+        <div id="activity-nav" class="activity-nav">
+          <button data-activity="gap-fill-form" class="activity-nav-btn active">Complete the Form</button>
+          <button data-activity="matching" class="activity-nav-btn">Match Questions & Answers</button>
+          <button data-activity="drag-drop-baggage" class="activity-nav-btn">Put Words in Order</button>
+        </div>
+
+        <!-- ======================================== -->
+        <!-- ACTIVITY 1: GAP FILL - LOST LUGGAGE FORM -->
+        <!-- ======================================== -->
+        <section id="gap-fill-form" class="activity-container active">
+          <h3><i class="fa-solid fa-file-lines icon-primary"></i> Lost Luggage Claim Form</h3>
+          <p>Maria's bag didn't arrive. Help her complete the lost luggage form. Read the information and choose the correct words.</p>
+          
+          <div class="note">
+            <p><strong>Maria's situation:</strong> Maria flew from São Paulo to London on flight BA246. Her big blue suitcase with wheels didn't arrive. The bag has a yellow tag with her name. She is staying at the Park Hotel, room 302.</p>
+          </div>
+          
+          <div class="claim-form-container">
+            <div class="claim-form-header">
+              <h4>Lost Luggage Claim Form</h4>
+              <p>Please complete all fields.</p>
+            </div>
+            
+            <div class="claim-form-section">
+              <div class="claim-form-section-title">Flight Information</div>
+              
+              <div class="claim-form-row">
+                <span class="claim-form-label">Flight Number:</span>
+                <select class="claim-form-select" data-answer="BA246" id="cf1">
+                  <option value="">-- Select --</option>
+                  <option value="BA246">BA246</option>
+                  <option value="BA462">BA462</option>
+                  <option value="SP246">SP246</option>
+                </select>
+              </div>
+              
+              <div class="claim-form-row">
+                <span class="claim-form-label">From:</span>
+                <select class="claim-form-select" data-answer="São Paulo" id="cf2">
+                  <option value="">-- Select --</option>
+                  <option value="London">London</option>
+                  <option value="São Paulo">São Paulo</option>
+                  <option value="Rio de Janeiro">Rio de Janeiro</option>
+                </select>
+              </div>
+              
+              <div class="claim-form-row">
+                <span class="claim-form-label">To:</span>
+                <select class="claim-form-select" data-answer="London" id="cf3">
+                  <option value="">-- Select --</option>
+                  <option value="São Paulo">São Paulo</option>
+                  <option value="London">London</option>
+                  <option value="Paris">Paris</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="claim-form-section">
+              <div class="claim-form-section-title">Bag Description</div>
+              
+              <div class="claim-form-row">
+                <span class="claim-form-label">Number of Bags:</span>
+                <select class="claim-form-select" data-answer="1" id="cf4">
+                  <option value="">-- Select --</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+              </div>
+              
+              <div class="claim-form-row">
+                <span class="claim-form-label">Bag Type:</span>
+                <select class="claim-form-select" data-answer="suitcase" id="cf5">
+                  <option value="">-- Select --</option>
+                  <option value="backpack">backpack</option>
+                  <option value="suitcase">suitcase</option>
+                  <option value="carry-on bag">carry-on bag</option>
+                </select>
+              </div>
+              
+              <div class="claim-form-row">
+                <span class="claim-form-label">Size:</span>
+                <select class="claim-form-select" data-answer="big" id="cf6">
+                  <option value="">-- Select --</option>
+                  <option value="small">small</option>
+                  <option value="medium">medium</option>
+                  <option value="big">big</option>
+                </select>
+              </div>
+              
+              <div class="claim-form-row">
+                <span class="claim-form-label">Colour:</span>
+                <select class="claim-form-select" data-answer="blue" id="cf7">
+                  <option value="">-- Select --</option>
+                  <option value="blue">blue</option>
+                  <option value="black">black</option>
+                  <option value="red">red</option>
+                </select>
+              </div>
+              
+              <div class="claim-form-row">
+                <span class="claim-form-label">Wheels:</span>
+                <select class="claim-form-select" data-answer="yes" id="cf8">
+                  <option value="">-- Select --</option>
+                  <option value="yes">yes</option>
+                  <option value="no">no</option>
+                  <option value="unknown">unknown</option>
+                </select>
+              </div>
+              
+              <div class="claim-form-row">
+                <span class="claim-form-label">Tag Colour:</span>
+                <select class="claim-form-select" data-answer="yellow" id="cf9">
+                  <option value="">-- Select --</option>
+                  <option value="red">red</option>
+                  <option value="green">green</option>
+                  <option value="yellow">yellow</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="claim-form-section">
+              <div class="claim-form-section-title">Delivery Address</div>
+              
+              <div class="claim-form-row">
+                <span class="claim-form-label">Hotel Name:</span>
+                <select class="claim-form-select" data-answer="Park Hotel" id="cf10">
+                  <option value="">-- Select --</option>
+                  <option value="Grand Hotel">Grand Hotel</option>
+                  <option value="Park Hotel">Park Hotel</option>
+                  <option value="City Hotel">City Hotel</option>
+                </select>
+              </div>
+              
+              <div class="claim-form-row">
+                <span class="claim-form-label">Room Number:</span>
+                <select class="claim-form-select" data-answer="302" id="cf11">
+                  <option value="">-- Select --</option>
+                  <option value="203">203</option>
+                  <option value="302">302</option>
+                  <option value="320">320</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          
+          <div class="control-buttons">
+            <button id="claim-form-submit" class="submit-btn">Check Answers</button>
+            <button id="claim-form-restart" class="restart-btn" style="display:none;">Try Again</button>
+            <button class="nav-button" id="gap-fill-next" style="visibility:hidden;">Next →</button>
+          </div>
+          
+          <div class="score-display" id="claim-form-score" style="display:none;">
+            Your score: <span>0</span>/11
+          </div>
+        </section>
+
+        <!-- ======================================== -->
+        <!-- ACTIVITY 2: COMPACT MATCHING - Q&A -->
+        <!-- ======================================== -->
+        <section id="matching" class="activity-container">
+          <h3><i class="fa-solid fa-arrows-left-right icon-primary"></i> Match Questions and Answers</h3>
+          <p>Match the question (left) with the correct answer (right). Drag the letter markers to the answer slots, or tap to select and place.</p>
+          
+          <div id="matching-activity" class="compact-matching">
+            <!-- Column 1: Questions -->
+            <div class="cm-statements">
+              <div class="cm-statement">
+                <span class="cm-statement-num">1</span>
+                <p>Where is baggage claim?</p>
+              </div>
+              <div class="cm-statement">
+                <span class="cm-statement-num">2</span>
+                <p>What does your bag look like?</p>
+              </div>
+              <div class="cm-statement">
+                <span class="cm-statement-num">3</span>
+                <p>What flight were you on?</p>
+              </div>
+              <div class="cm-statement">
+                <span class="cm-statement-num">4</span>
+                <p>Do you have your luggage tag?</p>
+              </div>
+              <div class="cm-statement">
+                <span class="cm-statement-num">5</span>
+                <p>Where are you staying?</p>
+              </div>
+              <div class="cm-statement">
+                <span class="cm-statement-num">6</span>
+                <p>Does your bag have wheels?</p>
+              </div>
+              <div class="cm-statement">
+                <span class="cm-statement-num">7</span>
+                <p>When will my bag arrive?</p>
+              </div>
+            </div>
+            
+            <!-- Column 2: Markers Bank -->
+            <div class="cm-markers">
+              <div class="cm-marker-slot" data-marker="1">
+                <div class="cm-marker" data-match="1" draggable="true">A</div>
+              </div>
+              <div class="cm-marker-slot" data-marker="2">
+                <div class="cm-marker" data-match="2" draggable="true">B</div>
+              </div>
+              <div class="cm-marker-slot" data-marker="3">
+                <div class="cm-marker" data-match="3" draggable="true">C</div>
+              </div>
+              <div class="cm-marker-slot" data-marker="4">
+                <div class="cm-marker" data-match="4" draggable="true">D</div>
+              </div>
+              <div class="cm-marker-slot" data-marker="5">
+                <div class="cm-marker" data-match="5" draggable="true">E</div>
+              </div>
+              <div class="cm-marker-slot" data-marker="6">
+                <div class="cm-marker" data-match="6" draggable="true">F</div>
+              </div>
+              <div class="cm-marker-slot" data-marker="7">
+                <div class="cm-marker" data-match="7" draggable="true">G</div>
+              </div>
+            </div>
+            
+            <!-- Column 3: Answers (JUMBLED ORDER) -->
+            <div class="cm-answers">
+              <div class="cm-answer" data-match="3">
+                <div class="cm-answer-slot"></div>
+                <p>Flight BA246 from São Paulo.</p>
+              </div>
+              <div class="cm-answer" data-match="5">
+                <div class="cm-answer-slot"></div>
+                <p>At the Park Hotel.</p>
+              </div>
+              <div class="cm-answer" data-match="1">
+                <div class="cm-answer-slot"></div>
+                <p>Go downstairs and turn left.</p>
+              </div>
+              <div class="cm-answer" data-match="7">
+                <div class="cm-answer-slot"></div>
+                <p>It will come on the next flight, tomorrow.</p>
+              </div>
+              <div class="cm-answer" data-match="6">
+                <div class="cm-answer-slot"></div>
+                <p>Yes, it has four wheels.</p>
+              </div>
+              <div class="cm-answer" data-match="2">
+                <div class="cm-answer-slot"></div>
+                <p>It's a big black suitcase.</p>
+              </div>
+              <div class="cm-answer" data-match="4">
+                <div class="cm-answer-slot"></div>
+                <p>Yes, here it is.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="cm-feedback" id="matching-activity-feedback"></div>
+          
+          <div class="control-buttons">
+            <button id="matching-activity-cm-submit" class="submit-btn">Check Answers</button>
+            <button id="matching-activity-cm-restart" class="restart-btn" style="display:none;">Try Again</button>
+            <button class="nav-button" id="matching-next" style="visibility:hidden;">Next →</button>
+          </div>
+          
+          <div class="score-display cm-score" id="matching-activity-score">
+            Your score: <span>0</span>/7
+          </div>
+        </section>
+
+        <!-- ======================================== -->
+        <!-- ACTIVITY 3: DRAG DROP - WORD ORDER -->
+        <!-- ======================================== -->
+        <section id="drag-drop-baggage" class="activity-container">
+          <h3><i class="fa-solid fa-arrows-up-down-left-right icon-primary"></i> Put the Words in Order</h3>
+          <p>Put the words in the correct order to make sentences about baggage problems.</p>
+          
+          <div class="question" id="dd1">
+            <p class="question-text">1.</p>
+            <div class="drop-zone"></div>
+            <div class="drag-items">
+              <div class="drag-item">didn't</div>
+              <div class="drag-item">.</div>
+              <div class="drag-item">arrive</div>
+              <div class="drag-item">bag</div>
+              <div class="drag-item">My</div>
+            </div>
+          </div>
+          
+          <div class="question" id="dd2">
+            <p class="question-text">2.</p>
+            <div class="drop-zone"></div>
+            <div class="drag-items">
+              <div class="drag-item">blue</div>
+              <div class="drag-item">a</div>
+              <div class="drag-item">.</div>
+              <div class="drag-item">suitcase</div>
+              <div class="drag-item">big</div>
+              <div class="drag-item">It's</div>
+            </div>
+          </div>
+          
+          <div class="question" id="dd3">
+            <p class="question-text">3.</p>
+            <div class="drop-zone"></div>
+            <div class="drag-items">
+              <div class="drag-item">bag</div>
+              <div class="drag-item">will</div>
+              <div class="drag-item">?</div>
+              <div class="drag-item">arrive</div>
+              <div class="drag-item">When</div>
+              <div class="drag-item">my</div>
+            </div>
+          </div>
+          
+          <div class="question" id="dd4">
+            <p class="question-text">4.</p>
+            <div class="drop-zone"></div>
+            <div class="drag-items">
+              <div class="drag-item">hotel</div>
+              <div class="drag-item">to</div>
+              <div class="drag-item">deliver</div>
+              <div class="drag-item">?</div>
+              <div class="drag-item">you</div>
+              <div class="drag-item">my</div>
+              <div class="drag-item">it</div>
+              <div class="drag-item">Can</div>
+            </div>
+          </div>
+          
+          <div class="question" id="dd5">
+            <p class="question-text">5.</p>
+            <div class="drop-zone"></div>
+            <div class="drag-items">
+              <div class="drag-item">me</div>
+              <div class="drag-item">didn't</div>
+              <div class="drag-item">.</div>
+              <div class="drag-item">airline</div>
+              <div class="drag-item">call</div>
+              <div class="drag-item">The</div>
+            </div>
+          </div>
+          
+          <div class="question" id="dd6">
+            <p class="question-text">6.</p>
+            <div class="drop-zone"></div>
+            <div class="drag-items">
+              <div class="drag-item">bag</div>
+              <div class="drag-item">.</div>
+              <div class="drag-item">find</div>
+              <div class="drag-item">They</div>
+              <div class="drag-item">didn't</div>
+              <div class="drag-item">my</div>
+            </div>
+          </div>
+          
+          <div class="question" id="dd7">
+            <p class="question-text">7.</p>
+            <div class="drop-zone"></div>
+            <div class="drag-items">
+              <div class="drag-item">.</div>
+              <div class="drag-item">red</div>
+              <div class="drag-item">bag</div>
+              <div class="drag-item">a</div>
+              <div class="drag-item">small</div>
+              <div class="drag-item">It's</div>
+            </div>
+          </div>
+          
+          <div class="question" id="dd8">
+            <p class="question-text">8.</p>
+            <div class="drop-zone"></div>
+            <div class="drag-items">
+              <div class="drag-item">?</div>
+              <div class="drag-item">baggage</div>
+              <div class="drag-item">is</div>
+              <div class="drag-item">claim</div>
+              <div class="drag-item">Where</div>
+            </div>
+          </div>
+          
+          <div class="question" id="dd9">
+            <p class="question-text">9.</p>
+            <div class="drop-zone"></div>
+            <div class="drag-items">
+              <div class="drag-item">form</div>
+              <div class="drag-item">claim</div>
+              <div class="drag-item">?</div>
+              <div class="drag-item">Can</div>
+              <div class="drag-item">have</div>
+              <div class="drag-item">a</div>
+              <div class="drag-item">I</div>
+            </div>
+          </div>
+          
+          <div class="question" id="dd10">
+            <p class="question-text">10.</p>
+            <div class="drop-zone"></div>
+            <div class="drag-items">
+              <div class="drag-item">.</div>
+              <div class="drag-item">black</div>
+              <div class="drag-item">medium</div>
+              <div class="drag-item">suitcase</div>
+              <div class="drag-item">a</div>
+              <div class="drag-item">It's</div>
+            </div>
+          </div>
+          
+          <div class="control-buttons">
+            <button id="drag-drop-baggage-submit" class="submit-btn">Check Answers</button>
+            <button id="drag-drop-baggage-restart" class="restart-btn" style="display:none;">Try Again</button>
+          </div>
+          
+          <div class="score-display" id="drag-drop-baggage-score" style="display:none;">
+            Your score: <span>0</span>/10
+          </div>
+        </section>
+
+      </section>
+
+      <!-- ======================================== -->
+      <!-- SPEAKING PRACTICE DIVIDER -->
+      <!-- ======================================== -->
+      <hr class="section-divider-beginner">
+      
+      <section class="intro-section section-divider-intro">
+        <h2>🎤 Now It's Your Turn to Speak!</h2>
+        <p>You've completed all the activities. Use these conversations to practise speaking with your teacher or a partner.</p>
+      </section>
+
+      <!-- ======================================== -->
+      <!-- SECTION 5: SPEAKING PRACTICE -->
+      <!-- ======================================== -->
+      <section class="content-section">
+        <h2><i class="fa-solid fa-users icon-primary"></i> Speaking Practice</h2>
+        <p>Practise these conversations with your teacher or a partner.</p>
+        
+        <h3>Conversation 1: Finding Baggage Claim</h3>
+        <div class="example">
+          <p><i class="fa-solid fa-user icon-primary icon-spacing"></i><strong>You:</strong> Excuse me, where is baggage claim?</p>
+          <p><i class="fa-solid fa-user-tie icon-secondary icon-spacing"></i><strong>Staff:</strong> Go downstairs and follow the signs. It's on the left.</p>
+          <p><i class="fa-solid fa-user icon-primary icon-spacing"></i><strong>You:</strong> Which carousel is for flight BA246?</p>
+          <p><i class="fa-solid fa-user-tie icon-secondary icon-spacing"></i><strong>Staff:</strong> Carousel 5.</p>
+          <p><i class="fa-solid fa-user icon-primary icon-spacing"></i><strong>You:</strong> Thank you!</p>
+        </div>
+        
+        <h3>Conversation 2: Reporting Lost Luggage</h3>
+        <div class="example">
+          <p><i class="fa-solid fa-user icon-primary icon-spacing"></i><strong>You:</strong> Excuse me, <span class="grammar-highlight">my bag didn't arrive</span>.</p>
+          <p><i class="fa-solid fa-user-tie icon-secondary icon-spacing"></i><strong>Staff:</strong> I'm sorry to hear that. What flight were you on?</p>
+          <p><i class="fa-solid fa-user icon-primary icon-spacing"></i><strong>You:</strong> Flight BA246 from São Paulo.</p>
+          <p><i class="fa-solid fa-user-tie icon-secondary icon-spacing"></i><strong>Staff:</strong> Can you describe your bag?</p>
+          <p><i class="fa-solid fa-user icon-primary icon-spacing"></i><strong>You:</strong> <span class="grammar-highlight">It's a big blue suitcase</span> with wheels. It has a yellow tag.</p>
+          <p><i class="fa-solid fa-user-tie icon-secondary icon-spacing"></i><strong>Staff:</strong> Okay. Please fill out this claim form.</p>
+          <p><i class="fa-solid fa-user icon-primary icon-spacing"></i><strong>You:</strong> When will my bag arrive?</p>
+          <p><i class="fa-solid fa-user-tie icon-secondary icon-spacing"></i><strong>Staff:</strong> We will call you when we find it. Here is your reference number.</p>
+          <p><i class="fa-solid fa-user icon-primary icon-spacing"></i><strong>You:</strong> Thank you.</p>
+        </div>
+        
+        <h3>Conversation 3: Reporting Damaged Luggage</h3>
+        <div class="example">
+          <p><i class="fa-solid fa-user icon-primary icon-spacing"></i><strong>You:</strong> Excuse me, <span class="grammar-highlight">my suitcase is damaged</span>.</p>
+          <p><i class="fa-solid fa-user-tie icon-secondary icon-spacing"></i><strong>Staff:</strong> I'm sorry. What's the problem?</p>
+          <p><i class="fa-solid fa-user icon-primary icon-spacing"></i><strong>You:</strong> The wheel is broken.</p>
+          <p><i class="fa-solid fa-user-tie icon-secondary icon-spacing"></i><strong>Staff:</strong> Can I see your boarding pass and luggage tag?</p>
+          <p><i class="fa-solid fa-user icon-primary icon-spacing"></i><strong>You:</strong> Yes, here they are.</p>
+          <p><i class="fa-solid fa-user-tie icon-secondary icon-spacing"></i><strong>Staff:</strong> Please fill out this damage report form. We will contact you about compensation.</p>
+          <p><i class="fa-solid fa-user icon-primary icon-spacing"></i><strong>You:</strong> How long will that take?</p>
+          <p><i class="fa-solid fa-user-tie icon-secondary icon-spacing"></i><strong>Staff:</strong> About two weeks. Here is your reference number.</p>
+        </div>
+        
+        <h3>Role Play Scenarios</h3>
+        <p>Try these situations with your teacher or a partner.</p>
+        
+        <table class="responsive-table">
+          <thead>
+            <tr>
+              <th>Scenario</th>
+              <th>Student A (Traveller)</th>
+              <th>Student B (Staff)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. Lost Bag</strong></td>
+              <td>Your bag didn't arrive. It's a medium black suitcase with a green tag. You are staying at the Grand Hotel.</td>
+              <td>Ask for flight number, description of the bag, and delivery address. Give a reference number.</td>
+            </tr>
+            <tr>
+              <td><strong>2. Damaged Bag</strong></td>
+              <td>Your bag arrived but it's damaged. The handle is broken. You want compensation.</td>
+              <td>Ask to see the damage and the luggage tag. Give a damage report form.</td>
+            </tr>
+            <tr>
+              <td><strong>3. Describing Luggage</strong></td>
+              <td>Your bag is lost. Describe it: big, red, with wheels, has a white ribbon on the handle, brand is "Travel Pro".</td>
+              <td>Ask questions about size, colour, brand, and any special details. Fill out the claim form.</td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <div class="important-note">
+          <p><strong><i class="fa-solid fa-lightbulb icon-secondary"></i> Remember:</strong> Use <strong>"My bag didn't arrive"</strong> for lost luggage, <strong>"My bag is damaged"</strong> for broken bags, and describe your bag with size + colour + details (e.g., "It's a big black suitcase with wheels").</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+  
+  <!-- Bottom Navigation -->
+  <nav class="bottom-navigation">
+    <a href="airport-lesson3.html" class="nav-button previous">← Previous: Immigration and Customs</a>
+    <div class="center-buttons">
+      <button class="nav-button print-button" onclick="window.print()">Print This Page</button>
+    </div>
+    <a href="unit1-review.html" class="nav-button next">Next: Unit 1 Review →</a>
+  </nav>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="../../home.html">Home</a></li>
+          <li><a href="../../about.html">About Us</a></li>
+          <li><a href="../../home.html#level-test">Find Your Level</a></li>
+          <li><a href="../../booking-page.html">Book a Lesson</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Courses</h3>
+        <ul>
+          <li><a href="../../beginner-landing.html">Beginner</a></li>
+          <li><a href="../../intermediate-landing.html">Intermediate</a></li>
+          <li><a href="../../advanced-landing.html">Advanced</a></li>
+          <li><a href="travel-english.html">Travel English</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="../../about.html">About</a></li>
+          <li><a href="../../contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© 2025 English in Doses | All rights reserved</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="../../js/core.js"></script>
+  <script src="../../js/compact-matching.js"></script>
+  <script src="../../js/drag-drop.js"></script>
+  <script src="../../js/vocab-match.js"></script>
+  <script src="../../js/flash-cards.js"></script>
+  <script src="../../js/activity-nav.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      
+      // ============================================
+      // VOCABULARY CAROUSEL + WORD BANK FILTERING
+      // ============================================
+      
+      // Initialize Vocabulary Matching
+      VocabMatchModule.init({
+        containerId: 'vocab-match',
+        onComplete: function(score, total) {
+          console.log('Vocabulary matching completed:', score, '/', total);
+        }
+      });
+      
+      // Filter word bank by page
+      function filterWordsByPage(pageIndex) {
+        const wordBank = document.querySelector('#vocab-match .vocab-words-container');
+        if (!wordBank) return;
+        
+        const allWords = wordBank.querySelectorAll('.vocab-word-item');
+        allWords.forEach(word => {
+          const wordPage = parseInt(word.getAttribute('data-page'));
+          if (wordPage === pageIndex && !word.classList.contains('placed')) {
+            word.style.display = '';
+          } else {
+            word.style.display = 'none';
+          }
+        });
+      }
+      
+      // Show only page 0 words on initial load
+      filterWordsByPage(0);
+      
+      // Hook into carousel navigation
+      const vocabContainer = document.getElementById('vocab-match');
+      const prevBtn = vocabContainer.querySelector('.vocab-carousel-prev');
+      const nextBtn = vocabContainer.querySelector('.vocab-carousel-next');
+      const dots = vocabContainer.querySelectorAll('.vocab-carousel-dot');
+      const indicator = vocabContainer.querySelector('.vocab-carousel-indicator');
+      
+      let currentVocabPage = 0;
+      const totalVocabPages = 3;
+      
+      function updateIndicator() {
+        if (indicator) {
+          indicator.textContent = `${currentVocabPage + 1} / ${totalVocabPages}`;
+        }
+      }
+      
+      prevBtn.addEventListener('click', function() {
+        if (currentVocabPage > 0) {
+          currentVocabPage--;
+          filterWordsByPage(currentVocabPage);
+          updateIndicator();
+        }
+      });
+      
+      nextBtn.addEventListener('click', function() {
+        if (currentVocabPage < totalVocabPages - 1) {
+          currentVocabPage++;
+          filterWordsByPage(currentVocabPage);
+          updateIndicator();
+        }
+      });
+      
+      dots.forEach(dot => {
+        dot.addEventListener('click', function() {
+          currentVocabPage = parseInt(this.getAttribute('data-page'));
+          filterWordsByPage(currentVocabPage);
+          updateIndicator();
+        });
+      });
+      
+      const vocabResetBtn = vocabContainer.querySelector('.vocab-reset-btn');
+      if (vocabResetBtn) {
+        vocabResetBtn.addEventListener('click', function() {
+          currentVocabPage = 0;
+          setTimeout(() => {
+            filterWordsByPage(0);
+            updateIndicator();
+          }, 100);
+        });
+      }
+      
+      // ============================================
+      // INITIALIZE FLASHCARDS
+      // ============================================
+      
+      FlashcardModule.init({
+        containerId: 'flashcards'
+      });
+      
+      // ============================================
+      // CLAIM FORM - DROPDOWN GAP FILL
+      // ============================================
+      
+      const claimFormSelects = document.querySelectorAll('.claim-form-select');
+      const claimFormSubmit = document.getElementById('claim-form-submit');
+      const claimFormRestart = document.getElementById('claim-form-restart');
+      const claimFormScore = document.getElementById('claim-form-score');
+      const gapFillNext = document.getElementById('gap-fill-next');
+      
+      claimFormSubmit.addEventListener('click', function() {
+        let score = 0;
+        const total = claimFormSelects.length;
+        
+        claimFormSelects.forEach(select => {
+          const correctAnswer = select.getAttribute('data-answer');
+          const userAnswer = select.value;
+          
+          select.classList.remove('correct', 'incorrect');
+          
+          if (userAnswer === correctAnswer) {
+            select.classList.add('correct');
+            score++;
+          } else {
+            select.classList.add('incorrect');
+          }
+          
+          select.disabled = true;
+        });
+        
+        claimFormScore.style.display = 'block';
+        claimFormScore.querySelector('span').textContent = score;
+        
+        claimFormSubmit.style.display = 'none';
+        claimFormRestart.style.display = 'inline-block';
+        
+        if (gapFillNext) gapFillNext.style.visibility = 'visible';
+      });
+      
+      claimFormRestart.addEventListener('click', function() {
+        claimFormSelects.forEach(select => {
+          select.value = '';
+          select.classList.remove('correct', 'incorrect');
+          select.disabled = false;
+        });
+        
+        claimFormScore.style.display = 'none';
+        claimFormSubmit.style.display = 'inline-block';
+        claimFormRestart.style.display = 'none';
+        if (gapFillNext) gapFillNext.style.visibility = 'hidden';
+      });
+      
+      // Gap fill navigation
+      if (gapFillNext) {
+        gapFillNext.addEventListener('click', function() {
+          document.querySelector('[data-activity="matching"]').click();
+        });
+      }
+      
+      // ============================================
+      // COMPACT MATCHING
+      // ============================================
+      
+      CompactMatchingModule.init({
+        containerId: 'matching-activity',
+        onComplete: function(score, total) {
+          console.log('Matching completed:', score, '/', total);
+          const nextBtn = document.getElementById('matching-next');
+          if (nextBtn) nextBtn.style.visibility = 'visible';
+        }
+      });
+      
+      // Matching navigation
+      const matchingNext = document.getElementById('matching-next');
+      if (matchingNext) {
+        matchingNext.addEventListener('click', function() {
+          document.querySelector('[data-activity="drag-drop-baggage"]').click();
+        });
+      }
+      
+      // ============================================
+      // DRAG DROP - WORD ORDER
+      // ============================================
+      
+      DragDropModule.init({
+        containerId: 'drag-drop-baggage',
+        storageKey: 'travel-lesson4-baggage',
+        answers: {
+          'dd1': 'My bag didn\'t arrive .',
+          'dd2': 'It\'s a big blue suitcase .',
+          'dd3': 'When will my bag arrive ?',
+          'dd4': 'Can you deliver it to my hotel ?',
+          'dd5': 'The airline didn\'t call me .',
+          'dd6': 'They didn\'t find my bag .',
+          'dd7': 'It\'s a small red bag .',
+          'dd8': 'Where is baggage claim ?',
+          'dd9': 'Can I have a claim form ?',
+          'dd10': 'It\'s a medium black suitcase .'
+        },
+        onComplete: function(score, total) {
+          console.log('Drag and drop completed:', score, '/', total);
+        }
+      });
+      
+      // ============================================
+      // ACTIVITY NAVIGATION
+      // ============================================
+      
+      ActivityNavModule.init({
+        containerId: 'activity-nav',
+        activities: ['gap-fill-form', 'matching', 'drag-drop-baggage'],
+        onActivityChange: function(activityId) {
+          console.log('Activity changed to:', activityId);
+        }
+      });
+      
+    });
+  </script>
+</body>
+</html>
