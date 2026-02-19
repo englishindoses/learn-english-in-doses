@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Standardized Head Section -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Advanced ESL Grammar Course - Master complex English grammar structures with detailed explanations and practice exercises">
-  <title>Advanced Grammar Course - English in Doses</title>
-  
+  <meta name="description" content="Advanced ESL Grammar Course - Comprehensive lessons for improving your English grammar skills">
+  <title>Advanced ESL Grammar Course</title>
+
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
-  
-  <!-- Favicon -->
-  <link rel="apple-touch-icon" sizes="180x180" href="../../images/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../../images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../../images/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  
-  <!-- Styles -->
+
+  <!-- Base and Activity Styles -->
   <link rel="stylesheet" href="../../css/base.css">
   <link rel="stylesheet" href="../../css/activities.css">
-  <link rel="stylesheet" href="../../css/progress-tracking-styles.css">
-  
-  <!--[if lt IE 9]>
+  <link rel="stylesheet" href="../../css/components.css">
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../../images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../images//favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../images//favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+
+  <!-- Conditional polyfills -->
+  <!--[if IE]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
   <![endif]-->
   
@@ -45,14 +48,12 @@
     <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
     <div class="nav-links">
       <a href="../../home.html" class="nav-link">Home</a>
-    <a href="../../about.html" class="nav-link">About Us</a>
-    <a href="../../home.html#level-test" class="nav-link">Find Your Level</a>
-    <a href="../../beginner-landing.html" class="nav-link">Beginner</a>
-    <a href="../../intermediate-landing.html" class="nav-link">Intermediate</a>
-    <a href="../../advanced-landing.html" class="nav-link">Advanced</a>
-    <a href="../../travel/beginner-travel/travel-english.html" class="nav-link">Travel English</a>
-    <a href="../../my-progress.html" class="nav-link">My Progress</a>
-    <a href="../../booking-page.html" class="nav-link">Book a Lesson</a>
+      <a href="../../about.html" class="nav-link">About Us</a>
+      <a href="../../contact.html" class="nav-link">Contact Us</a>
+      <a href="../../home.html#where-to-start" class="nav-link">Grammar</a>
+      <a href="../../travel/beginner-travel/travel-english.html" class="nav-link">Travel English</a>
+      <a href="../../conversation-page.html" class="nav-link">Conversation</a>
+      <a href="../../my-progress.html" class="nav-link">My Progress</a>
     </div>
 
     <div class="advanced-nav-indicator"></div>
@@ -111,99 +112,111 @@
           <ul>
             <li class="grammar-topic">
               <input type="checkbox" id="present-perfect-progressive" class="topic-checkbox" aria-label="Mark Present Perfect Progressive as completed">
-              <a href="present-perfect-progressive.html">Present Perfect Progressive vs. Past Perfect Progressive</a>
+              <a href="present-perfect-progressive.html">Present Perfect Progressive vs. Present Perfect Simple</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="past-perfect-progressive" class="topic-checkbox" aria-label="Mark Past Perfect Progressive as completed">
+              <a href="past-perfect-progressive.html">Past Perfect Progressive vs. Past Perfect</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="future-perfect-continuous" class="topic-checkbox" aria-label="Mark Future Perfect Continuous as completed">
+              <a href="future-perfect-continuous.html">Future Perfect vs. Future Perfect Continuous</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="mixed-time-frames" class="topic-checkbox" aria-label="Mark Mixed Time Frames as completed">
+              <a href="mixed-time-frames.html">Mixed Time Frames with Perfect Tenses</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="advanced-present-perfect" class="topic-checkbox" aria-label="Mark Advanced Present Perfect as completed">
+              <a href="advanced-present-perfect.html">Advanced Uses of Present Perfect</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="perfect-infinitives-gerunds" class="topic-checkbox" aria-label="Mark Perfect Infinitives and Gerunds as completed">
+              <a href="perfect-infinitives-gerunds.html">Perfect Infinitives and Perfect Gerunds</a>
             </li>
             <li class="grammar-topic">
               <input type="checkbox" id="narrative-tenses" class="topic-checkbox" aria-label="Mark Narrative Tenses as completed">
-              <a href="narrative-tenses.html">Narrative Tenses: Past Perfect and Past Progressive in Context</a>
-            </li>
-            <li class="grammar-topic">
-              <input type="checkbox" id="future-perfect" class="topic-checkbox" aria-label="Mark Future Perfect as completed">
-              <a href="future-perfect.html">Future Perfect and Future Perfect Progressive</a>
-            </li>
-            <li class="grammar-topic">
-              <input type="checkbox" id="adv-present-perfect" class="topic-checkbox" aria-label="Mark Advanced Present Perfect as completed">
-              <a href="advanced-present-perfect.html">Advanced Present Perfect</a>
-            </li>
-            <li class="grammar-topic">
-              <input type="checkbox" id="stative-dynamic" class="topic-checkbox" aria-label="Mark Stative vs Dynamic as completed">
-              <a href="stative-dynamic.html">Stative vs. Dynamic Verb Uses</a>
+              <a href="narrative-tenses.html">Narrative Tenses (Past Perfect, Past Simple, Past Continuous)</a>
             </li>
           </ul>
         </div>
 
         <div class="module">
-          <h3 id="conditionals">2. Advanced Conditionals</h3>
+          <h3 id="conditionals">2. Conditionals and Hypotheticals</h3>
           <ul>
             <li class="grammar-topic">
-              <input type="checkbox" id="mixed-conditionals" class="topic-checkbox" aria-label="Mark Mixed Conditionals as completed">
-              <a href="mixed-conditionals.html">Mixed Conditionals</a>
+              <input type="checkbox" id="conditional-types" class="topic-checkbox" aria-label="Mark Conditional Types as completed">
+              <a href="conditional-types.html">Zero, First, Second, Third, and Mixed Conditionals</a>
             </li>
             <li class="grammar-topic">
               <input type="checkbox" id="inverted-conditionals" class="topic-checkbox" aria-label="Mark Inverted Conditionals as completed">
-              <a href="inverted-conditionals.html">Inverted Conditionals</a>
-            </li>
-            <li class="grammar-topic">
-              <input type="checkbox" id="implied-conditionals" class="topic-checkbox" aria-label="Mark Implied Conditionals as completed">
-              <a href="implied-conditionals.html">Implied Conditionals</a>
+              <a href="inverted-conditionals.html">Inverted Conditionals (e.g., "Had I known...")</a>
             </li>
             <li class="grammar-topic">
               <input type="checkbox" id="conditional-expressions" class="topic-checkbox" aria-label="Mark Conditional Expressions as completed">
-              <a href="conditional-expressions.html">Conditional Expressions (unless, provided that, as long as)</a>
+              <a href="conditional-expressions.html">Conditional Expressions (Unless, Provided that, As long as)</a>
             </li>
             <li class="grammar-topic">
-              <input type="checkbox" id="wish-if-only" class="topic-checkbox" aria-label="Mark Wish and If Only as completed">
-              <a href="wish-if-only.html">Wish and If Only (Hypothetical Wishes)</a>
-            </li>
-          </ul>
-        </div>
-
-        <div class="module">
-          <h3 id="modals">3. Advanced Modal Verbs</h3>
-          <ul>
-            <li class="grammar-topic">
-              <input type="checkbox" id="modals-past-deduction" class="topic-checkbox" aria-label="Mark Modals for Past Deduction as completed">
-              <a href="modals-past-deduction.html">Modals for Past Deduction (must have, might have, can't have)</a>
-            </li>
-            <li class="grammar-topic">
-              <input type="checkbox" id="modals-criticism" class="topic-checkbox" aria-label="Mark Modals for Criticism as completed">
-              <a href="modals-criticism.html">Modals for Criticism and Regret (should have, could have, needn't have)</a>
-            </li>
-            <li class="grammar-topic">
-              <input type="checkbox" id="modals-formal" class="topic-checkbox" aria-label="Mark Formal Modal Usage as completed">
-              <a href="modals-formal.html">Formal Modal Usage (would, shall, may)</a>
-            </li>
-            <li class="grammar-topic">
-              <input type="checkbox" id="modals-nuanced" class="topic-checkbox" aria-label="Mark Nuanced Modal Usage as completed">
-              <a href="modals-nuanced.html">Nuanced Meanings of Modals (might vs. could, should vs. ought to)</a>
+              <input type="checkbox" id="wish-if-only-would-rather" class="topic-checkbox" aria-label="Mark Wish, If only, Would rather as completed">
+              <a href="wish-if-only-would-rather.html">Wish, If only, and Would rather for regret and desire</a>
             </li>
           </ul>
         </div>
 
         <div class="module">
-          <h3 id="passive">4. Advanced Passive Voice</h3>
+          <h3 id="modals">3. Modality</h3>
           <ul>
             <li class="grammar-topic">
-              <input type="checkbox" id="passive-reporting" class="topic-checkbox" aria-label="Mark Passive Reporting Structures as completed">
-              <a href="passive-reporting.html">Passive Reporting Structures (It is said that..., He is known to...)</a>
+              <input type="checkbox" id="modal-perfect" class="topic-checkbox" aria-label="Mark Modal Perfect Forms as completed">
+              <a href="modal-perfect.html">Modal Perfect Forms (must have been, could have done)</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="modal-progressive" class="topic-checkbox" aria-label="Mark Modal Progressive Forms as completed">
+              <a href="modal-progressive.html">Modal Progressive Forms (must be doing, should be working)</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="modal-differences" class="topic-checkbox" aria-label="Mark Modal Differences as completed">
+              <a href="modal-differences.html">Subtle Differences Between Similar Modals (might vs. may vs. could)</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="advanced-modal-meanings" class="topic-checkbox" aria-label="Mark Advanced Modal Meanings as completed">
+              <a href="advanced-modal-meanings.html">Advanced Modal Meanings (reproach, criticism, probability)</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="mixed-modals" class="topic-checkbox" aria-label="Mark Mixed Modal Constructions as completed">
+              <a href="mixed-modals.html">Mixed Modal Constructions</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="module">
+          <h3 id="passive">4. Passive Voice</h3>
+          <ul>
+            <li class="grammar-topic">
+              <input type="checkbox" id="passive-voice" class="topic-checkbox" aria-label="Mark Passive Voice Fundamentals as completed">
+              <a href="passive-voice.html">Passive Voice: Fundamentals</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="passive-get-have" class="topic-checkbox" aria-label="Mark Advanced Passive Constructions as completed">
+              <a href="passive-get-have.html">Advanced Passive Constructions with Get and Have</a>
             </li>
             <li class="grammar-topic">
               <input type="checkbox" id="passive-verbals" class="topic-checkbox" aria-label="Mark Passive Infinitives and Gerunds as completed">
               <a href="passive-verbals.html">Passive Infinitives and Gerunds</a>
             </li>
             <li class="grammar-topic">
-              <input type="checkbox" id="passive-get-have" class="topic-checkbox" aria-label="Mark Passive Get Have as completed">
-              <a href="passive-get-have.html">Advanced Passive Constructions with Get and Have</a>
+              <input type="checkbox" id="passive-reporting" class="topic-checkbox" aria-label="Mark Passive Reporting Verbs as completed">
+              <a href="passive-reporting.html">Passive Reporting Verbs (is thought to be, is said to have)</a>
             </li>
             <li class="grammar-topic">
-              <input type="checkbox" id="double-passive" class="topic-checkbox" aria-label="Mark Double Passive as completed">
+              <input type="checkbox" id="double-passive" class="topic-checkbox" aria-label="Mark Double Passive Constructions as completed">
               <a href="double-passive.html">Double Passive Constructions</a>
             </li>
           </ul>
         </div>
 
         <div class="module">
-          <h3 id="word-order">5. Complex Sentence Structures</h3>
+          <h3 id="complex-structures">5. Complex Sentence Structures</h3>
           <ul>
             <li class="grammar-topic">
               <input type="checkbox" id="relative-clauses" class="topic-checkbox" aria-label="Mark Relative Clauses as completed">
@@ -214,11 +227,11 @@
               <a href="nominal-clauses.html">Nominal Clauses</a>
             </li>
             <li class="grammar-topic">
-              <input type="checkbox" id="nominal-clauses" class="topic-checkbox" aria-label="Mark Nominal Clauses as completed">
+              <input type="checkbox" id="nominal-clauses2" class="topic-checkbox" aria-label="Mark Nominal Clauses Part 2 as completed">
               <a href="nominal-clauses2.html">Nominal Clauses - Part 2</a>
             </li>
             <li class="grammar-topic">
-              <input type="checkbox" id="nominal-clauses" class="topic-checkbox" aria-label="Mark Nominal Clauses as completed">
+              <input type="checkbox" id="nominal-clauses-review" class="topic-checkbox" aria-label="Mark Nominal Clauses Review as completed">
               <a href="nominal-clauses-review.html">Nominal Clauses - Review!</a>
             </li>
             <li class="grammar-topic">
@@ -226,11 +239,11 @@
               <a href="subjunctive1.html">Subjunctive Mood</a>
             </li>
             <li class="grammar-topic">
-              <input type="checkbox" id="subjunctive" class="topic-checkbox" aria-label="Mark Subjunctive Mood as completed">
+              <input type="checkbox" id="subjunctive2" class="topic-checkbox" aria-label="Mark Advanced Subjunctive Mood as completed">
               <a href="subjunctive2.html">Advanced Subjunctive Mood</a>
             </li>
             <li class="grammar-topic">
-              <input type="checkbox" id="subjunctive" class="topic-checkbox" aria-label="Mark Subjunctive Mood as completed">
+              <input type="checkbox" id="subjunctive-review" class="topic-checkbox" aria-label="Mark Subjunctive Mood Review as completed">
               <a href="subjunctive-revision.html">Subjunctive Mood - Revision</a>
             </li>
             
@@ -269,10 +282,8 @@
         </div>
 
         <div class="module">
-          <h3 id="adverbials-prep-phrases">7. Adverbials & Prepositional Phrases</h3>
-          
           <h2>Coming Soon:</h2>
-          
+          <h3 id="adverbials-prep-phrases">7. Adverbials & Prepositional Phrases</h3>
           <ul>
             <li class="grammar-topic">
               <input type="checkbox" id="adverb-position" class="topic-checkbox" aria-label="Mark Adverb Position as completed">
@@ -324,37 +335,105 @@
         </div>
 
         <div class="module">
-          <h3 id="advanced-modifiers">9. Ellipsis, Substitution & Reference</h3>
+          <h3 id="advanced-modifiers">9. Advanced Modifiers</h3>
           <ul>
             <li class="grammar-topic">
-              <input type="checkbox" id="ellipsis" class="topic-checkbox" aria-label="Mark Ellipsis as completed">
-              <a href="ellipsis.html">Ellipsis in Formal and Informal English</a>
+              <input type="checkbox" id="adjective-gradability" class="topic-checkbox" aria-label="Mark Adjective Gradability as completed">
+              <a href="adjective-gradability.html">Gradability and Ungradability of Adjectives</a>
             </li>
             <li class="grammar-topic">
-              <input type="checkbox" id="substitution" class="topic-checkbox" aria-label="Mark Substitution as completed">
-              <a href="substitution.html">Substitution with "do so", "so", "one"</a>
+              <input type="checkbox" id="compound-adjectives" class="topic-checkbox" aria-label="Mark Compound Adjectives as completed">
+              <a href="compound-adjectives.html">Compound and Complex Adjectives</a>
             </li>
             <li class="grammar-topic">
-              <input type="checkbox" id="referencing" class="topic-checkbox" aria-label="Mark Referencing as completed">
-              <a href="referencing.html">Referencing (this, that, such, the former, the latter)</a>
+              <input type="checkbox" id="adjective-order" class="topic-checkbox" aria-label="Mark Adjective Order as completed">
+              <a href="adjective-order.html">Adjective Order and Multiple Adjectives</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="intensifiers-downtoners" class="topic-checkbox" aria-label="Mark Intensifiers and Downtoners as completed">
+              <a href="intensifiers-downtoners.html">Intensifiers and Downtoners</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="advanced-comparatives" class="topic-checkbox" aria-label="Mark Advanced Comparatives as completed">
+              <a href="advanced-comparatives.html">Advanced Comparative and Superlative Structures</a>
             </li>
           </ul>
         </div>
 
         <div class="module">
-          <h3 id="cohesion">10. Text Cohesion & Coherence</h3>
+          <h3 id="discourse-cohesion">10. Discourse & Cohesion</h3>
           <ul>
             <li class="grammar-topic">
-              <input type="checkbox" id="discourse-markers" class="topic-checkbox" aria-label="Mark Discourse Markers as completed">
-              <a href="discourse-markers.html">Discourse Markers for Academic and Formal Writing</a>
+              <input type="checkbox" id="discourse-markers" class="topic-checkbox" aria-label="Mark Advanced Discourse Markers as completed">
+              <a href="discourse-markers.html">Advanced Discourse Markers and Linking Words</a>
             </li>
             <li class="grammar-topic">
-              <input type="checkbox" id="topic-sentences" class="topic-checkbox" aria-label="Mark Topic Sentences as completed">
-              <a href="topic-sentences.html">Fronting, Focus, and Topic Sentences</a>
+              <input type="checkbox" id="ellipsis-substitution" class="topic-checkbox" aria-label="Mark Ellipsis and Substitution as completed">
+              <a href="ellipsis-substitution.html">Ellipsis and Substitution</a>
             </li>
             <li class="grammar-topic">
-              <input type="checkbox" id="hedging" class="topic-checkbox" aria-label="Mark Hedging as completed">
-              <a href="hedging.html">Hedging and Cautious Language</a>
+              <input type="checkbox" id="reference-devices" class="topic-checkbox" aria-label="Mark Reference Devices as completed">
+              <a href="reference-devices.html">Reference Devices and Text Cohesion</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="thematic-progression" class="topic-checkbox" aria-label="Mark Thematic Progression as completed">
+              <a href="thematic-progression.html">Thematic Progression and Information Structure</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="academic-cohesion" class="topic-checkbox" aria-label="Mark Cohesive Devices in Academic Writing as completed">
+              <a href="academic-cohesion.html">Cohesive Devices in Academic Writing</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="module">
+          <h3 id="special-expressions">11. Special Structures & Expressions</h3>
+          <ul>
+            <li class="grammar-topic">
+              <input type="checkbox" id="emphatic-structures" class="topic-checkbox" aria-label="Mark Emphatic Structures as completed">
+              <a href="emphatic-structures.html">Emphatic Structures (do, does, did)</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="tag-questions" class="topic-checkbox" aria-label="Mark Tag Questions as completed">
+              <a href="tag-questions.html">Tag Questions (including irregular forms)</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="echo-questions" class="topic-checkbox" aria-label="Mark Echo Questions as completed">
+              <a href="echo-questions.html">Echo Questions and Question Tags</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="fronting-focusing" class="topic-checkbox" aria-label="Mark Fronting and Focusing Devices as completed">
+              <a href="fronting-focusing.html">Fronting and Focusing Devices</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="hedging-devices" class="topic-checkbox" aria-label="Mark Hedging Devices as completed">
+              <a href="hedging-devices.html">Hedging Devices and Tentative Language</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="module">
+          <h3 id="register-style">12. Register & Style</h3>
+          <ul>
+            <li class="grammar-topic">
+              <input type="checkbox" id="formal-informal" class="topic-checkbox" aria-label="Mark Formal vs Informal Grammar as completed">
+              <a href="formal-informal.html">Formal vs. Informal Grammar Structures</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="academic-conventions" class="topic-checkbox" aria-label="Mark Academic Writing Conventions as completed">
+              <a href="academic-conventions.html">Academic Writing Conventions</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="literary-devices" class="topic-checkbox" aria-label="Mark Literary and Rhetorical Devices as completed">
+              <a href="literary-devices.html">Literary and Rhetorical Devices</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="idiomatic-language" class="topic-checkbox" aria-label="Mark Idiomatic Language as completed">
+              <a href="idiomatic-language.html">Idiomatic and Figurative Language</a>
+            </li>
+            <li class="grammar-topic">
+              <input type="checkbox" id="style-shifting" class="topic-checkbox" aria-label="Mark Style Shifting as completed">
+              <a href="style-shifting.html">Style Shifting and Genre Appropriate Grammar</a>
             </li>
           </ul>
         </div>
@@ -362,8 +441,8 @@
       <hr>
 
       <section class="intro-section">
-        <h2>Ready to Begin?</h2>
-        <p>Click on any topic to start learning. Make sure you complete the practice activities. For further practice and explanations book a private conversation lesson tailored specifically to your needs.</p>
+        <h2>Getting Started</h2>
+        <p>Begin with module one to follow the full structure of the course, or simply skip ahead to the specific grammar rule you are looking for. Make sure you complete the practice activities. For further practice and explanations book a private conversation lesson tailored specifically to your needs.</p>
         <a href="present-perfect-progressive.html" class="get-started-btn">Begin with Advanced Tenses - Present Perfect Progressive →</a>
       </section>
 
@@ -410,10 +489,10 @@
     <div class="footer-section">
       <h3>Grammar Topics</h3>
       <ul>
-        <li><a href="advanced-grammar.html#advanced-tenses-and-aspect">Advanced Tenses</a></li>
-        <li><a href="advanced-grammar.html#conditionals">Advanced Conditionals</a></li>
-        <li><a href="advanced-grammar.html#modals">Advanced Modal Verbs</a></li>
-        <li><a href="advanced-grammar.html#passive">Advanced Passive Voice</a></li>
+        <li><a href="../advanced/advanced-grammar.html#advanced-tenses-and-aspect">Advanced Tenses</a></li>
+        <li><a href="../advanced/advanced-grammar.html#conditionals">Advanced Conditionals</a></li>
+        <li><a href="../advanced/advanced-grammar.html#modals">Advanced Modal Verbs</a></li>
+        <li><a href="../advanced/advanced-grammar.html#passive">Advanced Passive Voice</a></li>
       </ul>
     </div>
     
@@ -422,6 +501,7 @@
       <ul>
         <li><a href="../../about.html">About</a></li>
         <li><a href="../../contact.html">Contact</a></li>
+       
       </ul>
     </div>
   </div>
@@ -431,8 +511,91 @@
   </div>
 </footer>
 
-  <!-- JavaScript -->
+  <!-- Core JavaScript -->
   <script src="../../js/core.js"></script>
-  <script src="../../js/index-progress.js"></script>
+  
+  <!-- Checkbox Management Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get all checkboxes
+      const checkboxes = document.querySelectorAll('.topic-checkbox');
+      
+      // Load checkbox states from localStorage
+      loadCheckboxStates();
+      
+      // Add event listeners to checkboxes
+      checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+          // Update the link styling
+          updateLinkStyle(this);
+          
+          // Save checkbox state to localStorage
+          saveCheckboxState(this.id, this.checked);
+          
+          // Integrate with progress tracking system
+          if (typeof ProgressTracker !== 'undefined') {
+            try {
+              // Check if the checkbox is checked
+              if (this.checked) {
+                // Mark item as completed in ProgressTracker
+                ProgressTracker.markItemCompleted('lessons', this.id, {
+                  completedAt: new Date().toISOString(),
+                  title: this.nextElementSibling.textContent
+                });
+              } else {
+                // Update item as not completed
+                ProgressTracker.updateItemProgress('lessons', this.id, {
+                  completed: false,
+                  lastUpdated: new Date().toISOString()
+                });
+              }
+            } catch (error) {
+              console.error('Error updating progress tracking:', error);
+            }
+          }
+        });
+      });
+      
+      /**
+       * Loads checkbox states from localStorage
+       */
+      function loadCheckboxStates() {
+        checkboxes.forEach(checkbox => {
+          const isChecked = localStorage.getItem('grammar-topic-' + checkbox.id) === 'true';
+          checkbox.checked = isChecked;
+          
+          // Update link styling based on loaded state
+          if (isChecked) {
+            updateLinkStyle(checkbox);
+          }
+        });
+      }
+      
+      /**
+       * Saves checkbox state to localStorage
+       * 
+       * @param {string} id - The checkbox ID
+       * @param {boolean} isChecked - Whether the checkbox is checked
+       */
+      function saveCheckboxState(id, isChecked) {
+        localStorage.setItem('grammar-topic-' + id, isChecked);
+      }
+      
+      /**
+       * Updates the link styling based on checkbox state
+       * 
+       * @param {HTMLElement} checkbox - The checkbox element
+       */
+      function updateLinkStyle(checkbox) {
+        const link = checkbox.nextElementSibling;
+        
+        if (checkbox.checked) {
+          link.classList.add('completed-topic');
+        } else {
+          link.classList.remove('completed-topic');
+        }
+      }
+    });
+  </script>
 </body>
 </html>
