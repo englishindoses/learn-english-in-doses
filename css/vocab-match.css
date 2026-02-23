@@ -200,15 +200,11 @@
    ---------------------------------------- */
 .vocab-images-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
   gap: 20px;
   padding: 5px;
-}
-
-@media (min-width: 600px) {
-  .vocab-images-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
+  justify-content: center;
 }
 
 .vocab-image-item {
