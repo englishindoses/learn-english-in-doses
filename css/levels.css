@@ -1,0 +1,1079 @@
+/*
+ * ESL Grammar Website - Level-specific Styles
+ * Styles for Beginner, Intermediate, Advanced, and Conversation sections
+ * Including landing page styles
+ */
+
+/* ----------------------------------------
+   1. Level Theme Variables
+   ---------------------------------------- */
+:root {
+  /* Beginner section theme variables */
+  --beginner-primary: #2ecc71;      /* Vibrant green */
+  --beginner-primary-dark: #27ae60; /* Darker green for hover states */
+  --beginner-secondary: #f39c12;    /* Warm orange accent */
+  --beginner-card-bg: #f0fff5;      /* Very light green background */
+  --beginner-icon-bg: #e8f8e8;      /* Slightly darker green for icons */
+
+  /* Intermediate section theme variables */
+  --intermediate-primary: #FF9800;      /* Orange */
+  --intermediate-primary-dark: #F57C00; /* Darker orange for hover states */
+  --intermediate-secondary: #3498db;    /* Blue accent */
+  --intermediate-card-bg: #fff8e1;      /* Light orange background */
+  --intermediate-icon-bg: #ffecb3;      /* Slightly darker orange for icons */
+
+  /* Conversation section theme variables - Professional & Inviting */
+  --conversation-primary: #26A69A;      /* Sea green teal (updated from blue teal) */
+  --conversation-primary-dark: #1E8A7E; /* Darker sea green for hover states */
+  --conversation-secondary: #f5ae51;    /* Soft orange accent (unchanged) */
+  --conversation-card-bg: #f0f9f6;      /* Light sea green background */
+  --conversation-icon-bg: #e0f5f0;      /* Slightly darker sea green for icons */
+  --conversation-nav-indicator: #1E8A7E; /* Deeper sea green for navigation indicator */
+}
+
+[data-theme="dark"] {
+  /* Dark theme beginner-specific colors */
+  --beginner-primary: #3dd685;       /* Brighter green for dark mode */
+  --beginner-primary-dark: #2fb672;  /* Slightly darker green */
+  --beginner-secondary: #ffab38;     /* Brighter orange for dark mode */
+  --beginner-card-bg: #1e2a23;       /* Dark green-tinted background */
+  --beginner-icon-bg: #223c2a;       /* Darker green for icons */
+
+  /* Dark theme intermediate-specific colors */
+  --intermediate-primary: #FFA726;      /* Brighter orange for dark mode */
+  --intermediate-primary-dark: #FB8C00; /* Darker orange */
+  --intermediate-secondary: #4fa3e0;    /* Brighter blue for dark mode */
+  --intermediate-card-bg: #332700;      /* Dark orange-tinted background */
+  --intermediate-icon-bg: #443300;      /* Darker orange-brown for icons */
+
+  /* Dark theme conversation-specific colors */
+  --conversation-primary: #2DBDAF;      /* Brighter sea green for dark mode */
+  --conversation-primary-dark: #25A095; /* Darker sea green for hover states */
+  --conversation-secondary: #FF9F43;    /* Brighter orange for dark mode */
+  --conversation-card-bg: #1a2e2c;      /* Dark green-tinted background */
+  --conversation-icon-bg: #26423f;      /* Darker green for icons */
+  --conversation-nav-indicator: #25A095; /* Deeper sea green for navigation */
+}
+
+/* ----------------------------------------
+   2. Level-specific Styling (Beginner)
+   ---------------------------------------- */
+.beginner-section .function-card {
+  background-color: var(--beginner-card-bg);
+  border-top: 4px solid var(--beginner-primary);
+}
+
+.beginner-section .function-icon {
+  background-color: var(--beginner-icon-bg);
+  color: var(--beginner-primary);
+}
+
+.beginner-section .star {
+  color: var(--beginner-secondary);
+}
+
+.beginner-section .section-intro {
+  background-color: var(--beginner-card-bg);
+  border-left: 5px solid var(--beginner-primary);
+}
+
+.beginner-section .category-title {
+  border-bottom: 2px solid var(--beginner-primary);
+}
+
+.beginner-section .learn-button {
+  background-color: var(--beginner-primary);
+}
+
+.beginner-section .learn-button:hover {
+  background-color: var(--beginner-primary-dark);
+}
+
+/* .beginner-section h1 {
+  border-left: 5px solid var(--beginner-primary);
+} */
+
+.beginner-section .translate-tip strong {
+  color: var(--beginner-secondary);
+}
+/* Main heading background color change for beginner section */
+.beginner-section h1 {
+  background-color: var(--beginner-primary-dark);
+  /* border-left: 5px solid var(--beginner-primary); */
+}
+
+/* Change intro and content sections to use beginner colors */
+.beginner-section .intro-section,
+.beginner-section .content-section {
+  border-left: 5px solid var(--beginner-primary);
+}
+
+/* Navigation indicator for beginner section */
+.beginner-nav-indicator {
+  height: 3px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--beginner-primary);
+}
+
+/* Active navigation link in beginner section */
+.beginner-section .nav-link.active {
+  background-color: var(--beginner-primary);
+}
+
+/* Change the h2 element border colors to match the beginner theme */
+.beginner-section h2 {
+  border-bottom: 2px solid var(--beginner-primary);
+}
+
+/* Table headers should match the theme */
+.beginner-section th {
+  background-color: var(--beginner-primary);
+}
+
+/* Buttons should use the beginner theme colors */
+.beginner-section .nav-button {
+  background-color: var(--beginner-primary);
+}
+
+.beginner-section .nav-button:hover {
+  background-color: var(--beginner-primary-dark);
+}
+
+.beginner-section .nav-button.activities {
+  background-color: var(--beginner-secondary);
+}
+
+.beginner-section .nav-button.activities:hover {
+  background-color: #e67e22; /* Darker orange */
+}
+
+/* ----------------------------------------
+   3. Dark Theme for Beginner Section
+   ---------------------------------------- */
+/* Dark theme beginner-specific element styles */
+[data-theme="dark"] .beginner-section h1 {
+  background-color: #1a2a20;
+  /* border-left: 5px solid var(--beginner-primary); */
+  color: #ffffff;
+}
+
+[data-theme="dark"] .beginner-section .intro-section,
+[data-theme="dark"] .beginner-section .content-section,
+[data-theme="dark"] .beginner-section .section-intro {
+  background-color: #1a2e22; /* Same darker green as cards */
+  border-left: 5px solid var(--beginner-primary);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .beginner-section .function-card {
+  background-color: #1a2e22; /* Darker green instead of light mint */
+  border-top: 4px solid var(--beginner-primary);
+}
+
+[data-theme="dark"] .beginner-section .function-header {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .beginner-section .function-icon {
+  background-color: var(--beginner-icon-bg);
+  color: var(--beginner-primary);
+}
+
+[data-theme="dark"] .beginner-section .function-title {
+  color: #ffffff; /* Pure white */
+  font-weight: 600; /* Semi-bold to make it stand out */
+  text-shadow: 0 1px 1px rgba(0,0,0,0.2); /* Subtle shadow to improve legibility */
+}
+
+[data-theme="dark"] .beginner-section .function-desc {
+  color: #ffffff; /* Pure white for maximum contrast */
+  font-weight: 400; /* Slightly bolder to improve visibility */
+}
+
+[data-theme="dark"] .beginner-section .function-example {
+  background-color: #111111; /* Darker background */
+  border: 1px solid #333333;
+  color: #e6e6e6; /* Slightly off-white for code text */
+}
+
+[data-theme="dark"] .beginner-section .function-time {
+  color: #ffffff; /* White instead of gray */
+  font-weight: 500; /* Medium weight for better visibility */
+}
+
+[data-theme="dark"] .beginner-section .star {
+  color: #ffcc29; /* Brighter yellow/gold */
+  text-shadow: 0 0 2px rgba(0,0,0,0.3); /* Subtle shadow for definition */
+}
+
+[data-theme="dark"] .beginner-section .star.empty {
+  color: #ffffff; /* White empty stars */
+  opacity: 0.5; /* More visible than before */
+}
+
+[data-theme="dark"] .beginner-section .category-title {
+  color: #ffffff;
+  border-bottom: 2px solid var(--beginner-primary);
+}
+
+[data-theme="dark"] .beginner-section .learn-button {
+  background-color: #2ecc71; /* Bright green */
+  color: #000000; /* Black text */
+  font-weight: 600; /* Semi-bold for clarity */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+}
+
+[data-theme="dark"] .beginner-section .learn-button:hover {
+  background-color: var(--beginner-primary-dark);
+}
+
+[data-theme="dark"] .beginner-nav-indicator {
+  background-color: var(--beginner-primary);
+}
+
+[data-theme="dark"] .beginner-section .nav-link.active {
+  background-color: var(--beginner-primary);
+}
+
+/* Dark theme common elements in beginner pages */
+[data-theme="dark"] .beginner-section a {
+  color: #5dd898;
+}
+
+[data-theme="dark"] .beginner-section a:hover {
+  color: #7ae2ac;
+}
+
+[data-theme="dark"] .beginner-section .breadcrumb-item a {
+  color: #5dd898;
+}
+
+[data-theme="dark"] .beginner-section .translate-tip strong {
+  color: var(--beginner-secondary);
+}
+/* Add these styles to your dark theme section */
+
+/* Improve heading contrast in section boxes */
+[data-theme="dark"] .beginner-section .section-intro h3 {
+  color: #ffffff;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+/* Improve list item and paragraph text contrast */
+[data-theme="dark"] .beginner-section .section-intro p,
+[data-theme="dark"] .beginner-section .section-intro li {
+  color: #ffffff;
+}
+
+/* Add a subtle accent color to list markers for better visibility */
+[data-theme="dark"] .beginner-section .section-intro ul li::marker,
+[data-theme="dark"] .beginner-section .section-intro ol li::marker {
+  color: var(--beginner-primary);
+}
+
+/* For any strong/bold text in these sections */
+[data-theme="dark"] .beginner-section .section-intro strong {
+  color: var(--beginner-secondary);
+}
+
+/* ----------------------------------------
+   4. Level-specific Styling (Intermediate)
+   ---------------------------------------- */
+/* Intermediate section specific styling */
+.intermediate-section h1 {
+  background-color: var(--intermediate-primary-dark);
+  /* border-left: 5px solid var(--intermediate-primary); */
+}
+
+.intermediate-section .intro-section,
+.intermediate-section .content-section {
+  border-left: 5px solid var(--intermediate-primary);
+}
+
+.intermediate-section h2 {
+  border-bottom: 2px solid var(--intermediate-primary);
+}
+
+/* Navigation indicator for intermediate section */
+.intermediate-nav-indicator {
+  height: 3px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--intermediate-primary);
+}
+
+/* Active navigation link in intermediate section */
+.intermediate-section .nav-link.active {
+  background-color: var(--intermediate-primary);
+}
+
+/* Table headers should match the theme */
+.intermediate-section th {
+  background-color: var(--intermediate-primary);
+}
+
+/* Buttons should use the intermediate theme colors */
+.intermediate-section .nav-button {
+  background-color: var(--intermediate-primary);
+}
+
+.intermediate-section .nav-button:hover {
+  background-color: var(--intermediate-primary-dark);
+}
+
+.intermediate-section .nav-button.activities {
+  background-color: var(--intermediate-secondary);
+}
+
+.intermediate-section .nav-button.activities:hover {
+  background-color: #2980b9;
+}
+
+/* Dark theme styling for intermediate section */
+[data-theme="dark"] .intermediate-section h1 {
+  background-color: #332200;
+  /* border-left: 5px solid var(--intermediate-primary); */
+  color: #ffffff;
+}
+
+[data-theme="dark"] .intermediate-section .intro-section,
+[data-theme="dark"] .intermediate-section .content-section {
+  background-color: #2a2000;
+  border-left: 5px solid var(--intermediate-primary);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .intermediate-nav-indicator {
+  background-color: var(--intermediate-primary);
+}
+
+[data-theme="dark"] .intermediate-section .nav-link.active {
+  background-color: var(--intermediate-primary);
+}
+
+[data-theme="dark"] .intermediate-section a {
+  color: #FFB74D;
+}
+
+[data-theme="dark"] .intermediate-section a:hover {
+  color: #FFCC80;
+}
+
+[data-theme="dark"] .intermediate-section .breadcrumb-item a {
+  color: #FFB74D;
+}
+
+/* ----------------------------------------
+   5. Level-specific Styling (Advanced)
+   ---------------------------------------- */
+/* Advanced grammar section nav indicator */
+.advanced-nav-indicator {
+  height: 3px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--accent-color);
+}
+
+/* Dark theme styling for advanced nav indicator */
+[data-theme="dark"] .advanced-nav-indicator {
+  background-color: var(--accent-color);
+}
+
+/* Active navigation link in advanced section */
+.advanced-section .nav-link.active {
+  background-color: var(--accent-color);
+}
+
+/* ----------------------------------------
+   6. Level-specific Styling (Conversation)
+   ---------------------------------------- */
+.conversation-section .function-card {
+  background-color: var(--conversation-card-bg);
+  border-top: 4px solid var(--conversation-primary);
+}
+
+.conversation-section .function-icon {
+  background-color: var(--conversation-icon-bg);
+  color: var(--conversation-primary);
+}
+
+.conversation-section .star {
+  color: var(--conversation-secondary);
+}
+
+.conversation-section .section-intro {
+  background-color: var(--conversation-card-bg);
+  border-left: 5px solid var(--conversation-primary);
+}
+
+.conversation-section .category-title {
+  border-bottom: 2px solid var(--conversation-primary);
+}
+
+.conversation-section .chat-button,
+.conversation-section .learn-button {
+  background-color: var(--conversation-primary);
+}
+
+.conversation-section .chat-button:hover,
+.conversation-section .learn-button:hover {
+  background-color: var(--conversation-primary-dark);
+}
+
+.conversation-section .highlight {
+  color: var(--conversation-primary);
+  font-weight: 600;
+}
+
+.conversation-section .accent {
+  color: var(--conversation-secondary);
+  font-weight: 600;
+}
+
+/* Main heading background color change for conversation section */
+.conversation-section h1 {
+  background-color: var(--conversation-primary-dark);
+  color: var(--header-text); /* Keep text color white for readability */
+  padding: 20px;
+  padding-left: 30px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  font-size: 2rem;
+  /* border-left: 5px solid var(--conversation-primary); */
+}
+
+/* Change intro and content sections to use conversation colors */
+.conversation-section .intro-section,
+.conversation-section .content-section {
+  border-left: 5px solid var(--conversation-primary);
+}
+
+/* Topic cards for conversation section */
+.conversation-section .topic-card {
+  background-color: var(--conversation-card-bg);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px var(--shadow-color);
+  margin-bottom: 20px;
+  border-left: 4px solid var(--conversation-primary);
+}
+
+/* Navigation indicator for conversation section */
+.conversation-nav-indicator {
+  height: 3px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--conversation-nav-indicator);
+}
+
+/* Active navigation link in conversation section */
+.conversation-section .nav-link.active {
+  background-color: var(--conversation-primary);
+}
+
+/* Change the h2 element border colors to match the conversation theme */
+.conversation-section h2 {
+  border-bottom: 2px solid var(--conversation-primary);
+}
+
+/* Table headers should match the theme */
+.conversation-section th {
+  background-color: var(--conversation-primary);
+}
+
+/* Testimonials styling for conversation section */
+.conversation-section .testimonials {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.conversation-section .testimonial {
+  background-color: var(--conversation-card-bg);
+  border-radius: 10px;
+  padding: 20px;
+  position: relative;
+  box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.conversation-section .testimonial::before {
+  content: '"';
+  font-size: 5rem;
+  position: absolute;
+  top: -15px;
+  left: 10px;
+  color: var(--conversation-primary);
+  opacity: 0.2;
+  font-family: Georgia, serif;
+}
+
+.conversation-section .testimonial-text {
+  position: relative;
+  z-index: 1;
+  font-style: italic;
+  margin-bottom: 15px;
+}
+
+.conversation-section .testimonial-author {
+  text-align: right;
+  font-weight: bold;
+  color: var(--conversation-primary);
+}
+
+/* FAQ styling for conversation section */
+.conversation-section .faq-container {
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+
+.conversation-section .faq-item {
+  margin-bottom: 15px;
+  border-bottom: 1px solid rgba(38, 166, 154, 0.2);
+  padding-bottom: 15px;
+}
+
+.conversation-section .faq-question {
+  font-weight: 600;
+  color: var(--conversation-primary);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.conversation-section .faq-answer {
+  padding-top: 10px;
+  display: none;
+}
+
+.conversation-section .faq-answer.show {
+  display: block;
+}
+
+/* Message template styling for conversation section */
+.conversation-section .message-template {
+  background-color: white;
+  border-radius: 10px;
+  border-left: 4px solid var(--conversation-secondary);
+  padding: 15px;
+  margin: 20px 0;
+  font-family: 'Source Code Pro', monospace;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* ----------------------------------------
+   7. Dark Mode for Conversation Section
+   ---------------------------------------- */
+[data-theme="dark"] .conversation-section h1 {
+  background-color: #1a2e2c; /* Sea green background */
+  color: #ffffff;
+  /* border-left: 5px solid var(--conversation-primary); */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .conversation-section .intro-section,
+[data-theme="dark"] .conversation-section .content-section,
+[data-theme="dark"] .conversation-section .section-intro {
+  background-color: #1a2e2c;
+  border-left: 5px solid var(--conversation-primary);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .conversation-section .topic-card,
+[data-theme="dark"] .conversation-section .testimonial,
+[data-theme="dark"] .conversation-section .function-card {
+  background-color: #1a2e2c;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .conversation-section .message-template {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+  border-left: 4px solid var(--conversation-secondary);
+}
+
+[data-theme="dark"] .conversation-section .function-title,
+[data-theme="dark"] .conversation-section .faq-question,
+[data-theme="dark"] .conversation-section h3,
+[data-theme="dark"] .conversation-section h4 {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .conversation-section .highlight {
+  color: #4FCDBF; /* Sea green instead of purple */
+}
+
+[data-theme="dark"] .conversation-section .accent {
+  color: var(--conversation-secondary); /* Orange from variables */
+}
+
+[data-theme="dark"] .conversation-section a {
+  color: #4FCDBF; /* Sea green instead of purple */
+}
+
+[data-theme="dark"] .conversation-section a:hover {
+  color: #70DAD0; /* Lighter sea green instead of purple */
+}
+
+[data-theme="dark"] .conversation-section .breadcrumb-item a {
+  color: #4FCDBF; /* Sea green instead of purple */
+}
+
+[data-theme="dark"] .conversation-section .breadcrumb-item a:hover {
+  color: #70DAD0; /* Lighter sea green instead of purple */
+}
+
+[data-theme="dark"] .conversation-section .section-intro h3 {
+  color: #ffffff;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+[data-theme="dark"] .conversation-section .section-intro p,
+[data-theme="dark"] .conversation-section .section-intro li,
+[data-theme="dark"] .conversation-section .faq-answer {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .conversation-section .section-intro ul li::marker,
+[data-theme="dark"] .conversation-section .section-intro ol li::marker {
+  color: var(--conversation-primary);
+}
+
+[data-theme="dark"] .conversation-section .chat-button.secondary {
+  background-color: var(--conversation-secondary);
+  color: #000000;
+}
+
+/* Improve section headers and content contrast in dark mode */
+[data-theme="dark"] .conversation-section .section-title,
+[data-theme="dark"] .conversation-section .category-title {
+  color: #ffffff;
+}
+
+/* Fix for testimonial author colors */
+[data-theme="dark"] .conversation-section .testimonial-author {
+  color: #4FCDBF; /* Sea green instead of purple */
+}
+
+/* Function grid cards in dark mode */
+[data-theme="dark"] .conversation-section .function-card {
+  border-top: 4px solid var(--conversation-primary);
+}
+
+[data-theme="dark"] .conversation-section .function-desc {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .conversation-nav-indicator {
+  background-color: var(--conversation-nav-indicator);
+}
+
+/* Border-bottom color fix for consistency */
+[data-theme="dark"] .conversation-section .faq-item {
+  border-bottom: 1px solid rgba(45, 189, 175, 0.2); /* Sea green tint instead of purple */
+}
+
+/* ----------------------------------------
+   8. Section Divider - Beginners
+   ---------------------------------------- */
+.section-divider-beginner {
+  margin: 50px 0 40px 0;
+  border: none;
+  border-top: 3px solid var(--beginner-primary, #166534);
+}
+
+.section-divider-intro {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.section-divider-intro h2 {
+  font-size: 1.8rem;
+  color: var(--beginner-primary, #166534);
+}
+
+.section-divider-intro p {
+  font-size: 1.1rem;
+  color: var(--text-color-muted, #555);
+}
+
+[data-theme="dark"] .section-divider-intro p {
+  color: var(--text-color-muted, white);
+}
+
+/* ----------------------------------------
+   9. Landing Page Styles
+   ---------------------------------------- */
+.landing-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Landing Hero Section */
+.landing-hero {
+  padding: 80px 20px;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 60px;
+  text-align: center;
+  box-shadow: 0 8px 25px var(--shadow-color);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative floating circles */
+.landing-hero::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 1;
+  animation: float 6s ease-in-out infinite;
+}
+
+.landing-hero::after {
+  content: "";
+  position: absolute;
+  bottom: -80px;
+  left: -80px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  z-index: 1;
+  animation: floatReverse 8s ease-in-out infinite;
+}
+
+.landing-hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.landing-hero h1 {
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+  margin-bottom: 25px;
+  font-size: 2.8rem;
+  position: relative;
+  z-index: 2;
+  color: white;
+}
+
+.landing-hero-content p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.landing-hero-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  display: block;
+}
+
+/* Level-specific hero gradients */
+.landing-hero.beginner {
+  background: linear-gradient(135deg, var(--beginner-primary-dark) 0%, var(--beginner-primary) 100%);
+}
+
+.landing-hero.intermediate {
+  background: linear-gradient(135deg, var(--intermediate-primary-dark) 0%, var(--intermediate-primary) 100%);
+}
+
+.landing-hero.advanced {
+  background: linear-gradient(135deg, var(--header-bg) 0%, var(--accent-color) 100%);
+}
+
+/* Landing Section Styling */
+.landing-section {
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.landing-section-title {
+  position: relative;
+  padding-bottom: 15px;
+  margin-bottom: 35px;
+  font-size: 2rem;
+}
+
+.landing-section-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+}
+
+/* Level-specific title underlines */
+.beginner-section .landing-section-title::after {
+  background-color: var(--beginner-primary);
+}
+
+.intermediate-section .landing-section-title::after {
+  background-color: var(--intermediate-primary);
+}
+
+.advanced-section .landing-section-title::after {
+  background-color: var(--accent-color);
+}
+
+/* Path Cards Grid */
+.landing-paths-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.landing-path-card {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px var(--shadow-color);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.landing-path-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.landing-path-header {
+  padding: 25px;
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.landing-path-header-icon {
+  font-size: 1.8rem;
+}
+
+/* Level-specific card headers */
+.beginner-section .landing-path-header {
+  background-color: var(--beginner-primary);
+}
+
+.intermediate-section .landing-path-header {
+  background-color: var(--intermediate-primary);
+}
+
+.advanced-section .landing-path-header {
+  background-color: var(--accent-color);
+}
+
+.landing-path-content {
+  padding: 25px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.landing-path-desc {
+  margin-bottom: 20px;
+  flex: 1;
+  line-height: 1.7;
+}
+
+.landing-path-btn {
+  display: inline-block;
+  padding: 12px 25px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.landing-path-btn:hover {
+  transform: translateY(-3px);
+  text-decoration: none;
+}
+
+/* Level-specific buttons */
+.beginner-section .landing-path-btn {
+  background-color: var(--beginner-primary);
+}
+
+.beginner-section .landing-path-btn:hover {
+  background-color: var(--beginner-primary-dark);
+}
+
+.intermediate-section .landing-path-btn {
+  background-color: var(--intermediate-primary);
+}
+
+.intermediate-section .landing-path-btn:hover {
+  background-color: var(--intermediate-primary-dark);
+}
+
+.advanced-section .landing-path-btn {
+  background-color: var(--accent-color);
+}
+
+.advanced-section .landing-path-btn:hover {
+  background-color: #2980b9;
+}
+
+/* Quick Start Section */
+.landing-quick-start {
+  background-color: var(--card-bg);
+  padding: 40px;
+  border-radius: 12px;
+  margin-bottom: 60px;
+  box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+.landing-quick-start h2 {
+  margin-bottom: 20px;
+}
+
+.landing-quick-start p {
+  margin-bottom: 25px;
+  line-height: 1.7;
+}
+
+.landing-quick-start-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes floatReverse {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(15px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.landing-hero, .landing-path-card, .landing-quick-start {
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .landing-hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .landing-section-title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .landing-paths-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .landing-hero {
+    padding: 50px 20px;
+  }
+
+  .landing-hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .landing-hero-content p {
+    font-size: 1rem;
+  }
+
+  .landing-hero-icon {
+    font-size: 3rem;
+  }
+
+  .landing-quick-start {
+    padding: 25px;
+  }
+
+  .landing-quick-start-buttons {
+    flex-direction: column;
+  }
+
+  .landing-path-btn {
+    width: 100%;
+  }
+}
+
+/* Dark Theme Adjustments */
+[data-theme="dark"] .landing-path-card {
+  background-color: var(--card-bg);
+}
+
+[data-theme="dark"] .landing-quick-start {
+  background-color: var(--card-bg);
+}
+
+[data-theme="dark"] .landing-hero h1 {
+  color: white;
+}
+
+/* Beginner dark theme adjustments */
+[data-theme="dark"] .beginner-section .landing-path-header {
+  background-color: var(--beginner-primary);
+}
+
+[data-theme="dark"] .beginner-section .landing-path-btn {
+  background-color: var(--beginner-primary);
+}
+
+/* Intermediate dark theme adjustments */
+[data-theme="dark"] .intermediate-section .landing-path-header {
+  background-color: var(--intermediate-primary);
+}
+
+[data-theme="dark"] .intermediate-section .landing-path-btn {
+  background-color: var(--intermediate-primary);
+}
+
+/* Advanced dark theme adjustments */
+[data-theme="dark"] .advanced-section .landing-path-header {
+  background-color: var(--accent-color);
+}
+
+[data-theme="dark"] .advanced-section .landing-path-btn {
+  background-color: var(--accent-color);
+}
