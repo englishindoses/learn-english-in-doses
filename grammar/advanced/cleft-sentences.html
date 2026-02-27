@@ -85,7 +85,7 @@
       </section>
 
       <!-- GRAMMAR POINT SECTION 1 -->
-      <section class="grammar-point" id="grammar-summary">
+      <section class="grammar-point">
         <h2>Basic It-Cleft Sentences: It is/was... that/who</h2>
         
         <p><strong>Form</strong>: it + is/was + <span class="grammar-highlight">emphasised element</span> + that/who + rest of sentence</p>
@@ -334,10 +334,10 @@
           
           <div class="control-buttons">
             <button id="drag-drop-submit" class="submit-btn">Check Answers</button>
-            <button id="drag-drop-restart" class="restart-btn" style="display:none;">Try Again</button>
+            <button id="drag-drop-restart" class="restart-btn">Try Again</button>
           </div>
-          
-          <div class="score-display" id="drag-drop-score" style="display:none;">
+
+          <div class="score-display" id="drag-drop-score">
             Your score: <span>0</span>/5
           </div>
         </div>
@@ -605,11 +605,11 @@
           
           <div class="control-buttons">
             <button id="mcq-submit" class="submit-btn">Check Answers</button>
-            <button id="mcq-restart" class="restart-btn" style="display:none;">Try Again</button>
-            <a href="#summary" class="nav-button review-grammar-btn" style="display:none;">Review Grammar</a>
+            <button id="mcq-restart" class="restart-btn">Try Again</button>
+            <a href="#summary" class="nav-button">Review Grammar</a>
           </div>
-          
-          <div class="score-display" id="mcq-score" style="display:none;">
+
+          <div class="score-display" id="mcq-score">
             Your score: <span>0</span>/10
           </div>
         </div>
@@ -715,13 +715,7 @@
         showAllQuestionsAtOnce: true,
         onComplete: function(score, total) {
           console.log(`MCQ completed with score: ${score}/${total}`);
-          
-          // Show the "Review Grammar" button after completion
-          const reviewBtn = document.querySelector('.review-grammar-btn');
-          if (reviewBtn) {
-            reviewBtn.style.display = 'inline-block';
-          }
-          
+
           if (typeof ProgressTracker !== "undefined") {
             ProgressTracker.markItemCompleted('activities', 'mcq-it-cleft-sentences', {
               score: score,
