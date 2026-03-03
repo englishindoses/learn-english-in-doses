@@ -18,9 +18,7 @@
   <!-- Styles -->
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/activities.css">
-   <!-- tailwind css file link -->
-   <link rel="stylesheet" href="css/button-shine.css">
-  
+
   <style>
     /* Additional styles specific to about page */
     :root {
@@ -262,7 +260,7 @@
     .feature-card h3 {
       font-size: 1.4rem;
       margin-top: 30px;
-      margin-bottom: 30pxpx;
+      margin-bottom: 30px;
       color: var(--text-color);
     }
 
@@ -627,17 +625,18 @@
     <div class="nav-links">
     <a href="home.html" class="nav-link">Home</a>
     <a href="about.html" class="nav-link">About Us</a>
-    <a href="home.html#level-test" class="nav-link">Find Your Level</a>
+    <a href="home.html#quiz-section" class="nav-link">Find Your Level</a>
     <a href="beginner-landing.html" class="nav-link">Beginner</a>
     <a href="intermediate-landing.html" class="nav-link">Intermediate</a>
     <a href="advanced-landing.html" class="nav-link">Advanced</a>
     <a href="travel/beginner-travel/travel-english.html" class="nav-link">Travel English</a>
     <a href="my-progress.html" class="nav-link">My Progress</a>
     <a href="booking-page.html" class="nav-link">Book a Lesson</a>
+    </div>
   </nav>
 
   <!-- Floating CTA button -->
-  <a href="#" class="floating-cta">
+  <a href="booking-page.html" class="floating-cta">
     <span class="floating-cta-icon">📅</span>
     <span>Book a Lesson</span>
   </a>
@@ -731,8 +730,8 @@
       <section class="about-section">
         <h2 class="about-section-title">What We Offer</h2>
         
-        <div style="background-color: var(--card-bg); border-radius: 12px; padding: 40px; box-shadow: 0 8px 25px var(--shadow-color); margin-bottom: 40px; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 15px 30px var(--shadow-color)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 25px var(--shadow-color)';">
-          <h3 style="font-size: 1.5rem; color: var(--accent-color); margin-top: 0; margin-bottom: 20px;">Conversation Classes</h3>
+        <div class="teaching-approach" style="margin-bottom: 40px;">
+          <h3>Conversation Classes</h3>
           <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 25px;">Our primary focus is on helping students improve their speaking skills through regular conversation practice. These sessions can cover a wide range of topics based on your interests and needs:</p>
           
           <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; padding-left: 0; list-style: none; margin-top: 25px;">
@@ -755,8 +754,8 @@
           </ul>
         </div>
         
-        <div style="background-color: var(--card-bg); border-radius: 12px; padding: 40px; box-shadow: 0 8px 25px var(--shadow-color); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 15px 30px var(--shadow-color)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 25px var(--shadow-color)';">
-          <h3 style="font-size: 1.5rem; color: var(--accent-color); margin-top: 0; margin-bottom: 20px;">Free Learning Resources</h3>
+        <div class="teaching-approach">
+          <h3>Free Learning Resources</h3>
           <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 25px;">In addition to our conversation classes, we provide a variety of free resources to support your learning journey:</p>
           
           <ul style="margin-top: 25px; padding-left: 20px; line-height: 1.8; font-size: 1.05rem;">
@@ -832,7 +831,7 @@
         <p>Let's work together to achieve your language goals through short, effective practice sessions.</p>
         
         <div class="cta-buttons">
-          <a href="#" class="cta-button secondary">Book a Lesson</a>
+          <a href="booking-page.html" class="cta-button secondary">Book a Lesson</a>
           <a href="home.html#where-to-start" class="cta-button">Check Out Free Materials</a>
         </div>
       </section>
@@ -878,23 +877,6 @@
   <!-- JavaScript -->
   <script src="js/core.js"></script>
   
-  <!-- Additional JavaScript for enhanced interactivity -->
-  <script>
-    // Add smooth reveal animations on scroll
-    document.addEventListener('DOMContentLoaded', function() {
-      // Add event listener for hovering on cards with inline styles
-      document.querySelectorAll('.feature-card, .testimonial-card, .teaching-approach').forEach(card => {
-        card.addEventListener('mouseover', function() {
-          this.style.transform = 'translateY(-5px)';
-          this.style.boxShadow = '0 15px 30px var(--shadow-color)';
-        });
-        
-        card.addEventListener('mouseout', function() {
-          this.style.transform = 'translateY(0)';
-          this.style.boxShadow = '0 8px 25px var(--shadow-color)';
-        });
-      });
-    });
-  </script>
+  <!-- Hover effects handled by CSS :hover rules in the <style> block above -->
 </body>
 </html>

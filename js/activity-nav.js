@@ -855,28 +855,9 @@ const ActivityNavModule = (function() {
       console.error('Error dispatching activity completed event:', error);
     }
     
-    // Method 2: Update UI directly
-    handleActivityCompletion(activityId);
-    
-    // Method 3: Forward to ProgressTrackingModule directly
-    if (typeof ProgressTrackingModule !== 'undefined' && 
-        typeof ProgressTrackingModule.markItemCompleted === 'function') {
-      try {
-        ProgressTrackingModule.markItemCompleted('activities', activityId, {
-          completed: true,
-          completedAt: completionDetails.timestamp,
-          score: completionDetails.score,
-          maxScore: completionDetails.maxScore,
-          title: completionDetails.title || activityId
-        });
-        console.log('Directly notified ProgressTrackingModule');
-      } catch (error) {
-        console.error('Error notifying ProgressTrackingModule directly:', error);
-      }
-    }
-    
-    // Method 4: Save to localStorage directly
-    saveActivityProgressToLocalStorage(activityId, completionDetails);
+    // Note: The event listener (handleActivityCompletedEvent) already handles
+    // UI updates, ProgressTrackingModule forwarding, and localStorage saving,
+    // so we don't duplicate those calls here.
   }
   
   // Initialize event listeners when module loads
