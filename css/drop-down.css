@@ -272,25 +272,22 @@
     color: var(--success-text);
 }
 
-/* Responsive adjustment for compact dropdown */
+/* Responsive adjustments */
 @media (max-width: 600px) {
     .dropdown-sentence-compact {
         padding: 0.85rem 1rem;
     }
-    
+
     .dropdown-sentence-compact .gap-dropdown {
         min-width: 130px;
     }
-}
 
-/* Responsive adjustments */
-@media (max-width: 600px) {
     .gap-dropdown {
         min-width: 150px;
         font-size: 0.9rem;
         padding: 0.35rem 1.75rem 0.35rem 0.5rem;
     }
-    
+
     .dropdown-sentence {
         padding: 1rem;
         font-size: 0.95rem;

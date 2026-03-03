@@ -232,14 +232,6 @@
    - Never use radio buttons.
    - Make all buttons used (e.g. check answers, try again, etc) visible at all times.
    ---------------------------------------- */
-/* Question Container */
-.question {
-  display: block !important;
-  margin-bottom: 25px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid var(--border-color, #ddd);
-}
-
 /* Options Container */
 .options {
   margin-bottom: 15px;
@@ -276,29 +268,6 @@
 [data-theme="dark"] .option.selected {
   background-color: var(--mcq-selected-bg, #253545);
   border-color: var(--mcq-selected-border, #4fa3e0);
-}
-
-/* Feedback Styling */
-.feedback {
-  margin-top: 10px;
-  min-height: 20px;
-  padding: 10px;
-  border-radius: 4px;
-  display: none;
-}
-
-.feedback.correct {
-  background-color: var(--success-bg, #d4edda);
-  color: var(--success-color, #155724);
-  border: 1px solid var(--success-bg, #d4edda);
-  display: block;
-}
-
-.feedback.incorrect-answer {
-  background-color: var(--error-bg, #f8d7da);
-  color: var(--error-color, #721c24);
-  border: 1px solid var(--error-bg, #f8d7da);
-  display: block;
 }
 
 /* ----------------------------------------

@@ -781,9 +781,10 @@ const DragDropModule = (function() {
         const touch = e.changedTouches[0];
         const dropZone = document.elementFromPoint(touch.clientX, touch.clientY);
         
-        if (dropZone && dropZone.classList.contains('drop-zone')) {
+        const dropTarget = dropZone ? dropZone.closest('.drop-zone') : null;
+        if (dropTarget) {
           // Move the item to the drop zone
-          dropZone.appendChild(this);
+          dropTarget.appendChild(this);
         }
       });
     });

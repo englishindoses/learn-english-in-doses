@@ -122,7 +122,6 @@ const FlashcardModule = (function() {
     // Update button text
     const flipAllBtn = container.querySelector('.flip-all-btn');
     if (flipAllBtn) {
-      const newText = allFlipped ? '🔄 Flip All Back' : '🔄 Flip All Cards';
       flipAllBtn.innerHTML = `<span class="icon">🔄</span> ${allFlipped ? 'Flip All Back' : 'Show All Examples'}`;
     }
     
