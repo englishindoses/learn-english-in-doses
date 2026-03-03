@@ -104,7 +104,8 @@
 
 /* Change intro and content sections to use beginner colors */
 .beginner-section .intro-section,
-.beginner-section .content-section {
+.beginner-section .content-section,
+.beginner-section .grammar-point {
   border-left: 5px solid var(--beginner-primary);
 }
 
@@ -162,6 +163,7 @@
 
 [data-theme="dark"] .beginner-section .intro-section,
 [data-theme="dark"] .beginner-section .content-section,
+[data-theme="dark"] .beginner-section .grammar-point,
 [data-theme="dark"] .beginner-section .section-intro {
   background-color: #1a2e22; /* Same darker green as cards */
   border-left: 5px solid var(--beginner-primary);
@@ -290,6 +292,7 @@
 }
 
 .intermediate-section .intro-section,
+.intermediate-section .grammar-point,
 .intermediate-section .content-section {
   border-left: 5px solid var(--intermediate-primary);
 }
