@@ -155,7 +155,7 @@ Every page follows this top-level order:
   <div class="nav-links">
     <a href="../../home.html" class="nav-link">Home</a>
     <a href="../../about.html" class="nav-link">About Us</a>
-    <a href="../../home.html#level-test" class="nav-link">Find Your Level</a>
+    <a href="../../home.html#quiz-section" class="nav-link">Find Your Level</a>
     <a href="../../beginner-landing.html" class="nav-link">Beginner</a>
     <a href="../../intermediate-landing.html" class="nav-link">Intermediate</a>
     <a href="../../advanced-landing.html" class="nav-link">Advanced</a>
@@ -797,7 +797,7 @@ Below is a minimal but complete template. Replace all `PLACEHOLDER` values with 
     <div class="nav-links">
       <a href="../../home.html" class="nav-link">Home</a>
       <a href="../../about.html" class="nav-link">About Us</a>
-      <a href="../../home.html#level-test" class="nav-link">Find Your Level</a>
+      <a href="../../home.html#quiz-section" class="nav-link">Find Your Level</a>
       <a href="../../beginner-landing.html" class="nav-link">Beginner</a>
       <a href="../../intermediate-landing.html" class="nav-link">Intermediate</a>
       <a href="../../advanced-landing.html" class="nav-link">Advanced</a>
