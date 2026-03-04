@@ -206,10 +206,13 @@ const CompactMatchingModule = (function() {
     // If marker is in an answer slot, return it to bank
     if (marker.parentElement.classList.contains('cm-answer-slot')) {
       const activity = marker.closest('.compact-matching');
-      returnMarkerToBank(marker);
-      
-      // Clear correct/incorrect styling when marker is removed
+
+      // Save answer reference BEFORE moving marker to bank
       const answer = marker.closest('.cm-answer');
+
+      returnMarkerToBank(marker);
+
+      // Clear correct/incorrect styling when marker is removed
       if (answer) {
         answer.classList.remove('correct', 'incorrect');
       }
