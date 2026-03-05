@@ -398,16 +398,26 @@ const MatchingModule = (function() {
    * 
    * @param {boolean} enable - Whether to enable or disable the resize listener
    */
+  // Store the resize handler reference so it can be properly removed
+  let activeResizeHandler = null;
+
   function handleResize(enable = true) {
     if (enable) {
+      // Remove any existing handler first to prevent duplicates
+      if (activeResizeHandler) {
+        window.removeEventListener('resize', activeResizeHandler);
+      }
       // Use debounce if available to avoid too many recalculations
-      const resizeHandler = typeof debounce === 'function' 
-        ? debounce(recalculateMatchLines, 150) 
+      activeResizeHandler = typeof debounce === 'function'
+        ? debounce(recalculateMatchLines, 150)
         : recalculateMatchLines;
-      
-      window.addEventListener('resize', resizeHandler);
+
+      window.addEventListener('resize', activeResizeHandler);
     } else {
-      window.removeEventListener('resize', recalculateMatchLines);
+      if (activeResizeHandler) {
+        window.removeEventListener('resize', activeResizeHandler);
+        activeResizeHandler = null;
+      }
     }
   }
   
