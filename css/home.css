@@ -1,5 +1,6 @@
 /* Core Variables - These match your existing site */
 :root {
+  color-scheme: light;
   /* Light theme (default) */
   --bg-color: #ffffff;
   --text-color: #333333;
@@ -31,6 +32,7 @@
 }
 
 [data-theme="dark"] {
+  color-scheme: dark;
   /* Dark theme */
   --bg-color: #121212;
   --text-color: #e0e0e0;
@@ -296,12 +298,12 @@ footer {
  max-width: 100%; /* Changed from 800px to match site sections */
   margin: 0 auto;
   padding: 20px;
-  background-color: #f8f9fa; /* Light background - same as card background */
+  background-color: var(--card-bg);
   box-sizing: border-box;
   border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* same as cards */
+  box-shadow: 0 5px 15px var(--shadow-color);
   transition: transform 0.3s ease;
-  border-left: 5px solid #3498db;
+  border-left: 5px solid var(--accent-color);
 }
  
 
@@ -1032,10 +1034,10 @@ footer {
 
 /* Simple Assessment Text Styling */
 .assessment-highlight {
-  background: #f8f9fa;
+  background: var(--card-bg);
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px var(--shadow-color);
   text-align: center;
   margin-bottom: 25px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -1043,43 +1045,19 @@ footer {
 
 .assessment-highlight:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 25px var(--shadow-color);
 }
 
 .assessment-text {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text-color);
   margin-bottom: 8px;
 }
 
 .assessment-subtext {
   font-size: 0.9rem;
-  color: #666;
+  color: var(--text-color);
+  opacity: 0.7;
   margin: 0;
-}
-/* Dark mode styling for "Find Your Level" section */
-[data-theme="dark"] .quiz-section {
-  background-color: #1e1e1e; /* Dark background instead of light */
-  color: #e0e0e0; /* Light text for better contrast */
-  border-left: 5px solid #4fa3e0; /* Keep the accent border but use dark theme accent color */
-}
-
-[data-theme="dark"] .quiz-section .section-title {
-  color: #ffffff; /* White text for headings */
-}
-
-[data-theme="dark"] .assessment-highlight {
-  background-color: #2a2a2a; /* Slightly lighter dark background */
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 20px;
-}
-
-[data-theme="dark"] .assessment-text {
-  color: #ffffff; /* White text for main description */
-}
-
-[data-theme="dark"] .assessment-subtext {
-  color: #b0b0b0; /* Slightly dimmed white for secondary text */
 }

@@ -588,27 +588,14 @@
   background-color: #245187; /* Even darker on hover */
   box-shadow: 0 8px 20px rgba(44, 90, 160, 0.5);
 }
-/* Dark theme assessment highlight section */
-[data-theme="dark"] .assessment-highlight {
-  color: var(--text-color-dark, #ffffff);
-}
-
-[data-theme="dark"] .assessment-text {
-  color: #ffffff;
-}
-
-[data-theme="dark"] .assessment-subtext {
-  color: #b0b0b0;
-}
-
 /* Dark theme mobile responsive adjustments */
 @media (max-width: 768px) {
   [data-theme="dark"] .tab {
-    border-bottom: 1px solid var(--border-color-dark, #444);
+    border-bottom: 1px solid var(--border-color, #444);
   }
-  
+
   [data-theme="dark"] .tab.active {
     border-left: 3px solid var(--accent-color);
-    border-bottom: 1px solid var(--border-color-dark, #444);
+    border-bottom: 1px solid var(--border-color, #444);
   }
 }

@@ -7,6 +7,7 @@
    1. Color Scheme & Theme Variables
    ---------------------------------------- */
    :root {
+    color-scheme: light;
     /* Light theme (default) */
     --bg-color: #ffffff;
     --text-color: #333333;
@@ -32,6 +33,7 @@
   }
 
   [data-theme="dark"] {
+    color-scheme: dark;
     /* Dark theme */
     --bg-color: #121212;
     --text-color: #e0e0e0;
