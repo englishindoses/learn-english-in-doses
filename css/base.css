@@ -530,6 +530,66 @@
     background-color: #e06d2e;
   }
 
+  /* Button shine effect */
+  .btn-primary,
+  .btn-secondary,
+  .cta-button,
+  .view-all-button,
+  .nav-button,
+  .beginner-btn,
+  .intermediate-btn,
+  .advanced-btn,
+  .submit-btn,
+  .restart-btn,
+  .check-btn,
+  .landing-path-btn,
+  .vocab-check-btn,
+  .vocab-reset-btn {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary::after,
+  .btn-secondary::after,
+  .cta-button::after,
+  .view-all-button::after,
+  .nav-button::after,
+  .beginner-btn::after,
+  .intermediate-btn::after,
+  .advanced-btn::after,
+  .submit-btn::after,
+  .restart-btn::after,
+  .check-btn::after,
+  .landing-path-btn::after,
+  .vocab-check-btn::after,
+  .vocab-reset-btn::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: -100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+  }
+
+  .btn-primary:hover::after,
+  .btn-secondary:hover::after,
+  .cta-button:hover::after,
+  .view-all-button:hover::after,
+  .nav-button:hover::after,
+  .beginner-btn:hover::after,
+  .intermediate-btn:hover::after,
+  .advanced-btn:hover::after,
+  .submit-btn:hover::after,
+  .restart-btn:hover::after,
+  .check-btn:hover::after,
+  .landing-path-btn:hover::after,
+  .vocab-check-btn:hover::after,
+  .vocab-reset-btn:hover::after {
+    left: 100%;
+  }
+
   input[type="text"],
   input[type="email"],
   input[type="password"],

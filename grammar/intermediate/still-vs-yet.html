@@ -5,19 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Still vs Yet - Intermediate ESL grammar explanation with examples and practice.">
   <title>Still vs Yet - Intermediate ESL Grammar</title>
-  
+
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
-  
+
   <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="../../images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="../../images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../../images/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
-  
+
   <!-- Styles -->
   <link rel="stylesheet" href="../../css/base.css">
   <link rel="stylesheet" href="../../css/activities.css">
+  <link rel="stylesheet" href="../../css/drop-down.css">
+  <link rel="stylesheet" href="../../css/compact-matching.css">
 </head>
 <body class="intermediate-section">
   <!-- Skip link for accessibility -->
@@ -71,19 +73,19 @@
 
         <h3>What you will learn:</h3>
         <ol>
-          <li>How to use <strong>still</strong> to talk about something that continues.</li>
-          <li>How to use <strong>yet</strong> to talk about something you expect to happen.</li>
+          <li>How to use <strong>still</strong> to talk about a situation that has not changed.</li>
+          <li>How to use <strong>yet</strong> to ask or say if something expected has happened.</li>
           <li>How to choose the right word for each situation.</li>
         </ol>
       </section>
 
       <!-- GRAMMAR POINT 1: STILL -->
       <section class="grammar-point">
-        <h2>1. Still — Something Continues</h2>
+        <h2>1. Still — The Situation Is the Same as Before</h2>
 
-        <p><strong>Meaning:</strong> We use <strong>still</strong> when a situation started in the past and it continues now. Nothing has changed.</p>
+        <p><strong>Meaning:</strong> We use <strong>still</strong> to say that a situation from the past continues now. Nothing is different.</p>
 
-        <p><strong>When to use it:</strong> Use <strong>still</strong> when you want to say that something has not stopped or has not changed.</p>
+        <p><strong>When to use it:</strong> Use <strong>still</strong> in affirmative sentences, negative sentences, and questions. It works with any tense.</p>
 
         <h3>Still in Affirmative Sentences</h3>
 
@@ -93,7 +95,7 @@
 
         <div class="example">
           <ol>
-            <li>She <span class="grammar-highlight">still</span> lives with her parents.<br>(= She started living with them before. She continues to live with them now.)</li>
+            <li>She <span class="grammar-highlight">still</span> lives with her parents.<br>(= She lived with them before. She continues to live with them now.)</li>
             <li>I <span class="grammar-highlight">still</span> work at the same company.<br>(= I have not changed jobs.)</li>
             <li>He <span class="grammar-highlight">still</span> plays football every weekend.<br>(= He continues to play. He has not stopped.)</li>
           </ol>
@@ -113,7 +115,7 @@
 
         <h3>Still in Negative Sentences</h3>
 
-        <p>We can also use <strong>still</strong> in negative sentences to show surprise or frustration that something has not changed. This is stronger and more emotional than using <strong>yet</strong>.</p>
+        <p>We can use <strong>still</strong> in negative sentences to show surprise or frustration that something has not changed. This is stronger and more emotional than using <strong>yet</strong>.</p>
 
         <p><strong>Form:</strong> subject + <span class="grammar-highlight">still</span> + haven't/hasn't + past participle (V3)</p>
 
@@ -140,19 +142,97 @@
         </div>
       </section>
 
+      <!-- ACTIVITY 1: Dropdown Gap-Fill for STILL -->
+      <section class="content-section">
+        <h2>Practice: Using "Still"</h2>
+        <p>Choose the correct position for <strong>still</strong> in each sentence.</p>
+
+        <div id="still-dropdown" class="dropdown-activity">
+          <div class="dropdown-sentence">
+            <span class="sentence-number">1</span>
+            She
+            <select class="gap-dropdown" data-answer="is still">
+              <option value="" disabled selected>Choose...</option>
+              <option value="still is">still is</option>
+              <option value="is still">is still</option>
+            </select>
+            waiting for the bus.
+          </div>
+
+          <div class="dropdown-sentence">
+            <span class="sentence-number">2</span>
+            My brother
+            <select class="gap-dropdown" data-answer="still lives">
+              <option value="" disabled selected>Choose...</option>
+              <option value="still lives">still lives</option>
+              <option value="lives still">lives still</option>
+            </select>
+            with our parents.
+          </div>
+
+          <div class="dropdown-sentence">
+            <span class="sentence-number">3</span>
+            They
+            <select class="gap-dropdown" data-answer="still haven't">
+              <option value="" disabled selected>Choose...</option>
+              <option value="haven't still">haven't still</option>
+              <option value="still haven't">still haven't</option>
+            </select>
+            replied to my message.
+          </div>
+
+          <div class="dropdown-sentence">
+            <span class="sentence-number">4</span>
+            The children are
+            <select class="gap-dropdown" data-answer="still playing">
+              <option value="" disabled selected>Choose...</option>
+              <option value="still playing">still playing</option>
+              <option value="playing still">playing still</option>
+            </select>
+            in the garden.
+          </div>
+
+          <div class="dropdown-sentence">
+            <span class="sentence-number">5</span>
+            I
+            <select class="gap-dropdown" data-answer="still don't">
+              <option value="" disabled selected>Choose...</option>
+              <option value="don't still">don't still</option>
+              <option value="still don't">still don't</option>
+            </select>
+            understand this exercise.
+          </div>
+
+          <div class="dropdown-sentence">
+            <span class="sentence-number">6</span>
+            Do you
+            <select class="gap-dropdown" data-answer="still want">
+              <option value="" disabled selected>Choose...</option>
+              <option value="want still">want still</option>
+              <option value="still want">still want</option>
+            </select>
+            to go to the cinema tonight?
+          </div>
+        </div>
+
+        <div class="control-buttons">
+          <button class="submit-btn" onclick="checkDropdownAnswers('still-dropdown')">Check Answers</button>
+          <button class="restart-btn" onclick="resetDropdownActivity('still-dropdown')">Try Again</button>
+        </div>
+        <div id="still-dropdownFeedback" class="feedback"></div>
+      </section>
+
       <!-- GRAMMAR POINT 2: YET -->
       <section class="grammar-point">
-        <h2>2. Yet — Expected But Not Done</h2>
+        <h2>2. Yet — Has It Happened?</h2>
 
-        <p><strong>Meaning:</strong> We use <strong>yet</strong> when we expect something to happen, but it has not happened up to now.</p>
+        <p><strong>Meaning:</strong> We use <strong>yet</strong> when we expect something to happen, but we want to know or say if it has happened up to now.</p>
 
-        <p><strong>When to use it:</strong> Use <strong>yet</strong> in negative sentences and questions when you are talking about something you expect.</p>
+        <p><strong>When to use it:</strong> Use <strong>yet</strong> only in <strong>negative sentences</strong> and <strong>questions</strong>. It always goes at the <strong>end</strong> of the sentence.</p>
 
         <h3>Yet in Negative Sentences</h3>
 
         <p><strong>Form:</strong> subject + haven't/hasn't + past participle (V3) + <span class="grammar-highlight">yet</span></p>
-
-        <p><strong>Position:</strong> <span class="grammar-highlight">yet</span> goes at the <strong>end</strong> of the sentence.</p>
 
         <div class="example">
           <ol>
@@ -177,7 +257,93 @@
         </div>
 
         <div class="note">
-          <p><strong>Important:</strong> We do NOT normally use <strong>yet</strong> in affirmative sentences. "I have finished yet" is incorrect. Say "I have already finished" or "I have finished."</p>
+          <p><strong>Important:</strong> We do NOT use <strong>yet</strong> in affirmative sentences. "I have finished yet" is incorrect. Say "I have already finished" or "I have finished."</p>
+        </div>
+      </section>
+
+      <!-- ACTIVITY 2: Drag-and-Drop Sentence Reordering for YET -->
+      <section class="content-section">
+        <h2>Practice: Sentence Ordering with "Yet"</h2>
+        <p>Drag the words into the correct order to make sentences using "yet."</p>
+
+        <div id="drag-drop" class="activity-container active">
+          <!-- Question 1 -->
+          <div class="question" id="dd-q1">
+            <p class="question-text">1. Make a negative sentence:</p>
+            <div class="drop-zone"></div>
+            <div class="drag-items">
+              <div class="drag-item" draggable="true">yet</div>
+              <div class="drag-item" draggable="true">haven't</div>
+              <div class="drag-item" draggable="true">I</div>
+              <div class="drag-item" draggable="true">finished</div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+
+          <!-- Question 2 -->
+          <div class="question" id="dd-q2">
+            <p class="question-text">2. Make a question:</p>
+            <div class="drop-zone"></div>
+            <div class="drag-items">
+              <div class="drag-item" draggable="true">the</div>
+              <div class="drag-item" draggable="true">yet</div>
+              <div class="drag-item" draggable="true">arrived</div>
+              <div class="drag-item" draggable="true">has</div>
+              <div class="drag-item" draggable="true">bus</div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+
+          <!-- Question 3 -->
+          <div class="question" id="dd-q3">
+            <p class="question-text">3. Make a negative sentence:</p>
+            <div class="drop-zone"></div>
+            <div class="drag-items">
+              <div class="drag-item" draggable="true">yet</div>
+              <div class="drag-item" draggable="true">she</div>
+              <div class="drag-item" draggable="true">called</div>
+              <div class="drag-item" draggable="true">hasn't</div>
+              <div class="drag-item" draggable="true">me</div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+
+          <!-- Question 4 -->
+          <div class="question" id="dd-q4">
+            <p class="question-text">4. Make a question:</p>
+            <div class="drop-zone"></div>
+            <div class="drag-items">
+              <div class="drag-item" draggable="true">eaten</div>
+              <div class="drag-item" draggable="true">you</div>
+              <div class="drag-item" draggable="true">yet</div>
+              <div class="drag-item" draggable="true">have</div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+
+          <!-- Question 5 -->
+          <div class="question" id="dd-q5">
+            <p class="question-text">5. Make a negative sentence:</p>
+            <div class="drop-zone"></div>
+            <div class="drag-items">
+              <div class="drag-item" draggable="true">booked</div>
+              <div class="drag-item" draggable="true">yet</div>
+              <div class="drag-item" draggable="true">we</div>
+              <div class="drag-item" draggable="true">the</div>
+              <div class="drag-item" draggable="true">haven't</div>
+              <div class="drag-item" draggable="true">hotel</div>
+            </div>
+            <div class="feedback"></div>
+          </div>
+
+          <div class="control-buttons">
+            <button id="drag-drop-submit" class="submit-btn">Check Answers</button>
+            <button id="drag-drop-restart" class="restart-btn" style="display:none;">Try Again</button>
+          </div>
+
+          <div class="score-display" id="drag-drop-score" style="display:none;">
+            Your score: <span>0</span>/5
+          </div>
         </div>
       </section>
 
@@ -185,14 +351,16 @@
       <section class="grammar-point">
         <h2>3. Still vs Yet — How to Choose</h2>
 
-        <p>The key difference is the idea behind each word:</p>
+        <p>Ask yourself this question:</p>
 
-        <p><strong>Still</strong> = a situation <strong>continues</strong>. Nothing has changed.</p>
-        <p><strong>Yet</strong> = something <strong>expected</strong> has not happened up to now.</p>
+        <div class="note">
+          <p><strong>Is the situation the same as before?</strong> → Use <strong>still</strong>.<br>
+          <strong>Are you asking or saying if something expected has happened?</strong> → Use <strong>yet</strong>.</p>
+        </div>
 
-        <h3>Comparing Still and Yet in Negative Sentences</h3>
+        <h3>Still vs Yet in Negative Sentences</h3>
 
-        <p>Both <strong>still</strong> and <strong>yet</strong> can appear in negative sentences, but they have a different feeling.</p>
+        <p>Both words can appear in negative sentences, but they feel different:</p>
 
         <div class="example">
           <ol>
@@ -203,10 +371,12 @@
 
         <div class="example">
           <ol>
-            <li>He hasn't replied <span class="grammar-highlight">yet</span>.<br>(= I expect him to reply. He hasn't done it up to now. This is neutral.)</li>
-            <li>He <span class="grammar-highlight">still</span> hasn't replied.<br>(= He has had a long time to reply. I am frustrated or surprised.)</li>
+            <li>He hasn't replied <span class="grammar-highlight">yet</span>.<br>(= I expect a reply. He hasn't done it up to now.)</li>
+            <li>He <span class="grammar-highlight">still</span> hasn't replied.<br>(= He has had a long time. I am frustrated or surprised.)</li>
           </ol>
         </div>
+
+        <p><strong>Key point:</strong> <span class="grammar-highlight">yet</span> is neutral — it simply says "not up to now." <span class="grammar-highlight">Still</span> + negative is emotional — it shows the speaker is surprised or frustrated.</p>
 
         <h3>Summary Table</h3>
 
@@ -214,37 +384,158 @@
           <thead>
             <tr>
               <th>Word</th>
-              <th>Meaning</th>
-              <th>Sentence Type</th>
-              <th>Position</th>
+              <th>What It Means</th>
+              <th>Where It Goes</th>
+              <th>Sentence Types</th>
+              <th>Example</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td><strong>Still</strong></td>
-              <td>Something continues.</td>
-              <td>Affirmative, negative, questions.</td>
-              <td>Before the main verb. After "be".</td>
+              <td>The situation is the same as before.</td>
+              <td>Before the main verb. After "be."</td>
+              <td>Affirmative, negative, questions</td>
+              <td>She <strong>still</strong> works here.</td>
             </tr>
             <tr>
               <td><strong>Yet</strong></td>
-              <td>Expected but not done.</td>
-              <td>Negative and questions only.</td>
+              <td>Something expected has not happened up to now.</td>
               <td>At the end of the sentence.</td>
+              <td>Negative and questions only</td>
+              <td>She hasn't left <strong>yet</strong>.</td>
             </tr>
           </tbody>
         </table>
 
-        <h3>Quick Position Guide</h3>
+        <h3>Position Guide</h3>
 
-        <div class="example">
-          <ol>
-            <li>She <span class="grammar-highlight">still</span> works here. (still + verb)</li>
-            <li>She is <span class="grammar-highlight">still</span> here. (be + still)</li>
-            <li>She <span class="grammar-highlight">still</span> hasn't left. (still + negative auxiliary)</li>
-            <li>She hasn't left <span class="grammar-highlight">yet</span>. (negative sentence + yet)</li>
-            <li>Has she left <span class="grammar-highlight">yet</span>? (question + yet)</li>
-          </ol>
+        <table class="grammar-table">
+          <thead>
+            <tr>
+              <th>Pattern</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>still</strong> + verb</td>
+              <td>She <strong>still</strong> works here.</td>
+            </tr>
+            <tr>
+              <td>be + <strong>still</strong></td>
+              <td>She is <strong>still</strong> here.</td>
+            </tr>
+            <tr>
+              <td><strong>still</strong> + negative auxiliary</td>
+              <td>She <strong>still</strong> hasn't left.</td>
+            </tr>
+            <tr>
+              <td>negative sentence + <strong>yet</strong></td>
+              <td>She hasn't left <strong>yet</strong>.</td>
+            </tr>
+            <tr>
+              <td>question + <strong>yet</strong></td>
+              <td>Has she left <strong>yet</strong>?</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ACTIVITY 3: Compact Matching for Still vs Yet -->
+      <section class="content-section">
+        <h2>Practice: Match the Situation to the Sentence</h2>
+        <p>Drag the letter markers to the matching sentences, or tap a marker then tap an answer.</p>
+
+        <div id="cm-still-yet" class="compact-matching">
+          <!-- Column 1: Situations -->
+          <div class="cm-statements">
+            <div class="cm-statement">
+              <span class="cm-statement-num">1</span>
+              <p>You are checking if food is ready.</p>
+            </div>
+            <div class="cm-statement">
+              <span class="cm-statement-num">2</span>
+              <p>Your friend was sick. You want to know if she is better.</p>
+            </div>
+            <div class="cm-statement">
+              <span class="cm-statement-num">3</span>
+              <p>A package did not arrive. You are not upset.</p>
+            </div>
+            <div class="cm-statement">
+              <span class="cm-statement-num">4</span>
+              <p>Your friend started a job 5 years ago. He continues there.</p>
+            </div>
+            <div class="cm-statement">
+              <span class="cm-statement-num">5</span>
+              <p>Your team needs to choose a date. No one has chosen.</p>
+            </div>
+            <div class="cm-statement">
+              <span class="cm-statement-num">6</span>
+              <p>You applied for a job 2 weeks ago. You are frustrated.</p>
+            </div>
+          </div>
+
+          <!-- Column 2: Markers Bank -->
+          <div class="cm-markers">
+            <div class="cm-marker-slot" data-marker="1">
+              <div class="cm-marker" data-match="1" draggable="true">A</div>
+            </div>
+            <div class="cm-marker-slot" data-marker="2">
+              <div class="cm-marker" data-match="2" draggable="true">B</div>
+            </div>
+            <div class="cm-marker-slot" data-marker="3">
+              <div class="cm-marker" data-match="3" draggable="true">C</div>
+            </div>
+            <div class="cm-marker-slot" data-marker="4">
+              <div class="cm-marker" data-match="4" draggable="true">D</div>
+            </div>
+            <div class="cm-marker-slot" data-marker="5">
+              <div class="cm-marker" data-match="5" draggable="true">E</div>
+            </div>
+            <div class="cm-marker-slot" data-marker="6">
+              <div class="cm-marker" data-match="6" draggable="true">F</div>
+            </div>
+          </div>
+
+          <!-- Column 3: Sentences (JUMBLED ORDER) -->
+          <div class="cm-answers">
+            <div class="cm-answer" data-match="4">
+              <div class="cm-answer-slot"></div>
+              <p>He still works at the bank.</p>
+            </div>
+            <div class="cm-answer" data-match="6">
+              <div class="cm-answer-slot"></div>
+              <p>I still haven't heard back from them.</p>
+            </div>
+            <div class="cm-answer" data-match="1">
+              <div class="cm-answer-slot"></div>
+              <p>Is dinner ready yet?</p>
+            </div>
+            <div class="cm-answer" data-match="5">
+              <div class="cm-answer-slot"></div>
+              <p>We haven't decided yet.</p>
+            </div>
+            <div class="cm-answer" data-match="2">
+              <div class="cm-answer-slot"></div>
+              <p>Is she still sick?</p>
+            </div>
+            <div class="cm-answer" data-match="3">
+              <div class="cm-answer-slot"></div>
+              <p>The package hasn't arrived yet.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cm-feedback" id="cm-still-yet-feedback"></div>
+
+        <div class="control-buttons">
+          <button id="cm-still-yet-cm-submit" class="submit-btn">Check Answers</button>
+          <button id="cm-still-yet-cm-restart" class="restart-btn" style="display:none;">Try Again</button>
+        </div>
+
+        <div class="score-display cm-score" id="cm-still-yet-score">
+          Your score: <span>0</span>/6
         </div>
       </section>
 
@@ -255,7 +546,7 @@
 
       <!-- COMMON ERRORS -->
       <section class="common-errors">
-        <h2>⚠️ Common Errors</h2>
+        <h2>Common Errors</h2>
 
         <div class="error-pattern">
           <p class="incorrect"><s>"I have finished yet."</s></p>
@@ -294,215 +585,221 @@
       </section>
 
       <!-- MCQ SECTION -->
-      <section id="mcq" class="mcq-container">
+      <section class="content-section mcq-container">
         <h2>Test Your Knowledge</h2>
         <p>Choose the correct option for each sentence. Think about whether the situation is about something continuing (still) or something expected but not done (yet).</p>
 
-        <!-- Question 1 -->
-        <div class="question" id="q1">
-          <p class="mcq-question">1. A: "Is Maria at work?" B: "Yes, she is _____ there."</p>
-          <div class="options">
-            <div class="option" data-index="0">
-              <span>A. yet</span>
+        <div id="mcq" class="activity-container active">
+          <!-- Question 1 -->
+          <div class="question" id="q1">
+            <p class="mcq-question">1. A: "Is Maria at work?" B: "Yes, she is _____ there."</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. yet</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. still</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. already</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. always</span>
+              </div>
             </div>
-            <div class="option" data-index="1">
-              <span>B. still</span>
-            </div>
-            <div class="option" data-index="2">
-              <span>C. already</span>
-            </div>
-            <div class="option" data-index="3">
-              <span>D. always</span>
-            </div>
+            <div class="feedback"></div>
           </div>
-          <div class="feedback"></div>
-        </div>
 
-        <!-- Question 2 -->
-        <div class="question" id="q2">
-          <p class="mcq-question">2. "Have you finished your lunch _____?"</p>
-          <div class="options">
-            <div class="option" data-index="0">
-              <span>A. still</span>
+          <!-- Question 2 -->
+          <div class="question" id="q2">
+            <p class="mcq-question">2. "Have you finished your lunch _____?"</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. still</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. yet</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. already</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. ever</span>
+              </div>
             </div>
-            <div class="option" data-index="1">
-              <span>B. yet</span>
-            </div>
-            <div class="option" data-index="2">
-              <span>C. already</span>
-            </div>
-            <div class="option" data-index="3">
-              <span>D. ever</span>
-            </div>
+            <div class="feedback"></div>
           </div>
-          <div class="feedback"></div>
-        </div>
 
-        <!-- Question 3 -->
-        <div class="question" id="q3">
-          <p class="mcq-question">3. "I started this book two weeks ago, but I _____ haven't finished it."</p>
-          <div class="options">
-            <div class="option" data-index="0">
-              <span>A. yet</span>
+          <!-- Question 3 -->
+          <div class="question" id="q3">
+            <p class="mcq-question">3. "I started this book two weeks ago, but I _____ haven't finished it."</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. yet</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. already</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. still</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. ever</span>
+              </div>
             </div>
-            <div class="option" data-index="1">
-              <span>B. already</span>
-            </div>
-            <div class="option" data-index="2">
-              <span>C. still</span>
-            </div>
-            <div class="option" data-index="3">
-              <span>D. ever</span>
-            </div>
+            <div class="feedback"></div>
           </div>
-          <div class="feedback"></div>
-        </div>
 
-        <!-- Question 4 -->
-        <div class="question" id="q4">
-          <p class="mcq-question">4. "Do you _____ want to go to the cinema tonight?"</p>
-          <div class="options">
-            <div class="option" data-index="0">
-              <span>A. yet</span>
+          <!-- Question 4 -->
+          <div class="question" id="q4">
+            <p class="mcq-question">4. "Do you _____ want to go to the cinema tonight?"</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. yet</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. still</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. already</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. ever</span>
+              </div>
             </div>
-            <div class="option" data-index="1">
-              <span>B. still</span>
-            </div>
-            <div class="option" data-index="2">
-              <span>C. already</span>
-            </div>
-            <div class="option" data-index="3">
-              <span>D. ever</span>
-            </div>
+            <div class="feedback"></div>
           </div>
-          <div class="feedback"></div>
-        </div>
 
-        <!-- Question 5 -->
-        <div class="question" id="q5">
-          <p class="mcq-question">5. "We haven't booked the hotel _____."</p>
-          <div class="options">
-            <div class="option" data-index="0">
-              <span>A. still</span>
+          <!-- Question 5 -->
+          <div class="question" id="q5">
+            <p class="mcq-question">5. "We haven't booked the hotel _____."</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. still</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. already</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. yet</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. ever</span>
+              </div>
             </div>
-            <div class="option" data-index="1">
-              <span>B. already</span>
-            </div>
-            <div class="option" data-index="2">
-              <span>C. yet</span>
-            </div>
-            <div class="option" data-index="3">
-              <span>D. ever</span>
-            </div>
+            <div class="feedback"></div>
           </div>
-          <div class="feedback"></div>
-        </div>
 
-        <!-- Question 6 -->
-        <div class="question" id="q6">
-          <p class="mcq-question">6. "It's 11 p.m. and the children are _____ awake."</p>
-          <div class="options">
-            <div class="option" data-index="0">
-              <span>A. yet</span>
+          <!-- Question 6 -->
+          <div class="question" id="q6">
+            <p class="mcq-question">6. "It's 11 p.m. and the children are _____ awake."</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. yet</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. still</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. already</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. ever</span>
+              </div>
             </div>
-            <div class="option" data-index="1">
-              <span>B. still</span>
-            </div>
-            <div class="option" data-index="2">
-              <span>C. already</span>
-            </div>
-            <div class="option" data-index="3">
-              <span>D. ever</span>
-            </div>
+            <div class="feedback"></div>
           </div>
-          <div class="feedback"></div>
-        </div>
 
-        <!-- Question 7 -->
-        <div class="question" id="q7">
-          <p class="mcq-question">7. "I sent the email three days ago, but they _____ haven't replied."</p>
-          <div class="options">
-            <div class="option" data-index="0">
-              <span>A. yet</span>
+          <!-- Question 7 -->
+          <div class="question" id="q7">
+            <p class="mcq-question">7. "I sent the email three days ago, but they _____ haven't replied."</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. yet</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. already</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. still</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. ever</span>
+              </div>
             </div>
-            <div class="option" data-index="1">
-              <span>B. already</span>
-            </div>
-            <div class="option" data-index="2">
-              <span>C. still</span>
-            </div>
-            <div class="option" data-index="3">
-              <span>D. ever</span>
-            </div>
+            <div class="feedback"></div>
           </div>
-          <div class="feedback"></div>
-        </div>
 
-        <!-- Question 8 -->
-        <div class="question" id="q8">
-          <p class="mcq-question">8. "Has the train arrived _____?"</p>
-          <div class="options">
-            <div class="option" data-index="0">
-              <span>A. still</span>
+          <!-- Question 8 -->
+          <div class="question" id="q8">
+            <p class="mcq-question">8. "Has the train arrived _____?"</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. still</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. yet</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. already</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. always</span>
+              </div>
             </div>
-            <div class="option" data-index="1">
-              <span>B. yet</span>
-            </div>
-            <div class="option" data-index="2">
-              <span>C. already</span>
-            </div>
-            <div class="option" data-index="3">
-              <span>D. always</span>
-            </div>
+            <div class="feedback"></div>
           </div>
-          <div class="feedback"></div>
-        </div>
 
-        <!-- Question 9 -->
-        <div class="question" id="q9">
-          <p class="mcq-question">9. Choose the sentence that shows frustration.</p>
-          <div class="options">
-            <div class="option" data-index="0">
-              <span>A. He hasn't fixed the door yet.</span>
+          <!-- Question 9 -->
+          <div class="question" id="q9">
+            <p class="mcq-question">9. Choose the sentence that shows frustration.</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. He hasn't fixed the door yet.</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. He still hasn't fixed the door.</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. He already fixed the door.</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. He always fixes the door.</span>
+              </div>
             </div>
-            <div class="option" data-index="1">
-              <span>B. He still hasn't fixed the door.</span>
-            </div>
-            <div class="option" data-index="2">
-              <span>C. He already fixed the door.</span>
-            </div>
-            <div class="option" data-index="3">
-              <span>D. He always fixes the door.</span>
-            </div>
+            <div class="feedback"></div>
           </div>
-          <div class="feedback"></div>
-        </div>
 
-        <!-- Question 10 -->
-        <div class="question" id="q10">
-          <p class="mcq-question">10. Which sentence is correct?</p>
-          <div class="options">
-            <div class="option" data-index="0">
-              <span>A. I have finished yet my report.</span>
+          <!-- Question 10 -->
+          <div class="question" id="q10">
+            <p class="mcq-question">10. Which sentence is correct?</p>
+            <div class="options">
+              <div class="option" data-index="0">
+                <span>A. I have finished yet my report.</span>
+              </div>
+              <div class="option" data-index="1">
+                <span>B. I haven't yet finished my report.</span>
+              </div>
+              <div class="option" data-index="2">
+                <span>C. I have yet finished my report.</span>
+              </div>
+              <div class="option" data-index="3">
+                <span>D. I yet haven't finished my report.</span>
+              </div>
             </div>
-            <div class="option" data-index="1">
-              <span>B. I haven't yet finished my report.</span>
-            </div>
-            <div class="option" data-index="2">
-              <span>C. I have yet finished my report.</span>
-            </div>
-            <div class="option" data-index="3">
-              <span>D. I yet haven't finished my report.</span>
-            </div>
+            <div class="feedback"></div>
           </div>
-          <div class="feedback"></div>
-        </div>
 
-        <div class="mcq-controls">
-          <button id="mcq-submit" class="btn-primary">Check Answers</button>
-          <button id="check-grammar" class="btn-secondary" style="display:none;" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Review Grammar</button>
+          <div class="control-buttons">
+            <button id="mcq-submit" class="submit-btn">Check Answers</button>
+            <button id="mcq-restart" class="restart-btn" style="display:none;">Try Again</button>
+            <a href="#main-content" class="nav-button" style="display:none;" id="mcq-review">Review Grammar</a>
+          </div>
+
+          <div class="score-display" id="mcq-score" style="display:none;">
+            Your score: <span>0</span>/10
+          </div>
         </div>
-        <div id="mcq-results" class="results-container"></div>
       </section>
 
     </main>
@@ -519,7 +816,7 @@
           <li><a href="../../my-progress.html">My Progress</a></li>
         </ul>
       </div>
-      
+
       <div class="footer-section">
         <h3>Grammar Topics</h3>
         <ul>
@@ -529,7 +826,7 @@
           <li><a href="../advanced/advanced-grammar.html#passive">Advanced Passive Voice</a></li>
         </ul>
       </div>
-      
+
       <div class="footer-section">
         <h3>Connect</h3>
         <ul>
@@ -538,126 +835,114 @@
         </ul>
       </div>
     </div>
-    
+
     <div class="footer-bottom">
-      <p>© 2025 English in Doses | All rights reserved | <a href="../../license.html">Licensing Information</a></p>
+      <p>&copy; 2025 English in Doses | All rights reserved | <a href="../../license.html">Licensing Information</a></p>
     </div>
   </footer>
 
   <!-- JavaScript -->
   <script src="../../js/core.js"></script>
+  <script src="../../js/drop-down.js"></script>
+  <script src="../../js/drag-drop.js"></script>
+  <script src="../../js/compact-matching.js"></script>
+  <script src="../../js/mcq.js"></script>
   <script src="../../js/progress-tracking-module.js"></script>
   <script src="../../js/progress-manager-ui.js"></script>
   <script src="../../js/init-progress.js"></script>
 
+  <!-- Activity Initialisation -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Make all questions visible
-      document.querySelectorAll('#mcq .question').forEach(function(question) {
-        question.style.display = 'block';
-      });
 
-      // Make options clickable
-      document.querySelectorAll('.option').forEach(option => {
-        option.addEventListener('click', function() {
-          const questionDiv = this.closest('.question');
-          questionDiv.querySelectorAll('.option').forEach(opt => {
-            opt.classList.remove('selected');
-          });
-          this.classList.add('selected');
-        });
-      });
-
-      // Answer key
-      const answers = {
-        'q1': 1,   // B. still
-        'q2': 1,   // B. yet
-        'q3': 2,   // C. still
-        'q4': 1,   // B. still
-        'q5': 2,   // C. yet
-        'q6': 1,   // B. still
-        'q7': 2,   // C. still
-        'q8': 1,   // B. yet
-        'q9': 1,   // B. He still hasn't fixed the door.
-        'q10': 1   // B. I haven't yet finished my report.
-      };
-
-      const explanations = {
-        'q1': '"Still" goes after "be" to show a continuing situation. She continues to be at work.',
-        'q2': '"Yet" goes at the end of a question when asking if something expected has happened.',
-        'q3': '"Still" goes before the negative auxiliary "haven\'t" to show frustration that it is taking a long time.',
-        'q4': '"Still" goes before the main verb in a question to check if something continues.',
-        'q5': '"Yet" goes at the end of a negative sentence to say something expected has not happened.',
-        'q6': '"Still" goes after "be" (are) to show the situation continues. It is surprising they are awake at 11 p.m.',
-        'q7': '"Still" goes before "haven\'t" to show frustration. Three days is a long time to wait for a reply.',
-        'q8': '"Yet" goes at the end of a question when asking about something you expect.',
-        'q9': '"Still" + negative shows more frustration or surprise than "yet." Option B expresses that you are annoyed he has not fixed it.',
-        'q10': '"Yet" can go at the end of a negative sentence or between "haven\'t" and the past participle (V3). "I haven\'t yet finished" is correct.'
-      };
-
-      // Check answers
-      document.getElementById('mcq-submit').addEventListener('click', function() {
-        let score = 0;
-        const total = Object.keys(answers).length;
-
-        for (const [questionId, correctIndex] of Object.entries(answers)) {
-          const questionDiv = document.getElementById(questionId);
-          const selectedOption = questionDiv.querySelector('.option.selected');
-          const feedbackDiv = questionDiv.querySelector('.feedback');
-          const options = questionDiv.querySelectorAll('.option');
-
-          // Reset previous styles
-          options.forEach(opt => {
-            opt.classList.remove('correct', 'incorrect');
-          });
-
-          if (selectedOption) {
-            const selectedIndex = parseInt(selectedOption.getAttribute('data-index'));
-
-            if (selectedIndex === correctIndex) {
-              score++;
-              selectedOption.classList.add('correct');
-              feedbackDiv.innerHTML = '<p class="correct-feedback">✓ Correct! ' + explanations[questionId] + '</p>';
-            } else {
-              selectedOption.classList.add('incorrect');
-              options[correctIndex].classList.add('correct');
-              feedbackDiv.innerHTML = '<p class="incorrect-feedback">✗ ' + explanations[questionId] + '</p>';
-            }
-          } else {
-            options[correctIndex].classList.add('correct');
-            feedbackDiv.innerHTML = '<p class="incorrect-feedback">✗ You did not select an answer. ' + explanations[questionId] + '</p>';
+      // Initialize Drag and Drop Module (Yet activity)
+      DragDropModule.init({
+        containerId: 'drag-drop',
+        storageKey: 'still-vs-yet-drag-drop',
+        answers: {
+          'dd-q1': 'I haven\'t finished yet',
+          'dd-q2': 'has the bus arrived yet',
+          'dd-q3': 'she hasn\'t called me yet',
+          'dd-q4': 'have you eaten yet',
+          'dd-q5': 'we haven\'t booked the hotel yet'
+        },
+        onComplete: function(score, total) {
+          if (typeof ProgressTrackingModule !== 'undefined') {
+            ProgressTrackingModule.markItemCompleted('activities', 'drag-drop-still-vs-yet', {
+              score: score,
+              total: total,
+              percentage: Math.round((score / total) * 100)
+            });
           }
         }
+      });
 
-        // Display results
-        const resultsDiv = document.getElementById('mcq-results');
-        const percentage = Math.round((score / total) * 100);
-        let message = '';
-
-        if (percentage === 100) {
-          message = 'Excellent! You understand still and yet perfectly!';
-        } else if (percentage >= 70) {
-          message = 'Good work! Review the questions you got wrong and try again.';
-        } else {
-          message = 'Keep practising! Read through the grammar explanation again and try the quiz once more.';
+      // Initialize Compact Matching Module (Still vs Yet activity)
+      CompactMatchingModule.init({
+        storageKey: 'still-vs-yet-matching',
+        onComplete: function(score, total) {
+          if (typeof ProgressTrackingModule !== 'undefined') {
+            ProgressTrackingModule.markItemCompleted('activities', 'matching-still-vs-yet', {
+              score: score,
+              total: total,
+              percentage: Math.round((score / total) * 100)
+            });
+          }
         }
+      });
 
-        resultsDiv.innerHTML = '<h3>Your Score: ' + score + '/' + total + ' (' + percentage + '%)</h3><p>' + message + '</p>';
-
-        // Show review grammar button
-        document.getElementById('check-grammar').style.display = 'inline-block';
-
-        // Progress tracking
-        if (typeof ProgressTrackingModule !== 'undefined') {
-          ProgressTrackingModule.markItemCompleted('activities', 'mcq-still-vs-yet', {
-            score: score,
-            total: total,
-            percentage: percentage
-          });
-          ProgressTrackingModule.updateItemProgress('lessons', 'still-vs-yet', {
-            completed: true,
-            score: percentage
-          });
+      // Initialize MCQ Module
+      MCQModule.init({
+        containerId: 'mcq',
+        answers: {
+          'q1': 1,   // B. still
+          'q2': 1,   // B. yet
+          'q3': 2,   // C. still
+          'q4': 1,   // B. still
+          'q5': 2,   // C. yet
+          'q6': 1,   // B. still
+          'q7': 2,   // C. still
+          'q8': 1,   // B. yet
+          'q9': 1,   // B. He still hasn't fixed the door.
+          'q10': 1   // B. I haven't yet finished my report.
+        },
+        correctExplanations: {
+          'q1': 'Correct! "Still" goes after "be" to show a continuing situation. She continues to be at work.',
+          'q2': 'Correct! "Yet" goes at the end of a question when asking if something expected has happened.',
+          'q3': 'Correct! "Still" goes before the negative auxiliary "haven\'t" to show frustration that it is taking a long time.',
+          'q4': 'Correct! "Still" goes before the main verb in a question to check if something continues.',
+          'q5': 'Correct! "Yet" goes at the end of a negative sentence to say something expected has not happened.',
+          'q6': 'Correct! "Still" goes after "be" (are) to show the situation continues. It is surprising they are awake at 11 p.m.',
+          'q7': 'Correct! "Still" goes before "haven\'t" to show frustration. Three days is a long time to wait for a reply.',
+          'q8': 'Correct! "Yet" goes at the end of a question when asking about something you expect.',
+          'q9': 'Correct! "Still" + negative shows more frustration or surprise than "yet." Option B expresses that you are annoyed he has not fixed it.',
+          'q10': 'Correct! "Yet" can go at the end of a negative sentence or between "haven\'t" and the past participle. "I haven\'t yet finished" is correct.'
+        },
+        incorrectExplanations: {
+          'q1': '"Still" goes after "be" to show a continuing situation. She continues to be at work.',
+          'q2': '"Yet" goes at the end of a question when asking if something expected has happened.',
+          'q3': '"Still" goes before the negative auxiliary "haven\'t" to show frustration that it is taking a long time.',
+          'q4': '"Still" goes before the main verb in a question to check if something continues.',
+          'q5': '"Yet" goes at the end of a negative sentence to say something expected has not happened.',
+          'q6': '"Still" goes after "be" (are) to show the situation continues. It is surprising they are awake at 11 p.m.',
+          'q7': '"Still" goes before "haven\'t" to show frustration. Three days is a long time to wait for a reply.',
+          'q8': '"Yet" goes at the end of a question when asking about something you expect.',
+          'q9': '"Still" + negative shows more frustration or surprise than "yet." Option B expresses that you are annoyed he has not fixed it.',
+          'q10': '"Yet" can go at the end of a negative sentence or between "haven\'t" and the past participle. "I haven\'t yet finished" is correct.'
+        },
+        showAllQuestionsAtOnce: true,
+        onComplete: function(score, total) {
+          if (typeof ProgressTrackingModule !== 'undefined') {
+            ProgressTrackingModule.markItemCompleted('activities', 'mcq-still-vs-yet', {
+              score: score,
+              total: total,
+              percentage: Math.round((score / total) * 100)
+            });
+            ProgressTrackingModule.updateItemProgress('lessons', 'still-vs-yet', {
+              completed: true,
+              score: Math.round((score / total) * 100)
+            });
+          }
         }
       });
     });
