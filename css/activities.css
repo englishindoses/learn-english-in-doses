@@ -240,18 +240,49 @@
 /* Option Styling */
 .option {
   cursor: pointer;
-  transition: background-color 0.2s;
   padding: 8px 12px;
   border: 1px solid var(--border-color, #ddd);
   border-radius: 4px;
   margin-bottom: 8px;
   display: flex;
   align-items: center;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  background-color: transparent;
+  transition: transform 0.2s ease;
 }
 
 .option:hover {
-  background-color: var(--mcq-hover-bg, #d0e6f7);
+  background-color: transparent;
   transform: translateY(-1px);
+}
+
+.option::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--mcq-hover-bg, #d0e6f7);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: none;
+}
+
+.option:hover::before {
+  animation: fillHoverBackground 0.5s ease-in-out forwards;
+}
+
+@keyframes fillHoverBackground {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
 }
 
 .option.selected {
@@ -261,7 +292,7 @@
 }
 
 /* Dark Theme Support */
-[data-theme="dark"] .option:hover {
+[data-theme="dark"] .option::before {
   background-color: var(--mcq-hover-bg, #253545);
 }
 
