@@ -1,0 +1,152 @@
+/* Booking page styles */
+
+/* Hero gradient for booking page */
+.landing-hero.booking {
+  background: linear-gradient(135deg, var(--header-bg) 0%, var(--accent-color) 100%);
+}
+
+/* Card header colour (no level class to inherit from) */
+.booking-section .landing-path-header {
+  background-color: var(--accent-color);
+}
+
+/* Section title underline (no level class to inherit from) */
+.booking-section .landing-section-title::after {
+  background-color: var(--accent-color);
+}
+
+/* Steps layout */
+.booking-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.booking-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 5px 15px var(--shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.booking-step:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.booking-step-number {
+  flex-shrink: 0;
+  width: 45px;
+  height: 45px;
+  background-color: var(--accent-color);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.booking-step-content h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 1.15rem;
+}
+
+.booking-step-content p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+/* Message template box */
+.booking-template {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 25px;
+  margin-top: 20px;
+  box-shadow: 0 5px 15px var(--shadow-color);
+  border-left: 4px solid var(--secondary-accent);
+}
+
+.booking-template-text {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  white-space: pre-line;
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+.booking-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.95rem;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.booking-copy-btn:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+.booking-copy-btn.copied {
+  background-color: #27ae60;
+}
+
+/* WhatsApp CTA button */
+.booking-whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 30px;
+  background-color: #25D366;
+  color: white;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-top: 20px;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.booking-whatsapp-btn:hover {
+  background-color: #1da851;
+  transform: translateY(-3px);
+  text-decoration: none;
+  color: white;
+}
+
+/* CTA section centred text */
+.booking-cta {
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .booking-step {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .booking-whatsapp-btn {
+    font-size: 1rem;
+    padding: 12px 25px;
+  }
+}

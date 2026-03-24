@@ -14,9 +14,10 @@ document.addEventListener('DOMContentLoaded', function() {
   // Initialize all core functionality
   initThemeToggle();
   initMobileNavigation();
+  initActiveNavLink();
   initPrintButton();
   initSkipLink();
-  
+
   // Initialize modules
   initModules();
   
@@ -133,6 +134,61 @@ function initMobileNavigation() {
     if (window.innerWidth > 768 && navLinks.classList.contains('show')) {
       navLinks.classList.remove('show');
       navToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
+/**
+ * ----------------------------------------
+ * 2b. Active Navigation Link
+ * ----------------------------------------
+ */
+
+/**
+ * Highlights the current page's nav link by matching the URL path
+ * against each nav link's href. Handles root pages and subdirectory
+ * pages (e.g. grammar lessons fall under their level's nav link).
+ */
+function initActiveNavLink() {
+  const navLinks = document.querySelectorAll('.nav-links .nav-link');
+  if (!navLinks.length) return;
+
+  const currentPath = window.location.pathname.toLowerCase();
+
+  // Map subdirectory patterns to the nav link text they belong to
+  const sectionMap = {
+    '/grammar/beginner/': 'Beginner',
+    '/beginner-landing': 'Beginner',
+    '/grammar/intermediate/': 'Intermediate',
+    '/intermediate-landing': 'Intermediate',
+    '/grammar/advanced/': 'Advanced',
+    '/advanced/': 'Advanced',
+    '/advanced-landing': 'Advanced',
+    '/travel/': 'Travel English',
+    '/booking-page': 'Book a Lesson',
+    '/about': 'About Us',
+    '/home': 'Home',
+    '/my-progress': 'My Progress'
+  };
+
+  // Find the matching section by checking path prefixes
+  let matchedLinkText = null;
+  for (const [pattern, linkText] of Object.entries(sectionMap)) {
+    if (currentPath.includes(pattern)) {
+      matchedLinkText = linkText;
+      break;
+    }
+  }
+
+  if (!matchedLinkText) return;
+
+  navLinks.forEach(function(link) {
+    if (link.textContent.trim() === matchedLinkText) {
+      link.classList.add('active');
+      link.setAttribute('aria-current', 'page');
+    } else {
+      link.classList.remove('active');
+      link.removeAttribute('aria-current');
     }
   });
 }
@@ -844,6 +900,7 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
     debounce,
     addEventListenerToAll,
     initCollapsibleSections,
+    initActiveNavLink,
     logStorageStatus,
     calculateStorageUsage,
     // New module utility functions
