@@ -18,6 +18,7 @@
   <!-- Styles -->
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/levels.css">
+  <link rel="stylesheet" href="css/random-questions.css">
 
 </head>
 <body class="beginner-section">
@@ -109,17 +110,63 @@
         </div>
       </section>
 
-      <!-- What You Will Learn Section -->
+      <!-- Random Conversation Topics -->
       <section class="landing-section">
-        <h2 class="landing-section-title">What You Will Learn</h2>
-        <div class="intro-section">
-          <ul>
-            <li>Basic verb tenses (present simple, past simple, future).</li>
-            <li>How to make questions and negative sentences.</li>
-            <li>Essential vocabulary for daily life.</li>
-            <li>Simple sentence structures and word order.</li>
-            <li>Common phrases for greetings, introductions, and basic conversations.</li>
-          </ul>
+        <h2 class="landing-section-title">Random Conversation Topics</h2>
+
+        <div class="rq-generator" style="--rq-primary: var(--beginner-primary); --rq-primary-dark: var(--beginner-primary-dark); --rq-secondary: var(--beginner-secondary); --rq-card-bg: var(--beginner-card-bg);">
+
+          <div class="rq-grid">
+            <!-- Left card: Generator -->
+            <div class="rq-card rq-card-generator">
+              <p class="rq-card-intro">Practise your English speaking with these easy conversation questions. Choose a topic or try all categories.</p>
+
+              <!-- Category selection -->
+              <div class="rq-category-buttons">
+                <button class="rq-category-button active" data-category="all">All Topics</button>
+                <button class="rq-category-button" data-category="daily">Daily Life</button>
+                <button class="rq-category-button" data-category="work">Work &amp; Study</button>
+                <button class="rq-category-button" data-category="travel">Travel</button>
+                <button class="rq-category-button" data-category="future">Future Plans</button>
+              </div>
+
+              <!-- Question display -->
+              <div class="rq-question-container" id="rq-question-container">
+                <span class="rq-question-text" id="rq-question-text">Loading question...</span>
+                <span class="rq-question-id" id="rq-question-id"></span>
+              </div>
+
+              <!-- New question button -->
+              <div class="rq-button-container">
+                <button class="rq-new-question-button" id="rq-new-question-btn">
+                  <span class="rq-button-icon">🔄</span> New Question
+                </button>
+              </div>
+            </div>
+
+            <!-- Right card: Tips & Example -->
+            <div class="rq-card rq-card-sidebar">
+              <!-- Tips section -->
+              <div class="rq-tips-container">
+                <h3 class="rq-tips-heading">Speaking Tips</h3>
+                <ul class="rq-tips-list">
+                  <li><strong>Answer fully:</strong> Try to answer with 2-3 sentences, not just "yes" or "no"</li>
+                  <li><strong>Be confident:</strong> Don't worry about small mistakes - focus on communicating</li>
+                  <li><strong>Be creative:</strong> If you don't know a word, try to explain it another way</li>
+                </ul>
+              </div>
+
+              <!-- Example answer section -->
+              <div class="rq-example-container">
+                <h3 class="rq-example-heading">Example Answer</h3>
+                <div class="rq-example-text">
+                  <p class="rq-example-question">Question: What is your favourite food?</p>
+                  <p>"My favourite food is pasta. I really love spaghetti with tomato sauce and cheese. I usually eat it once a week, usually on weekends. It's easy to cook and always delicious!"</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
     </main>
@@ -164,5 +211,151 @@
 
   <!-- JavaScript -->
   <script src="js/core.js"></script>
+
+  <!-- Random Questions Data (Beginner) -->
+  <script>
+    window.rqQuestions = {
+      daily: [
+        { text: "What time do you wake up?", id: 1 },
+        { text: "Do you have brothers or sisters?", id: 2 },
+        { text: "What do you eat for breakfast?", id: 3 },
+        { text: "Do you live in a house or a flat?", id: 4 },
+        { text: "What is your favourite food?", id: 5 },
+        { text: "Do you have any pets?", id: 6 },
+        { text: "Who do you live with?", id: 7 },
+        { text: "What do you do after work?", id: 8 },
+        { text: "Do you cook at home?", id: 9 },
+        { text: "What time do you go to bed?", id: 10 },
+        { text: "How many people are in your family?", id: 11 },
+        { text: "What is your favourite day of the week?", id: 12 },
+        { text: "Do you like mornings or evenings?", id: 13 },
+        { text: "What do you do on Sundays?", id: 14 },
+        { text: "Do you eat lunch at home or at work?", id: 15 },
+        { text: "What is your favourite room in your home?", id: 16 },
+        { text: "How do you get to work or school?", id: 17 },
+        { text: "Do you have children?", id: 18 },
+        { text: "What do you do before bed?", id: 19 },
+        { text: "Is your home big or small?", id: 20 },
+        { text: "Do you live near your family?", id: 21 },
+        { text: "What is your favourite drink?", id: 22 },
+        { text: "Who cooks in your home?", id: 23 },
+        { text: "Do you have a garden?", id: 24 },
+        { text: "What do you do on a normal Saturday?", id: 25 },
+        { text: "What is your morning routine?", id: 26 },
+        { text: "Do you take a shower in the morning or evening?", id: 27 },
+        { text: "What time do you eat dinner?", id: 28 },
+        { text: "Do you watch TV in the evening?", id: 29 },
+        { text: "Do you prefer summer or winter?", id: 30 },
+        { text: "How often do you clean your home?", id: 31 },
+        { text: "What dish can you cook well?", id: 32 },
+        { text: "Do you prefer sweet or savoury food?", id: 33 },
+        { text: "What food from your country do you recommend?", id: 34 },
+        { text: "Do you like trying new foods?", id: 35 },
+        { text: "Do you eat out often?", id: 36 },
+        { text: "What is your favourite restaurant?", id: 37 },
+        { text: "Do you like spicy food?", id: 38 },
+        { text: "What do you usually eat for lunch?", id: 39 },
+        { text: "Do you prefer coffee or tea?", id: 40 },
+        { text: "What is your favourite fruit?", id: 41 },
+        { text: "Do you eat vegetables every day?", id: 42 },
+        { text: "Can you use chopsticks?", id: 43 },
+        { text: "Do you like desserts? What kind?", id: 44 },
+        { text: "Who are you closest to in your family?", id: 45 },
+        { text: "Do you look like your mother or father?", id: 46 },
+        { text: "What do you usually do with your family?", id: 47 },
+        { text: "Do you have any family traditions?", id: 48 },
+        { text: "How often do you call your family?", id: 49 },
+        { text: "What do you like about your friends?", id: 50 },
+        { text: "How did you meet your best friend?", id: 51 },
+        { text: "What do you do with your friends?", id: 52 },
+        { text: "Do you prefer a few close friends or many friends?", id: 53 },
+        { text: "Do you make friends easily?", id: 54 },
+        { text: "Do you have friends from other countries?", id: 55 },
+        { text: "What do you do in your free time?", id: 56 },
+        { text: "Do you like music?", id: 57 },
+        { text: "What is your favourite sport?", id: 58 },
+        { text: "Do you like to read?", id: 59 },
+        { text: "Do you watch TV every day?", id: 60 },
+        { text: "What is your favourite film?", id: 61 },
+        { text: "Do you play any sports?", id: 62 },
+        { text: "Do you like cooking?", id: 63 },
+        { text: "What music do you listen to?", id: 64 },
+        { text: "Do you like shopping?", id: 65 },
+        { text: "Do you go to the gym?", id: 66 },
+        { text: "Do you play video games?", id: 67 },
+        { text: "Do you like walking?", id: 68 },
+        { text: "What do you do at the weekend?", id: 69 },
+        { text: "Do you have a favourite singer or band?", id: 70 },
+        { text: "Do you like animals?", id: 71 },
+        { text: "Do you like taking photos?", id: 72 },
+        { text: "What is your favourite season?", id: 73 },
+        { text: "Do you like dancing?", id: 74 },
+        { text: "Do you like the beach?", id: 75 },
+        { text: "What TV shows do you watch?", id: 76 },
+        { text: "Do you draw or paint?", id: 77 },
+        { text: "Do you like swimming?", id: 78 },
+        { text: "What is your favourite app on your phone?", id: 79 },
+        { text: "Do you prefer to be inside or outside?", id: 80 },
+        { text: "Can you play a musical instrument?", id: 81 },
+        { text: "What type of films do you like?", id: 82 },
+        { text: "Do you have any collections?", id: 83 },
+        { text: "What do you do to relax?", id: 84 },
+        { text: "Do you use social media a lot?", id: 85 },
+        { text: "Do you enjoy nature activities?", id: 86 }
+      ],
+      work: [
+        { text: "What is your job?", id: 87 },
+        { text: "Do you like your job? Why or why not?", id: 88 },
+        { text: "What time do you start work?", id: 89 },
+        { text: "Do you wear special clothes for your job?", id: 90 },
+        { text: "Is your job difficult?", id: 91 },
+        { text: "What languages do you use at work?", id: 92 },
+        { text: "Do you work in a team or alone?", id: 93 },
+        { text: "What did you study in school?", id: 94 },
+        { text: "Would you like to change your job?", id: 95 },
+        { text: "Do you work on weekends?", id: 96 },
+        { text: "Do you work from home sometimes?", id: 97 },
+        { text: "What do you like about your job?", id: 98 },
+        { text: "Do you have a long commute to work?", id: 99 },
+        { text: "Are you a student? What do you study?", id: 100 },
+        { text: "Do you have meetings at work?", id: 101 }
+      ],
+      travel: [
+        { text: "Have you visited another country?", id: 102 },
+        { text: "Where would you like to travel next?", id: 103 },
+        { text: "Do you prefer the beach or the mountains?", id: 104 },
+        { text: "Do you prefer to travel by train, car, or plane?", id: 105 },
+        { text: "What is your favourite city?", id: 106 },
+        { text: "Do you take many photos when you travel?", id: 107 },
+        { text: "Do you like to try local food when you travel?", id: 108 },
+        { text: "Do you prefer hotels or apartments when travelling?", id: 109 },
+        { text: "What is the best place you have visited?", id: 110 },
+        { text: "Do you like to travel alone or with friends?", id: 111 },
+        { text: "What do you always pack when you travel?", id: 112 },
+        { text: "Would you like to live in another country?", id: 113 },
+        { text: "Do you get homesick when you travel?", id: 114 },
+        { text: "What is your dream holiday?", id: 115 },
+        { text: "Do you prefer to plan your trip or be spontaneous?", id: 116 }
+      ],
+      future: [
+        { text: "What are your plans for next weekend?", id: 117 },
+        { text: "Where would you like to be in five years?", id: 118 },
+        { text: "Would you like to learn a new skill? What?", id: 119 },
+        { text: "Do you want to move to a different city?", id: 120 },
+        { text: "What job would you like to have in the future?", id: 121 },
+        { text: "Do you want to learn another language?", id: 122 },
+        { text: "What is one goal you have for this year?", id: 123 },
+        { text: "Do you save money for the future?", id: 124 },
+        { text: "Would you like to start your own business?", id: 125 },
+        { text: "Do you think you will change jobs in the future?", id: 126 },
+        { text: "Where would you like to travel next year?", id: 127 },
+        { text: "Do you want to own a house someday?", id: 128 },
+        { text: "What would you like to improve about yourself?", id: 129 },
+        { text: "Do you think about retirement?", id: 130 },
+        { text: "What is one dream you hope to achieve?", id: 131 }
+      ]
+    };
+  </script>
+  <script src="js/random-questions.js"></script>
 </body>
 </html>

@@ -1,0 +1,303 @@
+/* ==============================================
+   Random Questions Generator - Reusable Styles
+   ==============================================
+   Usage: Set --rq-primary, --rq-primary-dark, --rq-secondary,
+   and --rq-card-bg on the .rq-generator container via inline style
+   to theme per level. Example:
+   style="--rq-primary: var(--beginner-primary); ..."
+   ============================================== */
+
+/* Generator container */
+.rq-generator {
+  margin-top: 20px;
+}
+
+/* Two-column grid: generator card + sidebar card */
+.rq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  align-items: start;
+}
+
+/* Shared card style */
+.rq-card {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+[data-theme="dark"] .rq-card {
+  background-color: var(--card-bg);
+}
+
+.rq-card-intro {
+  color: var(--text-color);
+  line-height: 1.6;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+/* Question display box */
+.rq-question-container {
+  background-color: var(--rq-card-bg);
+  border-radius: 10px;
+  padding: 30px;
+  margin: 20px 0;
+  text-align: center;
+  transition: opacity 0.3s ease;
+  border-left: 5px solid var(--rq-primary);
+}
+
+.rq-question-text {
+  font-size: 1.5rem;
+  color: var(--rq-primary);
+  font-weight: 600;
+  line-height: 1.4;
+  display: inline;
+}
+
+[data-theme="dark"] .rq-question-text {
+  color: var(--rq-primary);
+}
+
+/* Hidden question ID - same colour as background, visible on highlight */
+.rq-question-id {
+  color: var(--rq-card-bg);
+  font-size: 0.6rem;
+  margin-left: 6px;
+  vertical-align: super;
+  font-weight: 400;
+  user-select: text;
+}
+
+[data-theme="dark"] .rq-question-id {
+  color: var(--rq-card-bg);
+}
+
+/* Category filter buttons */
+.rq-category-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.rq-category-button {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-color);
+  box-shadow: 0 1px 3px var(--shadow-color);
+}
+
+.rq-category-button:hover {
+  background-color: var(--example-bg);
+  transform: translateY(-2px);
+}
+
+.rq-category-button.active {
+  background-color: var(--rq-primary);
+  color: white;
+  border-color: var(--rq-primary);
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+[data-theme="dark"] .rq-category-button {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .rq-category-button:hover {
+  background-color: var(--example-bg);
+}
+
+[data-theme="dark"] .rq-category-button.active {
+  background-color: var(--rq-primary);
+  color: #fff;
+  border-color: var(--rq-primary);
+}
+
+/* New question button */
+.rq-new-question-button {
+  background-color: var(--rq-primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.rq-new-question-button:hover {
+  background-color: var(--rq-primary-dark);
+  transform: translateY(-2px);
+}
+
+[data-theme="dark"] .rq-new-question-button {
+  background-color: var(--rq-primary);
+  color: #fff;
+}
+
+[data-theme="dark"] .rq-new-question-button:hover {
+  background-color: var(--rq-primary-dark);
+}
+
+.rq-button-icon {
+  margin-right: 8px;
+}
+
+/* Sidebar card sections */
+.rq-card-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Tips section */
+.rq-tips-container {
+  background-color: var(--rq-card-bg);
+  border-left: 4px solid var(--rq-secondary);
+  padding: 10px 10px 10px 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.rq-tips-heading {
+  color: var(--text-color);
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-size: 1.1rem;
+}
+
+.rq-tips-list {
+  color: var(--text-color);
+  padding-left: 18px;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.rq-tips-list li {
+  margin-bottom: 0px;
+  line-height: 1.4;
+}
+
+.rq-tips-list li:last-child {
+  margin-bottom: 0;
+}
+
+.rq-tips-list strong {
+  color: var(--rq-secondary);
+}
+
+[data-theme="dark"] .rq-tips-container {
+  background-color: var(--rq-card-bg);
+  border-left-color: var(--rq-secondary);
+}
+
+[data-theme="dark"] .rq-tips-list strong {
+  color: var(--rq-secondary);
+}
+
+/* Example answer section */
+.rq-example-container {
+  background-color: var(--rq-card-bg);
+  padding: 10px 15px 15px 10px;
+  border-radius: 8px;
+  border-left: 4px solid var(--rq-primary);
+}
+
+.rq-example-heading {
+  color: var(--text-color);
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 0px;
+  font-size: 1.1rem;
+}
+
+.rq-example-text {
+  font-style: italic;
+  color: var(--text-color);
+  line-height: 1.5;
+}
+
+.rq-example-text p {
+  margin: 0 0 6px 0;
+}
+
+.rq-example-text p:last-child {
+  margin-bottom: 0;
+}
+
+.rq-example-question {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--rq-primary);
+}
+
+[data-theme="dark"] .rq-example-container {
+  background-color: var(--rq-card-bg);
+}
+
+[data-theme="dark"] .rq-example-question {
+  color: var(--rq-primary);
+}
+
+/* Fade animation */
+.rq-fade-out {
+  opacity: 0;
+}
+
+.rq-fade-in {
+  opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .rq-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rq-category-buttons {
+    justify-content: center;
+  }
+
+  .rq-question-text {
+    font-size: 1.3rem;
+  }
+
+  .rq-card {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .rq-question-text {
+    font-size: 1.1rem;
+  }
+
+  .rq-card {
+    padding: 20px;
+  }
+
+  .rq-question-container {
+    padding: 20px;
+  }
+}
