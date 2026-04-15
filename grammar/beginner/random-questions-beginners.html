@@ -137,12 +137,19 @@
       margin-right: 8px;
     }
     
+    .tips-example-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 40px;
+    }
+
     .tips-container {
       background-color: var(--conversation-card-bg);
       border-left: 4px solid var(--conversation-secondary);
       padding: 20px;
       border-radius: 5px;
-      margin-top: 40px;
+      margin-top: 0;
       box-shadow: 0 2px 5px var(--shadow-color);
     }
     
@@ -182,7 +189,7 @@
       background-color: var(--conversation-card-bg);
       padding: 20px;
       border-radius: 5px;
-      margin-top: 20px;
+      margin-top: 0;
       border-left: 4px solid var(--conversation-primary);
       box-shadow: 0 2px 5px var(--shadow-color);
     }
@@ -224,10 +231,14 @@
     }
     
     @media (max-width: 768px) {
+      .tips-example-row {
+        grid-template-columns: 1fr;
+      }
+
       .category-buttons {
         justify-content: center;
       }
-      
+
       .question-text {
         font-size: 1.4rem;
       }
@@ -305,32 +316,35 @@
       <div class="question-container">
         <p class="question-text" id="question-display">Loading question...</p>
       </div>
-      
+
       <!-- New question button -->
       <div class="button-container">
         <button class="new-question-button" id="new-question-btn">
           <span class="button-icon">🔄</span> New Question
         </button>
       </div>
-      
-      <!-- Tips section -->
-      <div class="tips-container">
-        <h3 class="tips-heading">💬 Speaking Tips</h3>
-        <ul class="tips-list">
-          <li><strong>Answer fully:</strong> Try to answer with 2-3 sentences, not just "yes" or "no"</li>
-          <li><strong>Keep talking:</strong> Ask follow-up questions to keep the conversation going</li>
-          <li><strong>Be confident:</strong> Don't worry about small mistakes - focus on communicating</li>
-          <li><strong>Be creative:</strong> If you don't know a word, try to explain it another way</li>
-          <li><strong>Have fun:</strong> Practice with a friend or language partner for more enjoyment!</li>
-        </ul>
-      </div>
-      
-      <!-- Example answer section -->
-      <div class="example-container">
-        <h3 class="example-heading">✨ Example Answer</h3>
-        <div class="example-text">
-          <p class="example-question">Question: What is your favorite food?</p>
-          <p>"My favorite food is pasta. I really love spaghetti with tomato sauce and cheese. I usually eat it once a week, usually on weekends. It's easy to cook and always delicious!"</p>
+
+      <!-- Tips and Example side by side -->
+      <div class="tips-example-row">
+        <!-- Tips section -->
+        <div class="tips-container">
+          <h3 class="tips-heading">💬 Speaking Tips</h3>
+          <ul class="tips-list">
+            <li><strong>Answer fully:</strong> Try to answer with 2-3 sentences, not just "yes" or "no"</li>
+            <li><strong>Keep talking:</strong> Ask follow-up questions to keep the conversation going</li>
+            <li><strong>Be confident:</strong> Don't worry about small mistakes - focus on communicating</li>
+            <li><strong>Be creative:</strong> If you don't know a word, try to explain it another way</li>
+            <li><strong>Have fun:</strong> Practice with a friend or language partner for more enjoyment!</li>
+          </ul>
+        </div>
+
+        <!-- Example answer section -->
+        <div class="example-container">
+          <h3 class="example-heading">✨ Example Answer</h3>
+          <div class="example-text">
+            <p class="example-question">Question: What is your favorite food?</p>
+            <p>"My favorite food is pasta. I really love spaghetti with tomato sauce and cheese. I usually eat it once a week, usually on weekends. It's easy to cook and always delicious!"</p>
+          </div>
         </div>
       </div>
     </main>

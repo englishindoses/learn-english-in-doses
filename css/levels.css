@@ -16,11 +16,11 @@
   --beginner-icon-bg: #e8f8e8;      /* Slightly darker green for icons */
 
   /* Intermediate section theme variables */
-  --intermediate-primary: #FF9800;      /* Orange */
-  --intermediate-primary-dark: #F57C00; /* Darker orange for hover states */
+  --intermediate-primary: #fca421;      /* Golden amber */
+  --intermediate-primary-dark: #d98b10; /* Darker amber for hover states */
   --intermediate-secondary: #3498db;    /* Blue accent */
-  --intermediate-card-bg: #fff8e1;      /* Light orange background */
-  --intermediate-icon-bg: #ffecb3;      /* Slightly darker orange for icons */
+  --intermediate-card-bg: #fff8e1;      /* Light amber background */
+  --intermediate-icon-bg: #ffecb3;      /* Slightly darker amber for icons */
 
   /* Conversation section theme variables - Professional & Inviting */
   --conversation-primary: #26A69A;      /* Sea green teal (updated from blue teal) */
@@ -40,8 +40,8 @@
   --beginner-icon-bg: #223c2a;       /* Darker green for icons */
 
   /* Dark theme intermediate-specific colors */
-  --intermediate-primary: #FFA726;      /* Brighter orange for dark mode */
-  --intermediate-primary-dark: #FB8C00; /* Darker orange */
+  --intermediate-primary: #ffb63e;      /* Brighter amber for dark mode */
+  --intermediate-primary-dark: #e8960e; /* Darker amber */
   --intermediate-secondary: #4fa3e0;    /* Brighter blue for dark mode */
   --intermediate-card-bg: #332700;      /* Dark orange-tinted background */
   --intermediate-icon-bg: #443300;      /* Darker orange-brown for icons */

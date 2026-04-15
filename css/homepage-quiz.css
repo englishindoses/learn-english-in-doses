@@ -42,8 +42,8 @@
 }
 
 .tab.intermediate.active {
-  border-bottom-color: var(--intermediate-color, #FF9800);
-  color: var(--intermediate-color, #FF9800);
+  border-bottom-color: var(--intermediate-color, #fca421);
+  color: var(--intermediate-color, #fca421);
 }
 
 .tab.advanced.active {
@@ -84,7 +84,7 @@
 }
 
 .intermediate-intro {
-  border-left: 5px solid var(--intermediate-color, #FF9800);
+  border-left: 5px solid var(--intermediate-color, #fca421);
 }
 
 .advanced-intro {
@@ -231,7 +231,7 @@
 }
 
 .intermediate-btn {
-  background-color: var(--intermediate-color, #FF9800);
+  background-color: var(--intermediate-color, #fca421);
   color: white;
   padding: 12px 25px; /* Increased padding */
   border: none;
@@ -429,8 +429,8 @@
 }
 
 [data-theme="dark"] .tab.intermediate.active {
-  border-bottom-color: var(--intermediate-color, #FF9800);
-  color: var(--intermediate-color, #FF9800);
+  border-bottom-color: var(--intermediate-color, #fca421);
+  color: var(--intermediate-color, #fca421);
 }
 
 [data-theme="dark"] .tab.advanced.active {
@@ -460,7 +460,7 @@
 }
 
 [data-theme="dark"] .intermediate-intro {
-  border-left: 5px solid var(--intermediate-color, #FF9800);
+  border-left: 5px solid var(--intermediate-color, #fca421);
   background-color: rgba(255, 152, 0, 0.1);
 }
 
