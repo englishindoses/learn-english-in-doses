@@ -89,10 +89,6 @@
   background-color: var(--beginner-primary-dark);
 }
 
-/* .beginner-section h1 {
-  border-left: 5px solid var(--beginner-primary);
-} */
-
 .beginner-section .translate-tip strong {
   color: var(--beginner-secondary);
 }
@@ -156,8 +152,7 @@
    ---------------------------------------- */
 /* Dark theme beginner-specific element styles */
 [data-theme="dark"] .beginner-section h1 {
-  background-color: #1a2a20;
-  /* border-left: 5px solid var(--beginner-primary); */
+
   color: #ffffff;
 }
 
@@ -222,14 +217,29 @@
 }
 
 [data-theme="dark"] .beginner-section .learn-button {
-  background-color: #2ecc71; /* Bright green */
-  color: #000000; /* Black text */
-  font-weight: 600; /* Semi-bold for clarity */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+  background-color: #2ecc71;
+  color: #000000;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 [data-theme="dark"] .beginner-section .learn-button:hover {
   background-color: var(--beginner-primary-dark);
+  color: #000000;
+}
+
+[data-theme="dark"] .beginner-section .nav-button {
+  background-color: var(--beginner-primary);
+  color: #1a1a1a;
+}
+
+[data-theme="dark"] .beginner-section .nav-button:hover {
+  color: #1a1a1a;
+}
+
+[data-theme="dark"] .beginner-section th {
+  background-color: var(--beginner-primary);
+  color: #1a1a1a;
 }
 
 [data-theme="dark"] .beginner-nav-indicator {
@@ -238,6 +248,7 @@
 
 [data-theme="dark"] .beginner-section .nav-link.active {
   background-color: var(--beginner-primary);
+  color: #1a1a1a;
 }
 
 /* Dark theme common elements in beginner pages */
@@ -340,8 +351,6 @@
 
 /* Dark theme styling for intermediate section */
 [data-theme="dark"] .intermediate-section h1 {
-  background-color: #332200;
-  /* border-left: 5px solid var(--intermediate-primary); */
   color: #ffffff;
 }
 
@@ -358,6 +367,21 @@
 
 [data-theme="dark"] .intermediate-section .nav-link.active {
   background-color: var(--intermediate-primary);
+  color: #1a1a1a;
+}
+
+[data-theme="dark"] .intermediate-section .nav-button {
+  background-color: var(--intermediate-primary);
+  color: #1a1a1a;
+}
+
+[data-theme="dark"] .intermediate-section .nav-button:hover {
+  color: #1a1a1a;
+}
+
+[data-theme="dark"] .intermediate-section th {
+  background-color: var(--intermediate-primary);
+  color: #1a1a1a;
 }
 
 [data-theme="dark"] .intermediate-section a {
@@ -581,9 +605,7 @@
    7. Dark Mode for Conversation Section
    ---------------------------------------- */
 [data-theme="dark"] .conversation-section h1 {
-  background-color: #1a2e2c; /* Sea green background */
-  color: #ffffff;
-  /* border-left: 5px solid var(--conversation-primary); */
+
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
 }
 
@@ -1052,6 +1074,15 @@
 
 [data-theme="dark"] .landing-hero h1 {
   color: white;
+}
+
+/* Dark mode hero gradients — start from header-bg (near-black) so white text stays readable */
+[data-theme="dark"] .landing-hero.beginner {
+  background: linear-gradient(135deg, var(--header-bg) 0%, var(--beginner-primary) 100%);
+}
+
+[data-theme="dark"] .landing-hero.intermediate {
+  background: linear-gradient(135deg, var(--header-bg) 0%, var(--intermediate-primary) 100%);
 }
 
 /* Beginner dark theme adjustments — dark text on bright green for contrast */
