@@ -5,6 +5,127 @@
   background: linear-gradient(135deg, var(--header-bg) 0%, var(--accent-color) 100%);
 }
 
+/* Hero action buttons */
+.booking-hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.booking-hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.booking-hero-btn-primary {
+  background-color: white;
+  color: var(--accent-color);
+}
+
+.booking-hero-btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  color: var(--accent-color);
+}
+
+.booking-hero-btn-whatsapp {
+  background-color: #25D366;
+  color: white;
+}
+
+.booking-hero-btn-whatsapp:hover {
+  background-color: #1da851;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35);
+  text-decoration: none;
+  color: white;
+}
+
+/* Ask for details link on each card */
+.booking-card-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: #25D366;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.booking-card-link:hover {
+  color: #1da851;
+  transform: translateX(3px);
+  text-decoration: none;
+}
+
+/* FAQ accordion */
+.booking-faq {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.booking-faq-item {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 18px 22px;
+  box-shadow: 0 3px 10px var(--shadow-color);
+  border-left: 4px solid var(--accent-color);
+  transition: box-shadow 0.3s ease;
+}
+
+.booking-faq-item[open] {
+  box-shadow: 0 6px 18px var(--shadow-color);
+}
+
+.booking-faq-item summary {
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--text-color);
+  list-style: none;
+  position: relative;
+  padding-right: 30px;
+}
+
+.booking-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.booking-faq-item summary::after {
+  content: "+";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--accent-color);
+  transition: transform 0.2s ease;
+}
+
+.booking-faq-item[open] summary::after {
+  content: "−";
+}
+
+.booking-faq-item p {
+  margin: 12px 0 0;
+  line-height: 1.7;
+  color: var(--text-color);
+}
+
 /* Card header colour (no level class to inherit from) */
 .booking-section .landing-path-header {
   background-color: var(--accent-color);
@@ -65,48 +186,6 @@
   line-height: 1.7;
 }
 
-/* Message template box */
-.booking-template {
-  background-color: var(--card-bg);
-  border-radius: 12px;
-  padding: 25px;
-  margin-top: 20px;
-  box-shadow: 0 5px 15px var(--shadow-color);
-  border-left: 4px solid var(--secondary-accent);
-}
-
-.booking-template-text {
-  font-family: 'Source Code Pro', monospace;
-  font-size: 0.95rem;
-  line-height: 1.8;
-  white-space: pre-line;
-  margin-bottom: 20px;
-  color: var(--text-color);
-}
-
-.booking-copy-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 20px;
-  background-color: var(--accent-color);
-  color: white;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 0.95rem;
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-.booking-copy-btn:hover {
-  background-color: #2980b9;
-  transform: translateY(-2px);
-}
-
-.booking-copy-btn.copied {
-  background-color: #27ae60;
-}
 
 /* WhatsApp CTA button */
 .booking-whatsapp-btn {
@@ -137,8 +216,50 @@
   text-align: center;
 }
 
+.booking-cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Instagram CTA button */
+.booking-instagram-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 30px;
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  color: white;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
+  box-shadow: 0 4px 15px rgba(225, 48, 108, 0.3);
+}
+
+.booking-instagram-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(225, 48, 108, 0.4);
+  text-decoration: none;
+  color: white;
+  opacity: 0.95;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .booking-hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .booking-hero-btn {
+    font-size: 0.9rem;
+    padding: 10px 20px;
+  }
+
   .booking-step {
     flex-direction: column;
     align-items: center;
@@ -148,5 +269,19 @@
   .booking-whatsapp-btn {
     font-size: 1rem;
     padding: 12px 25px;
+  }
+
+  .booking-instagram-btn {
+    font-size: 1rem;
+    padding: 12px 25px;
+  }
+
+  .booking-cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .booking-faq-item summary {
+    font-size: 0.95rem;
   }
 }

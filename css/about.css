@@ -466,6 +466,32 @@ body {
   font-size: 1rem;
 }
 
+/* Floating WhatsApp Button */
+.floating-whatsapp {
+  position: fixed;
+  bottom: 75px;
+  right: 25px;
+  width: 44px;
+  height: 44px;
+  background-color: #25D366;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  transition: all 0.3s ease;
+  opacity: 0.9;
+}
+
+.floating-whatsapp:hover {
+  opacity: 1;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
+  text-decoration: none;
+}
+
 /* Responsive styles */
 @media (max-width: 992px) {
   .testimonials-grid {
@@ -516,6 +542,13 @@ body {
     right: 15px;
     padding: 8px 14px;
     font-size: 0.8rem;
+  }
+
+  .floating-whatsapp {
+    bottom: 60px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
   }
 
   .feature-icon {
