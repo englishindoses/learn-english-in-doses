@@ -43,7 +43,7 @@
     <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
     <div class="nav-links">
       <a href="home.html" class="nav-link">Home</a>
-    <a href="about.html" class="nav-link">About Us</a>
+    <a href="about.html" class="nav-link">About</a>
     <a href="home.html#quiz-section" class="nav-link">Find Your Level</a>
     <a href="beginner-landing.html" class="nav-link">Beginner</a>
     <a href="intermediate-landing.html" class="nav-link">Intermediate</a>
@@ -372,59 +372,6 @@
   
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Theme toggle functionality
-      const themeToggle = document.getElementById('theme-toggle');
-      
-      // Set initial theme based on stored preference or system preference
-      setInitialTheme();
-      
-      // Handle theme toggle click
-      themeToggle.addEventListener('click', function() {
-        toggleTheme();
-      });
-      
-      function setInitialTheme() {
-        // Check for stored theme preference
-        const storedTheme = localStorage.getItem('theme');
-        
-        if (storedTheme) {
-          // Apply stored theme preference
-          document.documentElement.setAttribute('data-theme', storedTheme);
-        } else {
-          // Check for system dark mode preference
-          const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-          
-          if (prefersDarkMode) {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            localStorage.setItem('theme', 'dark');
-          } else {
-            document.documentElement.setAttribute('data-theme', 'light');
-            localStorage.setItem('theme', 'light');
-          }
-        }
-      }
-      
-      function toggleTheme() {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
-        // Update the theme attribute
-        document.documentElement.setAttribute('data-theme', newTheme);
-        
-        // Save theme preference to local storage
-        localStorage.setItem('theme', newTheme);
-      }
-
-      // Mobile navigation functionality
-      const navToggle = document.querySelector('.nav-toggle');
-      const navLinks = document.querySelector('.nav-links');
-      
-      if (navToggle && navLinks) {
-        navToggle.addEventListener('click', function() {
-          navLinks.classList.toggle('show');
-        });
-      }
-
       // Initialize the quiz after DOM is loaded
       if (typeof LevelTestQuiz !== 'undefined' && LevelTestQuiz.init) {
         LevelTestQuiz.init();
