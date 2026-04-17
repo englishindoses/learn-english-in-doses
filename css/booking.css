@@ -199,7 +199,6 @@
   text-decoration: none;
   font-weight: 600;
   font-size: 1.1rem;
-  margin-top: 20px;
   transition: background-color 0.3s, transform 0.3s;
   box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
 }
