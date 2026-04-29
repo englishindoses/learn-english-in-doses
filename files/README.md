@@ -86,4 +86,4 @@ These files are designed to work with modern browsers (Chrome, Firefox, Safari, 
 
 ## License
 
-© 2025 English in Doses | All rights reserved
+<p>&copy; 2025–2026 English in Doses | All rights reserved

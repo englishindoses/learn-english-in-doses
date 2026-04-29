@@ -609,7 +609,7 @@ The drag-and-drop section is a sentence reordering activity where learners drag 
   </div>
 
   <div class="footer-bottom">
-    <p>&copy; 2025 English in Doses | All rights reserved | <a href="../../license.html">Licensing Information</a></p>
+    <p>&copy; 2025–2026 English in Doses | All rights reserved | <a href="../../license.html">Licensing Information</a></p>
   </div>
 </footer>
 ```
@@ -1050,7 +1050,7 @@ Below is a minimal but complete template. Replace all `PLACEHOLDER` values with 
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; 2025 English in Doses | All rights reserved | <a href="../../license.html">Licensing Information</a></p>
+      <p>&copy; 2025–2026 English in Doses | All rights reserved | <a href="../../license.html">Licensing Information</a></p>
     </div>
   </footer>
 

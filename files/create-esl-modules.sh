@@ -4630,7 +4630,7 @@ cat > templates/practice-page-template.html << 'EOL'
     </div>
     
     <div class="footer-bottom">
-      <p>© 2025 English in Doses | All rights reserved</p>
+      <p><p>&copy; 2025–2026 English in Doses | All rights reserved</p>
     </div>
   </footer>
 
@@ -4831,7 +4831,7 @@ These files are designed to work with modern browsers (Chrome, Firefox, Safari, 
 
 ## License
 
-© 2025 English in Doses | All rights reserved
+<p>&copy; 2025–2026 English in Doses | All rights reserved
 EOL
 
 echo "All files have been created successfully. See the README.md file for implementation instructions."

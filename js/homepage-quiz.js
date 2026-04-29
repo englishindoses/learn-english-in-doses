@@ -352,13 +352,17 @@ const LevelTestQuiz = (function() {
         const level = this.getAttribute('data-tab');
         
         // Deactivate all tabs and content
-        tabs.forEach(t => t.classList.remove('active'));
+        tabs.forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
         document.querySelectorAll('.tab-content').forEach(content => {
           content.classList.remove('active');
         });
-        
+
         // Activate selected tab and content
         this.classList.add('active');
+        this.setAttribute('aria-selected', 'true');
         document.getElementById(`${level}-tab`).classList.add('active');
         
         // Load questions for this level

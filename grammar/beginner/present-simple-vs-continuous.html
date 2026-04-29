@@ -29,8 +29,8 @@
   
   <div class="theme-toggle-container">
     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
-      <span class="light-icon">☀️</span>
-      <span class="dark-icon">🌙</span>
+      <span class="light-icon" aria-hidden="true">☀️</span>
+      <span class="dark-icon" aria-hidden="true">🌙</span>
     </button>
   </div>
   
@@ -39,7 +39,7 @@
     <a href="../../home.html" class="site-logo">
       <img src="../../images/my-logo.svg" alt="English in Doses" width="150" height="auto">
     </a>
-    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
     <div class="nav-links">
       <a href="../../home.html" class="nav-link">Home</a>
     <a href="../../about.html" class="nav-link">About</a>
@@ -467,15 +467,15 @@
     </div>
     
     <div class="footer-bottom">
-      <p>&copy; 2026 English in Doses | All rights reserved</p>
+      <p>&copy; 2025–2026 English in Doses | All rights reserved</p>
     </div>
   </footer>
 
   <!-- JavaScript -->
-  <script src="../../js/core.js"></script>
-  <script src="../../js/mcq.js"></script>
-  <script src="../../js/drag-drop.js"></script>
-  <script src="../../js/progress-tracking-module.js"></script>
+  <script src="../../js/core.js" defer></script>
+  <script src="../../js/mcq.js" defer></script>
+  <script src="../../js/drag-drop.js" defer></script>
+  <script src="../../js/progress-tracking-module.js" defer></script>
   
   <!-- Initialize Activities -->
   <script>

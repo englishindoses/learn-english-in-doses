@@ -1,7 +1,7 @@
 # License Information
 
 ## Content License
-All educational content in this repository is © 2025 English in Doses and is licensed under a [Creative Commons Attribution-NonCommercial 4.0 International License](https://creativecommons.org/licenses/by-nc/4.0/).
+All educational content in this repository is <p>&copy; 2025–2026 English in Doses and is licensed under a [Creative Commons Attribution-NonCommercial 4.0 International License](https://creativecommons.org/licenses/by-nc/4.0/).
 
 [![License: CC BY-NC 4.0](https://i.creativecommons.org/l/by-nc/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc/4.0/)
 
@@ -19,7 +19,7 @@ All educational content in this repository is © 2025 English in Doses and is li
 - Redistribute these materials on another website without permission
 
 ## Website Code
-The HTML, CSS, and JavaScript code in this repository is © 2025 English in Doses.
+The HTML, CSS, and JavaScript code in this repository is <p>&copy; 2025–2026 English in Doses.
 All rights reserved.
 
 ## Third-Party Resources
