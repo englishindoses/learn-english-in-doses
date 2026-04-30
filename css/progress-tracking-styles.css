@@ -208,6 +208,13 @@
 /* Achievement Notification
    ========================================================================== */
 
+#achievement-notification-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
 .achievement-notification {
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
@@ -295,15 +302,28 @@
   font-size: 0.9rem;
 }
 
-.activity-title {
+/* Scoped to grid items (progress-manager-ui.js activity grid) */
+.grid-item .activity-title {
   font-weight: 600;
   margin-bottom: 3px;
+  color: var(--text-color, #333);
+}
+
+/* Scoped to the recent-activity list on my-progress.html */
+.activity-list .activity-title {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 5px;
   color: var(--text-color, #333);
 }
 
 .activity-score {
   font-size: 0.8rem;
   color: var(--secondary-text-color, #666);
+}
+
+.activity-list .activity-score {
+  margin-right: 15px;
 }
 
 .no-items-message {
@@ -418,4 +438,162 @@
 
 .feedback-message p:last-child {
   margin-bottom: 0;
+}
+
+/* My Progress page
+   ========================================================================== */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  background-color: var(--card-bg);
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  transition: transform 0.3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  margin: 10px 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+.streak-card {
+  border-left: 5px solid var(--streak-color, #f07d3e);
+}
+
+.streak-number {
+  color: var(--streak-color, #f07d3e);
+}
+
+.progress-section-title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.progress-section-title h2 {
+  margin: 0;
+  border-bottom: none;
+}
+
+/* Recent Activity list */
+.activity-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background-color: var(--card-bg);
+  box-shadow: 0 1px 3px var(--shadow-color);
+  transition: transform 0.2s;
+}
+
+.activity-item:hover {
+  transform: translateX(5px);
+}
+
+.activity-icon {
+  font-size: 1.5rem;
+  margin-right: 15px;
+  min-width: 30px;
+  text-align: center;
+}
+
+.activity-details {
+  flex-grow: 1;
+}
+
+.activity-meta {
+  display: flex;
+  font-size: 0.8rem;
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+/* Danger zone / reset */
+.danger-zone {
+  border-left: 5px solid var(--error-color);
+  margin-top: 30px;
+}
+
+.reset-button {
+  background-color: var(--error-color);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 4px;
+  margin-top: 10px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+.reset-button:hover {
+  background-color: var(--error-dark, #bd2130);
+}
+
+/* Empty-state message */
+.no-progress-message {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  margin: 30px 0;
+}
+
+.no-progress-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  opacity: 0.7;
+}
+
+/* My Progress responsive adjustments */
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  .activity-meta {
+    flex-direction: column;
+  }
+
+  .activity-list .activity-score {
+    margin-right: 0;
+    margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
 }

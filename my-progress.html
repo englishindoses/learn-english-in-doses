@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Track your English grammar learning progress - English in Doses">
   <title>My Progress - English in Doses</title>
-  
+
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
-  
+
   <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
@@ -19,238 +19,11 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/activities.css">
   <link rel="stylesheet" href="css/progress-tracking-styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  <style>
-    /* Additional styles specific to progress page */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-    
-    .stat-card {
-      background-color: var(--card-bg);
-      padding: 15px;
-      border-radius: 8px;
-      text-align: center;
-      box-shadow: 0 2px 4px var(--shadow-color);
-      transition: transform 0.3s;
-    }
-    
-    .stat-card:hover {
-      transform: translateY(-5px);
-    }
-    
-    .stat-number {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--accent-color);
-      margin: 10px 0;
-      font-family: 'Montserrat', sans-serif;
-    }
-    
-    .stat-label {
-      font-size: 0.9rem;
-      color: var(--text-color);
-      opacity: 0.8;
-    }
-    
-    .streak-card {
-      border-left: 5px solid #f07d3e;
-    }
-    
-    .streak-number {
-      color: #f07d3e;
-    }
-    
-    .progress-section-title {
-      display: flex;
-      align-items: center;
-      margin-bottom: 15px;
-    }
-    
-    .progress-section-title h2 {
-      margin: 0;
-      border-bottom: none;
-    }
-    
-    .view-all-link {
-      margin-left: auto;
-      font-size: 0.9rem;
-    }
-    
-    /* Recent Activity */
-    .activity-list {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-    }
-    
-    .activity-item {
-      display: flex;
-      align-items: center;
-      padding: 12px;
-      border-radius: 8px;
-      margin-bottom: 10px;
-      background-color: var(--card-bg);
-      box-shadow: 0 1px 3px var(--shadow-color);
-      transition: transform 0.2s;
-    }
-    
-    .activity-item:hover {
-      transform: translateX(5px);
-    }
-    
-    .activity-icon {
-      font-size: 1.5rem;
-      margin-right: 15px;
-      min-width: 30px;
-      text-align: center;
-    }
-    
-    .activity-details {
-      flex-grow: 1;
-    }
-    
-    .activity-title {
-      display: block;
-      font-weight: 600;
-      margin-bottom: 5px;
-    }
-    
-    .activity-meta {
-      display: flex;
-      font-size: 0.8rem;
-      color: var(--text-color);
-      opacity: 0.7;
-    }
-    
-    .activity-score {
-      margin-right: 15px;
-    }
-    
-    /* Recommendation Section */
-    .recommendation-card {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      background-color: var(--card-bg);
-      border-radius: 8px;
-      padding: 15px;
-      margin-bottom: 15px;
-      box-shadow: 0 2px 4px var(--shadow-color);
-      border-left: 5px solid var(--accent-color);
-      transition: transform 0.3s;
-    }
-    
-    .recommendation-card:hover {
-      transform: translateY(-5px);
-    }
-    
-    .recommendation-title {
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-    
-    .recommendation-description {
-      margin-bottom: 15px;
-      font-size: 0.9rem;
-    }
-    
-    .recommendation-button {
-      background-color: var(--accent-color);
-      color: white;
-      padding: 8px 15px;
-      border-radius: 4px;
-      text-decoration: none;
-      align-self: flex-end;
-      transition: background-color 0.3s, transform 0.2s;
-    }
-    
-    .recommendation-button:hover {
-      background-color: #2980b9;
-      transform: translateY(-2px);
-      text-decoration: none;
-      color: white;
-    }
-    
-    /* Reset button */
-    .danger-zone {
-      border-left: 5px solid var(--error-color);
-      margin-top: 30px;
-    }
-    
-    .reset-button {
-      background-color: var(--error-color);
-      color: white;
-      padding: 10px 15px;
-      border-radius: 4px;
-      margin-top: 10px;
-      cursor: pointer;
-      border: none;
-      transition: background-color 0.3s;
-    }
-    
-    .reset-button:hover {
-      background-color: #bd2130;
-    }
-    
-    .confirm-reset {
-      display: none;
-      background-color: var(--error-bg);
-      padding: 15px;
-      border-radius: 8px;
-      margin-top: 15px;
-    }
-    
-    /* No progress message */
-    .no-progress-message {
-      text-align: center;
-      padding: 40px 20px;
-      background-color: var(--card-bg);
-      border-radius: 8px;
-      margin: 30px 0;
-    }
-    
-    .no-progress-icon {
-      font-size: 4rem;
-      margin-bottom: 20px;
-      opacity: 0.7;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      
-      .stat-number {
-        font-size: 2rem;
-      }
-      
-      .activity-meta {
-        flex-direction: column;
-      }
-      
-      .activity-score {
-        margin-right: 0;
-        margin-bottom: 5px;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .stats-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
 </head>
 <body>
   <!-- Skip link for accessibility -->
   <a href="#main-content" class="skip-link">Skip to content</a>
-  
+
   <!-- Theme toggle button -->
   <div class="theme-toggle-container">
     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
@@ -258,7 +31,7 @@
       <span class="dark-icon" aria-hidden="true">🌙</span>
     </button>
   </div>
-  
+
   <!-- Main navigation -->
   <nav class="main-navigation">
     <a href="home.html" class="site-logo">
@@ -288,15 +61,15 @@
 
     <main id="main-content">
       <h1>My Progress</h1>
-      
-      <!-- No progress message (initially hidden) -->
+
+      <!-- No progress message (shown when user has no data) -->
       <div id="no-progress-message" class="no-progress-message" style="display: none;">
         <div class="no-progress-icon">📊</div>
         <h2>No progress yet</h2>
         <p>You haven't completed any activities yet. Start learning to track your progress!</p>
         <a href="home.html#where-to-start" class="btn btn-primary">Start Learning</a>
       </div>
-      
+
       <!-- Progress content -->
       <div id="progress-content">
         <!-- Summary Stats -->
@@ -306,76 +79,51 @@
             <div id="overall-percentage" class="stat-number">0%</div>
             <div id="overall-fraction" class="stat-label">0/0 completed</div>
           </div>
-          
+
           <div class="stat-card">
             <div class="stat-label">Activities Completed</div>
             <div id="activities-count" class="stat-number">0</div>
             <div class="stat-label">out of <span id="total-activities">0</span></div>
           </div>
-          
+
           <div class="stat-card">
             <div class="stat-label">Lessons Completed</div>
             <div id="lessons-count" class="stat-number">0</div>
             <div class="stat-label">out of <span id="total-lessons">0</span></div>
           </div>
-          
+
           <div class="stat-card streak-card">
             <div class="stat-label">Current Streak</div>
             <div id="streak-count" class="stat-number streak-number">0</div>
             <div class="stat-label">consecutive days</div>
           </div>
         </section>
-        
-        <!-- Progress Overview -->
+
+        <!-- Progress by Category -->
         <section class="progress-card progress-summary">
           <div class="progress-section-title">
             <h2>Progress by Category</h2>
           </div>
-          
           <div id="category-progress" class="progress-summary-section"></div>
         </section>
-        
+
         <!-- Recent Activity -->
         <section class="progress-card">
           <div class="progress-section-title">
             <h2>Recent Activity</h2>
           </div>
-          
           <div id="recent-activity"></div>
         </section>
-        
 
         <!-- Achievements -->
         <section class="progress-card">
           <div class="progress-section-title">
             <h2>Achievements</h2>
           </div>
-          
           <div id="achievements"></div>
         </section>
-        
-        <!-- Recommendations -->
-        <section class="progress-card">
-          <div class="progress-section-title">
-            <h2>Recommended Next Steps</h2>
-          </div>
-          
-          <div id="recommendations">
-            <div class="recommendation-card">
-              <div class="recommendation-title">Continue learning Present Perfect Progressive</div>
-              <div class="recommendation-description">You've started this topic but haven't completed all activities yet.</div>
-              <a href="grammar/advanced/present-perfect-progressive.html" class="recommendation-button">Continue</a>
-            </div>
-            
-            <div class="recommendation-card">
-              <div class="recommendation-title">Try Past Perfect Progressive</div>
-              <div class="recommendation-description">This is a related topic that builds on what you've been learning.</div>
-              <a href="grammar/advanced/past-perfect-progressive.html" class="recommendation-button">Start Learning</a>
-            </div>
-          </div>
-        </section>
-        
-        <!-- Delete Progress (Danger Zone) -->
+
+        <!-- Reset Progress -->
         <section class="progress-card danger-zone">
           <h2>Reset Progress</h2>
           <p>If you want to start fresh, you can delete and reset all your progress data. This action cannot be undone.</p>
@@ -384,7 +132,7 @@
       </div>
     </main>
   </div>
-  
+
   <!-- Footer -->
 <footer>
     <div class="footer-content">
@@ -428,341 +176,6 @@
   <script src="js/progress-tracking-module.js" defer></script>
   <script src="js/progress-manager-ui.js" defer></script>
   <script src="js/init-progress.js" defer></script>
-  
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Initialize Progress Tracking System
-      ProgressTracker.init({
-        categories: {
-          activities: {
-            grammarActivities: [
-              'mcq-present-perfect-progressive', 'mcq-past-perfect-progressive',
-              'mcq-future-perfect', 'mcq-modal-perfect',
-              'gap-fill-present-perfect-progressive', 'gap-fill-past-perfect-progressive',
-              'transformation-present-perfect-progressive', 'transformation-past-perfect-progressive',
-              'matching-perfect-tenses', 'drag-drop-perfect-tenses',
-              'mcq-present-perfect-vs-simple', 'mcq-past-perfect-vs-simple',
-              'wish-if-only'
-            ],
-            practiceActivities: [
-              'tenses-practice', 'conditionals-practice', 'modals-practice',
-              'passive-practice', 'articles-practice', 'prepositions-practice'
-            ]
-          },
-          lessons: {
-            grammarLessons: [
-              'present-perfect-progressive', 'past-perfect-progressive',
-              'future-perfect', 'modal-perfect-forms',
-              'present-perfect-vs-simple', 'past-perfect-vs-simple',
-              'conditionals', 'inverted-conditionals',
-              'wish-if-only', 'modal-passive'
-            ],
-            specialTopics: [
-              'academic-writing', 'business-english', 'pronunciation'
-            ]
-          },
-          assessments: {
-            grammarTests: [
-              'tenses-test', 'conditionals-test', 'modals-test',
-              'passive-test', 'articles-test', 'prepositions-test'
-            ],
-            comprehensiveTests: [
-              'mid-course-test', 'final-test'
-            ]
-          }
-        },
-        onProgressChange: function(details) {
-          console.log('Progress changed:', details);
-          updateStatCards();
-        }
-      });
-      
-      // Initialize UI Components
-      ProgressManagerUI.init({
-        progressDataProvider: ProgressTracker.getOverallProgress,
-        categoryDefinitions: ProgressTracker.getCategoryDefinitions(),
-        animateProgressBars: true
-      });
-      
-      // Create UI components
-      ProgressManagerUI.createProgressSummary('category-progress');
-      ProgressManagerUI.createAchievementDisplay('achievements', { showAll: true });
-      
-      // Create recent activity display
-      createRecentActivityDisplay();
-      
-      // Set up progress reset button
-      document.getElementById('reset-progress').addEventListener('click', function() {
-        if (confirm('Are you sure you want to reset all progress? This action cannot be undone.')) {
-          ProgressTracker.resetAllProgress(false);
-          location.reload();
-        }
-      });
-      
-      // Check for initial progress and update UI
-      checkInitialProgress();
-      
-      // Update stat cards
-      updateStatCards();
-    });
-    
-    /**
-     * Checks if there's any progress and shows/hides appropriate UI
-     */
-    function checkInitialProgress() {
-      try {
-        // Get progress data
-        const progress = ProgressTracker.getOverallProgress();
-        
-        // Check if we have any completed items
-        const hasProgress = 
-          (progress.completed > 0) || 
-          (ProgressTracker.getStats().dailyStreak > 0);
-        
-        // Show appropriate content
-        document.getElementById('no-progress-message').style.display = hasProgress ? 'none' : 'block';
-        document.getElementById('progress-content').style.display = hasProgress ? 'block' : 'none';
-      } catch (error) {
-        console.error('Error checking initial progress:', error);
-        // Show both just in case
-        document.getElementById('no-progress-message').style.display = 'block';
-        document.getElementById('progress-content').style.display = 'none';
-      }
-    }
-    
-    /**
-     * Updates the stat card values
-     */
-    function updateStatCards() {
-      try {
-        // Get progress data
-        const progress = ProgressTracker.getOverallProgress();
-        const stats = ProgressTracker.getStats();
-        
-        // Update overall percentage
-        document.getElementById('overall-percentage').textContent = progress.percentage + '%';
-        document.getElementById('overall-fraction').textContent = 
-          progress.completed + '/' + progress.total + ' completed';
-        
-        // Update activities count
-        document.getElementById('activities-count').textContent = 
-          progress.categories.activities ? progress.categories.activities.completed : 0;
-        document.getElementById('total-activities').textContent = 
-          progress.categories.activities ? progress.categories.activities.total : 0;
-        
-        // Update lessons count
-        document.getElementById('lessons-count').textContent = 
-          progress.categories.lessons ? progress.categories.lessons.completed : 0;
-        document.getElementById('total-lessons').textContent = 
-          progress.categories.lessons ? progress.categories.lessons.total : 0;
-        
-        // Update streak count
-        document.getElementById('streak-count').textContent = stats.dailyStreak || 0;
-      } catch (error) {
-        console.error('Error updating stat cards:', error);
-      }
-    }
-    
-    /**
-     * Creates a recent activity display
-     */
-    function createRecentActivityDisplay() {
-      try {
-        const container = document.getElementById('recent-activity');
-        if (!container) return;
-        
-        // Get recent activities
-        const activities = getRecentActivities(5);
-        
-        if (activities.length === 0) {
-          container.innerHTML = '<p>No recent activity to display. Start learning to see your activity here!</p>';
-          return;
-        }
-        
-        // Create activity list
-        const activityList = document.createElement('ul');
-        activityList.className = 'activity-list';
-        
-        activities.forEach(activity => {
-          const item = document.createElement('li');
-          item.className = 'activity-item';
-          
-          // Determine icon based on activity type
-          let icon = '📝';
-          if (activity.category === 'lessons') {
-            icon = '📚';
-          } else if (activity.category === 'assessments') {
-            icon = '📊';
-          }
-          
-          const iconEl = document.createElement('span');
-          iconEl.className = 'activity-icon';
-          iconEl.textContent = icon;
-          item.appendChild(iconEl);
-          
-          const details = document.createElement('div');
-          details.className = 'activity-details';
-          
-          const title = document.createElement('span');
-          title.className = 'activity-title';
-          title.textContent = activity.title;
-          details.appendChild(title);
-          
-          const meta = document.createElement('div');
-          meta.className = 'activity-meta';
-          
-          if (activity.score !== undefined && activity.maxScore !== undefined) {
-            const score = document.createElement('span');
-            score.className = 'activity-score';
-            score.textContent = `Score: ${activity.score}/${activity.maxScore}`;
-            meta.appendChild(score);
-          }
-          
-          const date = document.createElement('span');
-          date.className = 'activity-date';
-          date.textContent = formatRelativeTime(activity.completedAt || activity.timestamp);
-          meta.appendChild(date);
-          
-          details.appendChild(meta);
-          item.appendChild(details);
-          
-          activityList.appendChild(item);
-        });
-        
-        container.appendChild(activityList);
-      } catch (error) {
-        console.error('Error creating recent activity display:', error);
-        container.innerHTML = '<p>Error loading recent activity.</p>';
-      }
-    }
-    
-    /**
-     * Gets recent activities from progress data
-     * 
-     * @param {number} limit - Maximum number of activities to return
-     * @returns {Array} - Array of recent activities
-     */
-    function getRecentActivities(limit = 5) {
-      try {
-        const progressData = ProgressTracker.getProgressData();
-        if (!progressData) return [];
-        
-        const activities = [];
-        
-        // Get activities
-        if (progressData.activities) {
-          Object.entries(progressData.activities).forEach(([id, data]) => {
-            if (data.completed) {
-              activities.push({
-                id: id,
-                category: 'activities',
-                title: data.title || formatId(id),
-                score: data.score,
-                maxScore: data.maxScore,
-                completedAt: data.completedAt,
-                timestamp: data.completedAt || new Date().toISOString()
-              });
-            }
-          });
-        }
-        
-        // Get lessons
-        if (progressData.lessons) {
-          Object.entries(progressData.lessons).forEach(([id, data]) => {
-            if (data.lastViewed) {
-              activities.push({
-                id: id,
-                category: 'lessons',
-                title: data.title || formatId(id),
-                timestamp: data.lastViewed || new Date().toISOString()
-              });
-            }
-          });
-        }
-        
-        // Get assessments
-        if (progressData.assessments) {
-          Object.entries(progressData.assessments).forEach(([id, data]) => {
-            if (data.completed) {
-              activities.push({
-                id: id,
-                category: 'assessments',
-                title: data.title || formatId(id),
-                score: data.score,
-                maxScore: data.maxScore,
-                completedAt: data.completedAt,
-                timestamp: data.completedAt || new Date().toISOString()
-              });
-            }
-          });
-        }
-        
-        // Sort by timestamp (newest first)
-        activities.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-        
-        // Return limited number
-        return activities.slice(0, limit);
-      } catch (error) {
-        console.error('Error getting recent activities:', error);
-        return [];
-      }
-    }
-    
-    /**
-     * Formats an ID into a readable title
-     * 
-     * @param {string} id - The ID to format
-     * @returns {string} - Formatted title
-     */
-    function formatId(id) {
-      return id
-        .replace(/^mcq-/, '')
-        .replace(/^gap-fill-/, '')
-        .replace(/^transformation-/, '')
-        .replace(/-/g, ' ')
-        .replace(/([A-Z])/g, ' $1')
-        .replace(/\b\w/g, l => l.toUpperCase());
-    }
-    
-    /**
-     * Formats a timestamp into a relative time string
-     * 
-     * @param {string} timestamp - ISO timestamp
-     * @returns {string} - Relative time string
-     */
-    function formatRelativeTime(timestamp) {
-      if (!timestamp) return 'Unknown time';
-      
-      const date = new Date(timestamp);
-      if (isNaN(date.getTime())) return 'Invalid date';
-      
-      const now = new Date();
-      const diffInSeconds = Math.floor((now - date) / 1000);
-      
-      if (diffInSeconds < 60) {
-        return 'Just now';
-      }
-      
-      const diffInMinutes = Math.floor(diffInSeconds / 60);
-      if (diffInMinutes < 60) {
-        return `${diffInMinutes} minute${diffInMinutes !== 1 ? 's' : ''} ago`;
-      }
-      
-      const diffInHours = Math.floor(diffInMinutes / 60);
-      if (diffInHours < 24) {
-        return `${diffInHours} hour${diffInHours !== 1 ? 's' : ''} ago`;
-      }
-      
-      const diffInDays = Math.floor(diffInHours / 24);
-      if (diffInDays < 7) {
-        return diffInDays === 0 ? 'Today' : 
-               diffInDays === 1 ? 'Yesterday' : 
-               `${diffInDays} days ago`;
-      }
-      
-      const options = { month: 'short', day: 'numeric' };
-      return date.toLocaleDateString(undefined, options);
-    }
-  </script>
+  <script src="js/my-progress.js" defer></script>
 </body>
 </html>

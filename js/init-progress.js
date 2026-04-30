@@ -22,36 +22,100 @@
     progressModule.init({
       categories: {
         activities: {
-          // Grammar activities by type
-          grammarActivities: [
-            'mcq', 'gap-fill', 'matching', 'transformation',
-            'drag-drop', 'error-correction', 'situations'
+          beginnerActivities: [
+            'mcq-articles', 'drag-drop-articles',
+            'mcq-prepositions-time-place', 'drag-drop-prepositions-time-place',
+            'mcq-past-simple', 'drag-drop-past-simple',
+            'mcq-countable-uncountable', 'drag-drop-countable-uncountable',
+            'mcq-possessives', 'drag-drop-possessives',
+            'mcq-present-continuous', 'drag-drop-present-continuous',
+            'mcq-present-simple-vs-continuous', 'drag-drop-present-simple-vs-continuous',
+            'mcq-present-simple', 'drag-drop-present-simple',
+            'mcq-singular-plural-nouns', 'drag-drop-singular-plural-nouns',
+            'mcq-subject-pronouns-be', 'drag-drop-subject-pronouns-be',
+            'mcq-there-is-are', 'drag-drop-there-is-are'
           ],
-          // Grammar activities by topic
-          practiceActivities: [
-            'tenses-practice', 'conditionals-practice', 'modals-practice',
-            'passive-practice', 'articles-practice', 'prepositions-practice',
-            'wish-if-only'
+          intermediateActivities: [
+            'mcq-verb-to-get', 'drag-drop-verb-to-get',
+            'mcq-still-vs-yet', 'drag-drop-still-vs-yet', 'matching-still-vs-yet'
+          ],
+          advancedActivities: [
+            'mcq-present-perfect-progressive',
+            'mcq-past-perfect-progressive-vs-past-perfect',
+            'mcq-future-perfect-continuous',
+            'mcq-advanced-present-perfect',
+            'mcq-mixed-time-frames',
+            'mcq-narrative-tenses',
+            'mcq-perfect-infinitives-gerunds',
+            'mcq-conditionals',
+            'mcq-inverted-conditionals',
+            'mcq-conditional-expressions',
+            'wish-if-only',
+            'mcq-modal-perfect-forms',
+            'modal-progressive-mcq',
+            'mcq-modal-differences',
+            'mcq-modal-advanced-meanings',
+            'mcq-mixed-modal-constructions',
+            'mcq-passive-fundamentals',
+            'mcq-passive-get-have',
+            'mcq-passive-infinitives-gerunds',
+            'mcq-passive-reporting-verbs',
+            'mcq-passive-voice-summary',
+            'mcq-double-passive',
+            'mcq-relative-clauses',
+            'mcq-that-clauses',
+            'drag-drop-that-if-whether-clauses', 'mcq-nominal-clauses-review',
+            'mcq-were-subjunctive', 'drag-drop-were-subjunctive',
+            'mcq-present-subjunctive', 'drag-drop-present-subjunctive',
+            'mcq-subjunctive-revision', 'drag-drop-subjunctive-revision',
+            'mcq-inversion-emphasis', 'drag-drop-inversion-emphasis',
+            'mcq-it-cleft-sentences', 'drag-drop-it-cleft-sentences',
+            'mcq-participle-clauses', 'drag-drop-participle-clauses',
+            'mcq-gerund-infinitive-meaning', 'gap-fill-gerund-infinitive-meaning',
+            'gap-fill-gerund-infinitive-extra', 'matching-gerund-infinitive-extra',
+            'drag-drop-gerund-infinitive-extra',
+            'mcq-causative-verbs', 'drag-drop-causative-verbs',
+            'mcq-reporting-verbs-patterns', 'drag-drop-reporting-verbs-patterns',
+            'mcq-adverb-position', 'drag-drop-adverb-position',
+            'mcq-multiple-adverbs', 'drag-drop-multiple-adverbs',
+            'mcq-focusing-adverbs', 'drag-drop-focusing-adverbs',
+            'mcq-comment-adverbs', 'drag-drop-comment-adverbs',
+            'mcq-complex-prepositions', 'drag-drop-complex-prepositions',
+            'mcq-dependent-prepositions', 'drag-drop-dependent-prepositions',
+            'mcq-dependent-prepositions2', 'drag-drop-dependent-prepositions2'
           ]
         },
         lessons: {
-          grammarLessons: [
-            'tenses', 'conditionals', 'modals', 'passive', 
-            'articles', 'prepositions', 'clauses',
-            'wish-if-only'
+          beginnerAndIntermediateLessons: [
+            'present-simple-vs-continuous',
+            'verb-to-get',
+            'still-vs-yet'
           ],
-          specialTopics: [
-            'academic-writing', 'business-english', 'pronunciation'
+          advancedLessons: [
+            'present-perfect-progressive', 'past-perfect-progressive',
+            'future-perfect-continuous', 'mixed-time-frames',
+            'advanced-present-perfect', 'perfect-infinitives-gerunds',
+            'narrative-tenses',
+            'conditionals', 'inverted-conditionals',
+            'conditional-expressions', 'wish-if-only',
+            'modal-perfect-forms', 'modal-progressive',
+            'modal-differences', 'modal-advanced-meanings',
+            'mixed-modal-constructions',
+            'passive-fundamentals', 'passive-get-have',
+            'passive-infinitives-gerunds', 'passive-reporting-verbs',
+            'passive-voice-summary', 'double-passive',
+            'relative-clauses', 'that-clauses', 'nominal-clauses-review',
+            'were-subjunctive', 'present-subjunctive', 'subjunctive-revision',
+            'inversion-emphasis', 'it-cleft-sentences', 'participle-clauses',
+            'gerund-infinitive-meaning-changes', 'causative-verbs',
+            'reporting-verbs-patterns',
+            'adverb-position', 'multiple-adverbs',
+            'focusing-adverbs', 'comment-adverbs',
+            'complex-prepositions', 'dependent-prepositions', 'dependent-prepositions2'
           ]
         },
         assessments: {
-          grammarTests: [
-            'tenses-test', 'conditionals-test', 'modals-test',
-            'passive-test', 'articles-test', 'prepositions-test'
-          ],
-          comprehensiveTests: [
-            'mid-course-test', 'final-test'
-          ]
+          grammarTests: []
         }
       },
       onProgressChange: updateProgressUI,
@@ -61,13 +125,7 @@
       debugMode: false
     });
     
-    console.log('Progress Tracking Module initialized');
-    
-    // Run data migration if needed
-    if (typeof migrateProgressData === 'function') {
-      migrateProgressData();
-    }
-    
+
     // Initialize UI components if available
     initUIComponents();
   });
@@ -78,7 +136,6 @@
    */
   function updateProgressUI(changeDetails) {
     // This function will be called whenever progress changes
-    console.log('Progress changed:', changeDetails);
     
     // Update progress displays if ProgressManagerUI is available
     if (typeof ProgressManagerUI !== 'undefined' && 
@@ -86,25 +143,7 @@
       ProgressManagerUI.updateAllProgressComponents();
     }
     
-    // Example: Update progress bar if it exists
-    const progressBar = document.getElementById('progress-bar');
-    if (progressBar) {
-      if (typeof ProgressTracker !== 'undefined' && 
-          typeof ProgressTracker.getOverallProgress === 'function') {
-        const progress = ProgressTracker.getOverallProgress();
-        if (progress && typeof progress.percentage === 'number') {
-          progressBar.style.width = progress.percentage + '%';
-        }
-      } else if (typeof ProgressTrackingModule !== 'undefined' && 
-                typeof ProgressTrackingModule.getOverallProgress === 'function') {
-        const progress = ProgressTrackingModule.getOverallProgress();
-        if (progress && typeof progress.percentage === 'number') {
-          progressBar.style.width = progress.percentage + '%';
-        }
-      }
-    }
-    
-    // Example: Show notification for achievements
+    // Show notification for achievements
     if (changeDetails.type === 'achievement_unlocked') {
       const achievement = changeDetails.details;
       if (achievement && typeof showFeedbackMessage === 'function') {
@@ -146,29 +185,5 @@
       showPercentagesOnBars: true
     });
     
-    // Initialize any pre-existing progress components on the page
-    const progressContainers = document.querySelectorAll('[data-progress-display]');
-    progressContainers.forEach(container => {
-      const type = container.getAttribute('data-progress-type') || 'bar';
-      const category = container.getAttribute('data-category');
-      const itemId = container.getAttribute('data-item-id');
-      
-      switch (type) {
-        case 'bar':
-          ProgressManagerUI.createProgressBar(container.id, { category, itemId });
-          break;
-        case 'summary':
-          ProgressManagerUI.createProgressSummary(container.id);
-          break;
-        case 'achievements':
-          ProgressManagerUI.createAchievementDisplay(container.id, {
-            showAll: container.getAttribute('data-show-all') === 'true'
-          });
-          break;
-        case 'grid':
-          ProgressManagerUI.createActivityGrid(container.id, { category });
-          break;
-      }
-    });
   }
 })();

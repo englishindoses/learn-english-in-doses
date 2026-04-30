@@ -848,28 +848,12 @@ const ProgressTracker = (function() {
     if (!notificationContainer) {
       notificationContainer = document.createElement('div');
       notificationContainer.id = 'achievement-notification-container';
-      notificationContainer.style.position = 'fixed';
-      notificationContainer.style.bottom = '20px';
-      notificationContainer.style.right = '20px';
-      notificationContainer.style.zIndex = '1000';
       document.body.appendChild(notificationContainer);
     }
-    
-    // Create notification
+
+    // Create notification — styling comes from .achievement-notification in CSS
     const notification = document.createElement('div');
     notification.className = 'achievement-notification';
-    notification.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-    notification.style.color = 'white';
-    notification.style.padding = '15px';
-    notification.style.borderRadius = '8px';
-    notification.style.marginTop = '10px';
-    notification.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
-    notification.style.display = 'flex';
-    notification.style.alignItems = 'center';
-    notification.style.maxWidth = '300px';
-    notification.style.transition = 'all 0.3s ease';
-    notification.style.transform = 'translateX(100%)';
-    notification.style.opacity = '0';
     
     // Add achievement icon
     const icon = document.createElement('div');
