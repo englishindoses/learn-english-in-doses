@@ -37,9 +37,9 @@ Always use the official logo. Never recreate it from scratch.
 
 | Format | Dimensions | Use for |
 |---|---|---|
-| Square post | 1080 × 1080 px | Single tips, quotes, vocabulary words |
-| Portrait post / Reel cover | 1080 × 1350 px | Standalone lessons, announcements |
-| Carousel slide | 1080 × 1080 px | Multi-slide lessons, grammar breakdowns |
+| Single post | 1080 × 1350 px | Single tips, quotes, vocabulary words |
+| Carousel slide | 1080 × 1350 px | Multi-slide lessons, grammar breakdowns |
+| Reel cover | 1080 × 1350 px | Standalone lessons, announcements |
 | Story | 1080 × 1920 px | Polls, quizzes, behind-the-scenes |
 
 Resolution: **72 dpi** (screen), exported as **PNG** (for graphics) or **JPG** (for photo-heavy).
@@ -101,7 +101,7 @@ Resolution: **72 dpi** (screen), exported as **PNG** (for graphics) or **JPG** (
 
 Both Montserrat and Open Sans are free on Google Fonts and available in Canva.
 
-### 5.2 Type Scale (at 1080 × 1080 px canvas)
+### 5.2 Type Scale (at 1080 × 1350 px canvas)
 
 | Element | Font | Size | Weight | Colour |
 |---|---|---|---|---|
@@ -130,7 +130,7 @@ Both Montserrat and Open Sans are free on Google Fonts and available in Canva.
 
 ### 6.1 Safe Zone
 
-Keep all text and key visuals inside a **980 × 980 px** safe zone (50 px margin on all sides of a 1080 × 1080 canvas). Instagram crops previews slightly — the safe zone protects your content.
+Keep all text and key visuals inside a **980 × 1250 px** safe zone (50 px margin on all sides of a 1080 × 1350 canvas). Instagram crops previews slightly — the safe zone protects your content.
 
 ### 6.2 Standard Slide Layout
 
