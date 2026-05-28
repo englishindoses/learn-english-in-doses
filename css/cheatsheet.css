@@ -1,0 +1,326 @@
+@page {
+  size: A4;
+  margin: 12mm 14mm;
+}
+
+.cheatsheet {
+  font-family: 'Open Sans', Arial, sans-serif;
+  color: #2c3e50;
+  max-width: 210mm;
+  margin: 0 auto;
+  font-size: 10pt;
+  line-height: 1.4;
+}
+
+.cheatsheet * {
+  box-sizing: border-box;
+}
+
+/* ---- Header ---- */
+.cs-header {
+  text-align: center;
+  border-bottom: 3px solid #27ae60;
+  padding-bottom: 6px;
+  margin-bottom: 10px;
+}
+
+.cs-header h1 {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 16pt;
+  font-weight: 700;
+  color: #27ae60;
+  margin: 0 0 2px;
+}
+
+.cs-header .cs-subtitle {
+  font-size: 9pt;
+  color: #666;
+  margin: 0;
+}
+
+/* ---- Section titles ---- */
+.cs-section-title {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 11pt;
+  font-weight: 700;
+  color: #fff;
+  background: #27ae60;
+  padding: 4px 10px;
+  margin: 10px 0 6px;
+  border-radius: 3px;
+  page-break-after: avoid;
+}
+
+/* ---- Vocabulary grid ---- */
+.cs-vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.cs-vocab-item {
+  text-align: center;
+  border: 1px solid #d5f5e3;
+  border-radius: 4px;
+  padding: 4px 2px;
+  background: #f0fff5;
+  page-break-inside: avoid;
+}
+
+.cs-vocab-item img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 3px;
+}
+
+.cs-vocab-item .cs-vocab-word {
+  font-weight: 600;
+  font-size: 8.5pt;
+  color: #2c3e50;
+}
+
+/* ---- Key phrases ---- */
+.cs-phrases-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.cs-phrase-card {
+  border: 1px solid #d5f5e3;
+  border-left: 3px solid #27ae60;
+  border-radius: 4px;
+  padding: 6px 8px;
+  background: #f0fff5;
+  page-break-inside: avoid;
+}
+
+.cs-phrase-card .cs-phrase-label {
+  font-size: 7.5pt;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 1px;
+}
+
+.cs-phrase-card .cs-phrase-text {
+  font-size: 11pt;
+  font-weight: 700;
+  color: #27ae60;
+  margin: 0 0 3px;
+}
+
+.cs-phrase-card .cs-phrase-example {
+  font-size: 9pt;
+  margin: 0 0 1px;
+  color: #2c3e50;
+}
+
+.cs-phrase-card .cs-phrase-example .cs-highlight {
+  font-weight: 700;
+  color: #27ae60;
+}
+
+.cs-phrase-card .cs-phrase-usage {
+  font-size: 7.5pt;
+  color: #888;
+  font-style: italic;
+  margin: 0;
+}
+
+/* ---- Conversations ---- */
+.cs-conversations {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.cs-conversation {
+  border: 1px solid #d5f5e3;
+  border-radius: 4px;
+  padding: 6px 8px;
+  background: #fafffe;
+  page-break-inside: avoid;
+}
+
+.cs-conversation h4 {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 9pt;
+  font-weight: 700;
+  color: #27ae60;
+  margin: 0 0 4px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #d5f5e3;
+}
+
+.cs-conversation p {
+  font-size: 8.5pt;
+  margin: 2px 0;
+  line-height: 1.35;
+}
+
+.cs-conversation .cs-highlight {
+  font-weight: 700;
+  color: #27ae60;
+}
+
+/* ---- Security instructions ---- */
+.cs-security-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.cs-security-item {
+  text-align: center;
+  border: 1px solid #fdebd0;
+  border-radius: 4px;
+  padding: 5px 4px;
+  background: #fef9f0;
+  page-break-inside: avoid;
+}
+
+.cs-security-item img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 3px;
+}
+
+.cs-security-item .cs-security-instruction {
+  font-size: 8pt;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+/* ---- Role play table ---- */
+.cs-role-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 8.5pt;
+  margin-bottom: 8px;
+}
+
+.cs-role-table th {
+  background: #27ae60;
+  color: #fff;
+  padding: 4px 6px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 8.5pt;
+}
+
+.cs-role-table td {
+  padding: 4px 6px;
+  border-bottom: 1px solid #d5f5e3;
+  vertical-align: top;
+}
+
+.cs-role-table tr:nth-child(even) td {
+  background: #f0fff5;
+}
+
+/* ---- Tips box ---- */
+.cs-tips {
+  background: #fef9f0;
+  border: 1px solid #f39c12;
+  border-left: 3px solid #f39c12;
+  border-radius: 4px;
+  padding: 6px 10px;
+  margin-top: 6px;
+  page-break-inside: avoid;
+}
+
+.cs-tips h4 {
+  font-size: 9pt;
+  color: #f39c12;
+  margin: 0 0 3px;
+  font-weight: 700;
+}
+
+.cs-tips ul {
+  margin: 0;
+  padding-left: 16px;
+  font-size: 8.5pt;
+}
+
+.cs-tips li {
+  margin-bottom: 1px;
+}
+
+.cs-tips .cs-tip-phrase {
+  font-weight: 700;
+  color: #27ae60;
+}
+
+/* ---- Footer ---- */
+.cs-footer {
+  text-align: center;
+  font-size: 7.5pt;
+  color: #aaa;
+  margin-top: 8px;
+  padding-top: 4px;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* ---- Print styles ---- */
+@media print {
+  body {
+    margin: 0;
+    padding: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .cheatsheet {
+    max-width: none;
+    width: 100%;
+  }
+
+  .cs-section-title {
+    background: #27ae60 !important;
+    color: #fff !important;
+  }
+
+  .cs-role-table th {
+    background: #27ae60 !important;
+    color: #fff !important;
+  }
+
+  .cs-vocab-item,
+  .cs-phrase-card,
+  .cs-conversation,
+  .cs-security-item {
+    background: #f0fff5 !important;
+  }
+
+  .cs-security-item {
+    background: #fef9f0 !important;
+  }
+
+  .cs-tips {
+    background: #fef9f0 !important;
+  }
+}
+
+/* ---- Screen-only cosmetic ---- */
+@media screen {
+  body.cheatsheet-page {
+    background: #e8e8e8;
+    padding: 20px;
+  }
+
+  .cheatsheet {
+    background: #fff;
+    padding: 14mm;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+    border-radius: 4px;
+  }
+}

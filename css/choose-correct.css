@@ -1,0 +1,110 @@
+/* Choose the Correct Word Activity Styles */
+
+.choose-correct-container {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.cc-sentence {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-color, #ddd);
+  line-height: 1.8;
+}
+
+.cc-sentence-number {
+  font-weight: 600;
+  margin-right: 5px;
+}
+
+.cc-choice-group {
+  display: inline;
+}
+
+.cc-choice-group::before {
+  content: "( ";
+  font-weight: 600;
+  color: var(--text-color, #333);
+}
+
+.cc-choice-group::after {
+  content: " )";
+  font-weight: 600;
+  color: var(--text-color, #333);
+}
+
+.cc-choice {
+  background: none;
+  border: none;
+  border-bottom: 2px dashed var(--border-color, #ddd);
+  padding: 2px 8px;
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  font-size: inherit;
+  color: var(--text-color, #333333);
+  transition: border-color 0.3s, background-color 0.3s, color 0.3s;
+  border-radius: 2px;
+}
+
+.cc-choice:hover {
+  border-bottom-color: var(--accent-color, #3498db);
+  background-color: rgba(52, 152, 219, 0.1);
+}
+
+.cc-choice.selected {
+  border-bottom: 2px solid var(--accent-color, #3498db);
+  background-color: rgba(52, 152, 219, 0.15);
+  font-weight: 600;
+}
+
+.cc-choice.correct {
+  border-bottom: 2px solid var(--success-color, #155724);
+  background-color: var(--success-bg, #d4edda);
+  color: var(--success-color, #155724);
+  font-weight: 600;
+}
+
+.cc-choice.incorrect {
+  border-bottom: 2px solid var(--error-color, #c0392b);
+  background-color: var(--error-bg, #f8d7da);
+  color: var(--error-color, #c0392b);
+  text-decoration: line-through;
+}
+
+.cc-choice.disabled {
+  cursor: default;
+  pointer-events: none;
+}
+
+.cc-separator {
+  margin: 0 4px;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .cc-choice {
+  color: var(--text-color, #e0e0e0);
+}
+
+[data-theme="dark"] .cc-choice.selected {
+  border-bottom-color: var(--accent-color, #4fa3e0);
+  background-color: rgba(79, 163, 224, 0.15);
+  color: var(--text-color, #e0e0e0);
+}
+
+[data-theme="dark"] .cc-choice.correct {
+  border-bottom-color: var(--success-color, #7cda9c);
+  background-color: var(--success-bg, #143823);
+  color: var(--success-color, #7cda9c);
+}
+
+[data-theme="dark"] .cc-choice.incorrect {
+  border-bottom-color: var(--error-color, #e7a9ad);
+  background-color: var(--error-bg, #2c1215);
+  color: var(--error-color, #e7a9ad);
+}
+
+@media (max-width: 480px) {
+  .cc-choice {
+    padding: 2px 6px;
+  }
+}
