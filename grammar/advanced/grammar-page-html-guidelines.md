@@ -156,10 +156,25 @@ Every page follows this top-level order:
     <a href="../../home.html" class="nav-link">Home</a>
     <a href="../../about.html" class="nav-link">About</a>
     <a href="../../home.html#quiz-section" class="nav-link">Find Your Level</a>
-    <a href="../../beginner-landing.html" class="nav-link">Beginner</a>
-    <a href="../../intermediate-landing.html" class="nav-link">Intermediate</a>
-    <a href="../../advanced-landing.html" class="nav-link">Advanced</a>
-    <a href="../../travel/beginner-travel/travel-english.html" class="nav-link">Travel English</a>
+    <div class="nav-dropdown">
+      <a href="../../beginner-landing.html" class="nav-link dropdown-toggle">Beginner</a>
+      <div class="dropdown-menu">
+        <a href="../../grammar/beginner/beginner-grammar.html" class="dropdown-item">Beginner Grammar</a>
+        <a href="../../travel/beginner-travel/travel-english.html" class="dropdown-item">Beginner Travel</a>
+      </div>
+    </div>
+    <div class="nav-dropdown">
+      <a href="../../intermediate-landing.html" class="nav-link dropdown-toggle">Intermediate</a>
+      <div class="dropdown-menu">
+        <a href="../../grammar/intermediate/intermediate-grammar.html" class="dropdown-item">Intermediate Grammar</a>
+      </div>
+    </div>
+    <div class="nav-dropdown">
+      <a href="../../advanced-landing.html" class="nav-link dropdown-toggle">Advanced</a>
+      <div class="dropdown-menu">
+        <a href="../../grammar/advanced/advanced-grammar.html" class="dropdown-item">Advanced Grammar</a>
+      </div>
+    </div>
     <a href="../../my-progress.html" class="nav-link">My Progress</a>
     <a href="../../booking-page.html" class="nav-link">Book a Lesson</a>
   </div>
@@ -172,6 +187,7 @@ Every page follows this top-level order:
 
 - Copy this navigation block exactly. All paths are relative from `grammar/advanced/`.
 - The `advanced-nav-indicator` div is always present at the end of the nav (it creates a coloured indicator bar for the advanced level).
+- Beginner, Intermediate, and Advanced links use dropdown menus with `nav-dropdown` wrappers.
 - The hamburger icon is the `☰` character.
 
 ---
@@ -798,10 +814,25 @@ Below is a minimal but complete template. Replace all `PLACEHOLDER` values with 
       <a href="../../home.html" class="nav-link">Home</a>
       <a href="../../about.html" class="nav-link">About</a>
       <a href="../../home.html#quiz-section" class="nav-link">Find Your Level</a>
-      <a href="../../beginner-landing.html" class="nav-link">Beginner</a>
-      <a href="../../intermediate-landing.html" class="nav-link">Intermediate</a>
-      <a href="../../advanced-landing.html" class="nav-link">Advanced</a>
-      <a href="../../travel/beginner-travel/travel-english.html" class="nav-link">Travel English</a>
+      <div class="nav-dropdown">
+        <a href="../../beginner-landing.html" class="nav-link dropdown-toggle">Beginner</a>
+        <div class="dropdown-menu">
+          <a href="../../grammar/beginner/beginner-grammar.html" class="dropdown-item">Beginner Grammar</a>
+          <a href="../../travel/beginner-travel/travel-english.html" class="dropdown-item">Beginner Travel</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <a href="../../intermediate-landing.html" class="nav-link dropdown-toggle">Intermediate</a>
+        <div class="dropdown-menu">
+          <a href="../../grammar/intermediate/intermediate-grammar.html" class="dropdown-item">Intermediate Grammar</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <a href="../../advanced-landing.html" class="nav-link dropdown-toggle">Advanced</a>
+        <div class="dropdown-menu">
+          <a href="../../grammar/advanced/advanced-grammar.html" class="dropdown-item">Advanced Grammar</a>
+        </div>
+      </div>
       <a href="../../my-progress.html" class="nav-link">My Progress</a>
       <a href="../../booking-page.html" class="nav-link">Book a Lesson</a>
     </div>

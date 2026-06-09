@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Taboo! Card Game</title>
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+
+  /* === DEFAULT THEME: COZY DARK === */
+  :root{
+    --bg:#1e2a3a;--bg-light:#2a3a4e;--bg-dark:#151f2c;
+    --accent:#e8945a;--accent-glow:rgba(232,148,90,0.2);
+    --secondary:#5b9bd5;--secondary-glow:rgba(91,155,213,0.15);
+    --tertiary:#6bba7e;--tertiary-glow:rgba(107,186,126,0.15);
+    --surface:#faf6f0;--text:#e8e0d6;--text-muted:rgba(232,224,214,0.35);
+    --card-bg:#faf6f0;--card-text:#2a2420;
+    --taboo-color:#d07040;--taboo-bg:rgba(208,112,64,0.08);--taboo-border:rgba(208,112,64,0.18);
+    --pattern1:rgba(232,148,90,0.07);--pattern2:rgba(232,148,90,0.04);
+    --pattern1d:rgba(107,186,126,0.07);--pattern2d:rgba(107,186,126,0.04);
+    --deco1:rgba(232,148,90,0.04);--deco2:rgba(91,155,213,0.04);--deco3:rgba(107,186,126,0.03);
+    --dot-grid:rgba(232,224,214,0.03);
+    --shadow:rgba(0,0,0,0.25);
+  }
+
+  /* === THEME: SPARKLE (soft lavender & rose) === */
+  [data-theme="sparkle"]{
+    --bg:#2c2440;--bg-light:#3a3055;--bg-dark:#201a30;
+    --accent:#d4839b;--accent-glow:rgba(212,131,155,0.18);
+    --secondary:#9b8ec4;--secondary-glow:rgba(155,142,196,0.15);
+    --tertiary:#c4a882;--tertiary-glow:rgba(196,168,130,0.15);
+    --surface:#f9f2f5;--text:#e4dae0;--text-muted:rgba(228,218,224,0.35);
+    --card-bg:#f9f2f5;--card-text:#352030;
+    --taboo-color:#c06a85;--taboo-bg:rgba(192,106,133,0.08);--taboo-border:rgba(192,106,133,0.18);
+    --pattern1:rgba(212,131,155,0.07);--pattern2:rgba(155,142,196,0.04);
+    --pattern1d:rgba(196,168,130,0.07);--pattern2d:rgba(196,168,130,0.04);
+    --deco1:rgba(212,131,155,0.04);--deco2:rgba(155,142,196,0.04);--deco3:rgba(196,168,130,0.03);
+    --dot-grid:rgba(228,218,224,0.03);
+    --shadow:rgba(0,0,0,0.25);
+  }
+
+  /* === THEME: ADVENTURE (deep teal & warm sand) === */
+  [data-theme="adventure"]{
+    --bg:#1a2e30;--bg-light:#253e42;--bg-dark:#122224;
+    --accent:#d4a054;--accent-glow:rgba(212,160,84,0.18);
+    --secondary:#5a9e9e;--secondary-glow:rgba(90,158,158,0.15);
+    --tertiary:#c47a5a;--tertiary-glow:rgba(196,122,90,0.15);
+    --surface:#f5f0e6;--text:#ddd6c8;--text-muted:rgba(221,214,200,0.35);
+    --card-bg:#f5f0e6;--card-text:#2a2418;
+    --taboo-color:#b8883e;--taboo-bg:rgba(184,136,62,0.08);--taboo-border:rgba(184,136,62,0.18);
+    --pattern1:rgba(212,160,84,0.07);--pattern2:rgba(90,158,158,0.04);
+    --pattern1d:rgba(196,122,90,0.07);--pattern2d:rgba(196,122,90,0.04);
+    --deco1:rgba(212,160,84,0.04);--deco2:rgba(90,158,158,0.04);--deco3:rgba(196,122,90,0.03);
+    --dot-grid:rgba(221,214,200,0.03);
+    --shadow:rgba(0,0,0,0.28);
+  }
+
+  /* === THEME: LIGHT (warm cream & soft coral) === */
+  [data-theme="light"]{
+    --bg:#f0ebe4;--bg-light:#ffffff;--bg-dark:#e4ddd4;
+    --accent:#d48060;--accent-glow:rgba(212,128,96,0.12);
+    --secondary:#6a9ec0;--secondary-glow:rgba(106,158,192,0.1);
+    --tertiary:#7aaa82;--tertiary-glow:rgba(122,170,130,0.1);
+    --surface:#ffffff;--text:#3a3230;--text-muted:rgba(58,50,48,0.3);
+    --card-bg:#ffffff;--card-text:#3a3230;
+    --taboo-color:#c06848;--taboo-bg:rgba(192,104,72,0.06);--taboo-border:rgba(192,104,72,0.14);
+    --pattern1:rgba(212,128,96,0.06);--pattern2:rgba(106,158,192,0.03);
+    --pattern1d:rgba(122,170,130,0.06);--pattern2d:rgba(122,170,130,0.03);
+    --deco1:rgba(212,128,96,0.03);--deco2:rgba(106,158,192,0.03);--deco3:rgba(122,170,130,0.02);
+    --dot-grid:rgba(58,50,48,0.04);
+    --shadow:rgba(0,0,0,0.08);
+  }
+
+  html,body{height:100%;overflow:hidden}
+
+  body{
+    font-family:'Nunito',sans-serif;
+    background:var(--bg-dark);
+    color:var(--text);
+    transition:background 0.5s ease, color 0.5s ease;
+  }
+
+  /* === BACKGROUND DECORATIONS === */
+  body::before{
+    content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(ellipse 600px 400px at 10% 15%, var(--deco1) 0%, transparent 100%),
+      radial-gradient(ellipse 500px 500px at 88% 80%, var(--deco2) 0%, transparent 100%),
+      radial-gradient(ellipse 700px 300px at 50% 50%, var(--deco3) 0%, transparent 100%);
+  }
+  body::after{
+    content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:radial-gradient(var(--dot-grid) 1px, transparent 1px);
+    background-size:24px 24px;
+  }
+
+  /* Floating decorative shapes */
+  .bg-deco{position:fixed;z-index:0;pointer-events:none;border-radius:50%;opacity:0.5}
+  .bg-deco:nth-child(1){width:300px;height:300px;top:-80px;left:-60px;background:radial-gradient(circle,var(--deco1),transparent 70%)}
+  .bg-deco:nth-child(2){width:200px;height:200px;bottom:40px;right:-40px;background:radial-gradient(circle,var(--deco2),transparent 70%)}
+  .bg-deco:nth-child(3){width:250px;height:250px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,var(--deco3),transparent 70%)}
+
+  .app{
+    position:relative;z-index:1;
+    display:flex;flex-direction:column;
+    height:100vh;height:100dvh;
+    padding:10px 20px 10px;
+    max-width:1100px;margin:0 auto;
+  }
+
+  /* === TOP BAR === */
+  .top-bar{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:10px;flex-shrink:0;margin-bottom:6px;flex-wrap:wrap;
+  }
+  .title{
+    font-family:'Lilita One',sans-serif;
+    font-size:1.9rem;line-height:1;letter-spacing:2px;
+    display:flex;align-items:baseline;gap:1px;
+    text-shadow:0 2px 8px var(--accent-glow),0 1px 0 var(--shadow);
+  }
+  .t-main{color:var(--text)}
+  .t-accent{color:var(--accent)}
+  .t-sec{color:var(--secondary)}
+
+  .top-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+
+  .pill-toggle{
+    display:flex;border-radius:20px;overflow:hidden;
+    border:2px solid var(--bg-light);background:var(--bg);
+  }
+  .pill-btn{
+    padding:5px 14px;border:none;
+    font-family:'Nunito',sans-serif;font-size:0.78rem;font-weight:800;
+    cursor:pointer;transition:all 0.25s ease;
+    color:var(--text-muted);background:transparent;
+    text-transform:uppercase;letter-spacing:0.5px;
+  }
+  .pill-btn.active{border-radius:18px}
+  .pill-btn.active[data-mode="easy"]{background:var(--secondary);color:#fff}
+  .pill-btn.active[data-mode="hard"]{background:var(--accent);color:#fff}
+  .pill-btn:not(.active):hover{color:var(--text)}
+
+  .icon-btn{
+    width:34px;height:34px;border-radius:10px;border:2px solid var(--bg-light);
+    background:var(--bg);color:var(--text-muted);
+    font-size:0.95rem;cursor:pointer;transition:all 0.25s ease;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .icon-btn:hover{border-color:var(--secondary);color:var(--text);background:var(--bg-light)}
+  .icon-btn.active{border-color:var(--secondary);color:var(--secondary)}
+
+  /* === THEME PICKER === */
+  .theme-picker{display:flex;gap:5px;align-items:center}
+  .theme-btn{
+    width:30px;height:30px;border-radius:50%;border:2.5px solid transparent;
+    cursor:pointer;transition:all 0.25s ease;position:relative;
+    display:flex;align-items:center;justify-content:center;
+    font-size:0.8rem;
+  }
+  .theme-btn:hover{transform:scale(1.12)}
+  .theme-btn.active{border-color:var(--text);transform:scale(1.08);box-shadow:0 2px 12px var(--shadow)}
+  .theme-btn[data-theme="dark"]{background:linear-gradient(135deg,#1e2a3a,#e8945a)}
+  .theme-btn[data-theme="sparkle"]{background:linear-gradient(135deg,#2c2440,#d4839b)}
+  .theme-btn[data-theme="adventure"]{background:linear-gradient(135deg,#1a2e30,#d4a054)}
+  .theme-btn[data-theme="light"]{background:linear-gradient(135deg,#f0ebe4,#d48060)}
+
+  /* === SCOREBOARD === */
+  .scoreboard{
+    display:none;align-items:center;justify-content:center;
+    gap:8px;flex-shrink:0;margin-bottom:4px;flex-wrap:wrap;
+  }
+  .scoreboard.visible{display:flex}
+
+  .team-chip{
+    display:flex;align-items:center;gap:4px;
+    padding:3px 6px;border-radius:12px;
+    background:rgba(255,255,255,0.04);border:2px solid;
+  }
+  [data-theme="light"] .team-chip{background:rgba(0,0,0,0.03)}
+  .team-chip[data-t="1"]{border-color:var(--accent)}
+  .team-chip[data-t="2"]{border-color:var(--secondary)}
+  .team-chip[data-t="3"]{border-color:var(--tertiary)}
+
+  .tm-name{
+    font-weight:800;font-size:0.7rem;
+    width:54px;border:none;background:transparent;
+    color:var(--text);text-align:center;outline:none;
+    padding:1px 2px;border-radius:4px;
+  }
+  .tm-name:focus{background:rgba(255,255,255,0.08)}
+  [data-theme="light"] .tm-name:focus{background:rgba(0,0,0,0.04)}
+
+  .tm-score{
+    font-family:'Lilita One',sans-serif;font-size:1.05rem;min-width:18px;text-align:center;
+  }
+  .team-chip[data-t="1"] .tm-score{color:var(--accent)}
+  .team-chip[data-t="2"] .tm-score{color:var(--secondary)}
+  .team-chip[data-t="3"] .tm-score{color:var(--tertiary)}
+
+  .sc-btn{
+    width:22px;height:22px;border-radius:50%;border:2px solid;
+    background:transparent;font-weight:900;font-size:0.82rem;
+    cursor:pointer;display:flex;align-items:center;justify-content:center;
+    transition:all 0.15s;padding:0;line-height:1;
+    font-family:'Nunito',sans-serif;
+  }
+  .team-chip[data-t="1"] .sc-btn{border-color:var(--accent);color:var(--accent)}
+  .team-chip[data-t="2"] .sc-btn{border-color:var(--secondary);color:var(--secondary)}
+  .team-chip[data-t="3"] .sc-btn{border-color:var(--tertiary);color:var(--tertiary)}
+  .sc-btn:hover{transform:scale(1.12);background:rgba(255,255,255,0.08)}
+
+  .rst-btn{
+    padding:3px 10px;border-radius:8px;border:1px solid var(--text-muted);
+    background:transparent;color:var(--text-muted);
+    font-size:0.62rem;font-weight:800;cursor:pointer;transition:all 0.25s;
+    text-transform:uppercase;letter-spacing:1px;
+  }
+  .rst-btn:hover{border-color:#c05050;color:#c05050}
+
+  /* === GAME AREA (horizontal row) === */
+  .game-area{
+    flex:1;display:flex;align-items:center;justify-content:center;
+    gap:24px;min-height:0;padding:6px 0;
+  }
+
+  .card-zone{position:relative;flex-shrink:0}
+
+  /* Pile sizes (smaller than drawn card) */
+  .pile-zone{width:160px;height:clamp(210px,36vh,280px)}
+  .drawn-zone{width:220px;height:clamp(250px,42vh,330px)}
+
+  .card{
+    width:100%;height:100%;border-radius:16px;position:absolute;top:0;left:0;
+  }
+
+  /* === CARD BACK PATTERN (shared by stack & discard) === */
+  .pile-zone{cursor:pointer;-webkit-tap-highlight-color:transparent}
+
+  .stack-back{
+    background:var(--bg);
+    border:2.5px solid var(--accent);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    user-select:none;transition:transform 0.2s ease,box-shadow 0.2s ease;
+    box-shadow:0 4px 20px var(--shadow),0 0 15px var(--accent-glow);
+    overflow:hidden;
+  }
+
+  /* Diamond lattice pattern */
+  .card-pattern{
+    position:absolute;inset:0;pointer-events:none;border-radius:13px;overflow:hidden;
+  }
+  .card-pattern::before{
+    content:'';position:absolute;inset:0;
+    background:
+      linear-gradient(45deg, var(--pattern1) 25%, transparent 25%),
+      linear-gradient(-45deg, var(--pattern1) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, var(--pattern1) 75%),
+      linear-gradient(-45deg, transparent 75%, var(--pattern1) 75%);
+    background-size:20px 20px;
+    background-position:0 0, 0 10px, 10px -10px, -10px 0;
+  }
+  .card-pattern::after{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(circle at 50% 50%, var(--pattern2) 0%, transparent 60%);
+  }
+
+  /* Ornamental border frame */
+  .card-frame{
+    position:absolute;inset:7px;
+    border:2px solid var(--accent);border-radius:10px;
+    pointer-events:none;z-index:1;opacity:0.2;
+  }
+  .card-frame::before{
+    content:'';position:absolute;inset:5px;
+    border:1.5px solid var(--accent);border-radius:7px;opacity:0.4;
+  }
+  .card-frame::after{
+    content:'';position:absolute;
+    top:50%;left:50%;transform:translate(-50%,-50%);
+    width:50px;height:50px;border-radius:50%;
+    border:2px solid var(--accent);opacity:0.15;
+  }
+
+  .pile-zone:hover .stack-back{
+    transform:scale(1.02);
+    box-shadow:0 8px 30px var(--shadow),0 0 25px var(--accent-glow);
+  }
+
+  .stack-label{
+    font-family:'Lilita One',sans-serif;font-size:1.3rem;
+    color:var(--accent);letter-spacing:3px;position:relative;z-index:2;
+    text-shadow:0 1px 8px var(--accent-glow);
+    background:var(--bg);padding:2px 10px;border-radius:6px;
+  }
+  .stack-sub{
+    font-size:0.65rem;font-weight:800;color:var(--text-muted);
+    margin-top:3px;position:relative;z-index:2;
+    text-transform:uppercase;letter-spacing:1.5px;
+    background:var(--bg);padding:1px 7px;border-radius:5px;
+  }
+
+  .s-shadow{
+    background:var(--bg);border:2.5px solid var(--accent);z-index:-1;opacity:0.15;
+  }
+  .s-shadow.s1{transform:translate(3px,3px);opacity:0.4}
+  .s-shadow.s2{transform:translate(6px,6px);opacity:0.2}
+
+  .pile-empty .stack-back{
+    border-color:var(--text-muted);opacity:0.3;
+    box-shadow:none;cursor:default;
+  }
+  .pile-empty .card-pattern,.pile-empty .card-frame{display:none}
+  .pile-empty .s-shadow{display:none}
+  .pile-empty .stack-label{color:var(--text-muted);text-shadow:none}
+
+  /* Discard pile color overrides */
+  .discard-zone .stack-back{border-color:var(--tertiary);box-shadow:0 4px 20px var(--shadow),0 0 12px var(--tertiary-glow)}
+  .discard-zone .card-pattern::before{
+    background:
+      linear-gradient(45deg, var(--pattern1d) 25%, transparent 25%),
+      linear-gradient(-45deg, var(--pattern1d) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, var(--pattern1d) 75%),
+      linear-gradient(-45deg, transparent 75%, var(--pattern1d) 75%);
+    background-size:20px 20px;
+    background-position:0 0, 0 10px, 10px -10px, -10px 0;
+  }
+  .discard-zone .card-frame,.discard-zone .card-frame::before,.discard-zone .card-frame::after{border-color:var(--tertiary)}
+  .discard-zone .stack-label{color:var(--tertiary);text-shadow:0 1px 8px var(--tertiary-glow)}
+  .discard-zone .s-shadow{border-color:var(--tertiary)}
+  .discard-zone:hover .stack-back{box-shadow:0 8px 30px var(--shadow),0 0 20px var(--tertiary-glow)}
+
+  /* Subtle idle pulse */
+  @keyframes softPulse{
+    0%,100%{box-shadow:0 4px 20px var(--shadow),0 0 15px var(--accent-glow)}
+    50%{box-shadow:0 4px 24px var(--shadow),0 0 22px var(--accent-glow)}
+  }
+  .stack-zone:not(.pile-empty) .stack-back{animation:softPulse 4s ease-in-out infinite}
+  .pile-zone:hover .stack-back{animation:none}
+
+  /* === DRAWN CARD === */
+  .drawn-card{
+    background:var(--card-bg);border:2.5px solid var(--secondary);
+    display:flex;flex-direction:column;overflow:hidden;
+    box-shadow:0 8px 35px var(--shadow),0 0 20px var(--secondary-glow);
+    color:var(--card-text);
+  }
+  .dc-header{
+    background:linear-gradient(135deg, var(--secondary) 0%, color-mix(in srgb, var(--secondary) 75%, #333) 100%);
+    padding:clamp(10px,2.5vh,16px) 14px clamp(8px,2vh,12px);
+    text-align:center;position:relative;overflow:hidden;
+  }
+  .dc-header::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(255,255,255,0.08) 0%,transparent 60%);
+    pointer-events:none;
+  }
+  .target-word{
+    font-family:'Lilita One',sans-serif;
+    font-size:clamp(1.1rem,3.2vh,1.7rem);
+    color:#fff;text-transform:uppercase;letter-spacing:1px;
+    word-break:break-word;position:relative;z-index:1;
+    text-shadow:0 1px 3px rgba(0,0,0,0.2);
+  }
+
+  .taboo-list{
+    flex:1;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+    gap:clamp(3px,0.9vh,7px);padding:clamp(8px,1.8vh,14px) 12px;
+  }
+
+  .taboo-word{
+    font-size:clamp(0.75rem,1.8vh,0.95rem);font-weight:800;
+    color:var(--taboo-color);padding:clamp(4px,0.7vh,6px) 12px;
+    background:var(--taboo-bg);
+    border-radius:8px;border:1.5px solid var(--taboo-border);
+    width:100%;text-align:center;text-transform:uppercase;
+    letter-spacing:0.5px;
+  }
+
+  .dc-footer{
+    padding:clamp(4px,0.7vh,7px);
+    font-size:0.58rem;font-weight:800;color:#aaa;
+    text-align:center;text-transform:uppercase;letter-spacing:2px;
+    border-top:1.5px dashed rgba(127,127,127,0.15);
+  }
+
+  .empty-slot{
+    background:transparent;border:2.5px dashed var(--text-muted);
+    display:flex;align-items:center;justify-content:center;
+    font-size:0.82rem;font-weight:700;color:var(--text-muted);
+    text-align:center;padding:20px;
+  }
+
+  /* === BOTTOM BAR === */
+  .bottom-bar{
+    flex-shrink:0;display:flex;flex-direction:column;gap:6px;
+    align-items:center;padding-top:6px;
+  }
+
+  .action-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+
+  .act-btn{
+    padding:8px 20px;border:none;border-radius:12px;
+    font-family:'Nunito',sans-serif;font-size:0.82rem;font-weight:800;
+    cursor:pointer;transition:all 0.2s ease;display:flex;align-items:center;gap:5px;
+    text-transform:uppercase;letter-spacing:0.5px;
+    position:relative;overflow:hidden;
+  }
+  .act-btn::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(255,255,255,0.1) 0%,transparent 50%);
+    pointer-events:none;border-radius:12px;
+  }
+  .act-btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px var(--shadow)}
+  .act-btn:active{transform:translateY(0)}
+
+  .b-shuffle{background:var(--secondary);color:#fff;box-shadow:0 2px 10px var(--secondary-glow)}
+  .b-putback{background:var(--bg-light);color:var(--text);border:2px solid var(--text-muted);box-shadow:0 2px 10px var(--shadow)}
+  .b-skip{background:var(--accent);color:#fff;box-shadow:0 2px 10px var(--accent-glow)}
+
+  .act-btn:disabled{opacity:0.2;cursor:not-allowed;transform:none!important;box-shadow:none!important}
+
+  .stats-row{
+    display:flex;gap:14px;font-size:0.68rem;font-weight:800;
+    color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;
+  }
+  .stats-row span{color:var(--text)}
+
+  /* === CARD ANIMATIONS === */
+  @keyframes cardIn{
+    0%{opacity:0;transform:scale(0.9) rotate(-3deg)}
+    100%{opacity:1;transform:scale(1) rotate(0)}
+  }
+  .drawn-zone .drawn-card{animation:cardIn 0.35s cubic-bezier(0.34,1.56,0.64,1)}
+
+  @keyframes cardOut{
+    0%{opacity:1;transform:translateX(0) scale(1)}
+    100%{opacity:0;transform:translateX(40px) scale(0.9) rotate(3deg)}
+  }
+  .skip-anim{animation:cardOut 0.28s ease-in forwards}
+
+  @keyframes putBackAnim{
+    0%{opacity:1;transform:translateX(0) scale(1)}
+    100%{opacity:0;transform:translateX(-40px) scale(0.9) rotate(-3deg)}
+  }
+  .putback-anim{animation:putBackAnim 0.28s ease-in forwards}
+
+  /* === SHUFFLE ANIMATION (riffle style) === */
+  .shuffle-overlay{
+    position:absolute;inset:0;z-index:10;pointer-events:none;
+  }
+  .shuffle-card{
+    position:absolute;width:100%;height:100%;
+    border-radius:16px;background:var(--bg);
+    border:2.5px solid var(--accent);
+    overflow:hidden;
+    will-change:transform;
+  }
+  .shuffle-card .card-pattern{
+    position:absolute;inset:0;border-radius:13px;overflow:hidden;
+  }
+  .shuffle-card .card-pattern::before{
+    content:'';position:absolute;inset:0;
+    background:
+      linear-gradient(45deg, var(--pattern1) 25%, transparent 25%),
+      linear-gradient(-45deg, var(--pattern1) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, var(--pattern1) 75%),
+      linear-gradient(-45deg, transparent 75%, var(--pattern1) 75%);
+    background-size:20px 20px;
+    background-position:0 0, 0 10px, 10px -10px, -10px 0;
+  }
+  .shuffle-card .card-frame{
+    position:absolute;inset:7px;
+    border:2px solid var(--accent);border-radius:10px;opacity:0.15;
+  }
+
+  /* === RESPONSIVE === */
+
+  /* Tablet / small laptop */
+  @media(max-width:900px){
+    .pile-zone{width:140px;height:clamp(190px,34vh,260px)}
+    .drawn-zone{width:195px;height:clamp(230px,40vh,310px)}
+    .game-area{gap:16px}
+    .app{padding:8px 14px}
+  }
+
+  /* Mobile: stack vertically, piles side by side on top */
+  @media(max-width:640px){
+    .app{padding:8px 10px}
+    .game-area{
+      flex-direction:column;gap:8px;
+    }
+    .piles-row{
+      display:flex;gap:12px;align-items:center;justify-content:center;
+    }
+    .pile-zone{width:clamp(120px,35vw,155px);height:clamp(160px,24vh,210px)}
+    .drawn-zone{width:clamp(200px,60vw,260px);height:clamp(230px,36vh,300px)}
+    .title{font-size:1.4rem}
+    .pill-btn{padding:4px 11px;font-size:0.7rem}
+    .act-btn{padding:7px 15px;font-size:0.75rem}
+    .tm-name{width:42px;font-size:0.62rem}
+    .tm-score{font-size:0.9rem}
+    .sc-btn{width:20px;height:20px;font-size:0.72rem}
+    .stack-label{font-size:1rem;letter-spacing:2px}
+    .theme-btn{width:26px;height:26px}
+  }
+
+  @media(max-width:400px){
+    .title{font-size:1.2rem;letter-spacing:1px}
+    .pile-zone{width:clamp(105px,30vw,135px);height:clamp(140px,22vh,185px)}
+    .drawn-zone{width:clamp(175px,55vw,230px);height:clamp(210px,33vh,270px)}
+    .act-btn{padding:6px 11px;font-size:0.7rem;gap:3px}
+    .top-bar{gap:5px}
+    .top-controls{gap:4px}
+    .icon-btn{width:30px;height:30px;font-size:0.8rem;border-radius:8px}
+    .stack-label{font-size:0.85rem;letter-spacing:1px}
+    .team-chip{padding:2px 4px;gap:2px}
+    .stats-row{gap:8px;font-size:0.58rem}
+    .theme-btn{width:23px;height:23px}
+  }
+
+  /* Wide but short screens */
+  @media(min-width:641px) and (max-height:550px){
+    .pile-zone{height:clamp(180px,45vh,240px);width:135px}
+    .drawn-zone{height:clamp(200px,50vh,270px);width:190px}
+    .title{font-size:1.5rem}
+  }
+</style>
+</head>
+<body>
+<div class="bg-deco"></div>
+<div class="bg-deco"></div>
+<div class="bg-deco"></div>
+
+<div class="app">
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="title">
+      <span class="t-main">T</span><span class="t-accent">A</span><span class="t-sec">B</span><span class="t-main">O</span><span class="t-accent">O</span><span class="t-sec">!</span>
+    </div>
+    <div class="top-controls">
+      <div class="theme-picker">
+        <button class="theme-btn active" data-theme="dark" onclick="setTheme('dark')" title="Cosy Dark">🌙</button>
+        <button class="theme-btn" data-theme="light" onclick="setTheme('light')" title="Warm Light">☀️</button>
+        <button class="theme-btn" data-theme="sparkle" onclick="setTheme('sparkle')" title="Sparkle">✨</button>
+        <button class="theme-btn" data-theme="adventure" onclick="setTheme('adventure')" title="Adventure">🌿</button>
+      </div>
+      <div class="pill-toggle">
+        <button class="pill-btn active" data-mode="easy" onclick="setDiff('easy')">Easy</button>
+        <button class="pill-btn" data-mode="hard" onclick="setDiff('hard')">Hard</button>
+      </div>
+      <button class="icon-btn" id="sbToggle" onclick="toggleSB()" title="Scoreboard">🏆</button>
+    </div>
+  </div>
+
+  <!-- SCOREBOARD -->
+  <div class="scoreboard" id="sb">
+    <div class="team-chip" data-t="1">
+      <button class="sc-btn" onclick="sc(1,-1)">-</button>
+      <input class="tm-name" value="Team 1" maxlength="8" spellcheck="false">
+      <span class="tm-score" id="s1">0</span>
+      <button class="sc-btn" onclick="sc(1,1)">+</button>
+    </div>
+    <div class="team-chip" data-t="2">
+      <button class="sc-btn" onclick="sc(2,-1)">-</button>
+      <input class="tm-name" value="Team 2" maxlength="8" spellcheck="false">
+      <span class="tm-score" id="s2">0</span>
+      <button class="sc-btn" onclick="sc(2,1)">+</button>
+    </div>
+    <div class="team-chip" data-t="3">
+      <button class="sc-btn" onclick="sc(3,-1)">-</button>
+      <input class="tm-name" value="Team 3" maxlength="8" spellcheck="false">
+      <span class="tm-score" id="s3">0</span>
+      <button class="sc-btn" onclick="sc(3,1)">+</button>
+    </div>
+    <button class="rst-btn" onclick="rstSc()">Reset</button>
+  </div>
+
+  <!-- GAME AREA: horizontal row on desktop, stacked on mobile -->
+  <div class="game-area" id="gameArea">
+    <div class="card-zone pile-zone stack-zone" id="stackZ" onclick="draw()">
+      <div class="card s-shadow s2"></div>
+      <div class="card s-shadow s1"></div>
+      <div class="card stack-back" id="sTop">
+        <div class="card-pattern"></div>
+        <div class="card-frame"></div>
+        <div class="stack-label">TABOO!</div>
+        <div class="stack-sub" id="sCnt">250 cards</div>
+      </div>
+    </div>
+    <div class="card-zone drawn-zone" id="drawnZ">
+      <div class="card empty-slot">Tap the stack to draw!</div>
+    </div>
+    <div class="card-zone pile-zone discard-zone" id="discZ" onclick="drawDiscard()">
+      <div class="card s-shadow s2"></div>
+      <div class="card s-shadow s1"></div>
+      <div class="card stack-back">
+        <div class="card-pattern"></div>
+        <div class="card-frame"></div>
+        <div class="stack-label" style="font-size:0.9em;letter-spacing:2px">DISCARD</div>
+        <div class="stack-sub" id="dCnt">0 cards</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM BAR -->
+  <div class="bottom-bar">
+    <div class="action-row">
+      <button class="act-btn b-shuffle" onclick="shuf()">🔀 Shuffle</button>
+      <button class="act-btn b-putback" id="bPutBack" onclick="putBack()" disabled>↩️ Put Back</button>
+      <button class="act-btn b-skip" id="bSkip" onclick="skip()" disabled>⏭️ Skip</button>
+    </div>
+    <div class="stats-row">
+      <div>Stack: <span id="xS">250</span></div>
+      <div>Open: <span id="xD">0</span></div>
+      <div>Discard: <span id="xK">0</span></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const C=[
+{w:"Dog",t:["Bark","Puppy","Pet","Walk"]},
+{w:"Cat",t:["Meow","Kitten","Pet","Whiskers"]},
+{w:"Elephant",t:["Trunk","Big","Grey","Tusks"]},
+{w:"Lion",t:["Roar","King","Mane","Jungle"]},
+{w:"Penguin",t:["Ice","Black","White","Waddle"]},
+{w:"Dolphin",t:["Ocean","Swim","Smart","Fins"]},
+{w:"Butterfly",t:["Wings","Fly","Caterpillar","Pretty"]},
+{w:"Shark",t:["Teeth","Ocean","Bite","Fins"]},
+{w:"Rabbit",t:["Hop","Ears","Carrot","Fluffy"]},
+{w:"Horse",t:["Ride","Gallop","Stable","Mane"]},
+{w:"Frog",t:["Jump","Green","Pond","Croak"]},
+{w:"Owl",t:["Hoot","Night","Wise","Feathers"]},
+{w:"Bear",t:["Fur","Cave","Hibernate","Growl"]},
+{w:"Snake",t:["Slither","Scales","Hiss","Venom"]},
+{w:"Monkey",t:["Banana","Climb","Tree","Tail"]},
+{w:"Giraffe",t:["Tall","Neck","Spots","Africa"]},
+{w:"Zebra",t:["Stripes","Black","White","Africa"]},
+{w:"Parrot",t:["Talk","Feathers","Colourful","Beak"]},
+{w:"Turtle",t:["Shell","Slow","Swim","Green"]},
+{w:"Spider",t:["Web","Eight","Legs","Creepy"]},
+{w:"Bee",t:["Honey","Sting","Buzz","Hive"]},
+{w:"Eagle",t:["Fly","Bird","Bald","Soar"]},
+{w:"Whale",t:["Ocean","Big","Swim","Blow"]},
+{w:"Kangaroo",t:["Jump","Pouch","Australia","Joey"]},
+{w:"Panda",t:["Bamboo","Black","White","China"]},
+{w:"Pizza",t:["Cheese","Slice","Topping","Oven"]},
+{w:"Ice Cream",t:["Cold","Cone","Scoop","Vanilla"]},
+{w:"Chocolate",t:["Sweet","Candy","Brown","Cocoa"]},
+{w:"Banana",t:["Yellow","Peel","Fruit","Monkey"]},
+{w:"Apple",t:["Red","Fruit","Tree","Juice"]},
+{w:"Cake",t:["Birthday","Candles","Frosting","Bake"]},
+{w:"Cookie",t:["Bake","Sweet","Dough","Chocolate"]},
+{w:"Popcorn",t:["Movie","Butter","Pop","Corn"]},
+{w:"Sandwich",t:["Bread","Lunch","Meat","Cheese"]},
+{w:"Pancake",t:["Breakfast","Syrup","Flat","Flip"]},
+{w:"Spaghetti",t:["Pasta","Sauce","Noodle","Italian"]},
+{w:"Hamburger",t:["Bun","Meat","Grill","Ketchup"]},
+{w:"Watermelon",t:["Seeds","Summer","Red","Green"]},
+{w:"Carrot",t:["Orange","Vegetable","Rabbit","Crunch"]},
+{w:"Egg",t:["Chicken","Breakfast","Shell","Scramble"]},
+{w:"Bread",t:["Toast","Loaf","Butter","Bake"]},
+{w:"Cheese",t:["Yellow","Milk","Mouse","Pizza"]},
+{w:"Lemon",t:["Sour","Yellow","Juice","Citrus"]},
+{w:"Strawberry",t:["Red","Fruit","Sweet","Jam"]},
+{w:"Corn",t:["Cob","Yellow","Pop","Vegetable"]},
+{w:"Tomato",t:["Red","Sauce","Salad","Ketchup"]},
+{w:"Grape",t:["Vine","Purple","Wine","Fruit"]},
+{w:"Orange",t:["Fruit","Juice","Citrus","Peel"]},
+{w:"Broccoli",t:["Green","Vegetable","Tree","Healthy"]},
+{w:"Potato",t:["Mash","Fry","Chip","Bake"]},
+{w:"Teacher",t:["School","Class","Lesson","Homework"]},
+{w:"Homework",t:["School","Study","Assignment","Due"]},
+{w:"Book",t:["Read","Page","Story","Library"]},
+{w:"Pencil",t:["Write","Sharp","Eraser","Yellow"]},
+{w:"Calculator",t:["Maths","Numbers","Buttons","Add"]},
+{w:"Backpack",t:["School","Carry","Bag","Zipper"]},
+{w:"Library",t:["Books","Quiet","Read","Borrow"]},
+{w:"Science",t:["Experiment","Lab","Study","Test"]},
+{w:"Maths",t:["Numbers","Add","Subtract","Count"]},
+{w:"Art",t:["Paint","Draw","Colour","Create"]},
+{w:"Music",t:["Sing","Instrument","Song","Note"]},
+{w:"Crayon",t:["Colour","Draw","Wax","Box"]},
+{w:"Eraser",t:["Rub","Mistake","Pencil","Clean"]},
+{w:"Globe",t:["World","Map","Round","Spin"]},
+{w:"Ruler",t:["Measure","Straight","Line","Inches"]},
+{w:"Scissors",t:["Cut","Sharp","Paper","Craft"]},
+{w:"Glue",t:["Stick","Craft","Sticky","Paste"]},
+{w:"Notebook",t:["Write","Paper","Lines","School"]},
+{w:"Alphabet",t:["Letters","ABC","Read","Write"]},
+{w:"Dictionary",t:["Words","Meaning","Look Up","Spell"]},
+{w:"Soccer",t:["Ball","Kick","Goal","Field"]},
+{w:"Basketball",t:["Hoop","Dribble","Court","Shoot"]},
+{w:"Swimming",t:["Pool","Water","Dive","Stroke"]},
+{w:"Baseball",t:["Bat","Pitch","Catch","Home"]},
+{w:"Tennis",t:["Racket","Ball","Court","Serve"]},
+{w:"Gymnastics",t:["Flip","Balance","Tumble","Mat"]},
+{w:"Skateboard",t:["Wheels","Trick","Ride","Board"]},
+{w:"Bicycle",t:["Pedal","Wheel","Ride","Chain"]},
+{w:"Running",t:["Fast","Race","Track","Jog"]},
+{w:"Dancing",t:["Move","Music","Rhythm","Spin"]},
+{w:"Bowling",t:["Pins","Ball","Lane","Strike"]},
+{w:"Volleyball",t:["Net","Hit","Serve","Team"]},
+{w:"Hockey",t:["Ice","Puck","Stick","Goal"]},
+{w:"Surfing",t:["Wave","Board","Ocean","Balance"]},
+{w:"Karate",t:["Kick","Belt","Punch","Block"]},
+{w:"Trampoline",t:["Jump","Bounce","Flip","Fun"]},
+{w:"Hide and Seek",t:["Count","Hide","Find","Seek"]},
+{w:"Tag",t:["Run","Chase","Touch","Freeze"]},
+{w:"Puzzle",t:["Piece","Fit","Picture","Solve"]},
+{w:"Chess",t:["King","Queen","Board","Checkmate"]},
+{w:"Phone",t:["Call","Screen","Ring","Text"]},
+{w:"Television",t:["Watch","Screen","Show","Remote"]},
+{w:"Computer",t:["Type","Screen","Mouse","Keyboard"]},
+{w:"Clock",t:["Time","Tick","Hands","Alarm"]},
+{w:"Mirror",t:["Reflect","Glass","Look","Face"]},
+{w:"Chair",t:["Sit","Legs","Table","Wood"]},
+{w:"Table",t:["Flat","Legs","Eat","Surface"]},
+{w:"Bed",t:["Sleep","Pillow","Blanket","Mattress"]},
+{w:"Lamp",t:["Light","Bulb","Bright","Shade"]},
+{w:"Door",t:["Open","Close","Knock","Handle"]},
+{w:"Window",t:["Glass","Open","Curtain","View"]},
+{w:"Umbrella",t:["Rain","Open","Wet","Cover"]},
+{w:"Key",t:["Lock","Open","Door","Metal"]},
+{w:"Toothbrush",t:["Teeth","Brush","Paste","Clean"]},
+{w:"Soap",t:["Wash","Clean","Bubble","Bath"]},
+{w:"Towel",t:["Dry","Bath","Soft","Wrap"]},
+{w:"Pillow",t:["Head","Soft","Sleep","Fluffy"]},
+{w:"Blanket",t:["Warm","Cover","Bed","Cosy"]},
+{w:"Cup",t:["Drink","Handle","Sip","Mug"]},
+{w:"Spoon",t:["Eat","Stir","Scoop","Soup"]},
+{w:"Rainbow",t:["Colours","Rain","Sky","Arc"]},
+{w:"Cloud",t:["Sky","White","Fluffy","Rain"]},
+{w:"Sun",t:["Hot","Bright","Sky","Shine"]},
+{w:"Moon",t:["Night","Sky","Round","Glow"]},
+{w:"Star",t:["Sky","Night","Twinkle","Shine"]},
+{w:"Rain",t:["Wet","Cloud","Drop","Pour"]},
+{w:"Snow",t:["Cold","White","Flake","Winter"]},
+{w:"Lightning",t:["Flash","Storm","Thunder","Bolt"]},
+{w:"Wind",t:["Blow","Air","Breeze","Strong"]},
+{w:"Volcano",t:["Lava","Erupt","Hot","Mountain"]},
+{w:"Ocean",t:["Water","Wave","Deep","Fish"]},
+{w:"River",t:["Water","Flow","Fish","Bank"]},
+{w:"Mountain",t:["High","Climb","Snow","Peak"]},
+{w:"Forest",t:["Trees","Green","Animals","Woods"]},
+{w:"Desert",t:["Sand","Hot","Dry","Cactus"]},
+{w:"Island",t:["Water","Beach","Palm","Land"]},
+{w:"Flower",t:["Petal","Smell","Grow","Garden"]},
+{w:"Tree",t:["Trunk","Leaves","Branch","Tall"]},
+{w:"Grass",t:["Green","Lawn","Grow","Mow"]},
+{w:"Seed",t:["Plant","Grow","Soil","Sprout"]},
+{w:"Airport",t:["Plane","Fly","Ticket","Gate"]},
+{w:"Beach",t:["Sand","Ocean","Swim","Towel"]},
+{w:"Hospital",t:["Doctor","Sick","Nurse","Bed"]},
+{w:"Zoo",t:["Animals","Cage","Visit","Keeper"]},
+{w:"Museum",t:["Art","Old","Exhibit","History"]},
+{w:"Park",t:["Playground","Swing","Grass","Bench"]},
+{w:"Castle",t:["King","Queen","Tower","Stone"]},
+{w:"Farm",t:["Animals","Barn","Tractor","Crops"]},
+{w:"Circus",t:["Clown","Tent","Acrobat","Ring"]},
+{w:"School",t:["Teacher","Learn","Class","Student"]},
+{w:"Restaurant",t:["Food","Eat","Menu","Waiter"]},
+{w:"Cinema",t:["Movie","Screen","Popcorn","Ticket"]},
+{w:"Supermarket",t:["Food","Shop","Aisle","Cart"]},
+{w:"Playground",t:["Swing","Slide","Climb","Fun"]},
+{w:"Camping",t:["Tent","Fire","Outdoor","Sleep"]},
+{w:"Aquarium",t:["Fish","Tank","Water","Shark"]},
+{w:"Bakery",t:["Bread","Cake","Oven","Bake"]},
+{w:"Stadium",t:["Sport","Crowd","Cheer","Seats"]},
+{w:"Space Station",t:["Astronaut","Orbit","Float","Rocket"]},
+{w:"Lighthouse",t:["Light","Sea","Tower","Ship"]},
+{w:"Birthday",t:["Cake","Party","Present","Candle"]},
+{w:"Christmas",t:["Santa","Tree","Present","December"]},
+{w:"Halloween",t:["Costume","Scary","Candy","Pumpkin"]},
+{w:"Treasure",t:["Gold","Chest","Pirate","Map"]},
+{w:"Magic",t:["Trick","Wand","Wizard","Spell"]},
+{w:"Robot",t:["Machine","Metal","Beep","Program"]},
+{w:"Dinosaur",t:["Extinct","Fossil","Big","Roar"]},
+{w:"Pirate",t:["Ship","Treasure","Sword","Sea"]},
+{w:"Superhero",t:["Cape","Power","Save","Mask"]},
+{w:"Princess",t:["Crown","Castle","Royal","Dress"]},
+{w:"Dragon",t:["Fire","Wings","Fly","Scales"]},
+{w:"Mermaid",t:["Tail","Swim","Ocean","Fish"]},
+{w:"Unicorn",t:["Horn","Magic","Horse","Rainbow"]},
+{w:"Ghost",t:["Scary","Haunt","Invisible","Boo"]},
+{w:"Spaceship",t:["Rocket","Fly","Space","Astronaut"]},
+{w:"Crown",t:["King","Queen","Gold","Head"]},
+{w:"Sword",t:["Fight","Knight","Sharp","Blade"]},
+{w:"Shield",t:["Protect","Knight","Block","Armour"]},
+{w:"Map",t:["Direction","Treasure","Location","Navigate"]},
+{w:"Compass",t:["North","Direction","Needle","Navigate"]},
+{w:"Cooking",t:["Food","Stove","Recipe","Chef"]},
+{w:"Painting",t:["Brush","Colour","Art","Canvas"]},
+{w:"Reading",t:["Book","Page","Story","Words"]},
+{w:"Singing",t:["Voice","Song","Music","Tune"]},
+{w:"Sleeping",t:["Bed","Night","Dream","Pillow"]},
+{w:"Fishing",t:["Rod","Catch","Bait","Lake"]},
+{w:"Juggling",t:["Balls","Throw","Catch","Circus"]},
+{w:"Flying",t:["Plane","Wings","Sky","Air"]},
+{w:"Building",t:["Blocks","Construct","Tower","Brick"]},
+{w:"Gardening",t:["Plant","Soil","Water","Dig"]},
+{w:"Hat",t:["Head","Wear","Brim","Cap"]},
+{w:"Shoes",t:["Feet","Wear","Laces","Walk"]},
+{w:"Glasses",t:["Eyes","See","Lens","Frame"]},
+{w:"Watch",t:["Time","Wrist","Tick","Hand"]},
+{w:"Jacket",t:["Wear","Warm","Zip","Coat"]},
+{w:"Teeth",t:["Bite","Chew","Dentist","Brush"]},
+{w:"Eyes",t:["See","Look","Blink","Colour"]},
+{w:"Hands",t:["Fingers","Grab","Wave","Clap"]},
+{w:"Heart",t:["Beat","Love","Chest","Pump"]},
+{w:"Brain",t:["Think","Head","Smart","Mind"]},
+{w:"Aeroplane",t:["Fly","Sky","Wing","Pilot"]},
+{w:"Train",t:["Track","Station","Choo","Ride"]},
+{w:"Bus",t:["Ride","Stop","Driver","School"]},
+{w:"Boat",t:["Water","Sail","Float","Anchor"]},
+{w:"Rocket",t:["Space","Launch","Fly","Fuel"]},
+{w:"Helicopter",t:["Fly","Blade","Hover","Chop"]},
+{w:"Submarine",t:["Underwater","Dive","Periscope","Navy"]},
+{w:"Ambulance",t:["Siren","Hospital","Emergency","Fast"]},
+{w:"Fire Truck",t:["Fire","Ladder","Hose","Siren"]},
+{w:"Police Car",t:["Siren","Officer","Chase","Law"]},
+{w:"Magnet",t:["Attract","Metal","Stick","Pull"]},
+{w:"Battery",t:["Power","Charge","Energy","Cell"]},
+{w:"Camera",t:["Photo","Picture","Lens","Click"]},
+{w:"Telescope",t:["Stars","Look","Far","Lens"]},
+{w:"Microscope",t:["Tiny","Zoom","Lens","Slide"]},
+{w:"Thermometer",t:["Temperature","Hot","Cold","Mercury"]},
+{w:"X-Ray",t:["Bones","See","Doctor","Picture"]},
+{w:"Satellite",t:["Space","Orbit","Signal","Dish"]},
+{w:"Solar System",t:["Planets","Sun","Orbit","Space"]},
+{w:"Fossil",t:["Dinosaur","Old","Rock","Bones"]},
+{w:"Balloon",t:["Pop","Air","Float","Party"]},
+{w:"Candle",t:["Flame","Wax","Light","Melt"]},
+{w:"Bell",t:["Ring","Sound","Metal","Ding"]},
+{w:"Ladder",t:["Climb","Step","Tall","Reach"]},
+{w:"Wheel",t:["Round","Spin","Car","Roll"]},
+{w:"Rope",t:["Tie","Knot","Pull","Swing"]},
+{w:"Tent",t:["Camp","Poles","Zip","Shelter"]},
+{w:"Kite",t:["Fly","Wind","String","Sky"]},
+{w:"Drum",t:["Beat","Stick","Loud","Rhythm"]},
+{w:"Guitar",t:["Strings","Play","Strum","Music"]},
+{w:"Piano",t:["Keys","Play","Music","Black"]},
+{w:"Trumpet",t:["Blow","Brass","Loud","Horn"]},
+{w:"Whistle",t:["Blow","Loud","Coach","Sound"]},
+{w:"Binoculars",t:["Look","Far","Lens","Bird"]},
+{w:"Parachute",t:["Fall","Sky","Float","Jump"]},
+{w:"Anchor",t:["Boat","Heavy","Sea","Chain"]},
+{w:"Bridge",t:["Cross","River","Road","Arch"]},
+{w:"Tunnel",t:["Dark","Through","Underground","Dig"]},
+{w:"Fountain",t:["Water","Spray","Wish","Coin"]},
+{w:"Statue",t:["Stone","Still","Art","Stand"]},
+{w:"Calendar",t:["Date","Month","Day","Year"]},
+{w:"Envelope",t:["Letter","Mail","Stamp","Seal"]},
+{w:"Stamp",t:["Mail","Stick","Post","Ink"]},
+{w:"Newspaper",t:["Read","News","Paper","Print"]},
+{w:"Magazine",t:["Read","Page","Picture","Glossy"]},
+{w:"Trophy",t:["Win","Gold","Cup","Award"]},
+{w:"Medal",t:["Win","Gold","Neck","Award"]},
+{w:"Flag",t:["Wave","Country","Pole","Colour"]},
+{w:"Mask",t:["Face","Hide","Wear","Costume"]},
+{w:"Cape",t:["Superhero","Wear","Fly","Back"]},
+{w:"Necklace",t:["Wear","Neck","Jewel","Chain"]},
+{w:"Ring",t:["Finger","Wear","Gold","Circle"]},
+{w:"Treasure Chest",t:["Gold","Pirate","Lock","Jewels"]},
+{w:"Feather",t:["Bird","Light","Soft","Tickle"]},
+{w:"Shell",t:["Beach","Sea","Hard","Snail"]},
+{w:"Nest",t:["Bird","Eggs","Tree","Twigs"]},
+{w:"Web",t:["Spider","Sticky","Silk","Catch"]},
+{w:"Bone",t:["Skeleton","Dog","Body","Hard"]},
+{w:"Bubble",t:["Pop","Soap","Round","Float"]}
+];
+
+let stk=[],hist=[],disc=[],cur=null,diff='easy',scores=[0,0,0],shuffling=false;
+
+function shfl(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}}
+
+function init(){stk=[...C];shfl(stk);hist=[];disc=[];cur=null;upd()}
+
+function draw(){
+  if(!stk.length||shuffling)return;
+  if(cur)hist.push(cur);
+  cur=stk.pop();upd();
+}
+
+function drawDiscard(){
+  if(!disc.length||shuffling)return;
+  if(cur)hist.push(cur);
+  cur=disc.pop();upd();
+}
+
+function skip(){
+  if(!cur||shuffling)return;
+  const z=document.getElementById('drawnZ'),el=z.querySelector('.drawn-card');
+  if(el){el.classList.add('skip-anim');setTimeout(()=>{disc.push(cur);cur=null;upd()},270)}
+  else{disc.push(cur);cur=null;upd()}
+}
+
+function putBack(){
+  if(!cur||shuffling)return;
+  const z=document.getElementById('drawnZ'),el=z.querySelector('.drawn-card');
+  if(el){el.classList.add('putback-anim');setTimeout(()=>{stk.push(cur);cur=hist.length?hist.pop():null;upd()},270)}
+  else{stk.push(cur);cur=hist.length?hist.pop():null;upd()}
+}
+
+function shuf(){
+  if(shuffling||stk.length<2)return;
+  shuffling=true;
+  shfl(stk);
+
+  const zone=document.getElementById('stackZ');
+  const rect=zone.getBoundingClientRect();
+  const top=zone.querySelector('.stack-back');
+  const shadows=zone.querySelectorAll('.s-shadow');
+
+  top.style.visibility='hidden';
+  shadows.forEach(s=>s.style.visibility='hidden');
+
+  const overlay=document.createElement('div');
+  overlay.className='shuffle-overlay';
+  zone.appendChild(overlay);
+
+  const numCards=8;
+  const cards=[];
+  for(let i=0;i<numCards;i++){
+    const c=document.createElement('div');
+    c.className='shuffle-card';
+    c.innerHTML='<div class="card-pattern"></div><div class="card-frame"></div>';
+    c.style.zIndex=i;
+    overlay.appendChild(c);
+    cards.push(c);
+  }
+
+  const dur=900;
+  const half=numCards/2;
+
+  cards.forEach((c,i)=>{
+    const isLeft=i<half;
+    const idx=isLeft?i:i-half;
+    const spreadX=isLeft?-(30+idx*12):(30+idx*12);
+    const spreadR=isLeft?-(4+idx*2):(4+idx*2);
+    const riffleDelay=0.15+idx*0.08;
+    const riffleX=isLeft?-3:3;
+
+    c.animate([
+      {transform:'translate(0,0) rotate(0deg)',offset:0},
+      {transform:`translate(${spreadX}px,-${6+idx*3}px) rotate(${spreadR}deg)`,offset:0.25},
+      {transform:`translate(${spreadX}px,-${6+idx*3}px) rotate(${spreadR}deg)`,offset:0.4},
+      {transform:`translate(${riffleX}px,${idx*2}px) rotate(${spreadR*0.3}deg)`,offset:riffleDelay+0.35},
+      {transform:'translate(0,0) rotate(0deg)',offset:1}
+    ],{
+      duration:dur,
+      easing:'cubic-bezier(0.4,0,0.2,1)',
+      fill:'forwards'
+    });
+  });
+
+  setTimeout(()=>{
+    overlay.remove();
+    top.style.visibility='';
+    shadows.forEach(s=>s.style.visibility='');
+    shuffling=false;
+  },dur+50);
+}
+
+function setDiff(m){
+  diff=m;
+  document.querySelectorAll('.pill-btn').forEach(b=>b.classList.toggle('active',b.dataset.mode===m));
+  if(cur)upd();
+}
+
+function setTheme(t){
+  document.documentElement.setAttribute('data-theme',t);
+  document.querySelectorAll('.theme-btn').forEach(b=>b.classList.toggle('active',b.dataset.theme===t));
+  localStorage.setItem('taboo-theme',t);
+}
+
+function toggleSB(){
+  const sb=document.getElementById('sb'),btn=document.getElementById('sbToggle');
+  sb.classList.toggle('visible');btn.classList.toggle('active');
+}
+
+function sc(t,d){scores[t-1]=Math.max(0,scores[t-1]+d);document.getElementById('s'+t).textContent=scores[t-1]}
+function rstSc(){scores=[0,0,0];for(let i=1;i<=3;i++)document.getElementById('s'+i).textContent='0'}
+
+function upd(){
+  const n=stk.length;
+  document.getElementById('sCnt').textContent=n+(n===1?' card':' cards');
+
+  const sz=document.getElementById('stackZ');
+  sz.classList.toggle('pile-empty',n===0);
+  const shads=sz.querySelectorAll('.s-shadow');
+  shads[0].style.display=n>1?'':'none';
+  shads[1].style.display=n>2?'':'none';
+
+  const dn=disc.length;
+  document.getElementById('dCnt').textContent=dn+(dn===1?' card':' cards');
+  const dz=document.getElementById('discZ');
+  dz.classList.toggle('pile-empty',dn===0);
+  const dShads=dz.querySelectorAll('.s-shadow');
+  dShads[0].style.display=dn>1?'':'none';
+  dShads[1].style.display=dn>2?'':'none';
+
+  const drZ=document.getElementById('drawnZ');
+  drZ.innerHTML='';
+  if(cur){
+    const tc=diff==='easy'?3:4;
+    const tw=cur.t.slice(0,tc);
+    const el=document.createElement('div');
+    el.className='card drawn-card';
+    el.innerHTML=`<div class="dc-header"><div class="target-word">${cur.w}</div></div>
+      <div class="taboo-list">${tw.map(w=>`<div class="taboo-word">${w}</div>`).join('')}</div>
+      <div class="dc-footer">Don't say these words!</div>`;
+    drZ.appendChild(el);
+  } else {
+    const el=document.createElement('div');el.className='card empty-slot';
+    el.textContent=n>0||dn>0?'Tap a pile to draw!':'No more cards!';
+    drZ.appendChild(el);
+  }
+
+  document.getElementById('bPutBack').disabled=!cur;
+  document.getElementById('bSkip').disabled=!cur;
+  document.getElementById('xS').textContent=stk.length;
+  document.getElementById('xD').textContent=hist.length+(cur?1:0);
+  document.getElementById('xK').textContent=disc.length;
+}
+
+/* Mobile layout: wrap piles in a row */
+function layoutCheck(){
+  const ga=document.getElementById('gameArea');
+  const isMobile=window.innerWidth<=640;
+  const existing=ga.querySelector('.piles-row');
+
+  if(isMobile&&!existing){
+    const row=document.createElement('div');
+    row.className='piles-row';
+    const stackEl=document.getElementById('stackZ');
+    const discEl=document.getElementById('discZ');
+    row.appendChild(stackEl);
+    row.appendChild(discEl);
+    ga.insertBefore(row,ga.firstChild);
+  } else if(!isMobile&&existing){
+    const stackEl=document.getElementById('stackZ');
+    const drawnEl=document.getElementById('drawnZ');
+    const discEl=document.getElementById('discZ');
+    ga.innerHTML='';
+    ga.appendChild(stackEl);
+    ga.appendChild(drawnEl);
+    ga.appendChild(discEl);
+  }
+}
+
+window.addEventListener('resize',layoutCheck);
+
+const saved=localStorage.getItem('taboo-theme');
+if(saved)setTheme(saved);
+
+init();
+layoutCheck();
+</script>
+</body>
+</html>
