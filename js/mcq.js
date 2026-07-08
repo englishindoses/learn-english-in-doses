@@ -752,6 +752,28 @@ const MCQModule = (function() {
     }
     
     /**
+     * Builds a storage key that is unique per page AND per container.
+     *
+     * All lessons use the same containerId ('mcq'), so keying only on the
+     * container makes every page share one localStorage entry — which caused
+     * answers from one lesson to appear pre-selected on other lessons.
+     * Adding the page path namespaces the key so each page is independent.
+     *
+     * @returns {string} The localStorage key for this page's progress
+     */
+    function getStorageKey() {
+        let pageKey = '';
+        try {
+            // Use the file name (e.g. "articles.html") as the page identifier.
+            const path = (typeof location !== 'undefined' && location.pathname) ? location.pathname : '';
+            pageKey = path.split('/').filter(Boolean).pop() || path || 'page';
+        } catch (error) {
+            pageKey = 'page';
+        }
+        return `${containerId}-progress-${pageKey}`;
+    }
+
+    /**
      * Saves progress to local storage
      */
     function saveProgress() {
@@ -774,10 +796,11 @@ const MCQModule = (function() {
             });
             
             // Use the saveToLocalStorage function if available, otherwise use localStorage directly
+            const storageKey = getStorageKey();
             if (typeof saveToLocalStorage === 'function') {
-                saveToLocalStorage(`${containerId}-progress`, progressData);
+                saveToLocalStorage(storageKey, progressData);
             } else if (typeof localStorage !== 'undefined') {
-                localStorage.setItem(`${containerId}-progress`, JSON.stringify(progressData));
+                localStorage.setItem(storageKey, JSON.stringify(progressData));
             }
             
             console.log('MCQ progress saved:', progressData);
@@ -794,10 +817,11 @@ const MCQModule = (function() {
             let savedProgress = null;
             
             // Use the getFromLocalStorage function if available, otherwise use localStorage directly
+            const storageKey = getStorageKey();
             if (typeof getFromLocalStorage === 'function') {
-                savedProgress = getFromLocalStorage(`${containerId}-progress`);
+                savedProgress = getFromLocalStorage(storageKey);
             } else if (typeof localStorage !== 'undefined') {
-                const savedData = localStorage.getItem(`${containerId}-progress`);
+                const savedData = localStorage.getItem(storageKey);
                 if (savedData) {
                     savedProgress = JSON.parse(savedData);
                 }
@@ -881,13 +905,14 @@ const MCQModule = (function() {
             userSelections = {};
             
             // Method 1: Use removeFromLocalStorage function if available
+            const storageKey = getStorageKey();
             if (typeof removeFromLocalStorage === 'function') {
-                removeFromLocalStorage(`${containerId}-progress`);
+                removeFromLocalStorage(storageKey);
                 console.log('Progress cleared using removeFromLocalStorage function');
             }
             // Method 2: Use localStorage directly
             else if (typeof localStorage !== 'undefined') {
-                localStorage.removeItem(`${containerId}-progress`);
+                localStorage.removeItem(storageKey);
                 console.log('Progress cleared directly from localStorage');
             } else {
                 console.warn('Unable to clear progress: localStorage not available');
