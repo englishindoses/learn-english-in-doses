@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="../../css/base.css">
   <link rel="stylesheet" href="../../css/levels.css">
   <link rel="stylesheet" href="../../css/activities.css">
+  <link rel="stylesheet" href="../../css/compact-matching.css">
   <link rel="stylesheet" href="../../css/progress-tracking-styles.css">
 </head>
 <body class="advanced-section">
@@ -427,191 +428,56 @@
         </div>
       </section>
 
-      <!-- MCQ ACTIVITY -->
-      <section class="content-section mcq-container">
+      <!-- MATCHING ACTIVITY -->
+      <section class="content-section">
         <h2>Test Your Knowledge</h2>
-        <p>Choose the correct option for each question.</p>
+        <p>Drag each numbered marker to the meaning it matches. On a touch screen, tap a marker and then tap its meaning.</p>
 
-        <div id="mcq" class="activity-container active">
-          <!-- Question 1 -->
-          <div class="question" id="q1">
-            <p class="mcq-question">1. _____, the weather was perfect for our outdoor meeting.</p>
-            <div class="options">
-              <div class="option" data-index="0">
-                <span>A. Frankly</span>
-              </div>
-              <div class="option" data-index="1">
-                <span>B. Fortunately</span>
-              </div>
-              <div class="option" data-index="2">
-                <span>C. Presumably</span>
-              </div>
-            </div>
-            <div class="feedback"></div>
+        <div id="cm-comment-adverbs" class="compact-matching">
+          <!-- Column 1: Adverbs -->
+          <div class="cm-statements">
+            <div class="cm-statement"><span class="cm-statement-num">1</span><p>Unfortunately</p></div>
+            <div class="cm-statement"><span class="cm-statement-num">2</span><p>Apparently</p></div>
+            <div class="cm-statement"><span class="cm-statement-num">3</span><p>Clearly</p></div>
+            <div class="cm-statement"><span class="cm-statement-num">4</span><p>Personally</p></div>
+            <div class="cm-statement"><span class="cm-statement-num">5</span><p>Frankly</p></div>
+            <div class="cm-statement"><span class="cm-statement-num">6</span><p>Surprisingly</p></div>
+            <div class="cm-statement"><span class="cm-statement-num">7</span><p>Presumably</p></div>
           </div>
 
-          <!-- Question 2 -->
-          <div class="question" id="q2">
-            <p class="mcq-question">2. _____, the company is planning to reduce costs next quarter.</p>
-            <div class="options">
-              <div class="option" data-index="0">
-                <span>A. Obviously</span>
-              </div>
-              <div class="option" data-index="1">
-                <span>B. Happily</span>
-              </div>
-              <div class="option" data-index="2">
-                <span>C. Apparently</span>
-              </div>
-            </div>
-            <div class="feedback"></div>
+          <!-- Column 2: Draggable markers -->
+          <div class="cm-markers">
+            <div class="cm-marker-slot" data-marker="1"><div class="cm-marker" draggable="true" data-match="1">1</div></div>
+            <div class="cm-marker-slot" data-marker="2"><div class="cm-marker" draggable="true" data-match="2">2</div></div>
+            <div class="cm-marker-slot" data-marker="3"><div class="cm-marker" draggable="true" data-match="3">3</div></div>
+            <div class="cm-marker-slot" data-marker="4"><div class="cm-marker" draggable="true" data-match="4">4</div></div>
+            <div class="cm-marker-slot" data-marker="5"><div class="cm-marker" draggable="true" data-match="5">5</div></div>
+            <div class="cm-marker-slot" data-marker="6"><div class="cm-marker" draggable="true" data-match="6">6</div></div>
+            <div class="cm-marker-slot" data-marker="7"><div class="cm-marker" draggable="true" data-match="7">7</div></div>
           </div>
 
-          <!-- Question 3 -->
-          <div class="question" id="q3">
-            <p class="mcq-question">3. _____, the new policy has not been well received by staff.</p>
-            <div class="options">
-              <div class="option" data-index="0">
-                <span>A. Luckily</span>
-              </div>
-              <div class="option" data-index="1">
-                <span>B. Clearly</span>
-              </div>
-              <div class="option" data-index="2">
-                <span>C. Personally</span>
-              </div>
-            </div>
-            <div class="feedback"></div>
+          <!-- Column 3: Meanings (shuffled) -->
+          <div class="cm-answers">
+            <div class="cm-answer" data-match="6"><div class="cm-answer-slot"></div><p>The speaker did not expect this.</p></div>
+            <div class="cm-answer" data-match="1"><div class="cm-answer-slot"></div><p>The speaker feels the situation is bad or regrettable.</p></div>
+            <div class="cm-answer" data-match="5"><div class="cm-answer-slot"></div><p>The speaker is being very direct and honest, even if it is hard to hear.</p></div>
+            <div class="cm-answer" data-match="2"><div class="cm-answer-slot"></div><p>The speaker has heard or read this but is not completely sure it is true.</p></div>
+            <div class="cm-answer" data-match="7"><div class="cm-answer-slot"></div><p>The speaker assumes this is true based on logic, not on direct proof.</p></div>
+            <div class="cm-answer" data-match="4"><div class="cm-answer-slot"></div><p>The speaker is giving their own individual opinion.</p></div>
+            <div class="cm-answer" data-match="3"><div class="cm-answer-slot"></div><p>The speaker thinks this is obvious and easy to see.</p></div>
           </div>
+        </div>
 
-          <!-- Question 4 -->
-          <div class="question" id="q4">
-            <p class="mcq-question">4. _____, I prefer working from home on Fridays.</p>
-            <div class="options">
-              <div class="option" data-index="0">
-                <span>A. Unfortunately</span>
-              </div>
-              <div class="option" data-index="1">
-                <span>B. Presumably</span>
-              </div>
-              <div class="option" data-index="2">
-                <span>C. Personally</span>
-              </div>
-            </div>
-            <div class="feedback"></div>
-          </div>
+        <div class="cm-feedback" id="cm-comment-adverbs-feedback"></div>
 
-          <!-- Question 5 -->
-          <div class="question" id="q5">
-            <p class="mcq-question">5. _____, she did not get the promotion despite her hard work.</p>
-            <div class="options">
-              <div class="option" data-index="0">
-                <span>A. Sadly</span>
-              </div>
-              <div class="option" data-index="1">
-                <span>B. Apparently</span>
-              </div>
-              <div class="option" data-index="2">
-                <span>C. Frankly</span>
-              </div>
-            </div>
-            <div class="feedback"></div>
-          </div>
+        <div class="compact-matching-controls">
+          <button id="cm-comment-adverbs-cm-submit" class="submit-btn cm-submit-btn" data-activity="cm-comment-adverbs">Check Answers</button>
+          <button id="cm-comment-adverbs-cm-restart" class="restart-btn cm-restart-btn" data-activity="cm-comment-adverbs" style="display: none;">Try Again</button>
+          <a href="#summary" class="nav-button">Review Grammar</a>
+        </div>
 
-          <!-- Question 6 -->
-          <div class="question" id="q6">
-            <p class="mcq-question">6. The instructions are _____ not clear enough for new users.</p>
-            <div class="options">
-              <div class="option" data-index="0">
-                <span>A. fortunately</span>
-              </div>
-              <div class="option" data-index="1">
-                <span>B. obviously</span>
-              </div>
-              <div class="option" data-index="2">
-                <span>C. personally</span>
-              </div>
-            </div>
-            <div class="feedback"></div>
-          </div>
-
-          <!-- Question 7 -->
-          <div class="question" id="q7">
-            <p class="mcq-question">7. _____, the whole project needs to be redesigned from scratch.</p>
-            <div class="options">
-              <div class="option" data-index="0">
-                <span>A. Luckily</span>
-              </div>
-              <div class="option" data-index="1">
-                <span>B. Frankly</span>
-              </div>
-              <div class="option" data-index="2">
-                <span>C. Surprisingly</span>
-              </div>
-            </div>
-            <div class="feedback"></div>
-          </div>
-
-          <!-- Question 8 -->
-          <div class="question" id="q8">
-            <p class="mcq-question">8. Which sentence uses a comment adverb correctly?</p>
-            <div class="options">
-              <div class="option" data-index="0">
-                <span>A. She drove unfortunately to the airport.</span>
-              </div>
-              <div class="option" data-index="1">
-                <span>B. Unfortunately, she missed her connection.</span>
-              </div>
-              <div class="option" data-index="2">
-                <span>C. She unfortunately missed, her connection.</span>
-              </div>
-            </div>
-            <div class="feedback"></div>
-          </div>
-
-          <!-- Question 9 -->
-          <div class="question" id="q9">
-            <p class="mcq-question">9. The meeting will _____ be postponed, given the current situation.</p>
-            <div class="options">
-              <div class="option" data-index="0">
-                <span>A. sadly</span>
-              </div>
-              <div class="option" data-index="1">
-                <span>B. frankly</span>
-              </div>
-              <div class="option" data-index="2">
-                <span>C. presumably</span>
-              </div>
-            </div>
-            <div class="feedback"></div>
-          </div>
-
-          <!-- Question 10 -->
-          <div class="question" id="q10">
-            <p class="mcq-question">10. A colleague tells you: "_____, I thought the presentation went really well." Which comment adverb fits best if they want to express their honest personal opinion?</p>
-            <div class="options">
-              <div class="option" data-index="0">
-                <span>A. Apparently</span>
-              </div>
-              <div class="option" data-index="1">
-                <span>B. Evidently</span>
-              </div>
-              <div class="option" data-index="2">
-                <span>C. Honestly</span>
-              </div>
-            </div>
-            <div class="feedback"></div>
-          </div>
-
-          <div class="control-buttons">
-            <button id="mcq-submit" class="submit-btn">Check Answers</button>
-            <button id="mcq-restart" class="restart-btn">Try Again</button>
-            <a href="#summary" class="nav-button">Review Grammar</a>
-          </div>
-
-          <div class="score-display" id="mcq-score">
-            Your score: <span>0</span>/10
-          </div>
+        <div class="cm-score" id="cm-comment-adverbs-score">
+          Your score: <span>0</span>/7
         </div>
       </section>
     </main>
@@ -619,7 +485,7 @@
 
   <!-- BOTTOM NAVIGATION -->
   <nav class="bottom-navigation">
-    <a href="focusing-adverbs.html" class="nav-button previous">← Previous: Focusing Adverbs and Adverbials</a>
+    <a href="dependent-prepositions.html" class="nav-button previous">← Previous: Dependent Prepositions</a>
     <div class="center-buttons">
       <button class="nav-button print-button" onclick="window.print()">Print This Page</button>
     </div>
@@ -666,63 +532,25 @@
 
   <!-- JavaScript -->
   <script src="../../js/core.js" defer></script>
-  <script src="../../js/mcq.js" defer></script>
+  <script src="../../js/compact-matching.js" defer></script>
   <script src="../../js/drag-drop.js" defer></script>
   <script src="../../js/progress-tracking-module.js" defer></script>
 
   <!-- Activity Initialisation -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Initialize MCQ Module
-      MCQModule.init({
-        containerId: 'mcq',
-        answers: {
-          'q1': 1,
-          'q2': 2,
-          'q3': 1,
-          'q4': 2,
-          'q5': 0,
-          'q6': 1,
-          'q7': 1,
-          'q8': 1,
-          'q9': 2,
-          'q10': 2
-        },
-        correctExplanations: {
-          'q1': "That is right. <em>Fortunately</em> expresses the speaker's relief that the weather was good.",
-          'q2': "Correct. <em>Apparently</em> signals that this is second-hand information — the speaker is not completely sure.",
-          'q3': "Well done. <em>Clearly</em> shows the speaker believes the evidence is obvious and easy to see.",
-          'q4': "That is right. <em>Personally</em> introduces the speaker's individual opinion.",
-          'q5': "Correct. <em>Sadly</em> expresses the speaker's sorrow about the situation.",
-          'q6': "Well done. <em>Obviously</em> in mid position shows the speaker believes this is easy to see.",
-          'q7': "That is right. <em>Frankly</em> signals the speaker is being very direct, possibly saying something others might not want to hear.",
-          'q8': "Correct. <em>Unfortunately</em> is in front position with a comma, which is the most natural position for this comment adverb.",
-          'q9': "Well done. <em>Presumably</em> shows the speaker is making a logical assumption based on the current situation.",
-          'q10': "That is right. <em>Honestly</em> signals the speaker is emphasising their genuine, truthful opinion."
-        },
-        incorrectExplanations: {
-          'q1': "Which comment adverb expresses that the speaker considers this a lucky or positive outcome?",
-          'q2': "Which adverb suggests the speaker has heard this but is not certain it is true?",
-          'q3': "Which adverb means the speaker thinks this is obvious from the evidence?",
-          'q4': "Which adverb signals that the speaker is sharing their own personal view?",
-          'q5': "Which attitude adverb shows the speaker feels upset or sorry about what happened?",
-          'q6': "Which certainty adverb means \"it is clear\" and fits naturally in mid position?",
-          'q7': "Which adverb signals that the speaker is being blunt and honest?",
-          'q8': "Comment adverbs go in front position followed by a comma, or in mid position without a comma. Which option follows this rule?",
-          'q9': "Which adverb means the speaker is making an educated guess based on available evidence?",
-          'q10': "The speaker wants to stress they are being truthful. Which honesty adverb fits this situation?"
-        },
-        showAllQuestionsAtOnce: true,
+      // Initialize Compact Matching Module (adverb ↔ meaning)
+      CompactMatchingModule.init({
         onComplete: function(score, total) {
-          console.log(`MCQ completed with score: ${score}/${total}`);
+          console.log(`Matching completed with score: ${score}/${total}`);
 
           if (typeof ProgressTracker !== "undefined") {
-            ProgressTracker.markItemCompleted('activities', 'mcq-comment-adverbs', {
+            ProgressTracker.markItemCompleted('activities', 'matching-comment-adverbs', {
               score: score,
               maxScore: total,
               completed: true,
               completedAt: new Date().toISOString(),
-              title: "Comment Adverbs and Attitude Markers Practice"
+              title: "Comment Adverbs and Attitude Markers Matching"
             });
 
             ProgressTracker.updateItemProgress('lessons', 'comment-adverbs', {

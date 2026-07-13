@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>General English Quiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f4f6fa;
+    --surface: #ffffff;
+    --navy: #1B263B;
+    --text: #1B263B;
+    --text-mid: #4a5568;
+    --text-light: #7c879a;
+    --accent: #3498DB;
+    --accent-light: #e8f2fb;
+    --correct: #3498DB;
+    --correct-bg: #e8f2fb;
+    --incorrect: #F07D3E;
+    --incorrect-bg: #fef0e8;
+    --border: #d4dae4;
+    --option-hover: #edf1f7;
+    --selected: #3498DB;
+    --selected-bg: #e8f2fb;
+    --radius: 8px;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  header {
+    text-align: center;
+    margin: -40px -24px 48px;
+    padding: 48px 24px 36px;
+    background: var(--navy);
+    border-radius: 0 0 12px 12px;
+  }
+
+  header h1 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 8px;
+  }
+
+  header p {
+    color: rgba(255,255,255,0.75);
+    font-size: 0.95rem;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .progress-bar-container {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    padding: 12px 0 8px;
+    margin-bottom: 24px;
+  }
+
+  .progress-track {
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+
+  .progress-text {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-top: 6px;
+    text-align: right;
+  }
+
+  .question-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 28px 24px;
+    margin-bottom: 16px;
+    transition: border-color 0.2s;
+  }
+
+  .question-block.answered {
+    border-color: var(--selected);
+  }
+
+  .question-number {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+  }
+
+  .question-text {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    color: var(--text);
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .option-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: transparent;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text);
+    text-align: left;
+    transition: all 0.15s ease;
+    width: 100%;
+  }
+
+  .option-btn:hover {
+    background: var(--option-hover);
+    border-color: var(--text-light);
+  }
+
+  .option-btn.selected {
+    background: var(--selected-bg);
+    border-color: var(--selected);
+    color: var(--selected);
+    font-weight: 500;
+  }
+
+  .option-letter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    font-size: 0.8rem;
+    font-weight: 600;
+    flex-shrink: 0;
+    transition: all 0.15s ease;
+  }
+
+  .option-btn.selected .option-letter {
+    background: var(--selected);
+    color: white;
+    border-color: var(--selected);
+  }
+
+  .submit-section {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+
+  .submit-section p {
+    color: var(--text-mid);
+    margin-bottom: 16px;
+    font-size: 0.9rem;
+  }
+
+  .submit-btn {
+    display: inline-block;
+    padding: 14px 48px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+  }
+
+  .submit-btn:hover { background: #2980b9; transform: translateY(-1px); }
+  .submit-btn:disabled { background: #b0b0b0; cursor: not-allowed; transform: none; }
+
+  .unanswered-warning {
+    color: var(--incorrect);
+    font-size: 0.9rem;
+    margin-top: 12px;
+    display: none;
+  }
+
+  /* Results */
+  #results {
+    display: none;
+  }
+
+  .results-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .results-header h2 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--navy);
+  }
+
+  .score-summary {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin: 24px 0;
+    flex-wrap: wrap;
+  }
+
+  .score-box {
+    text-align: center;
+    padding: 20px 28px;
+    background: var(--navy);
+    border: none;
+    border-radius: var(--radius);
+    min-width: 140px;
+  }
+
+  .score-box .number {
+    font-family: 'Source Serif 4', serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .score-box .label {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.65);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 4px;
+  }
+
+  .diagnosis-section {
+    margin-top: 40px;
+  }
+
+  .diagnosis-section h3 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--navy);
+    color: var(--navy);
+  }
+
+  .category-result {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    margin-bottom: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    gap: 12px;
+  }
+
+  .category-name {
+    font-weight: 500;
+    font-size: 0.95rem;
+    flex: 1;
+  }
+
+  .category-score-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+
+  .mini-bar {
+    width: 80px;
+    height: 6px;
+    background: #dfe3ea;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .mini-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.5s ease;
+  }
+
+  .mini-bar-fill.strong { background: var(--correct); }
+  .mini-bar-fill.partial { background: #F07D3E; }
+  .mini-bar-fill.weak { background: var(--incorrect); }
+
+  .category-fraction {
+    font-size: 0.85rem;
+    color: var(--text-mid);
+    min-width: 36px;
+    text-align: right;
+  }
+
+  .status-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+  }
+
+  .status-badge.strong { background: var(--correct-bg); color: var(--correct); }
+  .status-badge.partial { background: #fef0e8; color: #d96a2f; }
+  .status-badge.weak { background: var(--incorrect-bg); color: var(--incorrect); }
+
+  .detail-section {
+    margin-top: 40px;
+  }
+
+  .detail-section h3 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--navy);
+    color: var(--navy);
+  }
+
+  .detail-question {
+    padding: 16px 20px;
+    margin-bottom: 8px;
+    background: var(--surface);
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+
+  .detail-question.is-correct { border-left: 3px solid var(--correct); }
+  .detail-question.is-incorrect { border-left: 3px solid var(--incorrect); }
+  .detail-question.is-skipped { border-left: 3px solid var(--border); opacity: 0.7; }
+
+  .weakness-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--incorrect);
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .weakness-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .weakness-card-header .category-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .weakness-card-header .score-tag {
+    font-size: 0.8rem;
+    color: var(--incorrect);
+    font-weight: 500;
+  }
+
+  .missed-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .missed-list li {
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    padding: 6px 0;
+    border-top: 1px solid var(--border);
+    line-height: 1.5;
+  }
+
+  .missed-list li:first-child { border-top: none; }
+
+  .missed-list .missed-correct {
+    color: var(--correct);
+    font-weight: 500;
+  }
+
+  .detail-q-text {
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+  }
+
+  .detail-answers {
+    font-size: 0.85rem;
+    color: var(--text-mid);
+  }
+
+  .detail-answers .your-answer { color: var(--incorrect); }
+  .detail-answers .correct-answer { color: var(--correct); font-weight: 500; }
+  .detail-answers .was-correct { color: var(--correct); font-weight: 500; }
+
+  .action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+
+  .summary-btn {
+    background: transparent;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+  }
+
+  .summary-btn:hover {
+    background: var(--accent) !important;
+    color: white;
+  }
+
+  .print-btn {
+    display: inline-block;
+    padding: 12px 36px;
+    background: transparent;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 32px;
+  }
+
+  .print-btn:hover { background: var(--accent); color: white; }
+
+  @media print {
+    .progress-bar-container, .submit-section, .print-btn, .action-buttons { display: none; }
+    .question-block { break-inside: avoid; }
+  }
+
+  @media (max-width: 600px) {
+    .container { padding: 24px 16px 60px; }
+    .question-block { padding: 20px 18px; }
+    header { margin: -24px -16px 36px; padding: 36px 16px 28px; }
+    header h1 { font-size: 1.6rem; }
+    .score-summary { gap: 12px; }
+    .score-box { min-width: 100px; padding: 16px 20px; }
+    .category-result { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container" id="quiz-container">
+  <header>
+    <h1>General English Quiz</h1>
+    <p>Choose the best answer for each question. Take your time — there is no time limit for individual questions.</p>
+  </header>
+
+  <div class="progress-bar-container">
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <div class="progress-text" id="progressText">0 / 45 answered</div>
+  </div>
+
+  <div id="questions"></div>
+
+  <div class="submit-section">
+    <p>When you are ready, click the button below to see your results.</p>
+    <button class="submit-btn" id="submitBtn" onclick="checkAnswers()">Check Answers</button>
+    <div class="unanswered-warning" id="warning"></div>
+  </div>
+</div>
+
+<div class="container" id="results">
+  <div class="results-header">
+    <h2>Your Results</h2>
+    <p style="color:var(--text-mid);">See how you did on each question below.</p>
+    <div class="score-summary">
+      <div class="score-box">
+        <div class="number" id="totalScore">--</div>
+        <div class="label">Score</div>
+      </div>
+      <div class="score-box">
+        <div class="number" id="totalPercent">--</div>
+        <div class="label">Percentage</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-section">
+    <h3>Question-by-Question Review</h3>
+    <div id="detailReview"></div>
+  </div>
+
+  <div class="action-buttons">
+    <button class="submit-btn" onclick="tryAgain()">Try Again</button>
+    <button class="submit-btn summary-btn" id="summaryBtn" onclick="toggleSummary()">View Summary</button>
+  </div>
+
+  <div id="summaryPanel" style="display:none;">
+    <div class="diagnosis-section">
+      <h3>Skills Overview</h3>
+      <div id="categoryResults"></div>
+    </div>
+
+    <div class="diagnosis-section">
+      <h3>Strengths</h3>
+      <div id="strengths"></div>
+    </div>
+
+    <div class="diagnosis-section">
+      <h3>Areas to Develop</h3>
+      <div id="weaknesses"></div>
+    </div>
+
+    <div style="text-align:center;">
+      <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const questions = [
+  {
+    id: 1, cat: "Present Simple – third person singular",
+    text: "My sister ______ in a hospital. She's a nurse.",
+    options: ["work", "works", "is work", "working"],
+    answer: 1
+  },
+  {
+    id: 2, cat: "Present Simple – negative form",
+    text: "I ______ coffee. I prefer tea.",
+    options: ["doesn't like", "don't like", "not like", "am not like"],
+    answer: 1
+  },
+  {
+    id: 3, cat: "Present Simple – question form (does/do)",
+    text: "______ your father drive to work every day?",
+    options: ["Is", "Do", "Does", "Has"],
+    answer: 2
+  },
+  {
+    id: 4, cat: "Present Simple – base form with plural subjects",
+    text: "We usually ______ dinner at seven o'clock.",
+    options: ["having", "has", "are have", "have"],
+    answer: 3
+  },
+  {
+    id: 5, cat: "Present Continuous – affirmative form",
+    text: "Please be quiet. The baby ______.",
+    options: ["sleeps", "is sleeping", "sleep", "sleeping"],
+    answer: 1
+  },
+  {
+    id: 6, cat: "Present Continuous – affirmative form",
+    text: "\"Where is Tom?\" \"He ______ a shower right now.\"",
+    options: ["has", "is having", "have", "having"],
+    answer: 1
+  },
+  {
+    id: 7, cat: "Present Continuous – negative form",
+    text: "They ______ TV at the moment. They're in the garden.",
+    options: ["don't watch", "aren't watching", "isn't watching", "not watching"],
+    answer: 1
+  },
+  {
+    id: 8, cat: "Present Simple vs. Continuous – temporary vs. habitual",
+    text: "I usually walk to school, but today I ______ the bus.",
+    options: ["take", "am taking", "takes", "taking"],
+    answer: 1
+  },
+  {
+    id: 9, cat: "Present Simple vs. Continuous – general facts",
+    text: "Water ______ at 100 degrees Celsius.",
+    options: ["is boiling", "boils", "boil", "are boiling"],
+    answer: 1
+  },
+  {
+    id: 10, cat: "Present Simple vs. Continuous – actions happening now",
+    text: "Look! It ______. Take an umbrella.",
+    options: ["rains", "rain", "is raining", "rained"],
+    answer: 2
+  },
+  {
+    id: 11, cat: "Past Simple – irregular verbs",
+    text: "We ______ to the cinema last Saturday.",
+    options: ["go", "goes", "went", "goed"],
+    answer: 2
+  },
+  {
+    id: 12, cat: "Past Simple – regular verbs (-ed ending)",
+    text: "She ______ her homework before dinner yesterday.",
+    options: ["finished", "finish", "finishing", "is finishing"],
+    answer: 0
+  },
+  {
+    id: 13, cat: "Past Simple – negative form (didn't + base)",
+    text: "I ______ any milk at the supermarket. They didn't have any.",
+    options: ["don't buy", "didn't bought", "didn't buy", "not buy"],
+    answer: 2
+  },
+  {
+    id: 14, cat: "Past Simple – question form (did)",
+    text: "\"______ you see the football match last night?\" \"Yes, it was great!\"",
+    options: ["Do", "Are", "Did", "Were"],
+    answer: 2
+  },
+  {
+    id: 15, cat: "Future – going to (predictions with evidence)",
+    text: "Look at those dark clouds. It ______ rain.",
+    options: ["will", "is going to", "going", "does"],
+    answer: 1
+  },
+  {
+    id: 16, cat: "Future – will (spontaneous decisions)",
+    text: "\"The phone is ringing!\" \"OK, I ______ answer it.\"",
+    options: ["am going to", "will", "going to", "am"],
+    answer: 1
+  },
+  {
+    id: 17, cat: "Future – going to (planned intentions)",
+    text: "We ______ visit our grandparents next weekend. We already have tickets.",
+    options: ["will", "going", "are going to", "go to"],
+    answer: 2
+  },
+  {
+    id: 18, cat: "Articles – a/an with jobs",
+    text: "She's ______ doctor. She works at the city hospital.",
+    options: ["a", "the", "an", "—  (no article)"],
+    answer: 0
+  },
+  {
+    id: 19, cat: "Articles – the (specific reference)",
+    text: "Can you close ______ window, please? It's cold in here.",
+    options: ["a", "an", "the", "— (no article)"],
+    answer: 2
+  },
+  {
+    id: 20, cat: "Articles – zero article (general/uncountable)",
+    text: "I love ______ chocolate. I eat it every day.",
+    options: ["a", "the", "an", "— (no article)"],
+    answer: 3
+  },
+  {
+    id: 21, cat: "Articles – the with musical instruments",
+    text: "He plays ______ guitar very well.",
+    options: ["a", "— (no article)", "the", "an"],
+    answer: 2
+  },
+  {
+    id: 22, cat: "Pronouns – object pronouns (me/her/him)",
+    text: "I saw Sarah yesterday. I gave ______ the book.",
+    options: ["she", "her", "hers", "herself"],
+    answer: 1
+  },
+  {
+    id: 23, cat: "Pronouns – possessive pronouns (mine/yours)",
+    text: "That isn't my bag. ______ is the red one over there.",
+    options: ["My", "Me", "I", "Mine"],
+    answer: 3
+  },
+  {
+    id: 24, cat: "Pronouns – subject pronouns (I/he/she)",
+    text: "Tom and ______ went to the park together.",
+    options: ["me", "my", "I", "mine"],
+    answer: 2
+  },
+  {
+    id: 25, cat: "Prepositions of time – on + days",
+    text: "The meeting is ______ Monday morning.",
+    options: ["in", "on", "at", "to"],
+    answer: 1
+  },
+  {
+    id: 26, cat: "Prepositions of time – in + years",
+    text: "She was born ______ 1998.",
+    options: ["on", "at", "in", "by"],
+    answer: 2
+  },
+  {
+    id: 27, cat: "Prepositions of place – between",
+    text: "The supermarket is ______ the bank and the post office.",
+    options: ["next", "between", "in front", "opposite to"],
+    answer: 1
+  },
+  {
+    id: 28, cat: "Prepositions of place – at + specific locations",
+    text: "I'll meet you ______ the bus stop at three o'clock.",
+    options: ["in", "on", "to", "at"],
+    answer: 3
+  },
+  {
+    id: 29, cat: "Quantifiers – any in negative sentences",
+    text: "There isn't ______ milk in the fridge.",
+    options: ["some", "any", "a", "many"],
+    answer: 1
+  },
+  {
+    id: 30, cat: "Quantifiers – much vs. many (countable nouns)",
+    text: "How ______ people are there in your class?",
+    options: ["much", "many", "lot of", "any"],
+    answer: 1
+  },
+  {
+    id: 31, cat: "Quantifiers – some in requests and offers",
+    text: "Can I have ______ water, please?",
+    options: ["any", "many", "some", "few"],
+    answer: 2
+  },
+  {
+    id: 32, cat: "Comparatives – short adjectives (-er)",
+    text: "My brother is ______ than me. He's 1.90m.",
+    options: ["tallest", "more tall", "taller", "most tall"],
+    answer: 2
+  },
+  {
+    id: 33, cat: "Superlatives – irregular forms (good → best)",
+    text: "This is ______ restaurant in the city. Everyone loves it.",
+    options: ["the best", "the better", "the goodest", "more good"],
+    answer: 0
+  },
+  {
+    id: 34, cat: "Comparatives – long adjectives (more + adjective)",
+    text: "English is ______ than I expected.",
+    options: ["difficulter", "most difficult", "more difficult", "the difficult"],
+    answer: 2
+  },
+  {
+    id: 35, cat: "Modals – mustn't (prohibition)",
+    text: "You ______ drive without a licence. It's against the law.",
+    options: ["mustn't", "don't have", "shouldn't to", "can't to"],
+    answer: 0
+  },
+  {
+    id: 36, cat: "Modals – could (polite requests)",
+    text: "______ you help me carry these bags, please?",
+    options: ["Must", "Should", "Could", "Have"],
+    answer: 2
+  },
+  {
+    id: 37, cat: "Modals – should (giving advice)",
+    text: "You look tired. You ______ go to bed early tonight.",
+    options: ["should", "must to", "can to", "have"],
+    answer: 0
+  },
+  {
+    id: 38, cat: "There is / There are – singular",
+    text: "______ a big park near my house.",
+    options: ["There are", "It is", "There is", "Is"],
+    answer: 2
+  },
+  {
+    id: 39, cat: "There is / There are – plural questions",
+    text: "\"______ any shops in your village?\" \"No, we have to drive to the next town.\"",
+    options: ["Is there", "Are there", "Have there", "There is"],
+    answer: 1
+  },
+  {
+    id: 40, cat: "Word order – past simple questions",
+    text: "Which sentence is correct?",
+    options: [
+      "Where you did go yesterday?",
+      "Where did you go yesterday?",
+      "Where did you went yesterday?",
+      "Where you went yesterday?"
+    ],
+    answer: 1
+  },
+  {
+    id: 41, cat: "Word order – adverb position with be",
+    text: "Which sentence is correct?",
+    options: [
+      "She always is late for class.",
+      "She is always late for class.",
+      "Always she is late for class.",
+      "She is late always for class."
+    ],
+    answer: 1
+  },
+  {
+    id: 42, cat: "Word order – verb + object + adverb",
+    text: "Which sentence is correct?",
+    options: [
+      "I like very much pizza.",
+      "I very much like pizza.",
+      "I like pizza very much.",
+      "Very much I like pizza."
+    ],
+    answer: 2
+  },
+  {
+    id: 43, cat: "Possessives – apostrophe s ('s)",
+    text: "That is my ______ car. He bought it last month.",
+    options: ["fathers", "father's", "fathers'", "father"],
+    answer: 1
+  },
+  {
+    id: 44, cat: "Possessives – their/there/they're",
+    text: "______ names are Anna and Peter.",
+    options: ["They", "Theirs", "Their", "There"],
+    answer: 2
+  },
+  {
+    id: 45, cat: "Verb patterns – gerund after enjoy",
+    text: "I enjoy ______ in the sea when it's warm.",
+    options: ["swim", "to swim", "swimming", "for swim"],
+    answer: 2
+  }
+];
+
+const userAnswers = {};
+
+function renderQuiz() {
+  const container = document.getElementById('questions');
+  const letters = ['A', 'B', 'C', 'D'];
+
+  questions.forEach((q, idx) => {
+    const block = document.createElement('div');
+    block.className = 'question-block';
+    block.id = `qblock-${q.id}`;
+
+    let optionsHtml = q.options.map((opt, oi) => `
+      <button class="option-btn" onclick="selectAnswer(${q.id}, ${oi}, this)" data-qid="${q.id}" data-oi="${oi}">
+        <span class="option-letter">${letters[oi]}</span>
+        <span>${opt}</span>
+      </button>
+    `).join('');
+
+    block.innerHTML = `
+      <div class="question-number">Question ${idx + 1} of ${questions.length}</div>
+      <div class="question-text">${q.text}</div>
+      <div class="options">${optionsHtml}</div>
+    `;
+
+    container.appendChild(block);
+  });
+}
+
+function selectAnswer(qid, optionIndex, btn) {
+  userAnswers[qid] = optionIndex;
+
+  const block = document.getElementById(`qblock-${qid}`);
+  block.classList.add('answered');
+  block.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+
+  updateProgress();
+}
+
+function updateProgress() {
+  const answered = Object.keys(userAnswers).length;
+  const total = questions.length;
+  const pct = (answered / total) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressText').textContent = `${answered} / ${total} answered`;
+}
+
+function checkAnswers() {
+  const answered = Object.keys(userAnswers).length;
+  const total = questions.length;
+
+  if (answered === 0) {
+    const w = document.getElementById('warning');
+    w.textContent = 'Please answer at least one question before checking.';
+    w.style.display = 'block';
+    return;
+  }
+
+  document.getElementById('warning').style.display = 'none';
+
+  let totalCorrect = 0;
+  questions.forEach(q => {
+    if (userAnswers[q.id] === q.answer) totalCorrect++;
+  });
+
+  const percent = Math.round((totalCorrect / answered) * 100);
+
+  document.getElementById('quiz-container').style.display = 'none';
+  document.getElementById('results').style.display = 'block';
+  window.scrollTo(0, 0);
+
+  document.getElementById('totalScore').textContent = `${totalCorrect} / ${answered}`;
+  document.getElementById('totalPercent').textContent = `${percent}%`;
+
+  // Question-by-question review.
+  const detailContainer = document.getElementById('detailReview');
+  detailContainer.innerHTML = '';
+  const letters = ['A', 'B', 'C', 'D'];
+
+  questions.forEach((q, idx) => {
+    const chosen = userAnswers[q.id];
+    const div = document.createElement('div');
+
+    if (chosen === undefined) {
+      div.className = 'detail-question is-skipped';
+      div.innerHTML = `
+        <div class="detail-q-text"><strong>${idx + 1}.</strong> ${q.text}</div>
+        <div class="detail-answers"><span style="color:var(--text-light);">Not answered. Correct: ${letters[q.answer]}. ${q.options[q.answer]}</span></div>
+      `;
+    } else {
+      const isCorrect = chosen === q.answer;
+      div.className = `detail-question ${isCorrect ? 'is-correct' : 'is-incorrect'}`;
+
+      let answerInfo;
+      if (isCorrect) {
+        answerInfo = `<span class="was-correct">Your answer: ${letters[chosen]}. ${q.options[chosen]} &#10003;</span>`;
+      } else {
+        answerInfo = `<span class="your-answer">Your answer: ${letters[chosen]}. ${q.options[chosen]} &#10007;</span> &nbsp;|&nbsp; <span class="correct-answer">Correct: ${letters[q.answer]}. ${q.options[q.answer]}</span>`;
+      }
+
+      div.innerHTML = `
+        <div class="detail-q-text"><strong>${idx + 1}.</strong> ${q.text}</div>
+        <div class="detail-answers">${answerInfo}</div>
+      `;
+    }
+
+    detailContainer.appendChild(div);
+  });
+}
+
+function tryAgain() {
+  // Clear answers.
+  Object.keys(userAnswers).forEach(k => delete userAnswers[k]);
+
+  // Reset UI.
+  document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+  document.querySelectorAll('.question-block').forEach(b => b.classList.remove('answered'));
+  document.getElementById('progressFill').style.width = '0%';
+  document.getElementById('progressText').textContent = `0 / ${questions.length} answered`;
+  document.getElementById('warning').style.display = 'none';
+
+  // Hide summary panel if it was open.
+  document.getElementById('summaryPanel').style.display = 'none';
+  document.getElementById('categoryResults').innerHTML = '';
+  document.getElementById('strengths').innerHTML = '';
+  document.getElementById('weaknesses').innerHTML = '';
+
+  // Switch views.
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('quiz-container').style.display = 'block';
+  window.scrollTo(0, 0);
+}
+
+function toggleSummary() {
+  const panel = document.getElementById('summaryPanel');
+  const btn = document.getElementById('summaryBtn');
+
+  if (panel.style.display === 'block') {
+    panel.style.display = 'none';
+    btn.textContent = 'View Summary';
+    return;
+  }
+
+  // Calculate by category (only answered questions).
+  const categories = {};
+  const letters = ['A', 'B', 'C', 'D'];
+
+  questions.forEach(q => {
+    if (userAnswers[q.id] === undefined) return;
+    if (!categories[q.cat]) categories[q.cat] = { correct: 0, total: 0, missed: [] };
+    categories[q.cat].total++;
+    if (userAnswers[q.id] === q.answer) {
+      categories[q.cat].correct++;
+    } else {
+      categories[q.cat].missed.push(q);
+    }
+  });
+
+  const catContainer = document.getElementById('categoryResults');
+  const strengths = document.getElementById('strengths');
+  const weaknesses = document.getElementById('weaknesses');
+  catContainer.innerHTML = '';
+  strengths.innerHTML = '';
+  weaknesses.innerHTML = '';
+
+  const catEntries = Object.entries(categories);
+  catEntries.sort((a, b) => (b[1].correct / b[1].total) - (a[1].correct / a[1].total));
+
+  const strongList = [];
+  const weakEntries = [];
+
+  catEntries.forEach(([name, data]) => {
+    const pct = Math.round((data.correct / data.total) * 100);
+    let status, barClass;
+    if (pct >= 75) { status = 'Strong'; barClass = 'strong'; }
+    else if (pct >= 50) { status = 'Developing'; barClass = 'partial'; }
+    else { status = 'Needs Work'; barClass = 'weak'; }
+
+    const row = document.createElement('div');
+    row.className = 'category-result';
+    row.innerHTML = `
+      <span class="category-name">${name}</span>
+      <div class="category-score-bar">
+        <div class="mini-bar"><div class="mini-bar-fill ${barClass}" style="width:${pct}%"></div></div>
+        <span class="category-fraction">${data.correct}/${data.total}</span>
+      </div>
+      <span class="status-badge ${barClass}">${status}</span>
+    `;
+    catContainer.appendChild(row);
+
+    if (pct >= 75) {
+      strongList.push(name);
+    } else {
+      weakEntries.push({ name, data, pct });
+    }
+  });
+
+  if (strongList.length === 0) {
+    strengths.innerHTML = '<p style="color:var(--text-mid);padding:12px 0;">Keep practising — strengths will develop as you work on the areas below.</p>';
+  } else {
+    strengths.innerHTML = strongList.map(s =>
+      `<div class="category-result" style="border-left:3px solid var(--correct);">
+        <span class="category-name">${s}</span>
+        <span style="color:var(--correct);font-size:0.85rem;">&#10003; Good understanding.</span>
+      </div>`
+    ).join('');
+  }
+
+  if (weakEntries.length === 0) {
+    weaknesses.innerHTML = '<p style="color:var(--text-mid);padding:12px 0;">Great work — no major areas of concern.</p>';
+  } else {
+    weaknesses.innerHTML = weakEntries.map(({ name, data, pct }) => {
+      const missedItems = data.missed.map(q => {
+        const qIdx = questions.indexOf(q) + 1;
+        const chosen = userAnswers[q.id];
+        return `<li>Q${qIdx}: ${q.text.replace('______', '______')}<br><span class="your-answer">Answered: ${q.options[chosen]}</span> → <span class="missed-correct">Correct: ${q.options[q.answer]}</span></li>`;
+      }).join('');
+
+      return `<div class="weakness-card">
+        <div class="weakness-card-header">
+          <span class="category-name">${name}</span>
+          <span class="score-tag">${data.correct}/${data.total} correct</span>
+        </div>
+        <ul class="missed-list">${missedItems}</ul>
+      </div>`;
+    }).join('');
+  }
+
+  panel.style.display = 'block';
+  btn.textContent = 'Hide Summary';
+  panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+renderQuiz();
+</script>
+</body>
+</html>

@@ -14,6 +14,7 @@ const CompactMatchingModule = (function() {
   // Touch support variables
   let touchClone = null;
   let currentDropTarget = null;
+  let buttonsBound = false;
   
   // Configuration
   let config = {
@@ -45,16 +46,26 @@ const CompactMatchingModule = (function() {
     console.log(`CompactMatchingModule: Found ${activityElements.length} activities`);
     
     activityElements.forEach(activity => {
-      initActivity(activity);
-      activities[activity.id] = {
-        element: activity,
-        checked: false,
-        score: 0
-      };
+      // Guard against double-initialization (auto-init + explicit init):
+      // only bind drag/tap listeners once per activity element.
+      if (!activity.dataset.cmInitialized) {
+        initActivity(activity);
+        activity.dataset.cmInitialized = 'true';
+      }
+      if (!activities[activity.id]) {
+        activities[activity.id] = {
+          element: activity,
+          checked: false,
+          score: 0
+        };
+      }
     });
-    
-    // Set up button listeners
-    setupButtonListeners();
+
+    // Set up button listeners (once only)
+    if (!buttonsBound) {
+      setupButtonListeners();
+      buttonsBound = true;
+    }
   }
   
   // ===== Private Methods =====
