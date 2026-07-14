@@ -81,6 +81,13 @@
     transition:background 0.5s ease, color 0.5s ease;
   }
 
+  /* Light theme uses an underwater illustration as the backdrop */
+  [data-theme="light"] body{
+    background:
+      linear-gradient(rgba(240,235,228,0.35), rgba(240,235,228,0.35)),
+      url("taboo-bg-light.png") center center / cover no-repeat fixed;
+  }
+
   /* === BACKGROUND DECORATIONS === */
   body::before{
     content:'';position:fixed;inset:0;z-index:0;pointer-events:none;

@@ -123,6 +123,41 @@
 
   .field-note { font-weight: 400; color: var(--text-light); }
 
+  /* Resume banner */
+  .resume-banner {
+    background: var(--accent-light);
+    border: 1px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .resume-banner p {
+    color: var(--navy);
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+  }
+
+  .btn-row {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .link-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-mid);
+    text-decoration: underline;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
   .progress-bar-container {
     position: sticky;
     top: 0;
@@ -257,6 +292,38 @@
     border-color: var(--selected);
   }
 
+  /* Answer reveal (student checking their own answers) */
+  .options.checked .option-btn { pointer-events: none; cursor: default; }
+
+  .option-btn.reveal-correct {
+    background: var(--correct-bg);
+    border-color: var(--correct);
+    color: var(--correct);
+    font-weight: 500;
+  }
+  .option-btn.reveal-correct .option-letter {
+    background: var(--correct);
+    color: #fff;
+    border-color: var(--correct);
+  }
+  .option-btn.reveal-wrong {
+    background: var(--incorrect-bg);
+    border-color: var(--incorrect);
+    color: var(--incorrect);
+    font-weight: 500;
+  }
+  .option-btn.reveal-wrong .option-letter {
+    background: var(--incorrect);
+    color: #fff;
+    border-color: var(--incorrect);
+  }
+  .reveal-mark {
+    margin-left: auto;
+    font-weight: 700;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
   .submit-section {
     text-align: center;
     margin-top: 32px;
@@ -272,7 +339,7 @@
 
   .submit-btn {
     display: inline-block;
-    padding: 14px 48px;
+    padding: 14px 40px;
     background: var(--accent);
     color: white;
     border: none;
@@ -288,6 +355,14 @@
   .submit-btn:hover { background: #2980b9; transform: translateY(-1px); }
   .submit-btn:disabled { background: #b0b0b0; cursor: not-allowed; transform: none; }
 
+  .continue-btn {
+    background: transparent;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    padding: 12px 38px;
+  }
+  .continue-btn:hover { background: var(--accent); color: #fff; }
+
   .unanswered-warning {
     color: var(--incorrect);
     font-size: 0.9rem;
@@ -295,10 +370,59 @@
     display: none;
   }
 
-  /* Interstitial + final */
-  #interstitial, #results { display: none; }
+  /* Choice section (Submit OR Continue) */
+  .choice-section {
+    text-align: center;
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    display: none;
+  }
 
-  .interstitial-card, .final-card {
+  .part-score {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .part-score-sub {
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    margin-bottom: 24px;
+  }
+
+  .choice-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+
+  .or-divider {
+    font-weight: 600;
+    color: var(--text-light);
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+  }
+
+  .sent-note {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-top: 20px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .sent-note.ok { color: var(--correct); }
+  .sent-note.err { color: var(--incorrect); }
+
+  /* Final / thank-you */
+  #results { display: none; }
+
+  .final-card {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -319,7 +443,7 @@
     margin: 0 auto 20px;
   }
 
-  .interstitial-card h2, .final-card h2 {
+  .final-card h2 {
     font-family: 'Source Serif 4', serif;
     font-size: 1.5rem;
     font-weight: 600;
@@ -327,7 +451,7 @@
     margin-bottom: 10px;
   }
 
-  .interstitial-card p, .final-card p {
+  .final-card p {
     color: var(--text-mid);
     font-size: 0.95rem;
     margin-bottom: 24px;
@@ -341,7 +465,7 @@
     padding: 22px 40px;
     background: var(--navy);
     border-radius: var(--radius);
-    margin: 8px 0 28px;
+    margin: 8px 0 12px;
   }
 
   .final-score .number {
@@ -360,22 +484,27 @@
   }
 
   .send-status {
-    font-size: 0.85rem;
-    color: var(--text-light);
+    font-size: 0.9rem;
+    color: var(--incorrect);
     margin-top: 14px;
     min-height: 20px;
+    max-width: 440px;
+    margin-left: auto;
+    margin-right: auto;
   }
+
+  #retryWrap { display: none; margin-top: 20px; }
 
   .spinner {
     display: inline-block;
     width: 16px;
     height: 16px;
-    border: 2px solid var(--border);
-    border-top-color: var(--accent);
+    border: 2px solid rgba(255,255,255,0.5);
+    border-top-color: #fff;
     border-radius: 50%;
     animation: spin 0.7s linear infinite;
     vertical-align: -3px;
-    margin-right: 6px;
+    margin-right: 8px;
   }
 
   @keyframes spin { to { transform: rotate(360deg); } }
@@ -385,6 +514,7 @@
     .question-block { padding: 20px 18px; }
     header { margin: -24px -16px 36px; padding: 36px 16px 28px; }
     header h1 { font-size: 1.6rem; }
+    .submit-btn, .continue-btn { width: 100%; }
   }
 </style>
 </head>
@@ -394,12 +524,21 @@
 <div class="container" id="start-screen">
   <header>
     <h1>General English Diagnostic</h1>
-    <p>A short placement check in five parts. Answer honestly &mdash; there are no results to see; your teacher reviews them afterwards.</p>
+    <p>A short placement check in five parts. You&rsquo;ll be able to check your own answers as you go; your teacher receives the full breakdown.</p>
   </header>
+
+  <!-- Shown only if saved progress is found on this device -->
+  <div class="resume-banner" id="resumeBanner" style="display:none;">
+    <p id="resumeText"></p>
+    <div class="btn-row">
+      <button class="submit-btn" onclick="resumeQuiz()">Resume</button>
+      <button class="link-btn" onclick="startOver()">Start over</button>
+    </div>
+  </div>
 
   <div class="start-card">
     <h2>Before you begin</h2>
-    <p>Please enter your name so your teacher knows whose answers these are. The quiz has 5 short sections. You can&rsquo;t go back once a section is finished, so take your time.</p>
+    <p>Enter your name so your teacher knows whose answers these are. Your progress saves automatically on this device, so you can stop after any part and come back later to finish.</p>
 
     <div class="field">
       <label for="studentName">Your full name</label>
@@ -415,10 +554,10 @@
   </div>
 </div>
 
-<!-- ============ QUIZ (one section at a time) ============ -->
+<!-- ============ QUIZ (one part at a time) ============ -->
 <div class="container" id="quiz-container" style="display:none;">
   <div class="progress-bar-container">
-    <div class="section-label" id="sectionLabel">Section 1 of 5</div>
+    <div class="section-label" id="sectionLabel">Part 1 of 5</div>
     <div class="progress-track">
       <div class="progress-fill" id="progressFill"></div>
     </div>
@@ -429,44 +568,50 @@
 
   <div id="questions"></div>
 
-  <div class="submit-section">
-    <p id="finishHint">Answer every question, then finish this section.</p>
-    <button class="submit-btn" id="finishBtn" onclick="finishSection()">Finish Section</button>
+  <!-- Step 1: check answers -->
+  <div class="submit-section" id="checkSection">
+    <p>Answer every question in this part, then check your answers.</p>
+    <button class="submit-btn" id="checkBtn" onclick="checkAnswers()">Check Answers</button>
     <div class="unanswered-warning" id="warning"></div>
   </div>
-</div>
 
-<!-- ============ BETWEEN-SECTION SCREEN ============ -->
-<div class="container" id="interstitial">
-  <div class="interstitial-card">
-    <div class="check-circle">&#10003;</div>
-    <h2 id="interTitle">Section complete</h2>
-    <p id="interText">Your answers for this section have been sent to your teacher. Ready for the next part?</p>
-    <button class="submit-btn" id="continueBtn" onclick="continueNext()">Continue</button>
-    <div class="send-status" id="interStatus"></div>
+  <!-- Step 2: submit OR continue -->
+  <div class="choice-section" id="choiceSection">
+    <div class="part-score" id="partScore"></div>
+    <div class="part-score-sub" id="partScoreSub"></div>
+    <div class="choice-row">
+      <button class="submit-btn" id="submitBtn" onclick="submitToTeacher()">Submit results to teacher</button>
+      <span class="or-divider" id="orDivider">OR</span>
+      <button class="submit-btn continue-btn" id="continueBtn" onclick="goToNextPart()">Go to next part →</button>
+    </div>
+    <div class="sent-note" id="sentNote" style="display:none;"></div>
   </div>
 </div>
 
-<!-- ============ FINAL SCREEN ============ -->
+<!-- ============ THANK-YOU / RESULTS SCREEN ============ -->
 <div class="container" id="results">
   <div class="final-card">
     <div class="check-circle">&#10003;</div>
     <h2>Thank you!</h2>
-    <p>You&rsquo;ve finished all five sections. Your full diagnostic has been sent to your teacher, who will go through it with you.</p>
+    <p>Your results have been sent to your teacher, who will go through them with you.</p>
     <div class="final-score">
       <div class="number" id="finalScore">--</div>
       <div class="label">Your score</div>
     </div>
     <div class="send-status" id="finalStatus"></div>
+    <div id="retryWrap">
+      <button class="submit-btn" id="retryBtn" onclick="retrySubmit()">Try sending again</button>
+    </div>
   </div>
 </div>
 
 <script>
 /* =========================================================================
    TEACHER SETTINGS
-   Results are emailed to you via Web3Forms (https://web3forms.com).
-   The access key below is tied to your email. To change the destination
-   email, get a new free key at web3forms.com and replace this value.
+   Results are emailed to you via Web3Forms (https://web3forms.com) when the
+   student presses "Submit results to teacher". The access key below is tied
+   to your email. To change the destination email, get a new free key at
+   web3forms.com and replace this value.
    ========================================================================= */
 const WEB3FORMS_ACCESS_KEY = "66254e2e-3987-48e3-9173-c2ff7ce7d576";
 
@@ -520,7 +665,7 @@ const questions = [
   { id: 45, cat: "Verb patterns (gerunds & infinitives)", focus: "gerund after 'enjoy'", text: "I enjoy ______ in the sea when it's warm.", options: ["swim", "to swim", "swimming", "for swim"], answer: 2 }
 ];
 
-// Section boundaries use array slice bounds [start, end). 8–10 questions each.
+// Part boundaries use array slice bounds [start, end). 8–10 questions each.
 const sections = [
   { title: "Part 1 — Present Tenses", start: 0, end: 10 },
   { title: "Part 2 — Past, Future & Articles", start: 10, end: 19 },
@@ -529,15 +674,77 @@ const sections = [
   { title: "Part 5 — Sentence Structure & Possessives", start: 37, end: 45 }
 ];
 
+const STORAGE_KEY = 'englishDiagnosticProgress_v1';
 const LETTERS = ['A', 'B', 'C', 'D'];
 const userAnswers = {};
-let currentSection = 0;
+let currentPart = 0;
 let student = { name: '', group: '' };
+let partChecked = false;
 
 function sectionQuestions(i) {
   return questions.slice(sections[i].start, sections[i].end);
 }
 
+/* ---------- Progress saving (this browser / device only) ---------- */
+function saveProgress() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      name: student.name,
+      group: student.group,
+      answers: userAnswers,
+      currentPart: currentPart,
+      updated: Date.now()
+    }));
+  } catch (e) { /* storage unavailable (e.g. private mode) — carry on in memory */ }
+}
+
+function loadProgress() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)); }
+  catch (e) { return null; }
+}
+
+function clearProgress() {
+  try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+}
+
+function initResume() {
+  const saved = loadProgress();
+  if (saved && saved.answers && Object.keys(saved.answers).length > 0) {
+    const done = Object.keys(saved.answers).length;
+    document.getElementById('resumeText').textContent =
+      `Welcome back${saved.name ? ', ' + saved.name : ''}! You have saved progress on this device ` +
+      `(${done} question${done === 1 ? '' : 's'} answered, up to Part ${(saved.currentPart || 0) + 1}). ` +
+      `Continue where you left off?`;
+    document.getElementById('resumeBanner').style.display = 'block';
+    // Pre-fill the name field too, in case they choose to start over.
+    document.getElementById('studentName').value = saved.name || '';
+    document.getElementById('studentClass').value = saved.group || '';
+  }
+}
+
+function resumeQuiz() {
+  const saved = loadProgress();
+  if (!saved) return;
+  student.name = saved.name || '';
+  student.group = saved.group || '';
+  Object.assign(userAnswers, saved.answers || {});
+  currentPart = saved.currentPart || 0;
+  document.getElementById('start-screen').style.display = 'none';
+  document.getElementById('quiz-container').style.display = 'block';
+  renderPart(currentPart);
+}
+
+function startOver() {
+  clearProgress();
+  for (const k in userAnswers) delete userAnswers[k];
+  currentPart = 0;
+  document.getElementById('resumeBanner').style.display = 'none';
+  document.getElementById('studentName').value = '';
+  document.getElementById('studentClass').value = '';
+  document.getElementById('studentName').focus();
+}
+
+/* ---------- Quiz flow ---------- */
 function startQuiz() {
   const nameInput = document.getElementById('studentName');
   const name = nameInput.value.trim();
@@ -548,18 +755,21 @@ function startQuiz() {
   }
   student.name = name;
   student.group = document.getElementById('studentClass').value.trim();
+  currentPart = 0;
+  saveProgress();
 
   document.getElementById('start-screen').style.display = 'none';
   document.getElementById('quiz-container').style.display = 'block';
-  renderSection(0);
+  renderPart(0);
 }
 
-function renderSection(i) {
-  currentSection = i;
+function renderPart(i) {
+  currentPart = i;
+  partChecked = false;
   const sec = sections[i];
   const qs = sectionQuestions(i);
 
-  document.getElementById('sectionLabel').textContent = `Section ${i + 1} of ${sections.length}`;
+  document.getElementById('sectionLabel').textContent = `Part ${i + 1} of ${sections.length}`;
   document.getElementById('sectionTitle').textContent = sec.title;
 
   const container = document.getElementById('questions');
@@ -574,7 +784,7 @@ function renderSection(i) {
     const optionsHtml = q.options.map((opt, oi) => `
       <button class="option-btn ${userAnswers[q.id] === oi ? 'selected' : ''}" onclick="selectAnswer(${q.id}, ${oi}, this)">
         <span class="option-letter">${LETTERS[oi]}</span>
-        <span>${opt}</span>
+        <span class="option-text">${opt}</span>
       </button>
     `).join('');
 
@@ -586,15 +796,21 @@ function renderSection(i) {
     container.appendChild(block);
   });
 
-  const isLast = i === sections.length - 1;
-  document.getElementById('finishBtn').textContent = isLast ? 'Finish & Submit' : `Finish Section ${i + 1}`;
+  // Reset the two step-sections.
+  const checkSection = document.getElementById('checkSection');
+  checkSection.style.display = 'block';
+  const checkBtn = document.getElementById('checkBtn');
+  checkBtn.disabled = false;
+  checkBtn.textContent = 'Check Answers';
   document.getElementById('warning').style.display = 'none';
+  document.getElementById('choiceSection').style.display = 'none';
 
   updateProgress();
   window.scrollTo(0, 0);
 }
 
 function selectAnswer(qid, optionIndex, btn) {
+  if (partChecked) return; // answers locked after checking
   userAnswers[qid] = optionIndex;
   const block = document.getElementById(`qblock-${qid}`);
   block.classList.add('answered');
@@ -602,103 +818,108 @@ function selectAnswer(qid, optionIndex, btn) {
   btn.classList.add('selected');
   document.getElementById('warning').style.display = 'none';
   updateProgress();
+  saveProgress();
 }
 
-function answeredInSection(i) {
+function answeredInPart(i) {
   return sectionQuestions(i).filter(q => userAnswers[q.id] !== undefined).length;
 }
 
 function updateProgress() {
-  const total = sectionQuestions(currentSection).length;
-  const answered = answeredInSection(currentSection);
+  const total = sectionQuestions(currentPart).length;
+  const answered = answeredInPart(currentPart);
   document.getElementById('progressFill').style.width = (answered / total) * 100 + '%';
   document.getElementById('progressText').textContent = `${answered} / ${total} answered`;
 }
 
-async function finishSection() {
-  const total = sectionQuestions(currentSection).length;
-  const answered = answeredInSection(currentSection);
+function checkAnswers() {
+  const qs = sectionQuestions(currentPart);
+  const answered = answeredInPart(currentPart);
 
-  if (answered < total) {
+  if (answered < qs.length) {
     const w = document.getElementById('warning');
-    w.textContent = `Please answer all ${total} questions before finishing (${total - answered} left).`;
+    w.textContent = `Please answer all ${qs.length} questions first (${qs.length - answered} left).`;
     w.style.display = 'block';
     return;
   }
 
-  const btn = document.getElementById('finishBtn');
-  btn.disabled = true;
-  btn.textContent = 'Saving…';
-
-  const isLast = currentSection === sections.length - 1;
-
-  // Send this section's results silently, then move on regardless of outcome.
-  const result = await sendSection(currentSection);
-
-  if (isLast) {
-    showFinal(result);
-  } else {
-    showInterstitial(currentSection, result);
-  }
-}
-
-function buildSectionReport(i) {
-  const sec = sections[i];
-  const qs = sectionQuestions(i);
+  // Reveal correctness for THIS part only — the student's own results,
+  // not the topic diagnosis (that goes only to the teacher).
   let correct = 0;
-  const lines = [];
-
-  qs.forEach((q, idx) => {
+  qs.forEach(q => {
+    const block = document.getElementById(`qblock-${q.id}`);
+    const opts = block.querySelectorAll('.option-btn');
+    block.querySelector('.options').classList.add('checked');
     const chosen = userAnswers[q.id];
-    const isCorrect = chosen === q.answer;
-    if (isCorrect) correct++;
-    const mark = isCorrect ? 'CORRECT' : 'WRONG';
-    let line = `${sections[i].start + idx + 1}. [${mark}] ${q.cat} — ${q.focus}\n`;
-    line += `    Q: ${q.text.replace(/\s+/g, ' ')}\n`;
-    line += `    Answered: ${LETTERS[chosen]}. ${q.options[chosen]}`;
-    if (!isCorrect) line += `   |   Correct: ${LETTERS[q.answer]}. ${q.options[q.answer]}`;
-    lines.push(line);
-  });
-
-  // Running totals across all sections completed so far.
-  let runCorrect = 0, runTotal = 0;
-  for (let s = 0; s <= i; s++) {
-    sectionQuestions(s).forEach(q => {
-      if (userAnswers[q.id] !== undefined) {
-        runTotal++;
-        if (userAnswers[q.id] === q.answer) runCorrect++;
+    opts.forEach((btn, oi) => {
+      btn.classList.remove('selected');
+      if (oi === q.answer) {
+        btn.classList.add('reveal-correct');
+        btn.insertAdjacentHTML('beforeend', '<span class="reveal-mark">&#10003;</span>');
+      } else if (oi === chosen) {
+        btn.classList.add('reveal-wrong');
+        btn.insertAdjacentHTML('beforeend', '<span class="reveal-mark">&#10007;</span>');
       }
     });
+    if (chosen === q.answer) correct++;
+  });
+  partChecked = true;
+
+  document.getElementById('checkSection').style.display = 'none';
+
+  document.getElementById('partScore').textContent =
+    `You got ${correct} out of ${qs.length} correct in this part.`;
+
+  const isLast = currentPart === sections.length - 1;
+  document.getElementById('partScoreSub').textContent = isLast
+    ? 'That was the last part. Submit your results to your teacher below.'
+    : 'You can send your results to your teacher now and still carry on to the next part afterwards.';
+
+  // Reset the submit button + confirmation for a fresh (cumulative) send.
+  const sb = document.getElementById('submitBtn');
+  sb.disabled = false;
+  sb.textContent = 'Submit results to teacher';
+  document.getElementById('sentNote').style.display = 'none';
+
+  const cont = document.getElementById('continueBtn');
+  const orD = document.getElementById('orDivider');
+  if (isLast) {
+    cont.style.display = 'none';
+    orD.style.display = 'none';
+  } else {
+    cont.style.display = 'inline-block';
+    orD.style.display = 'inline-block';
+    cont.textContent = `Go to Part ${currentPart + 2}/${sections.length} →`;
   }
 
-  const header =
-    `Student: ${student.name}` + (student.group ? `  (${student.group})` : '') + `\n` +
-    `Section ${i + 1} of ${sections.length}: ${sec.title}\n` +
-    `Section score: ${correct} / ${qs.length}\n` +
-    `Running total so far: ${runCorrect} / ${runTotal}\n` +
-    `Submitted: ${new Date().toLocaleString()}\n` +
-    `----------------------------------------\n`;
-
-  return {
-    correct,
-    total: qs.length,
-    runCorrect,
-    runTotal,
-    message: header + lines.join('\n')
-  };
+  const choice = document.getElementById('choiceSection');
+  choice.style.display = 'block';
+  choice.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// Full diagnosis grouped by grammar topic — sent as the final (5th) email.
+function goToNextPart() {
+  const next = currentPart + 1;
+  currentPart = next;
+  saveProgress();
+  renderPart(next);
+}
+
+/* ---------- Sending to the teacher ---------- */
 function padDots(label, width) {
   const dots = Math.max(1, width - label.length);
   return label + ' ' + '.'.repeat(dots) + ' ';
 }
 
+function labelPartsDone(n) {
+  return n <= 1 ? `Part ${n}` : `Parts 1–${n}`;
+}
+
+// Full diagnosis grouped by grammar topic — covers every question answered so far.
 function buildConsolidatedReport() {
-  // Preserve the order topics first appear in.
   const order = [];
   const groups = {};
   questions.forEach(q => {
+    if (userAnswers[q.id] === undefined) return; // only questions the student answered
     if (!groups[q.cat]) { groups[q.cat] = { correct: 0, total: 0, missed: [] }; order.push(q.cat); }
     groups[q.cat].total++;
     if (userAnswers[q.id] === q.answer) groups[q.cat].correct++;
@@ -711,7 +932,10 @@ function buildConsolidatedReport() {
   });
   const pct = total ? Math.round((correct / total) * 100) : 0;
 
-  const width = Math.max(...order.map(c => c.length)) + 2;
+  const partsDone = sections.filter((s, i) =>
+    sectionQuestions(i).every(q => userAnswers[q.id] !== undefined)).length;
+
+  const width = order.length ? Math.max(...order.map(c => c.length)) + 2 : 10;
 
   const scoreTable = order.map(cat => {
     const g = groups[cat];
@@ -724,7 +948,9 @@ function buildConsolidatedReport() {
 
   const weakTopics = order.filter(cat => groups[cat].missed.length > 0);
   let review;
-  if (weakTopics.length === 0) {
+  if (order.length === 0) {
+    review = '(no questions answered)';
+  } else if (weakTopics.length === 0) {
     review = 'No mistakes — everything correct. 🎉';
   } else {
     review = weakTopics.map(cat => {
@@ -732,19 +958,24 @@ function buildConsolidatedReport() {
       const items = g.missed.map(q => {
         const chosen = userAnswers[q.id];
         const qNum = questions.indexOf(q) + 1;
-        const ans = chosen === undefined ? '(not answered)' : `${LETTERS[chosen]}. ${q.options[chosen]}`;
         return `   • Q${qNum} (${q.focus}): "${q.text.replace(/\s+/g, ' ')}"\n` +
-               `       answered ${ans}  →  correct ${LETTERS[q.answer]}. ${q.options[q.answer]}`;
+               `       answered ${LETTERS[chosen]}. ${q.options[chosen]}  →  correct ${LETTERS[q.answer]}. ${q.options[q.answer]}`;
       }).join('\n');
       return `${cat}  (${g.correct}/${g.total})\n${items}`;
     }).join('\n\n');
   }
 
+  const partialNote = partsDone < sections.length
+    ? `NOTE: Submitted after completing ${partsDone} of ${sections.length} parts.\n`
+    : '';
+
   const message =
     `FULL DIAGNOSTIC RESULT\n` +
     `========================================\n` +
     `Student: ${student.name}` + (student.group ? `  (${student.group})` : '') + `\n` +
-    `Completed: ${new Date().toLocaleString()}\n` +
+    `Submitted: ${new Date().toLocaleString()}\n` +
+    `Parts completed: ${partsDone} of ${sections.length}\n` +
+    partialNote +
     `OVERALL SCORE: ${correct} / ${total}  (${pct}%)\n\n` +
     `SCORE BY TOPIC\n` +
     `----------------------------------------\n` +
@@ -753,41 +984,21 @@ function buildConsolidatedReport() {
     `----------------------------------------\n` +
     `${review}\n`;
 
-  return { correct, total, pct, message };
+  return { correct, total, pct, partsDone, message };
 }
 
-async function sendSection(i) {
-  const isLast = i === sections.length - 1;
-  const sec = sections[i];
-
-  let payload, report;
-  if (isLast) {
-    // Final email = consolidated full diagnosis grouped by topic.
-    report = buildConsolidatedReport();
-    payload = {
-      access_key: WEB3FORMS_ACCESS_KEY,
-      subject: `Diagnostic — ${student.name} — FINAL (${report.correct}/${report.total}, ${report.pct}%)`,
-      from_name: "English Diagnostic Quiz",
-      student: student.name,
-      group: student.group || "—",
-      section: "FINAL — full diagnosis",
-      overall_score: `${report.correct} / ${report.total} (${report.pct}%)`,
-      message: report.message
-    };
-  } else {
-    report = buildSectionReport(i);
-    payload = {
-      access_key: WEB3FORMS_ACCESS_KEY,
-      subject: `Diagnostic — ${student.name} — Section ${i + 1}/${sections.length} (${report.correct}/${report.total})`,
-      from_name: "English Diagnostic Quiz",
-      student: student.name,
-      group: student.group || "—",
-      section: `${i + 1} of ${sections.length} — ${sec.title}`,
-      section_score: `${report.correct} / ${report.total}`,
-      running_total: `${report.runCorrect} / ${report.runTotal}`,
-      message: report.message
-    };
-  }
+async function sendToTeacher() {
+  const report = buildConsolidatedReport();
+  const payload = {
+    access_key: WEB3FORMS_ACCESS_KEY,
+    subject: `Diagnostic — ${student.name} — ${report.partsDone}/${sections.length} parts (${report.correct}/${report.total}, ${report.pct}%)`,
+    from_name: "English Diagnostic Quiz",
+    student: student.name,
+    group: student.group || "—",
+    parts_completed: `${report.partsDone} of ${sections.length}`,
+    overall_score: `${report.correct} / ${report.total} (${report.pct}%)`,
+    message: report.message
+  };
 
   try {
     const res = await fetch("https://api.web3forms.com/submit", {
@@ -802,51 +1013,74 @@ async function sendSection(i) {
   }
 }
 
-function showInterstitial(i, result) {
-  document.getElementById('quiz-container').style.display = 'none';
-  document.getElementById('interstitial').style.display = 'block';
+async function submitToTeacher() {
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>Sending…';
 
-  document.getElementById('interTitle').textContent = `Section ${i + 1} complete`;
-  document.getElementById('interText').textContent =
-    'Your answers for this section have been sent to your teacher. Ready for the next part?';
-  document.getElementById('continueBtn').textContent = `Continue to Section ${i + 2}`;
-  document.getElementById('continueBtn').dataset.next = i + 1;
+  const result = await sendToTeacher();
+  const isLast = currentPart === sections.length - 1;
 
-  const status = document.getElementById('interStatus');
-  status.textContent = result.ok ? '' : 'Note: your answers are saved and will be sent when possible.';
+  // Only clear saved progress when the student is truly finished (last part sent OK),
+  // so submitting early doesn't wipe the answers they still need to continue.
+  if (result.ok && isLast) clearProgress();
 
-  window.scrollTo(0, 0);
+  if (isLast) {
+    btn.disabled = false;
+    btn.textContent = 'Submit results to teacher';
+    showThankYou(result);
+    return;
+  }
+
+  // Non-final submit: confirm inline and let them carry on to the next part.
+  const note = document.getElementById('sentNote');
+  if (result.ok) {
+    note.className = 'sent-note ok';
+    note.innerHTML = `&#10003; Sent to your teacher (${labelPartsDone(result.report.partsDone)}). ` +
+      `You can continue to the next part, or you're all done for now — it's up to you.`;
+    btn.textContent = 'Sent ✓';
+    btn.disabled = true;
+  } else {
+    note.className = 'sent-note err';
+    note.textContent = 'We couldn\'t reach the server just now. Your progress is saved on this device — ' +
+      'please try again, or carry on and submit later.';
+    btn.textContent = 'Submit results to teacher';
+    btn.disabled = false;
+  }
+  note.style.display = 'block';
 }
 
-function continueNext() {
-  const next = parseInt(document.getElementById('continueBtn').dataset.next, 10);
-  document.getElementById('interstitial').style.display = 'none';
-  document.getElementById('quiz-container').style.display = 'block';
-  document.getElementById('finishBtn').disabled = false;
-  renderSection(next);
-}
-
-function showFinal(result) {
+function showThankYou(result) {
   document.getElementById('quiz-container').style.display = 'none';
-  document.getElementById('interstitial').style.display = 'none';
   document.getElementById('results').style.display = 'block';
 
-  // Total across the whole quiz.
-  let correct = 0, total = 0;
-  questions.forEach(q => {
-    if (userAnswers[q.id] !== undefined) {
-      total++;
-      if (userAnswers[q.id] === q.answer) correct++;
-    }
-  });
-  const pct = total ? Math.round((correct / total) * 100) : 0;
+  const r = result.report;
+  document.getElementById('finalScore').textContent = `${r.correct} / ${r.total}  (${r.pct}%)`;
 
-  document.getElementById('finalScore').textContent = `${correct} / ${total}  (${pct}%)`;
   const status = document.getElementById('finalStatus');
-  status.textContent = result.ok ? '' : 'Your results are saved on this device and will reach your teacher shortly.';
+  status.textContent = result.ok ? '' :
+    'We couldn\'t reach the server just now. Your progress is safely saved on this device — ' +
+    'please tell your teacher, or press "Try sending again".';
+  document.getElementById('retryWrap').style.display = result.ok ? 'none' : 'block';
 
   window.scrollTo(0, 0);
 }
+
+async function retrySubmit() {
+  const btn = document.getElementById('retryBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>Sending…';
+
+  const result = await sendToTeacher();
+  if (result.ok) clearProgress();
+
+  btn.disabled = false;
+  btn.textContent = 'Try sending again';
+  showThankYou(result);
+}
+
+// Check for saved progress as soon as the page loads.
+initResume();
 </script>
 </body>
 </html>
