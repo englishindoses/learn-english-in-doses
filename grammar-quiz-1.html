@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>General English Diagnostic</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f4f6fa;
+    --surface: #ffffff;
+    --navy: #1B263B;
+    --text: #1B263B;
+    --text-mid: #4a5568;
+    --text-light: #7c879a;
+    --accent: #3498DB;
+    --accent-light: #e8f2fb;
+    --correct: #3498DB;
+    --correct-bg: #e8f2fb;
+    --incorrect: #F07D3E;
+    --incorrect-bg: #fef0e8;
+    --border: #d4dae4;
+    --option-hover: #edf1f7;
+    --selected: #3498DB;
+    --selected-bg: #e8f2fb;
+    --radius: 8px;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  header {
+    text-align: center;
+    margin: -40px -24px 48px;
+    padding: 48px 24px 36px;
+    background: var(--navy);
+    border-radius: 0 0 12px 12px;
+  }
+
+  header h1 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 8px;
+  }
+
+  header p {
+    color: rgba(255,255,255,0.75);
+    font-size: 0.95rem;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* Start screen */
+  #start-screen { display: block; }
+
+  .start-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px 28px;
+    text-align: center;
+  }
+
+  .start-card h2 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+
+  .start-card p {
+    color: var(--text-mid);
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+  }
+
+  .field {
+    text-align: left;
+    max-width: 420px;
+    margin: 0 auto 18px;
+  }
+
+  .field label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-mid);
+    margin-bottom: 6px;
+  }
+
+  .field input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text);
+    background: var(--bg);
+  }
+
+  .field input:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: #fff;
+  }
+
+  .field-note { font-weight: 400; color: var(--text-light); }
+
+  .progress-bar-container {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    padding: 12px 0 8px;
+    margin-bottom: 24px;
+  }
+
+  .section-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+
+  .progress-track {
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+
+  .progress-text {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-top: 6px;
+    text-align: right;
+  }
+
+  .section-title {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 20px;
+  }
+
+  .question-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 28px 24px;
+    margin-bottom: 16px;
+    transition: border-color 0.2s;
+  }
+
+  .question-block.answered {
+    border-color: var(--selected);
+  }
+
+  .question-number {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+  }
+
+  .question-text {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    color: var(--text);
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .option-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: transparent;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text);
+    text-align: left;
+    transition: all 0.15s ease;
+    width: 100%;
+  }
+
+  .option-btn:hover {
+    background: var(--option-hover);
+    border-color: var(--text-light);
+  }
+
+  .option-btn.selected {
+    background: var(--selected-bg);
+    border-color: var(--selected);
+    color: var(--selected);
+    font-weight: 500;
+  }
+
+  .option-letter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    font-size: 0.8rem;
+    font-weight: 600;
+    flex-shrink: 0;
+    transition: all 0.15s ease;
+  }
+
+  .option-btn.selected .option-letter {
+    background: var(--selected);
+    color: white;
+    border-color: var(--selected);
+  }
+
+  .submit-section {
+    text-align: center;
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+
+  .submit-section p {
+    color: var(--text-mid);
+    margin-bottom: 16px;
+    font-size: 0.9rem;
+  }
+
+  .submit-btn {
+    display: inline-block;
+    padding: 14px 48px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+  }
+
+  .submit-btn:hover { background: #2980b9; transform: translateY(-1px); }
+  .submit-btn:disabled { background: #b0b0b0; cursor: not-allowed; transform: none; }
+
+  .unanswered-warning {
+    color: var(--incorrect);
+    font-size: 0.9rem;
+    margin-top: 12px;
+    display: none;
+  }
+
+  /* Interstitial + final */
+  #interstitial, #results { display: none; }
+
+  .interstitial-card, .final-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 44px 32px;
+    text-align: center;
+  }
+
+  .check-circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--correct-bg);
+    color: var(--correct);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 20px;
+  }
+
+  .interstitial-card h2, .final-card h2 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+
+  .interstitial-card p, .final-card p {
+    color: var(--text-mid);
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+    max-width: 440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .final-score {
+    display: inline-block;
+    padding: 22px 40px;
+    background: var(--navy);
+    border-radius: var(--radius);
+    margin: 8px 0 28px;
+  }
+
+  .final-score .number {
+    font-family: 'Source Serif 4', serif;
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .final-score .label {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.65);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 4px;
+  }
+
+  .send-status {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-top: 14px;
+    min-height: 20px;
+  }
+
+  .spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    vertical-align: -3px;
+    margin-right: 6px;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  @media (max-width: 600px) {
+    .container { padding: 24px 16px 60px; }
+    .question-block { padding: 20px 18px; }
+    header { margin: -24px -16px 36px; padding: 36px 16px 28px; }
+    header h1 { font-size: 1.6rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ START SCREEN ============ -->
+<div class="container" id="start-screen">
+  <header>
+    <h1>General English Diagnostic</h1>
+    <p>A short placement check in five parts. Answer honestly &mdash; there are no results to see; your teacher reviews them afterwards.</p>
+  </header>
+
+  <div class="start-card">
+    <h2>Before you begin</h2>
+    <p>Please enter your name so your teacher knows whose answers these are. The quiz has 5 short sections. You can&rsquo;t go back once a section is finished, so take your time.</p>
+
+    <div class="field">
+      <label for="studentName">Your full name</label>
+      <input type="text" id="studentName" placeholder="e.g. Maria Rossi" autocomplete="name">
+    </div>
+    <div class="field">
+      <label for="studentClass">Class / group <span class="field-note">(optional)</span></label>
+      <input type="text" id="studentClass" placeholder="e.g. Tuesday evening B1">
+    </div>
+
+    <button class="submit-btn" onclick="startQuiz()">Start</button>
+    <div class="unanswered-warning" id="startWarning">Please enter your name to begin.</div>
+  </div>
+</div>
+
+<!-- ============ QUIZ (one section at a time) ============ -->
+<div class="container" id="quiz-container" style="display:none;">
+  <div class="progress-bar-container">
+    <div class="section-label" id="sectionLabel">Section 1 of 5</div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <div class="progress-text" id="progressText">0 / 0 answered</div>
+  </div>
+
+  <div class="section-title" id="sectionTitle"></div>
+
+  <div id="questions"></div>
+
+  <div class="submit-section">
+    <p id="finishHint">Answer every question, then finish this section.</p>
+    <button class="submit-btn" id="finishBtn" onclick="finishSection()">Finish Section</button>
+    <div class="unanswered-warning" id="warning"></div>
+  </div>
+</div>
+
+<!-- ============ BETWEEN-SECTION SCREEN ============ -->
+<div class="container" id="interstitial">
+  <div class="interstitial-card">
+    <div class="check-circle">&#10003;</div>
+    <h2 id="interTitle">Section complete</h2>
+    <p id="interText">Your answers for this section have been sent to your teacher. Ready for the next part?</p>
+    <button class="submit-btn" id="continueBtn" onclick="continueNext()">Continue</button>
+    <div class="send-status" id="interStatus"></div>
+  </div>
+</div>
+
+<!-- ============ FINAL SCREEN ============ -->
+<div class="container" id="results">
+  <div class="final-card">
+    <div class="check-circle">&#10003;</div>
+    <h2>Thank you!</h2>
+    <p>You&rsquo;ve finished all five sections. Your full diagnostic has been sent to your teacher, who will go through it with you.</p>
+    <div class="final-score">
+      <div class="number" id="finalScore">--</div>
+      <div class="label">Your score</div>
+    </div>
+    <div class="send-status" id="finalStatus"></div>
+  </div>
+</div>
+
+<script>
+/* =========================================================================
+   TEACHER SETTINGS
+   Results are emailed to you via Web3Forms (https://web3forms.com).
+   The access key below is tied to your email. To change the destination
+   email, get a new free key at web3forms.com and replace this value.
+   ========================================================================= */
+const WEB3FORMS_ACCESS_KEY = "66254e2e-3987-48e3-9173-c2ff7ce7d576";
+
+// Each question has a topic-level `cat` (used for grouping the diagnosis)
+// and a `focus` (the specific point, shown as context next to the question).
+const questions = [
+  { id: 1, cat: "Present Simple", focus: "third person singular (-s)", text: "My sister ______ in a hospital. She's a nurse.", options: ["work", "works", "is work", "working"], answer: 1 },
+  { id: 2, cat: "Present Simple", focus: "negative (don't / doesn't)", text: "I ______ coffee. I prefer tea.", options: ["doesn't like", "don't like", "not like", "am not like"], answer: 1 },
+  { id: 3, cat: "Present Simple", focus: "questions (do / does)", text: "______ your father drive to work every day?", options: ["Is", "Do", "Does", "Has"], answer: 2 },
+  { id: 4, cat: "Present Simple", focus: "base form with plural subjects", text: "We usually ______ dinner at seven o'clock.", options: ["having", "has", "are have", "have"], answer: 3 },
+  { id: 5, cat: "Present Continuous", focus: "affirmative (am/is/are + -ing)", text: "Please be quiet. The baby ______.", options: ["sleeps", "is sleeping", "sleep", "sleeping"], answer: 1 },
+  { id: 6, cat: "Present Continuous", focus: "affirmative (am/is/are + -ing)", text: "\"Where is Tom?\" \"He ______ a shower right now.\"", options: ["has", "is having", "have", "having"], answer: 1 },
+  { id: 7, cat: "Present Continuous", focus: "negative", text: "They ______ TV at the moment. They're in the garden.", options: ["don't watch", "aren't watching", "isn't watching", "not watching"], answer: 1 },
+  { id: 8, cat: "Present Simple vs Continuous", focus: "temporary vs habitual", text: "I usually walk to school, but today I ______ the bus.", options: ["take", "am taking", "takes", "taking"], answer: 1 },
+  { id: 9, cat: "Present Simple vs Continuous", focus: "general facts", text: "Water ______ at 100 degrees Celsius.", options: ["is boiling", "boils", "boil", "are boiling"], answer: 1 },
+  { id: 10, cat: "Present Simple vs Continuous", focus: "actions happening now", text: "Look! It ______. Take an umbrella.", options: ["rains", "rain", "is raining", "rained"], answer: 2 },
+  { id: 11, cat: "Past Simple", focus: "irregular verbs", text: "We ______ to the cinema last Saturday.", options: ["go", "goes", "went", "goed"], answer: 2 },
+  { id: 12, cat: "Past Simple", focus: "regular verbs (-ed ending)", text: "She ______ her homework before dinner yesterday.", options: ["finished", "finish", "finishing", "is finishing"], answer: 0 },
+  { id: 13, cat: "Past Simple", focus: "negative (didn't + base)", text: "I ______ any milk at the supermarket. They didn't have any.", options: ["don't buy", "didn't bought", "didn't buy", "not buy"], answer: 2 },
+  { id: 14, cat: "Past Simple", focus: "questions (did)", text: "\"______ you see the football match last night?\" \"Yes, it was great!\"", options: ["Do", "Are", "Did", "Were"], answer: 2 },
+  { id: 15, cat: "Future forms (will / going to)", focus: "going to – predictions from evidence", text: "Look at those dark clouds. It ______ rain.", options: ["will", "is going to", "going", "does"], answer: 1 },
+  { id: 16, cat: "Future forms (will / going to)", focus: "will – spontaneous decisions", text: "\"The phone is ringing!\" \"OK, I ______ answer it.\"", options: ["am going to", "will", "going to", "am"], answer: 1 },
+  { id: 17, cat: "Future forms (will / going to)", focus: "going to – planned intentions", text: "We ______ visit our grandparents next weekend. We already have tickets.", options: ["will", "going", "are going to", "go to"], answer: 2 },
+  { id: 18, cat: "Articles", focus: "a / an with jobs", text: "She's ______ doctor. She works at the city hospital.", options: ["a", "the", "an", "—  (no article)"], answer: 0 },
+  { id: 19, cat: "Articles", focus: "the (specific reference)", text: "Can you close ______ window, please? It's cold in here.", options: ["a", "an", "the", "— (no article)"], answer: 2 },
+  { id: 20, cat: "Articles", focus: "zero article (general / uncountable)", text: "I love ______ chocolate. I eat it every day.", options: ["a", "the", "an", "— (no article)"], answer: 3 },
+  { id: 21, cat: "Articles", focus: "the with musical instruments", text: "He plays ______ guitar very well.", options: ["a", "— (no article)", "the", "an"], answer: 2 },
+  { id: 22, cat: "Pronouns", focus: "object pronouns (me / her / him)", text: "I saw Sarah yesterday. I gave ______ the book.", options: ["she", "her", "hers", "herself"], answer: 1 },
+  { id: 23, cat: "Pronouns", focus: "possessive pronouns (mine / yours)", text: "That isn't my bag. ______ is the red one over there.", options: ["My", "Me", "I", "Mine"], answer: 3 },
+  { id: 24, cat: "Pronouns", focus: "subject pronouns (I / he / she)", text: "Tom and ______ went to the park together.", options: ["me", "my", "I", "mine"], answer: 2 },
+  { id: 25, cat: "Prepositions", focus: "time – on + days", text: "The meeting is ______ Monday morning.", options: ["in", "on", "at", "to"], answer: 1 },
+  { id: 26, cat: "Prepositions", focus: "time – in + years", text: "She was born ______ 1998.", options: ["on", "at", "in", "by"], answer: 2 },
+  { id: 27, cat: "Prepositions", focus: "place – between", text: "The supermarket is ______ the bank and the post office.", options: ["next", "between", "in front", "opposite to"], answer: 1 },
+  { id: 28, cat: "Prepositions", focus: "place – at + specific locations", text: "I'll meet you ______ the bus stop at three o'clock.", options: ["in", "on", "to", "at"], answer: 3 },
+  { id: 29, cat: "Quantifiers", focus: "any in negative sentences", text: "There isn't ______ milk in the fridge.", options: ["some", "any", "a", "many"], answer: 1 },
+  { id: 30, cat: "Quantifiers", focus: "much vs many (countable nouns)", text: "How ______ people are there in your class?", options: ["much", "many", "lot of", "any"], answer: 1 },
+  { id: 31, cat: "Quantifiers", focus: "some in requests and offers", text: "Can I have ______ water, please?", options: ["any", "many", "some", "few"], answer: 2 },
+  { id: 32, cat: "Comparatives & Superlatives", focus: "comparatives – short adjectives (-er)", text: "My brother is ______ than me. He's 1.90m.", options: ["tallest", "more tall", "taller", "most tall"], answer: 2 },
+  { id: 33, cat: "Comparatives & Superlatives", focus: "superlatives – irregular (good → best)", text: "This is ______ restaurant in the city. Everyone loves it.", options: ["the best", "the better", "the goodest", "more good"], answer: 0 },
+  { id: 34, cat: "Comparatives & Superlatives", focus: "comparatives – long adjectives (more +)", text: "English is ______ than I expected.", options: ["difficulter", "most difficult", "more difficult", "the difficult"], answer: 2 },
+  { id: 35, cat: "Modal verbs", focus: "mustn't (prohibition)", text: "You ______ drive without a licence. It's against the law.", options: ["mustn't", "don't have", "shouldn't to", "can't to"], answer: 0 },
+  { id: 36, cat: "Modal verbs", focus: "could (polite requests)", text: "______ you help me carry these bags, please?", options: ["Must", "Should", "Could", "Have"], answer: 2 },
+  { id: 37, cat: "Modal verbs", focus: "should (giving advice)", text: "You look tired. You ______ go to bed early tonight.", options: ["should", "must to", "can to", "have"], answer: 0 },
+  { id: 38, cat: "There is / There are", focus: "singular", text: "______ a big park near my house.", options: ["There are", "It is", "There is", "Is"], answer: 2 },
+  { id: 39, cat: "There is / There are", focus: "plural questions", text: "\"______ any shops in your village?\" \"No, we have to drive to the next town.\"", options: ["Is there", "Are there", "Have there", "There is"], answer: 1 },
+  { id: 40, cat: "Word order", focus: "past simple questions", text: "Which sentence is correct?", options: ["Where you did go yesterday?", "Where did you go yesterday?", "Where did you went yesterday?", "Where you went yesterday?"], answer: 1 },
+  { id: 41, cat: "Word order", focus: "adverb position with 'be'", text: "Which sentence is correct?", options: ["She always is late for class.", "She is always late for class.", "Always she is late for class.", "She is late always for class."], answer: 1 },
+  { id: 42, cat: "Word order", focus: "verb + object + adverb", text: "Which sentence is correct?", options: ["I like very much pizza.", "I very much like pizza.", "I like pizza very much.", "Very much I like pizza."], answer: 2 },
+  { id: 43, cat: "Possessives", focus: "apostrophe s ('s)", text: "That is my ______ car. He bought it last month.", options: ["fathers", "father's", "fathers'", "father"], answer: 1 },
+  { id: 44, cat: "Possessives", focus: "their / there / they're", text: "______ names are Anna and Peter.", options: ["They", "Theirs", "Their", "There"], answer: 2 },
+  { id: 45, cat: "Verb patterns (gerunds & infinitives)", focus: "gerund after 'enjoy'", text: "I enjoy ______ in the sea when it's warm.", options: ["swim", "to swim", "swimming", "for swim"], answer: 2 }
+];
+
+// Section boundaries use array slice bounds [start, end). 8–10 questions each.
+const sections = [
+  { title: "Part 1 — Present Tenses", start: 0, end: 10 },
+  { title: "Part 2 — Past, Future & Articles", start: 10, end: 19 },
+  { title: "Part 3 — Articles, Pronouns & Prepositions", start: 19, end: 28 },
+  { title: "Part 4 — Quantifiers, Comparatives & Modals", start: 28, end: 37 },
+  { title: "Part 5 — Sentence Structure & Possessives", start: 37, end: 45 }
+];
+
+const LETTERS = ['A', 'B', 'C', 'D'];
+const userAnswers = {};
+let currentSection = 0;
+let student = { name: '', group: '' };
+
+function sectionQuestions(i) {
+  return questions.slice(sections[i].start, sections[i].end);
+}
+
+function startQuiz() {
+  const nameInput = document.getElementById('studentName');
+  const name = nameInput.value.trim();
+  if (!name) {
+    document.getElementById('startWarning').style.display = 'block';
+    nameInput.focus();
+    return;
+  }
+  student.name = name;
+  student.group = document.getElementById('studentClass').value.trim();
+
+  document.getElementById('start-screen').style.display = 'none';
+  document.getElementById('quiz-container').style.display = 'block';
+  renderSection(0);
+}
+
+function renderSection(i) {
+  currentSection = i;
+  const sec = sections[i];
+  const qs = sectionQuestions(i);
+
+  document.getElementById('sectionLabel').textContent = `Section ${i + 1} of ${sections.length}`;
+  document.getElementById('sectionTitle').textContent = sec.title;
+
+  const container = document.getElementById('questions');
+  container.innerHTML = '';
+
+  qs.forEach((q, idx) => {
+    const block = document.createElement('div');
+    block.className = 'question-block';
+    block.id = `qblock-${q.id}`;
+    if (userAnswers[q.id] !== undefined) block.classList.add('answered');
+
+    const optionsHtml = q.options.map((opt, oi) => `
+      <button class="option-btn ${userAnswers[q.id] === oi ? 'selected' : ''}" onclick="selectAnswer(${q.id}, ${oi}, this)">
+        <span class="option-letter">${LETTERS[oi]}</span>
+        <span>${opt}</span>
+      </button>
+    `).join('');
+
+    block.innerHTML = `
+      <div class="question-number">Question ${idx + 1} of ${qs.length}</div>
+      <div class="question-text">${q.text}</div>
+      <div class="options">${optionsHtml}</div>
+    `;
+    container.appendChild(block);
+  });
+
+  const isLast = i === sections.length - 1;
+  document.getElementById('finishBtn').textContent = isLast ? 'Finish & Submit' : `Finish Section ${i + 1}`;
+  document.getElementById('warning').style.display = 'none';
+
+  updateProgress();
+  window.scrollTo(0, 0);
+}
+
+function selectAnswer(qid, optionIndex, btn) {
+  userAnswers[qid] = optionIndex;
+  const block = document.getElementById(`qblock-${qid}`);
+  block.classList.add('answered');
+  block.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  document.getElementById('warning').style.display = 'none';
+  updateProgress();
+}
+
+function answeredInSection(i) {
+  return sectionQuestions(i).filter(q => userAnswers[q.id] !== undefined).length;
+}
+
+function updateProgress() {
+  const total = sectionQuestions(currentSection).length;
+  const answered = answeredInSection(currentSection);
+  document.getElementById('progressFill').style.width = (answered / total) * 100 + '%';
+  document.getElementById('progressText').textContent = `${answered} / ${total} answered`;
+}
+
+async function finishSection() {
+  const total = sectionQuestions(currentSection).length;
+  const answered = answeredInSection(currentSection);
+
+  if (answered < total) {
+    const w = document.getElementById('warning');
+    w.textContent = `Please answer all ${total} questions before finishing (${total - answered} left).`;
+    w.style.display = 'block';
+    return;
+  }
+
+  const btn = document.getElementById('finishBtn');
+  btn.disabled = true;
+  btn.textContent = 'Saving…';
+
+  const isLast = currentSection === sections.length - 1;
+
+  // Send this section's results silently, then move on regardless of outcome.
+  const result = await sendSection(currentSection);
+
+  if (isLast) {
+    showFinal(result);
+  } else {
+    showInterstitial(currentSection, result);
+  }
+}
+
+function buildSectionReport(i) {
+  const sec = sections[i];
+  const qs = sectionQuestions(i);
+  let correct = 0;
+  const lines = [];
+
+  qs.forEach((q, idx) => {
+    const chosen = userAnswers[q.id];
+    const isCorrect = chosen === q.answer;
+    if (isCorrect) correct++;
+    const mark = isCorrect ? 'CORRECT' : 'WRONG';
+    let line = `${sections[i].start + idx + 1}. [${mark}] ${q.cat} — ${q.focus}\n`;
+    line += `    Q: ${q.text.replace(/\s+/g, ' ')}\n`;
+    line += `    Answered: ${LETTERS[chosen]}. ${q.options[chosen]}`;
+    if (!isCorrect) line += `   |   Correct: ${LETTERS[q.answer]}. ${q.options[q.answer]}`;
+    lines.push(line);
+  });
+
+  // Running totals across all sections completed so far.
+  let runCorrect = 0, runTotal = 0;
+  for (let s = 0; s <= i; s++) {
+    sectionQuestions(s).forEach(q => {
+      if (userAnswers[q.id] !== undefined) {
+        runTotal++;
+        if (userAnswers[q.id] === q.answer) runCorrect++;
+      }
+    });
+  }
+
+  const header =
+    `Student: ${student.name}` + (student.group ? `  (${student.group})` : '') + `\n` +
+    `Section ${i + 1} of ${sections.length}: ${sec.title}\n` +
+    `Section score: ${correct} / ${qs.length}\n` +
+    `Running total so far: ${runCorrect} / ${runTotal}\n` +
+    `Submitted: ${new Date().toLocaleString()}\n` +
+    `----------------------------------------\n`;
+
+  return {
+    correct,
+    total: qs.length,
+    runCorrect,
+    runTotal,
+    message: header + lines.join('\n')
+  };
+}
+
+// Full diagnosis grouped by grammar topic — sent as the final (5th) email.
+function padDots(label, width) {
+  const dots = Math.max(1, width - label.length);
+  return label + ' ' + '.'.repeat(dots) + ' ';
+}
+
+function buildConsolidatedReport() {
+  // Preserve the order topics first appear in.
+  const order = [];
+  const groups = {};
+  questions.forEach(q => {
+    if (!groups[q.cat]) { groups[q.cat] = { correct: 0, total: 0, missed: [] }; order.push(q.cat); }
+    groups[q.cat].total++;
+    if (userAnswers[q.id] === q.answer) groups[q.cat].correct++;
+    else groups[q.cat].missed.push(q);
+  });
+
+  let correct = 0, total = 0;
+  questions.forEach(q => {
+    if (userAnswers[q.id] !== undefined) { total++; if (userAnswers[q.id] === q.answer) correct++; }
+  });
+  const pct = total ? Math.round((correct / total) * 100) : 0;
+
+  const width = Math.max(...order.map(c => c.length)) + 2;
+
+  const scoreTable = order.map(cat => {
+    const g = groups[cat];
+    const cpct = Math.round((g.correct / g.total) * 100);
+    let tag = '';
+    if (cpct >= 75) tag = '  ✓ strong';
+    else if (cpct < 50) tag = '  ← needs work';
+    return `${padDots(cat, width)}${g.correct}/${g.total}${tag}`;
+  }).join('\n');
+
+  const weakTopics = order.filter(cat => groups[cat].missed.length > 0);
+  let review;
+  if (weakTopics.length === 0) {
+    review = 'No mistakes — everything correct. 🎉';
+  } else {
+    review = weakTopics.map(cat => {
+      const g = groups[cat];
+      const items = g.missed.map(q => {
+        const chosen = userAnswers[q.id];
+        const qNum = questions.indexOf(q) + 1;
+        const ans = chosen === undefined ? '(not answered)' : `${LETTERS[chosen]}. ${q.options[chosen]}`;
+        return `   • Q${qNum} (${q.focus}): "${q.text.replace(/\s+/g, ' ')}"\n` +
+               `       answered ${ans}  →  correct ${LETTERS[q.answer]}. ${q.options[q.answer]}`;
+      }).join('\n');
+      return `${cat}  (${g.correct}/${g.total})\n${items}`;
+    }).join('\n\n');
+  }
+
+  const message =
+    `FULL DIAGNOSTIC RESULT\n` +
+    `========================================\n` +
+    `Student: ${student.name}` + (student.group ? `  (${student.group})` : '') + `\n` +
+    `Completed: ${new Date().toLocaleString()}\n` +
+    `OVERALL SCORE: ${correct} / ${total}  (${pct}%)\n\n` +
+    `SCORE BY TOPIC\n` +
+    `----------------------------------------\n` +
+    `${scoreTable}\n\n` +
+    `AREAS TO REVIEW (mistakes grouped by topic)\n` +
+    `----------------------------------------\n` +
+    `${review}\n`;
+
+  return { correct, total, pct, message };
+}
+
+async function sendSection(i) {
+  const isLast = i === sections.length - 1;
+  const sec = sections[i];
+
+  let payload, report;
+  if (isLast) {
+    // Final email = consolidated full diagnosis grouped by topic.
+    report = buildConsolidatedReport();
+    payload = {
+      access_key: WEB3FORMS_ACCESS_KEY,
+      subject: `Diagnostic — ${student.name} — FINAL (${report.correct}/${report.total}, ${report.pct}%)`,
+      from_name: "English Diagnostic Quiz",
+      student: student.name,
+      group: student.group || "—",
+      section: "FINAL — full diagnosis",
+      overall_score: `${report.correct} / ${report.total} (${report.pct}%)`,
+      message: report.message
+    };
+  } else {
+    report = buildSectionReport(i);
+    payload = {
+      access_key: WEB3FORMS_ACCESS_KEY,
+      subject: `Diagnostic — ${student.name} — Section ${i + 1}/${sections.length} (${report.correct}/${report.total})`,
+      from_name: "English Diagnostic Quiz",
+      student: student.name,
+      group: student.group || "—",
+      section: `${i + 1} of ${sections.length} — ${sec.title}`,
+      section_score: `${report.correct} / ${report.total}`,
+      running_total: `${report.runCorrect} / ${report.runTotal}`,
+      message: report.message
+    };
+  }
+
+  try {
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    return { ok: !!data.success, report };
+  } catch (err) {
+    return { ok: false, report, error: String(err) };
+  }
+}
+
+function showInterstitial(i, result) {
+  document.getElementById('quiz-container').style.display = 'none';
+  document.getElementById('interstitial').style.display = 'block';
+
+  document.getElementById('interTitle').textContent = `Section ${i + 1} complete`;
+  document.getElementById('interText').textContent =
+    'Your answers for this section have been sent to your teacher. Ready for the next part?';
+  document.getElementById('continueBtn').textContent = `Continue to Section ${i + 2}`;
+  document.getElementById('continueBtn').dataset.next = i + 1;
+
+  const status = document.getElementById('interStatus');
+  status.textContent = result.ok ? '' : 'Note: your answers are saved and will be sent when possible.';
+
+  window.scrollTo(0, 0);
+}
+
+function continueNext() {
+  const next = parseInt(document.getElementById('continueBtn').dataset.next, 10);
+  document.getElementById('interstitial').style.display = 'none';
+  document.getElementById('quiz-container').style.display = 'block';
+  document.getElementById('finishBtn').disabled = false;
+  renderSection(next);
+}
+
+function showFinal(result) {
+  document.getElementById('quiz-container').style.display = 'none';
+  document.getElementById('interstitial').style.display = 'none';
+  document.getElementById('results').style.display = 'block';
+
+  // Total across the whole quiz.
+  let correct = 0, total = 0;
+  questions.forEach(q => {
+    if (userAnswers[q.id] !== undefined) {
+      total++;
+      if (userAnswers[q.id] === q.answer) correct++;
+    }
+  });
+  const pct = total ? Math.round((correct / total) * 100) : 0;
+
+  document.getElementById('finalScore').textContent = `${correct} / ${total}  (${pct}%)`;
+  const status = document.getElementById('finalStatus');
+  status.textContent = result.ok ? '' : 'Your results are saved on this device and will reach your teacher shortly.';
+
+  window.scrollTo(0, 0);
+}
+</script>
+</body>
+</html>
