@@ -123,6 +123,79 @@
 
   .field-note { font-weight: 400; color: var(--text-light); }
 
+  /* Instructions + language toggle */
+  .instructions {
+    text-align: left;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    margin: 0 auto 28px;
+    max-width: 460px;
+  }
+
+  .instr-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .instr-head h3 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  .instr-list {
+    margin: 0;
+    padding-left: 20px;
+  }
+
+  .instr-list li {
+    font-size: 0.92rem;
+    color: var(--text-mid);
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+
+  .instr-list li strong { color: var(--navy); }
+
+  .lang-toggle {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .flag-btn {
+    padding: 2px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    background: transparent;
+    cursor: pointer;
+    line-height: 0;
+    opacity: 0.4;
+    filter: grayscale(60%);
+    transition: all 0.15s ease;
+  }
+
+  .flag-btn:hover { opacity: 0.85; }
+
+  .flag-btn.active {
+    opacity: 1;
+    filter: none;
+    border-color: var(--accent);
+  }
+
+  .flag-btn svg {
+    display: block;
+    height: 20px;
+    width: auto;
+    border-radius: 2px;
+  }
+
   /* Resume banner */
   .resume-banner {
     background: var(--accent-light);
@@ -537,16 +610,53 @@
   </div>
 
   <div class="start-card">
-    <h2>Before you begin</h2>
-    <p>Enter your name so your teacher knows whose answers these are. Your progress saves automatically on this device, so you can stop after any part and come back later to finish.</p>
+    <div class="instructions">
+      <div class="instr-head">
+        <h3 id="instrTitle">What to do</h3>
+        <div class="lang-toggle" role="group" aria-label="Instructions language">
+          <button type="button" class="flag-btn active" id="flagEN" onclick="setLang('en')" aria-label="English" title="English">
+            <svg viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <clipPath id="ukDiag"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath>
+              <rect width="60" height="30" fill="#012169"/>
+              <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
+              <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#ukDiag)" stroke="#C8102E" stroke-width="4"/>
+              <path d="M30,0 V30 M0,15 H60" stroke="#fff" stroke-width="10"/>
+              <path d="M30,0 V30 M0,15 H60" stroke="#C8102E" stroke-width="6"/>
+            </svg>
+          </button>
+          <button type="button" class="flag-btn" id="flagPT" onclick="setLang('pt')" aria-label="Português" title="Português (Brasil)">
+            <svg viewBox="0 0 720 504" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="720" height="504" fill="#009c3b"/>
+              <path d="M360,66 654,252 360,438 66,252 Z" fill="#ffdf00"/>
+              <circle cx="360" cy="252" r="105" fill="#002776"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <ol class="instr-list" id="instr-en">
+        <li>This is a short English test. It has 5 parts with 9 questions each.</li>
+        <li>Read each question. Choose one answer.</li>
+        <li>Answer all the questions.</li>
+        <li>Click <strong>Check Answers</strong> to see your answers.</li>
+        <li>Then click <strong>Submit</strong> to send your answers to your teacher, or go to the next part.</li>
+        <li>You can stop and come back later. Your answers are saved on this device.</li>
+      </ol>
+
+      <ol class="instr-list" id="instr-pt" style="display:none;">
+        <li>Este é um teste curto de inglês. Tem 5 partes com 9 perguntas cada.</li>
+        <li>Leia cada pergunta. Escolha uma resposta.</li>
+        <li>Responda todas as perguntas.</li>
+        <li>Clique em <strong>Check Answers</strong> para ver suas respostas.</li>
+        <li>Depois clique em <strong>Submit</strong> para enviar suas respostas para a sua professora, ou vá para a próxima parte.</li>
+        <li>Você pode parar e voltar depois. Suas respostas ficam salvas neste dispositivo.</li>
+      </ol>
+    </div>
+
+    <h2>Enter your name</h2>
 
     <div class="field">
-      <label for="studentName">Your full name</label>
-      <input type="text" id="studentName" placeholder="e.g. Maria Rossi" autocomplete="name">
-    </div>
-    <div class="field">
-      <label for="studentClass">Class / group <span class="field-note">(optional)</span></label>
-      <input type="text" id="studentClass" placeholder="e.g. Tuesday evening B1">
+      <input type="text" id="studentName" placeholder="Type your name here" autocomplete="name" aria-label="Your name">
     </div>
 
     <button class="submit-btn" onclick="startQuiz()">Start</button>
@@ -718,7 +828,6 @@ function initResume() {
     document.getElementById('resumeBanner').style.display = 'block';
     // Pre-fill the name field too, in case they choose to start over.
     document.getElementById('studentName').value = saved.name || '';
-    document.getElementById('studentClass').value = saved.group || '';
   }
 }
 
@@ -740,8 +849,17 @@ function startOver() {
   currentPart = 0;
   document.getElementById('resumeBanner').style.display = 'none';
   document.getElementById('studentName').value = '';
-  document.getElementById('studentClass').value = '';
   document.getElementById('studentName').focus();
+}
+
+/* ---------- Instructions language toggle (UK / Brazil) ---------- */
+function setLang(lang) {
+  const en = lang === 'en';
+  document.getElementById('instr-en').style.display = en ? 'block' : 'none';
+  document.getElementById('instr-pt').style.display = en ? 'none' : 'block';
+  document.getElementById('instrTitle').textContent = en ? 'What to do' : 'O que fazer';
+  document.getElementById('flagEN').classList.toggle('active', en);
+  document.getElementById('flagPT').classList.toggle('active', !en);
 }
 
 /* ---------- Quiz flow ---------- */
@@ -754,7 +872,7 @@ function startQuiz() {
     return;
   }
   student.name = name;
-  student.group = document.getElementById('studentClass').value.trim();
+  student.group = '';
   currentPart = 0;
   saveProgress();
 

@@ -917,7 +917,7 @@
     font-weight: bold;
   }
 
-  .incorrect {
+  .error-pattern .incorrect {
     color: var(--error-text);
     text-decoration: line-through;
     text-decoration-thickness: 1px;
@@ -930,7 +930,7 @@
     display: inline-block;
   }
 
-  .correct {
+  .error-pattern .correct {
     color: var(--success-text);
     font-family: 'Source Code Pro', monospace;
     background-color: var(--example-bg);
