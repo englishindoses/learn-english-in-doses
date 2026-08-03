@@ -583,7 +583,9 @@ const VocabMatchModule = (function() {
       const wordItem = zone.querySelector('.vocab-word-item');
       
       if (wordItem) {
-        const userAnswer = wordItem.textContent.toLowerCase().trim();
+        // Prefer an explicit data-answer (lets the displayed word include
+        // extra text, e.g. a US-English alternative, without breaking matching)
+        const userAnswer = (wordItem.dataset.answer || wordItem.textContent).toLowerCase().trim();
         
         if (userAnswer === correctAnswer) {
           zone.classList.add('correct');
