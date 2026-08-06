@@ -390,6 +390,7 @@ Before considering a page complete, verify the following:
 - [ ] Key differences section is included only if it adds value without making the page too long or repetitive.
 - [ ] Sentence ordering activity has 5 questions (up to 8 if needed) covering the grammar points from the page.
 - [ ] Every score shown to the learner is out of the actual number of questions in that activity.
+- [ ] The page sits in the right place in the sequence: its previous and next links follow the lesson order on the grammar index page, and its neighbours point back to it.
 - [ ] Summary table is present and covers all forms taught on the page.
 - [ ] Exactly 3 common errors are listed with incorrect sentence, correct sentence, and explanation.
 - [ ] The errors are real mistakes ESL learners actually make.

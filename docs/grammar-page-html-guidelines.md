@@ -681,6 +681,13 @@ CompactMatchingModule.init({
 - Three elements: previous link, center buttons, next link.
 - Previous link format: `← Previous: Topic Name` or `← Back to: Topic Name`
 - Next link format: `Next: Topic Name →`
+
+### Which pages to link to — important
+
+- **Previous and next follow the lesson order on `grammar/advanced/advanced-grammar.html`.** Open the index, find this lesson's card, and link to the card immediately before it and the card immediately after it. The index is the single source of truth for lesson order.
+- **The target page does not have to exist yet.** The index lists lessons that are planned but not yet built. If the next lesson in the order hasn't been written, still link to its filename as listed on the index — the link starts working the day that page is created. This is expected and is not a broken link.
+- Filenames and link text must match what the index uses, or the link will break permanently rather than temporarily.
+- When a new lesson is built, check that its two neighbours point back to it correctly.
 - Center always contains at minimum the print button.
 - Optionally, center can include a practice activities link: `<a href="PRACTICE-PAGE.html" class="nav-button activities">Practice Activities</a>`
 - If there's no previous or next page, link to `advanced-grammar.html` with text like `← Back to: Advanced Grammar Topics`
@@ -1021,6 +1028,10 @@ Below is a minimal but complete template. Replace all `PLACEHOLDER` values with 
             <button id="drag-drop-restart" class="restart-btn">Try Again</button>
           </div>
 
+          <!-- DENOMINATOR: change the 5 below if this page has a different
+               number of questions. It must equal the number of dd-qN blocks
+               above AND the number of entries in the DragDropModule answers
+               object at the bottom of the page. -->
           <div class="score-display" id="drag-drop-score">
             Your score: <span>0</span>/5
           </div>
@@ -1125,6 +1136,10 @@ Below is a minimal but complete template. Replace all `PLACEHOLDER` values with 
             <a href="#summary" class="nav-button">Review Grammar</a>
           </div>
 
+          <!-- DENOMINATOR: the MCQ is always 10 questions, so this stays /10.
+               It must equal the number of qN blocks above AND the number of
+               entries in the MCQModule answers object at the bottom of the
+               page. -->
           <div class="score-display" id="mcq-score">
             Your score: <span>0</span>/10
           </div>
@@ -1134,6 +1149,9 @@ Below is a minimal but complete template. Replace all `PLACEHOLDER` values with 
   </div>
 
   <!-- BOTTOM NAVIGATION -->
+  <!-- PREVIOUS_PAGE and NEXT_PAGE come from the lesson order on
+       advanced-grammar.html — the cards either side of this one. The target
+       page may not have been built yet; link to it anyway. -->
   <nav class="bottom-navigation">
     <a href="PREVIOUS_PAGE.html" class="nav-button previous">← Previous: PREVIOUS_TOPIC</a>
     <div class="center-buttons">
@@ -1306,4 +1324,4 @@ Use this checklist when building a new page:
 - MCQ: 10 questions, 3 options each, score denominator `/10`, 10 entries in `answers`, 10 in each explanations object.
 - There is exactly one `id="summary"` section and the final activity links to it.
 - The breadcrumb category id was copied from `advanced-grammar.html`, not guessed.
-- Prev/next links point at pages that exist, and the neighbouring pages point back.
+- Prev/next match the lesson order on `advanced-grammar.html` (the target page may not be built yet — that is fine).
