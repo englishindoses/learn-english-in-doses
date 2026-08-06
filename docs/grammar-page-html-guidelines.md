@@ -2,6 +2,10 @@
 
 This document explains exactly how to build an HTML grammar page for the `grammar/advanced/` directory. Follow these rules to produce a page that matches the existing design system perfectly.
 
+**This document covers how to mark the page up.** For what to write, see `advanced-grammar-content-guidelines.md` in this folder. Reference pages (e.g. `gerund-infinitive-reference.html`) are a different page type and are not covered here.
+
+Last checked against the live pages in `grammar/advanced/`: 6 August 2026.
+
 ---
 
 ## Table of Contents
@@ -17,6 +21,7 @@ This document explains exactly how to build an HTML grammar page for the `gramma
 9. [Drag-and-Drop Activity](#9-drag-and-drop-activity)
 10. [Summary Table](#10-summary-table)
 11. [MCQ (Multiple Choice) Activity](#11-mcq-multiple-choice-activity)
+11a. [Using a Different Final Activity](#11a-using-a-different-final-activity)
 12. [Bottom Navigation](#12-bottom-navigation)
 13. [Footer](#13-footer)
 14. [JavaScript](#14-javascript)
@@ -46,7 +51,7 @@ Every page follows this top-level order:
       <!-- Summary table -->
       <!-- Common errors section -->
       <!-- Tips section -->
-      <!-- MCQ activity -->
+      <!-- MCQ activity (or an alternative final activity, if specified) -->
     </main>
   </div>
   <!-- Bottom navigation -->
@@ -83,7 +88,6 @@ Every page follows this top-level order:
   <link rel="stylesheet" href="../../css/levels.css">
   <link rel="stylesheet" href="../../css/activities.css">
   <link rel="stylesheet" href="../../css/progress-tracking-styles.css">
-  <link rel="stylesheet" href="../../css/button-shine.css">
 </head>
 ```
 
@@ -93,15 +97,16 @@ Every page follows this top-level order:
   - `Montserrat` (weights 400, 600, 700) — headings
   - `Open Sans` (weights 400, 600) — body text
   - `Source Code Pro` — code/monospace elements
-- **CSS files**: Always include all five stylesheets in this exact order:
+- **CSS files**: Each page loads the stylesheets it needs. Every page needs these four core sheets, in this exact order:
   1. `../../css/base.css`
   2. `../../css/levels.css`
   3. `../../css/activities.css`
   4. `../../css/progress-tracking-styles.css`
-  5. `../../css/button-shine.css`
+- **Activity stylesheets**: If the page uses an activity that has its own stylesheet, add it after `activities.css`. For example, a page using the compact-matching activity also loads `../../css/compact-matching.css`. Only load what the page actually uses.
+- **There is no `button-shine.css`.** The button shine effect is part of `base.css` (see the "Button shine effect" block) and applies automatically to `.nav-button`, `.submit-btn`, `.restart-btn`, `.check-btn` and the other listed button classes. No extra stylesheet is needed for it.
 - **Meta description**: Use the format `"TOPIC NAME - Advanced ESL grammar explanation with examples and practice"`
 - **Title**: Use the format `"TOPIC NAME - Advanced ESL Grammar"`
-- **No inline `<style>` blocks** — all styling comes from the five CSS files. The `grammar-highlight` class and all other classes are already defined in the CSS. Do not add custom `<style>` blocks.
+- **No inline `<style>` blocks** — all styling comes from the linked CSS files. The `grammar-highlight` class and all other classes are already defined in the CSS. Do not add custom `<style>` blocks.
 
 ---
 
@@ -114,8 +119,8 @@ Every page follows this top-level order:
 
   <div class="theme-toggle-container">
     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
-      <span class="light-icon">☀️</span>
-      <span class="dark-icon">🌙</span>
+      <span class="light-icon" aria-hidden="true">☀️</span>
+      <span class="dark-icon" aria-hidden="true">🌙</span>
     </button>
   </div>
 
@@ -138,7 +143,7 @@ Every page follows this top-level order:
 
 - **Body class**: Always use `class="advanced-section"` on the `<body>` tag. This applies the correct colour scheme and level indicator styling.
 - **Skip link**: Always the first element inside `<body>`. Links to `#main-content`.
-- **Theme toggle**: Always present immediately after the skip link. Uses exactly the emoji icons shown (☀️ and 🌙).
+- **Theme toggle**: Always present immediately after the skip link. Uses exactly the emoji icons shown (☀️ and 🌙). Both icon spans carry `aria-hidden="true"` — they are decorative, and the button's `aria-label` is what screen readers announce.
 - **Container div**: Wraps breadcrumbs and `<main>`. Class is `container`.
 - **Main element**: Always has `id="main-content"`.
 
@@ -151,7 +156,7 @@ Every page follows this top-level order:
   <a href="../../home.html" class="site-logo">
     <img src="../../images/my-logo.svg" alt="English in Doses" width="150" height="auto">
   </a>
-  <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+  <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
   <div class="nav-links">
     <a href="../../home.html" class="nav-link">Home</a>
     <a href="../../about.html" class="nav-link">About</a>
@@ -188,7 +193,7 @@ Every page follows this top-level order:
 - Copy this navigation block exactly. All paths are relative from `grammar/advanced/`.
 - The `advanced-nav-indicator` div is always present at the end of the nav (it creates a coloured indicator bar for the advanced level).
 - Beginner, Intermediate, and Advanced links use dropdown menus with `nav-dropdown` wrappers.
-- The hamburger icon is the `☰` character.
+- The hamburger icon is the `☰` character. The toggle button carries `aria-expanded="false"` in the markup; `core.js` flips it when the menu opens.
 
 ---
 
@@ -211,7 +216,9 @@ Every page follows this top-level order:
 ### Rules
 
 - First three items are always: **Home** → **Advanced English** → **Advanced Grammar**
-- Fourth item links to the relevant category section on the grammar index page (e.g., `advanced-grammar.html#verb-patterns`, `advanced-grammar.html#complex-structures`, `advanced-grammar.html#conditionals`, `advanced-grammar.html#modals`, `advanced-grammar.html#passive`, `advanced-grammar.html#advanced-tenses-and-aspect`)
+- Fourth item links to the category section that this lesson sits under on the grammar index page, in the form `advanced-grammar.html#CATEGORY-ID`.
+- **Always take the category id from `grammar/advanced/advanced-grammar.html` itself** — open it and copy the `id` of the section the lesson's card appears in. Do not guess, and do not work from a list in this document: categories are added as the site grows (`#noun-phrases-articles`, `#adverbials-prep-phrases`, `#discourse-cohesion`, `#complex-structures`, `#conditionals`, `#modals`, `#passive`, `#advanced-tenses-and-aspect` and more). A wrong id is a silently broken link — it still loads the index page, just at the wrong place.
+- The visible text of the fourth item is the category's heading as written on the index page (e.g. `Noun Phrases &amp; Articles`).
 - Final item is plain text (no link) — the current page title.
 - Separator character is `›` (right single angle quotation mark).
 - Each item uses `<span class="breadcrumb-item">`, separators use `<span class="breadcrumb-separator">`.
@@ -445,7 +452,8 @@ The drag-and-drop section is a sentence reordering activity where learners drag 
 
 - Wrapper section class: `content-section`
 - Activity container: `id="drag-drop"` with classes `activity-container active`
-- Usually **5 questions** (dd-q1 through dd-q5).
+- Usually **5 questions** (dd-q1 through dd-q5). Up to 8 is fine when the topic needs it — live pages currently run 5, 6 and 7.
+- **The score denominator must match the actual number of questions on the page — not the usual number.** If the page has 7 questions, the score display reads `/7` and the `answers` object in the init script has 7 entries. This has caused bugs before: the denominator, the question count, and the number of `answers` entries must always be the same number. Check all three before considering the page done.
 - Each question has:
   - `<div class="question" id="dd-qN">` — unique ID with `dd-q` prefix
   - `<p class="question-text">` — numbered instruction
@@ -457,7 +465,7 @@ The drag-and-drop section is a sentence reordering activity where learners drag 
 - **Control buttons**: All buttons are always visible (no inline `style="display:none;"`). The JS modules handle showing/hiding/disabling as needed.
   - Submit: `id="drag-drop-submit"`, class `submit-btn`
   - Restart: `id="drag-drop-restart"`, class `restart-btn`
-- **Score display**: `id="drag-drop-score"`. No inline `style` — the JS module handles visibility. The `<span>` inside gets populated by JS. Denominator matches question count.
+- **Score display**: `id="drag-drop-score"`. No inline `style` — the JS module handles visibility. The `<span>` inside gets populated by JS. The denominator must match the actual question count on this page.
 - **No inline styles** on any activity elements. Visibility and state are managed entirely by the JS modules.
 
 ---
@@ -491,7 +499,8 @@ The drag-and-drop section is a sentence reordering activity where learners drag 
 
 ### Rules
 
-- Section `id="summary"` — this is the anchor target for the "Review Grammar" link in the MCQ control buttons. Every page must have exactly one section with this ID, and it must be the summary table.
+- Section `id="summary"` — this is the anchor target for the "Review Grammar" link in the final activity's control buttons. **Every grammar lesson page must have exactly one section with this id, and it must be the summary table, and the final activity must have a Review Grammar link pointing at it.** The two go together: no summary section means a dead link, no link means the learner has no way back.
+- Reference pages (e.g. `gerund-infinitive-reference.html`) are a separate page type and are not covered by this document. These rules do not apply to them.
 - Plain `<table>` with `<thead>` and `<tbody>`.
 - Use `<span class="grammar-highlight">` inside table cells for grammar structure highlights.
 - Use `<span class="example">` inside table cells for example sentences.
@@ -523,9 +532,6 @@ The drag-and-drop section is a sentence reordering activity where learners drag 
         <div class="option" data-index="2">
           <span>C. Option text</span>
         </div>
-        <div class="option" data-index="3">
-          <span>D. Option text</span>
-        </div>
       </div>
       <div class="feedback"></div>
     </div>
@@ -554,15 +560,106 @@ The drag-and-drop section is a sentence reordering activity where learners drag 
   - `<div class="question" id="qN">` — unique ID with `q` prefix (no "dd-" prefix)
   - `<p class="mcq-question">` — numbered question text. Use `_____` (five underscores) for blanks.
   - `<div class="options">` — contains the answer options
-  - Each option: `<div class="option" data-index="N">` where N is 0-based index, containing a `<span>` with letter prefix (A., B., C., D.)
+  - Each option: `<div class="option" data-index="N">` where N is the 0-based index, containing a `<span>` with a letter prefix (A., B., C.). With 3 options the `answers` values in the init script are 0, 1 or 2.
   - `<div class="feedback"></div>` — empty, populated by JS
-- Options can be 3 or 4 per question (most pages use 3 or 4, be consistent within a page).
+- **3 options per question (A, B, C) unless specified otherwise for that page.** This is the standard. A page only uses 4 options if it has been explicitly asked for, and then all 10 questions on that page use 4.
 - **Control buttons** — all three are always visible side by side, in this exact order. No inline `style` attributes — the JS modules handle showing/hiding/disabling as needed:
   1. Submit button: `<button id="mcq-submit" class="submit-btn">Check Answers</button>`
   2. Restart button: `<button id="mcq-restart" class="restart-btn">Try Again</button>`
   3. Review Grammar link: `<a href="#summary" class="nav-button">Review Grammar</a>` — links to the summary table section
-- **Score display**: `id="mcq-score"`. No inline `style` — the JS module handles visibility. Denominator matches question count.
+- **Score display**: `id="mcq-score"`. No inline `style` — the JS module handles visibility. The denominator must match the actual question count, and the `answers` object in the init script must have one entry per question.
 - **No inline styles** on any activity elements (buttons, score displays). Visibility and state are managed entirely by the JS modules. Do not add `style="display:none;"` or the `review-grammar-btn` class — these are not needed.
+
+---
+
+## 11a. Using a Different Final Activity
+
+**The MCQ is the standard final activity.** Build it unless you have been asked for something else. A different activity type may be used when specified for a particular page — in that case it replaces the MCQ in the same position (last section on the page) and keeps the same surrounding conventions: a `<section class="content-section">` wrapper, an `<h2>` heading, a one-line instruction, a Review Grammar link back to `#summary`, and a score display.
+
+The example currently in use is the **compact matching** activity on `comment-adverbs.html`, where learners drag a numbered marker onto the meaning it matches.
+
+### What changes
+
+- **Stylesheet**: add `<link rel="stylesheet" href="../../css/compact-matching.css">` to the head.
+- **Script**: load `../../js/compact-matching.js` instead of `../../js/mcq.js`. `core.js`, `drag-drop.js` and `progress-tracking-module.js` stay.
+
+### Markup
+
+```html
+<section class="content-section">
+  <h2>Test Your Knowledge</h2>
+  <p>Drag each numbered marker to the meaning it matches. On a touch screen, tap a marker and then tap its meaning.</p>
+
+  <div id="cm-LESSON-SLUG" class="compact-matching">
+    <!-- Column 1: the items being matched -->
+    <div class="cm-statements">
+      <div class="cm-statement"><span class="cm-statement-num">1</span><p>ITEM 1</p></div>
+      <!-- one per item -->
+    </div>
+
+    <!-- Column 2: draggable markers, in order -->
+    <div class="cm-markers">
+      <div class="cm-marker-slot" data-marker="1"><div class="cm-marker" draggable="true" data-match="1">1</div></div>
+      <!-- one per item -->
+    </div>
+
+    <!-- Column 3: the answers, shuffled -->
+    <div class="cm-answers">
+      <div class="cm-answer" data-match="6"><div class="cm-answer-slot"></div><p>ANSWER TEXT</p></div>
+      <!-- one per item, in a different order from column 1 -->
+    </div>
+  </div>
+
+  <div class="cm-feedback" id="cm-LESSON-SLUG-feedback"></div>
+
+  <div class="compact-matching-controls">
+    <button id="cm-LESSON-SLUG-cm-submit" class="submit-btn cm-submit-btn" data-activity="cm-LESSON-SLUG">Check Answers</button>
+    <button id="cm-LESSON-SLUG-cm-restart" class="restart-btn cm-restart-btn" data-activity="cm-LESSON-SLUG" style="display: none;">Try Again</button>
+    <a href="#summary" class="nav-button">Review Grammar</a>
+  </div>
+
+  <div class="cm-score" id="cm-LESSON-SLUG-score">
+    Your score: <span>0</span>/7
+  </div>
+</section>
+```
+
+### Rules
+
+- The container id is `cm-` + the lesson slug, and that same id is repeated in the feedback id, the score id, both button ids, and both buttons' `data-activity`. They must all match or the activity will not wire up.
+- Column 1 is numbered in order. Column 3 is **shuffled** — the `data-match` values must not run 1, 2, 3… down the page.
+- Each column-3 item's `data-match` is the number of the column-1 item it belongs to.
+- The score denominator matches the number of items (7 in the example above).
+- Unlike the MCQ and drag-and-drop modules, the compact-matching restart button **does** carry `style="display: none;"` in the markup — that is how this module expects to find it.
+- The Review Grammar link is still required, pointing at `#summary`.
+
+### Init script
+
+```js
+CompactMatchingModule.init({
+  onComplete: function(score, total) {
+    console.log(`Matching completed with score: ${score}/${total}`);
+
+    if (typeof ProgressTracker !== "undefined") {
+      ProgressTracker.markItemCompleted('activities', 'matching-LESSON-SLUG', {
+        score: score,
+        maxScore: total,
+        completed: true,
+        completedAt: new Date().toISOString(),
+        title: "TOPIC NAME Matching"
+      });
+
+      ProgressTracker.updateItemProgress('lessons', 'LESSON-SLUG', {
+        lastViewed: new Date().toISOString(),
+        progress: 100,
+        title: "TOPIC NAME"
+      });
+    }
+  }
+});
+```
+
+`CompactMatchingModule.init` takes no `containerId` — it finds the activity itself. Note that the lesson-level `updateItemProgress` call moves here, since this activity is now the last one on the page.
 
 ---
 
@@ -642,19 +739,20 @@ The drag-and-drop section is a sentence reordering activity where learners drag 
 
 ```html
 <!-- JavaScript -->
-<script src="../../js/core.js"></script>
-<script src="../../js/mcq.js"></script>
-<script src="../../js/drag-drop.js"></script>
-<script src="../../js/progress-tracking-module.js"></script>
+<script src="../../js/core.js" defer></script>
+<script src="../../js/mcq.js" defer></script>
+<script src="../../js/drag-drop.js" defer></script>
+<script src="../../js/progress-tracking-module.js" defer></script>
 ```
 
 ### Rules
 
-- Always include all four scripts in this order.
+- Always include all four scripts in this order, and **always with `defer`**.
 - `core.js` — theme toggle, navigation, core functionality
 - `mcq.js` — MCQ activity module
 - `drag-drop.js` — drag-and-drop activity module
 - `progress-tracking-module.js` — progress/completion tracking
+- If the page uses a different final activity, swap `mcq.js` for that activity's module (see [Section 11a](#11a-using-a-different-final-activity)). The other three stay.
 
 ### Initialisation Script
 
@@ -791,7 +889,6 @@ Below is a minimal but complete template. Replace all `PLACEHOLDER` values with 
   <link rel="stylesheet" href="../../css/levels.css">
   <link rel="stylesheet" href="../../css/activities.css">
   <link rel="stylesheet" href="../../css/progress-tracking-styles.css">
-  <link rel="stylesheet" href="../../css/button-shine.css">
 </head>
 <body class="advanced-section">
   <!-- Skip link and theme toggle -->
@@ -799,8 +896,8 @@ Below is a minimal but complete template. Replace all `PLACEHOLDER` values with 
 
   <div class="theme-toggle-container">
     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
-      <span class="light-icon">☀️</span>
-      <span class="dark-icon">🌙</span>
+      <span class="light-icon" aria-hidden="true">☀️</span>
+      <span class="dark-icon" aria-hidden="true">🌙</span>
     </button>
   </div>
 
@@ -809,7 +906,7 @@ Below is a minimal but complete template. Replace all `PLACEHOLDER` values with 
     <a href="../../home.html" class="site-logo">
       <img src="../../images/my-logo.svg" alt="English in Doses" width="150" height="auto">
     </a>
-    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
     <div class="nav-links">
       <a href="../../home.html" class="nav-link">Home</a>
       <a href="../../about.html" class="nav-link">About</a>
@@ -1016,9 +1113,6 @@ Below is a minimal but complete template. Replace all `PLACEHOLDER` values with 
               <div class="option" data-index="2">
                 <span>C. OPTION_C</span>
               </div>
-              <div class="option" data-index="3">
-                <span>D. OPTION_D</span>
-              </div>
             </div>
             <div class="feedback"></div>
           </div>
@@ -1055,41 +1149,42 @@ Below is a minimal but complete template. Replace all `PLACEHOLDER` values with 
         <h3>Quick Links</h3>
         <ul>
           <li><a href="../../home.html">Home</a></li>
-          <li><a href="../../home.html#where-to-start">Grammar</a></li>
-          <li><a href="../../extra-practice.html">Extra Practice</a></li>
+          <li><a href="../../home.html#quiz-section">Find Your Level</a></li>
           <li><a href="../../my-progress.html">My Progress</a></li>
+          <li><a href="../../booking-page.html">Book a Lesson</a></li>
         </ul>
       </div>
 
       <div class="footer-section">
-        <h3>Grammar Topics</h3>
+        <h3>Learn English</h3>
         <ul>
-          <li><a href="advanced-grammar.html#advanced-tenses-and-aspect">Advanced Tenses</a></li>
-          <li><a href="advanced-grammar.html#conditionals">Advanced Conditionals</a></li>
-          <li><a href="advanced-grammar.html#modals">Advanced Modal Verbs</a></li>
-          <li><a href="advanced-grammar.html#passive">Advanced Passive Voice</a></li>
+          <li><a href="../../beginner-landing.html">Beginner</a></li>
+          <li><a href="../../intermediate-landing.html">Intermediate</a></li>
+          <li><a href="../../advanced-landing.html">Advanced</a></li>
+          <li><a href="../../travel/beginner-travel/travel-english.html">Travel English</a></li>
         </ul>
       </div>
 
       <div class="footer-section">
-        <h3>Connect</h3>
+        <h3>About</h3>
         <ul>
           <li><a href="../../about.html">About</a></li>
-          <li><a href="../../contact.html">Contact</a></li>
+          <li><a href="../../license.html">Licensing Information</a></li>
+          <li><a href="https://www.instagram.com/englishindoses/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; 2025–2026 English in Doses | All rights reserved | <a href="../../license.html">Licensing Information</a></p>
+      <p>&copy; 2025–2026 English in Doses | All rights reserved</p>
     </div>
   </footer>
 
   <!-- JavaScript -->
-  <script src="../../js/core.js"></script>
-  <script src="../../js/mcq.js"></script>
-  <script src="../../js/drag-drop.js"></script>
-  <script src="../../js/progress-tracking-module.js"></script>
+  <script src="../../js/core.js" defer></script>
+  <script src="../../js/mcq.js" defer></script>
+  <script src="../../js/drag-drop.js" defer></script>
+  <script src="../../js/progress-tracking-module.js" defer></script>
 
   <!-- Activity Initialisation -->
   <script>
@@ -1197,8 +1292,18 @@ Use this checklist when building a new page:
 2. `<section class="intro-section">` — Introduction + learning objectives
 3. `<section class="grammar-point">` — Grammar point 1 (repeat as needed)
 4. `<section class="grammar-point">` — Grammar point 2, etc.
-5. `<section class="content-section">` — Drag-and-drop activity (5 questions)
+5. `<section class="content-section">` — Drag-and-drop activity (usually 5 questions, up to 8; score denominator must match)
 6. `<section id="summary">` — Summary table (this is the "Review Grammar" anchor target)
 7. `<section class="common-errors">` — Common errors (3 patterns)
 8. `<section class="tips">` — Useful tips (3 tips)
-9. `<section class="content-section mcq-container">` — MCQ activity (10 questions)
+9. `<section class="content-section mcq-container">` — MCQ activity (10 questions, 3 options each), or a different final activity if one has been specified (see Section 11a)
+
+### Before the page is done, check
+
+- The core 4 stylesheets are loaded, plus any activity stylesheet the page actually uses — and nothing else.
+- All scripts carry `defer`.
+- Drag-and-drop: question count, score denominator, and number of `answers` entries are the same number.
+- MCQ: 10 questions, 3 options each, score denominator `/10`, 10 entries in `answers`, 10 in each explanations object.
+- There is exactly one `id="summary"` section and the final activity links to it.
+- The breadcrumb category id was copied from `advanced-grammar.html`, not guessed.
+- Prev/next links point at pages that exist, and the neighbouring pages point back.

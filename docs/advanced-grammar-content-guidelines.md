@@ -2,6 +2,8 @@
 
 These guidelines describe the content, structure, writing style, and standards for every advanced grammar explanation page on the English in Doses website. Follow them closely to ensure consistency across all pages.
 
+**This document covers what to write.** For how to mark it up, see `grammar-page-html-guidelines.md` in this folder. The `grammar-lesson-content` skill drafts lesson text in Markdown following these same rules — if a rule changes here, change it there too.
+
 ---
 
 ## Page Title
@@ -149,7 +151,8 @@ This is a drag-and-drop style activity where learners put words into the correct
 
 ### Number of questions
 
-- **5 to 8 sentence ordering questions.**
+- **Usually 5, and up to 8** where the topic needs it.
+- Whatever number you choose, the score shown to the learner must be out of that number. The count of questions, the score denominator, and the answers registered in the page's script all have to be the same number. Getting this wrong has broken pages before.
 
 ### Question content
 
@@ -190,8 +193,8 @@ This section highlights mistakes that ESL learners actually make with this gramm
 - **Maximum 3 common errors.** Choose the 3 most frequent and important mistakes.
 - Each error follows this format:
   1. **Error title** — a short, descriptive name (e.g. "Using 'of' instead of 'have'").
-  2. **Incorrect sentence** — clearly marked as wrong. Use a cross symbol (✗) or red styling.
-  3. **Correct sentence** — clearly marked as correct. Use a tick symbol (✓) or green styling.
+  2. **Incorrect sentence** — marked with ❌ (this is the site standard; a few older pages use ✗).
+  3. **Correct sentence** — marked with ✓.
   4. **Explanation** — a brief explanation (1–2 sentences) of why the error occurs and how to avoid it. Written in italics.
 - Errors should be **real mistakes that ESL students actually make**. Do not invent unlikely errors.
 - The incorrect sentences must be genuinely wrong. The correct sentences must be genuinely correct.
@@ -219,7 +222,7 @@ This section gives the learner practical advice on how to remember and practise 
 - Each tip is labelled: **📌 TIP 1:**, **📌 TIP 2:**, **📌 TIP 3:**.
 - Tips can include: memory tricks, study strategies, practice suggestions, ways to notice the grammar in real life, or advice about when to use (or avoid) the grammar.
 - Each tip should be 2–4 sentences long.
-- The section heading is: **"Useful Tips"** (or "How to Remember and Practice" — either is acceptable, but be consistent across pages).
+- The section heading is **"Useful Tips"** (38 of 41 pages use it; a few older pages say "How to Remember and Practice", "Memory Aids" or "Tips").
 
 **Example:**
 > 📌 **TIP 1:** Think of conditionals on a probability scale: Zero (100% — facts), First (likely future), Second (unlikely present/future), Third (impossible past). This helps you choose the right form based on how probable the situation is.
@@ -230,9 +233,11 @@ This section gives the learner practical advice on how to remember and practise 
 
 Every page ends with a multiple-choice quiz so learners can test their understanding immediately.
 
+**The MCQ is the standard final activity.** Write one unless a different activity type has been specified for that page — in which case it takes the same position at the end of the page and keeps the same supporting elements (score display, Check Answers, Try Again, Review Grammar link). The HTML for alternatives is in `grammar-page-html-guidelines.md`, Section 11a.
+
 ### Section heading and introduction
 
-- Heading: **"Test Your Knowledge"** (or occasionally "Quick Practice").
+- Heading: **"Test Your Knowledge"** (36 of 40 pages; a few older pages say "Quick Practice").
 - A short introductory sentence telling the learner what the quiz covers. For example: "Choose the correct option for each question to test your understanding of passive reporting verbs."
 
 ### Number of questions
@@ -344,7 +349,7 @@ To help gauge the appropriate length for a page:
 | Learning objectives | Exactly 3 bullet points. |
 | Each grammar point section | 1 paragraph of explanation + key rules (if needed) + exactly 3 examples per group (a section may have multiple groups if it covers sub-uses) + optional native speaker note. |
 | Key differences section (optional) | 1 paragraph + bullet list + 2–3 sets of comparative examples. |
-| Sentence ordering activity | 5–8 sentence reordering questions. |
+| Sentence ordering activity | Usually 5 reordering questions, up to 8. |
 | Summary table | One table with 4–8 rows depending on topic complexity. |
 | Common errors | Exactly 3 errors (title + incorrect + correct + explanation each). |
 | Tips | Exactly 3 tips (2–4 sentences each). |
@@ -383,7 +388,8 @@ Before considering a page complete, verify the following:
 - [ ] Example sentences use simple grammar and vocabulary (only the target grammar is new).
 - [ ] Native speaker notes are included only where genuinely useful.
 - [ ] Key differences section is included only if it adds value without making the page too long or repetitive.
-- [ ] Sentence ordering activity has 5–8 questions covering the grammar points from the page.
+- [ ] Sentence ordering activity has 5 questions (up to 8 if needed) covering the grammar points from the page.
+- [ ] Every score shown to the learner is out of the actual number of questions in that activity.
 - [ ] Summary table is present and covers all forms taught on the page.
 - [ ] Exactly 3 common errors are listed with incorrect sentence, correct sentence, and explanation.
 - [ ] The errors are real mistakes ESL learners actually make.

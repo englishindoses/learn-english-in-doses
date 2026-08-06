@@ -5,21 +5,21 @@ Last updated: 6 August 2026.
 
 ---
 
-## 1. Fixes to `grammar/advanced/grammar-page-html-guidelines.md`
+## 1. Fixes to the guideline docs
 
-Confirmed decisions from the audit. None applied yet — waiting to go ahead.
+All applied 6 August 2026, checked against the live pages. Both docs now live in `docs/`.
 
-- [ ] **Stylesheets.** Remove `button-shine.css` from the required list (the file no longer exists; the shine effect is in `base.css`). Required set is 4: `base.css`, `levels.css`, `activities.css`, `progress-tracking-styles.css`.
-- [ ] **Stylesheets, rule change.** Replace "always these five, no others" with: each page loads the stylesheets it needs — the 4 core sheets plus any activity-specific sheet (e.g. `compact-matching.css`).
-- [ ] **Add `defer`** to all four script tags in the guidelines, matching the live pages.
-- [ ] **Update the footer block** to the current one: Quick Links / Learn English / About, licence link inside the About column, Instagram link, bottom bar `© 2025–2026 English in Doses | All rights reserved`.
-- [ ] **Theme toggle:** add `aria-hidden="true"` to the ☀️ and 🌙 spans.
-- [ ] **Nav toggle:** add `aria-expanded="false"` to the hamburger button.
-- [ ] **Drag-and-drop count:** usually 5 questions, but the score denominator must always match the actual number of questions on the page. Same for the MCQ denominator. (This has caused bugs before — make it a bold rule, not a note.)
-- [ ] **MCQ options:** 3 options (A, B, C) as standard, unless specified otherwise for a particular page. Remove the "3 or 4, be consistent" wording.
-- [ ] **Final activity:** state that the MCQ is the standard final activity, but another activity type may be used when specified. Document the compact-matching alternative as an example (`.cm-*` markup, `compact-matching.css`, `compact-matching.js`, its own init call).
-- [ ] **Breadcrumbs:** replace the stale 6-anchor list with "use the actual section id from `advanced-grammar.html`".
-- [ ] **Review Grammar link:** confirm it is required on every grammar lesson page (with `id="summary"` as the target). Reference pages are outside these rules.
+- [x] **Stylesheets.** Remove `button-shine.css` from the required list (the file no longer exists; the shine effect is in `base.css`). Required set is 4: `base.css`, `levels.css`, `activities.css`, `progress-tracking-styles.css`.
+- [x] **Stylesheets, rule change.** Replace "always these five, no others" with: each page loads the stylesheets it needs — the 4 core sheets plus any activity-specific sheet (e.g. `compact-matching.css`).
+- [x] **Add `defer`** to all four script tags in the guidelines, matching the live pages.
+- [x] **Update the footer block** to the current one: Quick Links / Learn English / About, licence link inside the About column, Instagram link, bottom bar `© 2025–2026 English in Doses | All rights reserved`.
+- [x] **Theme toggle:** add `aria-hidden="true"` to the ☀️ and 🌙 spans.
+- [x] **Nav toggle:** add `aria-expanded="false"` to the hamburger button.
+- [x] **Drag-and-drop count:** usually 5 questions, but the score denominator must always match the actual number of questions on the page. Same for the MCQ denominator. (This has caused bugs before — make it a bold rule, not a note.)
+- [x] **MCQ options:** 3 options (A, B, C) as standard, unless specified otherwise for a particular page. Remove the "3 or 4, be consistent" wording.
+- [x] **Final activity:** state that the MCQ is the standard final activity, but another activity type may be used when specified. Document the compact-matching alternative as an example (`.cm-*` markup, `compact-matching.css`, `compact-matching.js`, its own init call).
+- [x] **Breadcrumbs:** replace the stale 6-anchor list with "use the actual section id from `advanced-grammar.html`".
+- [x] **Review Grammar link:** confirm it is required on every grammar lesson page (with `id="summary"` as the target). Reference pages are outside these rules.
 
 ## 2. Page fixes found during the audit
 
@@ -50,5 +50,5 @@ Roughly in the order I'd tackle them.
 - [x] Delete `files/` — leftovers from the original scaffold, nothing referenced them. Done 6 Aug 2026.
 - [x] Clear out `grammar/advanced mass trial/`. Done 6 Aug 2026 — guidelines moved to `docs/`, the 6 drafts already built as pages deleted (recoverable from git history), the one unbuilt draft moved to `drafts/focusing-adverbs-and-adverbials.md`.
 - [ ] Build the `focusing-adverbs-and-adverbials` lesson page from the draft in `drafts/`.
-- [ ] **Do not delete** the remote branch `claude/instagram-design-guidelines-NekT4` yet — it has 5 unmerged commits, including the Instagram design guidelines and a carousel generator script. Decide whether to merge that work, move the guidelines into `docs/`, or drop it.
+- [x] Drop the branch `claude/instagram-design-guidelines-NekT4` and its Instagram design guidelines / carousel generator work — not wanted. Done 6 Aug 2026: already deleted on GitHub, stale local tracking refs pruned (along with `update-dep-preps-full-table`), unreachable commits garbage-collected.
 - [ ] Run a site-wide link check for other dead links and missing files.
