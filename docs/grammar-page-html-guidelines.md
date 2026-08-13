@@ -257,7 +257,7 @@ Only one `<h1>` per page. It appears directly inside `<main>`, before any sectio
 
 - Class is `intro-section`.
 - Always contains an `<h2>Introduction</h2>`, one or more `<p>` tags, then an `<h3>` with learning objectives in a `<ul>`.
-- Typically 3 learning objectives.
+- Exactly 3 learning objectives.
 
 ### 6.3 Grammar Point Sections
 
@@ -311,21 +311,21 @@ Only one `<h1>` per page. It appears directly inside `<main>`, before any sectio
     <p class="error-title"><strong>1: Description of the error</strong></p>
     <p class="incorrect">❌ Incorrect example sentence.</p><br>
     <p class="correct">✓ Correct example sentence.</p>
-    <p class="explanation"><em>Explanation of why it's wrong and how to fix it.</em></p>
+    <p class="explanation">Explanation of why it's wrong and how to fix it.</p>
   </div>
 
   <div class="error-pattern">
     <p class="error-title"><strong>2: Description of the error</strong></p>
     <p class="incorrect">❌ Incorrect example sentence.</p><br>
     <p class="correct">✓ Correct example sentence.</p>
-    <p class="explanation"><em>Explanation.</em></p>
+    <p class="explanation">Explanation, with <em>a cited word</em> italicised if one comes up.</p>
   </div>
 
   <div class="error-pattern">
     <p class="error-title"><strong>3: Description of the error</strong></p>
     <p class="incorrect">❌ Incorrect example sentence.</p><br>
     <p class="correct">✓ Correct example sentence.</p>
-    <p class="explanation"><em>Explanation.</em></p>
+    <p class="explanation">Explanation.</p>
   </div>
 </section>
 ```
@@ -334,13 +334,13 @@ Only one `<h1>` per page. It appears directly inside `<main>`, before any sectio
 
 - Section class: `common-errors`
 - Heading: `<h2 class="common-errors-heading">Common Errors</h2>`
-- Usually 3 error patterns.
+- Maximum 3 error patterns.
 - Each error is a `<div class="error-pattern">` containing:
   - `<p class="error-title">` with bold numbered title
   - `<p class="incorrect">` prefixed with ❌
   - `<br>` between incorrect and correct
   - `<p class="correct">` prefixed with ✓
-  - `<p class="explanation">` wrapped in `<em>`
+  - `<p class="explanation">` — **plain text, never wrapped in `<em>`**. Italicise only a word being quoted as a word (*a/an*, *passers-by*), and use `<strong>` for the one thing the learner must not miss. If the whole sentence is italic, a word italicised inside it looks the same as everything around it and the emphasis stops meaning anything. Some older pages italicise the whole explanation; that is the old pattern, not the standard.
 
 ### 7.2 Tips Section
 
@@ -366,7 +366,7 @@ Only one `<h1>` per page. It appears directly inside `<main>`, before any sectio
 
 - Section class: `tips`
 - Heading: `<h2 class="tips-heading">Useful Tips</h2>`
-- Usually 3 tips.
+- Maximum 3 tips.
 - Each tip is a `<div class="grammar-tip">` containing a `<p>` prefixed with 📌 emoji and bold "TIP N:" label.
 
 ---
@@ -382,7 +382,7 @@ Use these CSS classes within content sections:
 | `note` | `<div>` | Wraps note/callout boxes with distinct background | `<div class="note">...</div>` |
 | `incorrect` | `<p>` | Red-styled incorrect example | `<p class="incorrect">❌ Wrong sentence.</p>` |
 | `correct` | `<p>` | Green-styled correct example | `<p class="correct">✓ Correct sentence.</p>` |
-| `explanation` | `<p>` | Explanation text (always italicised with `<em>`) | `<p class="explanation"><em>Why...</em></p>` |
+| `explanation` | `<p>` | Explanation text (plain — never wrap the whole thing in `<em>`) | `<p class="explanation">Why...</p>` |
 | `error-pattern` | `<div>` | Container for each error in common errors | |
 | `error-title` | `<p>` | Title of an error pattern | |
 | `grammar-tip` | `<div>` | Container for each tip | |
@@ -390,7 +390,7 @@ Use these CSS classes within content sections:
 ### Text formatting within examples
 
 - Use `<strong>` to bold key words in example sentences (verbs, grammar structures being taught).
-- Use `<em>` for italicised text in notes and explanations.
+- Use `<em>` only for words cited as words (*a/an*, *the*, *bus stop*) and `<strong>` for the thing the learner must not miss. Don't use both on the same phrase, and never italicise a whole sentence or paragraph.
 - Use `<br>` to add line breaks between an example sentence and its explanation.
 - Use `<span class="grammar-highlight">` to highlight the grammar structure being demonstrated.
 - In example sentences, the explanation is placed in parentheses after `<br>`: `sentence.<br>(= explanation)`
@@ -399,7 +399,7 @@ Use these CSS classes within content sections:
 
 ## 9. Drag-and-Drop Activity
 
-The drag-and-drop section is a sentence reordering activity where learners drag words into the correct order.
+The drag-and-drop section is a sentence reordering activity where learners drag words into the correct order. It is the **default** first activity and most pages use it, but it is not compulsory — when the lesson isn't about word order, another activity type takes this slot in the same position. See `advanced-grammar-content-guidelines.md` for how to choose, and the module's own file in `js/` for the markup it expects.
 
 ### HTML Structure
 
@@ -562,7 +562,7 @@ The drag-and-drop section is a sentence reordering activity where learners drag 
   - `<div class="options">` — contains the answer options
   - Each option: `<div class="option" data-index="N">` where N is the 0-based index, containing a `<span>` with a letter prefix (A., B., C.). With 3 options the `answers` values in the init script are 0, 1 or 2.
   - `<div class="feedback"></div>` — empty, populated by JS
-- **3 options per question (A, B, C) unless specified otherwise for that page.** This is the standard. A page only uses 4 options if it has been explicitly asked for, and then all 10 questions on that page use 4.
+- **3 options per question (A, B, C).** This is the standard. Use 4 only if the grammar genuinely needs it, and then all 10 questions on that page use 4.
 - **Control buttons** — all three are always visible side by side, in this exact order. No inline `style` attributes — the JS modules handle showing/hiding/disabling as needed:
   1. Submit button: `<button id="mcq-submit" class="submit-btn">Check Answers</button>`
   2. Restart button: `<button id="mcq-restart" class="restart-btn">Try Again</button>`
@@ -574,7 +574,7 @@ The drag-and-drop section is a sentence reordering activity where learners drag 
 
 ## 11a. Using a Different Final Activity
 
-**The MCQ is the standard final activity.** Build it unless you have been asked for something else. A different activity type may be used when specified for a particular page — in that case it replaces the MCQ in the same position (last section on the page) and keeps the same surrounding conventions: a `<section class="content-section">` wrapper, an `<h2>` heading, a one-line instruction, a Review Grammar link back to `#summary`, and a score display.
+**The MCQ is the standard final activity.** Build it unless another type suits the grammar better (see `advanced-grammar-content-guidelines.md` for how to choose). A different activity type replaces the MCQ in the same position (last section on the page) and keeps the same surrounding conventions: a `<section class="content-section">` wrapper, an `<h2>` heading, a one-line instruction, a Review Grammar link back to `#summary`, and a score display. A non-MCQ final activity has 8–10 questions.
 
 The example currently in use is the **compact matching** activity on `comment-adverbs.html`, where learners drag a numbered marker onto the meaning it matches.
 
@@ -1070,21 +1070,21 @@ Below is a minimal but complete template. Replace all `PLACEHOLDER` values with 
           <p class="error-title"><strong>1: ERROR_DESCRIPTION</strong></p>
           <p class="incorrect">❌ WRONG_SENTENCE</p><br>
           <p class="correct">✓ CORRECT_SENTENCE</p>
-          <p class="explanation"><em>EXPLANATION</em></p>
+          <p class="explanation">EXPLANATION</p>
         </div>
 
         <div class="error-pattern">
           <p class="error-title"><strong>2: ERROR_DESCRIPTION</strong></p>
           <p class="incorrect">❌ WRONG_SENTENCE</p><br>
           <p class="correct">✓ CORRECT_SENTENCE</p>
-          <p class="explanation"><em>EXPLANATION</em></p>
+          <p class="explanation">EXPLANATION</p>
         </div>
 
         <div class="error-pattern">
           <p class="error-title"><strong>3: ERROR_DESCRIPTION</strong></p>
           <p class="incorrect">❌ WRONG_SENTENCE</p><br>
           <p class="correct">✓ CORRECT_SENTENCE</p>
-          <p class="explanation"><em>EXPLANATION</em></p>
+          <p class="explanation">EXPLANATION</p>
         </div>
       </section>
 
