@@ -1,29 +1,29 @@
-/* Sentence Order (Fix the Sentence) Activity Styles */
+/* Fix the Sentence Activity Styles */
 
-.sentence-order-container {
+.fix-sentence-container {
   max-width: 760px;
   margin: 0 auto;
 }
 
-.so-item {
+.fs-item {
   margin-bottom: 20px;
   padding-bottom: 15px;
   border-bottom: 1px solid var(--border-color, #ddd);
 }
 
-.so-number {
+.fs-number {
   font-weight: 600;
   margin-bottom: 8px;
 }
 
-.so-words {
+.fs-words {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 12px;
 }
 
-.so-word {
+.fs-word {
   background-color: var(--card-bg, #f8f9fa);
   border: 1px solid var(--border-color, #ddd);
   border-radius: 4px;
@@ -32,7 +32,17 @@
   font-size: 0.95rem;
 }
 
-.so-input {
+.fs-wrong {
+  background-color: var(--error-bg, #f8d7da);
+  border: 1px solid var(--error-color, #c0392b);
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.95rem;
+  color: var(--text-color, #333333);
+}
+
+.fs-input {
   width: 100%;
   padding: 10px 12px;
   border: 2px solid var(--border-color, #ddd);
@@ -45,24 +55,24 @@
   box-sizing: border-box;
 }
 
-.so-input:focus {
+.fs-input:focus {
   border-color: var(--accent-color, #3498db);
   outline: none;
 }
 
-.so-input.correct {
+.fs-input.correct {
   border-color: var(--success-color, #155724);
   background-color: var(--success-bg, #d4edda);
   color: var(--success-color, #155724);
 }
 
-.so-input.incorrect {
+.fs-input.incorrect {
   border-color: var(--error-color, #c0392b);
   background-color: var(--error-bg, #f8d7da);
   color: var(--text-color, #333333);
 }
 
-.so-correct-answer {
+.fs-correct-answer {
   display: none;
   margin-top: 6px;
   font-size: 0.9rem;
@@ -70,42 +80,49 @@
   font-style: italic;
 }
 
-.so-correct-answer.show {
+.fs-correct-answer.show {
   display: block;
 }
 
-[data-theme="dark"] .so-word {
+[data-theme="dark"] .fs-word {
   background-color: var(--card-bg, #1e1e1e);
   color: var(--text-color, #e0e0e0);
 }
 
-[data-theme="dark"] .so-input {
+[data-theme="dark"] .fs-wrong {
+  background-color: var(--error-bg, #2c1215);
+  border-color: var(--error-color, #e7a9ad);
+  color: var(--text-color, #e0e0e0);
+}
+
+[data-theme="dark"] .fs-input {
   background-color: var(--bg-color, #121212);
   color: var(--text-color, #e0e0e0);
 }
 
-[data-theme="dark"] .so-input.correct {
+[data-theme="dark"] .fs-input.correct {
   border-color: var(--success-color, #7cda9c);
   background-color: var(--success-bg, #143823);
   color: var(--success-color, #7cda9c);
 }
 
-[data-theme="dark"] .so-input.incorrect {
+[data-theme="dark"] .fs-input.incorrect {
   border-color: var(--error-color, #e7a9ad);
   background-color: var(--error-bg, #2c1215);
   color: var(--text-color, #e0e0e0);
 }
 
-[data-theme="dark"] .so-correct-answer {
+[data-theme="dark"] .fs-correct-answer {
   color: var(--success-color, #7cda9c);
 }
 
 @media (max-width: 480px) {
-  .so-words {
+  .fs-words {
     gap: 6px;
   }
 
-  .so-word {
+  .fs-word,
+  .fs-wrong {
     padding: 5px 10px;
     font-size: 0.85rem;
   }
