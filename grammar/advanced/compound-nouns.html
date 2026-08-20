@@ -294,7 +294,7 @@
 
           <div class="control-buttons">
             <button id="drag-drop-submit" class="submit-btn">Check Answers</button>
-            <button id="drag-drop-restart" class="restart-btn">Try Again</button>
+            <button id="drag-drop-restart" class="restart-btn" style="display:none;">Try Again</button>
           </div>
 
           <div class="score-display" id="drag-drop-score">
@@ -416,19 +416,19 @@
 
           <!-- Question 2 -->
           <div class="question" id="q2">
-            <p class="mcq-question">2. I've still got three _____ to submit before the end of the month.</p>
+            <p class="mcq-question">2. There are two _____ on my street.</p>
             <div class="options">
               <div class="option" data-index="0">
-                <span>A. expenses claims</span>
+                <span>A. buses stops</span>
               </div>
               <div class="option" data-index="1">
-                <span>B. expense claim's</span>
+                <span>B. bus stop's</span>
               </div>
               <div class="option" data-index="2">
-                <span>C. expense claims</span>
+                <span>C. bus stops</span>
               </div>
               <div class="option" data-index="3">
-                <span>D. expenses claim</span>
+                <span>D. buses stop</span>
               </div>
             </div>
             <div class="feedback"></div>
@@ -519,7 +519,7 @@
             <p class="mcq-question">7. There's a long _____ for that operation — about two years.</p>
             <div class="options">
               <div class="option" data-index="0">
-                <span>A. wait list</span>
+                <span>A. waits list</span>
               </div>
               <div class="option" data-index="1">
                 <span>B. waiting's list</span>
@@ -562,7 +562,7 @@
                 <span>A. I've printed both boarding passes.</span>
               </div>
               <div class="option" data-index="1">
-                <span>B. Two runner-ups also got a prize.</span>
+                <span>B. Both cars parks were full.</span>
               </div>
               <div class="option" data-index="2">
                 <span>C. My flatmate's car is outside.</span>
@@ -596,7 +596,7 @@
 
           <div class="control-buttons">
             <button id="mcq-submit" class="submit-btn">Check Answers</button>
-            <button id="mcq-restart" class="restart-btn">Try Again</button>
+            <button id="mcq-restart" class="restart-btn" style="display:none;">Try Again</button>
             <a href="#summary" class="nav-button">Review Grammar</a>
           </div>
 
@@ -681,26 +681,26 @@
         },
         correctExplanations: {
           'q1': "The modifier stays singular, however many risks the assessment covers: a risk assessment.",
-          'q2': "The main noun is claim, so the plural -s goes at the end: expense claims. Expense stays singular.",
+          'q2': "The main noun is stop, so the plural -s goes at the end: bus stops. Bus stays singular.",
           'q3': "Brother-in-law contains a preposition (in), so the -s goes on the main noun at the front: brothers-in-law.",
           'q4': "The possessive 's always goes at the very end, never in the middle: my mother-in-law's house.",
           'q5': "Customs officer is one of the few compounds that keeps a plural modifier — like sports centre and clothes shop.",
           'q6': "A greenhouse is one thing: a glass building for plants. A green house is just a house painted green, with green describing the house.",
           'q7': "A verb-ing word says what the thing is for: a waiting list is a list for waiting.",
           'q8': "The main noun is pool, so the plural -s goes there. Swimming stays as it is.",
-          'q9': "Runner-up contains a preposition (up), so the plural goes on the main noun at the front: runners-up.",
+          'q9': "The modifier never takes -s: it is car park, so two of them are car parks, not cars parks.",
           'q10': "Database is written as one word, so it behaves like any other noun: add -s at the end."
         },
         incorrectExplanations: {
           'q1': "The modifier never takes -s and never takes an apostrophe. How many risks there are makes no difference.",
-          'q2': "Which of the two words is the thing you actually have three of? That word takes the -s.",
+          'q2': "Which of the two words is the thing there are two of? That word takes the -s.",
           'q3': "This compound contains a preposition (in). Which word names the people? That's where the -s goes.",
           'q4': "Plural and possessive behave differently here. Where does the 's go in a hyphenated compound — in the middle or at the very end?",
           'q5': "This is one of the small group of exceptions that keeps a plural modifier. Compare sports centre and clothes shop.",
           'q6': "Two separate words means something different: it would be a house painted green. Which spelling names the glass building for plants?",
           'q7': "Check the form of the modifier and remember that it never takes -s or 's. What is the list for?",
           'q8': "Only one of the two words can carry the plural. Which one is the thing there are two of?",
-          'q9': "Three of these are fine. Look at the one built with a preposition and check where its plural -s sits.",
+          'q9': "Three of these are fine. Look at the one where the first word has been made plural as well.",
           'q10': "This compound is written as one word, so treat it like any other noun. Where does the -s go?"
         },
         showAllQuestionsAtOnce: true,
