@@ -1,7 +1,7 @@
 # To Do
 
 Working list for tidying up the project and its documentation.
-Last updated: 6 August 2026.
+Last updated: 24 August 2026.
 
 ---
 
@@ -24,9 +24,19 @@ All applied 6 August 2026, checked against the live pages. Both docs now live in
 ## 2. Page fixes found during the audit
 
 - [x] `grammar/advanced/adverb-position.html:24` — remove the `button-shine.css` link (404). Done 6 Aug 2026.
-- [ ] `grammar/advanced/compound-nouns.html` — Next button points to `complex-noun-phrases.html`, which doesn't exist yet. Either build that page or repoint the link.
+- [x] `grammar/advanced/compound-nouns.html` — Next button pointed at a page that didn't exist. Done 25 Aug 2026: repointed to `compound-nouns2.html`.
 - [ ] Add the missing Review Grammar link + `id="summary"` to `gerund-infinitive.html`, `subjunctive1.html`, `subjunctive2.html`, `subjunctive-revision.html`.
 - [ ] Check every page's activity score denominators against the actual question counts.
+
+### Built but not on the index (24 August 2026)
+
+Three finished lessons are missing from `advanced-grammar.html`. Check each one reads properly before adding it, then wire the prev/next chain around it.
+
+- [ ] `passive-voice-summary.html` — belongs in module 4, Passive Voice. Has no prev/next buttons at all, and its `<title>` still says "Advanced Passive Constructions with Get and Have", copied from `passive-get-have.html`.
+- [ ] `multiple-adverbs.html` — belongs in module 7, after Adverb Position. Module 7 currently lists "Adverb Position and Multiple Adverbs" as one entry; split it into two. Nothing links to this page: `adverb-position.html` points its Next button at `adverb-position-fixed.html`, which does not exist.
+- [ ] `dependent-prepositions2.html` — belongs in module 7, after Dependent Prepositions. Its Next button goes back to the index instead of on to Comment Adverbs.
+
+Also worth deciding: `reporting-verbs-patterns.html` ends the Next chain by pointing back at the index, so nothing walks a learner from module 6 into module 7.
 
 ## 3. Docs to write
 
@@ -51,6 +61,6 @@ Roughly in the order I'd tackle them.
 - [x] Delete `files/` — leftovers from the original scaffold, nothing referenced them. Done 6 Aug 2026.
 - [x] Clear out `grammar/advanced mass trial/`. Done 6 Aug 2026 — guidelines moved to `docs/`, the 6 drafts already built as pages deleted (recoverable from git history), the one unbuilt draft moved to `drafts/focusing-adverbs-and-adverbials.md`.
 - [ ] Build the `focusing-adverbs-and-adverbials` lesson page from the draft in `drafts/`.
-- [ ] Build **Compound Nouns — Part 2**. Long noun strings (`train ticket price increase`, read backwards, the four-noun limit) were cut from Part 1 on 12 August 2026 and belong there. It also needs adding to `advanced-grammar.html` and wiring into the prev/next chain.
+- [x] Build **Compound Nouns — Part 2**. Done 25 Aug 2026: `compound-nouns2.html` covers long noun strings, stress, and nouns from phrasal verbs. Added to `advanced-grammar.html` and wired into the prev/next chain.
 - [x] Drop the branch `claude/instagram-design-guidelines-NekT4` and its Instagram design guidelines / carousel generator work — not wanted. Done 6 Aug 2026: already deleted on GitHub, stale local tracking refs pruned (along with `update-dep-preps-full-table`), unreachable commits garbage-collected.
 - [ ] Run a site-wide link check for other dead links and missing files.
