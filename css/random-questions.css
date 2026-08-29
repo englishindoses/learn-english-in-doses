@@ -10,14 +10,17 @@
 /* Generator container */
 .rq-generator {
   margin-top: 20px;
+  margin-bottom: 40px;
 }
 
-/* Two-column grid: generator card + sidebar card */
+/* Single column: generator card on top, help underneath */
 .rq-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
+  grid-template-columns: 1fr;
+  gap: 20px;
   align-items: start;
+  max-width: 760px;
+  margin: 0 auto;
 }
 
 /* Shared card style */
@@ -37,6 +40,7 @@
   line-height: 1.6;
   margin-top: 0;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 /* Question display box */
@@ -80,6 +84,7 @@
 .rq-category-buttons {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 8px;
   margin-bottom: 10px;
 }
@@ -162,11 +167,12 @@
   margin-right: 8px;
 }
 
-/* Sidebar card sections */
+/* Help card sections - sit side by side under the question on wide screens */
 .rq-card-sidebar {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  align-items: start;
 }
 
 /* Tips section */
@@ -175,7 +181,6 @@
   border-left: 4px solid var(--rq-secondary);
   padding: 10px 10px 10px 10px;
   border-radius: 8px;
-  margin-bottom: 10px;
 }
 
 .rq-tips-heading {
@@ -271,12 +276,8 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-  .rq-grid {
+  .rq-card-sidebar {
     grid-template-columns: 1fr;
-  }
-
-  .rq-category-buttons {
-    justify-content: center;
   }
 
   .rq-question-text {

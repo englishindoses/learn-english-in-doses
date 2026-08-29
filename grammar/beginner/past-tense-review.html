@@ -587,10 +587,10 @@
            ============================================================ -->
       <h2>Speaking: answer the question</h2>
 
-      <div class="rq-generator" style="--rq-primary: var(--accent-color); --rq-primary-dark: #2980b9; --rq-secondary: var(--secondary-accent); --rq-card-bg: var(--example-bg);">
+      <div class="rq-generator" style="--rq-primary: var(--beginner-primary); --rq-primary-dark: var(--beginner-primary-dark); --rq-secondary: var(--beginner-secondary); --rq-card-bg: var(--beginner-card-bg);">
         <div class="rq-grid">
 
-          <div class="rq-card">
+          <div class="rq-card rq-card-generator">
             <p class="rq-card-intro">Choose a topic, then click the button. Answer in <strong>two or three sentences</strong> — not one word.</p>
 
             <div class="rq-category-buttons">
@@ -604,12 +604,14 @@
 
             <div id="rq-question-container" class="rq-question-container">
               <span id="rq-question-text" class="rq-question-text"></span>
-              <div class="rq-question-id">#<span id="rq-question-id"></span></div>
+              <span class="rq-question-id" id="rq-question-id"></span>
             </div>
 
-            <button id="rq-new-question-btn" class="rq-new-question-button">
-              <span class="rq-button-icon">🔄</span> New question
-            </button>
+            <div class="rq-button-container">
+              <button id="rq-new-question-btn" class="rq-new-question-button">
+                <span class="rq-button-icon">🔄</span> New question
+              </button>
+            </div>
           </div>
 
           <div class="rq-card rq-card-sidebar">
