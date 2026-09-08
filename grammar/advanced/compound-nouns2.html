@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="../../css/base.css">
   <link rel="stylesheet" href="../../css/levels.css">
   <link rel="stylesheet" href="../../css/activities.css">
+  <link rel="stylesheet" href="../../css/drop-down.css">
   <link rel="stylesheet" href="../../css/progress-tracking-styles.css">
 </head>
 <body class="advanced-section">
@@ -213,103 +214,122 @@
         </div>
       </section>
 
-      <!-- DRAG AND DROP ACTIVITY -->
+      <!-- DROPDOWN GAP-FILL ACTIVITY -->
       <section class="content-section">
-        <h2>Practice: Sentence Reordering</h2>
-        <p>Drag the words into the correct order. Remember: in a string of nouns, the one that says what the thing is goes last.</p>
+        <h2>Practice: Complete the Sentence</h2>
+        <p>Choose the correct option from each drop-down menu to complete the sentence.</p>
 
-        <div id="drag-drop" class="activity-container active">
-          <!-- Question 1 -->
-          <div class="question" id="dd-q1">
-            <p class="question-text">1. Put the words in the correct order:</p>
-            <div class="drop-zone" data-index="dd-q1" data-answer="I left the printout on your desk"></div>
-            <div class="drag-items">
-              <div class="drag-item" draggable="true">printout</div>
-              <div class="drag-item" draggable="true">I</div>
-              <div class="drag-item" draggable="true">on</div>
-              <div class="drag-item" draggable="true">the</div>
-              <div class="drag-item" draggable="true">desk</div>
-              <div class="drag-item" draggable="true">left</div>
-              <div class="drag-item" draggable="true">your</div>
-            </div>
-            <div class="feedback"></div>
+        <div id="dropdown-compound" class="dropdown-activity">
+          <!-- Sentence 1 -->
+          <div class="dropdown-sentence">
+            <span class="sentence-number">1</span>
+            Everyone got an email about the
+            <select class="gap-dropdown" data-answer="staff car park charges" aria-label="Noun string for sentence 1">
+              <option value="" disabled selected>Choose...</option>
+              <option value="car park staff charges">car park staff charges</option>
+              <option value="staff car park charges">staff car park charges</option>
+              <option value="charges staff car park">charges staff car park</option>
+            </select>
+            this morning.
           </div>
 
-          <!-- Question 2 -->
-          <div class="question" id="dd-q2">
-            <p class="question-text">2. Put the words in the correct order:</p>
-            <div class="drop-zone" data-index="dd-q2" data-answer="the bus fare has gone up again"></div>
-            <div class="drag-items">
-              <div class="drag-item" draggable="true">fare</div>
-              <div class="drag-item" draggable="true">the</div>
-              <div class="drag-item" draggable="true">up</div>
-              <div class="drag-item" draggable="true">bus</div>
-              <div class="drag-item" draggable="true">again</div>
-              <div class="drag-item" draggable="true">has</div>
-              <div class="drag-item" draggable="true">gone</div>
-            </div>
-            <div class="feedback"></div>
+          <!-- Sentence 2 -->
+          <div class="dropdown-sentence">
+            <span class="sentence-number">2</span>
+            They have brought in new
+            <select class="gap-dropdown" data-answer="office fire safety rules" aria-label="Noun string for sentence 2">
+              <option value="" disabled selected>Choose...</option>
+              <option value="office fire safety rules">office fire safety rules</option>
+              <option value="fire office rules safety">fire office rules safety</option>
+              <option value="safety fire office rules">safety fire office rules</option>
+            </select>
+            this year.
           </div>
 
-          <!-- Question 3 -->
-          <div class="question" id="dd-q3">
-            <p class="question-text">3. Put the words in the correct order:</p>
-            <div class="drop-zone" data-index="dd-q3" data-answer="there is a follow-up meeting on Friday morning"></div>
-            <div class="drag-items">
-              <div class="drag-item" draggable="true">meeting</div>
-              <div class="drag-item" draggable="true">there</div>
-              <div class="drag-item" draggable="true">Friday</div>
-              <div class="drag-item" draggable="true">follow-up</div>
-              <div class="drag-item" draggable="true">is</div>
-              <div class="drag-item" draggable="true">morning</div>
-              <div class="drag-item" draggable="true">a</div>
-              <div class="drag-item" draggable="true">on</div>
-            </div>
-            <div class="feedback"></div>
+          <!-- Sentence 3 -->
+          <div class="dropdown-sentence">
+            <span class="sentence-number">3</span>
+            A bus fare increase is an increase
+            <select class="gap-dropdown" data-answer="in" aria-label="Preposition for sentence 3">
+              <option value="" disabled selected>Choose...</option>
+              <option value="of">of</option>
+              <option value="in">in</option>
+              <option value="on">on</option>
+            </select>
+            bus fares.
           </div>
 
-          <!-- Question 4 -->
-          <div class="question" id="dd-q4">
-            <p class="question-text">4. Put the words in the correct order:</p>
-            <div class="drop-zone" data-index="dd-q4" data-answer="they have changed the office fire safety rules"></div>
-            <div class="drag-items">
-              <div class="drag-item" draggable="true">rules</div>
-              <div class="drag-item" draggable="true">they</div>
-              <div class="drag-item" draggable="true">fire</div>
-              <div class="drag-item" draggable="true">changed</div>
-              <div class="drag-item" draggable="true">office</div>
-              <div class="drag-item" draggable="true">have</div>
-              <div class="drag-item" draggable="true">safety</div>
-              <div class="drag-item" draggable="true">the</div>
-            </div>
-            <div class="feedback"></div>
+          <!-- Sentence 4 -->
+          <div class="dropdown-sentence">
+            <span class="sentence-number">4</span>
+            Office fire safety rules are rules about fire safety
+            <select class="gap-dropdown" data-answer="in" aria-label="Preposition for sentence 4">
+              <option value="" disabled selected>Choose...</option>
+              <option value="in">in</option>
+              <option value="of">of</option>
+              <option value="to">to</option>
+            </select>
+            the office.
           </div>
 
-          <!-- Question 5 -->
-          <div class="question" id="dd-q5">
-            <p class="question-text">5. Put the words in the correct order:</p>
-            <div class="drop-zone" data-index="dd-q5" data-answer="the staff car park charges start next month"></div>
-            <div class="drag-items">
-              <div class="drag-item" draggable="true">charges</div>
-              <div class="drag-item" draggable="true">the</div>
-              <div class="drag-item" draggable="true">next</div>
-              <div class="drag-item" draggable="true">car</div>
-              <div class="drag-item" draggable="true">start</div>
-              <div class="drag-item" draggable="true">staff</div>
-              <div class="drag-item" draggable="true">month</div>
-              <div class="drag-item" draggable="true">park</div>
-            </div>
-            <div class="feedback"></div>
+          <!-- Sentence 5 -->
+          <div class="dropdown-sentence">
+            <span class="sentence-number">5</span>
+            The whole thing is too long to say, so we talk about the cuts to the council's budget
+            <select class="gap-dropdown" data-answer="for" aria-label="Preposition for sentence 5">
+              <option value="" disabled selected>Choose...</option>
+              <option value="for">for</option>
+              <option value="by">by</option>
+              <option value="with">with</option>
+            </select>
+            road repairs.
           </div>
 
-          <div class="control-buttons">
-            <button id="drag-drop-submit" class="submit-btn">Check Answers</button>
-            <button id="drag-drop-restart" class="restart-btn" style="display:none;">Try Again</button>
+          <!-- Sentence 6 -->
+          <div class="dropdown-sentence">
+            <span class="sentence-number">6</span>
+            I left the
+            <select class="gap-dropdown" data-answer="printout" aria-label="Noun for sentence 6">
+              <option value="" disabled selected>Choose...</option>
+              <option value="print out">print out</option>
+              <option value="outprint">outprint</option>
+              <option value="printout">printout</option>
+            </select>
+            on your desk.
           </div>
 
-          <div class="score-display" id="drag-drop-score">
-            Your score: <span>0</span>/5
+          <!-- Sentence 7 -->
+          <div class="dropdown-sentence">
+            <span class="sentence-number">7</span>
+            There is a
+            <select class="gap-dropdown" data-answer="follow-up" aria-label="Noun for sentence 7">
+              <option value="" disabled selected>Choose...</option>
+              <option value="following-up">following-up</option>
+              <option value="follow-up">follow-up</option>
+              <option value="up-follow">up-follow</option>
+            </select>
+            meeting on Friday morning.
           </div>
+
+          <!-- Sentence 8 -->
+          <div class="dropdown-sentence">
+            <span class="sentence-number">8</span>
+            Half the class is off with flu — there has been an
+            <select class="gap-dropdown" data-answer="outbreak" aria-label="Noun for sentence 8">
+              <option value="" disabled selected>Choose...</option>
+              <option value="breakout">breakout</option>
+              <option value="outbreaking">outbreaking</option>
+              <option value="outbreak">outbreak</option>
+            </select>
+            at the school.
+          </div>
+        </div>
+
+        <div id="dropdown-compoundFeedback" class="feedback"></div>
+
+        <div class="control-buttons">
+          <button id="dropdown-check" class="submit-btn">Check Answers</button>
+          <button id="dropdown-restart" class="restart-btn">Try Again</button>
         </div>
       </section>
 
@@ -668,7 +688,7 @@
   <!-- JavaScript -->
   <script src="../../js/core.js" defer></script>
   <script src="../../js/mcq.js" defer></script>
-  <script src="../../js/drag-drop.js" defer></script>
+  <script src="../../js/drop-down.js" defer></script>
   <script src="../../js/progress-tracking-module.js" defer></script>
 
   <!-- Activity Initialisation -->
@@ -735,31 +755,21 @@
         }
       });
 
-      // Initialize Drag and Drop Module
-      DragDropModule.init({
-        containerId: 'drag-drop',
-        storageKey: 'compound-nouns2',
-        answers: {
-          'dd-q1': 'I left the printout on your desk',
-          'dd-q2': 'the bus fare has gone up again',
-          'dd-q3': 'there is a follow-up meeting on Friday morning',
-          'dd-q4': 'they have changed the office fire safety rules',
-          'dd-q5': 'the staff car park charges start next month'
-        },
-        onComplete: function(score, total) {
-          console.log(`Drag and Drop completed with score: ${score}/${total}`);
+      // Attach handlers for dropdown activity buttons
+      var dropdownCheckBtn = document.getElementById('dropdown-check');
+      var dropdownRestartBtn = document.getElementById('dropdown-restart');
 
-          if (typeof ProgressTracker !== "undefined") {
-            ProgressTracker.markItemCompleted('activities', 'drag-drop-compound-nouns2', {
-              score: score,
-              maxScore: total,
-              completed: true,
-              completedAt: new Date().toISOString(),
-              title: "Compound Nouns — Part 2 Sentence Reordering"
-            });
-          }
-        }
-      });
+      if (dropdownCheckBtn) {
+        dropdownCheckBtn.addEventListener('click', function() {
+          checkDropdownAnswers('dropdown-compound');
+        });
+      }
+
+      if (dropdownRestartBtn) {
+        dropdownRestartBtn.addEventListener('click', function() {
+          resetDropdownActivity('dropdown-compound');
+        });
+      }
     });
   </script>
 
