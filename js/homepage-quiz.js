@@ -70,7 +70,7 @@ const LevelTestQuiz = (function() {
       },
       {
         question: "I ____ like pizza.",
-        options: ["very", "much", "many", "a lot"],
+        options: ["very", "really", "many", "a lot"],
         correctAnswer: 1
       },
       {
@@ -187,7 +187,7 @@ const LevelTestQuiz = (function() {
         correctAnswer: 1
       },
       {
-        question: "The more you practice, ____ you'll become.",
+        question: "The more you practise, ____ you'll become.",
         options: ["better", "the better", "good", "the good"],
         correctAnswer: 1
       },
@@ -222,7 +222,7 @@ const LevelTestQuiz = (function() {
       {
         question: "The task needs ____.",
         options: ["completed", "complete", "completing", "been completed"],
-        correctAnswer: 0
+        correctAnswer: 2
       },
       {
         question: "It is imperative that the document ____ before the deadline.",
@@ -275,7 +275,7 @@ const LevelTestQuiz = (function() {
         correctAnswer: 1
       },
       {
-        question: "I'd sooner ____ than apologize to him.",
+        question: "I'd sooner ____ than apologise to him.",
         options: ["die", "dying", "died", "to die"],
         correctAnswer: 0
       },

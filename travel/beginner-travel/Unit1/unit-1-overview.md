@@ -1,4 +1,4 @@
-# Unit 1: Airport and Airplane Communication
+# Unit 1: At the Airport and on the Plane
 
 ## Overall Description
 
@@ -52,7 +52,7 @@ Students practise common security instructions ("Remove your laptop", "Take off 
 
 ---
 
-### Lesson 2: On the Airplane - Communicating with Flight Attendants
+### Lesson 2: On the Plane - Communicating with Flight Attendants
 
 **What students learn:**
 - How to communicate with staff on the flight.
@@ -86,7 +86,7 @@ Students practise requesting items using "Can I have...?" and asking questions a
 passport control, immigration, customs, declaration, tourism, business, visit, stay, purpose, duration, nothing to declare, goods to declare, officer, stamp, visa
 
 **Teaching approach:**
-Students practise answering common immigration questions ("What's the purpose of your visit?", "How long are you staying?", "Where will you stay?").
+Students practise answering common immigration questions ("What's the purpose of your visit?", "How long are you staying?", "Where are you staying?").
 
 ---
 
@@ -104,7 +104,7 @@ Students practise answering common immigration questions ("What's the purpose of
 baggage claim, carousel, luggage, suitcase, carry-on, missing, damaged, delayed, baggage office, claim form, tag
 
 **Teaching approach:**
-Role-play activities for the complete baggage claim experience. Students learn to describe their luggage (colour, size, brand) and practise filling out a simple lost luggage form.
+Role-play activities for the complete baggage claim experience. Students learn to describe their luggage (colour, size, brand) and practise filling in a simple lost luggage form.
 
 ---
 

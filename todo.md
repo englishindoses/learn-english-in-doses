@@ -1,7 +1,7 @@
 # To Do
 
 Working list for tidying up the project and its documentation.
-Last updated: 24 August 2026.
+Last updated: 17 September 2026.
 
 ---
 
@@ -27,12 +27,13 @@ All applied 6 August 2026, checked against the live pages. Both docs now live in
 - [x] `grammar/advanced/compound-nouns.html` — Next button pointed at a page that didn't exist. Done 25 Aug 2026: repointed to `compound-nouns2.html`.
 - [ ] Add the missing Review Grammar link + `id="summary"` to `gerund-infinitive.html`, `subjunctive1.html`, `subjunctive2.html`, `subjunctive-revision.html`.
 - [ ] Check every page's activity score denominators against the actual question counts.
+- [ ] **Beginner lessons: check whether the `(= …)` explanations are useful.** Go through the bracketed explanation under each beginner example sentence and remove the ones that add nothing. Found 16 Sep 2026: *She is a nurse.* needed no explanation at all (removed from `articles.html`).
 
 ### Built but not on the index (24 August 2026)
 
 Three finished lessons are missing from `advanced-grammar.html`. Check each one reads properly before adding it, then wire the prev/next chain around it.
 
-- [ ] `passive-voice-summary.html` — belongs in module 4, Passive Voice. Has no prev/next buttons at all, and its `<title>` still says "Advanced Passive Constructions with Get and Have", copied from `passive-get-have.html`.
+- [ ] `passive-voice-summary.html` — belongs in module 4, Passive Voice. Has no prev/next buttons at all, Its `<title>` was copied from `passive-get-have.html` — fixed 17 Sep 2026, now "Passive Voice: Complete Summary". Still needs prev/next buttons and a place on the index.
 - [ ] `multiple-adverbs.html` — belongs in module 7, after Adverb Position. Module 7 currently lists "Adverb Position and Multiple Adverbs" as one entry; split it into two. Nothing links to this page: `adverb-position.html` points its Next button at `adverb-position-fixed.html`, which does not exist.
 - [ ] `dependent-prepositions2.html` — belongs in module 7, after Dependent Prepositions. Its Next button goes back to the index instead of on to Comment Adverbs.
 
