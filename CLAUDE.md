@@ -13,6 +13,7 @@ Hosted from this repo (see `CNAME`). `index.html` is only a redirect to `home.ht
 | `docs/` | The guideline documents. Read these before building a lesson page. |
 | `grammar/advanced/` | Advanced grammar lessons (~44 pages) plus `advanced-grammar.html`, the index. |
 | `grammar/beginner/` | Beginner grammar lessons plus `beginner-grammar.html`. |
+| `vocabulary/beginner/` | Beginner vocabulary lessons (numbers, days, months, seasons) plus `beginner-vocabulary.html`, the index. |
 | `grammar/intermediate/` | Intermediate grammar lessons plus `intermediate-grammar.html`. |
 | `travel/beginner-travel/` | Travel English course, organised into `Unit1`, `Unit2`… |
 | `worksheets/` | Printable student/teacher worksheet pages. |

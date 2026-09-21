@@ -158,6 +158,7 @@ function initActiveNavLink() {
   // Map subdirectory patterns to the nav link text they belong to
   const sectionMap = {
     '/grammar/beginner/': 'Beginner',
+    '/vocabulary/beginner/': 'Beginner',
     '/beginner-landing': 'Beginner',
     '/grammar/intermediate/': 'Intermediate',
     '/intermediate-landing': 'Intermediate',
