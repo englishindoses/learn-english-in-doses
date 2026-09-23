@@ -1,0 +1,109 @@
+/* Spelling Scramble Activity Styles */
+
+.spelling-scramble-container {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.ss-item {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-color, #ddd);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ss-number {
+  font-weight: 600;
+  min-width: 25px;
+}
+
+.ss-scrambled {
+  font-family: 'Source Code Pro', monospace;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  background-color: var(--card-bg, #f8f9fa);
+  padding: 8px 14px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color, #ddd);
+  min-width: 120px;
+  text-align: center;
+}
+
+.ss-arrow {
+  font-size: 1.2rem;
+  color: var(--accent-color, #3498db);
+}
+
+.ss-input {
+  width: auto;
+  min-width: 120px;
+  max-width: 200px;
+  padding: 8px 12px;
+  border: 2px solid var(--border-color, #ddd);
+  border-radius: 4px;
+  background-color: var(--bg-color, #ffffff);
+  color: var(--text-color, #333333);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.ss-input:focus {
+  border-color: var(--accent-color, #3498db);
+  outline: none;
+}
+
+.ss-input.correct {
+  border-color: var(--success-color, #155724);
+  background-color: var(--success-bg, #d4edda);
+  color: var(--success-color, #155724);
+}
+
+.ss-input.incorrect {
+  border-color: var(--error-color, #c0392b);
+  background-color: var(--error-bg, #f8d7da);
+  color: var(--text-color, #333333);
+}
+
+[data-theme="dark"] .ss-scrambled {
+  background-color: var(--card-bg, #1e1e1e);
+  color: var(--text-color, #e0e0e0);
+}
+
+[data-theme="dark"] .ss-input {
+  background-color: var(--bg-color, #121212);
+  color: var(--text-color, #e0e0e0);
+}
+
+[data-theme="dark"] .ss-input.correct {
+  border-color: var(--success-color, #7cda9c);
+  background-color: var(--success-bg, #143823);
+  color: var(--success-color, #7cda9c);
+}
+
+[data-theme="dark"] .ss-input.incorrect {
+  border-color: var(--error-color, #e7a9ad);
+  background-color: var(--error-bg, #2c1215);
+  color: var(--text-color, #e0e0e0);
+}
+
+@media (max-width: 480px) {
+  .ss-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ss-arrow {
+    transform: rotate(90deg);
+    align-self: center;
+  }
+
+  .ss-input {
+    width: 100%;
+    max-width: none;
+  }
+}

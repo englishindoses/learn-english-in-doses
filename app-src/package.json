@@ -1,0 +1,17 @@
+{
+  "name": "english-in-doses-practice",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "npm run assets && vite",
+    "build": "npm run assets && vite build",
+    "preview": "vite preview",
+    "assets": "node tools/copy-site-css.js && node tools/copy-icons.js",
+    "check": "node tools/check-content.js"
+  },
+  "devDependencies": {
+    "vite": "^7.1.0",
+    "vite-plugin-pwa": "^1.0.0"
+  }
+}

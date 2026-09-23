@@ -1,0 +1,711 @@
+/* The app's own chrome: the top bar, the screens, and the few pieces the
+   website's stylesheets do not cover. Everything here reads the custom
+   properties defined in the copied base.css, so a colour change on the
+   website reaches the app on the next build.
+
+   The activities themselves are styled entirely by the copied stylesheets.
+   Nothing in this file restyles .question, .option, .drop-zone or .feedback. */
+
+:root {
+  --app-max-width: 640px;
+  --app-gutter: 16px;
+  --app-tap-target: 44px;
+  --app-radius: 12px;
+  --app-bar-height: 56px;
+}
+
+:root[data-text-size='large'] {
+  font-size: 118%;
+}
+
+:root[data-reduced-motion='true'] * {
+  animation-duration: 0.01ms !important;
+  transition-duration: 0.01ms !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==========================================================================
+   Shell
+   ========================================================================== */
+
+body.app-body {
+  margin: 0;
+  background: var(--bg-color);
+  color: var(--text-color);
+  overscroll-behavior-y: contain;
+}
+
+#app {
+  max-width: var(--app-max-width);
+  margin: 0 auto;
+  padding-bottom: 48px;
+}
+
+.app-bar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: var(--app-bar-height);
+  padding: 8px var(--app-gutter);
+  background: var(--header-bg);
+  color: var(--header-text);
+}
+
+.app-bar-titles {
+  flex: 1;
+  min-width: 0;
+}
+
+.app-bar-title {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--header-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.app-bar-subtitle {
+  margin: 2px 0 0;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.app-bar-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--app-tap-target);
+  min-height: var(--app-tap-target);
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--header-text);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.app-bar-button:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.app-bar-spacer {
+  pointer-events: none;
+}
+
+.app-bar-badge {
+  position: absolute;
+  top: 4px;
+  right: 2px;
+  min-width: 18px;
+  padding: 0 4px;
+  border-radius: 9px;
+  background: var(--secondary-accent);
+  color: #fff;
+  font-size: 0.7rem;
+  line-height: 18px;
+}
+
+.app-main {
+  padding: var(--app-gutter);
+  outline: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ==========================================================================
+   Round strip
+   ========================================================================== */
+
+.round-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.round-label {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.round-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.round-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--progress-bg);
+}
+
+.round-dot.is-done {
+  background: var(--progress-fill);
+}
+
+/* ==========================================================================
+   Home
+   ========================================================================== */
+
+.home-greeting {
+  margin: 0 0 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.home-resume,
+.home-start,
+.home-tile,
+.topic-row,
+.activity-row {
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.home-resume {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  margin-bottom: 16px;
+  padding: 14px 16px;
+  border: 1px solid var(--note-border);
+  border-radius: var(--app-radius);
+  background: var(--note-bg);
+  color: var(--text-color);
+}
+
+.home-resume-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.75;
+}
+
+.home-resume-topic {
+  font-weight: 600;
+}
+
+.home-resume-round {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.home-start {
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 1.05rem;
+}
+
+.home-progress {
+  margin-bottom: 20px;
+  padding: 14px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--app-radius);
+  background: var(--card-bg);
+}
+
+.home-progress-line,
+.home-progress-next {
+  margin: 0 0 6px;
+  font-size: 0.9rem;
+}
+
+.home-progress-line:last-child,
+.home-progress-next:last-child {
+  margin-bottom: 0;
+}
+
+.home-progress-next {
+  font-weight: 600;
+  color: var(--accent-color);
+}
+
+.home-tiles {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.home-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 92px;
+  padding: 14px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--app-radius);
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
+.home-tile-icon {
+  font-size: 1.3rem;
+}
+
+.home-tile-title {
+  font-weight: 600;
+}
+
+.home-tile-blurb {
+  font-size: 0.8rem;
+  opacity: 0.75;
+}
+
+/* ==========================================================================
+   Topics and activities
+   ========================================================================== */
+
+.topic-section {
+  margin-bottom: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--app-radius);
+  background: var(--card-bg);
+  overflow: hidden;
+}
+
+.topic-section-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 14px 16px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.topic-section-summary::-webkit-details-marker {
+  display: none;
+}
+
+.topic-section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+.topic-section-blurb {
+  font-size: 0.8rem;
+  opacity: 0.75;
+}
+
+.topic-list,
+.activity-list,
+.saved-list,
+.progress-bank-list,
+.review-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.topic-row,
+.activity-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: var(--app-tap-target);
+  padding: 14px 16px;
+  border: none;
+  border-top: 1px solid var(--border-color);
+  background: transparent;
+  color: var(--text-color);
+}
+
+.topic-row:hover:not(:disabled),
+.activity-row:hover {
+  background: var(--example-bg);
+}
+
+.topic-row.is-coming-soon {
+  cursor: default;
+  opacity: 0.45;
+}
+
+.topic-row-icon,
+.activity-row-icon {
+  font-size: 1.3rem;
+}
+
+.topic-row-text,
+.activity-row-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.topic-row-title,
+.activity-row-title {
+  font-weight: 600;
+}
+
+.topic-row-subtitle,
+.activity-row-blurb,
+.activity-row-progress {
+  font-size: 0.8rem;
+  opacity: 0.75;
+}
+
+.activity-list {
+  border: 1px solid var(--border-color);
+  border-radius: var(--app-radius);
+  background: var(--card-bg);
+  overflow: hidden;
+}
+
+.activity-list > li:first-child .activity-row {
+  border-top: none;
+}
+
+.activity-bar {
+  display: block;
+  height: 5px;
+  margin-top: 6px;
+  border-radius: 3px;
+  background: var(--progress-bg);
+  overflow: hidden;
+}
+
+.activity-bar-fill {
+  display: block;
+  height: 100%;
+  background: var(--progress-fill);
+}
+
+.lesson-links {
+  margin-top: 20px;
+  padding: 14px 16px;
+  border: 1px solid var(--note-border);
+  border-radius: var(--app-radius);
+  background: var(--note-bg);
+}
+
+.lesson-links-label {
+  margin: 0 0 6px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.75;
+}
+
+.lesson-link {
+  display: inline-block;
+  color: var(--link-color);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Questions in a session
+   ========================================================================== */
+
+.question.has-bookmark {
+  position: relative;
+  padding-right: 52px;
+}
+
+.bookmark-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--app-tap-target);
+  height: var(--app-tap-target);
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--border-color);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.bookmark-button[aria-pressed='true'] {
+  color: var(--secondary-accent);
+}
+
+.wgf-input.is-blank,
+.ss-input.is-blank {
+  border-color: var(--secondary-accent);
+}
+
+/* ==========================================================================
+   Dragging
+   ========================================================================== */
+
+.drag-ghost {
+  position: fixed;
+  z-index: 1000;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.drag-insertion-indicator {
+  position: absolute;
+  z-index: 999;
+  width: 2px;
+  background: var(--accent-color);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Dialog
+   ========================================================================== */
+
+.app-dialog-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--app-gutter);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.app-dialog {
+  width: 100%;
+  max-width: 380px;
+  padding: 20px;
+  border-radius: var(--app-radius);
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+.app-dialog-title {
+  margin: 0 0 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+}
+
+.app-dialog-message {
+  margin: 0 0 16px;
+  font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   Review, saved questions, progress, help
+   ========================================================================== */
+
+.review-summary {
+  margin-bottom: 20px;
+  padding: 16px;
+  border-radius: var(--app-radius);
+  background: var(--card-bg);
+  text-align: center;
+}
+
+.review-count {
+  margin: 0 0 4px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.review-note {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.review-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.review-mark {
+  font-weight: 700;
+}
+
+.review-item.is-right .review-mark {
+  color: var(--success-text);
+}
+
+.review-item.is-wrong .review-mark {
+  color: var(--error-text);
+}
+
+.review-text {
+  flex: 1;
+  font-size: 0.9rem;
+}
+
+.review-actions {
+  flex-wrap: wrap;
+}
+
+.saved-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.saved-item-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.saved-item-question {
+  margin: 0 0 2px;
+}
+
+.saved-item-source {
+  margin: 0;
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.saved-item-remove {
+  width: var(--app-tap-target);
+  height: var(--app-tap-target);
+  border: none;
+  background: transparent;
+  color: var(--text-color);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.progress-topic-title {
+  margin: 20px 0 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.05rem;
+}
+
+.progress-bank {
+  padding: 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.progress-bank-name {
+  margin: 0 0 2px;
+  font-weight: 600;
+}
+
+.progress-bank-count {
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+.help-title {
+  margin: 20px 0 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.05rem;
+}
+
+.help-line {
+  margin: 0 0 8px;
+  font-size: 0.92rem;
+}
+
+.empty-note {
+  padding: 24px 12px;
+  text-align: center;
+  opacity: 0.75;
+}
+
+/* ==========================================================================
+   Install card and update bar
+   ========================================================================== */
+
+.install-card {
+  margin-top: 20px;
+  padding: 14px 16px;
+  border: 1px solid var(--note-border);
+  border-radius: var(--app-radius);
+  background: var(--note-bg);
+  text-align: center;
+}
+
+.install-card-text {
+  margin: 0 0 10px;
+  font-size: 0.9rem;
+}
+
+.install-card-how {
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.update-bar {
+  position: fixed;
+  left: 50%;
+  bottom: 16px;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: calc(100% - 32px);
+  max-width: 420px;
+  padding: 10px 12px;
+  transform: translateX(-50%);
+  border-radius: var(--app-radius);
+  background: var(--header-bg);
+  color: var(--header-text);
+  box-shadow: 0 4px 16px var(--shadow-color);
+}
+
+.update-bar-text {
+  flex: 1;
+  font-size: 0.9rem;
+}
+
+.update-bar-button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent-color);
+  color: #fff;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.update-bar-dismiss {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--header-text);
+  cursor: pointer;
+}
