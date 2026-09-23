@@ -26,12 +26,37 @@ in this folder.
 These pages do not link back out to the main site. There is no route in from
 the site, so there is no route out either — this course is self-contained.
 
-- The top nav holds course links only: `index.html` and the lessons. Do not
-  copy the site nav onto a page here. The logo links to `index.html`.
-- Breadcrumbs start at `index.html`, not at `home.html`.
+- The top nav holds course links only: the course `index.html`, the lessons
+  and their practice pages. Do not copy the site nav onto a page here. The
+  logo links to the course `index.html`.
+- Breadcrumbs start at the course `index.html`, not at `home.html`.
 - The footer is the copyright line only. No Quick Links, no About, no booking.
-- Shared assets in `../../css/`, `../../js/` and `../../images/` are fine —
+- Shared assets in `../../../css/`, `../../../js/` and `../../../images/` are fine —
   those are files, not navigation.
+
+## Folders and file names
+
+Each lesson has its own folder holding everything for that lesson: the lesson
+page, its practice pages and its pictures. Every file name ends in the
+two-digit lesson number.
+
+```
+students/tour-guide/
+  index.html              course index, links to each lesson folder
+  lesson-01/
+    lesson01.html         the lesson
+    practice01.html       practice index: one card per activity
+    flashcards01.html
+    words-pictures01.html
+    word-order01.html
+    gap-fill01.html
+    matching01.html
+    images/               river01.png, monkey01.png ...
+```
+
+Inside a lesson folder, the course index is `../index.html` and shared site
+assets are three folders up: `../../../css/`, `../../../js/`,
+`../../../images/`.
 
 ## The index
 
@@ -48,8 +73,9 @@ The student is a beginner and has to be able to read the index itself.
 
 ## Images
 
-Lesson images live in `images/tour-guide/lesson<N>/`, one file per word, named
-after the word itself: `waterfall.png`, `monkey.png`. Square, around 300 x 300.
+Lesson images live in the lesson folder's `images/`, one file per word, named
+after the word plus the lesson number: `waterfall01.png`, `monkey01.png`.
+Square, around 300 x 300.
 The page shows them in a 100px-tall box with `object-fit: contain`, so the
 shape matters more than the exact size.
 
@@ -75,8 +101,8 @@ rather than inferring a pattern from whatever was built last.
 
 ## What stays the same as the rest of the site
 
-- Depth is two folders down, same as `travel/beginner-travel/`, so shared
-  assets are `../../css/`, `../../js/`, `../../images/`.
+- Lesson pages are three folders down (see Folders and file names), so
+  shared assets are `../../../css/`, `../../../js/`, `../../../images/`.
 - `<body class="beginner-section">`, and the matching
   `<div class="beginner-nav-indicator">` at the end of the nav.
 - Load only the stylesheets and activity modules the page actually uses.
