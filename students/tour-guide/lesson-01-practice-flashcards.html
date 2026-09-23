@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Tour guide English Lesson 1 practice - nature word flashcards.">
+  <title>Flashcards - Lesson 1 Practice - Tour Guide English | English in Doses</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../../images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../images/favicon-16x16.png">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/levels.css">
+  <link rel="stylesheet" href="../../css/activities.css">
+  <link rel="stylesheet" href="../../css/flash-cards.css">
+  <link rel="stylesheet" href="../../css/vocab-match.css">
+</head>
+
+<body class="beginner-section">
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <!-- Theme toggle button -->
+  <div class="theme-toggle-container">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="light-icon" aria-hidden="true">☀️</span>
+      <span class="dark-icon" aria-hidden="true">🌙</span>
+    </button>
+  </div>
+
+  <!-- Navigation (stays inside this course) -->
+  <nav class="main-navigation">
+    <a href="index.html" class="site-logo">
+      <img src="../../images/my-logo.svg" alt="Tour Guide English" width="150" height="auto">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">All Lessons</a>
+      <a href="lesson-01-introductions.html" class="nav-link">Lesson 1</a>
+      <a href="lesson-01-practice.html" class="nav-link">Lesson 1 Practice</a>
+    </div>
+    <div class="beginner-nav-indicator"></div>
+  </nav>
+
+  <div class="container">
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <span class="breadcrumb-item"><a href="index.html">Tour Guide English</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="lesson-01-practice.html">Lesson 1: Extra Practice</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item">Flashcards</span>
+    </nav>
+
+    <main id="main-content">
+      <h1>🃏 Flashcards</h1>
+
+      <section class="content-section">
+        <h2>🌳 Nature Words</h2>
+        <p>Look at the picture. Say the word. Then tap the card to check.</p>
+
+        <div id="flashcards" class="flashcard-container">
+
+          <div class="flashcard-intro">
+            <p><strong>Card <span id="card-number">1</span> of <span id="card-total">8</span></strong></p>
+          </div>
+
+          <!-- Cards are added by the script below, from the word list -->
+          <div id="flashcard-grid" class="flashcard-grid" style="max-width: 420px; margin: 0 auto 20px;"></div>
+
+          <div class="control-buttons">
+            <button class="nav-button" id="card-prev">← Previous</button>
+            <button class="nav-button" id="card-next">Next →</button>
+            <button class="restart-btn" id="card-restart" style="display:none;">Start Again</button>
+          </div>
+
+          <div class="control-buttons">
+            <a href="lesson-01-practice.html" class="nav-button">Finish</a>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <nav class="bottom-navigation">
+    <a href="lesson-01-practice.html" class="nav-button previous">← All Activities</a>
+    <a href="lesson-01-practice-vocab.html" class="nav-button next">Next Activity →</a>
+  </nav>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-bottom">
+      <p>&copy; 2025–2026 English in Doses | All rights reserved</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="../../js/core.js" defer></script>
+  <script src="../../js/flash-cards.js" defer></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+      // The eight nature words from Lesson 1
+      var words = ['tree', 'river', 'waterfall', 'bird', 'monkey', 'snake', 'flower', 'forest'];
+
+      var grid = document.getElementById('flashcard-grid');
+      var prevBtn = document.getElementById('card-prev');
+      var nextBtn = document.getElementById('card-next');
+      var restartBtn = document.getElementById('card-restart');
+      var current = 0;
+
+      function shuffle(list) {
+        var copy = list.slice();
+        for (var i = copy.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var tmp = copy[i]; copy[i] = copy[j]; copy[j] = tmp;
+        }
+        return copy;
+      }
+
+      // Build one card per word: picture on the front, word on the back
+      words.forEach(function(word) {
+        var wrapper = document.createElement('div');
+        wrapper.className = 'flashcard-wrapper';
+        wrapper.innerHTML =
+          '<div class="flashcard" tabindex="0">' +
+            '<div class="flashcard-front">' +
+              '<div class="vocab-image-wrapper">' +
+                '<img src="../../images/tour-guide/lesson1/' + word + '.png" alt="What is this?" class="vocab-image">' +
+              '</div>' +
+              '<span class="flashcard-hint"><span class="rotate-icon">🔄</span> Tap to see the word</span>' +
+            '</div>' +
+            '<div class="flashcard-back">' +
+              '<span class="flashcard-label">The word is</span>' +
+              '<span class="flashcard-phrase">' + word + '</span>' +
+            '</div>' +
+          '</div>';
+        grid.appendChild(wrapper);
+      });
+
+      FlashcardModule.init({
+        containerId: 'flashcards'
+      });
+
+      function cards() {
+        return grid.querySelectorAll('.flashcard-wrapper');
+      }
+
+      function showCard(index) {
+        var all = cards();
+        current = index;
+        FlashcardModule.resetCards();
+        all.forEach(function(card, i) {
+          card.hidden = i !== current;
+        });
+
+        document.getElementById('card-number').textContent = current + 1;
+        document.getElementById('card-total').textContent = all.length;
+
+        var isLast = current === all.length - 1;
+        prevBtn.style.visibility = current === 0 ? 'hidden' : 'visible';
+        nextBtn.style.display = isLast ? 'none' : '';
+        restartBtn.style.display = isLast ? '' : 'none';
+      }
+
+      // New order each time: move the existing cards so their flip listeners stay
+      function shuffleCards() {
+        shuffle(Array.prototype.slice.call(cards())).forEach(function(card) {
+          grid.appendChild(card);
+        });
+      }
+
+      prevBtn.addEventListener('click', function() {
+        if (current > 0) showCard(current - 1);
+      });
+      nextBtn.addEventListener('click', function() {
+        if (current < cards().length - 1) showCard(current + 1);
+      });
+      restartBtn.addEventListener('click', function() {
+        shuffleCards();
+        showCard(0);
+      });
+
+      shuffleCards();
+      showCard(0);
+
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Tour guide English Lesson 1 practice - choose the missing word.">
+  <title>Fill the Gaps - Lesson 1 Practice - Tour Guide English | English in Doses</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../../images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../images/favicon-16x16.png">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../../css/levels.css">
+  <link rel="stylesheet" href="../../css/activities.css">
+  <link rel="stylesheet" href="../../css/drop-down.css">
+</head>
+
+<body class="beginner-section">
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <!-- Theme toggle button -->
+  <div class="theme-toggle-container">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="light-icon" aria-hidden="true">☀️</span>
+      <span class="dark-icon" aria-hidden="true">🌙</span>
+    </button>
+  </div>
+
+  <!-- Navigation (stays inside this course) -->
+  <nav class="main-navigation">
+    <a href="index.html" class="site-logo">
+      <img src="../../images/my-logo.svg" alt="Tour Guide English" width="150" height="auto">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">All Lessons</a>
+      <a href="lesson-01-introductions.html" class="nav-link">Lesson 1</a>
+      <a href="lesson-01-practice.html" class="nav-link">Lesson 1 Practice</a>
+    </div>
+    <div class="beginner-nav-indicator"></div>
+  </nav>
+
+  <div class="container">
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <span class="breadcrumb-item"><a href="index.html">Tour Guide English</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item"><a href="lesson-01-practice.html">Lesson 1: Extra Practice</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item">Fill the Gaps</span>
+    </nav>
+
+    <main id="main-content">
+      <h1>💬 Fill the Gaps</h1>
+
+      <section class="content-section">
+        <h2>💬 On the Tour</h2>
+        <p>Choose the correct word for each gap.</p>
+
+        <!-- Sentences are added by the script below, from the question bank -->
+        <div id="gapFill" class="dropdown-activity"></div>
+
+        <div id="gapFillFeedback" class="feedback"></div>
+
+        <div class="control-buttons">
+          <button id="gap-fill-submit" class="submit-btn">Check Answers</button>
+          <button id="gap-fill-restart" class="restart-btn">Try Again</button>
+          <a href="lesson-01-practice.html" class="nav-button">Finish</a>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <nav class="bottom-navigation">
+    <a href="lesson-01-practice-word-order.html" class="nav-button previous">← Previous Activity</a>
+    <a href="lesson-01-practice-matching.html" class="nav-button next">Next Activity →</a>
+  </nav>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-bottom">
+      <p>&copy; 2025–2026 English in Doses | All rights reserved</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="../../js/core.js" defer></script>
+  <script src="../../js/drop-down.js" defer></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+      // Question bank. ___ marks the gap. "before" is an optional line shown
+      // ahead of the gap, for replies. The first option is the answer;
+      // options are mixed up on screen. Every round takes a set number from
+      // each group, preferring questions not seen yet.
+      var bank = {
+        greetings: [
+          { who: 'Guide', text: 'Good ___, everyone! Welcome to Cachoeiras.', options: ['morning', 'meet', 'from'] },
+          { who: 'Guide', text: 'Welcome ___ Cachoeiras!', options: ['to', 'at', 'of'] },
+          { who: 'Tourist', text: 'Nice to ___ you.', options: ['meet', 'name', 'like'] },
+          { who: 'Guide', text: 'See you ___! Thank you very much.', options: ['later', 'from', 'name'] }
+        ],
+        introductions: [
+          { who: 'Guide', text: 'My name ___ Paulo.', options: ['is', 'am', 'are'] },
+          { who: 'Guide', text: "I'm your ___ today.", options: ['guide', 'name', 'tree'] },
+          { who: 'Guide', text: '___ your name?', options: ["What's", "Where's", "Who's"] },
+          { who: 'Guide', text: '___ are you from?', options: ['Where', 'What', 'How'] },
+          { who: 'Tourist', text: "I'm ___ Germany.", options: ['from', 'of', 'at'] }
+        ],
+        likes: [
+          { who: 'Guide', text: "I ___ birds. They're beautiful.", options: ['like', 'likes', 'liking'] },
+          { who: 'Tourist', text: "I don't ___ snakes.", options: ['like', 'likes', 'liking'] },
+          { who: 'Guide', text: '___ you like waterfalls?', options: ['Do', 'Are', 'Is'] },
+          { before: { who: 'Guide', text: 'Do you like monkeys?' }, who: 'Tourist', text: 'Yes, I ___.', options: ['do', 'am', 'like'] },
+          { before: { who: 'Guide', text: 'Do you like snakes?' }, who: 'Tourist', text: 'No, I ___.', options: ["don't", 'not', 'am not'] }
+        ],
+        nature: [
+          { who: 'Guide', text: "Listen! Can you hear the ___? It's singing.", options: ['bird', 'tree', 'river'] },
+          { who: 'Guide', text: "Be careful! There's a ___ on the path.", options: ['snake', 'flower', 'waterfall'] },
+          { who: 'Guide', text: 'Look at the ___! The water is very cold.', options: ['waterfall', 'bird', 'tree'] },
+          { who: 'Guide', text: 'We can swim in the ___.', options: ['river', 'tree', 'bird'] },
+          { who: 'Guide', text: 'This ___ is 200 years old.', options: ['tree', 'bird', 'flower'] },
+          { who: 'Guide', text: "Look! A ___ in the tree. It's eating a banana.", options: ['monkey', 'snake', 'flower'] },
+          { who: 'Guide', text: 'This ___ is red and yellow. It smells nice.', options: ['flower', 'monkey', 'river'] },
+          { who: 'Guide', text: 'We walk in the ___ for two hours.', options: ['forest', 'bird', 'flower'] }
+        ]
+      };
+      var perRound = { greetings: 1, introductions: 2, likes: 2, nature: 3 };
+
+      var activity = document.getElementById('gapFill');
+      var queues = {};
+
+      function shuffle(items) {
+        var copy = items.slice();
+        for (var i = copy.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var tmp = copy[i]; copy[i] = copy[j]; copy[j] = tmp;
+        }
+        return copy;
+      }
+
+      // Take n questions from a group, working through the group before repeating
+      function take(group, n) {
+        var picked = [];
+        queues[group] = queues[group] || [];
+        while (picked.length < n) {
+          if (!queues[group].length) {
+            queues[group] = shuffle(bank[group].filter(function(q) { return picked.indexOf(q) === -1; }));
+          }
+          picked.push(queues[group].shift());
+        }
+        return picked;
+      }
+
+      function buildRound() {
+        var round = [];
+        Object.keys(perRound).forEach(function(group) {
+          round = round.concat(take(group, perRound[group]));
+        });
+        round = shuffle(round);
+
+        activity.innerHTML = '';
+        round.forEach(function(q, i) {
+          var parts = q.text.split('___');
+          var answer = q.options[0];
+
+          var sentence = document.createElement('div');
+          sentence.className = 'dropdown-sentence';
+
+          var number = document.createElement('span');
+          number.className = 'sentence-number';
+          number.textContent = i + 1;
+          var speaker = document.createElement('strong');
+          speaker.textContent = q.who + ':';
+
+          var select = document.createElement('select');
+          select.className = 'gap-dropdown';
+          select.dataset.answer = answer;
+          select.setAttribute('aria-label', 'Gap ' + (i + 1));
+          var placeholder = new Option('Choose...', '');
+          placeholder.disabled = true;
+          placeholder.selected = true;
+          select.appendChild(placeholder);
+          shuffle(q.options).forEach(function(option) {
+            select.appendChild(new Option(option, option));
+          });
+          select.addEventListener('change', function() {
+            handleDropdownChange(select);
+          });
+
+          sentence.appendChild(number);
+          // Some gaps are the reply to a question: show the question first
+          if (q.before) {
+            var asker = document.createElement('strong');
+            asker.textContent = q.before.who + ':';
+            sentence.appendChild(asker);
+            sentence.appendChild(document.createTextNode(' ' + q.before.text + ' '));
+          }
+          sentence.appendChild(speaker);
+          sentence.appendChild(document.createTextNode(' ' + parts[0]));
+          sentence.appendChild(select);
+          sentence.appendChild(document.createTextNode(parts[1]));
+          activity.appendChild(sentence);
+        });
+
+        var feedback = document.getElementById('gapFillFeedback');
+        feedback.className = 'feedback';
+        feedback.textContent = '';
+      }
+
+      // drop-down.js restores saved answers by position. The questions change
+      // every visit, so clear anything saved before it loads.
+      removeDropdownState('gapFill');
+
+      document.getElementById('gap-fill-submit').addEventListener('click', function() {
+        checkDropdownAnswers('gapFill');
+      });
+      document.getElementById('gap-fill-restart').addEventListener('click', function() {
+        removeDropdownState('gapFill');
+        buildRound();
+        activity.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+
+      buildRound();
+
+    });
+  </script>
+</body>
+</html>
