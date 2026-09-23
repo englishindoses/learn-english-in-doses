@@ -49,6 +49,7 @@ These cover **advanced** pages. There is no written standard for beginner or int
 - **The level index page is the source of truth for lesson order.** `advanced-grammar.html` determines each lesson's previous/next links and its breadcrumb category. A prev/next link may point at a lesson that hasn't been built yet — that's expected, not a broken link.
 - **Score denominators must match reality.** For every activity, the number of questions, the `/N` in the score display, and the number of entries in the `answers` object must be the same number. This has caused visible bugs before ("7/5").
 - **Progress tracking** uses a per-lesson slug: `mcq-<slug>`, `drag-drop-<slug>`, and `<slug>` for the lesson itself. A mistyped id fails silently.
+- **No native speaker notes in beginner content.** Anywhere on the site — grammar, vocabulary, travel, private courses. They add a second thing to learn alongside the thing being taught, which is more than a beginner needs. Advanced pages still use them.
 
 ---
 
