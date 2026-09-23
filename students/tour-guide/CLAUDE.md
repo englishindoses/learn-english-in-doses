@@ -21,6 +21,47 @@ nothing will warn you.
 Add `<meta name="robots" content="noindex, nofollow">` to the head of every page
 in this folder.
 
+## The links point inwards too
+
+These pages do not link back out to the main site. There is no route in from
+the site, so there is no route out either — this course is self-contained.
+
+- The top nav holds course links only: `index.html` and the lessons. Do not
+  copy the site nav onto a page here. The logo links to `index.html`.
+- Breadcrumbs start at `index.html`, not at `home.html`.
+- The footer is the copyright line only. No Quick Links, no About, no booking.
+- Shared assets in `../../css/`, `../../js/` and `../../images/` are fine —
+  those are files, not navigation.
+
+## The index
+
+`index.html` lists the lessons. Each lesson is one `landing-paths-grid` row
+holding exactly two `landing-path-card`s — the lesson on the left, its extra
+practice on the right. Two cards per row is what makes the grid fall into two
+columns, so don't put more in a row.
+
+Both cards carry the lesson number and the lesson keeps its own title:
+`Lesson 3: Giving Directions` and `Lesson 3: Extra Practice`.
+The description under the title is a short topic label, not sentences —
+"Greetings and Personal Information.", not a paragraph explaining the lesson.
+The student is a beginner and has to be able to read the index itself.
+
+## Images
+
+Lesson images live in `images/tour-guide/lesson<N>/`, one file per word, named
+after the word itself: `waterfall.png`, `monkey.png`. Square, around 300 x 300.
+The page shows them in a 100px-tall box with `object-fit: contain`, so the
+shape matters more than the exact size.
+
+Vocabulary is presented with the carousel matching activity (`vocab-match.js`
+and `vocab-match.css`), four pictures per carousel page. The word bank, the
+`data-answer` on each drop zone, and the `/N` on the score must all agree.
+
+## No progress tracking
+
+These pages do not load the progress modules and do not use lesson slugs.
+Scores show on the page and are not saved anywhere.
+
 ## These pages have their own layout
 
 They are not built to the beginner lesson pattern, and there is no written
@@ -39,9 +80,7 @@ rather than inferring a pattern from whatever was built last.
 - `<body class="beginner-section">`, and the matching
   `<div class="beginner-nav-indicator">` at the end of the nav.
 - Load only the stylesheets and activity modules the page actually uses.
-- Progress tracking uses per-lesson slugs the same way: `mcq-<slug>`,
-  `drag-drop-<slug>`, and `<slug>` for the lesson. Progress is localStorage,
-  so it stays in the student's own browser.
+- Progress tracking is not used here (see above).
 
 ## Content
 

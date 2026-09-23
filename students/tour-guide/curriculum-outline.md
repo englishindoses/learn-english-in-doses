@@ -13,7 +13,7 @@ Status: skeleton. Content and activities get filled in per unit.
 The first thirty seconds of every tour. Fully scripted, memorised.
 
 - Grammar: *be* in the present — I'm, you're. Present simple questions.
-- Content: My name is Vitor. I'm your tour guide today. I'm 31. I'm from
+- Content: My name is [NAME]. I'm your tour guide today. I'm 31. I'm from
   Cachoeiras. Plus the same three questions asked back to tourists.
 
 ## 2. Greeting the group
