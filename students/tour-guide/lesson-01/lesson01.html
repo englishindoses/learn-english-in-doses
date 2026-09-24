@@ -607,6 +607,14 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
 
+      // Start fresh every visit: this course does not keep answers.
+      // The shared scripts save answers in the browser, so clear this page's
+      // saved answers before they are loaded back in.
+      removeDropdownState('meetingGaps');
+      try {
+        localStorage.removeItem('mcq-progress-lesson01.html');
+      } catch (e) {}
+
       // Warm-up flashcards
       FlashcardModule.init({
         containerId: 'flashcards'
@@ -647,6 +655,7 @@
       DragDropModule.init({
         containerId: 'drag-drop-sentences',
         storageKey: 'tour-guide-lesson1-sentences',
+        saveProgress: false,
         answers: {
           'dd1': 'Where are you from ?',
           'dd2': "I'm your guide today .",
@@ -673,6 +682,9 @@
         containerId: 'activity-nav',
         activities: ['dropdown-meeting', 'mcq', 'drag-drop-sentences']
       });
+
+      // Always open on the first activity, not the one used last time
+      document.querySelector('[data-activity="dropdown-meeting"]').click();
 
       document.getElementById('gap-fill-next').addEventListener('click', function() {
         document.querySelector('[data-activity="mcq"]').click();

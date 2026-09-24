@@ -88,6 +88,11 @@ and `vocab-match.css`), four pictures per carousel page. The word bank, the
 These pages do not load the progress modules and do not use lesson slugs.
 Scores show on the page and are not saved anywhere.
 
+Some shared scripts save answers in the browser on their own (`drop-down.js`,
+`mcq.js`, `drag-drop.js`, and `activity-nav.js` remembers the last tab). Every
+page here must start fresh, so switch that off in the page's own init script,
+never in the shared file: see how `lesson-01/lesson01.html` does it.
+
 ## These pages have their own layout
 
 They are not built to the beginner lesson pattern, and there is no written
