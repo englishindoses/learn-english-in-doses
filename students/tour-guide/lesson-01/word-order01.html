@@ -96,6 +96,7 @@
 
   <!-- JavaScript -->
   <script src="../../../js/core.js" defer></script>
+  <script src="../../../js/confirm-unanswered.js" defer></script>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -337,6 +338,13 @@
       });
 
       buildRound();
+
+      // Ask before checking if some sentences are still empty
+      ConfirmUnansweredModule.guard('word-order-submit', function() {
+        return Array.prototype.filter.call(list.querySelectorAll('.drop-zone'), function(zone) {
+          return !zone.querySelector('.drag-item');
+        }).length;
+      });
 
     });
   </script>

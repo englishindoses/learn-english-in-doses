@@ -95,6 +95,7 @@
 
   <!-- JavaScript -->
   <script src="../../../js/core.js" defer></script>
+  <script src="../../../js/confirm-unanswered.js" defer></script>
   <script src="../../../js/drop-down.js" defer></script>
 
   <script>
@@ -233,6 +234,13 @@
       });
 
       buildRound();
+
+      // Ask before checking if some gaps are still empty
+      ConfirmUnansweredModule.guard('gap-fill-submit', function() {
+        return Array.prototype.filter.call(activity.querySelectorAll('.gap-dropdown'), function(select) {
+          return select.value === '';
+        }).length;
+      });
 
     });
   </script>

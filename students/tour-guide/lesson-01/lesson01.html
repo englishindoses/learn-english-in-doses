@@ -596,6 +596,7 @@
 
   <!-- JavaScript -->
   <script src="../../../js/core.js" defer></script>
+  <script src="../../../js/confirm-unanswered.js" defer></script>
   <script src="../../../js/flash-cards.js" defer></script>
   <script src="../../../js/vocab-match.js" defer></script>
   <script src="../../../js/mcq.js" defer></script>
@@ -652,6 +653,19 @@
           'dd3': 'Do you like birds ?',
           'dd4': "I don't like snakes ."
         }
+      });
+
+      // Ask before checking if some answers are missing
+      // (the multiple choice activity has its own box in mcq.js)
+      ConfirmUnansweredModule.guard('dropdown-meeting-submit', function() {
+        return Array.prototype.filter.call(document.querySelectorAll('#meetingGaps .gap-dropdown'), function(select) {
+          return select.value === '';
+        }).length;
+      });
+      ConfirmUnansweredModule.guard('drag-drop-sentences-submit', function() {
+        return Array.prototype.filter.call(document.querySelectorAll('#drag-drop-sentences .drop-zone'), function(zone) {
+          return !zone.querySelector('.drag-item');
+        }).length;
       });
 
       // Practice activity tabs

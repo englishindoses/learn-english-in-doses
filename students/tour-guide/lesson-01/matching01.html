@@ -103,6 +103,7 @@
 
   <!-- JavaScript -->
   <script src="../../../js/core.js" defer></script>
+  <script src="../../../js/confirm-unanswered.js" defer></script>
   <script src="../../../js/compact-matching.js" defer></script>
 
   <script>
@@ -226,6 +227,13 @@
       });
 
       buildRound();
+
+      // Ask before checking if some answers have no number yet
+      ConfirmUnansweredModule.guard('cm-meeting-cm-submit', function() {
+        return Array.prototype.filter.call(activity.querySelectorAll('.cm-answer-slot'), function(slot) {
+          return !slot.querySelector('.cm-marker');
+        }).length;
+      });
 
     });
   </script>

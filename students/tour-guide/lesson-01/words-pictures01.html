@@ -199,6 +199,7 @@
 
   <!-- JavaScript -->
   <script src="../../../js/core.js" defer></script>
+  <script src="../../../js/confirm-unanswered.js" defer></script>
   <script src="../../../js/vocab-match.js" defer></script>
 
   <script>
@@ -240,6 +241,13 @@
       // Runs after the module has put the words back in the bank
       container.querySelector('.vocab-reset-btn').addEventListener('click', function() {
         shufflePicturesAndWords();
+      });
+
+      // Ask before checking if some pictures have no word yet
+      ConfirmUnansweredModule.guard(container.querySelector('.vocab-check-btn'), function() {
+        return Array.prototype.filter.call(container.querySelectorAll('.vocab-drop-zone'), function(zone) {
+          return !zone.querySelector('.vocab-word-item');
+        }).length;
       });
 
     });
