@@ -1,7 +1,7 @@
 # To Do
 
 Working list for tidying up the project and its documentation.
-Last updated: 17 September 2026.
+Last updated: 26 September 2026.
 
 ---
 
@@ -65,3 +65,9 @@ Roughly in the order I'd tackle them.
 - [x] Build **Compound Nouns — Part 2**. Done 25 Aug 2026: `compound-nouns2.html` covers long noun strings, stress, and nouns from phrasal verbs. Added to `advanced-grammar.html` and wired into the prev/next chain.
 - [x] Drop the branch `claude/instagram-design-guidelines-NekT4` and its Instagram design guidelines / carousel generator work — not wanted. Done 6 Aug 2026: already deleted on GitHub, stale local tracking refs pruned (along with `update-dep-preps-full-table`), unreachable commits garbage-collected.
 - [ ] Run a site-wide link check for other dead links and missing files.
+
+## 5. Practice app
+
+- [x] Restyle the app in the BizEng layout, with the website's fonts, colours and button shine, and colours per level. Done 26 Sep 2026.
+- [x] Bring over BizEng's progress counting (activities completed, answers correct, days practised this week) and its Google sign-in. Done 26 Sep 2026.
+- [ ] **Switch on Google sign-in.** Set up Firebase, paste its settings into `app-src/src/lib/cloud.js`, add the database rules, rebuild. Until then the app works for guests only.
