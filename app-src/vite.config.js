@@ -6,9 +6,15 @@ export default defineConfig({
   // the live site while working perfectly in development.
   base: '/app/',
 
+  define: {
+    __APP_VERSION__: JSON.stringify(process.env.npm_package_version || '0.1.0'),
+  },
+
   build: {
     outDir: '../app',
     emptyOutDir: true,
+    // Firebase comes as one large piece. It only loads for signed-in students.
+    chunkSizeWarningLimit: 600,
   },
 
   plugins: [
@@ -23,6 +29,23 @@ export default defineConfig({
       workbox: {
         globPatterns: ['**/*.{js,css,html,png,woff2}'],
         navigateFallback: 'index.html',
+        // Google Fonts: cached so the app keeps the website's fonts offline.
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
+            handler: 'StaleWhileRevalidate',
+            options: { cacheName: 'google-fonts-stylesheets' },
+          },
+          {
+            urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'google-fonts-webfonts',
+              expiration: { maxEntries: 20, maxAgeSeconds: 60 * 60 * 24 * 365 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
+        ],
       },
 
       manifest: {

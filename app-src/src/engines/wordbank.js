@@ -1,89 +1,78 @@
-// Typed gap-fill with a word box above the sentences. Matches the website's
-// word-gap-fill markup, and like that activity it greys a word out once it has
-// been typed somewhere.
+// Typed gap-fill with a word box above the sentences. Like the website's
+// word gap-fill, a word is greyed out once it has been typed somewhere.
 //
 // This is a per-round engine because the word box has to cover all four
-// sentences at once: a bank with one word per gap would give the answers away.
+// sentences at once: a box with one word per gap would give the answers away.
 
 import { el, shuffle } from '../lib/dom.js';
-import { feedbackSlot, paintFeedback, clearFeedback, sameAnswer, normalise } from './shared.js';
+import { sameAnswer, normalise, paint, unpaint } from './shared.js';
 
 export default {
   id: 'wordbank',
   mode: 'per-round',
   name: 'Write the word',
   blurb: 'Type the missing word, using the box',
-  icon: '\u270f\ufe0f',
+  icon: '✏️',
 
   label: (item) => item.sentence.replace('{1}', '_____'),
 
-  createRound(items) {
+  createRound(items, firstNumber = 1) {
     const inputs = [];
     const feedbackNodes = [];
     let editHandler = () => {};
 
-    const wordList = el('div', { class: 'wgf-word-list' },
-      shuffle(items.map((item) => item.answer)).map((word) =>
-        el('span', { class: 'wgf-word', text: word })
-      )
+    const wordList = el('div', { class: 'wb-words' },
+      shuffle(items.map((item) => item.answer)).map((word) => el('span', { class: 'wb-word', text: word }))
     );
 
     const updateWordBox = () => {
-      const typed = inputs
-        .map((input) => normalise(input.value))
-        .filter(Boolean);
-
-      wordList.querySelectorAll('.wgf-word').forEach((word) => {
+      const typed = inputs.map((input) => normalise(input.value)).filter(Boolean);
+      wordList.querySelectorAll('.wb-word').forEach((word) => {
         const at = typed.indexOf(normalise(word.textContent));
-        if (at === -1) {
-          word.classList.remove('used');
-        } else {
-          word.classList.add('used');
-          typed.splice(at, 1);
-        }
+        word.classList.toggle('is-used', at !== -1);
+        if (at !== -1) typed.splice(at, 1);
       });
     };
 
     const lines = items.map((item, index) => {
-      const feedback = feedbackSlot();
+      const feedback = el('div', { class: 'qfeedback', hidden: true });
       feedbackNodes.push(feedback);
 
       const input = el('input', {
         type: 'text',
-        class: 'wgf-input',
-        placeholder: '...',
+        class: 'text-input',
         autocapitalize: 'off',
         autocomplete: 'off',
         spellcheck: 'false',
-        'aria-label': `Answer ${index + 1}`,
+        'aria-label': `Answer ${firstNumber + index}`,
       });
 
       input.addEventListener('input', () => {
-        input.classList.remove('correct', 'incorrect', 'is-blank');
-        clearFeedback(feedback);
+        unpaint(input);
         updateWordBox();
-        editHandler();
+        editHandler(index);
       });
 
       inputs.push(input);
 
-      const line = el('p', { class: 'wgf-line' }, [
-        el('strong', {}, `${index + 1}.`),
-        ' ',
-      ]);
-
       const [before, after] = item.sentence.split('{1}');
-      line.append(document.createTextNode(before), input, document.createTextNode(after || ''));
+      const sentence = el('p', { class: 'gf-sentence' }, [before, input, after || '']);
 
-      return el('div', {}, [line, feedback]);
+      return el('div', { class: 'wb-line' }, [
+        el('div', { class: 'wb-line-row' }, [
+          el('span', { class: 'qcard-number', text: String(firstNumber + index) }),
+          sentence,
+        ]),
+        feedback,
+      ]);
     });
 
-    const node = el('div', { class: 'word-gap-fill-container' }, [
-      el('div', { class: 'wgf-word-box' }, [
-        el('p', { class: 'wgf-word-box-label', text: 'Words' }),
+    const node = el('div', { class: 'question-body' }, [
+      el('div', { class: 'wb-box' }, [
+        el('p', { class: 'wb-box-label', text: 'Words' }),
         wordList,
       ]),
-      ...lines,
+      el('div', { class: 'wb-lines' }, lines),
     ]);
 
     return {
@@ -92,22 +81,18 @@ export default {
       isAnswered: () => inputs.every((input) => input.value.trim() !== ''),
       blankCount: () => inputs.filter((input) => input.value.trim() === '').length,
       highlightBlanks() {
-        inputs.forEach((input) => {
-          if (input.value.trim() === '') input.classList.add('is-blank');
-        });
+        inputs.forEach((input) => input.classList.toggle('is-blank', input.value.trim() === ''));
+        inputs.find((input) => input.value.trim() === '')?.focus();
       },
       check() {
         return items.map((item, index) => {
-          const input = inputs[index];
           const answers = [item.answer, ...(item.alternatives || [])];
-          const correct = answers.some((answer) => sameAnswer(input.value, answer));
-
-          input.classList.toggle('correct', correct);
-          input.classList.toggle('incorrect', !correct);
-          paintFeedback(feedbackNodes[index], correct, correct ? "That's right" : 'Not yet - try again');
-          return correct;
+          const right = answers.some((answer) => sameAnswer(inputs[index].value, answer));
+          paint(inputs[index], right);
+          return right;
         });
       },
+      // The handler is told which sentence changed.
       onEdit(handler) {
         editHandler = handler;
       },

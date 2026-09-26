@@ -1,69 +1,82 @@
-// Activity picker for one topic.
+// Activity picker for one topic. Each card's bar is the attempt in play, not
+// the question bank: twelve questions, and full when they are finished.
 
 import { el } from '../lib/dom.js';
 import { go } from '../lib/router.js';
 import { renderScreen } from '../ui/shell.js';
+import { timesCompleted } from '../ui/progress.js';
 import { engineFor } from '../engines/index.js';
-import { topicById, availableActivities, QUESTIONS_PER_SESSION } from '../data/topics.js';
-import { bankProgress } from '../lib/storage.js';
+import { topicById, availableActivities, levelOf, QUESTIONS_PER_SESSION, ROUNDS_PER_SESSION } from '../data/topics.js';
+import { bankProgress, attemptAnswered } from '../lib/storage.js';
 
 export function activitiesScreen({ id }) {
   const topic = topicById(id);
-  if (!topic) return go('/topics');
+  if (!topic || !topic.items) return go('/topics', { replace: true });
 
-  const types = availableActivities(topic);
-
-  const body = el('div', {}, [
-    el('ul', { class: 'activity-list' }, types.map((type) => activityRow(topic, type))),
-    lessonLinks(topic),
-  ]);
+  const cards = availableActivities(topic).map((type) => activityCard(topic, type));
 
   renderScreen({
     title: topic.title,
-    subtitle: topic.subtitle,
+    subtitle: `Choose an activity - ${QUESTIONS_PER_SESSION} questions in ${ROUNDS_PER_SESSION} rounds`,
     backTo: '/topics',
-    body,
+    level: levelOf(topic),
+    body: [
+      el('div', { class: 'stack' }, cards),
+      el('div', { class: 'note' }, [
+        el('p', { text: 'Finish an activity and you can start it again with different questions.' }),
+      ]),
+      lessonLinks(topic),
+    ],
   });
 }
 
-function activityRow(topic, type) {
+function activityCard(topic, type) {
   const engine = engineFor(type);
   if (!engine) return null;
 
-  const bank = topic.items[type];
-  const progress = bankProgress(topic.id, type);
-  const seen = progress.seen.length;
-  const percent = bank.length ? Math.round((seen / bank.length) * 100) : 0;
+  const bank = bankProgress(topic.id, type);
+  const done = Boolean(bank.attempt?.finished);
+  const answered = done ? QUESTIONS_PER_SESSION : attemptAnswered(bank.attempt);
+  const percent = Math.round((answered / QUESTIONS_PER_SESSION) * 100);
 
-  const button = el('button', {
-    class: 'activity-row',
+  let note;
+  if (done) note = 'Completed - start again for new questions';
+  else if (answered) note = `${answered} of ${QUESTIONS_PER_SESSION} questions answered`;
+  else note = `${QUESTIONS_PER_SESSION} questions`;
+
+  return el('button', {
     type: 'button',
+    class: `card card-activity${done ? ' is-complete' : ''}`,
     onClick: () => go(`/practice/${topic.id}/${type}`),
   }, [
-    el('span', { class: 'activity-row-icon', 'aria-hidden': 'true', text: engine.icon }),
-    el('span', { class: 'activity-row-text' }, [
-      el('span', { class: 'activity-row-title', text: engine.name }),
-      el('span', { class: 'activity-row-blurb', text: engine.blurb }),
-      el('span', {
-        class: 'activity-row-progress',
-        text: seen ? `${seen} of ${bank.length} questions practised` : `${QUESTIONS_PER_SESSION} questions, 3 rounds`,
-      }),
-      el('span', { class: 'activity-bar' }, [
-        el('span', { class: 'activity-bar-fill', style: `width: ${percent}%` }),
+    el('span', { class: 'topic-icon', 'aria-hidden': 'true', text: engine.icon }),
+    el('span', { class: 'topic-text' }, [
+      el('span', { class: 'card-title' }, [
+        engine.name,
+        done ? el('span', { class: 'tick', 'aria-label': 'Completed', text: '✓' }) : null,
+      ]),
+      el('span', { class: 'card-meta', text: engine.blurb }),
+      el('span', { class: 'progress-track', 'aria-hidden': 'true' }, [
+        el('span', { class: 'progress-fill', style: `width: ${percent}%` }),
+      ]),
+      el('span', { class: 'card-note' }, [
+        note,
+        bank.sessions ? el('span', { class: 'times-done', text: timesCompleted(bank.sessions) }) : null,
       ]),
     ]),
+    el('span', { class: 'topic-go', 'aria-hidden': 'true', text: '›' }),
   ]);
-
-  return el('li', {}, [button]);
 }
 
 function lessonLinks(topic) {
   if (!topic.lessons?.length) return null;
 
-  return el('div', { class: 'lesson-links' }, [
-    el('p', { class: 'lesson-links-label', text: 'Read the lesson' }),
-    ...topic.lessons.map((lesson) =>
-      el('a', { class: 'lesson-link', href: lesson.href }, lesson.label)
+  return el('div', { class: 'note' }, [
+    el('p', { text: 'Want to read the lesson first?' }),
+    el('div', { class: 'actions actions-inline' },
+      topic.lessons.map((lesson) =>
+        el('a', { class: 'btn btn-quiet', href: lesson.href, text: `Open ${lesson.label}` })
+      )
     ),
   ]);
 }

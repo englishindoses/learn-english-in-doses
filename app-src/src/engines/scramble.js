@@ -1,8 +1,8 @@
-// Spelling scramble. Matches the website's markup:
-// .spelling-scramble-container > .ss-item > .ss-number + .ss-scrambled + .ss-arrow + .ss-input
+// Spelling scramble: the letters of a word, shuffled, and a box to type the
+// word into. The hint says what the word means.
 
 import { el, shuffleDifferently } from '../lib/dom.js';
-import { feedbackSlot, paintFeedback, clearFeedback, sameAnswer } from './shared.js';
+import { sameAnswer, paint, unpaint } from './shared.js';
 
 function scrambleLetters(word) {
   return shuffleDifferently(word.split('')).join('').toUpperCase();
@@ -13,18 +13,16 @@ export default {
   mode: 'per-item',
   name: 'Spelling',
   blurb: 'Put the letters in order',
-  icon: '\ud83d\udd21',
+  icon: '🔡',
 
   label: (item) => item.answer,
 
   createQuestion(item, number) {
-    const feedback = feedbackSlot();
     let editHandler = () => {};
 
     const input = el('input', {
       type: 'text',
-      class: 'ss-input',
-      placeholder: '...',
+      class: 'text-input',
       autocapitalize: 'off',
       autocomplete: 'off',
       spellcheck: 'false',
@@ -32,32 +30,24 @@ export default {
     });
 
     input.addEventListener('input', () => {
-      input.classList.remove('correct', 'incorrect');
-      clearFeedback(feedback);
+      unpaint(input);
       editHandler();
     });
 
-    const item_ = el('div', { class: 'ss-item' }, [
-      el('span', { class: 'ss-number', text: `${number}.` }),
-      el('span', { class: 'ss-scrambled', text: scrambleLetters(item.answer) }),
-      el('span', { class: 'ss-arrow', 'aria-hidden': 'true', text: '\u2192' }),
-      input,
-    ]);
-
     return {
-      node: el('div', { class: 'spelling-scramble-container' }, [
-        item.hint ? el('p', { class: 'question-text', text: item.hint }) : null,
-        item_,
-        feedback,
+      node: el('div', { class: 'question-body' }, [
+        item.hint ? el('p', { class: 'question-context', text: item.hint }) : null,
+        el('div', { class: 'ss-row' }, [
+          el('span', { class: 'ss-letters', text: scrambleLetters(item.answer) }),
+          el('span', { class: 'ss-arrow', 'aria-hidden': 'true', text: '→' }),
+          input,
+        ]),
       ]),
-      feedback,
       isAnswered: () => input.value.trim() !== '',
       check() {
-        const correct = sameAnswer(input.value, item.answer);
-        input.classList.toggle('correct', correct);
-        input.classList.toggle('incorrect', !correct);
-        paintFeedback(feedback, correct, correct ? "That's right" : 'Not yet - try again');
-        return correct;
+        const right = sameAnswer(input.value, item.answer);
+        paint(input, right);
+        return right;
       },
       onEdit(handler) {
         editHandler = handler;

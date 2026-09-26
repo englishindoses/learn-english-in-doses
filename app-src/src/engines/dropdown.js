@@ -1,72 +1,61 @@
-// Gap-fill with a dropdown per gap. Matches the website's drop-down activity:
-// .dropdown-activity > .dropdown-sentence > .sentence-number + select.gap-dropdown
+// Gap-fill with a dropdown per gap.
 //
 // A native <select> is deliberate: on a phone it opens a full-screen picker
 // that beats anything custom for one-handed use.
 
 import { el, shuffle } from '../lib/dom.js';
-import { feedbackSlot, paintFeedback, clearFeedback, sameAnswer } from './shared.js';
+import { sameAnswer, paint, unpaint } from './shared.js';
 
 export default {
   id: 'dropdown',
   mode: 'per-item',
   name: 'Choose the word',
   blurb: 'Pick the right word for each gap',
-  icon: '\ud83d\udd3d',
+  icon: '🔽',
 
   label: (item) => item.sentence.replace(/\{(\d+)\}/g, '_____'),
 
-  createQuestion(item, number) {
-    const feedback = feedbackSlot();
+  createQuestion(item) {
     const selects = new Map();
     let editHandler = () => {};
 
-    const sentence = el('div', { class: 'dropdown-sentence' }, [
-      el('span', { class: 'sentence-number', text: String(number) }),
-    ]);
+    const line = el('p', { class: 'gf-sentence' });
 
     // The sentence is split on {1}, {2}... and a select dropped in at each.
-    const parts = item.sentence.split(/(\{\d+\})/);
-
-    for (const part of parts) {
+    for (const part of item.sentence.split(/(\{\d+\})/)) {
       const marker = part.match(/^\{(\d+)\}$/);
 
       if (!marker) {
-        if (part) sentence.append(document.createTextNode(part));
+        if (part) line.append(document.createTextNode(part));
         continue;
       }
 
       const key = marker[1];
-      const gap = item.gaps[key];
-
-      const select = el('select', {
-        class: 'gap-dropdown',
-        'aria-label': `Gap ${key}`,
-      }, [
-        el('option', { value: '', disabled: true, selected: true }, 'Choose...'),
-        ...shuffle(gap.options).map((text) => el('option', { value: text }, text)),
+      const select = el('select', { class: 'gf-select', 'aria-label': `Gap ${key}` }, [
+        el('option', { value: '', disabled: true, selected: true }, 'choose...'),
+        ...shuffle(item.gaps[key].options).map((text) => el('option', { value: text }, text)),
       ]);
 
       select.addEventListener('change', () => {
-        clearFeedback(feedback);
+        unpaint(select);
         editHandler();
       });
 
       selects.set(key, select);
-      sentence.append(select);
+      line.append(select);
     }
 
     return {
-      node: el('div', { class: 'dropdown-activity' }, [sentence, feedback]),
-      feedback,
+      node: el('div', { class: 'question-body' }, [line]),
       isAnswered: () => [...selects.values()].every((s) => s.value !== ''),
       check() {
-        let correct = true;
+        let allRight = true;
         for (const [key, select] of selects) {
-          if (!sameAnswer(select.value, item.gaps[key].answer)) correct = false;
+          const right = sameAnswer(select.value, item.gaps[key].answer);
+          paint(select, right);
+          if (!right) allRight = false;
         }
-        paintFeedback(feedback, correct, correct ? "That's right" : 'Not yet - try again');
-        return correct;
+        return allRight;
       },
       onEdit(handler) {
         editHandler = handler;

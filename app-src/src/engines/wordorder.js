@@ -1,61 +1,60 @@
-// Word order. Matches the website's drag-drop markup:
-// .question > .question-text + .drop-zone + .drag-items + .feedback
+// Word order. Tap a word to add it to the sentence, tap it again to take it
+// back, or hold it and drag it to an exact position.
 //
-// Tap to place, tap again to take back, or drag to an exact position.
 // Tap-to-place is not a fallback: it is what keeps the activity usable with a
 // keyboard and a screen reader.
+//
+// This is the one activity that gives in: after three wrong checks the
+// session screen shows the sentence, so nobody is stuck for ever.
 
 import { el, shuffleDifferently } from '../lib/dom.js';
 import { makeDraggable } from '../lib/drag.js';
-import { questionCard, feedbackSlot, paintFeedback, clearFeedback, normalise } from './shared.js';
+import { normalise } from './shared.js';
 
 export default {
   id: 'wordorder',
   mode: 'per-item',
   name: 'Word order',
   blurb: 'Put the words in the right order',
-  icon: '\ud83d\udd24',
+  icon: '🔤',
+  revealsAnswer: true,
 
   label: (item) => item.answer,
 
-  createQuestion(item, number) {
+  createQuestion(item) {
     const words = item.answer.split(' ');
-    const feedback = feedbackSlot();
     let editHandler = () => {};
 
-    const dropZone = el('div', { class: 'drop-zone', 'aria-label': 'Your sentence' });
-    const bank = el('div', { class: 'drag-items', 'aria-label': 'Word bank' });
+    const placeholder = el('span', {
+      class: 'wo-placeholder',
+      text: 'Tap the words below, or hold one and drag it here',
+    });
+    const line = el('div', { class: 'wo-line', role: 'list', 'aria-label': 'Your sentence' }, [placeholder]);
+    const bank = el('div', { class: 'wo-bank', role: 'list', 'aria-label': 'Available words' });
+
+    const lineWords = () => [...line.querySelectorAll('.wo-word')];
 
     const touched = () => {
-      clearFeedback(feedback);
-      dropZone.classList.remove('correct', 'incorrect');
+      placeholder.hidden = lineWords().length > 0;
+      line.classList.remove('is-right', 'is-wrong');
       editHandler();
     };
 
+    // `drag-item` is the class the shared drag code looks for.
     const makeChip = (word) => {
-      const chip = el('div', {
-        class: 'drag-item',
-        tabindex: '0',
-        role: 'button',
+      const chip = el('button', {
+        type: 'button',
+        class: 'wo-word drag-item',
         text: word,
-      });
-
-      const place = () => {
-        if (chip.parentElement === dropZone) bank.append(chip);
-        else dropZone.append(chip);
-        touched();
-      };
-
-      chip.addEventListener('click', place);
-      chip.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault();
-          place();
-        }
+        onClick: () => {
+          if (chip.parentElement === line) bank.append(chip);
+          else line.append(chip);
+          touched();
+        },
       });
 
       makeDraggable(chip, {
-        zonesFor: () => [dropZone, bank],
+        zonesFor: () => [line, bank],
         onDrop: (moved, zone, before) => {
           if (before && before !== moved) zone.insertBefore(moved, before);
           else zone.append(moved);
@@ -69,24 +68,21 @@ export default {
     // Never hand the sentence back already in order.
     shuffleDifferently(words).forEach((word) => bank.append(makeChip(word)));
 
-    const given = () => [...dropZone.querySelectorAll('.drag-item')].map((c) => c.textContent).join(' ');
-
     const accepted = [item.answer, ...(item.alternatives || [])].map(normalise);
+    const given = () => normalise(lineWords().map((chip) => chip.textContent).join(' '));
 
     return {
-      node: questionCard(number, item.context || 'Put the words in order:', dropZone, bank, feedback),
-      feedback,
-      isAnswered: () => bank.querySelectorAll('.drag-item').length === 0,
+      node: el('div', { class: 'question-body' }, [
+        el('p', { class: 'question-context', text: item.context || 'Put the words in order' }),
+        line,
+        bank,
+      ]),
+      isAnswered: () => bank.querySelectorAll('.wo-word').length === 0,
       check() {
-        const correct = accepted.includes(normalise(given()));
-        dropZone.classList.toggle('correct', correct);
-        dropZone.classList.toggle('incorrect', !correct);
-        paintFeedback(feedback, correct, correct ? "That's right" : 'Not yet - try again');
-        return correct;
-      },
-      // Word order is the one activity that gives in, so nobody is stuck.
-      reveal() {
-        paintFeedback(feedback, false, `The sentence is: ${item.answer}`);
+        const right = accepted.includes(given());
+        line.classList.toggle('is-right', right);
+        line.classList.toggle('is-wrong', !right);
+        return right;
       },
       onEdit(handler) {
         editHandler = handler;

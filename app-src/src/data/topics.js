@@ -14,9 +14,20 @@ export const QUESTIONS_PER_SESSION = QUESTIONS_PER_ROUND * ROUNDS_PER_SESSION;
 // An activity type needs at least this many written questions to be offered.
 const MINIMUM_BANK = QUESTIONS_PER_ROUND;
 
+// The three levels, in course order. A level's id is also its colour scheme:
+// anything carrying data-level="beginner" is drawn in the beginner colours.
+export const levels = [
+  { id: 'beginner', title: 'Beginner' },
+  { id: 'intermediate', title: 'Intermediate' },
+  { id: 'advanced', title: 'Advanced' },
+];
+
+// Every section belongs to one level, and a topic takes its level from its
+// section. An intermediate grammar section needs its own id, such as
+// 'intermediate-grammar', because ids are shared across levels.
 export const sections = [
-  { id: 'grammar', title: 'Grammar', blurb: 'Beginner grammar practice' },
-  { id: 'travel', title: 'Travel English', blurb: 'English for trips and holidays' },
+  { id: 'grammar', level: 'beginner', title: 'Grammar', blurb: 'Beginner grammar practice' },
+  { id: 'travel', level: 'beginner', title: 'Travel English', blurb: 'English for trips and holidays' },
 ];
 
 // Topics still to be written. They appear greyed out, in the right place in
@@ -61,6 +72,20 @@ export function topicsIn(sectionId) {
 
 export function topicById(id) {
   return topics.find((topic) => topic.id === id) || null;
+}
+
+export function sectionsIn(levelId) {
+  return sections.filter((section) => section.level === levelId);
+}
+
+export function levelOf(topic) {
+  const section = sections.find((s) => s.id === topic?.section);
+  return section ? section.level : null;
+}
+
+// The small label above a topic's title, such as "Grammar".
+export function sectionLabel(topic) {
+  return sections.find((s) => s.id === topic?.section)?.title || '';
 }
 
 export function isWritten(topic) {

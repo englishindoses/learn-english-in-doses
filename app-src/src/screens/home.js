@@ -1,124 +1,197 @@
-// The dashboard. The one screen with any density.
+// The dashboard: a welcome, one big way into practice, clear progress, and
+// quick links to everything else.
 
 import { el } from '../lib/dom.js';
 import { go } from '../lib/router.js';
 import { renderScreen } from '../ui/shell.js';
+import { installCard } from '../ui/install.js';
+import { avatar, firstName } from '../ui/avatar.js';
+import { welcome } from '../ui/greetings.js';
+import { activitiesIn, progressBar, statRow, courseBar } from '../ui/progress.js';
 import { engineFor } from '../engines/index.js';
-import { topics, topicById, isWritten } from '../data/topics.js';
-import { savedSession, allProgress, practiceDays, savedQuestions } from '../lib/storage.js';
-import { canInstall, isInstalled, promptInstall, onInstallAvailabilityChange } from '../lib/pwa.js';
+import { getAccount, logOut } from '../lib/account.js';
+import {
+  allProgress,
+  summarise,
+  getAttempt,
+  lastActivity,
+  attemptAnswered,
+  savedQuestions,
+  practiceDays,
+  completedInTopic,
+} from '../lib/storage.js';
+import {
+  topics,
+  topicById,
+  isWritten,
+  levelOf,
+  sectionLabel,
+  ROUNDS_PER_SESSION,
+  QUESTIONS_PER_SESSION,
+} from '../data/topics.js';
 
 export function homeScreen() {
-  const unfinished = pickUpWhereYouLeftOff();
-  const practised = Object.values(allProgress()).reduce((sum, bank) => sum + (bank.seen?.length || 0), 0);
+  const account = getAccount();
+  const progress = allProgress();
+  const answered = summarise(progress).answered;
 
-  const body = el('div', { class: 'home-screen' }, [
-    el('p', { class: 'home-greeting', text: 'Extra practice' }),
+  const body = [greeting(account)];
 
-    unfinished,
+  const resume = resumeCard(unfinished());
+  body.push(el('div', { class: 'stack' }, [resume, startButton(Boolean(resume))]));
 
-    el('button', {
-      class: 'home-start submit-btn',
-      type: 'button',
-      onClick: () => go('/topics'),
-    }, 'Start practising'),
+  body.push(
+    el('section', { class: 'dash-section' }, [
+      el('div', { class: 'dash-heading' }, [
+        el('h2', { text: 'Your progress' }),
+        answered > 0 ? el('a', { href: '#/progress', text: 'See all' }) : null,
+      ]),
+      answered > 0
+        ? el('div', { class: 'stack' }, [
+            statRow(progress, practiceDays()),
+            courseBar(progress),
+            upNext(progress),
+          ])
+        : el('div', { class: 'note' }, [
+            el('p', {
+              text: `Each activity has ${QUESTIONS_PER_SESSION} questions, in ${ROUNDS_PER_SESSION} rounds of 4. It is practice, not a test, so you can keep trying until an answer is right. Not sure about a question? Save it to ask your teacher.`,
+            }),
+          ]),
+    ])
+  );
 
-    practised > 0 ? progressBlock(practised) : firstVisitNote(),
+  const questionCount = savedQuestions().length;
+  body.push(
+    el('section', { class: 'dash-section' }, [
+      el('div', { class: 'tile-grid' }, [
+        tile('\u{1F4D6}', 'How it works', () => go('/help')),
+        tile('★', 'My questions', () => go('/questions'), questionCount || null),
+        tile('\u{1F464}', 'Profile', () => go('/profile')),
+        tile('⚙', 'Settings', () => go('/settings')),
+      ]),
+    ])
+  );
 
-    el('div', { class: 'home-tiles' }, [
-      tile('★', 'My questions', `${savedQuestions().length} saved`, '/questions'),
-      tile('\u{1F4CA}', 'My progress', `${practised} questions practised`, '/progress'),
-      tile('\u{1F4DA}', 'Topics', 'Grammar and travel', '/topics'),
-      tile('❓', 'How it works', 'A quick explanation', '/help'),
-    ]),
+  if (account.isTeacher) {
+    body.push(
+      el('button', { type: 'button', class: 'card dash-card', onClick: () => go('/students') }, [
+        el('span', { class: 'card-icon', 'aria-hidden': 'true', text: '\u{1F465}' }),
+        el('span', { class: 'topic-text' }, [
+          el('span', { class: 'card-title', text: 'Your students' }),
+          el('span', { class: 'card-meta', text: 'Progress and saved questions' }),
+        ]),
+        el('span', { class: 'topic-go', 'aria-hidden': 'true', text: '›' }),
+      ])
+    );
+  }
 
-    installCard(),
-  ]);
+  if (account.kind === 'guest') body.push(guestNote());
+
+  body.push(installCard());
 
   renderScreen({ title: 'Practice', subtitle: 'English in Doses', body });
 }
 
-// Chrome and Edge give us a prompt to fire; every other browser installs
-// through its own menu, so those get instructions instead.
-function installCard() {
-  if (isInstalled()) return null;
+function greeting(account) {
+  const { greeting: hello, question } = welcome(firstName(account.student?.name));
+  return el('div', { class: 'greeting' }, [
+    avatar(account.student || {}, 'lg'),
+    el('div', {}, [
+      el('p', { class: 'greeting-hello', text: hello }),
+      el('p', { class: 'greeting-line', text: question }),
+    ]),
+  ]);
+}
 
-  // Redraw the dashboard if the browser offers the prompt after this ran.
-  onInstallAvailabilityChange(() => {
-    if (window.location.hash.slice(1) === '/' || window.location.hash === '') homeScreen();
-  });
+// The activity they were last on, if they did not finish it.
+function unfinished() {
+  const last = lastActivity();
+  if (!last) return null;
+  const attempt = getAttempt(last.topicId, last.type);
+  if (!attempt || attempt.finished) return null;
+  return { ...last, attempt };
+}
 
-  if (canInstall()) {
-    return el('div', { class: 'install-card' }, [
-      el('p', { class: 'install-card-text', text: 'Add this to your home screen and it works offline.' }),
-      el('button', {
-        class: 'submit-btn',
-        type: 'button',
-        onClick: () => promptInstall(),
-      }, 'Install the app'),
-    ]);
-  }
+function resumeCard(saved) {
+  if (!saved) return null;
+  const topic = topicById(saved.topicId);
+  const engine = engineFor(saved.type);
+  if (!topic || !engine) return null;
 
-  const ios = /iphone|ipad|ipod/i.test(window.navigator.userAgent);
+  const answered = attemptAnswered(saved.attempt);
 
-  return el('div', { class: 'install-card' }, [
-    el('p', { class: 'install-card-text', text: 'Add this to your home screen and it works offline.' }),
-    el('p', {
-      class: 'install-card-how',
-      text: ios
-        ? 'In Safari, tap the Share button, then Add to Home Screen.'
-        : 'Open your browser menu and choose Add to Home Screen or Install.',
+  return el('button', {
+    type: 'button',
+    class: 'card card-resume',
+    dataset: { level: levelOf(topic) || '' },
+    onClick: () => go(`/practice/${saved.topicId}/${saved.type}`),
+  }, [
+    el('span', { class: 'card-eyebrow', text: 'Pick up where you left off' }),
+    el('span', { class: 'card-title', text: `${topic.title} - ${engine.name}` }),
+    el('span', {
+      class: 'card-meta',
+      text: answered
+        ? `${answered} of ${QUESTIONS_PER_SESSION} questions answered`
+        : `Round ${Math.min((saved.attempt.roundIndex || 0) + 1, ROUNDS_PER_SESSION)} of ${ROUNDS_PER_SESSION}`,
     }),
   ]);
 }
 
-function pickUpWhereYouLeftOff() {
-  const session = savedSession();
-  if (!session || session.finished) return null;
+function startButton(hasResume) {
+  return el('button', { type: 'button', class: 'start-btn', onClick: () => go('/topics') }, [
+    el('span', { class: 'start-btn-icon', 'aria-hidden': 'true', text: '▶' }),
+    el('span', { class: 'start-btn-text' }, [
+      el('span', { class: 'start-btn-title', text: hasResume ? 'Start something new' : 'Start practising' }),
+      el('span', { class: 'start-btn-meta', text: 'Choose a topic, then an activity' }),
+    ]),
+  ]);
+}
 
-  const topic = topicById(session.topicId);
-  const engine = engineFor(session.type);
-  if (!topic || !engine) return null;
+// The first topic, in course order, with an activity still to complete.
+function upNext(progress) {
+  const topic = topics.find((t) => isWritten(t) && completedInTopic(progress, t.id) < activitiesIn(t));
+  if (!topic) return null;
+  const done = completedInTopic(progress, topic.id);
+  const total = activitiesIn(topic);
 
   return el('button', {
-    class: 'home-resume',
     type: 'button',
-    onClick: () => go(`/practice/${session.topicId}/${session.type}/resume`),
+    class: 'card card-topic',
+    dataset: { level: levelOf(topic) || '' },
+    onClick: () => go(`/topic/${topic.id}`),
   }, [
-    el('span', { class: 'home-resume-label', text: 'Pick up where you left off' }),
-    el('span', { class: 'home-resume-topic', text: `${topic.title} - ${engine.name}` }),
-    el('span', { class: 'home-resume-round', text: `Round ${session.round + 1} of 3` }),
+    el('span', { class: 'topic-icon', 'aria-hidden': 'true', text: topic.icon || '\u{1F4D8}' }),
+    el('span', { class: 'topic-text' }, [
+      el('span', { class: 'card-eyebrow', text: `Up next · ${sectionLabel(topic)}` }),
+      el('span', { class: 'card-title', text: topic.title }),
+      progressBar(done, total),
+      el('span', { class: 'card-meta', text: `${done} of ${total} activities completed` }),
+    ]),
+    el('span', { class: 'topic-go', 'aria-hidden': 'true', text: '›' }),
   ]);
 }
 
-function progressBlock(practised) {
-  const thisWeek = practiceDays().filter(withinLastWeek).length;
-  const next = topics.find((topic) => isWritten(topic));
-
-  return el('div', { class: 'home-progress' }, [
-    el('p', { class: 'home-progress-line', text: `${practised} questions practised` }),
-    el('p', { class: 'home-progress-line', text: `${thisWeek} ${thisWeek === 1 ? 'day' : 'days'} practised this week` }),
-    next ? el('p', { class: 'home-progress-next', text: `Up next: ${next.title}` }) : null,
+function tile(icon, label, onClick, badge = null) {
+  return el('button', { type: 'button', class: 'tile', onClick }, [
+    el('span', { class: 'tile-icon', 'aria-hidden': 'true', text: icon }),
+    el('span', { class: 'tile-label', text: label }),
+    badge ? el('span', { class: 'tile-badge', 'aria-label': `${badge} saved`, text: String(badge) }) : null,
   ]);
 }
 
-function firstVisitNote() {
-  return el('div', { class: 'home-progress' }, [
-    el('p', { class: 'home-progress-line', text: 'Pick a topic, pick an activity, and answer twelve questions in three rounds of four.' }),
-    el('p', { class: 'home-progress-line', text: 'It is practice, not a test. You can keep trying until an answer is right.' }),
-  ]);
-}
-
-function withinLastWeek(day) {
-  const then = new Date(`${day}T00:00:00`);
-  const days = (Date.now() - then.getTime()) / 86400000;
-  return days < 7;
-}
-
-function tile(icon, title, blurb, path) {
-  return el('button', { class: 'home-tile', type: 'button', onClick: () => go(path) }, [
-    el('span', { class: 'home-tile-icon', 'aria-hidden': 'true', text: icon }),
-    el('span', { class: 'home-tile-title', text: title }),
-    el('span', { class: 'home-tile-blurb', text: blurb }),
+function guestNote() {
+  return el('div', { class: 'note note-action' }, [
+    el('p', {
+      text: 'You’re practising as a guest, so your progress is saved on this device only. Sign in to keep it on any phone or computer.',
+    }),
+    el('button', {
+      type: 'button',
+      class: 'btn btn-primary',
+      text: 'Sign in with Google',
+      onClick: async () => {
+        await logOut(); // leaves guest mode; their practice stays on the device
+        window.location.replace(window.location.pathname);
+      },
+    }),
   ]);
 }

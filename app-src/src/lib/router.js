@@ -22,12 +22,25 @@ export function fallback(handler) {
   notFound = handler;
 }
 
-export function go(path) {
+export function go(path, { replace = false } = {}) {
   if (currentPath() === path) {
     resolve();
+  } else if (replace) {
+    window.location.replace(`#${path}`);
   } else {
     window.location.hash = path;
   }
+}
+
+// The previous screen, or `fallbackPath` when the app was opened on this one.
+export function back(fallbackPath = '/') {
+  if (window.history.length > 1) window.history.back();
+  else go(fallbackPath, { replace: true });
+}
+
+// Draws the current screen again, for example once someone has signed in.
+export function refresh() {
+  resolve();
 }
 
 export function currentPath() {

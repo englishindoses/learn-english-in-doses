@@ -1,40 +1,58 @@
-import './styles/site.css';
 import './styles/app.css';
 
+import { el } from './lib/dom.js';
 import { route, fallback, startRouter, go } from './lib/router.js';
 import { setupPWA } from './lib/pwa.js';
-import { settings } from './lib/storage.js';
+import { initInstall } from './lib/install.js';
+import { restore, needsSignIn } from './lib/account.js';
+import { mountShell, focusScreen } from './ui/shell.js';
 import { homeScreen } from './screens/home.js';
 import { topicsScreen } from './screens/topics.js';
 import { activitiesScreen } from './screens/activities.js';
-import { startSession, resumeSession } from './screens/session.js';
+import { sessionScreen } from './screens/session.js';
 import { reviewScreen } from './screens/review.js';
 import { questionsScreen } from './screens/questions.js';
 import { progressScreen } from './screens/progress.js';
 import { helpScreen } from './screens/help.js';
+import { settingsScreen } from './screens/settings.js';
+import { profileScreen } from './screens/profile.js';
+import { signinScreen } from './screens/signin.js';
+import { studentsScreen, studentScreen } from './screens/students.js';
 
-applySettings();
+// Listen straight away: the browser may offer installing before any screen draws.
+initInstall();
 setupPWA();
 
-route('/', homeScreen);
-route('/topics', topicsScreen);
-route('/topic/:id', activitiesScreen);
-route('/practice/:id/:type', ({ id, type }) => startSession(id, type));
-route('/practice/:id/:type/replay', ({ id, type }) => startSession(id, type, { replay: true }));
-route('/practice/:id/:type/resume', resumeSession);
-route('/review', reviewScreen);
-route('/questions', questionsScreen);
-route('/progress', progressScreen);
-route('/help', helpScreen);
+mountShell(document.getElementById('app'));
 
-fallback(() => go('/'));
+// Wraps a screen so nobody gets past the sign-in page without choosing Google
+// or guest, and so focus lands on the new screen after every navigation.
+const screen = (render) => (params) => {
+  if (needsSignIn()) signinScreen();
+  else render(params);
+  focusScreen();
+};
 
-startRouter();
+route('/', screen(homeScreen));
+route('/topics', screen(topicsScreen));
+route('/topic/:id', screen(activitiesScreen));
+route('/practice/:id/:type', screen((p) => sessionScreen({ ...p, mode: 'new' })));
+route('/practice/:id/:type/replay', screen((p) => sessionScreen({ ...p, mode: 'replay' })));
+// Links saved by the first version. Carrying on is now automatic.
+route('/practice/:id/:type/resume', screen((p) => sessionScreen({ ...p, mode: 'new' })));
+route('/review', screen(reviewScreen));
+route('/questions', screen(questionsScreen));
+route('/progress', screen(progressScreen));
+route('/help', screen(helpScreen));
+route('/settings', screen(settingsScreen));
+route('/profile', screen(profileScreen));
+route('/students', screen(studentsScreen));
+route('/student/:uid', screen(studentScreen));
 
-// Two settings are honoured through data- attributes on the root element.
-function applySettings() {
-  const { textSize, reducedMotion } = settings();
-  const root = document.documentElement;
-  if (textSize && textSize !== 'normal') root.dataset.textSize = textSize;
-  if (reducedMotion) root.dataset.reducedMotion = 'true';
-}
+fallback(() => go('/', { replace: true }));
+
+document.getElementById('screen-body').append(
+  el('p', { class: 'loading', role: 'status', text: 'Loading…' })
+);
+
+restore().finally(startRouter);

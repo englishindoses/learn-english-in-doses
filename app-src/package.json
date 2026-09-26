@@ -7,11 +7,14 @@
     "dev": "npm run assets && vite",
     "build": "npm run assets && vite build",
     "preview": "vite preview",
-    "assets": "node tools/copy-site-css.js && node tools/copy-icons.js",
+    "assets": "node tools/copy-icons.js",
     "check": "node tools/check-content.js"
   },
   "devDependencies": {
     "vite": "^7.1.0",
     "vite-plugin-pwa": "^1.0.0"
+  },
+  "dependencies": {
+    "firebase": "^12.19.0"
   }
 }

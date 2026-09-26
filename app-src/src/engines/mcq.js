@@ -1,8 +1,9 @@
-// Multiple choice. Matches the markup on the website's lesson pages:
-// .question > .question-text + .options > .option[data-index] + .feedback
+// Multiple choice: a sentence with a gap, and three or more options to pick
+// from. The options are shuffled, because the written order would otherwise
+// give the answer away on a repeat.
 
 import { el, shuffle } from '../lib/dom.js';
-import { questionCard, feedbackSlot, paintFeedback, clearFeedback } from './shared.js';
+import { paint, unpaint } from './shared.js';
 
 const LETTERS = ['A', 'B', 'C', 'D', 'E'];
 
@@ -11,64 +12,51 @@ export default {
   mode: 'per-item',
   name: 'Multiple choice',
   blurb: 'Choose the correct answer',
-  icon: '\u2714\ufe0f',
+  icon: '✔️',
 
   label: (item) => item.sentence,
 
   createQuestion(item, number) {
-    // The written order would otherwise give the answer away on repeat.
     const options = shuffle(item.options.map((text, i) => ({ text, correct: i === item.answer })));
 
     let chosen = null;
     let editHandler = () => {};
 
-    const feedback = feedbackSlot();
-
-    const optionNodes = options.map((option, index) =>
-      el('div', {
-        class: 'option',
-        dataset: { index: String(index) },
+    const buttons = options.map((option, index) =>
+      el('button', {
+        type: 'button',
+        class: 'mcq-option',
         role: 'radio',
-        tabindex: '0',
         'aria-checked': 'false',
-      }, [el('span', {}, `${LETTERS[index]}. ${option.text}`)])
+        onClick: () => select(index),
+      }, [
+        el('span', { class: 'mcq-letter', 'aria-hidden': 'true', text: LETTERS[index] }),
+        el('span', { text: option.text }),
+      ])
     );
 
-    const select = (index) => {
+    function select(index) {
       chosen = index;
-      optionNodes.forEach((node, i) => {
-        node.classList.toggle('selected', i === index);
-        node.setAttribute('aria-checked', i === index ? 'true' : 'false');
+      buttons.forEach((button, i) => {
+        button.classList.toggle('is-selected', i === index);
+        button.setAttribute('aria-checked', i === index ? 'true' : 'false');
+        unpaint(button);
       });
-      clearFeedback(feedback);
       editHandler();
-    };
+    }
 
-    optionNodes.forEach((node, index) => {
-      node.addEventListener('click', () => select(index));
-      node.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault();
-          select(index);
-        }
-      });
-    });
-
-    const node = questionCard(
-      number,
-      item.sentence,
-      el('div', { class: 'options', role: 'radiogroup', 'aria-label': `Question ${number}` }, optionNodes),
-      feedback
-    );
+    const node = el('div', { class: 'question-body' }, [
+      el('p', { class: 'question-prompt', text: item.sentence }),
+      el('div', { class: 'mcq-options', role: 'radiogroup', 'aria-label': `Question ${number}` }, buttons),
+    ]);
 
     return {
       node,
-      feedback,
       isAnswered: () => chosen !== null,
       check() {
-        const correct = chosen !== null && options[chosen].correct;
-        paintFeedback(feedback, correct, correct ? "That's right" : 'Not yet - try again');
-        return correct;
+        const right = chosen !== null && options[chosen].correct;
+        if (chosen !== null) paint(buttons[chosen], right);
+        return right;
       },
       onEdit(handler) {
         editHandler = handler;
