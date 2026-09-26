@@ -167,7 +167,7 @@ function renderRound() {
     const parts = [
       el('p', { class: 'qfeedback-line' }, [
         el('span', { class: 'qfeedback-mark', 'aria-hidden': 'true', text: right ? '✓' : '✗' }),
-        el('span', { text: right ? 'That’s right.' : 'Not yet - try again.' }),
+        el('span', { text: right ? 'That’s right.' : 'Not quite. Try again!' }),
       ]),
     ];
     if (revealed) parts.push(el('p', { class: 'qfeedback-answer', text: `The sentence is: ${engine.label(q.item)}` }));
