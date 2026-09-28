@@ -1,7 +1,7 @@
 # To Do
 
 Working list for tidying up the project and its documentation.
-Last updated: 26 September 2026.
+Last updated: 28 September 2026.
 
 ---
 
@@ -75,3 +75,6 @@ Roughly in the order I'd tackle them.
 - [x] Add Log in to the website's top bar, beside the theme toggle. Done 27 Sep 2026: `js/account.js` and `css/account.css`, loaded by `core.js`. Same accounts as the app.
 - [ ] Save website progress to the student's account. Progress on the website is saved only for signed-in students.
 - [ ] Decide how students reset a forgotten password. At the moment they need a new account.
+- [x] Write the beginner grammar topic banks for the app. Done 28 Sep 2026: all 13 lessons on `beginner-grammar.html`, including Modal Verbs, which was missing from the app's list.
+- [ ] Write the travel topic banks for the app.
+- [ ] Proofread the new beginner grammar banks on a phone.
