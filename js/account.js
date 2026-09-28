@@ -35,6 +35,11 @@ let fb = null; // the Firebase functions, once loaded
 let auth = null;
 let root = '';
 let slot = null; // where the button or the student's name goes
+let ready = null; // settles once Firebase has loaded
+
+// The last student seen on this device, so their name shows straight away
+// instead of waiting for Firebase to load.
+const REMEMBER_KEY = 'eid.site.account';
 
 /**
  * Called by core.js with the address of the site's top folder, so links work
@@ -51,18 +56,43 @@ export async function initAccount(siteRoot) {
   slot.className = 'account-nav';
   toggle.parentElement.insertBefore(slot, toggle);
 
+  // Show Log in, or the remembered name, at once. Firebase takes a few
+  // seconds to load, and the button should not wait for it.
+  showAccount(recall());
+
+  ready = loadFirebase();
   try {
-    await loadFirebase();
+    await ready;
   } catch (error) {
     console.error('Accounts could not load:', error);
-    slot.remove();
     return;
   }
 
   // Back from a Google sign-in that had to leave the page.
   fb.getRedirectResult(auth).catch(() => {});
 
-  fb.onAuthStateChanged(auth, (user) => showAccount(user));
+  fb.onAuthStateChanged(auth, (user) => {
+    const who = user ? describe(user) : null;
+    remember(who);
+    showAccount(who);
+  });
+}
+
+function recall() {
+  try {
+    return JSON.parse(localStorage.getItem(REMEMBER_KEY));
+  } catch {
+    return null;
+  }
+}
+
+function remember(who) {
+  try {
+    if (who) localStorage.setItem(REMEMBER_KEY, JSON.stringify(who));
+    else localStorage.removeItem(REMEMBER_KEY);
+  } catch {
+    // Private window: the name will just take a moment to appear.
+  }
 }
 
 function addStylesheet() {
@@ -99,18 +129,18 @@ function describe(user) {
   };
 }
 
-function showAccount(user) {
+// `who` is a student as describe() gives it, or null when nobody is logged in.
+function showAccount(who) {
   closeMenu();
   slot.replaceChildren();
 
-  if (!user) {
+  if (!who) {
     const login = element('button', { type: 'button', class: 'account-login', text: 'Log in' });
     login.addEventListener('click', () => openLogin());
     slot.append(login);
     return;
   }
 
-  const who = describe(user);
   const chip = element('button', {
     type: 'button',
     class: 'account-chip',
@@ -157,6 +187,7 @@ function toggleMenu(chip, who) {
 
   menu.querySelector('button').addEventListener('click', async () => {
     closeMenu();
+    await ready;
     await fb.signOut(auth);
   });
 
@@ -246,7 +277,11 @@ function openLogin() {
 
   const dialog = element('dialog', { class: 'account-dialog', 'aria-labelledby': 'account-dialog-title' }, [
     close,
-    title,
+    element('div', { class: 'account-brand' }, [
+      element('img', { class: 'account-logo', src: `${root}images/android-chrome-192x192.png`, alt: '' }),
+      title,
+      element('p', { class: 'account-sub', text: 'English in Doses' }),
+    ]),
     form,
     element('div', { class: 'account-divider' }, [element('span', { text: 'or' })]),
     google,
@@ -296,12 +331,16 @@ function openLogin() {
     setBusy(true);
     submit.textContent = creating ? 'Creating your account…' : 'Logging in…';
     try {
+      await ready;
       const email = `${name}@${USERNAME_DOMAIN}`;
       await fb.setPersistence(auth, fb.browserLocalPersistence);
       if (creating) {
         const result = await fb.createUserWithEmailAndPassword(auth, email, password.value);
         await fb.updateProfile(result.user, { displayName: name });
-        showAccount(result.user); // the name was set after the first update
+        // The name was set after Firebase first reported the new account.
+        const who = describe(result.user);
+        remember(who);
+        showAccount(who);
       } else {
         await fb.signInWithEmailAndPassword(auth, email, password.value);
       }
@@ -319,6 +358,7 @@ function openLogin() {
     error.textContent = '';
     setBusy(true);
     try {
+      await ready;
       await fb.setPersistence(auth, fb.browserLocalPersistence);
       const provider = new fb.GoogleAuthProvider();
       provider.setCustomParameters({ prompt: 'select_account' });
