@@ -29,7 +29,10 @@ export function applySettings() {
 }
 
 // `backTo` is a path, 'auto' for the previous screen, or null for no button.
-export function renderScreen({ title, subtitle, backTo = null, body: content, progress = null, level = null }) {
+// `brand` swaps the screen title for the logo and the app's name, for the home
+// screen. On a levelled screen the bar gets a stripe in the level's colour, as
+// the website's nav does.
+export function renderScreen({ title, subtitle, backTo = null, body: content, progress = null, level = null, brand = false }) {
   const bookmarkCount = savedQuestions().length;
 
   if (level) document.body.dataset.level = level;
@@ -38,21 +41,25 @@ export function renderScreen({ title, subtitle, backTo = null, body: content, pr
   clear(bar);
   bar.hidden = false;
   bar.append(
-    el('div', { class: 'topbar-row' }, [
-      el('div', { class: 'topbar-left' }, [
-        backTo === null
-          ? el('span', { class: 'topbar-spacer' })
-          : iconButton({
-              label: 'Go back',
-              glyph: '‹',
-              className: 'topbar-back',
-              onClick: () => (backTo === 'auto' ? back('/') : go(backTo)),
-            }),
-      ]),
-      el('div', { class: 'topbar-title' }, [
-        el('h1', { text: title }),
-        subtitle ? el('p', { class: 'topbar-subtitle', text: subtitle }) : null,
-      ]),
+    el('div', { class: brand ? 'topbar-row is-brand' : 'topbar-row' }, [
+      brand
+        ? brandLockup()
+        : el('div', { class: 'topbar-left' }, [
+            backTo === null
+              ? el('span', { class: 'topbar-spacer' })
+              : iconButton({
+                  label: 'Go back',
+                  glyph: '‹',
+                  className: 'topbar-back',
+                  onClick: () => (backTo === 'auto' ? back('/') : go(backTo)),
+                }),
+          ]),
+      brand
+        ? null
+        : el('div', { class: 'topbar-title' }, [
+            el('h1', { text: title }),
+            subtitle ? el('p', { class: 'topbar-subtitle', text: subtitle }) : null,
+          ]),
       el('div', { class: 'topbar-right' }, [
         iconButton({
           label: `My questions${bookmarkCount ? `, ${bookmarkCount} saved` : ''}`,
@@ -84,6 +91,16 @@ export function renderBare(content) {
 // Keyboard users should land on the new screen, not at the top of the page.
 export function focusScreen() {
   if (body) body.focus({ preventScroll: true });
+}
+
+function brandLockup() {
+  return el('div', { class: 'topbar-brand' }, [
+    el('img', { class: 'topbar-logo', src: 'icons/icon-192.png', alt: '' }),
+    el('div', { class: 'topbar-brand-text' }, [
+      el('h1', { text: 'English in Doses' }),
+      el('p', { class: 'topbar-subtitle', text: 'Extra Practice App' }),
+    ]),
+  ]);
 }
 
 function iconButton({ label, glyph, badge, onClick, className = '' }) {

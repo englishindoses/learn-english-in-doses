@@ -89,7 +89,7 @@ export function homeScreen() {
 
   body.push(installCard());
 
-  renderScreen({ title: 'Practice', subtitle: 'English in Doses', body });
+  renderScreen({ brand: true, body });
 }
 
 function greeting(account) {
