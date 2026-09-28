@@ -9,10 +9,15 @@
  * - Module detection and communication utilities
  */
 
+// This script's own address, read now because it is not available later.
+// Accounts use it to find the site's top folder from any page.
+const CORE_SCRIPT_URL = document.currentScript ? document.currentScript.src : null;
+
 // Ensure the DOM is fully loaded before running any code
 document.addEventListener('DOMContentLoaded', function() {
   // Initialize all core functionality
   initThemeToggle();
+  initAccount();
   initMobileNavigation();
   initActiveNavLink();
   initPrintButton();
@@ -46,6 +51,19 @@ function initThemeToggle() {
   themeToggle.addEventListener('click', function() {
     toggleTheme();
   });
+}
+
+/**
+ * Adds the Log in button beside the theme toggle. The work is in
+ * js/account.js, loaded only here so pages need no extra script tag.
+ */
+function initAccount() {
+  if (!CORE_SCRIPT_URL || !document.getElementById('theme-toggle')) return;
+
+  const siteRoot = new URL('../', CORE_SCRIPT_URL).href;
+  import(siteRoot + 'js/account.js')
+    .then(function(account) { account.initAccount(siteRoot); })
+    .catch(function(error) { console.error('Accounts could not load:', error); });
 }
 
 /**

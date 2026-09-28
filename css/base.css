@@ -252,7 +252,7 @@
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
-    margin-right: 80px;
+    margin-right: 200px; /* room for Log in and the theme toggle */
   }
 
   .nav-link {
@@ -734,6 +734,7 @@
       display: none;
       width: 100%;
       flex-direction: column;
+      margin-right: 80px;
     }
 
     .nav-dropdown {

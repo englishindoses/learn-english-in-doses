@@ -1,0 +1,347 @@
+/*
+ * ESL Grammar Website - Accounts
+ * The Log in button beside the theme toggle, the signed-in menu and the login
+ * box. Loaded by js/account.js, so pages do not link to it themselves.
+ */
+
+/* ----------------------------------------
+   1. Beside the theme toggle
+   ---------------------------------------- */
+.theme-toggle-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.account-nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.account-login,
+.account-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 6px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  background: transparent;
+  color: var(--header-text);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.account-chip {
+  padding: 4px 12px 4px 4px;
+}
+
+.account-login:hover,
+.account-chip:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  transform: none;
+}
+
+.account-chip-name {
+  max-width: 9em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.account-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--secondary-accent);
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+/* ----------------------------------------
+   2. The signed-in menu
+   ---------------------------------------- */
+.account-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 1000;
+  width: 220px;
+  padding: 6px;
+  background: var(--bg-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px var(--shadow-color);
+}
+
+.account-menu-head {
+  padding: 8px 10px 10px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.account-menu-name {
+  margin: 0;
+  font-weight: 700;
+}
+
+.account-menu-line {
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.75;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.account-menu-item {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-color);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.95rem;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.account-menu-item:hover,
+.account-menu-item:focus-visible {
+  background: var(--card-bg);
+  color: var(--text-color);
+  text-decoration: none;
+  transform: none;
+}
+
+/* ----------------------------------------
+   3. The login box
+   ---------------------------------------- */
+.account-dialog {
+  position: relative;
+  width: min(380px, calc(100vw - 32px));
+  padding: 28px 24px 22px;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background: var(--bg-color);
+  color: var(--text-color);
+  box-shadow: 0 8px 24px var(--shadow-color);
+}
+
+.account-dialog::backdrop {
+  background: rgba(27, 38, 59, 0.55);
+}
+
+.account-dialog-title {
+  margin: 0 0 16px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--text-color);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.4rem;
+  text-align: center;
+  box-shadow: none;
+}
+
+.account-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-color);
+  font-size: 1rem;
+}
+
+.account-close:hover {
+  background: var(--card-bg);
+  transform: none;
+}
+
+.account-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.account-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.account-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.account-input {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.account-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.25);
+}
+
+.account-hint {
+  margin: 0;
+  font-size: 0.8rem;
+  opacity: 0.75;
+}
+
+.account-submit {
+  position: relative;
+  overflow: hidden;
+  min-height: 44px;
+  border-radius: 4px;
+  background-color: var(--accent-color);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.account-submit:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+.account-submit:disabled,
+.account-google:disabled {
+  opacity: 0.6;
+  cursor: default;
+  transform: none;
+}
+
+/* The website's button shine. */
+.account-submit::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.account-submit:hover::after {
+  left: 100%;
+}
+
+.account-switch {
+  margin: 0;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.account-link {
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--link-color);
+  font-size: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.account-link:hover {
+  background: none;
+  transform: none;
+}
+
+.account-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 18px 0;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+.account-divider::before,
+.account-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border-color);
+}
+
+.account-google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 44px;
+  border: 2px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.account-google:hover {
+  background: var(--card-bg);
+  transform: none;
+}
+
+.account-google-mark {
+  display: inline-flex;
+}
+
+.account-error:empty {
+  display: none;
+}
+
+.account-error {
+  margin: 14px 0 0;
+  padding: 10px 12px;
+  border-radius: 6px;
+  background: var(--error-bg);
+  color: var(--error-color);
+  font-size: 0.9rem;
+}
+
+.account-note {
+  margin: 14px 0 0;
+  font-size: 0.85rem;
+  text-align: center;
+  opacity: 0.75;
+}
+
+@media print {
+  .account-nav {
+    display: none !important;
+  }
+}
