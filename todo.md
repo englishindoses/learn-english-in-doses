@@ -70,4 +70,7 @@ Roughly in the order I'd tackle them.
 
 - [x] Restyle the app in the BizEng layout, with the website's fonts, colours and button shine, and colours per level. Done 26 Sep 2026.
 - [x] Bring over BizEng's progress counting (activities completed, answers correct, days practised this week) and its Google sign-in. Done 26 Sep 2026.
-- [ ] **Switch on Google sign-in.** Set up Firebase, paste its settings into `app-src/src/lib/cloud.js`, add the database rules, rebuild. Until then the app works for guests only.
+- [x] **Switch on sign-in.** Firebase project `english-in-doses` set up 27 Sep 2026, with Google and username and password. Connected to the app.
+- [ ] Test Google and username sign-in on a phone, and check the Your students page.
+- [ ] Add login to the website's top navigation bar, saving website progress to the same account. Progress on the website is saved only for signed-in students.
+- [ ] Decide how students reset a forgotten password. At the moment they need a new account.
