@@ -411,7 +411,7 @@ body[data-level] .topbar::after {
 }
 
 .card-resume {
-  border-left: 4px solid var(--orange);
+  border-left: 4px solid var(--level);
   flex-direction: column;
   align-items: flex-start;
   gap: 0.15rem;
