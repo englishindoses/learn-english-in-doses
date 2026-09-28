@@ -73,6 +73,17 @@ export async function restore() {
     return;
   }
 
+  // Nothing chosen in the app yet, but they may have logged in on the
+  // website, which shares the app's address and so its sign-in.
+  if (!saved) {
+    try {
+      const student = await (await loadCloud()).currentStudent();
+      if (student) return enterStudent(student, true, { fresh: true });
+    } catch {
+      // Falls through to the sign-in page.
+    }
+  }
+
   state = { kind: 'none', student: null };
 }
 
