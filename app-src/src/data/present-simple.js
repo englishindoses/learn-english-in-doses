@@ -55,7 +55,7 @@ const wordbank = [
   { id: 'ps-wb-06', sentence: 'The film {1} at eight.', answer: 'starts', alternatives: [], clue: 'The film is it.' },
   { id: 'ps-wb-07', sentence: 'I {1} the bus to work.', answer: 'take', alternatives: [], clue: 'I does not change the verb.' },
   { id: 'ps-wb-08', sentence: 'She {1} television in the evening.', answer: 'watches', alternatives: [], clue: 'The verb ends in ch.' },
-  { id: 'ps-wb-09', sentence: 'My parents {1} in a small house.', answer: 'stay', alternatives: [], clue: 'My parents is they.' },
+  { id: 'ps-wb-09', sentence: 'My parents {1} the dog every evening.', answer: 'walk', alternatives: [], clue: 'My parents is they.' },
   { id: 'ps-wb-10', sentence: 'He {1} his car on Sundays.', answer: 'cleans', alternatives: [], clue: 'He needs something on the end.' },
   { id: 'ps-wb-11', sentence: 'We {1} dinner at seven.', answer: 'eat', alternatives: [], clue: 'We does not change the verb.' },
   { id: 'ps-wb-12', sentence: 'The shop {1} at six.', answer: 'closes', alternatives: [], clue: 'The shop is it.' },
