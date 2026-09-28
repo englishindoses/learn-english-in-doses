@@ -231,7 +231,8 @@ a {
   flex: none;
   width: 2.6rem;
   height: 2.6rem;
-  border-radius: var(--radius-sm);
+  padding: 0.25rem;
+  border-radius: 50%;
   background: var(--white);
   box-shadow: var(--shadow-sm);
 }
@@ -251,7 +252,7 @@ a {
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--orange);
+  color: var(--white);
 }
 
 /* The level stripe, like the website's nav indicator. Only a topic's screens
