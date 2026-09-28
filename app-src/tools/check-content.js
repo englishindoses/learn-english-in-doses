@@ -80,8 +80,9 @@ function checkClue(where, item) {
   if (!clue) return problem(where, `${id} has no clue`);
   if (clue.length > MAX_CLUE) problem(where, `${id} has a clue of ${clue.length} characters, over ${MAX_CLUE}`);
 
+  // Whole words only: a clue may say "an" when the answer is "a".
   const answer = plainAnswer(item);
-  if (answer && clue.toLowerCase().includes(answer.toLowerCase())) {
+  if (answer && containsWords(clue, answer)) {
     problem(where, `${id} has a clue containing the answer`);
   }
 }
@@ -198,6 +199,11 @@ function plainAnswer(item) {
   if (Number.isInteger(item.answer) && item.options) return item.options[item.answer];
   if (item.gaps) return Object.values(item.gaps).map((gap) => gap.answer).join(' ');
   return null;
+}
+
+function containsWords(text, words) {
+  const escaped = words.trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(`(^|[^a-z'])${escaped}($|[^a-z'])`, 'i').test(text);
 }
 
 function normalise(text) {

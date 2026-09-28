@@ -109,7 +109,8 @@ npm run check present-simple   # one topic
 
 It catches duplicate ids, an answer missing from its own options, a word order
 alternative that cannot be built from the words on screen, two word bank
-answers that share a word, and a clue that gives the answer away. Problems
+answers that share a word, and a clue that gives the answer away (as a whole
+word, so a clue may say "an" when the answer is "a"). Problems
 exit non-zero; notes are things for a person to judge.
 
 It does not read the English. Run grammar police for that.
@@ -117,4 +118,4 @@ It does not read the English. Run grammar police for that.
 ## Still to do
 
 - A proofreading page builder, for reading a whole topic on a phone.
-- The remaining topic banks. Only Present Simple is written.
+- The travel topic banks. Every beginner grammar topic is written.

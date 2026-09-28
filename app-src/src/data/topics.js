@@ -5,7 +5,19 @@
 // travel/beginner-travel/travel-english.html. A topic with no `items` is
 // listed as Coming soon.
 
+import subjectPronounsBe from './subject-pronouns-be.js';
+import articles from './articles.js';
+import singularPluralNouns from './singular-plural-nouns.js';
 import presentSimple from './present-simple.js';
+import doDoesQuestions from './do-does-questions.js';
+import presentContinuous from './present-continuous.js';
+import possessives from './possessives.js';
+import countableUncountable from './countable-uncountable.js';
+import pastSimple from './past-simple.js';
+import prepositionsTimePlace from './prepositions-time-place.js';
+import thereIsAre from './there-is-are.js';
+import modals from './modals.js';
+import pastTenseReview from './past-tense-review.js';
 
 export const QUESTIONS_PER_ROUND = 4;
 export const ROUNDS_PER_SESSION = 3;
@@ -33,18 +45,6 @@ export const sections = [
 // Topics still to be written. They appear greyed out, in the right place in
 // the order, so the course shape is visible from the start.
 const placeholders = [
-  { id: 'subject-pronouns-be', section: 'grammar', order: 1, title: 'Subject Pronouns and Be', subtitle: 'I am, you are, he is' },
-  { id: 'articles', section: 'grammar', order: 2, title: 'Articles', subtitle: 'a, an and the' },
-  { id: 'singular-plural-nouns', section: 'grammar', order: 3, title: 'Singular and Plural Nouns', subtitle: 'One thing or more than one' },
-  { id: 'do-does-questions', section: 'grammar', order: 5, title: 'Do and Does Questions', subtitle: 'Asking about habits' },
-  { id: 'present-continuous', section: 'grammar', order: 6, title: 'Present Continuous', subtitle: 'What is happening now' },
-  { id: 'possessives', section: 'grammar', order: 7, title: 'Possessives', subtitle: 'my, your, and the apostrophe' },
-  { id: 'countable-uncountable', section: 'grammar', order: 8, title: 'Countable and Uncountable', subtitle: 'some, any, much, many' },
-  { id: 'past-simple', section: 'grammar', order: 9, title: 'Past Simple', subtitle: 'Talking about yesterday' },
-  { id: 'prepositions-time-place', section: 'grammar', order: 10, title: 'Prepositions of Time and Place', subtitle: 'in, on and at' },
-  { id: 'there-is-are', section: 'grammar', order: 11, title: 'There is and There are', subtitle: 'Saying what exists' },
-  { id: 'past-tense-review', section: 'grammar', order: 12, title: 'Past Tense Review', subtitle: 'Putting the past together' },
-
   { id: 'airport', section: 'travel', order: 1, title: 'At the Airport', subtitle: 'Check-in, security and boarding' },
   { id: 'hotel', section: 'travel', order: 2, title: 'At the Hotel', subtitle: 'Arriving and checking in' },
   { id: 'hotel-issues', section: 'travel', order: 3, title: 'Hotel Problems', subtitle: 'Asking for help with your room' },
@@ -57,7 +57,21 @@ const placeholders = [
   { id: 'experiences', section: 'travel', order: 10, title: 'Travel Experiences', subtitle: 'Talking about your trip' },
 ];
 
-const written = [presentSimple];
+const written = [
+  subjectPronounsBe,
+  articles,
+  singularPluralNouns,
+  presentSimple,
+  doDoesQuestions,
+  presentContinuous,
+  possessives,
+  countableUncountable,
+  pastSimple,
+  prepositionsTimePlace,
+  thereIsAre,
+  modals,
+  pastTenseReview,
+];
 
 export const topics = [...written, ...placeholders].sort((a, b) => {
   if (a.section !== b.section) {
