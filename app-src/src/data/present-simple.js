@@ -7,7 +7,7 @@ const mcq = [
   { id: 'ps-mc-03', sentence: 'I _____ eat meat.', options: ["doesn't", 'not', "don't"], answer: 2, clue: 'Which negative word goes with I?' },
   { id: 'ps-mc-04', sentence: '_____ he live near the office?', options: ['Does', 'Do', 'Is'], answer: 0, clue: 'Which question word goes with he?' },
   { id: 'ps-mc-05', sentence: 'The shop _____ at nine.', options: ['open', 'opens', 'opening'], answer: 1, clue: 'The shop is it.' },
-  { id: 'ps-mc-06', sentence: 'He _____ coffee. He drinks tea.', options: ["don't like", "doesn't likes", "doesn't like"], answer: 2, clue: 'What happens to the verb after doesn t?' },
+  { id: 'ps-mc-06', sentence: 'He _____ coffee. He drinks tea.', options: ["don't like", "doesn't likes", "doesn't like"], answer: 2, clue: "What happens to the verb after doesn't?" },
   { id: 'ps-mc-07', sentence: '_____ you take the train to work?', options: ['Does', 'Do', 'Are'], answer: 1, clue: 'Which question word goes with you?' },
   { id: 'ps-mc-08', sentence: 'My sister _____ at a hospital.', options: ['work', 'works', 'working'], answer: 1, clue: 'My sister is she.' },
   { id: 'ps-mc-09', sentence: 'We _____ football on Sundays.', options: ['plays', 'play', 'playing'], answer: 1, clue: 'We is more than one person.' },
@@ -38,12 +38,12 @@ const wordorder = [
   { id: 'ps-wo-04', context: 'Say when you start work', answer: 'i start work at nine', alternatives: [], clue: 'The time goes at the end.' },
   { id: 'ps-wo-05', context: 'Ask about the weekend', answer: 'do you work on saturdays', alternatives: [], clue: 'Which question word goes with you?' },
   { id: 'ps-wo-06', context: 'Say what your brother does', answer: 'my brother drives a taxi', alternatives: [], clue: 'Start with the person.' },
-  { id: 'ps-wo-07', context: 'Say what someone does not have', answer: "she doesn't have a car", alternatives: [], clue: 'After doesn t the verb does not change.' },
+  { id: 'ps-wo-07', context: 'Say what someone does not have', answer: "she doesn't have a car", alternatives: [], clue: "After doesn't the verb does not change." },
   { id: 'ps-wo-08', context: 'Say how often you do something', answer: 'we go to the gym on mondays', alternatives: [], clue: 'The day goes at the end.' },
   { id: 'ps-wo-09', context: 'Ask where someone lives', answer: 'where does she live', alternatives: [], clue: 'The question word comes first.' },
   { id: 'ps-wo-10', context: 'Say what time something opens', answer: 'the shop opens at ten', alternatives: [], clue: 'The shop is it.' },
   { id: 'ps-wo-11', context: 'Say what you do every day', answer: 'i read the news every morning', alternatives: [], clue: 'How often goes at the end.' },
-  { id: 'ps-wo-12', context: 'Say what someone does not eat', answer: "they don't eat meat", alternatives: [], clue: 'They takes don t.' },
+  { id: 'ps-wo-12', context: 'Say what someone does not eat', answer: "they don't eat meat", alternatives: [], clue: "They takes don't." },
 ];
 
 const wordbank = [
