@@ -1,5 +1,5 @@
-// Topic picker: every level that has topics, then one expandable menu per
-// section, in course order. Each topic card is drawn in its level's colours.
+// Topic picker for one level: one expandable menu per section, in course
+// order. The whole screen is drawn in the level's colours.
 
 import { el } from '../lib/dom.js';
 import { go } from '../lib/router.js';
@@ -8,27 +8,21 @@ import { activitiesIn, progressBar } from '../ui/progress.js';
 import { allProgress, completedInTopic } from '../lib/storage.js';
 import { levels, sectionsIn, topicsIn, isWritten } from '../data/topics.js';
 
-export function topicsScreen() {
-  const progress = allProgress();
-  const shown = levels.filter((level) => sectionsIn(level.id).length > 0);
-  let first = true;
+export function topicsScreen({ level: levelId }) {
+  const level = levels.find((l) => l.id === levelId);
+  const sections = level ? sectionsIn(level.id) : [];
+  if (!sections.length) return go('/topics', { replace: true });
 
-  const body = shown.map((level) =>
-    el('section', { class: 'level-group', dataset: { level: level.id } }, [
-      shown.length > 1 ? el('h2', { class: 'level-heading', text: level.title }) : null,
-      el('div', { class: 'stack' }, sectionsIn(level.id).map((section) => {
-        const menu = sectionMenu(section, progress, first);
-        first = false;
-        return menu;
-      })),
-    ])
-  );
+  const progress = allProgress();
 
   renderScreen({
     title: 'Choose a topic',
-    subtitle: 'In the same order as the website',
-    backTo: '/',
-    body,
+    subtitle: level.title,
+    backTo: '/topics',
+    level: level.id,
+    body: el('div', { class: 'stack' },
+      sections.map((section, i) => sectionMenu(section, progress, i === 0))
+    ),
   });
 }
 

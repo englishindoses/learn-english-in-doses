@@ -7,6 +7,7 @@ import { initInstall } from './lib/install.js';
 import { restore, needsSignIn } from './lib/account.js';
 import { mountShell, focusScreen } from './ui/shell.js';
 import { homeScreen } from './screens/home.js';
+import { levelsScreen } from './screens/levels.js';
 import { topicsScreen } from './screens/topics.js';
 import { activitiesScreen } from './screens/activities.js';
 import { sessionScreen } from './screens/session.js';
@@ -34,7 +35,8 @@ const screen = (render) => (params) => {
 };
 
 route('/', screen(homeScreen));
-route('/topics', screen(topicsScreen));
+route('/topics', screen(levelsScreen));
+route('/topics/:level', screen(topicsScreen));
 route('/topic/:id', screen(activitiesScreen));
 route('/practice/:id/:type', screen((p) => sessionScreen({ ...p, mode: 'new' })));
 route('/practice/:id/:type/replay', screen((p) => sessionScreen({ ...p, mode: 'replay' })));

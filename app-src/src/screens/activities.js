@@ -18,7 +18,7 @@ export function activitiesScreen({ id }) {
   renderScreen({
     title: topic.title,
     subtitle: 'Choose an activity',
-    backTo: '/topics',
+    backTo: `/topics/${levelOf(topic)}`,
     level: levelOf(topic),
     body: [
       el('div', { class: 'stack' }, cards),

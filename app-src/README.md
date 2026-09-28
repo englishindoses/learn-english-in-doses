@@ -33,8 +33,9 @@ npm run build   # before committing
 ## Levels and colours
 
 Every section in `src/data/topics.js` belongs to a level, and a topic takes
-its level from its section. Screens for one topic (its activities, a practice
-session, the results) are drawn in that level's colours. Every other screen
+its level from its section. Start practising opens a level picker, then that
+level's topic list. The topic list and the screens for one topic (its
+activities, a practice session, the results) are drawn in that level's colours. Every other screen
 uses the website's default blue. The top bar is navy everywhere, with a stripe
 in the level's colour along its bottom edge on a topic's screens.
 

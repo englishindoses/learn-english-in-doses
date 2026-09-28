@@ -68,7 +68,7 @@ export function reviewScreen() {
           onClick: () => go(`/practice/${topic.id}/${type}/replay`),
         }),
         el('button', { type: 'button', class: 'btn', text: 'Another activity', onClick: () => go(`/topic/${topic.id}`) }),
-        el('button', { type: 'button', class: 'btn btn-quiet', text: 'Choose a topic', onClick: () => go('/topics') }),
+        el('button', { type: 'button', class: 'btn btn-quiet', text: 'Choose a topic', onClick: () => go(`/topics/${levelOf(topic)}`) }),
       ]),
     ],
   });
