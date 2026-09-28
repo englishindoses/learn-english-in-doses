@@ -72,5 +72,6 @@ Roughly in the order I'd tackle them.
 - [x] Bring over BizEng's progress counting (activities completed, answers correct, days practised this week) and its Google sign-in. Done 26 Sep 2026.
 - [x] **Switch on sign-in.** Firebase project `english-in-doses` set up 27 Sep 2026, with Google and username and password. Connected to the app.
 - [ ] Test Google and username sign-in on a phone, and check the Your students page.
-- [ ] Add login to the website's top navigation bar, saving website progress to the same account. Progress on the website is saved only for signed-in students.
+- [x] Add Log in to the website's top bar, beside the theme toggle. Done 27 Sep 2026: `js/account.js` and `css/account.css`, loaded by `core.js`. Same accounts as the app.
+- [ ] Save website progress to the student's account. Progress on the website is saved only for signed-in students.
 - [ ] Decide how students reset a forgotten password. At the moment they need a new account.
