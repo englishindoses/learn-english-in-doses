@@ -6,7 +6,7 @@ import { go } from '../lib/router.js';
 import { renderScreen } from '../ui/shell.js';
 import { timesCompleted } from '../ui/progress.js';
 import { engineFor } from '../engines/index.js';
-import { topicById, availableActivities, levelOf, QUESTIONS_PER_SESSION, ROUNDS_PER_SESSION } from '../data/topics.js';
+import { topicById, availableActivities, levelOf, QUESTIONS_PER_SESSION } from '../data/topics.js';
 import { bankProgress, attemptAnswered } from '../lib/storage.js';
 
 export function activitiesScreen({ id }) {
@@ -17,7 +17,7 @@ export function activitiesScreen({ id }) {
 
   renderScreen({
     title: topic.title,
-    subtitle: `Choose an activity - ${QUESTIONS_PER_SESSION} questions in ${ROUNDS_PER_SESSION} rounds`,
+    subtitle: 'Choose an activity',
     backTo: '/topics',
     level: levelOf(topic),
     body: [
