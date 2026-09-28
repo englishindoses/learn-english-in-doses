@@ -93,6 +93,21 @@ export async function signIn(stay) {
   return true;
 }
 
+// Logs in, or with `create` makes a new account first. Resolves true once
+// they are signed in; throws with a Firebase error code otherwise.
+export async function signInWithUsername(username, password, stay, { create = false } = {}) {
+  const c = await loadCloud();
+  const student = await c.signInWithUsername(username, password, stay, { create });
+  await enterStudent(student, stay, { fresh: true });
+  return true;
+}
+
+// The line under a student's name: their email, or their username.
+export function accountLine(student) {
+  if (!student) return '';
+  return student.email || (student.username ? `Username: ${student.username}` : '');
+}
+
 export function continueAsGuest(stay) {
   enterGuest(stay);
 }

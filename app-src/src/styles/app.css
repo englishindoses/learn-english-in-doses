@@ -1749,6 +1749,60 @@ a {
   color: var(--text);
 }
 
+.signin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.field-label {
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+.field-input {
+  width: 100%;
+  min-height: var(--tap);
+  padding: 0.5rem 0.75rem;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  font-size: 1rem;
+}
+
+.field-input:focus {
+  outline: none;
+  border-color: var(--level);
+  box-shadow: 0 0 0 3px var(--level-shadow);
+}
+
+.field-hint {
+  font-size: 0.76rem;
+  color: var(--text-light);
+  line-height: 1.4;
+}
+
+.signin-switch {
+  font-size: 0.86rem;
+  color: var(--text-light);
+  text-align: center;
+}
+
+.link-btn {
+  border: none;
+  background: none;
+  padding: 0;
+  color: var(--level-ink);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
 .btn-google-mark {
   display: inline-flex;
 }

@@ -84,15 +84,19 @@ shape the first time the app opens.
 
 ## Sign-in
 
-Students choose Google sign-in or guest on the first screen. Guests keep their
-practice on the device. A signed-in student's practice is copied to Firebase
-and follows them to any device, and the teacher's Google account
-(`TEACHERS` in `src/lib/account.js`) sees a Your students page.
+Students choose on the first screen: Google, a username and password, or
+guest. Guests keep their practice on the device. A signed-in student's
+practice is copied to Firebase (project `english-in-doses`) and follows them
+to any device, and the teacher's Google account (`TEACHERS` in
+`src/lib/account.js`) sees a Your students page.
 
-The Firebase settings go in `firebaseConfig` at the top of `src/lib/cloud.js`.
-While they are blank, the Google button says sign-in is not switched on yet,
-and guests are unaffected. Students are stored in the `practiceUsers`
-collection.
+Firebase only signs people in with an email address, so a username is stored
+as a made-up one, `maria@users.englishindoses.com`, which students never see.
+Firebase keeps usernames unique. There is no password reset yet: a student
+who forgets theirs needs a new account.
+
+The Firebase settings are `firebaseConfig` at the top of `src/lib/cloud.js`.
+Students are stored in the `practiceUsers` collection.
 
 ## Checking the content
 

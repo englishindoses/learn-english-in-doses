@@ -57,7 +57,7 @@ const SECTIONS = [
     icon: '\u{1F464}',
     title: 'Signing in',
     text: [
-      'Sign in with Google to keep your progress on any phone or computer. Your teacher can see your progress and saved questions.',
+      'Sign in with Google, or create an account with a username and password, to keep your progress on any phone or computer. Your teacher can see your progress and saved questions.',
       'As a guest, your practice stays on this device only.',
     ],
   },

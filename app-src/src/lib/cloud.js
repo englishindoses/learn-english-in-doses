@@ -1,10 +1,11 @@
-// Google sign-in and the online copy of each student's practice.
+// Google and username sign-in, and the online copy of each student's practice.
 //
 // This file is loaded only when someone signs in or is already signed in, so
 // guests never download Firebase.
 //
 // practiceUsers/{uid}:
 //   name, photo, email          from their Google account
+//   username                    for a username account, instead of an email
 //   answered, sessions,
 //   questionCount, lastActive   small totals, so the teacher's list loads quickly
 //   progress, questions,
@@ -23,6 +24,9 @@ import {
   getRedirectResult,
   signOut as firebaseSignOut,
   onAuthStateChanged,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
 } from 'firebase/auth';
 import {
   getFirestore,
@@ -40,13 +44,18 @@ import { summarise } from './storage.js';
 // Copied from the Firebase console: Project settings, Your apps, Web app.
 // These values are safe to publish; the database rules are what protect the data.
 const firebaseConfig = {
-  apiKey: '',
-  authDomain: '',
-  projectId: '',
-  storageBucket: '',
-  messagingSenderId: '',
-  appId: '',
+  apiKey: 'AIzaSyD44OgfZB4k63OD6pWJr6lxkvQA1O2snQA',
+  authDomain: 'english-in-doses.firebaseapp.com',
+  projectId: 'english-in-doses',
+  storageBucket: 'english-in-doses.firebasestorage.app',
+  messagingSenderId: '671131712565',
+  appId: '1:671131712565:web:729170731e3a1dc8c7457c',
 };
+
+// Firebase signs people in with an email address, so a username is stored
+// as a made-up one: "maria" becomes "maria@users.englishindoses.com". The
+// address is never shown to students and never receives mail.
+const USERNAME_DOMAIN = 'users.englishindoses.com';
 
 const COLLECTION = 'practiceUsers';
 
@@ -64,14 +73,45 @@ function notConfigured() {
   return error;
 }
 
-function toStudent(user) {
+// A username account has no real email, so it carries `username` instead
+// and an empty `email`.
+function toStudent(user, knownUsername = '') {
   if (!user) return null;
+  const email = user.email || '';
+  const username = email.endsWith(`@${USERNAME_DOMAIN}`) ? email.split('@')[0] : '';
   return {
     uid: user.uid,
-    name: user.displayName || '',
-    email: user.email || '',
+    name: user.displayName || knownUsername || username,
+    email: username ? '' : email,
+    username,
     photo: user.photoURL || '',
   };
+}
+
+// Capitals are ignored, so Maria and maria are the same person. The sign-in
+// screen checks the other username rules before anything is sent.
+export function cleanUsername(raw) {
+  return String(raw || '').trim().toLowerCase();
+}
+
+// Resolves with the student. Throws with a Firebase error code when the
+// username is taken, the password is wrong, and so on.
+export async function signInWithUsername(rawUsername, password, stay, { create = false } = {}) {
+  if (!configured) throw notConfigured();
+
+  const username = cleanUsername(rawUsername);
+  const email = `${username}@${USERNAME_DOMAIN}`;
+
+  await setPersistence(auth, stay ? browserLocalPersistence : browserSessionPersistence);
+
+  if (create) {
+    const result = await createUserWithEmailAndPassword(auth, email, password);
+    await updateProfile(result.user, { displayName: username });
+    return toStudent(result.user, username);
+  }
+
+  const result = await signInWithEmailAndPassword(auth, email, password);
+  return toStudent(result.user);
 }
 
 // Resolves once Firebase knows whether someone is signed in.
@@ -151,6 +191,7 @@ export async function savePractice(student, practice) {
     {
       name: student.name,
       email: student.email,
+      username: student.username || '',
       photo: student.photo,
       answered: totals.answered,
       sessions: totals.sessions,
@@ -178,6 +219,7 @@ export async function listStudents() {
       uid: d.id,
       name: data.name || '',
       email: data.email || '',
+      username: data.username || '',
       photo: data.photo || '',
       answered: data.answered || 0,
       sessions: data.sessions || 0,
@@ -196,6 +238,7 @@ export async function getStudent(uid) {
     uid,
     name: data.name || '',
     email: data.email || '',
+    username: data.username || '',
     photo: data.photo || '',
     lastActive: data.lastActive?.toDate?.() || null,
     progress: parse(data.progress) || {},

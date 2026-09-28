@@ -4,7 +4,7 @@ import { el } from '../lib/dom.js';
 import { go } from '../lib/router.js';
 import { renderScreen } from '../ui/shell.js';
 import { avatar } from '../ui/avatar.js';
-import { getAccount, logOut } from '../lib/account.js';
+import { getAccount, logOut, accountLine } from '../lib/account.js';
 import { savedQuestions } from '../lib/storage.js';
 
 export function profileScreen() {
@@ -33,7 +33,7 @@ export function profileScreen() {
         el('p', { class: 'profile-hero-name', text: student ? student.name || 'Signed in' : 'Guest' }),
         el('p', {
           class: 'profile-hero-sub',
-          text: student ? student.email : 'Your practice is saved on this device only',
+          text: student ? accountLine(student) : 'Your practice is saved on this device only',
         }),
       ]),
       el('div', { class: 'settings-card' }, [

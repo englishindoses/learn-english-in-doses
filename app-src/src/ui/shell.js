@@ -8,7 +8,7 @@
 import { el, clear } from '../lib/dom.js';
 import { go, back } from '../lib/router.js';
 import { savedQuestions, settings } from '../lib/storage.js';
-import { getAccount, logOut } from '../lib/account.js';
+import { getAccount, logOut, accountLine } from '../lib/account.js';
 import { avatar } from './avatar.js';
 
 let bar = null;
@@ -174,7 +174,7 @@ function toggleMenu(button) {
         el('p', { class: 'profile-name', text: student ? student.name || 'Signed in' : 'Guest' }),
         el('p', {
           class: 'profile-email',
-          text: student ? student.email : 'Practice saved on this device only',
+          text: student ? accountLine(student) : 'Practice saved on this device only',
         }),
       ]),
     ]),

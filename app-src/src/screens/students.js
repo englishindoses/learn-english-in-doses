@@ -7,7 +7,7 @@ import { go, currentPath } from '../lib/router.js';
 import { renderScreen } from '../ui/shell.js';
 import { avatar } from '../ui/avatar.js';
 import { statRow, topicProgressList } from '../ui/progress.js';
-import { getAccount, loadCloud } from '../lib/account.js';
+import { getAccount, loadCloud, accountLine } from '../lib/account.js';
 import { engineFor } from '../engines/index.js';
 import { topicById } from '../data/topics.js';
 
@@ -44,7 +44,7 @@ export async function studentsScreen() {
     el('button', { type: 'button', class: 'card student-card', onClick: () => go(`/student/${s.uid}`) }, [
       avatar(s, 'md'),
       el('span', { class: 'topic-text' }, [
-        el('span', { class: 'card-title', text: s.name || s.email }),
+        el('span', { class: 'card-title', text: s.name || s.username || s.email }),
         el('span', { class: 'card-meta', text: `${s.answered} answered · last active ${when(s.lastActive)}` }),
       ]),
       s.questionCount ? el('span', { class: 'pill', title: 'Saved questions', text: `★ ${s.questionCount}` }) : null,
@@ -92,13 +92,13 @@ export async function studentScreen({ uid }) {
 
   renderScreen({
     title: s.name || 'Student',
-    subtitle: s.email,
+    subtitle: accountLine(s),
     backTo: '/students',
     body: [
       el('div', { class: 'greeting' }, [
         avatar(s, 'lg'),
         el('div', {}, [
-          el('p', { class: 'greeting-hello', text: s.name || s.email }),
+          el('p', { class: 'greeting-hello', text: s.name || s.username || s.email }),
           el('p', { class: 'greeting-line', text: `Last active ${when(s.lastActive)}` }),
         ]),
       ]),
