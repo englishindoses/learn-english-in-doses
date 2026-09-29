@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="../../css/base.css">
   <link rel="stylesheet" href="../../css/levels.css">
   <link rel="stylesheet" href="../../css/activities.css">
+  <link rel="stylesheet" href="../../css/progress-tracking-styles.css">
 
   <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="../../images/apple-touch-icon.png">
@@ -22,11 +23,6 @@
   <link rel="icon" type="image/png" sizes="16x16" href="../../images/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
 
-  <!-- Conditional polyfills -->
-  <!--[if IE]>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" defer></script>
-  <![endif]-->
-  
 </head>
 <body class="beginner-section">
   <!-- Skip link for accessibility -->
@@ -102,7 +98,7 @@
     <div class="breadcrumbs" aria-label="breadcrumb">
       <span class="breadcrumb-item"><a href="../../home.html">Home</a></span>
       <span class="breadcrumb-separator">›</span>
-      <span class="breadcrumb-item"><a href="../../home.html#where-to-start">Grammar Levels</a></span>
+      <span class="breadcrumb-item"><a href="../../beginner-landing.html">Beginner English</a></span>
       <span class="breadcrumb-separator">›</span>
       <span class="breadcrumb-item"><a href="beginner-grammar.html">Beginner Grammar</a></span>
       <span class="breadcrumb-separator">›</span>
@@ -196,7 +192,7 @@
       </section>
 
       <!-- 3. SUMMARY TABLE -->
-      <h2>Summary of the Be Verb</h2>
+      <h2 id="summary">Summary of the Be Verb</h2>
       <table>
         <thead>
           <tr>
@@ -229,28 +225,33 @@
       </table>
 
       <!-- 4. ACTIVITY 1 - IN THE MIDDLE (Gap Fill) -->
-      <section id="gap-fill" class="activity-container">
+      <section id="gap-fill" class="activity-container active">
         <h2>Gap Fill Exercise</h2>
         <p>Complete the sentences with am, is, or are.</p>
         
         <div class="question" id="gap-q1">
-          <p class="gap-fill-sentence">1. I <input type="text" class="gap-input" id="gap-1" data-correct="am"> a student.</p>
+          <p class="gap-fill-sentence">1. I <input type="text" class="gap-input" data-answer="am" placeholder="..."> a student.</p>
+          <div class="feedback"></div>
         </div>
         
         <div class="question" id="gap-q2">
-          <p class="gap-fill-sentence">2. They <input type="text" class="gap-input" id="gap-2" data-correct="are"> teachers.</p>
+          <p class="gap-fill-sentence">2. They <input type="text" class="gap-input" data-answer="are" placeholder="..."> teachers.</p>
+          <div class="feedback"></div>
         </div>
         
         <div class="question" id="gap-q3">
-          <p class="gap-fill-sentence">3. She <input type="text" class="gap-input" id="gap-3" data-correct="is"> happy today.</p>
+          <p class="gap-fill-sentence">3. She <input type="text" class="gap-input" data-answer="is" placeholder="..."> happy today.</p>
+          <div class="feedback"></div>
         </div>
         
         <div class="question" id="gap-q4">
-          <p class="gap-fill-sentence">4. We <input type="text" class="gap-input" id="gap-4" data-correct="are"> from Brazil.</p>
+          <p class="gap-fill-sentence">4. We <input type="text" class="gap-input" data-answer="are" placeholder="..."> from Brazil.</p>
+          <div class="feedback"></div>
         </div>
         
         <div class="question" id="gap-q5">
-          <p class="gap-fill-sentence">5. He <input type="text" class="gap-input" id="gap-5" data-correct="is"> my brother.</p>
+          <p class="gap-fill-sentence">5. He <input type="text" class="gap-input" data-answer="is" placeholder="..."> my brother.</p>
+          <div class="feedback"></div>
         </div>
         
         <div class="control-buttons">
@@ -263,128 +264,91 @@
         </div>
       </section>
 
-      <!-- 5. COMMON ERRORS (3 errors) -->
-      <section class="content-section">
-        <h2>Common Errors</h2>
-        <p>Watch out for these mistakes!</p>
-        
-        <div class="error-example">
-          <p class="error-text"><strong>Error 1:</strong> ❌ I is a teacher.</p>
-          <p class="correction-text"><strong>Correct:</strong> ✓ I <strong>am</strong> a teacher.</p>
-          <p class="error-explanation">Use "am" with "I", not "is".</p>
+      <!-- 5. COMMON ERRORS -->
+      <section class="common-errors">
+        <h2 class="common-errors-heading">Common Errors</h2>
+
+        <div class="error-pattern">
+          <p class="error-title"><strong>Using "is" with "I"</strong></p>
+          <p class="incorrect">I is a teacher.</p>
+          <p class="correct">I <strong>am</strong> a teacher.</p>
+          <p class="explanation">Use "am" with "I", not "is".</p>
         </div>
-        
-        <div class="error-example">
-          <p class="error-text"><strong>Error 2:</strong> ❌ They is from China.</p>
-          <p class="correction-text"><strong>Correct:</strong> ✓ They <strong>are</strong> from China.</p>
-          <p class="error-explanation">Use "are" with "they", not "is".</p>
+
+        <div class="error-pattern">
+          <p class="error-title"><strong>Using "is" with "they"</strong></p>
+          <p class="incorrect">They is from China.</p>
+          <p class="correct">They <strong>are</strong> from China.</p>
+          <p class="explanation">Use "are" with "they", not "is".</p>
         </div>
-        
-        <div class="error-example">
-          <p class="error-text"><strong>Error 3:</strong> ❌ She not is happy.</p>
-          <p class="correction-text"><strong>Correct:</strong> ✓ She <strong>is not</strong> happy.</p>
-          <p class="error-explanation">Put "not" after the be verb, not before.</p>
+
+        <div class="error-pattern">
+          <p class="error-title"><strong>Putting "not" before the verb</strong></p>
+          <p class="incorrect">She not is happy.</p>
+          <p class="correct">She <strong>is not</strong> happy.</p>
+          <p class="explanation">Put "not" after the be verb, not before.</p>
         </div>
       </section>
 
       <!-- 6. ACTIVITY 2 - AT THE END (Multiple Choice - Different Type) -->
-      <section id="mcq" class="activity-container">
+      <section id="mcq" class="activity-container active">
         <h2>Multiple Choice Questions</h2>
         <p>Choose the correct sentence.</p>
         
-        <div class="question" id="mcq-q1">
-          <p class="mcq-question">1. Which sentence is correct?</p>
+        <div class="question" id="q1">
+          <p class="question-text">1. Which sentence is correct?</p>
           <div class="options">
-            <div class="option" data-index="0" onclick="MCQModule.selectOption('mcq-q1', 0)">
-              <span>A. I are a doctor.</span>
-            </div>
-            <div class="option" data-index="1" onclick="MCQModule.selectOption('mcq-q1', 1)">
-              <span>B. I am a doctor.</span>
-            </div>
-            <div class="option" data-index="2" onclick="MCQModule.selectOption('mcq-q1', 2)">
-              <span>C. I is a doctor.</span>
-            </div>
+            <div class="option" data-index="0"><span>A. I are a doctor.</span></div>
+            <div class="option" data-index="1"><span>B. I am a doctor.</span></div>
+            <div class="option" data-index="2"><span>C. I is a doctor.</span></div>
           </div>
-          <div class="feedback" id="feedback-mcq-q1-0">Incorrect. We use "am" with "I", not "are".</div>
-          <div class="feedback correct" id="feedback-mcq-q1-1">Correct! We use "am" with "I".</div>
-          <div class="feedback" id="feedback-mcq-q1-2">Incorrect. We use "am" with "I", not "is".</div>
+          <div class="feedback"></div>
         </div>
         
-        <div class="question" id="mcq-q2">
-          <p class="mcq-question">2. Which sentence is correct?</p>
+        <div class="question" id="q2">
+          <p class="question-text">2. Which sentence is correct?</p>
           <div class="options">
-            <div class="option" data-index="0" onclick="MCQModule.selectOption('mcq-q2', 0)">
-              <span>A. Are she from Japan?</span>
-            </div>
-            <div class="option" data-index="1" onclick="MCQModule.selectOption('mcq-q2', 1)">
-              <span>B. Is she from Japan?</span>
-            </div>
-            <div class="option" data-index="2" onclick="MCQModule.selectOption('mcq-q2', 2)">
-              <span>C. Am she from Japan?</span>
-            </div>
+            <div class="option" data-index="0"><span>A. Are she from Japan?</span></div>
+            <div class="option" data-index="1"><span>B. Is she from Japan?</span></div>
+            <div class="option" data-index="2"><span>C. Am she from Japan?</span></div>
           </div>
-          <div class="feedback" id="feedback-mcq-q2-0">Incorrect. We use "is" with "she", not "are".</div>
-          <div class="feedback correct" id="feedback-mcq-q2-1">Correct! We use "is" with "she".</div>
-          <div class="feedback" id="feedback-mcq-q2-2">Incorrect. We use "is" with "she", not "am".</div>
+          <div class="feedback"></div>
         </div>
         
-        <div class="question" id="mcq-q3">
-          <p class="mcq-question">3. Which sentence is correct?</p>
+        <div class="question" id="q3">
+          <p class="question-text">3. Which sentence is correct?</p>
           <div class="options">
-            <div class="option" data-index="0" onclick="MCQModule.selectOption('mcq-q3', 0)">
-              <span>A. We aren't late.</span>
-            </div>
-            <div class="option" data-index="1" onclick="MCQModule.selectOption('mcq-q3', 1)">
-              <span>B. We isn't late.</span>
-            </div>
-            <div class="option" data-index="2" onclick="MCQModule.selectOption('mcq-q3', 2)">
-              <span>C. We amn't late.</span>
-            </div>
+            <div class="option" data-index="0"><span>A. We aren't late.</span></div>
+            <div class="option" data-index="1"><span>B. We isn't late.</span></div>
+            <div class="option" data-index="2"><span>C. We amn't late.</span></div>
           </div>
-          <div class="feedback correct" id="feedback-mcq-q3-0">Correct! We use "aren't" (are not) with "we".</div>
-          <div class="feedback" id="feedback-mcq-q3-1">Incorrect. We use "aren't" with "we", not "isn't".</div>
-          <div class="feedback" id="feedback-mcq-q3-2">Incorrect. "Amn't" is not a real word.</div>
+          <div class="feedback"></div>
         </div>
         
-        <div class="question" id="mcq-q4">
-          <p class="mcq-question">4. Which sentence is correct?</p>
+        <div class="question" id="q4">
+          <p class="question-text">4. Which sentence is correct?</p>
           <div class="options">
-            <div class="option" data-index="0" onclick="MCQModule.selectOption('mcq-q4', 0)">
-              <span>A. He are my friend.</span>
-            </div>
-            <div class="option" data-index="1" onclick="MCQModule.selectOption('mcq-q4', 1)">
-              <span>B. He am my friend.</span>
-            </div>
-            <div class="option" data-index="2" onclick="MCQModule.selectOption('mcq-q4', 2)">
-              <span>C. He is my friend.</span>
-            </div>
+            <div class="option" data-index="0"><span>A. He are my friend.</span></div>
+            <div class="option" data-index="1"><span>B. He am my friend.</span></div>
+            <div class="option" data-index="2"><span>C. He is my friend.</span></div>
           </div>
-          <div class="feedback" id="feedback-mcq-q4-0">Incorrect. We use "is" with "he", not "are".</div>
-          <div class="feedback" id="feedback-mcq-q4-1">Incorrect. We use "is" with "he", not "am".</div>
-          <div class="feedback correct" id="feedback-mcq-q4-2">Correct! We use "is" with "he".</div>
+          <div class="feedback"></div>
         </div>
         
-        <div class="question" id="mcq-q5">
-          <p class="mcq-question">5. Which sentence is correct?</p>
+        <div class="question" id="q5">
+          <p class="question-text">5. Which sentence is correct?</p>
           <div class="options">
-            <div class="option" data-index="0" onclick="MCQModule.selectOption('mcq-q5', 0)">
-              <span>A. You is hungry?</span>
-            </div>
-            <div class="option" data-index="1" onclick="MCQModule.selectOption('mcq-q5', 1)">
-              <span>B. Are you hungry?</span>
-            </div>
-            <div class="option" data-index="2" onclick="MCQModule.selectOption('mcq-q5', 2)">
-              <span>C. Is you hungry?</span>
-            </div>
+            <div class="option" data-index="0"><span>A. You is hungry?</span></div>
+            <div class="option" data-index="1"><span>B. Are you hungry?</span></div>
+            <div class="option" data-index="2"><span>C. Is you hungry?</span></div>
           </div>
-          <div class="feedback" id="feedback-mcq-q5-0">Incorrect. We use "are" with "you". Also, in questions the be verb comes first.</div>
-          <div class="feedback correct" id="feedback-mcq-q5-1">Correct! In questions, we put "are" before "you".</div>
-          <div class="feedback" id="feedback-mcq-q5-2">Incorrect. We use "are" with "you", not "is".</div>
+          <div class="feedback"></div>
         </div>
         
         <div class="control-buttons">
           <button id="mcq-submit" class="submit-btn">Check Answers</button>
           <button id="mcq-restart" class="restart-btn">Try Again</button>
+          <a href="#summary" class="nav-button">Review Grammar</a>
         </div>
         
         <div class="score-display" id="mcq-score">
@@ -392,16 +356,18 @@
         </div>
       </section>
 
-      <!-- Navigation -->
-      <section class="lesson-navigation">
-        <div class="nav-buttons">
-          <a href="beginner-grammar.html" class="nav-btn prev-btn">← Back to Course Index</a>
-          <a href="#next-lesson" class="nav-btn next-btn">Next Lesson →</a>
-        </div>
-      </section>
     </main>
   </div>
-  
+
+  <!-- BOTTOM NAVIGATION -->
+  <nav class="bottom-navigation">
+    <a href="beginner-grammar.html" class="nav-button previous">← Back to Course Index</a>
+    <div class="center-buttons">
+      <button class="nav-button print-button" onclick="window.print()">Print This Page</button>
+    </div>
+    <a href="present-simple.html" class="nav-button next">Next: Present Simple →</a>
+  </nav>
+
   <!-- Footer -->
 <footer>
     <div class="footer-content">
@@ -440,32 +406,58 @@
     </div>
   </footer>
 
-  <!-- Core JavaScript -->
+  <!-- JavaScript -->
   <script src="../../js/core.js" defer></script>
   <script src="../../js/mcq.js" defer></script>
   <script src="../../js/gap-fill.js" defer></script>
-  
-  <!-- Page-specific JavaScript -->
-  <script>
-    // Initialize Gap Fill Activity
-    GapFillModule.init('gap-fill', {
-      onComplete: function() {
-        console.log('Gap fill activity completed!');
-      }
-    });
+  <script src="../../js/progress-tracking-module.js" defer></script>
 
-    // Initialize MCQ Activity
-    MCQModule.init('mcq', {
-      questions: {
-        'mcq-q1': 1, // correct answer is index 1 (B)
-        'mcq-q2': 1, // correct answer is index 1 (B)
-        'mcq-q3': 0, // correct answer is index 0 (A)
-        'mcq-q4': 2, // correct answer is index 2 (C)
-        'mcq-q5': 1  // correct answer is index 1 (B)
-      },
-      onComplete: function() {
-        console.log('MCQ activity completed!');
-      }
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      GapFillModule.init({
+        containerId: 'gap-fill',
+        onComplete: function(score, total) {
+          if (typeof ProgressTracker !== 'undefined') {
+            ProgressTracker.markItemCompleted('activities', 'gap-fill-be-verb', {
+              score: score,
+              maxScore: total
+            });
+          }
+        }
+      });
+
+      MCQModule.init({
+        containerId: 'mcq',
+        answers: {
+          "q1": 1,
+          "q2": 1,
+          "q3": 0,
+          "q4": 2,
+          "q5": 1
+        },
+        correctExplanations: {
+          "q1": "Correct! We use \"am\" with \"I\".",
+          "q2": "Correct! We use \"is\" with \"she\".",
+          "q3": "Correct! We use \"aren't\" (are not) with \"we\".",
+          "q4": "Correct! We use \"is\" with \"he\".",
+          "q5": "Correct! In questions, we put \"are\" before \"you\"."
+        },
+        incorrectExplanations: {
+          "q1": "Not quite. We use \"am\" with \"I\": I am a doctor.",
+          "q2": "Not quite. We use \"is\" with \"she\", and it comes first in questions: Is she from Japan?",
+          "q3": "Not quite. We use \"aren't\" (are not) with \"we\": We aren't late.",
+          "q4": "Not quite. We use \"is\" with \"he\": He is my friend.",
+          "q5": "Not quite. We use \"are\" with \"you\", and it comes first in questions: Are you hungry?"
+        },
+        onComplete: function(score, total) {
+          if (typeof ProgressTracker !== 'undefined') {
+            ProgressTracker.markItemCompleted('activities', 'mcq-be-verb', {
+              score: score,
+              maxScore: total
+            });
+          }
+        }
+      });
     });
   </script>
 </body>
