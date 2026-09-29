@@ -36,7 +36,7 @@ Read both documents in `docs/` first. They were audited against the live pages o
 
 Do not restate their rules here or anywhere else; a second copy is a copy that goes stale. Link to them instead.
 
-These cover **advanced** pages. There is no written standard for beginner or intermediate pages yet — **ask before building one** rather than inferring rules from an existing page.
+These cover **advanced** pages. For **beginner** pages, follow **`docs/beginner-grammar-content-guidelines.md`**. There is no written standard for intermediate pages yet — **ask before building one** rather than inferring rules from an existing page.
 
 ---
 
