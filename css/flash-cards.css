@@ -352,7 +352,31 @@
 }
 
 /* ----------------------------------------
-   15. Print Styles
+   15. Cards with a Picture Above the Phrase
+   Taller, so the picture, the phrase and the
+   hint all fit. Screen only: print keeps
+   height: auto from the print styles below.
+   ---------------------------------------- */
+@media screen {
+  .flashcard-wrapper:has(.vocab-image-wrapper + .flashcard-phrase) {
+    height: 270px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .flashcard-wrapper:has(.vocab-image-wrapper + .flashcard-phrase) {
+    height: 240px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .flashcard-wrapper:has(.vocab-image-wrapper + .flashcard-phrase) {
+    height: 225px;
+  }
+}
+
+/* ----------------------------------------
+   16. Print Styles
    ---------------------------------------- */
 @media print {
   .flashcard-wrapper {
