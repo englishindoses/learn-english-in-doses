@@ -5,8 +5,9 @@
  * and Portuguese. Every element in that section with a data-pt attribute has
  * its content swapped for the Portuguese written in data-pt, and back again.
  *
- * Markup:
- *   <button class="check-btn" data-translate-toggle aria-pressed="false">Ver em português</button>
+ * Markup (the button sits inside the section title; styles in css/levels.css):
+ *   <h2>📖 Meeting the Group <button class="translate-toggle" data-translate-toggle
+ *       aria-pressed="false" aria-label="Ver em português" title="Ver em português">🌐</button></h2>
  *   <p data-pt="Leia esta conversa.">Read this conversation.</p>
  */
 (function() {
@@ -35,7 +36,8 @@
     });
 
     button.setAttribute('aria-pressed', toPortuguese ? 'true' : 'false');
-    button.textContent = toPortuguese ? SHOW_ENGLISH : SHOW_PORTUGUESE;
+    button.setAttribute('aria-label', toPortuguese ? SHOW_ENGLISH : SHOW_PORTUGUESE);
+    button.title = toPortuguese ? SHOW_ENGLISH : SHOW_PORTUGUESE;
   }
 
   document.addEventListener('click', function(e) {

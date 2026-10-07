@@ -846,3 +846,32 @@
 [data-theme="dark"] .advanced-section .landing-path-btn {
   background-color: var(--accent-color);
 }
+
+/* ----------------------------------------
+   Tourguide Lessons
+   ---------------------------------------- */
+/* Small translate symbol next to a section title (js/translate-toggle.js) */
+.translate-toggle {
+  background: none;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  padding: 2px 5px;
+  margin-left: 8px;
+  font-size: 1rem;
+  line-height: 1;
+  vertical-align: middle;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s, border-color 0.2s;
+}
+
+.translate-toggle:hover,
+.translate-toggle:focus-visible {
+  opacity: 1;
+}
+
+/* Shows the section is in Portuguese */
+.translate-toggle[aria-pressed="true"] {
+  opacity: 1;
+  border-color: var(--beginner-primary);
+}
