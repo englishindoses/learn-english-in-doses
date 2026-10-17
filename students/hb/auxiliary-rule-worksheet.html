@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Auxiliary Rule</title>
+<style>
+  :root{
+    --bg:#f4f6f8; --card:#fff; --ink:#1d2b36; --muted:#5d7080;
+    --line:#dbe3ea; --blue:#1f6f8b; --blue-d:#155466;
+    --good:#1a7f52; --good-bg:#e6f6ee; --bad:#b3261e; --bad-bg:#fdecea;
+    --hl:#fff3c4;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:24px 16px 80px;background:var(--bg);color:var(--ink);
+       font-family:"Segoe UI",system-ui,-apple-system,sans-serif;line-height:1.55;font-size:17px}
+  .wrap{max-width:780px;margin:0 auto}
+  header{border-bottom:3px solid var(--blue);padding-bottom:12px;margin-bottom:26px}
+  h1{margin:0;font-size:1.9rem;color:var(--blue-d)}
+  header p{margin:6px 0 0;color:var(--muted)}
+  section{background:var(--card);border:1px solid var(--line);border-radius:10px;
+          padding:20px 22px;margin-bottom:22px}
+  h2{margin:0 0 4px;font-size:1.15rem;color:var(--blue-d)}
+  .instr{margin:0 0 16px;color:var(--muted);font-style:italic;font-size:.95rem}
+  .item{padding:10px 0;border-top:1px solid var(--line)}
+  .item:first-of-type{border-top:none}
+  .num{display:inline-block;min-width:26px;font-weight:700;color:var(--blue)}
+
+  /* choice pairs */
+  .pair{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+  .opt{flex:1 1 260px;text-align:left;padding:10px 14px;border:2px solid var(--line);
+       border-radius:8px;background:#fff;font:inherit;cursor:pointer;transition:.15s}
+  .opt:hover{border-color:var(--blue)}
+  .opt.right{border-color:var(--good);background:var(--good-bg)}
+  .opt.wrong{border-color:var(--bad);background:var(--bad-bg);text-decoration:line-through}
+
+  /* inline word buttons */
+  .words{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+  .w{padding:6px 14px;border:2px solid var(--line);border-radius:20px;background:#fff;
+     font:inherit;cursor:pointer}
+  .w:hover{border-color:var(--blue)}
+  .w.right{border-color:var(--good);background:var(--good-bg)}
+  .w.wrong{border-color:var(--bad);background:var(--bad-bg)}
+
+  /* typing */
+  .bad-sentence{color:var(--bad);font-weight:600}
+  input[type=text]{width:100%;padding:9px 12px;margin-top:8px;border:2px solid var(--line);
+       border-radius:8px;font:inherit;background:#fff}
+  input[type=text]:focus{outline:none;border-color:var(--blue)}
+  input.right{border-color:var(--good);background:var(--good-bg)}
+  input.wrong{border-color:var(--bad);background:var(--bad-bg)}
+  .row{display:flex;gap:8px;align-items:flex-start}
+  .row input{flex:1}
+  .btn{margin-top:8px;padding:9px 16px;border:none;border-radius:8px;background:var(--blue);
+       color:#fff;font:inherit;cursor:pointer;white-space:nowrap}
+  .btn:hover{background:var(--blue-d)}
+  .btn.ghost{background:#eef2f5;color:var(--blue-d)}
+  .fb{font-size:.92rem;margin-top:6px;min-height:1.2em}
+  .fb.ok{color:var(--good)} .fb.no{color:var(--bad)}
+
+  /* rule box */
+  .rule{background:#f0f7fa;border-left:5px solid var(--blue);border-radius:6px;padding:16px 18px}
+  .formula{font-size:1.15rem;font-weight:700;color:var(--blue-d);text-align:center;margin:4px 0 14px}
+  .formula span{background:var(--hl);padding:2px 8px;border-radius:4px}
+  .rule ul{margin:0;padding-left:20px}
+  .rule li{margin:7px 0}
+  .x{color:var(--bad);font-weight:700}
+  .tick{color:var(--good);font-weight:700}
+  .strike{text-decoration:line-through;color:var(--bad)}
+
+  /* speaking cards */
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+  .card{border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:8px;
+        padding:12px 14px;background:#fbfdfe}
+  .card b{color:var(--blue-d)}
+  .score{position:sticky;bottom:0;text-align:center;padding:10px;margin-top:10px;
+         background:var(--blue-d);color:#fff;border-radius:8px;font-weight:600}
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#151b21;--card:#1d252d;--ink:#e6edf3;--muted:#9fb0bd;--line:#2f3b46;
+          --good-bg:#123326;--bad-bg:#3a1a17;--hl:#5a4a12}
+    .opt,.w,input[type=text]{background:#232c35;color:var(--ink)}
+    .rule{background:#1a2831}
+    .card{background:#212a33}
+    .btn.ghost{background:#2b3641;color:#cfe1ea}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>The Auxiliary Rule</h1>
+  <p>One rule that fixes a lot of mistakes at the same time.</p>
+</header>
+
+<!-- 1 -->
+<section>
+  <h2>1. Which one is correct?</h2>
+  <p class="instr">Click the correct sentence. Then say <em>why</em> the other one is wrong.</p>
+  <div id="ex1"></div>
+</section>
+
+<!-- 2 -->
+<section>
+  <h2>2. The rule</h2>
+  <div class="rule">
+    <p class="formula">auxiliary + subject + <span>base verb</span></p>
+    <p style="margin:0 0 10px">After <b>do, does, did, don't, doesn't, didn't, can, can't, must, mustn't, will, won't</b>
+       the next verb never changes. It is always the <b>base form</b>.</p>
+    <ul>
+      <li><span class="x">✗</span> Does the bakery <span class="strike">opens</span> at six? &nbsp;→&nbsp; <span class="tick">✓</span> Does the bakery <b>open</b> at six? &nbsp;<em>(no -s)</em></li>
+      <li><span class="x">✗</span> They didn't <span class="strike">finished</span> the roof. &nbsp;→&nbsp; <span class="tick">✓</span> They didn't <b>finish</b> the roof. &nbsp;<em>(no past form)</em></li>
+      <li><span class="x">✗</span> You must <span class="strike">to</span> see this square. &nbsp;→&nbsp; <span class="tick">✓</span> You must <b>see</b> this square. &nbsp;<em>(no "to")</em></li>
+    </ul>
+    <p style="margin:12px 0 0"><b>One verb carries the grammar — the other one stays simple.</b></p>
+  </div>
+</section>
+
+<!-- 3 -->
+<section>
+  <h2>3. Choose the verb</h2>
+  <p class="instr">Click the correct form to finish each sentence.</p>
+  <div id="ex3"></div>
+</section>
+
+<!-- 4 -->
+<section>
+  <h2>4. Find and fix</h2>
+  <p class="instr">Every sentence has one mistake. Write the whole sentence correctly.</p>
+  <div id="ex4"></div>
+</section>
+
+<!-- 5 -->
+<section>
+  <h2>5. Make the question</h2>
+  <p class="instr">Put the words in order and write the question.</p>
+  <div id="ex5"></div>
+</section>
+
+<!-- 6 -->
+<section>
+  <h2>6. Now say it</h2>
+  <p class="instr">Ask your teacher these questions. Listen to the answer and ask one more question of your own.</p>
+  <div class="cards">
+    <div class="card"><b>did</b> — the last old building you visited</div>
+    <div class="card"><b>does</b> — the street where your teacher lives</div>
+    <div class="card"><b>can</b> — something you can see from your window</div>
+    <div class="card"><b>didn't</b> — something you didn't do last weekend</div>
+    <div class="card"><b>mustn't</b> — a rule in a park or a church</div>
+    <div class="card"><b>doesn't</b> — something your neighbourhood doesn't have</div>
+  </div>
+</section>
+
+<div class="score" id="score">0 / 0 correct</div>
+
+</div>
+
+<script>
+/* ---------- data ---------- */
+const EX1 = [
+  ["Does the museum open on Mondays?", "Does the museum opens on Mondays?"],
+  ["I didn't take the bus this morning.", "I didn't took the bus this morning."],
+  ["You can't park in front of the church.", "You can't to park in front of the church."],
+  ["When did they build this bridge?", "When did they built this bridge?"],
+  ["My neighbour doesn't cook at home.", "My neighbour doesn't cooks at home."],
+  ["We must protect the old houses in the centre.", "We must to protect the old houses in the centre."]
+];
+
+const EX3 = [
+  ["The library doesn't ___ on Sundays.", ["open","opens","opened"], "open"],
+  ["Did the workers ___ the roof yesterday?", ["finish","finished","finishing"], "finish"],
+  ["Does that old house ___ to the city?", ["belong","belongs","belonged"], "belong"],
+  ["I can't ___ the river from my window.", ["see","to see","seeing"], "see"],
+  ["We didn't ___ lunch together.", ["have","had","having"], "have"],
+  ["Visitors mustn't ___ photos inside the cathedral.", ["take","to take","taking"], "take"],
+  ["What time does the market ___ on Saturdays?", ["start","starts","started"], "start"],
+  ["The lift won't ___ to the top floor.", ["go","goes","to go"], "go"]
+];
+
+const EX4 = [
+  ["When did they built the new bridge?", ["when did they build the new bridge"]],
+  ["Has your wife work in the city centre?", ["does your wife work in the city centre","does your wife work in the city center"]],
+  ["I didn't drank coffee this morning.", ["i didn't drink coffee this morning","i did not drink coffee this morning"]],
+  ["You can't to walk on the grass here.", ["you can't walk on the grass here","you cannot walk on the grass here"]],
+  ["Does the little café opens early?", ["does the little café open early","does the little cafe open early"]],
+  ["My street doesn't has any trees.", ["my street doesn't have any trees","my street does not have any trees"]],
+  ["We must to paint the kitchen this weekend.", ["we must paint the kitchen this weekend"]],
+  ["Did the rain stopped?", ["did the rain stop"]]
+];
+
+const EX5 = [
+  ["did / when / they / build / this church", ["when did they build this church"]],
+  ["does / how much / the ticket / cost", ["how much does the ticket cost"]],
+  ["you / can / see / the mountains / from your roof", ["can you see the mountains from your roof"]],
+  ["didn't / why / come / you / to dinner", ["why didn't you come to dinner","why did you not come to dinner"]],
+  ["does / what time / open / the bakery", ["what time does the bakery open"]],
+  ["did / where / you / leave / your bike", ["where did you leave your bike"]]
+];
+
+/* ---------- scoring ---------- */
+let done = new Set(), right = 0;
+function mark(id, ok){
+  if(done.has(id)) return;
+  done.add(id); if(ok) right++;
+  document.getElementById('score').textContent = right + " / " + done.size + " correct";
+}
+const norm = s => s.toLowerCase().replace(/[.?!,'’]/g,"").replace(/\s+/g," ").trim();
+
+/* ---------- ex 1 ---------- */
+const box1 = document.getElementById('ex1');
+EX1.forEach(([good,bad],i)=>{
+  const order = i % 2 ? [bad,good] : [good,bad];
+  const d = document.createElement('div');
+  d.className='item';
+  d.innerHTML = '<span class="num">'+(i+1)+'.</span>';
+  const pair = document.createElement('div'); pair.className='pair';
+  order.forEach(t=>{
+    const b=document.createElement('button'); b.className='opt'; b.textContent=t;
+    b.onclick=()=>{
+      const ok = t===good;
+      b.classList.add(ok?'right':'wrong');
+      if(!ok) [...pair.children].find(c=>c.textContent===good).classList.add('right');
+      [...pair.children].forEach(c=>c.disabled=true);
+      mark('a'+i, ok);
+    };
+    pair.appendChild(b);
+  });
+  d.appendChild(pair); box1.appendChild(d);
+});
+
+/* ---------- ex 3 ---------- */
+const box3 = document.getElementById('ex3');
+EX3.forEach(([sent,opts,ans],i)=>{
+  const d=document.createElement('div'); d.className='item';
+  d.innerHTML='<span class="num">'+(i+1)+'.</span>'+sent;
+  const w=document.createElement('div'); w.className='words';
+  opts.forEach(o=>{
+    const b=document.createElement('button'); b.className='w'; b.textContent=o;
+    b.onclick=()=>{
+      const ok=o===ans;
+      b.classList.add(ok?'right':'wrong');
+      if(!ok)[...w.children].find(c=>c.textContent===ans).classList.add('right');
+      [...w.children].forEach(c=>c.disabled=true);
+      d.innerHTML='<span class="num">'+(i+1)+'.</span>'+sent.replace('___','<b>'+ans+'</b>');
+      d.appendChild(w);
+      mark('b'+i, ok);
+    };
+    w.appendChild(b);
+  });
+  d.appendChild(w); box3.appendChild(d);
+});
+
+/* ---------- typing exercises ---------- */
+function typing(container, data, idPrefix, showBad){
+  const box=document.getElementById(container);
+  data.forEach(([prompt,answers],i)=>{
+    const d=document.createElement('div'); d.className='item';
+    d.innerHTML='<span class="num">'+(i+1)+'.</span>'+
+      (showBad?'<span class="bad-sentence">'+prompt+'</span>':prompt);
+    const row=document.createElement('div'); row.className='row';
+    const inp=document.createElement('input'); inp.type='text'; inp.placeholder='Write it here…';
+    const btn=document.createElement('button'); btn.className='btn'; btn.textContent='Check';
+    const fb=document.createElement('div'); fb.className='fb';
+    const check=()=>{
+      const ok = answers.some(a=>norm(a)===norm(inp.value));
+      inp.classList.remove('right','wrong'); inp.classList.add(ok?'right':'wrong');
+      fb.className='fb '+(ok?'ok':'no');
+      fb.textContent = ok ? '✓ Correct' : 'Not yet — check the verb after the auxiliary.';
+      mark(idPrefix+i, ok);
+    };
+    btn.onclick=check;
+    inp.addEventListener('keydown',e=>{ if(e.key==='Enter') check(); });
+    const show=document.createElement('button');
+    show.className='btn ghost'; show.textContent='Answer';
+    show.onclick=()=>{
+      mark(idPrefix+i,false);
+      const a=answers[0];
+      fb.className='fb'; fb.textContent = a.charAt(0).toUpperCase()+a.slice(1)+(container==='ex5'?'?':'.');
+    };
+    row.appendChild(inp); row.appendChild(btn); row.appendChild(show);
+    d.appendChild(row); d.appendChild(fb); box.appendChild(d);
+  });
+}
+typing('ex4', EX4, 'c', true);
+typing('ex5', EX5, 'd', false);
+</script>
+</body>
+</html>
