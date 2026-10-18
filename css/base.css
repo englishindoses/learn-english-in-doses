@@ -1,3 +1,5 @@
+@import url("footer.css?v=20261018-columns");
+
 /*
  * ESL Grammar Website - Base Styles
  * Updated version with requested changes
@@ -404,58 +406,6 @@
   }
 
   /* ----------------------------------------
-     6. Footer
-     ---------------------------------------- */
-  footer {
-    font-style: italic;
-    color: var(--text-color);
-    opacity: 0.8;
-    margin-top: 30px;
-    padding-top: 15px;
-    border-top: 1px solid var(--border-color);
-    text-align: center;
-    max-width: 760px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  /* Updated footer layout to display sections horizontally */
-  .footer-content {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-bottom: 20px;
-  }
-
-  .footer-section {
-    flex: 1;
-    min-width: 150px;
-    text-align: left;
-  }
-
-  .footer-section h3 {
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-  }
-
-  .footer-section ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .footer-section ul li {
-    margin-bottom: 8px;
-  }
-
-  .footer-bottom {
-    margin-top: 20px;
-    padding-top: 10px;
-    border-top: 1px solid var(--border-color);
-  }
-
-  /* ----------------------------------------
      7. Tables
      ---------------------------------------- */
   table {
@@ -791,23 +741,7 @@
       padding: 0 15px;
     }
 
-    /* Adjust footer for mobile */
-    footer {
-      padding: 24px 20px 16px;
-      box-sizing: border-box;
-    }
 
-    .footer-content {
-      flex-direction: column;
-      align-items: center;
-      gap: 24px;
-    }
-
-    .footer-section {
-      width: 100%;
-      min-width: 0;
-      text-align: center;
-    }
   }
 
   @media (max-width: 480px) {

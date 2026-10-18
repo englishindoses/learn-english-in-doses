@@ -1,0 +1,82 @@
+/* Shared site footer. Imported by base.css and home.css. */
+footer {
+  max-width: 800px;
+  box-sizing: border-box;
+  margin: 30px auto 0;
+  padding: 24px 20px 16px;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-color);
+  text-align: center;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.footer-section {
+  min-width: 0;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+}
+
+.footer-section h3 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 6px;
+}
+
+.footer-bottom {
+  margin-top: 20px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  footer {
+    padding: 20px 16px 14px;
+  }
+
+  .footer-content {
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .footer-section {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .footer-section h3 {
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+  }
+
+  .footer-section ul li {
+    margin-bottom: 5px;
+  }
+
+  .footer-bottom {
+    margin-top: 16px;
+    font-size: 0.8rem;
+  }
+}

@@ -70,6 +70,7 @@ Main-site activities include MCQ, sentence ordering, matching, gap fill, dropdow
 - Lesson HTML contains its own answers and module configuration. Verify question count, answer entries, score denominator, feedback and restart behaviour together. DOM IDs and selectors must agree with the module configuration.
 - The relevant course index determines lesson order and breadcrumb category anchors. When adding a lesson, update the index and adjacent previous/next links as appropriate. Some course links intentionally target planned lessons; distinguish these from accidental missing assets or wrong destinations.
 - Keep learner-visible text, metadata, headings, summaries and answer explanations consistent. Preserve the existing licence and attribution information.
+- The site footer is styled only in `css/footer.css`, imported by both `css/base.css` and `css/home.css`. Keep its three sections in three columns on mobile; adjust font sizes and gaps in that shared module. Do not duplicate footer rules in page stylesheets or HTML.
 
 ## Accounts and progress: two separate systems
 
