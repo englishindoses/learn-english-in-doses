@@ -1,0 +1,6 @@
+{
+  "name": "website-progress-test-tools",
+  "private": true,
+  "description": "DOM integration tests for the static website; not a website build step",
+  "devDependencies": { "jsdom": "30.1.3" }
+}

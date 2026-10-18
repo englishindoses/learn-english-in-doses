@@ -36,6 +36,8 @@ let auth = null;
 let root = '';
 let slot = null; // where the button or the student's name goes
 let ready = null; // settles once Firebase has loaded
+let confirmedUid; // undefined until Firebase has confirmed the initial account
+let interactiveLogin = false;
 
 // The last student seen on this device, so their name shows straight away
 // instead of waiting for Firebase to load.
@@ -65,6 +67,7 @@ export async function initAccount(siteRoot) {
     await ready;
   } catch (error) {
     console.error('Accounts could not load:', error);
+    window.WebsiteProgress?.activate(null, null);
     return;
   }
 
@@ -72,10 +75,85 @@ export async function initAccount(siteRoot) {
   fb.getRedirectResult(auth).catch(() => {});
 
   fb.onAuthStateChanged(auth, (user) => {
+    // Reload on account changes so the previous student's answer controls and
+    // module closures cannot leak into the next student's lesson.
+    if (confirmedUid !== undefined && confirmedUid !== (user?.uid || null)) {
+      if (!user) { location.reload(); return; }
+      if (!interactiveLogin) { location.assign(`${root}student-dashboard.html`); return; }
+    }
+    confirmedUid = user?.uid || null;
     const who = user ? describe(user) : null;
+    window.WebsiteStudent = who ? { firstName: who.firstName } : null;
     remember(who);
     showAccount(who);
+    document.dispatchEvent(new CustomEvent('websiteAccountChanged'));
+    const homePaths = ['', 'index.html', 'home.html'].map(page => new URL(page, root).pathname);
+    let returningFromLogin = false;
+    try { returningFromLogin = sessionStorage.getItem('eid.website.loginRedirect') === 'yes'; } catch {}
+    if (user && !interactiveLogin && (homePaths.includes(location.pathname) || returningFromLogin)) {
+      try { sessionStorage.removeItem('eid.website.loginRedirect'); } catch {}
+      location.replace(`${root}student-dashboard.html`);
+      return;
+    }
+    if (window.WebsiteProgress) {
+      window.WebsiteProgress.activate(confirmedUid, user ? websiteTransport(user.uid) : null);
+    }
   });
+}
+
+// A separate field in the existing owner document. App progress fields are
+// untouched. Read from the server before any write; transact only changed
+// activities into the latest record instead of replacing a whole device copy.
+function websiteTransport(uid) {
+  let database;
+  async function connection() {
+    if (!database) database = import(`${FIREBASE}/firebase-firestore.js`).then(f => ({
+      f, ref: f.doc(f.getFirestore(), 'practiceUsers', uid),
+    }));
+    return database;
+  }
+  function parse(snapshot) {
+    const raw = snapshot.data()?.websiteProgress;
+    if (!raw) return window.WebsiteProgress.empty();
+    const value = typeof raw === 'string' ? JSON.parse(raw) : raw;
+    if (value.version !== 2) throw new Error('Unsupported website progress version');
+    return value;
+  }
+  return {
+    async read() {
+      const { f, ref } = await connection();
+      return parse(await f.getDocFromServer(ref));
+    },
+    subscribe(onValue, onError) {
+      let stop, cancelled = false;
+      connection().then(({ f, ref }) => {
+        if (cancelled) return;
+        stop = f.onSnapshot(ref, snapshot => {
+          if (snapshot.metadata.hasPendingWrites || snapshot.metadata.fromCache) return;
+          try { onValue(parse(snapshot)); } catch (error) { onError(error); }
+        }, onError);
+      }).catch(onError);
+      return () => { cancelled = true; stop?.(); };
+    },
+    async update(changes) {
+      const { f, ref } = await connection();
+      return f.runTransaction(f.getFirestore(), async transaction => {
+        const remote = parse(await transaction.get(ref));
+        const next = window.WebsiteProgress.merge(remote, changes);
+        transaction.set(ref, { websiteProgress: JSON.stringify(next) }, { merge: true });
+        return next;
+      });
+    },
+    async reset() {
+      const { f, ref } = await connection();
+      return f.runTransaction(f.getFirestore(), async transaction => {
+        const remote = parse(await transaction.get(ref));
+        const next = { ...window.WebsiteProgress.empty(), epoch: (remote.epoch || 0) + 1 };
+        transaction.set(ref, { websiteProgress: JSON.stringify(next) }, { merge: true });
+        return next;
+      });
+    },
+  };
 }
 
 function recall() {
@@ -180,6 +258,7 @@ function toggleMenu(chip, who) {
       element('p', { class: 'account-menu-name', text: who.name }),
       who.line ? element('p', { class: 'account-menu-line', text: who.line }) : null,
     ]),
+    element('a', { class: 'account-menu-item', role: 'menuitem', href: `${root}student-dashboard.html`, text: 'My Dashboard' }),
     element('a', { class: 'account-menu-item', role: 'menuitem', href: `${root}my-progress.html`, text: 'My Progress' }),
     element('a', { class: 'account-menu-item', role: 'menuitem', href: `${root}app/`, text: 'Practice app' }),
     element('button', { type: 'button', class: 'account-menu-item', role: 'menuitem', text: 'Log out' }),
@@ -188,6 +267,7 @@ function toggleMenu(chip, who) {
   menu.querySelector('button').addEventListener('click', async () => {
     closeMenu();
     await ready;
+    await window.WebsiteProgress?.flush();
     await fb.signOut(auth);
   });
 
@@ -312,6 +392,7 @@ function openLogin() {
 
   function setBusy(value) {
     busy = value;
+    interactiveLogin = value;
     submit.disabled = value;
     google.disabled = value;
   }
@@ -345,6 +426,7 @@ function openLogin() {
         await fb.signInWithEmailAndPassword(auth, email, password.value);
       }
       dialog.close();
+      location.assign(`${root}student-dashboard.html`);
       return;
     } catch (err) {
       error.textContent = friendlyError(err);
@@ -364,10 +446,12 @@ function openLogin() {
       provider.setCustomParameters({ prompt: 'select_account' });
       await fb.signInWithPopup(auth, provider);
       dialog.close();
+      location.assign(`${root}student-dashboard.html`);
       return;
     } catch (err) {
       const code = err?.code || '';
       if (code === 'auth/popup-blocked' || code === 'auth/operation-not-supported-in-this-environment') {
+        try { sessionStorage.setItem('eid.website.loginRedirect', 'yes'); } catch {}
         await fb.signInWithRedirect(auth, new fb.GoogleAuthProvider()); // leaves the page
         return;
       }

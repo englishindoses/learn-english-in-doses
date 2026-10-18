@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Your English in Doses student dashboard: lessons, saved progress and where to continue.">
+  <title>My Dashboard - English in Doses</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/activities.css">
+  <link rel="stylesheet" href="css/progress-tracking-styles.css">
+</head>
+<body>
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <!-- Theme toggle button -->
+  <div class="theme-toggle-container">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="light-icon" aria-hidden="true">☀️</span>
+      <span class="dark-icon" aria-hidden="true">🌙</span>
+    </button>
+  </div>
+
+  <!-- Main navigation -->
+  <nav class="main-navigation">
+    <a href="home.html" class="site-logo">
+      <img src="images/my-logo.svg" alt="English in Doses" width="150" height="auto">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <div class="nav-links">
+      <a href="home.html" class="nav-link">Home</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="home.html#quiz-section" class="nav-link">Find Your Level</a>
+    <div class="nav-dropdown">
+
+      <a href="beginner-landing.html" class="nav-link dropdown-toggle">Beginner</a>
+
+      <div class="dropdown-menu">
+
+        <a href="grammar/beginner/beginner-grammar.html" class="dropdown-item">Beginner Grammar</a>
+
+        <a href="vocabulary/beginner/beginner-vocabulary.html" class="dropdown-item">Beginner Vocabulary</a>
+
+        <a href="travel/beginner-travel/travel-english.html" class="dropdown-item">Beginner Travel</a>
+
+      </div>
+
+    </div>
+
+    <div class="nav-dropdown">
+
+      <a href="intermediate-landing.html" class="nav-link dropdown-toggle">Intermediate</a>
+
+      <div class="dropdown-menu">
+
+        <a href="grammar/intermediate/intermediate-grammar.html" class="dropdown-item">Intermediate Grammar</a>
+
+      </div>
+
+    </div>
+
+    <div class="nav-dropdown">
+
+      <a href="advanced-landing.html" class="nav-link dropdown-toggle">Advanced</a>
+
+      <div class="dropdown-menu">
+
+        <a href="grammar/advanced/advanced-grammar.html" class="dropdown-item">Advanced Grammar</a>
+
+      </div>
+
+    </div>
+    <a href="my-progress.html" class="nav-link">My Progress</a>
+    <a href="booking-page.html" class="nav-link">Book a Lesson</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs" aria-label="breadcrumb">
+      <span class="breadcrumb-item"><a href="home.html">Home</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item">My Dashboard</span>
+    </div>
+
+    <main id="main-content">
+      <h1 id="dashboard-greeting">My Dashboard</h1>
+      <p>Your lessons, your progress and your next step.</p>
+      <div class="note website-save-notice">
+        <span id="save-status" role="status">Checking your account…</span>
+        <button id="retry-sync" class="check-btn" hidden>Retry</button>
+        <button id="import-old-progress" class="check-btn" hidden>Import old browser answers</button>
+      </div>
+
+      <!-- No progress message (shown when user has no data) -->
+      <div id="no-progress-message" class="no-progress-message" style="display: none;">
+        <div class="no-progress-icon">📊</div>
+        <h2>Log in to see your progress</h2>
+        <p>Use Log in at the top of this page. Your answers and progress will follow your account.</p>
+        <a href="home.html#where-to-start" class="btn btn-primary">Start Learning</a>
+      </div>
+
+      <!-- Progress content -->
+      <div id="progress-content" hidden>
+        <section class="progress-card">
+          <h2>Your lessons</h2>
+          <p id="dashboard-lessons-intro">Choose a course below to get started. Your lessons will appear here as you practise.</p>
+          <div id="dashboard-lessons"></div>
+        </section>
+        <section id="continue-learning" class="progress-card"></section>
+        <!-- Summary Stats -->
+        <section class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Overall Progress</div>
+            <div id="overall-percentage" class="stat-number">0%</div>
+            <div id="overall-fraction" class="stat-label">0/0 completed</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-label">Activities Completed</div>
+            <div id="activities-count" class="stat-number">0</div>
+            <div class="stat-label">out of <span id="total-activities">0</span></div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-label">Lessons Completed</div>
+            <div id="lessons-count" class="stat-number">0</div>
+            <div class="stat-label">out of <span id="total-lessons">0</span></div>
+          </div>
+
+          <div class="stat-card streak-card">
+            <div class="stat-label">Practice days this week</div>
+            <div id="week-days" class="stat-number">0</div>
+            <div class="stat-label">Monday to Sunday</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Practice days this month</div>
+            <div id="month-days" class="stat-number">0</div>
+            <div class="stat-label">current calendar month</div>
+          </div>
+        </section>
+
+        <section class="progress-card">
+          <h2>Explore courses</h2>
+          <div class="landing-paths-grid">
+            <a class="landing-path-card" href="grammar/beginner/beginner-grammar.html"><div class="landing-path-content"><h3>Beginner grammar</h3><p>Build a strong foundation, one lesson at a time.</p></div></a>
+            <a class="landing-path-card" href="grammar/intermediate/intermediate-grammar.html"><div class="landing-path-content"><h3>Intermediate grammar</h3><p>Practise useful structures and build confidence.</p></div></a>
+            <a class="landing-path-card" href="grammar/advanced/advanced-grammar.html"><div class="landing-path-content"><h3>Advanced grammar</h3><p>Make your English more accurate and flexible.</p></div></a>
+            <a class="landing-path-card" href="travel/beginner-travel/travel-english.html"><div class="landing-path-content"><h3>Travel English</h3><p>Prepare for airports, hotels and everyday travel.</p></div></a>
+            <a class="landing-path-card" href="vocabulary/beginner/beginner-vocabulary.html"><div class="landing-path-content"><h3>Beginner vocabulary</h3><p>Learn everyday words and practise using them.</p></div></a>
+          </div>
+        </section>
+        <!-- Progress by Category -->
+        <section class="progress-card progress-summary">
+          <div class="progress-section-title">
+            <h2>Progress by Category</h2>
+          </div>
+          <div id="category-progress" class="progress-summary-section"></div>
+        </section>
+
+        <!-- Recent Activity -->
+        <section class="progress-card">
+          <div class="progress-section-title">
+            <h2>Recent Activity</h2>
+          </div>
+          <div id="recent-activity"></div>
+        </section>
+
+        <!-- Reset Progress -->
+        <section class="progress-card danger-zone">
+          <h2>Reset Progress</h2>
+          <p>If you want to start fresh, you can delete and reset all your progress data. This action cannot be undone.</p>
+          <button id="reset-progress" class="reset-button">Reset All Progress</button>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- Footer -->
+<footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="home.html#quiz-section">Find Your Level</a></li>
+          <li><a href="my-progress.html">My Progress</a></li>
+          <li><a href="booking-page.html">Book a Lesson</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Learn English</h3>
+        <ul>
+          <li><a href="beginner-landing.html">Beginner</a></li>
+          <li><a href="intermediate-landing.html">Intermediate</a></li>
+          <li><a href="advanced-landing.html">Advanced</a></li>
+          <li><a href="travel/beginner-travel/travel-english.html">Travel English</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>About</h3>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="license.html">Licensing Information</a></li>
+          <li><a href="https://www.instagram.com/englishindoses/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025–2026 English in Doses | All rights reserved</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/website-lesson-catalog.js" defer></script>
+  <script src="js/website-progress.js" defer></script>
+  <script src="js/website-lesson.js" defer></script>
+  <script src="js/core.js" defer></script>
+  <script src="js/progress-tracking-module.js" defer></script>
+  <script src="js/my-progress.js" defer></script>
+  <script src="js/student-dashboard.js" defer></script>
+</body>
+</html>

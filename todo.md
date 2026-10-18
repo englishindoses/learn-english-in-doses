@@ -73,7 +73,9 @@ Roughly in the order I'd tackle them.
 - [x] **Switch on sign-in.** Firebase project `english-in-doses` set up 27 Sep 2026, with Google and username and password. Connected to the app.
 - [ ] Test Google and username sign-in on a phone, and check the Your students page.
 - [x] Add Log in to the website's top bar, beside the theme toggle. Done 27 Sep 2026: `js/account.js` and `css/account.css`, loaded by `core.js`. Same accounts as the app.
-- [ ] Save website progress to the student's account. Progress on the website is saved only for signed-in students.
+- [x] Save website progress to the student's account. Implemented 17 October 2026: account-owned answers, all-activity lesson completion, weekly/monthly practice days and continuation links. See `docs/website-progress.md`.
+- [ ] Verify website progress with real signed-in accounts on two devices and confirm the deployed Firestore owner/teacher permissions. Local automated checks use a test transport.
+- [x] Add the student dashboard after sign-in, with a welcome, started lessons, course choices, progress and a next step. Implemented 17 October 2026.
 - [ ] Decide how students reset a forgotten password. At the moment they need a new account.
 - [x] Write the beginner grammar topic banks for the app. Done 28 Sep 2026: all 13 lessons on `beginner-grammar.html`, including Modal Verbs, which was missing from the app's list.
 - [ ] Write the travel topic banks for the app.

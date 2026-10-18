@@ -226,6 +226,7 @@ function initActiveNavLink() {
  * @returns {boolean} - True if successful, false otherwise
  */
 function saveToLocalStorage(key, value) {
+  if (window.WebsiteProgress && key !== 'theme') return false;
   try {
     // First check if localStorage is available
     if (!isLocalStorageAvailable()) {
@@ -271,6 +272,7 @@ function saveToLocalStorage(key, value) {
  * @returns {any} - The value from localStorage or defaultValue
  */
 function getFromLocalStorage(key, defaultValue = null) {
+  if (window.WebsiteProgress && key !== 'theme') return defaultValue;
   try {
     // Check if localStorage is available
     if (!isLocalStorageAvailable()) {
@@ -305,6 +307,7 @@ function getFromLocalStorage(key, defaultValue = null) {
  * @returns {boolean} - True if successful, false otherwise
  */
 function removeFromLocalStorage(key) {
+  if (window.WebsiteProgress && key !== 'theme') return false;
   try {
     // Check if localStorage is available
     if (!isLocalStorageAvailable()) {

@@ -155,6 +155,7 @@ function resetDropdownActivity(activityId) {
 
 // ===== Save Dropdown States to localStorage =====
 function saveDropdownStates() {
+    if (window.WebsiteProgress) return;
     var activities = document.querySelectorAll('.dropdown-activity');
     var allStates = getDropdownStatesFromStorage();
     
@@ -183,6 +184,7 @@ function saveDropdownStates() {
 
 // ===== Get Dropdown States from localStorage =====
 function getDropdownStatesFromStorage() {
+    if (window.WebsiteProgress) return {};
     try {
         var saved = localStorage.getItem('dropdownStates');
         return saved ? JSON.parse(saved) : {};
@@ -194,6 +196,7 @@ function getDropdownStatesFromStorage() {
 
 // ===== Remove a Single Activity State =====
 function removeDropdownState(activityId) {
+    if (window.WebsiteProgress) return;
     var allStates = getDropdownStatesFromStorage();
     if (allStates[activityId]) {
         delete allStates[activityId];

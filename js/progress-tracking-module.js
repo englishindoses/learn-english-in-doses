@@ -18,6 +18,10 @@
  * ProgressTracker - Provides functionality for tracking learning progress
  */
 const ProgressTracker = (function() {
+  // The account tracker is initialised centrally on every website page. Old
+  // per-page completion callbacks remain compatible but cannot mark a whole
+  // lesson complete before all its registered activities have been checked.
+  if (typeof window !== 'undefined' && window.WebsiteProgress) return window.WebsiteProgress.legacy;
   // Private variables
   let progressData = null;
   let categoryDefinitions = {};

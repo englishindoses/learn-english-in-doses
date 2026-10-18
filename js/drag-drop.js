@@ -43,17 +43,14 @@ const DragDropModule = (function() {
     // Set up configuration
     containerId = config.containerId || 'drag-drop';
     storageKey = config.storageKey || containerId; // NEW: Use unique storageKey
-    correctAnswers = config.answers || {};
+    correctAnswers = { ...(config.answers || {}) };
     onCompleteCallback = config.onComplete || null;
     const allowMultipleCorrectOrders = config.allowMultipleCorrectOrders || false;
     const saveProgress = config.saveProgress !== undefined ? config.saveProgress : true;
     
     // NEW: Check if we've switched activities and clear old state if needed
-    const currentActivity = localStorage.getItem('dragdrop-current-activity');
-    if (currentActivity !== storageKey) {
-      clearAllState();
-      localStorage.setItem('dragdrop-current-activity', storageKey);
-    }
+    // Answers now belong to an account and a page. Never clear other lessons
+    // just because this activity uses a different storage key.
     
     // Detect touch device
     touchDevice = ('ontouchstart' in window) || 
@@ -69,6 +66,16 @@ const DragDropModule = (function() {
     
     const dropZones = container.querySelectorAll('.drop-zone');
     totalQuestions = dropZones.length;
+    // Older lessons key their answer map by the drop zone's numeric index;
+    // newer lessons use question IDs. Support both when marking and restarting.
+    dropZones.forEach((zone, index) => {
+      const question = zone.closest('.question');
+      if (question && !question.id) question.id = `${containerId}-question-${index + 1}`;
+      const id = question?.id;
+      if (id && correctAnswers[id] === undefined) {
+        correctAnswers[id] = correctAnswers[zone.dataset.index] ?? zone.dataset.answer ?? '';
+      }
+    });
     
     // Create insertion indicator
     createInsertionIndicator();
@@ -638,6 +645,7 @@ const DragDropModule = (function() {
    * UPDATED: Uses storageKey instead of containerId
    */
   function saveProgress() {
+    if (window.WebsiteProgress) return;
     const container = document.getElementById(containerId);
     if (!container) return;
     
@@ -673,6 +681,7 @@ const DragDropModule = (function() {
    * UPDATED: Uses storageKey instead of containerId
    */
   function loadProgress() {
+    if (window.WebsiteProgress) return;
     // UPDATED: Use storageKey
     const progressDataString = localStorage.getItem(`dragdrop-${storageKey}-progress`);
     if (!progressDataString) return;
@@ -737,6 +746,7 @@ const DragDropModule = (function() {
    * NEW: Clears progress for the current activity
    */
   function clearProgress() {
+    if (window.WebsiteProgress) return;
     localStorage.removeItem(`dragdrop-${storageKey}-progress`);
   }
   
