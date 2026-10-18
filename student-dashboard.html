@@ -98,10 +98,9 @@
     <main id="main-content">
       <h1 id="dashboard-greeting">My Dashboard</h1>
       <p>Your lessons, your progress and your next step.</p>
-      <div class="note website-save-notice">
+      <div class="website-save-notice">
         <span id="save-status" role="status">Checking your account…</span>
         <button id="retry-sync" class="check-btn" hidden>Retry</button>
-        <button id="import-old-progress" class="check-btn" hidden>Import old browser answers</button>
       </div>
 
       <!-- No progress message (shown when user has no data) -->
@@ -176,6 +175,14 @@
             <h2>Recent Activity</h2>
           </div>
           <div id="recent-activity"></div>
+        </section>
+
+        <section class="progress-card">
+          <details class="progress-settings">
+            <summary>Import older answers</summary>
+            <p>If you used this browser before account saving was available, you can add those answers to your account.</p>
+            <button id="import-old-progress" class="progress-import-button" hidden>Import old browser answers</button>
+          </details>
         </section>
 
         <!-- Reset Progress -->

@@ -537,17 +537,74 @@
 }
 
 /* Danger zone / reset */
+.website-save-notice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 12px 0 24px;
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+.website-save-notice [hidden],
+.progress-settings [hidden] {
+  display: none !important;
+}
+
+.progress-settings {
+  padding: 18px 20px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+.progress-settings summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.progress-settings p {
+  margin: 16px 0;
+  line-height: 1.6;
+}
+
+.progress-import-button {
+  padding: 10px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--card-bg);
+  color: var(--text-color);
+  font: inherit;
+  cursor: pointer;
+  min-height: 44px;
+}
+
 .danger-zone {
   border-left: 5px solid var(--error-color);
   margin-top: 30px;
+  padding: 24px;
+  background-color: var(--card-bg);
+  border-radius: 8px;
+}
+
+.danger-zone h2 {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.danger-zone p {
+  margin: 0 0 20px;
+  line-height: 1.7;
 }
 
 .reset-button {
   background-color: var(--error-color);
   color: white;
-  padding: 10px 15px;
+  padding: 12px 20px;
   border-radius: 4px;
-  margin-top: 10px;
+  margin-top: 0;
+  min-height: 44px;
+  font: inherit;
   cursor: pointer;
   border: none;
   transition: background-color 0.3s;

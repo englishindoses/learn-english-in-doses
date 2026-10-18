@@ -792,13 +792,21 @@
     }
 
     /* Adjust footer for mobile */
+    footer {
+      padding: 24px 20px 16px;
+      box-sizing: border-box;
+    }
+
     .footer-content {
       flex-direction: column;
-      gap: 15px;
+      align-items: center;
+      gap: 24px;
     }
 
     .footer-section {
       width: 100%;
+      min-width: 0;
+      text-align: center;
     }
   }
 
