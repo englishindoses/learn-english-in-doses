@@ -5,11 +5,12 @@ const { JSDOM } = require('../tools/test-browser/node_modules/jsdom');
 const wait = () => new Promise(resolve => setTimeout(resolve, 0));
 const student = { uid: 'student-uid', email: 'personal@example.test', displayName: 'Test Student' };
 
-async function setup(initialUser = null, filename = 'grammar/beginner/present-simple.html') {
+async function setup(initialUser = null, filename = 'grammar/beginner/present-simple.html', returningFromLogin = false) {
   const dom = new JSDOM('<div class="theme-toggle-container"><button id="theme-toggle">Theme</button></div>', {
     url: 'https://website.test/' + filename, runScripts: 'dangerously',
   });
   const w = dom.window, navigation = [], calls = [];
+  if (returningFromLogin) w.sessionStorage.setItem('eid.website.loginRedirect', 'yes');
   let authChanged;
   w.testNavigate = url => navigation.push(url);
   w.testReload = () => navigation.push('reload');
@@ -54,10 +55,17 @@ test('login button opens the real account dialog and username login goes to the 
     assert.equal(r.w.WebsiteStudent.firstName, 'Test');
   } finally { r.dom.window.close(); }
 });
-test('a signed-in student returning to the homepage goes to their dashboard', async () => {
+test('a signed-in student returning to the homepage stays on the homepage', async () => {
   const r = await setup(student, 'home.html');
-  try { assert.deepEqual(r.navigation, ['https://website.test/student-dashboard.html']); }
+  try { assert.deepEqual(r.navigation, []); }
   finally { r.dom.window.close(); }
+});
+test('returning from Google redirect sign-in still opens the dashboard', async () => {
+  const r = await setup(student, 'home.html', true);
+  try {
+    assert.deepEqual(r.navigation, ['https://website.test/student-dashboard.html']);
+    assert.equal(r.w.sessionStorage.getItem('eid.website.loginRedirect'), null);
+  } finally { r.dom.window.close(); }
 });
 test('a signed-in lesson stays open and the account menu links to the dashboard', async () => {
   const r = await setup(student);

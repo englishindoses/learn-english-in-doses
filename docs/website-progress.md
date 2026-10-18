@@ -4,7 +4,7 @@ The lesson website saves progress for signed-in students. The Extra Practice app
 
 ## Student dashboard
 
-`student-dashboard.html` is the landing page after Google or username sign-in. Signed-in students returning to the public homepage are also taken there; opening a lesson while already signed in keeps that lesson open. **My Dashboard** is available in the account menu. `js/student-dashboard.js` adds the confirmed student's greeting and started lessons, while `js/my-progress.js` supplies the shared progress and continuation sections.
+`student-dashboard.html` is the landing page after Google or username sign-in. Home always opens the public homepage, even when already signed in, and opening a lesson keeps that lesson open. **My Dashboard** is available in the account menu. `js/student-dashboard.js` adds the confirmed student's greeting and started lessons, while `js/my-progress.js` supplies the shared progress and continuation sections.
 
 New students can browse five public courses immediately, with no UID mapping required. No other student's private lesson folder is assigned or advertised. Individual course assignments can be added later when the student's Firebase UID exists. The dashboard is hidden until an account is confirmed; signing out clears its student content.
 

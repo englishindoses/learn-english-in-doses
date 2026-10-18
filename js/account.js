@@ -87,10 +87,9 @@ export async function initAccount(siteRoot) {
     remember(who);
     showAccount(who);
     document.dispatchEvent(new CustomEvent('websiteAccountChanged'));
-    const homePaths = ['', 'index.html', 'home.html'].map(page => new URL(page, root).pathname);
     let returningFromLogin = false;
     try { returningFromLogin = sessionStorage.getItem('eid.website.loginRedirect') === 'yes'; } catch {}
-    if (user && !interactiveLogin && (homePaths.includes(location.pathname) || returningFromLogin)) {
+    if (user && !interactiveLogin && returningFromLogin) {
       try { sessionStorage.removeItem('eid.website.loginRedirect'); } catch {}
       location.replace(`${root}student-dashboard.html`);
       return;
