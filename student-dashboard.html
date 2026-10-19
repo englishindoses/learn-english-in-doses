@@ -20,8 +20,9 @@
   <link rel="stylesheet" href="css/base.css?v=20261018-columns">
   <link rel="stylesheet" href="css/activities.css">
   <link rel="stylesheet" href="css/progress-tracking-styles.css?v=20261018-layout2">
+  <link rel="stylesheet" href="css/student-dashboard.css?v=20261019-wide">
 </head>
-<body>
+<body class="student-dashboard">
   <!-- Skip link for accessibility -->
   <a href="#main-content" class="skip-link">Skip to content</a>
 
@@ -96,15 +97,21 @@
     </div>
 
     <main id="main-content">
-      <h1 id="dashboard-greeting">My Dashboard</h1>
-      <p>Your lessons, your progress and your next step.</p>
+      <header class="dashboard-header">
+        <div>
+          <p class="dashboard-eyebrow">Your learning space</p>
+          <h1 id="dashboard-greeting">My Dashboard</h1>
+          <p>Your next step in English starts here.</p>
+        </div>
+        <a href="#explore-courses" class="nav-button">Explore courses &rarr;</a>
+      </header>
       <div class="website-save-notice">
         <span id="save-status" role="status">Checking your account…</span>
         <button id="retry-sync" class="check-btn" hidden>Retry</button>
       </div>
 
       <!-- No progress message (shown when user has no data) -->
-      <div id="no-progress-message" class="no-progress-message" style="display: none;">
+      <div id="no-progress-message" class="no-progress-message" hidden>
         <div class="no-progress-icon">📊</div>
         <h2>Log in to see your progress</h2>
         <p>Use Log in at the top of this page. Your answers and progress will follow your account.</p>
@@ -113,7 +120,7 @@
 
       <!-- Progress content -->
       <div id="progress-content" hidden>
-        <section class="progress-card">
+        <section class="progress-card dashboard-lessons-card">
           <h2>Your lessons</h2>
           <p id="dashboard-lessons-intro">Choose a course below to get started. Your lessons will appear here as you practise.</p>
           <div id="dashboard-lessons"></div>
@@ -151,8 +158,9 @@
           </div>
         </section>
 
-        <section class="progress-card">
+        <section id="explore-courses" class="progress-card dashboard-courses-card">
           <h2>Explore courses</h2>
+          <p>A little practice goes a long way. Choose what you want to work on.</p>
           <div class="landing-paths-grid">
             <a class="landing-path-card" href="grammar/beginner/beginner-grammar.html"><div class="landing-path-content"><h3>Beginner grammar</h3><p>Build a strong foundation, one lesson at a time.</p></div></a>
             <a class="landing-path-card" href="grammar/intermediate/intermediate-grammar.html"><div class="landing-path-content"><h3>Intermediate grammar</h3><p>Practise useful structures and build confidence.</p></div></a>
@@ -170,14 +178,14 @@
         </section>
 
         <!-- Recent Activity -->
-        <section class="progress-card">
+        <section class="progress-card dashboard-recent-card">
           <div class="progress-section-title">
-            <h2>Recent Activity</h2>
+            <h2>Recent activity</h2>
           </div>
           <div id="recent-activity"></div>
         </section>
 
-        <section class="progress-card">
+        <section class="progress-card dashboard-settings-card">
           <details class="progress-settings">
             <summary>Import older answers</summary>
             <p>If you used this browser before account saving was available, you can add those answers to your account.</p>
@@ -239,7 +247,7 @@
   <script src="js/website-lesson.js" defer></script>
   <script src="js/core.js" defer></script>
   <script src="js/progress-tracking-module.js" defer></script>
-  <script src="js/my-progress.js" defer></script>
+  <script src="js/my-progress.js?v=20261019-dashboard" defer></script>
   <script src="js/student-dashboard.js" defer></script>
 </body>
 </html>

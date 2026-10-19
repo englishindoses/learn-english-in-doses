@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('reset-progress').disabled = !s.uid || s.status === 'loading';
     document.getElementById('import-old-progress').hidden = !s.uid;
     document.getElementById('progress-content').hidden = !s.uid;
-    document.getElementById('no-progress-message').style.display = !s.uid && s.status !== 'loading' ? 'block' : 'none';
+    document.getElementById('no-progress-message').hidden = Boolean(s.uid) || s.status === 'loading';
     text('overall-percentage', s.percentage + '%');
     text('overall-fraction', `${s.completed}/${s.total} lessons completed`);
     text('activities-count', s.activities); text('total-activities', s.totalActivities);

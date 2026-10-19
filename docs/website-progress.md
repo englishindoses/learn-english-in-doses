@@ -8,6 +8,8 @@ The lesson website saves progress for signed-in students. The Extra Practice app
 
 New students can browse five public courses immediately, with no UID mapping required. No other student's private lesson folder is assigned or advertised. Individual course assignments can be added later when the student's Firebase UID exists. The dashboard is hidden until an account is confirmed; signing out clears its student content.
 
+The dashboard uses the available screen width, with progress cards, a continuation panel and a responsive course grid. Its layout is in `css/student-dashboard.css`, scoped to `body.student-dashboard`. Keep lesson widths in the existing stylesheets and footer rules in `css/footer.css`; do not add inline styling to dashboard HTML.
+
 ## Behaviour
 
 - Answers are saved as they change, including unfinished exercises.

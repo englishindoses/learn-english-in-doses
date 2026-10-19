@@ -40,6 +40,7 @@ Keep detailed lesson rules in their existing documents rather than copying them 
 | --- | --- |
 | Root HTML | Homepage and level finder, beginner/intermediate/advanced landing pages, about, WhatsApp lesson enquiries, licence, grammar quiz and progress dashboard |
 | `student-dashboard.html`, `js/student-dashboard.js` | Landing page after sign-in: confirmed student's greeting, started lessons, public course choices and shared progress/continuation sections |
+| `css/student-dashboard.css` | Wide, responsive dashboard layout, scoped to `body.student-dashboard`; lesson widths and shared footer styling stay in their existing modules |
 | `grammar/beginner/` | Beginner grammar course, section reviews and speaking questions; `temp/` contains additional older material, not a canonical template |
 | `grammar/intermediate/` | Intermediate grammar index, lessons and quiz |
 | `grammar/advanced/` | Advanced grammar course, reference pages and downloadable reference PDFs |
