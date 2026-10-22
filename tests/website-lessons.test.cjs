@@ -183,3 +183,21 @@ test('student dashboard welcomes a new account and shows public courses', async 
     assert.deepEqual(result.errors, []);
   } finally { result.dom.window.close(); }
 });
+
+test('saved notice disappears after three seconds and returns for the next save', async () => {
+  const { dom, w, p } = await page(examples[0]);
+  try {
+    const notice = w.document.querySelector('.website-save-notice');
+    assert.equal(notice.hidden, false);
+    assert.match(notice.textContent, /Your progress is saved/);
+    await wait(3100);
+    assert.equal(notice.hidden, true);
+    p.completeLesson(examples[0]);
+    assert.equal(notice.hidden, false);
+    assert.match(notice.textContent, /Changes waiting to save/);
+    await p.flush();
+    assert.match(notice.textContent, /Your progress is saved/);
+    await wait(3100);
+    assert.equal(notice.hidden, true);
+  } finally { dom.window.close(); }
+});

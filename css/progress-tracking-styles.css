@@ -654,3 +654,6 @@
     grid-template-columns: 1fr;
   }
 }
+
+.website-save-notice[hidden] { display: none; }
+.website-lesson-completion { margin: 32px 0; }

@@ -16,7 +16,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   function render() {
     const s = progress.summary();
-    text('save-status', window.WebsiteLesson.statusText());
+    const saveStatus = document.getElementById('save-status');
+    window.WebsiteLesson.updateNotice(saveStatus.closest('.website-save-notice'), saveStatus);
     document.getElementById('retry-sync').hidden = s.status !== 'error';
     document.getElementById('reset-progress').disabled = !s.uid || s.status === 'loading';
     document.getElementById('import-old-progress').hidden = !s.uid;
@@ -42,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     const recent = document.getElementById('recent-activity'); recent.replaceChildren();
     const data = progress.getData();
-    const latest = l => Math.max(0, ...Object.values(data.lessons[l.path].activities).map(a => a.updatedAt || 0));
+    const latest = l => Math.max(0, data.lessons[l.path].completedAt || 0, ...Object.values(data.lessons[l.path].activities).map(a => a.updatedAt || 0));
     const visited = s.lessons.filter(l => l.started).sort((a, b) => latest(b) - latest(a));
     if (!visited.length) recent.append(el('p', 'Your lessons will appear here as you practise.'));
     else for (const lesson of visited.slice(0, 10)) {

@@ -12,10 +12,10 @@ The dashboard uses the available screen width, with progress cards, a continuati
 
 ## Behaviour
 
-- Answers are saved as they change, including unfinished exercises.
+- Answers are saved as they change, including unfinished exercises. Saved status disappears after three seconds; loading, pending saves and sync errors remain visible.
 - An activity is completed after every question has an answer and the student checks it. Incorrect answers count as attempted; scores remain separate from completion. Blank submissions do not complete an activity.
 - Matching is complete when every pair is matched. Flashcards are complete after every card has been viewed. Speaking checklists must be ticked; ungraded speaking/role-play tasks have a **Mark as practised** button.
-- A lesson is complete when all its registered activities are complete. Retrying an exercise does not remove an earned completion. Resetting website progress removes answers and completions.
+- A lesson is complete when all its registered activities are complete, or the student selects **Mark as complete** at the end of the lesson. Manual completion syncs separately and does not invent exercise answers or scores. Retrying an exercise does not remove an earned completion. Resetting website progress removes answers and completions.
 - Practice days count distinct dates on the student's local calendar: Monday to Sunday for this week, and the current calendar month. Viewing a page or restoring saved answers does not count as practice.
 - **My Progress** shows the last lesson worked on, its completed activities and either a continuation link or the next built lesson in its course index. Personal student pages appear in progress only after the student has worked on them.
 - Signed-out students can practise but their new answers are not saved. Switching accounts reloads the page to clear the previous student's answer controls and module state.

@@ -80,3 +80,5 @@ Roughly in the order I'd tackle them.
 - [x] Write the beginner grammar topic banks for the app. Done 28 Sep 2026: all 13 lessons on `beginner-grammar.html`, including Modal Verbs, which was missing from the app's list.
 - [ ] Write the travel topic banks for the app.
 - [ ] Proofread the new beginner grammar banks on a phone.
+
+- [x] Hide routine saved-progress notices, add manual lesson completion, and align dashboard/course colours with the website. Done 22 October 2026.

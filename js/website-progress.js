@@ -5,7 +5,7 @@
   'use strict';
   const clone = value => JSON.parse(JSON.stringify(value));
   const empty = () => ({ version: 2, epoch: 0, lessons: {}, days: [], last: null });
-  const blankQueue = epoch => ({ epoch, activities: {}, days: [], last: null });
+  const blankQueue = epoch => ({ epoch, activities: {}, completions: {}, days: [], last: null });
   const listeners = new Set();
   let uid = null, data = empty(), queue = blankQueue(0), transport = null;
   let generation = 0, timer = null, unsubscribe = null, saving = false, loaded = false;
@@ -53,6 +53,10 @@
       }
       out.lessons[path] = { ...lesson, activities: merged };
     }
+    for (const [path, at] of Object.entries(changes.completions || {})) {
+      const lesson = out.lessons[path] || { activities: {} };
+      out.lessons[path] = { ...lesson, completedAt: Math.max(lesson.completedAt || 0, at) };
+    }
     out.days = [...new Set([...out.days, ...(changes.days || [])])].sort();
     if (changes.last && (!out.last || changes.last.at >= out.last.at)) out.last = clone(changes.last);
     return out;
@@ -65,7 +69,7 @@
     catch { storageBlocked = true; }
   }
   function emit() { for (const fn of listeners) fn(); }
-  function pending() { return Object.keys(queue.activities).length > 0 || queue.days.length > 0 || Boolean(queue.last); }
+  function pending() { return Object.keys(queue.completions || {}).length > 0 || Object.keys(queue.activities).length > 0 || queue.days.length > 0 || Boolean(queue.last); }
   function schedule() {
     clearTimeout(timer);
     if (uid && loaded && pending()) timer = setTimeout(() => flush(), 700);
@@ -130,6 +134,15 @@
     data = merge(data, queue); status = loaded ? 'pending' : 'error'; persist(); emit(); schedule();
   }
 
+  function completeLesson(path) {
+    if (!uid || !loaded || !(global.WebsiteLessonCatalog || []).some(l => l.path === path)) return;
+    queue.completions ||= {};
+    queue.completions[path] = Date.now();
+    queue.days = [...new Set([...queue.days, day()])];
+    queue.last = { path, at: Date.now() };
+    data = merge(data, queue); status = 'pending'; persist(); emit(); schedule();
+  }
+
   async function flush() {
     clearTimeout(timer);
     if (!uid || !transport || saving) return;
@@ -157,6 +170,9 @@
           }
           if (queue.activities[path] && !Object.keys(queue.activities[path]).length) delete queue.activities[path];
         }
+        for (const [path, at] of Object.entries(batch.completions || {})) {
+          if (queue.completions?.[path] === at) delete queue.completions[path];
+        }
         queue.days = queue.days.filter(d => !batch.days.includes(d));
         if (JSON.stringify(queue.last) === JSON.stringify(batch.last)) queue.last = null;
       }
@@ -174,7 +190,7 @@
     let completed = 0, activities = 0, totalActivities = 0;
     const lessons = catalog.map(lesson => {
       const done = lesson.activities.filter(a => data.lessons[lesson.path]?.activities?.[a.id]?.completed).length;
-      const complete = lesson.activities.length > 0 && done === lesson.activities.length;
+      const complete = Boolean(data.lessons[lesson.path]?.completedAt) || (lesson.activities.length > 0 && done === lesson.activities.length);
       if (complete) completed++;
       activities += done; totalActivities += lesson.activities.length;
       return { ...lesson, done, complete, started: Boolean(data.lessons[lesson.path]) };
@@ -222,7 +238,7 @@
     return count;
   }
 
-  global.WebsiteProgress = { activate, record, flush, summary, reset, importLegacy, day, practiceCounts, merge, empty,
+  global.WebsiteProgress = { activate, record, completeLesson, flush, summary, reset, importLegacy, day, practiceCounts, merge, empty,
     getData: () => clone(data), getActivity: (path, id) => clone(data.lessons[path]?.activities?.[id] || null),
     subscribe(fn) { listeners.add(fn); return () => listeners.delete(fn); },
     get signedIn() { return Boolean(uid); } };

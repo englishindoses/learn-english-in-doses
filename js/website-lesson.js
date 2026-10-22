@@ -151,6 +151,22 @@
     return ({ loading: 'Loading your saved progress…', pending: 'Changes waiting to save…', saving: 'Saving your progress…', saved: 'Your progress is saved.' })[s.status] || '';
   }
 
+  const noticeStates = new WeakMap();
+  function updateNotice(notice, text) {
+    const message = statusText();
+    let state = noticeStates.get(notice);
+    if (!state) { state = {}; noticeStates.set(notice, state); }
+    if (state.message === message) return;
+    clearTimeout(state.timer);
+    state.message = message;
+    text.textContent = message;
+    notice.hidden = !message;
+    const summary = progress.summary();
+    if (summary.status === 'saved' && !summary.storageBlocked) {
+      state.timer = setTimeout(() => { notice.hidden = true; text.textContent = ''; }, 3000);
+    }
+  }
+
   function boot() {
     if (!lesson) return;
     const notice = document.createElement('div');
@@ -208,10 +224,25 @@
         saveTimer = setTimeout(() => { for (const item of states.values()) save(item); }, 80);
       }).observe(node, { subtree: true, childList: true, attributes: true, attributeFilter: ['class'] });
     }
+    const completion = document.createElement('div');
+    completion.className = 'website-lesson-completion';
+    const completeButton = document.createElement('button');
+    completeButton.type = 'button'; completeButton.className = 'check-btn';
+    const completeStatus = document.createElement('p'); completeStatus.setAttribute('role', 'status');
+    completeButton.addEventListener('click', () => {
+      for (const state of states.values()) save(state);
+      progress.completeLesson(path);
+    });
+    completion.append(completeButton, completeStatus);
+    document.querySelector('main')?.append(completion);
     const update = () => {
       const summary = progress.summary();
-      text.textContent = statusText(); retry.hidden = summary.status !== 'error';
+      updateNotice(notice, text); retry.hidden = summary.status !== 'error';
       const waiting = summary.status === 'loading';
+      const complete = summary.lessons.find(l => l.path === path)?.complete;
+      completeButton.textContent = complete ? 'Completed ?' : 'Mark as complete';
+      completeButton.disabled = complete || !summary.uid || waiting;
+      completeStatus.textContent = !summary.uid && !waiting ? 'Log in to save lesson completion.' : '';
       for (const state of states.values()) {
         state.node.inert = waiting;
         const check = checkButton(state); if (check) check.disabled = waiting;
@@ -236,6 +267,6 @@
 
   // Legacy activity modules must not load shared browser answers into an account.
   // Tour-guide pages do not load this script and retain their explicit opt-out.
-  window.WebsiteLesson = { active: Boolean(lesson), statusText, root, snapshot };
+  window.WebsiteLesson = { active: Boolean(lesson), statusText, updateNotice, root, snapshot };
   document.addEventListener('DOMContentLoaded', () => setTimeout(boot, 0));
 })();

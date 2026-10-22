@@ -1,5 +1,6 @@
 /* Dashboard layout only. Lesson widths and the shared footer are unchanged. */
 .student-dashboard {
+  --streak-color: var(--accent-color);
   background: var(--card-bg);
 }
 
@@ -127,7 +128,7 @@
 }
 
 .student-dashboard .streak-card {
-  border-top: 3px solid var(--secondary-accent);
+  border-top: 3px solid var(--accent-color);
 }
 
 .student-dashboard #continue-learning {
@@ -156,8 +157,8 @@
 
 .student-dashboard #continue-learning .nav-button {
   display: inline-block;
-  background: var(--secondary-accent);
-  color: #1b263b;
+  background: var(--accent-color);
+  color: #ffffff;
   font-weight: 700;
 }
 
@@ -208,17 +209,16 @@
   text-decoration: none;
 }
 
-.student-dashboard .landing-path-card:nth-child(1),
-.student-dashboard .landing-path-card:nth-child(5) {
-  border-top-color: #237c63;
+.student-dashboard .landing-path-card[data-level="beginner"] {
+  border-top-color: #4caf50;
 }
 
-.student-dashboard .landing-path-card:nth-child(2) {
-  border-top-color: var(--secondary-accent);
+.student-dashboard .landing-path-card[data-level="intermediate"] {
+  border-top-color: #fca421;
 }
 
-.student-dashboard .landing-path-card:nth-child(3) {
-  border-top-color: #8464bb;
+.student-dashboard .landing-path-card[data-level="advanced"] {
+  border-top-color: #1b263b;
 }
 
 .student-dashboard .landing-path-content {
@@ -329,3 +329,7 @@
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+[data-theme="dark"] .student-dashboard .landing-path-card[data-level="beginner"] { border-top-color: #5ab75e; }
+[data-theme="dark"] .student-dashboard .landing-path-card[data-level="intermediate"] { border-top-color: #ffac33; }
+[data-theme="dark"] .student-dashboard .landing-path-card[data-level="advanced"] { border-top-color: #3498db; }

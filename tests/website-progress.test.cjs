@@ -127,3 +127,19 @@ test('explicit legacy import preserves the original and does not invent practice
   assert.equal(p.getActivity(catalog[0].path, 'mcq').answers.choicesById, undefined);
   assert.equal(p.getActivity(catalog[0].path, 'mcq').answers.choices[0], 1);
 });
+
+test('manual completion syncs without completing exercises and survives reload and reset', async () => {
+  const { p, store } = client(); const c = cloud(p);
+  await p.activate('alice', c.transport);
+  p.completeLesson(catalog[0].path);
+  assert.equal(p.summary().completed, 1);
+  assert.equal(p.summary().activities, 0);
+  assert.equal(p.summary().next.path, catalog[1].path);
+  assert.equal(p.summary().week, 1);
+  await p.flush();
+  const next = client(store).p; await next.activate('alice', c.transport);
+  assert.equal(next.summary().completed, 1);
+  assert.equal(next.getActivity(catalog[0].path, 'mcq'), null);
+  await next.reset();
+  assert.equal(next.summary().completed, 0);
+});
