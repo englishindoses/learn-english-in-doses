@@ -613,7 +613,7 @@ const LevelTestQuiz = (function() {
       } else if (level === "intermediate") {
         recommendationElement.textContent = "You should start with the Beginner level to build a strong foundation.";
       } else {
-        recommendationElement.textContent = "This level is challenging for you. We recommend starting with Intermediate or Beginner level.";
+        recommendationElement.textContent = "This level is challenging for you. Start with Intermediate or Beginner level.";
       }
     } else if (score <= 3) {
       if (level === "beginner") {
