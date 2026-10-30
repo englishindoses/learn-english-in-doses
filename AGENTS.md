@@ -118,6 +118,8 @@ For `students/tour-guide/`, preserve all course-specific rules in its `CLAUDE.md
 
 ## Working and verification
 
+- **Reassess neutrally when questioned.** Step back and examine the topic, the teaching aim and the actual content before replying. The user may be right, wrong or partly right. Check the evidence and explain the facts; do not defend earlier output by default or agree without reassessing.
+- **Context for this preference (30 October 2026):** In Advanced Quantifiers, the assistant presented compatible quantifier–noun pairings as a collocations table without establishing that they taught conventional, frequent pairings. When questioned, it defended the general definition of collocation instead of evaluating the table's accuracy and teaching value. The user explicitly asked that this incident and the neutral reassessment preference be recorded.
 - Work in the existing checkout on `main`; do not create branches unless the user asks. Keep changes focused and preserve unrelated modifications. Inspect `git status` before and after work.
 - Do not commit or push solely because this file was read. Follow the user's requested task and any explicit session authorisation; the older `CLAUDE.md` preference for direct commits does not make every task a publishing request.
 - Stay inside this project unless the user points to another location. The user normally previews changes; do not launch a browser or server unnecessarily.
