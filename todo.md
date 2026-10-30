@@ -1,7 +1,7 @@
 # To Do
 
 Working list for tidying up the project and its documentation.
-Last updated: 28 September 2026.
+Last updated: 30 October 2026.
 
 ---
 
@@ -58,6 +58,9 @@ Roughly in the order I'd tackle them.
 - [ ] **Reference page rules.** Pages like `gerund-infinitive-reference.html` don't follow the lesson rules. Decide what they do follow.
 
 ## 4. Tidy-up
+
+- [ ] **Low priority — homepage quiz keyboard access.** Make answer choices keyboard accessible while preserving their current appearance and mouse/touch behaviour. Radio buttons previously caused problems; investigate those issues before choosing an implementation. Deferred by request on 30 October 2026.
+- [ ] **Low priority — homepage image sizes.** Optimise homepage images, especially the approximately 13 MB `images/woman-with-speech-transp.svg` hero illustration, while preserving visual quality. Deferred by request on 30 October 2026.
 
 - [x] Delete `grammar/advanced/advanced-grammar-explanation-template.html` (outdated, conflicts with the current guidelines).
 - [x] Delete `files/README.md` (documented a folder structure that doesn't exist).

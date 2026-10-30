@@ -405,8 +405,22 @@ a:hover {
 
 .hero-buttons {
   display: flex;
+  flex-wrap: wrap;
   gap: 15px;
   margin-top: 30px;
+}
+
+.hero-buttons > a,
+.cta-buttons > a {
+  box-sizing: border-box;
+  max-width: 100%;
+  text-align: center;
+}
+
+.path-content .hero-buttons {
+  flex-direction: column;
+  align-items: stretch;
+  margin-top: 0;
 }
 
 /* Stats Section */
@@ -872,6 +886,8 @@ a:hover {
 
 /* Floating CTA Button */
 .floating-cta {
+  box-sizing: border-box;
+  max-width: calc(100vw - 50px);
   position: fixed;
   bottom: 25px;
   right: 25px;
