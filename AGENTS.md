@@ -14,6 +14,8 @@ This is an ESL/EFL teaching website with a separate Extra Practice progressive w
 
 Keep detailed lesson rules in their existing documents rather than copying them into this file. When guidance conflicts, use the user's current instructions, then the applicable specific standard and current implementation; clarify unresolved product decisions.
 
+**Lesson guideline compliance:** Follow the applicable content and HTML guidelines when writing or revising lessons. Do not substitute your own preferred structure or add extra explanations, caveats, notes or sections beyond what the guidelines and the user's instructions call for. Before finishing, check the actual edited content against those requirements; reading the guidelines alone is not sufficient. Keep explanations concise and focused on the grammar being taught.
+
 ## Architecture and deployment
 
 ### Main teaching website

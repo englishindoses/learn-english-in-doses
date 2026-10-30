@@ -129,13 +129,14 @@ Each grammar point section should contain the following elements in this order:
 Every note opens with a bolded label. There are three, and no others:
 
 - **"Native speaker note:"** — what native speakers actually do: how the grammar sounds in casual speech, how they shorten or simplify the form, common informal alternatives, subtle connotations, what they avoid, or how they express the same thing in real life (sometimes by not using the structure at all).
-- **"Important:"** — a restriction, an exception, or a rule that stops a predictable error.
+- **"Important:"** — use only when the user explicitly requests it. Otherwise, put any necessary restriction or exception in the main explanation.
 - **"Remember:"** — a reminder of something taught earlier.
 
 Rules:
 
 - Include a native speaker note with each grammar point **as long as there is something of value to say**. If there is nothing useful, leave it out — never write one for the sake of having one.
-- Add **"Important:"** and **"Remember:"** notes only if genuinely necessary, and never to repeat something already said.
+- Do not add **"Important:"** notes unless the user explicitly requests them. Add **"Remember:"** notes only if genuinely necessary, and never to repeat something already said.
+- Use at most one native speaker note per grammar point section, and only when it adds useful information about real-life usage.
 - Keep a note to 1–3 sentences.
 
 **Example:**

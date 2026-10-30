@@ -23,6 +23,9 @@ All applied 6 August 2026, checked against the live pages. Both docs now live in
 
 ## 2. Page fixes found during the audit
 
+- [x] **Advanced noun phrases sequence.** Removed the Generic vs. Specific Reference with Articles lesson. Built `abstract-quantifiers.html` and placed it after Compound Nouns — Part 2, before the planned Nominalisation lesson. Updated navigation and regenerated the website lesson catalogue. Done 22 October 2026.
+  - Revised as **Advanced Quantifiers** on 27 October 2026: simplified explanations and objectives, corrected forms and highlighting, and rewrote quiz wording and feedback. Removed Important notes and recorded the note preference in the advanced content guidelines. Restored the user's three requested sections: quantifiers and meanings, common natural collocations, and nuance. Excluded “to some degree / extent” throughout.
+
 - [x] `grammar/advanced/adverb-position.html:24` — remove the `button-shine.css` link (404). Done 6 Aug 2026.
 - [x] `grammar/advanced/compound-nouns.html` — Next button pointed at a page that didn't exist. Done 25 Aug 2026: repointed to `compound-nouns2.html`.
 - [ ] Add the missing Review Grammar link + `id="summary"` to `gerund-infinitive.html`, `subjunctive1.html`, `subjunctive2.html`, `subjunctive-revision.html`.
@@ -80,5 +83,17 @@ Roughly in the order I'd tackle them.
 - [x] Write the beginner grammar topic banks for the app. Done 28 Sep 2026: all 13 lessons on `beginner-grammar.html`, including Modal Verbs, which was missing from the app's list.
 - [ ] Write the travel topic banks for the app.
 - [ ] Proofread the new beginner grammar banks on a phone.
+
+## 6. Personal student pages
+
+Planned 10 October 2026. When a private student logs in, their account menu shows a **My lessons** link to their own folder in `students/`. Other students see their own link, or no link at all. The pages are not secret: anyone with the address can still open them, and that is fine.
+
+- [ ] **A list in `js/account.js` matching students to folders.** Use each student's Firebase **User UID**, not their email, so no email addresses appear in the site's code. It works whether they log in with Google or a username. First entry: Hebert → `students/hb/`.
+- [ ] **Show My lessons in the account menu** (beside My Progress and Practice app) only when the signed-in user is on the list.
+- [ ] **An index page per student**, starting with `students/hb/index.html`, listing their lessons. Hebert has one so far: `week1-past-simple.html`. Add each new lesson to it.
+- [ ] **Get Hebert's User UID.** He logs in to the website once, then copy it from the Firebase console: project `english-in-doses` → Authentication → Users → User UID column.
+- [ ] **Check the Firebase database rules** so each signed-in user can only read and write their own data. A UID on its own gives nobody access to an account, but loose rules would let someone who knows it see or change that student's saved data.
+
+Adding a student later: one line in the list, plus their folder and index page.
 
 - [x] Hide routine saved-progress notices, add manual lesson completion, and align dashboard/course colours with the website. Done 22 October 2026.
