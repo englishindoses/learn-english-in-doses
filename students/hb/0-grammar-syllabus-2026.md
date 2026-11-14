@@ -51,9 +51,9 @@ Every teaching week ends with an interactive practice set as homework.
 | Wk | Focus | Kills |
 |---|---|---|
 | **0** ✅ | **Auxiliary rule**: *do/does/did/can/must* + **bare infinitive**, questions & negatives — *plus* present simple questions with *do/does*. **DONE** (worksheet + interactive homework) | *didn't bought*, *can to*, *Has your father drive* |
-| **1** ✅ | **Past simple** — *did* + base verb, irregular forms, negatives, question word order. **DONE** (interactive lesson `week1-past-simple.html`) | *didn't bought*, *Where did you went* |
-| **2** ✅ | **Modals** — *can/can't, must/mustn't, should*: same bare-infinitive rule, new auxiliaries. **DONE** (interactive lesson `modals-can-must-should.html`) | *can't to drive*, *can to* |
-| 3 | **REVISION + PROGRESS CHECK 1** — auxiliary system across present, past & modals. No new grammar. | |
+| **1** ✅ | **Past simple** — *did* + base verb, irregular forms, negatives, question word order. **DONE** (interactive lesson `4-past-simple.html`) | *didn't bought*, *Where did you went* |
+| **2** ✅ | **Modals** — *can/can't, must/mustn't, should*: same bare-infinitive rule, new auxiliaries. **DONE** (interactive lesson `5-modals-can-must-should.html`) | *can't to drive*, *can to* |
+| 3 | **REVISION + PROGRESS CHECK 1** — auxiliary system across present, past & modals. No new grammar. Revision mini test: `6-block-a-revision.html`. | |
 
 ### Block B — Time reference
 | Wk | Focus | Kills |

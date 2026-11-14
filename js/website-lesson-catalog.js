@@ -1609,36 +1609,7 @@ window.WebsiteLessonCatalog = [
     "course": "Travel — Beginner Travel"
   },
   {
-    "path": "students/hb/modals-can-must-should.html",
-    "title": "Modal Verbs: Can, Must and Should",
-    "activities": [
-      {
-        "id": "choose-correct",
-        "type": "choose",
-        "total": 8
-      },
-      {
-        "id": "drag-drop",
-        "type": "drag",
-        "total": 7
-      },
-      {
-        "id": "mcq",
-        "type": "mcq",
-        "total": 8
-      },
-      {
-        "id": "practice-task-4",
-        "type": "manual",
-        "total": 1,
-        "label": "Speaking"
-      }
-    ],
-    "next": null,
-    "course": "Personal lessons"
-  },
-  {
-    "path": "students/hb/unit1-practice.html",
+    "path": "students/hb/3-unit1-practice.html",
     "title": "Unit 1 Practice",
     "activities": [
       {
@@ -1672,7 +1643,7 @@ window.WebsiteLessonCatalog = [
     "course": "Personal lessons"
   },
   {
-    "path": "students/hb/week1-past-simple.html",
+    "path": "students/hb/4-past-simple.html",
     "title": "Simple Past Tense - Review",
     "activities": [
       {
@@ -1699,6 +1670,68 @@ window.WebsiteLessonCatalog = [
         "id": "word-gap-fill",
         "type": "wordgap",
         "total": 10
+      }
+    ],
+    "next": null,
+    "course": "Personal lessons"
+  },
+  {
+    "path": "students/hb/5-modals-can-must-should.html",
+    "title": "Modal Verbs: Can, Must and Should",
+    "activities": [
+      {
+        "id": "choose-correct",
+        "type": "choose",
+        "total": 8
+      },
+      {
+        "id": "drag-drop",
+        "type": "drag",
+        "total": 7
+      },
+      {
+        "id": "mcq",
+        "type": "mcq",
+        "total": 8
+      },
+      {
+        "id": "practice-task-4",
+        "type": "manual",
+        "total": 1,
+        "label": "Speaking"
+      }
+    ],
+    "next": null,
+    "course": "Personal lessons"
+  },
+  {
+    "path": "students/hb/6-block-a-revision.html",
+    "title": "Block A Revision",
+    "activities": [
+      {
+        "id": "warm-up",
+        "type": "choose",
+        "total": 3
+      },
+      {
+        "id": "present-order",
+        "type": "drag",
+        "total": 8
+      },
+      {
+        "id": "past-forms",
+        "type": "gap",
+        "total": 8
+      },
+      {
+        "id": "mcq",
+        "type": "mcq",
+        "total": 8
+      },
+      {
+        "id": "mixed-test",
+        "type": "fix",
+        "total": 8
       }
     ],
     "next": null,

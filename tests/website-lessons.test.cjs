@@ -83,7 +83,8 @@ const examples = [
   'grammar/intermediate/still-vs-yet.html',
   'vocabulary/beginner/numbers.html',
   'travel/beginner-travel/Unit1/airport-lesson1.html',
-  'students/hb/week1-past-simple.html',
+  'students/hb/4-past-simple.html',
+  'students/hb/6-block-a-revision.html',
 ];
 const registry = { window: {} };
 require('node:vm').runInNewContext(fs.readFileSync('js/website-lesson-catalog.js', 'utf8'), registry);
@@ -200,4 +201,38 @@ test('saved notice disappears after three seconds and returns for the next save'
     await wait(3100);
     assert.equal(notice.hidden, true);
   } finally { dom.window.close(); }
+});
+
+
+test('Block A revision accepts its answer key, scores each activity and restarts independently', async () => {
+  const result = await page('students/hb/6-block-a-revision.html');
+  try {
+    const { w } = result;
+    const doc = w.document;
+    const choose = doc.getElementById('warm-up');
+    choose.querySelectorAll('.cc-choice-group').forEach(group => {
+      [...group.querySelectorAll('.cc-choice')].find(choice => choice.dataset.value === group.dataset.answer).click();
+    });
+    const order = doc.getElementById('present-order');
+    order.querySelectorAll('.question').forEach(question => {
+      const zone = question.querySelector('.drop-zone');
+      const items = [...question.querySelectorAll('.drag-item')];
+      zone.dataset.answer.split(' ').forEach(word => zone.appendChild(items.find(item => item.textContent === word && item.parentNode !== zone)));
+    });
+    doc.querySelectorAll('.gap-input, .fs-input').forEach(input => {
+      input.value = input.dataset.answer.split('|')[0];
+      input.dispatchEvent(new w.Event('input', { bubbles: true }));
+    });
+    const modalAnswers = [1, 0, 2, 0, 1, 2, 1, 0];
+    modalAnswers.forEach((answer, index) => doc.querySelector(`#q${index + 1} .option[data-index="${answer}"]`).click());
+    const totals = { 'warm-up': 3, 'present-order': 8, 'past-forms': 8, mcq: 8, 'mixed-test': 8 };
+    for (const [id, total] of Object.entries(totals)) {
+      doc.getElementById(id + '-submit').click();
+      assert.equal(doc.querySelector('#' + id + '-score span').textContent, String(total), id + ': full score');
+    }
+    for (const id of Object.keys(totals)) doc.getElementById(id + '-restart').click();
+    assert.equal(doc.querySelectorAll('.cc-choice.selected, .option.selected, .drop-zone .drag-item').length, 0);
+    assert.ok([...doc.querySelectorAll('.gap-input, .fs-input')].every(input => input.value === '' && !input.readOnly));
+    assert.deepEqual(result.errors, []);
+  } finally { result.dom.window.close(); }
 });
