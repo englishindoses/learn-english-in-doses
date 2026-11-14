@@ -834,6 +834,14 @@ a:hover {
   text-decoration: none;
 }
 
+.hero-section .btn-primary {
+  background-color: var(--accent-color);
+}
+
+.hero-section .btn-primary:hover {
+  background-color: #2980b9;
+}
+
 .btn-secondary {
   background-color: transparent;
   color: white;
