@@ -333,3 +333,35 @@
 [data-theme="dark"] .student-dashboard .landing-path-card[data-level="beginner"] { border-top-color: #5ab75e; }
 [data-theme="dark"] .student-dashboard .landing-path-card[data-level="intermediate"] { border-top-color: #ffac33; }
 [data-theme="dark"] .student-dashboard .landing-path-card[data-level="advanced"] { border-top-color: #3498db; }
+
+.student-dashboard #student-lesson-list {
+  margin-top: 24px;
+}
+
+.student-dashboard #student-lesson-list .activity-list {
+  padding-left: 28px;
+  list-style: decimal;
+}
+
+.student-dashboard #student-lesson-list .activity-item {
+  display: list-item;
+  overflow-wrap: anywhere;
+}
+
+.student-dashboard.student-lessons {
+  --accent-color: #216b9d;
+  --link-color: #216b9d;
+}
+
+[data-theme="dark"] .student-dashboard.student-lessons {
+  --link-color: #8ac6f1;
+}
+
+.student-lessons .activity-meta,
+.student-lessons .stat-label {
+  color: var(--text-color);
+}
+
+.student-lessons .nav-button:hover {
+  background-color: #1c5d89;
+}

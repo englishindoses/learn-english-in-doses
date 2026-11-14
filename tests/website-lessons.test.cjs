@@ -236,3 +236,44 @@ test('Block A revision accepts its answer key, scores each activity and restarts
     assert.deepEqual(result.errors, []);
   } finally { result.dom.window.close(); }
 });
+
+
+test('HB landing lists every lesson before sign-in and clears account progress on sign-out', async () => {
+  const result = await page('students/hb/index.html');
+  try {
+    const { w, p } = result;
+    const doc = w.document;
+    assert.equal(doc.querySelectorAll('#student-lesson-list .activity-title').length, 6);
+    assert.equal(doc.getElementById('course-lessons').textContent, '0/4');
+    assert.equal(doc.getElementById('progress-content').hidden, false);
+    assert.ok(doc.querySelector('#continue-learning a').href.endsWith('/students/hb/3-unit1-practice.html'));
+    const lesson = w.WebsiteLessonCatalog.find(l => l.path === 'students/hb/3-unit1-practice.html');
+    for (const activity of lesson.activities) p.record(lesson.path, activity.id, {
+      answers: {}, answered: activity.total, total: activity.total, completed: true, score: activity.total,
+    });
+    assert.equal(doc.getElementById('course-lessons').textContent, '1/4');
+    assert.ok(doc.querySelector('#continue-learning a').href.endsWith('/students/hb/4-past-simple.html'));
+    await p.activate(null, null);
+    assert.equal(doc.getElementById('progress-content').hidden, true);
+    assert.equal(doc.getElementById('no-progress-message').hidden, false);
+    assert.equal(doc.querySelectorAll('#student-lesson-list .activity-title').length, 6);
+    assert.ok([...doc.querySelectorAll('[data-lesson-status]')].every(n => n.textContent === 'Log in to save your progress.'));
+    assert.equal(doc.querySelector('#continue-learning a'), null);
+    assert.deepEqual(result.errors, []);
+  } finally { result.dom.window.close(); }
+});
+
+test('HB landing counts only listed interactive lessons and ignores unrelated continuation', async () => {
+  const result = await page('students/hb/index.html');
+  try {
+    const { w, p } = result;
+    const other = w.WebsiteLessonCatalog.find(l => l.path === 'grammar/beginner/adverbs-of-frequency.html');
+    for (const activity of other.activities) p.record(other.path, activity.id, {
+      answers: {}, answered: activity.total, total: activity.total, completed: true, score: activity.total,
+    });
+    assert.equal(w.document.getElementById('course-lessons').textContent, '0/4');
+    assert.equal(w.document.getElementById('course-activities').textContent, '0');
+    assert.ok(w.document.querySelector('#continue-learning a').href.endsWith('/students/hb/3-unit1-practice.html'));
+    assert.deepEqual(result.errors, []);
+  } finally { result.dom.window.close(); }
+});

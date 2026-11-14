@@ -93,7 +93,7 @@ Planned 10 October 2026. When a private student logs in, their account menu show
 
 - [ ] **A list in `js/account.js` matching students to folders.** Use each student's Firebase **User UID**, not their email, so no email addresses appear in the site's code. It works whether they log in with Google or a username. First entry: Hebert → `students/hb/`.
 - [ ] **Show My lessons in the account menu** (beside My Progress and Practice app) only when the signed-in user is on the list.
-- [ ] **An index page per student**, starting with `students/hb/index.html`, listing their lessons. Existing interactive lessons: `3-unit1-practice.html`, `4-past-simple.html` and `5-modals-can-must-should.html`. Add each new lesson to it.
+- [x] **HB student landing page** at `students/hb/index.html`: all six lessons/worksheets in order, scoped interactive progress and continuation, plus links back from HTML lessons. Implemented 14 November 2026. Reuse the shared `js/student-lessons.js` and dashboard styles for future students. Automatic account routing still needs the student UID.
 - [ ] **Get Hebert's User UID.** He logs in to the website once, then copy it from the Firebase console: project `english-in-doses` → Authentication → Users → User UID column.
 - [ ] **Check the Firebase database rules** so each signed-in user can only read and write their own data. A UID on its own gives nobody access to an account, but loose rules would let someone who knows it see or change that student's saved data.
 

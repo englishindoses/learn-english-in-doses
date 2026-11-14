@@ -64,3 +64,11 @@ Remove-Item Env:ALL_LESSONS
 ```
 
 The DOM tests execute the real lesson scripts and page initialisers, check answers, save, reopen and restore each page. Firebase is replaced by a test transport; these tests do not prove deployed rules, actual Google sign-in or production network behaviour.
+
+## Individual student landing pages
+
+`students/hb/index.html` lists the student's lessons and worksheets in teaching order, including lessons not yet started. The list works without an account; the dashboard appears after sign-in and successful progress loading. Its lesson/activity totals and continuation use only the interactive lessons listed on that page. Practice-day counts cover the signed-in account's website practice. Worksheets and PDFs have no automatic completion state.
+
+`js/student-lessons.js` reads the authored links marked with `data-lesson-status` inside `#student-lesson-list` and matches them to the generated catalogue. New student pages can reuse this markup, script and `css/student-dashboard.css`; supply that student's own lesson links. Keep pages unlisted with `noindex, nofollow`. HTML lessons link back to their folder's `index.html`.
+
+The URL does not identify an account or load another student's records. Progress always belongs to the confirmed signed-in account. HB does not yet have an account UID, so no account mapping or automatic personal-page redirect is configured. The existing public homepage and default dashboard behaviour remain unchanged.

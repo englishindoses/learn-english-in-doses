@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Your English lessons, worksheets and saved practice progress.">
+  <title>My Lessons - English in Doses</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../../images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../images/favicon-16x16.png">
+  
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../css/base.css?v=20261018-columns">
+  <link rel="stylesheet" href="../../css/activities.css">
+  <link rel="stylesheet" href="../../css/progress-tracking-styles.css?v=20261018-layout2">
+  <link rel="stylesheet" href="../../css/student-dashboard.css?v=20261114-student-lessons">
+</head>
+<body class="student-dashboard student-lessons">
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <!-- Theme toggle button -->
+  <div class="theme-toggle-container">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="light-icon" aria-hidden="true">☀️</span>
+      <span class="dark-icon" aria-hidden="true">🌙</span>
+    </button>
+  </div>
+
+  <!-- Main navigation -->
+  <nav class="main-navigation">
+    <a href="../../home.html" class="site-logo">
+      <img src="../../images/my-logo.svg" alt="English in Doses" width="150" height="auto">
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <div class="nav-links">
+      <a href="../../home.html" class="nav-link">Home</a>
+    <a href="../../about.html" class="nav-link">About</a>
+    <a href="../../home.html#quiz-section" class="nav-link">Find Your Level</a>
+    <div class="nav-dropdown">
+
+      <a href="../../beginner-landing.html" class="nav-link dropdown-toggle">Beginner</a>
+
+      <div class="dropdown-menu">
+
+        <a href="../../grammar/beginner/beginner-grammar.html" class="dropdown-item">Beginner Grammar</a>
+
+        <a href="../../vocabulary/beginner/beginner-vocabulary.html" class="dropdown-item">Beginner Vocabulary</a>
+
+        <a href="../../travel/beginner-travel/travel-english.html" class="dropdown-item">Beginner Travel</a>
+
+      </div>
+
+    </div>
+
+    <div class="nav-dropdown">
+
+      <a href="../../intermediate-landing.html" class="nav-link dropdown-toggle">Intermediate</a>
+
+      <div class="dropdown-menu">
+
+        <a href="../../grammar/intermediate/intermediate-grammar.html" class="dropdown-item">Intermediate Grammar</a>
+
+      </div>
+
+    </div>
+
+    <div class="nav-dropdown">
+
+      <a href="../../advanced-landing.html" class="nav-link dropdown-toggle">Advanced</a>
+
+      <div class="dropdown-menu">
+
+        <a href="../../grammar/advanced/advanced-grammar.html" class="dropdown-item">Advanced Grammar</a>
+
+      </div>
+
+    </div>
+    <a href="../../my-progress.html" class="nav-link">My Progress</a>
+    <a href="../../booking-page.html" class="nav-link">Book a Lesson</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs" aria-label="breadcrumb">
+      <span class="breadcrumb-item"><a href="../../home.html">Home</a></span>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-item">My Lessons</span>
+    </div>
+
+    <main id="main-content">
+      <header class="dashboard-header">
+        <div><h1 id="student-lessons-greeting">My Lessons</h1><p>Your lessons and practice, in one place.</p></div>
+        <a href="#student-lesson-list" class="nav-button">View lessons &darr;</a>
+      </header>
+      <div class="website-save-notice"><span id="save-status" role="status">Checking your account...</span><button type="button" id="retry-sync" class="check-btn" hidden>Retry</button></div>
+      <div id="no-progress-message" class="no-progress-message" hidden><h2>Save your progress</h2><p>You can open every lesson below. Use Log in at the top of this page to create an account or sign in and save your answers.</p></div>
+      <div id="progress-content" hidden>
+        <section class="stats-grid" aria-label="Your progress">
+          <div class="stat-card"><div class="stat-label">Lesson progress</div><div id="course-percentage" class="stat-number">0%</div><div class="stat-label">interactive lessons</div></div>
+          <div class="stat-card"><div class="stat-label">Lessons completed</div><div id="course-lessons" class="stat-number">0/4</div><div class="stat-label">interactive lessons</div></div>
+          <div class="stat-card"><div class="stat-label">Activities completed</div><div id="course-activities" class="stat-number">0</div><div id="course-activities-total" class="stat-label"></div></div>
+          <div class="stat-card"><div class="stat-label">Practice days this week</div><div id="week-days" class="stat-number">0</div><div class="stat-label">across your website lessons</div></div>
+          <div class="stat-card"><div class="stat-label">Practice days this month</div><div id="month-days" class="stat-number">0</div><div class="stat-label">across your website lessons</div></div>
+        </section>
+        <section id="continue-learning" class="progress-card" aria-label="Continue learning"></section>
+      </div>
+      <section id="student-lesson-list" class="progress-card">
+        <h2>Your lessons</h2><p>Follow the lessons in order, or choose one to revise.</p>
+        <ol class="activity-list">
+<li class="activity-item"><div class="activity-details"><a class="activity-title" href="1-auxiliary-rule-worksheet.html">The auxiliary rule</a><p class="activity-meta">Worksheet</p></div></li>
+<li class="activity-item"><div class="activity-details"><a class="activity-title" href="2-present-simple-questions-do-does-worksheet.pdf">Present simple questions: do and does</a><p class="activity-meta">PDF worksheet</p></div></li>
+<li class="activity-item"><div class="activity-details"><a class="activity-title" href="3-unit1-practice.html">Unit 1 practice</a><p class="activity-meta">Interactive practice</p><p class="activity-meta" data-lesson-status>Log in to save your progress.</p></div></li>
+<li class="activity-item"><div class="activity-details"><a class="activity-title" href="4-past-simple.html">Past simple</a><p class="activity-meta">Interactive lesson</p><p class="activity-meta" data-lesson-status>Log in to save your progress.</p></div></li>
+<li class="activity-item"><div class="activity-details"><a class="activity-title" href="5-modals-can-must-should.html">Modal verbs: can, must and should</a><p class="activity-meta">Interactive lesson</p><p class="activity-meta" data-lesson-status>Log in to save your progress.</p></div></li>
+<li class="activity-item"><div class="activity-details"><a class="activity-title" href="6-block-a-revision.html">Block A revision and mini test</a><p class="activity-meta">Revision</p><p class="activity-meta" data-lesson-status>Log in to save your progress.</p></div></li>
+        </ol>
+      </section>
+      <p><a href="../../student-dashboard.html">View all website progress</a></p>
+    </main>
+  </div>
+<footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="../../home.html">Home</a></li>
+          <li><a href="../../home.html#quiz-section">Find Your Level</a></li>
+          <li><a href="../../my-progress.html">My Progress</a></li>
+          <li><a href="../../booking-page.html">Book a Lesson</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Learn English</h3>
+        <ul>
+          <li><a href="../../beginner-landing.html">Beginner</a></li>
+          <li><a href="../../intermediate-landing.html">Intermediate</a></li>
+          <li><a href="../../advanced-landing.html">Advanced</a></li>
+          <li><a href="../../travel/beginner-travel/travel-english.html">Travel English</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>About</h3>
+        <ul>
+          <li><a href="../../about.html">About</a></li>
+          <li><a href="../../license.html">Licensing Information</a></li>
+          <li><a href="https://www.instagram.com/englishindoses/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025–2026 English in Doses | All rights reserved</p>
+    </div>
+  </footer>
+
+<script src="../../js/website-lesson-catalog.js" defer></script>
+<script src="../../js/website-progress.js" defer></script>
+<script src="../../js/website-lesson.js" defer></script>
+<script src="../../js/core.js" defer></script>
+<script src="../../js/student-lessons.js" defer></script>
+</body>
+</html>
