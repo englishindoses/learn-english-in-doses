@@ -181,6 +181,7 @@
       let node = document.getElementById(spec.id);
       if (spec.type === 'manual') {
         node ||= [...document.querySelectorAll('h2')].find(h => h.textContent.trim() === spec.label)?.closest('section');
+        if (node?.hasAttribute('data-untracked')) continue;
         if (node) {
           const button = document.createElement('button');
           button.type = 'button'; button.className = 'check-btn website-practice-done';
