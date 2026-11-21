@@ -1,0 +1,76 @@
+﻿.sorting-activity .phrase-bank,
+.sorting-activity .zone-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.sorting-activity .phrase-bank,
+.sorting-activity .sort-zone {
+    padding: 1rem;
+    border: 2px dashed var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-color);
+}
+
+.sorting-activity .phrase-bank {
+    min-height: 4rem;
+    margin-bottom: 1rem;
+}
+
+.sorting-activity .phrase,
+.sorting-activity .zone-heading {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--accent-color);
+    border-radius: 5px;
+    background: var(--card-bg);
+    color: var(--text-color);
+    font: inherit;
+    cursor: pointer;
+}
+
+.sorting-activity .phrase:hover,
+.sorting-activity .phrase.selected,
+.sorting-activity .zone-heading:hover {
+    background: var(--note-bg);
+}
+
+.sorting-activity .phrase.selected,
+.sorting-activity button:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+.sorting-activity .phrase.correct {
+    background: var(--success-bg);
+    border-color: var(--success-text);
+}
+
+.sorting-activity .phrase.incorrect {
+    background: var(--error-bg);
+    border-color: var(--error-text);
+}
+
+.sorting-activity .sorting-zones {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.sorting-activity .sort-zone {
+    min-height: 8rem;
+    cursor: pointer;
+}
+
+.sorting-activity .zone-heading {
+    width: 100%;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+@media (max-width: 600px) {
+    .sorting-activity .sorting-zones {
+        grid-template-columns: 1fr;
+    }
+}

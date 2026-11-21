@@ -1742,20 +1742,19 @@ window.WebsiteLessonCatalog = [
     "title": "Present Simple vs Present Continuous",
     "activities": [
       {
-        "id": "hb-present-sort",
-        "type": "dropdown",
+        "id": "hb-present-categories",
+        "type": "sort",
         "total": 8
       },
       {
-        "id": "hb-present-story",
-        "type": "dropdown",
-        "total": 6
+        "id": "hb-present-order",
+        "type": "drag",
+        "total": 5
       },
       {
-        "id": "daily-life-speaking",
-        "type": "manual",
-        "total": 1,
-        "label": "Speaking: Your Daily Life"
+        "id": "hb-present-lunch",
+        "type": "dropdown",
+        "total": 8
       }
     ],
     "next": null,

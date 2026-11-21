@@ -17,11 +17,11 @@
     choose: '.cc-choice-group', odd: '.ooo-group', listen: '.lc-question',
     compact: '.cm-answer-slot', matching: '.matching-question', vocab: '.vocab-drop-zone',
     flashcards: '.flashcard', speaking: '.sq-question',
-    manual: '.website-practice-done',
+    manual: '.website-practice-done', sort: '.phrase',
   };
   const choice = '.option, .cc-choice, .ooo-option, .lc-option';
-  const pieces = '.drag-item, .vocab-word-item, .cm-marker';
-  const zones = '.drop-zone, .vocab-drop-zone, .cm-answer-slot';
+  const pieces = '.drag-item, .vocab-word-item, .cm-marker, .sorting-activity .phrase';
+  const zones = '.drop-zone, .vocab-drop-zone, .cm-answer-slot, .sorting-activity .zone-content';
   const all = (node, selector) => [...node.querySelectorAll(selector)];
   const identity = node => [node.dataset.match || '', node.dataset.answer || '', node.textContent.trim()];
   const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
@@ -55,7 +55,8 @@
         }
         return true;
       }).length;
-    } else if (spec.type === 'matching') answered = answers.matched.filter(Boolean).length;
+    } else if (spec.type === 'sort') answered = answers.placements.flat().length;
+    else if (spec.type === 'matching') answered = answers.matched.filter(Boolean).length;
     else if (spec.type === 'flashcards') answered = answers.viewed.filter(Boolean).length;
     else if (spec.type === 'speaking') answered = answers.speaking.filter(Boolean).length;
     else if (spec.type === 'manual') answered = answers.manual ? 1 : 0;

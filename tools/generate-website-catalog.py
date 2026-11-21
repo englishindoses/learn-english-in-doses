@@ -17,7 +17,7 @@ WIDGETS = [
     ('spelling', 'ss-input'), ('choose', 'cc-choice-group'), ('odd', 'ooo-group'),
     ('listen', 'lc-question'), ('compact', 'cm-answer-slot'),
     ('matching', 'matching-question'), ('vocab', 'vocab-drop-zone'),
-    ('flashcards', 'flashcard'), ('speaking', 'sq-question'),
+    ('flashcards', 'flashcard'), ('speaking', 'sq-question'), ('sort', 'phrase'),
 ]
 
 
@@ -72,7 +72,7 @@ def activities(page):
             owner = node.parent
             while owner and not (owner.attrs.get('id') and (
                 any(owner.has(c) for c in ['activity-container', 'dropdown-activity', 'vocab-match-container',
-                                          'flashcard-container', 'compact-matching', 'matching-container'])
+                                          'flashcard-container', 'compact-matching', 'matching-container', 'sorting-activity'])
                 or owner.attrs['id'] in ['mcq', 'drag-drop', 'gap-fill', 'matching', 'flashcards', 'speaking-questions'])):
                 owner = owner.parent
             if not owner:
@@ -105,7 +105,7 @@ def main():
                 section = heading.parent
                 while section and section.tag != 'section':
                     section = section.parent
-                if not section or any(n.has(cls) for n in section.all() for _, cls in WIDGETS):
+                if not section or 'data-untracked' in section.attrs or any(n.has(cls) for n in section.all() for _, cls in WIDGETS):
                     continue
                 items.append({'id': section.attrs.get('id') or f'practice-task-{len(items)+1}',
                               'type': 'manual', 'total': 1, 'label': heading.text.strip()})

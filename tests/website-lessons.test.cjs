@@ -59,6 +59,10 @@ function fill(w, spec) {
   } else if (spec.type === 'matching') all('.matching-question').forEach(q => {
     q.click(); all('.matching-answer').find(n => n.dataset.index === q.dataset.index)?.click();
   });
+  else if (spec.type === 'sort') all('.phrase-bank .phrase').forEach(phrase => {
+    phrase.click();
+    all('.sort-zone').find(zone => zone.dataset.category === phrase.dataset.category).querySelector('.zone-heading').click();
+  });
   else if (spec.type === 'flashcards') all('.flashcard').forEach(n => n.click());
   else if (spec.type === 'speaking') all('.sq-check').forEach(n => n.click());
   else if (spec.type === 'manual') n.querySelector('.website-practice-done').click();
@@ -85,6 +89,7 @@ const examples = [
   'travel/beginner-travel/Unit1/airport-lesson1.html',
   'students/hb/4-past-simple.html',
   'students/hb/6-block-a-revision.html',
+  'students/hb/7-present-simple-vs-present-continuous.html',
 ];
 const registry = { window: {} };
 require('node:vm').runInNewContext(fs.readFileSync('js/website-lesson-catalog.js', 'utf8'), registry);
