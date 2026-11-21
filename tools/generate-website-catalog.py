@@ -117,7 +117,7 @@ def main():
     # Follow the actual course indexes, not alphabetical filenames or stale prev/next links.
     indexes = ['grammar/beginner/beginner-grammar.html', 'grammar/intermediate/intermediate-grammar.html',
                'grammar/advanced/advanced-grammar.html', 'vocabulary/beginner/beginner-vocabulary.html',
-               'travel/beginner-travel/travel-english.html']
+               'travel/beginner-travel/travel-english.html', 'students/hb/index.html']
     for index in indexes:
         ordered = []
         page = Page((ROOT / index).read_text(encoding='utf-8'))

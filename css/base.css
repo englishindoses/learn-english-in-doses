@@ -164,6 +164,11 @@
     margin-right: auto;
   }
 
+  .lesson-image {
+    max-width: 100%;
+    height: auto;
+  }
+
   .content-section {
     background-color: var(--card-bg);
     padding: 15px;

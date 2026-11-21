@@ -1639,7 +1639,7 @@ window.WebsiteLessonCatalog = [
         "label": "Speaking: Your life"
       }
     ],
-    "next": null,
+    "next": "students/hb/4-past-simple.html",
     "course": "Personal lessons"
   },
   {
@@ -1672,7 +1672,7 @@ window.WebsiteLessonCatalog = [
         "total": 10
       }
     ],
-    "next": null,
+    "next": "students/hb/5-modals-can-must-should.html",
     "course": "Personal lessons"
   },
   {
@@ -1701,7 +1701,7 @@ window.WebsiteLessonCatalog = [
         "label": "Speaking"
       }
     ],
-    "next": null,
+    "next": "students/hb/6-block-a-revision.html",
     "course": "Personal lessons"
   },
   {
@@ -1732,6 +1732,30 @@ window.WebsiteLessonCatalog = [
         "id": "mixed-test",
         "type": "fix",
         "total": 8
+      }
+    ],
+    "next": "students/hb/7-present-simple-vs-present-continuous.html",
+    "course": "Personal lessons"
+  },
+  {
+    "path": "students/hb/7-present-simple-vs-present-continuous.html",
+    "title": "Present Simple vs Present Continuous",
+    "activities": [
+      {
+        "id": "hb-present-sort",
+        "type": "dropdown",
+        "total": 8
+      },
+      {
+        "id": "hb-present-story",
+        "type": "dropdown",
+        "total": 6
+      },
+      {
+        "id": "daily-life-speaking",
+        "type": "manual",
+        "total": 1,
+        "label": "Speaking: Your Daily Life"
       }
     ],
     "next": null,

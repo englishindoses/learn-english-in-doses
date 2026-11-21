@@ -53,12 +53,12 @@ Every teaching week ends with an interactive practice set as homework.
 | **0** ✅ | **Auxiliary rule**: *do/does/did/can/must* + **bare infinitive**, questions & negatives — *plus* present simple questions with *do/does*. **DONE** (worksheet + interactive homework) | *didn't bought*, *can to*, *Has your father drive* |
 | **1** ✅ | **Past simple** — *did* + base verb, irregular forms, negatives, question word order. **DONE** (interactive lesson `4-past-simple.html`) | *didn't bought*, *Where did you went* |
 | **2** ✅ | **Modals** — *can/can't, must/mustn't, should*: same bare-infinitive rule, new auxiliaries. **DONE** (interactive lesson `5-modals-can-must-should.html`) | *can't to drive*, *can to* |
-| 3 | **REVISION + PROGRESS CHECK 1** — auxiliary system across present, past & modals. No new grammar. Revision mini test: `6-block-a-revision.html`. | |
+| **3** ✅ | **REVISION + PROGRESS CHECK 1** — auxiliary system across present, past & modals. **DONE** (revision lesson `6-block-a-revision.html`). He did well across the revision lesson. | |
 
 ### Block B — Time reference
 | Wk | Focus | Kills |
 |---|---|---|
-| 4 | **Present simple vs present continuous** — habit vs now/temporary | *today I take the bus* |
+| **4** | [**Present simple vs present continuous**](7-present-simple-vs-present-continuous.html) — habit vs now/temporary. **NEXT** | *today I take the bus* |
 | 5 | **There is / there are vs have/has** (the *tem* problem) + *some / any* | *In my city has…*, *There is any shops?* |
 | 6 | **Future: will vs going to** (evidence & plans) + present continuous for arrangements | *Look at those clouds, it will rain* |
 | 7 | **REVISION + PROGRESS CHECK 2** — Blocks A and B mixed. | |
